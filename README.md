@@ -6,6 +6,23 @@ implements the backend foundation and drafts three Pine Script v6 strategies fro
 Live mode is rejected at configuration validation. No strategy has demonstrated the
 research performance gates or received a Shariah approval.
 
+## Current progress
+
+Milestone 1 is implemented and locally validated. Milestone 2 has three strategy
+scripts drafted, with TradingView compilation and replay acceptance pending.
+Milestones 3–8 have not started; optional live integration (Milestone 9) is disabled.
+This is one locally validated milestone out of nine, not a percentage estimate of
+engineering effort or production readiness.
+
+Validation recorded for the first increment: 29 tests pass on PostgreSQL, migration
+upgrade/downgrade and schema checks pass, and the containerized API passes actual
+HTTP ingestion/replay/audit and restart-persistence checks. A GitHub Actions workflow
+is included; its hosted result has not been verified here.
+
+See the [documentation guide](docs/README.md) for project specifications, architecture,
+API contracts, strategy rules, compliance/risk requirements and operations. The
+[milestone tracker](docs/milestones.md) is the source of truth for progress.
+
 ## Develop
 
 Requirements: Python 3.12+, uv 0.12.23, Docker with Compose, and PostgreSQL 16.

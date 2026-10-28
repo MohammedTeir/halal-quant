@@ -5,7 +5,7 @@ later milestones are planned, not implied by the presence of technical candidate
 
 | # | Deliverable | State | Acceptance and evidence |
 |---|---|---|---|
-| 1 | Foundation and architecture | Implemented; locally validated | FastAPI boots; PostgreSQL 16 migrations upgrade/downgrade and metadata check pass; 29 tests pass; Docker API image builds; actual HTTP smoke and restart persistence checked. CI is defined but has not run on GitHub. |
+| 1 | Foundation and architecture | Implemented; locally validated | FastAPI boots; PostgreSQL 16 migrations upgrade/downgrade and metadata check pass; 29 tests pass; Docker API image builds; actual HTTP smoke and restart persistence checked. CI is defined; its hosted result has not been verified here. |
 | 2 | Three Pine v6 strategies | Implemented draft; acceptance pending | Configurable stock, ETF, gold scripts, long-only entry sites, ATR/trailing stops, cost/date controls and v1 JSON contract. Python indicator and source guardrail tests pass. TradingView compilation, replay, chart behavior and numeric parity still required. |
 | 3 | Market and news data | Not started | Validate UTC timestamps, publication/ingestion timing, provenance, corporate actions, deduplication and freshness; missing feeds fail closed. Select providers before production adapters. |
 | 4 | AI intelligence and decision engine | Not started | Schema constraints, evidence/source validation, prompt-injection cases and deterministic mandatory gates pass. AI cannot authorize orders. |
