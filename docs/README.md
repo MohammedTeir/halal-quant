@@ -8,6 +8,7 @@ read [milestones](milestones.md) for implementation status and acceptance eviden
 | [Master blueprint v2](blueprint-v2.md) | Original full project requirements and acceptance gates |
 | [Milestones](milestones.md) | Progress, verification evidence, pending gates and next work |
 | [Architecture](architecture.md) | Current module boundaries, storage and intended evolution |
+| [Python research](python-research.md) | Primary strategy workflow, CSV contracts, costs, reproducible reports and limitations |
 | [Strategy specifications](strategy-specs.md) | Strategy defaults, entry/exit behavior and deferred gates |
 | [Compliance policy](compliance-policy.md) | Required screening and transaction rules; implementation status |
 | [Risk policy](risk-policy.md) | Initial risk limits and required exit protections |

@@ -1,0 +1,76 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "source": {
+      "minLength": 1,
+      "title": "Source",
+      "type": "string"
+    },
+    "symbol": {
+      "minLength": 1,
+      "title": "Symbol",
+      "type": "string"
+    },
+    "asset_class": {
+      "enum": [
+        "stock",
+        "etf",
+        "gold"
+      ],
+      "title": "Asset Class",
+      "type": "string"
+    },
+    "timeframe_seconds": {
+      "exclusiveMinimum": 0,
+      "title": "Timeframe Seconds",
+      "type": "integer"
+    },
+    "price_basis": {
+      "enum": [
+        "split_adjusted",
+        "total_return_adjusted",
+        "unadjusted"
+      ],
+      "title": "Price Basis",
+      "type": "string"
+    },
+    "currency": {
+      "const": "USD",
+      "default": "USD",
+      "title": "Currency",
+      "type": "string"
+    },
+    "retrieved_at": {
+      "format": "date-time",
+      "title": "Retrieved At",
+      "type": "string"
+    },
+    "synthetic": {
+      "default": false,
+      "title": "Synthetic",
+      "type": "boolean"
+    },
+    "timestamp_semantics": {
+      "const": "bar_close",
+      "default": "bar_close",
+      "title": "Timestamp Semantics",
+      "type": "string"
+    }
+  },
+  "required": [
+    "source",
+    "symbol",
+    "asset_class",
+    "timeframe_seconds",
+    "price_basis",
+    "retrieved_at"
+  ],
+  "title": "DataSpec",
+  "type": "object"
+}

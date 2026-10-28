@@ -8,6 +8,8 @@ RUN --mount=type=secret,id=proxy_ca,required=true \
     SSL_CERT_FILE=/run/secrets/proxy_ca uv sync --frozen --no-dev
 COPY apps apps
 COPY packages packages
+COPY services services
+COPY scripts scripts
 COPY migrations migrations
 COPY alembic.ini ./
 RUN chmod -R a+rX /app && useradd --uid 10001 --no-create-home halal

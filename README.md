@@ -1,37 +1,52 @@
 # HALAL QUANT
 
-Research-first, compliance-gated quantitative trading platform. This first increment
-implements the backend foundation and drafts three Pine Script v6 strategies from
-[the supplied blueprint](docs/blueprint-v2.md). **It does not authorize or execute trades.**
+Research-first, compliance-gated quantitative trading platform. The backend foundation
+and three executable Python strategies follow [the supplied blueprint](docs/blueprint-v2.md).
+Python is the primary research workflow; Pine Script is optional. **It does not authorize or execute trades.**
 Live mode is rejected at configuration validation. No strategy has demonstrated the
 research performance gates or received a Shariah approval.
 
 ## Current progress
 
-Milestone 1 is implemented and locally validated. Milestone 2 has three strategy
-scripts drafted, with TradingView compilation and replay acceptance pending.
-Milestones 3–8 have not started; optional live integration (Milestone 9) is disabled.
-This is one locally validated milestone out of nine, not a percentage estimate of
-engineering effort or production readiness.
+Milestone 1 (foundation) and revised Milestone 2 (Python strategies) are implemented
+and locally validated. Milestone 3 has validated CSV ingestion; Milestone 6 has an
+early single-instrument research runner. Both remain incomplete. Milestones 4–5
+and 7–8 have not started; optional live integration (Milestone 9) is disabled.
 
-Validation recorded for the first increment: 29 tests pass on PostgreSQL, migration
-upgrade/downgrade and schema checks pass, and the containerized API passes actual
-HTTP ingestion/replay/audit and restart-persistence checks. A GitHub Actions workflow
-is included; its hosted result has not been verified here.
+The full suite has **61 passing tests**, including 32 new research tests. All three
+default strategies and cost-matched buy-and-hold baselines execute on synthetic
+fixtures, finish flat, and reproduce reports byte-for-byte. These are software
+acceptance checks, not evidence of real-world returns or paper-trading readiness.
+GitHub Actions is configured; its hosted outcome has not been verified here.
 
 See the [documentation guide](docs/README.md) for project specifications, architecture,
 API contracts, strategy rules, compliance/risk requirements and operations. The
 [milestone tracker](docs/milestones.md) is the source of truth for progress.
 
+## Start research without TradingView
+
+After installing dependencies as below, run:
+
+```sh
+uv run python -m scripts.research_smoke --output reports/generated/first-run
+```
+
+This generates synthetic candles, runs the stock/ETF/gold strategies and baselines,
+repeats each report, and checks reproducibility and end-of-window order state.
+Choose a new output directory each time. No API, credentials or database is needed
+for this research command. See [Python research](docs/python-research.md) for actual
+CSV contracts, configurations, individual runs and model limitations.
+
 ## Develop
 
-Requirements: Python 3.12+, uv 0.12.23, Docker with Compose, and PostgreSQL 16.
+Research requirements: Python 3.12+ and uv 0.12.23. The API stack additionally
+uses Docker with Compose and PostgreSQL 16.
 
 ```sh
 cd /workspace/halal-quant
 export UV_CACHE_DIR=/tmp/halal-quant-uv-cache
 uv sync --frozen
-cp .env.example .env  # only if .env does not already exist
+test -e .env || cp .env.example .env
 # Set distinct random DASHBOARD_API_KEY and TRADINGVIEW_WEBHOOK_KEY in .env.
 docker compose up -d --wait postgres
 uv run alembic upgrade head
@@ -67,8 +82,8 @@ TEST_DATABASE_URL=postgresql+psycopg://halal:halal@localhost:5432/halal_quant_te
 
 These integration tests downgrade tables between tests. Never point
 `TEST_DATABASE_URL` at a database containing data you want to keep. CI uses a
-fresh PostgreSQL 16 service. TradingView validation is a separate manual gate;
-Python source checks do not compile Pine.
+fresh PostgreSQL 16 service. Python strategy acceptance runs automatically;
+TradingView validation is an optional manual gate. Optional Pine source checks do not compile Pine.
 
 ## Interfaces
 

@@ -1,4 +1,7 @@
-# Pine strategies and acceptance protocol
+# Optional Pine strategies and acceptance protocol
+
+Python is now the primary acceptance path; these TradingView checks are optional
+and do not block development. See [Python research](python-research.md).
 
 ## Implementation
 

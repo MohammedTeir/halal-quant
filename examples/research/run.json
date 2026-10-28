@@ -1,0 +1,10 @@
+{
+  "cash": 10000.0,
+  "allocation": 0.1,
+  "commission_rate": 0.001,
+  "spread_bps": 5.0,
+  "slippage_bps": 2.0,
+  "train_fraction": 0.7,
+  "start_at": null,
+  "end_at": null
+}

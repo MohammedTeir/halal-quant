@@ -26,3 +26,13 @@ first increment's tables. CI databases are disposable; development data is not.
 Production remains blocked on RBAC/session security, trusted webhook gateway,
 rate/body limits, durable audit controls, backup/restore verification, monitoring,
 provider and compliance decisions, research acceptance and paper reconciliation.
+
+## Python research
+
+The research CLI needs neither running services nor authentication. After frozen
+dependency installation, run `uv run python -m scripts.research_smoke --output
+reports/generated/new-run` in the repository root (on one line). Choose a new
+output path to preserve experiments. See [Python research](python-research.md) for
+individual strategies, historical CSV metadata, costs and date limits. Reports
+and input datasets are separate from the API database and are not submitted as
+orders. Generated data/reports are ignored by Git and excluded from Docker context.

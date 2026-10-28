@@ -1,0 +1,235 @@
+{
+  "authorized_for_paper": false,
+  "purpose": "synthetic_software_acceptance_only",
+  "real_market_performance_verified": false,
+  "strategies": {
+    "adaptive_pullback": {
+      "byte_identical_repeat": true,
+      "inputs": {
+        "benchmark": null,
+        "instrument": {
+          "csv_sha256": "a0a82e1ddeb83cad16fa924d3b449a2feb28cf4d11e0b2bcd06ccf2c89b75510",
+          "first_bar_close": "2020-01-01T00:00:00+00:00",
+          "last_bar_close": "2022-09-26T00:00:00+00:00",
+          "metadata": {
+            "asset_class": "stock",
+            "currency": "USD",
+            "price_basis": "split_adjusted",
+            "retrieved_at": "2026-10-28T00:00:00Z",
+            "schema_version": "1.0",
+            "source": "deterministic_synthetic_demo_v1",
+            "symbol": "DEMO_STOCK",
+            "synthetic": true,
+            "timeframe_seconds": 86400,
+            "timestamp_semantics": "bar_close"
+          },
+          "metadata_sha256": "3096caff6e244628f98f29f2704fffa35631dd8713dee36fd5b35187cdc43eaf",
+          "rows": 1000
+        }
+      },
+      "lockfile_sha256": "ab1679554d2843de9d88b0f243fb11f8c287b7e77e24bbf9a46b61df6c6944d0",
+      "run_id": "eca2fb7581985d2b889ae74ac5c83468df80228c4490c086941e280ab5d2216f",
+      "source_sha256": "984d756026626dcab6cd1c12e5bbb15081eb990ca1834c92b0f00151a8ea02ce",
+      "windows": {
+        "holdout": {
+          "buy_and_hold": {
+            "engine_warnings": [
+              "DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead."
+            ],
+            "open_positions": 0,
+            "pending_orders": 0,
+            "trade_count": 1,
+            "unfilled_entry_candidates": 0
+          },
+          "strategy": {
+            "engine_warnings": [
+              "DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead."
+            ],
+            "open_positions": 0,
+            "pending_orders": 0,
+            "trade_count": 3,
+            "unfilled_entry_candidates": 0
+          }
+        },
+        "train": {
+          "buy_and_hold": {
+            "engine_warnings": [
+              "DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead."
+            ],
+            "open_positions": 0,
+            "pending_orders": 0,
+            "trade_count": 1,
+            "unfilled_entry_candidates": 0
+          },
+          "strategy": {
+            "engine_warnings": [
+              "DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead."
+            ],
+            "open_positions": 0,
+            "pending_orders": 0,
+            "trade_count": 3,
+            "unfilled_entry_candidates": 0
+          }
+        }
+      }
+    },
+    "breakout_retest": {
+      "byte_identical_repeat": true,
+      "inputs": {
+        "benchmark": null,
+        "instrument": {
+          "csv_sha256": "d5a2c7c361cbacdb735cf699d87e50d6c9e5ebe6b89ccf73ee329c29676e44c4",
+          "first_bar_close": "2020-01-01T00:00:00+00:00",
+          "last_bar_close": "2022-09-26T20:00:00+00:00",
+          "metadata": {
+            "asset_class": "gold",
+            "currency": "USD",
+            "price_basis": "unadjusted",
+            "retrieved_at": "2026-10-28T00:00:00Z",
+            "schema_version": "1.0",
+            "source": "deterministic_synthetic_demo_v1",
+            "symbol": "DEMO_GOLD",
+            "synthetic": true,
+            "timeframe_seconds": 14400,
+            "timestamp_semantics": "bar_close"
+          },
+          "metadata_sha256": "9fa27bdc82f7a041b8f87728a83c317be2875abd7525fe49e9adba85183b5a40",
+          "rows": 6000
+        }
+      },
+      "lockfile_sha256": "ab1679554d2843de9d88b0f243fb11f8c287b7e77e24bbf9a46b61df6c6944d0",
+      "run_id": "e461042d74562e35b26b3693a7a15eb0bea9f91daa52a74c9ebacb9cc3aab4ea",
+      "source_sha256": "984d756026626dcab6cd1c12e5bbb15081eb990ca1834c92b0f00151a8ea02ce",
+      "windows": {
+        "holdout": {
+          "buy_and_hold": {
+            "engine_warnings": [
+              "DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead."
+            ],
+            "open_positions": 0,
+            "pending_orders": 0,
+            "trade_count": 1,
+            "unfilled_entry_candidates": 0
+          },
+          "strategy": {
+            "engine_warnings": [
+              "DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead."
+            ],
+            "open_positions": 0,
+            "pending_orders": 0,
+            "trade_count": 22,
+            "unfilled_entry_candidates": 0
+          }
+        },
+        "train": {
+          "buy_and_hold": {
+            "engine_warnings": [
+              "DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead."
+            ],
+            "open_positions": 0,
+            "pending_orders": 0,
+            "trade_count": 1,
+            "unfilled_entry_candidates": 0
+          },
+          "strategy": {
+            "engine_warnings": [
+              "DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead."
+            ],
+            "open_positions": 0,
+            "pending_orders": 0,
+            "trade_count": 37,
+            "unfilled_entry_candidates": 0
+          }
+        }
+      }
+    },
+    "regime_trend": {
+      "byte_identical_repeat": true,
+      "inputs": {
+        "benchmark": {
+          "csv_sha256": "0f87cc7ee2cb17dcceda684a4e531872f6369a8bde366807f1ed986dfe57d36f",
+          "first_bar_close": "2020-01-01T00:00:00+00:00",
+          "last_bar_close": "2022-09-26T00:00:00+00:00",
+          "metadata": {
+            "asset_class": "etf",
+            "currency": "USD",
+            "price_basis": "split_adjusted",
+            "retrieved_at": "2026-10-28T00:00:00Z",
+            "schema_version": "1.0",
+            "source": "deterministic_synthetic_demo_v1",
+            "symbol": "DEMO_BENCHMARK",
+            "synthetic": true,
+            "timeframe_seconds": 86400,
+            "timestamp_semantics": "bar_close"
+          },
+          "metadata_sha256": "c73ce3668b15a35f905a9e28de7584c884f9acf838bc4f0034479e79ee406b2a",
+          "rows": 1000
+        },
+        "instrument": {
+          "csv_sha256": "0e669cc05436dc703aad2905502a268c653f44882ed7f1d1c1ee1b323a64444b",
+          "first_bar_close": "2020-01-01T00:00:00+00:00",
+          "last_bar_close": "2022-09-26T00:00:00+00:00",
+          "metadata": {
+            "asset_class": "etf",
+            "currency": "USD",
+            "price_basis": "split_adjusted",
+            "retrieved_at": "2026-10-28T00:00:00Z",
+            "schema_version": "1.0",
+            "source": "deterministic_synthetic_demo_v1",
+            "symbol": "DEMO_ETF",
+            "synthetic": true,
+            "timeframe_seconds": 86400,
+            "timestamp_semantics": "bar_close"
+          },
+          "metadata_sha256": "d3d16032ed63107c267a113df110e941664fc07f6e7022cc6e3951001e5cba84",
+          "rows": 1000
+        }
+      },
+      "lockfile_sha256": "ab1679554d2843de9d88b0f243fb11f8c287b7e77e24bbf9a46b61df6c6944d0",
+      "run_id": "cbe751d503f8b4ffcc2d47cdc80c0fe0c89f922b4242486672af7c18117ad2d3",
+      "source_sha256": "984d756026626dcab6cd1c12e5bbb15081eb990ca1834c92b0f00151a8ea02ce",
+      "windows": {
+        "holdout": {
+          "buy_and_hold": {
+            "engine_warnings": [
+              "DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead."
+            ],
+            "open_positions": 0,
+            "pending_orders": 0,
+            "trade_count": 1,
+            "unfilled_entry_candidates": 0
+          },
+          "strategy": {
+            "engine_warnings": [
+              "DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead."
+            ],
+            "open_positions": 0,
+            "pending_orders": 0,
+            "trade_count": 12,
+            "unfilled_entry_candidates": 0
+          }
+        },
+        "train": {
+          "buy_and_hold": {
+            "engine_warnings": [
+              "DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead."
+            ],
+            "open_positions": 0,
+            "pending_orders": 0,
+            "trade_count": 1,
+            "unfilled_entry_candidates": 0
+          },
+          "strategy": {
+            "engine_warnings": [
+              "DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead."
+            ],
+            "open_positions": 0,
+            "pending_orders": 0,
+            "trade_count": 18,
+            "unfilled_entry_candidates": 0
+          }
+        }
+      }
+    }
+  }
+}

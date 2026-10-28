@@ -7,3 +7,5 @@ __pycache__/
 *.db-*
 node_modules/
 .next/
+data/
+reports/generated/

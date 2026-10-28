@@ -9,8 +9,12 @@ trading subsystems that imply unimplemented guarantees.
 `apps/api` owns HTTP authentication, ingestion, and reads. `packages/schemas`
 owns the shared candidate contract; `packages/config` owns configuration and the
 live-mode guard; `packages/indicators` owns causal reference calculations. `pine`
-contains independently configurable TradingView strategies. `services` reserves
-future module boundaries; there is no worker or broker adapter yet.
+contains optional independently configurable TradingView strategies.
+`services/market_data` validates research CSV inputs and provenance;
+`services/technical_signals` calculates causal Python strategy candidates;
+`services/backtesting` runs single-instrument experiments through Backtesting.py.
+There is no worker, portfolio research engine or broker adapter yet. The research
+CLI is independent of HTTP ingestion and cannot authorize paper orders.
 
 Flow: closed chart bar → technical candidate → authenticated ingress → validated
 signal and audit transaction. Later milestones add authoritative point-in-time

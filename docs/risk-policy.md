@@ -1,7 +1,9 @@
 # Risk policy specification
 
-Status: **requirements only; portfolio risk and order sizing are not implemented**.
-Pine's 10% simulated allocation is a research setting, not enforcement of this policy.
+Status: **requirements only; portfolio risk and policy-based order sizing are not implemented**.
+The Python/Pine 10% simulated allocation is a research setting, not enforcement of this policy.
+The Python research adapter uses whole shares and cash-only margin, but these
+local constraints do not implement the portfolio limits below.
 
 | Initial limit | Default |
 |---|---|
