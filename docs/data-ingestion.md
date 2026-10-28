@@ -147,7 +147,7 @@ Cash-dividend facts can be stored but are not used to adjust prices here.
 ## Acceptance and operations
 
 The data increment added 17 ingestion/API tests and 11 split-audit tests.
-The current full suite has 201 passing tests. It covers migrations/drift, preserving existing signals through
+The current full suite has 257 passing tests. It covers migrations/drift, preserving existing signals through
 upgrade, concurrent idempotency, receipt/publication timing, corrections,
 attribution, scope filters, stale/missing/synthetic feeds, invalid/atomic batches,
 forward/reverse splits, volume, revisions and CLI exit codes. An actual full-stack
@@ -162,9 +162,17 @@ to 0001 removes data-event tables and their contents, so only test that path aga
 disposable databases. Existing signal/audit tables are retained by that downgrade.
 
 Remaining Milestone 3 work: select and verify real data sources, handle source
-licensing/quality, implement fetch workers and health/failure observations, validate
+licensing/quality, deploy and verify the implemented acquisition workers and
+per-target health/failure coverage, validate
 actual corporate actions and exchange sessions, and acquire trustworthy historical
 news availability. The research runner is still technical-only and does not yet
 consume these fact stores or enforce event windows. Milestone 4 now adds advisory contracts and deterministic entry restrictions; real
 model validation and Milestone 5 compliance/risk authorities remain necessary before
 paper promotion.
+
+## Acquisition and session audits
+
+See [data providers](data-providers.md) for the read-only Alpaca/Finnhub/BLS
+adapters, local source revisions, atomic polls, restart-safe file worker, and
+explicit exchange-session validation. Their HTTP tests are mocked; real source
+coverage and historical availability remain unverified.

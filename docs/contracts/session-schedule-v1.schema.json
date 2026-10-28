@@ -1,0 +1,85 @@
+{
+  "$defs": {
+    "Session": {
+      "additionalProperties": false,
+      "properties": {
+        "closes_at": {
+          "format": "date-time",
+          "title": "Closes At",
+          "type": "string"
+        },
+        "opens_at": {
+          "format": "date-time",
+          "title": "Opens At",
+          "type": "string"
+        }
+      },
+      "required": [
+        "opens_at",
+        "closes_at"
+      ],
+      "title": "Session",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "coverage_end": {
+      "format": "date-time",
+      "title": "Coverage End",
+      "type": "string"
+    },
+    "coverage_start": {
+      "format": "date-time",
+      "title": "Coverage Start",
+      "type": "string"
+    },
+    "retrieved_at": {
+      "format": "date-time",
+      "title": "Retrieved At",
+      "type": "string"
+    },
+    "sessions": {
+      "items": {
+        "$ref": "#/$defs/Session"
+      },
+      "maxItems": 100000,
+      "title": "Sessions",
+      "type": "array"
+    },
+    "source": {
+      "maxLength": 200,
+      "minLength": 1,
+      "title": "Source",
+      "type": "string"
+    },
+    "symbol": {
+      "maxLength": 64,
+      "minLength": 1,
+      "title": "Symbol",
+      "type": "string"
+    },
+    "synthetic": {
+      "default": false,
+      "title": "Synthetic",
+      "type": "boolean"
+    },
+    "venue": {
+      "maxLength": 64,
+      "minLength": 1,
+      "title": "Venue",
+      "type": "string"
+    }
+  },
+  "required": [
+    "source",
+    "venue",
+    "symbol",
+    "retrieved_at",
+    "coverage_start",
+    "coverage_end",
+    "sessions"
+  ],
+  "title": "Schedule",
+  "type": "object"
+}

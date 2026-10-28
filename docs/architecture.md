@@ -27,13 +27,15 @@ configuration. Generation claims commit before the network call and finish in a
 separate transaction with source revalidation; no SQL transaction spans inference.
 Provider requests are synchronous, not a background queue. Real Gemini behavior
 and model quality remain unverified; acceptance uses HTTP mocks.
-There is no acquisition worker, portfolio research engine or broker adapter yet. The research
+Read-only Alpaca/Finnhub/BLS acquisition and a restart-safe normalized batch worker
+are available as explicit operator commands; live provider coverage remains unverified.
+There is no portfolio research engine or broker adapter yet. The research
 CLI is independent of HTTP ingestion and cannot authorize paper orders.
 
 Flow: closed chart bar → technical candidate → authenticated ingress → validated
 signal and audit transaction. Later milestones add authoritative point-in-time
 data, intelligence, compliance, risk and a decision engine **before** paper order
-authorization. Dashboard, Redis, Telegram, workers and live adapters are deferred
+authorization. Dashboard, Redis, Telegram, background queues and live broker adapters are deferred
 according to the milestone tracker.
 
 A dashboard credential grants read access; the webhook credential grants only
@@ -47,3 +49,8 @@ backup, access policy and tamper resistance remain future work.
 The supplied blueprint is the design source. Provider, broker, gold ownership
 structure and scholarly screening methodology remain unselected. The platform
 must not invent those approvals or treat a chart's ticker as verified ownership.
+
+The [frozen evaluation workflow](model-evaluation.md) collects and scores model
+responses separately from order decisions. [Provider acquisition](data-providers.md)
+archives source inputs and preserves server receipt/revision semantics. Neither
+workflow supplies compliance, risk, ownership or execution authority.

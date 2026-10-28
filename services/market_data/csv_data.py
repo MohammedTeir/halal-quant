@@ -62,6 +62,8 @@ def load_csv(
     index = pd.DatetimeIndex(pd.to_datetime(stamps, utc=True))
     if index.hasnans or index.has_duplicates or not index.is_monotonic_increasing:
         raise ValueError("Bar closes must be valid, unique and strictly increasing")
+    if index[-1].to_pydatetime() > spec.retrieved_at:
+        raise ValueError("Bar closes cannot be later than snapshot retrieval")
     frame.index = index
     frame.index.name = "bar_close"
     frame = frame.apply(pd.to_numeric, errors="raise").astype(float)

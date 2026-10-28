@@ -10,18 +10,22 @@ research performance gates or received a Shariah approval.
 
 Milestone 1 (foundation) and revised Milestone 2 (Python strategies) are implemented
 and locally validated. Milestone 3 now has CSV, versioned news/calendar/action
-ingestion and split audits; Milestone 6 has an early single-instrument research
+ingestion, split/session audits, and mocked Alpaca/Finnhub/BLS acquisition; Milestone 6 has an early single-instrument research
 runner. Both remain incomplete. Milestone 4 has an advisory assessment boundary
-and deterministic gates. The Gemini backend adapter passes mocked provider
+and deterministic gates, plus frozen adversarial/quality evaluation tooling. The Gemini backend adapter passes mocked provider
 acceptance; live-account compatibility and model-quality evaluation remain pending.
 Milestones 5 and 7–8 have not started; optional live integration (Milestone 9) is disabled.
 
-The full suite has **201 passing tests**, including research, data integrity,
+The full suite has **257 passing tests**, including research, data integrity,
 advisory-output security and deterministic decision checks. All three
 default strategies and cost-matched buy-and-hold baselines execute on synthetic
 fixtures, finish flat, and reproduce reports byte-for-byte. These are software
 acceptance checks, not evidence of real-world returns or paper-trading readiness.
 GitHub Actions is configured; its hosted outcome has not been verified here.
+
+The [first-four completion checklist](docs/first-four-acceptance.md) records the remaining
+real-provider, coverage and independent model-quality gates. Setup commands are in
+[data providers](docs/data-providers.md) and [model evaluation](docs/model-evaluation.md).
 
 See the [documentation guide](docs/README.md) for project specifications, architecture,
 API contracts, strategy rules, compliance/risk requirements and operations. The

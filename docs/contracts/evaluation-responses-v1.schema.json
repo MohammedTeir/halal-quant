@@ -1,0 +1,53 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "corpus_sha256": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Corpus Sha256",
+      "type": "string"
+    },
+    "model_name": {
+      "maxLength": 200,
+      "minLength": 1,
+      "title": "Model Name",
+      "type": "string"
+    },
+    "model_version": {
+      "maxLength": 200,
+      "minLength": 1,
+      "title": "Model Version",
+      "type": "string"
+    },
+    "origin": {
+      "enum": [
+        "mock",
+        "live",
+        "manual"
+      ],
+      "title": "Origin",
+      "type": "string"
+    },
+    "outputs": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "title": "Outputs",
+      "type": "object"
+    },
+    "prompt_version": {
+      "const": "news-classification-v2",
+      "title": "Prompt Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "corpus_sha256",
+    "model_name",
+    "model_version",
+    "prompt_version",
+    "origin",
+    "outputs"
+  ],
+  "title": "Responses",
+  "type": "object"
+}

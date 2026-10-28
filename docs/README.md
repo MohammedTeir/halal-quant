@@ -6,6 +6,9 @@ read [milestones](milestones.md) for implementation status and acceptance eviden
 | Document | Purpose |
 |---|---|
 | [Master blueprint v2](blueprint-v2.md) | Original full project requirements and acceptance gates |
+| [First four acceptance](first-four-acceptance.md) | Exact local evidence and external completion blockers |
+| [Data providers](data-providers.md) | Free-tier starting recommendations, read-only acquisition, sessions and restart-safe worker |
+| [Model evaluation](model-evaluation.md) | Frozen corpus, real-response collection and adversarial/quality scoring |
 | [Milestones](milestones.md) | Progress, verification evidence, pending gates and next work |
 | [Architecture](architecture.md) | Current module boundaries, storage and intended evolution |
 | [Gemini backend](gemini.md) | Project key/model setup, structured inference, durable replay, cost behavior and mocked acceptance |

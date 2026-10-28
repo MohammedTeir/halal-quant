@@ -186,3 +186,10 @@ Real-account authentication, selected-model structured-output compatibility,
 response quality, prompt-injection robustness and quota behavior still require
 controlled validation after you configure your backend. The mock suite does not
 establish any of those live properties.
+
+## Frozen quality evaluation
+
+[Model evaluation](model-evaluation.md) documents the synthetic adversarial corpus,
+one-shot real-response collector and offline semantic/evidence scorer. Live runs
+require explicit backend enablement and consume quota. No real-model score or
+independent review has been established.

@@ -52,7 +52,9 @@ poll requires a new ID. Never falsify receipt time to make historical replay pas
 
 Back up data before schema changes. Downgrading to 0001 deletes imported fact/feed
 observations, while preserving signal/audit tables; full downgrade deletes those too.
-Production providers and failure/retry workers are not connected, and current read
+Read-only acquisition and a restart-safe file worker are documented in
+[data providers](data-providers.md). Real production coverage and scheduling are
+unverified; current read
 endpoints are bounded inspection views, not paginated archival exports.
 
 ## Advisory intelligence
@@ -100,3 +102,13 @@ uses an isolated temporary DB, fixture key and MockTransport; zero real provider
 calls. Existing generation IDs and output report paths must not be overwritten.
 The jobs table is not an implemented scheduler/worker. Production quotas, operator
 recovery and model-quality validation remain pending.
+
+## First-four completion gates
+
+Use [the acceptance checklist](first-four-acceptance.md) before marking the first
+four milestones complete. Live provider acquisition and model evaluation are
+explicit commands, never startup smoke tests. Keep their archives and inspect
+failed/ambiguous runs before deliberately retrying. Enter provider credentials only
+in backend/deployment secrets or secure environment settings. The cloud draft
+contains the required destinations and secret requirements; saving a draft does
+not activate access or publish a snapshot.

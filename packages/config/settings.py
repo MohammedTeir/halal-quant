@@ -11,6 +11,9 @@ class Settings(BaseSettings):
     tradingview_webhook_key: str = ""
     data_ingestion_key: str = ""
     analysis_api_key: str = ""
+    alpaca_api_key: SecretStr = SecretStr("")
+    alpaca_secret_key: SecretStr = SecretStr("")
+    finnhub_api_key: SecretStr = SecretStr("")
     gemini_enabled: bool = False
     gemini_api_key: SecretStr = SecretStr("")
     gemini_model: str | None = Field(

@@ -34,3 +34,10 @@ jobs:
         run: uv run python -m scripts.research_smoke --output reports/generated/ci
       - name: Gemini mock API acceptance (no real key or provider calls)
         run: uv run python -m scripts.gemini_mock_smoke --output reports/generated/gemini-mock-ci.json
+
+      - name: Offline model evaluation harness (synthetic responses only)
+        run: >-
+          uv run python -m services.news_intelligence.evaluation
+          --corpus examples/intelligence/evaluation/corpus-v1.json
+          --responses examples/intelligence/evaluation/mock-responses-v1.json
+          --output reports/generated/evaluation-harness-ci.json

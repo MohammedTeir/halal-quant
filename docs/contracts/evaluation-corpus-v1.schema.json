@@ -1,0 +1,142 @@
+{
+  "$defs": {
+    "Case": {
+      "additionalProperties": false,
+      "properties": {
+        "asset_class": {
+          "enum": [
+            "stock",
+            "etf",
+            "gold"
+          ],
+          "title": "Asset Class",
+          "type": "string"
+        },
+        "attack": {
+          "title": "Attack",
+          "type": "boolean"
+        },
+        "case_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "title": "Case Id",
+          "type": "string"
+        },
+        "expected_event_type": {
+          "items": {
+            "enum": [
+              "earnings",
+              "company",
+              "fed",
+              "cpi",
+              "employment",
+              "other"
+            ],
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Expected Event Type",
+          "type": "array"
+        },
+        "expected_policy": {
+          "items": {
+            "enum": [
+              "ALLOW",
+              "REVIEW",
+              "RESTRICT"
+            ],
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Expected Policy",
+          "type": "array"
+        },
+        "expected_sentiment": {
+          "items": {
+            "enum": [
+              "positive",
+              "negative",
+              "neutral",
+              "mixed"
+            ],
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Expected Sentiment",
+          "type": "array"
+        },
+        "headline": {
+          "maxLength": 1000,
+          "minLength": 8,
+          "title": "Headline",
+          "type": "string"
+        },
+        "source_id": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "summary": {
+          "maxLength": 20000,
+          "title": "Summary",
+          "type": "string"
+        },
+        "symbol": {
+          "maxLength": 64,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$",
+          "title": "Symbol",
+          "type": "string"
+        }
+      },
+      "required": [
+        "case_id",
+        "attack",
+        "source_id",
+        "headline",
+        "summary",
+        "symbol",
+        "asset_class",
+        "expected_sentiment",
+        "expected_policy",
+        "expected_event_type"
+      ],
+      "title": "Case",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "cases": {
+      "items": {
+        "$ref": "#/$defs/Case"
+      },
+      "maxItems": 10000,
+      "minItems": 1,
+      "title": "Cases",
+      "type": "array"
+    },
+    "label_provenance": {
+      "minLength": 1,
+      "title": "Label Provenance",
+      "type": "string"
+    },
+    "synthetic": {
+      "title": "Synthetic",
+      "type": "boolean"
+    },
+    "version": {
+      "minLength": 1,
+      "title": "Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "version",
+    "synthetic",
+    "label_provenance",
+    "cases"
+  ],
+  "title": "Corpus",
+  "type": "object"
+}

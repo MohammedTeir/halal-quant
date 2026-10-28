@@ -24,3 +24,9 @@ assessment → stored job/replay → blocked decision path. The model/version an
 counts are fixture data, not live provider results or charges.
 `gemini-container-smoke.json` verifies the rebuilt stack, runtime CA bundle loading
 and disabled generation without a job or real model call.
+
+`evaluation-harness-smoke.json` scores the explicitly synthetic mock response file
+against the frozen synthetic corpus. Its perfect fixture score is evaluator
+software evidence only; no real model was called and no independent review or
+deployment approval is implied. `first-four-acceptance.json` records current local
+checks and the unpassed external gates; milestones 3 and 4 remain open.
