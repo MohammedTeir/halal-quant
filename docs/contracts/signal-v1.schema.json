@@ -1,0 +1,99 @@
+{
+  "$defs": {
+    "AssetClass": {
+      "enum": [
+        "stock",
+        "etf",
+        "gold"
+      ],
+      "title": "AssetClass",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Technical evidence only. This payload never authorizes an order.",
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "event_id": {
+      "maxLength": 200,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.:|/-]+$",
+      "title": "Event Id",
+      "type": "string"
+    },
+    "strategy": {
+      "enum": [
+        "adaptive_pullback",
+        "regime_trend",
+        "breakout_retest"
+      ],
+      "title": "Strategy",
+      "type": "string"
+    },
+    "strategy_version": {
+      "const": "1.0.0",
+      "title": "Strategy Version",
+      "type": "string"
+    },
+    "asset_class": {
+      "$ref": "#/$defs/AssetClass"
+    },
+    "symbol": {
+      "maxLength": 64,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.:/-]+$",
+      "title": "Symbol",
+      "type": "string"
+    },
+    "timeframe": {
+      "maxLength": 16,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9]+$",
+      "title": "Timeframe",
+      "type": "string"
+    },
+    "action": {
+      "enum": [
+        "ENTRY_CANDIDATE",
+        "EXIT_CANDIDATE"
+      ],
+      "title": "Action",
+      "type": "string"
+    },
+    "bar_time": {
+      "format": "date-time",
+      "title": "Bar Time",
+      "type": "string"
+    },
+    "price": {
+      "anyOf": [
+        {
+          "exclusiveMinimum": 0.0,
+          "type": "number"
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "title": "Price"
+    }
+  },
+  "required": [
+    "schema_version",
+    "event_id",
+    "strategy",
+    "strategy_version",
+    "asset_class",
+    "symbol",
+    "timeframe",
+    "action",
+    "bar_time",
+    "price"
+  ],
+  "title": "Signal",
+  "type": "object"
+}

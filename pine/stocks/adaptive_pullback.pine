@@ -1,0 +1,62 @@
+//@version=6
+strategy("HALAL QUANT — Adaptive Trend Pullback", overlay=true, pyramiding=0, initial_capital=10000, default_qty_type=strategy.percent_of_equity, default_qty_value=10, commission_type=strategy.commission.percent, commission_value=0.10, slippage=2, process_orders_on_close=false, calc_on_every_tick=false, calc_on_order_fills=false)
+// Research-only technical candidates. No compliance or execution authorization.
+startDate = input.time(timestamp("01 Jan 2020 00:00 +0000"), "Start date (UTC)")
+endDate = input.time(timestamp("01 Jan 2035 00:00 +0000"), "End date (UTC)")
+atrLen = input.int(14, "ATR length", minval=1)
+stopMult = input.float(2.0, "Initial stop ATR", minval=0.1)
+trailMult = input.float(3.0, "Trailing stop ATR", minval=0.1)
+allowEntries = input.bool(true, "Enable research entries")
+// Cost assumptions are editable in Strategy Properties, never optimized away.
+atrValue = ta.atr(atrLen)
+inWindow = time_close >= startDate and time_close <= endDate
+payload(string action) =>
+    string eventId = "adaptive_pullback|" + syminfo.tickerid + "|" + timeframe.period + "|" + str.tostring(time_close) + "|" + action
+    string stamp = str.format_time(time_close, "yyyy-MM-dd'T'HH:mm:ss'Z'", "UTC")
+    '{"schema_version":"1.0","event_id":"' + eventId + '","strategy":"adaptive_pullback","strategy_version":"1.0.0","asset_class":"stock","symbol":"' + syminfo.tickerid + '","timeframe":"' + timeframe.period + '","action":"' + action + '","bar_time":"' + stamp + '","price":' + str.tostring(close, format.mintick) + '}'
+fastLen = input.int(50, "Trend EMA", minval=2)
+slowLen = input.int(200, "Long EMA", minval=3)
+pullLen = input.int(20, "Pullback EMA", minval=2)
+rsiLen = input.int(14, "RSI length", minval=2)
+rsiThreshold = input.float(50, "RSI recovery threshold", minval=1, maxval=99)
+adxLen = input.int(14, "ADX / DI length", minval=2)
+adxMinimum = input.float(20, "Minimum ADX", minval=0)
+volumeLen = input.int(20, "Volume average length", minval=1)
+volumeMultiplier = input.float(1.0, "Recovery volume multiplier", minval=0.1)
+pullTolerance = input.float(0.5, "Pullback tolerance (ATR)", minval=0)
+fast = ta.ema(close, fastLen)
+slow = ta.ema(close, slowLen)
+pull = ta.ema(close, pullLen)
+rsiValue = ta.rsi(close, rsiLen)
+[plusDI, minusDI, adxValue] = ta.dmi(adxLen, adxLen)
+volumeAverage = ta.sma(volume, volumeLen)
+recovery = ta.crossover(rsiValue, rsiThreshold)
+pullback = low[1] <= pull[1] + atrValue[1] * pullTolerance or low[1] <= fast[1] + atrValue[1] * pullTolerance
+warm = bar_index >= math.max(slowLen, math.max(2 * adxLen, volumeLen)) and not na(atrValue) and not na(volumeAverage)
+entryCondition = fast > slow and close > slow and pullback and recovery and close > open and adxValue >= adxMinimum and volume > volumeAverage * volumeMultiplier
+trendExit = close < slow or fast < slow
+plot(fast, "Trend EMA", color=color.blue)
+plot(slow, "Long EMA", color=color.orange)
+
+var float stopPrice = na
+var float peak = na
+if barstate.isconfirmed
+    if strategy.position_size == 0 and strategy.position_size[1] > 0
+        alert(payload("EXIT_CANDIDATE"), alert.freq_once_per_bar_close)
+        stopPrice := na
+        peak := na
+    if strategy.position_size > 0
+        peak := math.max(nz(peak, high), high)
+        stopPrice := math.max(nz(stopPrice, strategy.position_avg_price - stopMult * atrValue), peak - trailMult * atrValue)
+        strategy.exit("Protective", "Long", stop=stopPrice, disable_alert=true)
+        if trendExit or time_close > endDate
+            strategy.close("Long", disable_alert=true)
+    // Do not reenter on a bar that already contained an exit.
+    if allowEntries and inWindow and warm and atrValue > 0 and close - stopMult * atrValue > 0 and entryCondition and strategy.position_size == 0 and strategy.closedtrades == nz(strategy.closedtrades[1])
+        stopPrice := close - stopMult * atrValue
+        peak := close
+        strategy.entry("Long", strategy.long, disable_alert=true)
+        // Attach the initial protective order immediately to the pending entry.
+        strategy.exit("Protective", "Long", stop=stopPrice, disable_alert=true)
+        alert(payload("ENTRY_CANDIDATE"), alert.freq_once_per_bar_close)
+plot(strategy.position_size > 0 ? stopPrice : na, "Research stop", color=color.red, style=plot.style_linebr)

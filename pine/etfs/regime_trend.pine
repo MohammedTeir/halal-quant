@@ -1,0 +1,53 @@
+//@version=6
+strategy("HALAL QUANT — Regime-Aware Trend", overlay=true, pyramiding=0, initial_capital=10000, default_qty_type=strategy.percent_of_equity, default_qty_value=10, commission_type=strategy.commission.percent, commission_value=0.10, slippage=2, process_orders_on_close=false, calc_on_every_tick=false, calc_on_order_fills=false)
+// Research-only technical candidates. No compliance or execution authorization.
+startDate = input.time(timestamp("01 Jan 2020 00:00 +0000"), "Start date (UTC)")
+endDate = input.time(timestamp("01 Jan 2035 00:00 +0000"), "End date (UTC)")
+atrLen = input.int(14, "ATR length", minval=1)
+stopMult = input.float(2.0, "Initial stop ATR", minval=0.1)
+trailMult = input.float(3.0, "Trailing stop ATR", minval=0.1)
+allowEntries = input.bool(true, "Enable research entries")
+// Cost assumptions are editable in Strategy Properties, never optimized away.
+atrValue = ta.atr(atrLen)
+inWindow = time_close >= startDate and time_close <= endDate
+payload(string action) =>
+    string eventId = "regime_trend|" + syminfo.tickerid + "|" + timeframe.period + "|" + str.tostring(time_close) + "|" + action
+    string stamp = str.format_time(time_close, "yyyy-MM-dd'T'HH:mm:ss'Z'", "UTC")
+    '{"schema_version":"1.0","event_id":"' + eventId + '","strategy":"regime_trend","strategy_version":"1.0.0","asset_class":"etf","symbol":"' + syminfo.tickerid + '","timeframe":"' + timeframe.period + '","action":"' + action + '","bar_time":"' + stamp + '","price":' + str.tostring(close, format.mintick) + '}'
+trendLen = input.int(200, "Trend SMA", minval=2)
+slopeBars = input.int(20, "Slope lookback", minval=1)
+volatilityCap = input.float(4.0, "Maximum ATR / price (%)", minval=0.1)
+regimeSymbol = input.symbol("AMEX:SPY", "Broad market regime")
+regimeTimeframe = input.timeframe("D", "Regime timeframe (>= chart)")
+if timeframe.in_seconds(regimeTimeframe) < timeframe.in_seconds()
+    runtime.error("Regime timeframe must be at least the chart timeframe")
+trend = ta.sma(close, trendLen)
+// Previous completed regime bar only; offset makes lookahead_on causal.
+[regimeClose, regimeMA] = request.security(regimeSymbol, regimeTimeframe, [close[1], ta.sma(close, trendLen)[1]], lookahead=barmerge.lookahead_on)
+warm = bar_index >= trendLen + slopeBars and not na(regimeMA) and not na(atrValue)
+entryCondition = close > trend and trend > trend[slopeBars] and regimeClose > regimeMA and atrValue / close * 100 <= volatilityCap
+trendExit = close < trend and close[1] < trend[1]
+plot(trend, "Trend SMA", color=color.orange)
+
+var float stopPrice = na
+var float peak = na
+if barstate.isconfirmed
+    if strategy.position_size == 0 and strategy.position_size[1] > 0
+        alert(payload("EXIT_CANDIDATE"), alert.freq_once_per_bar_close)
+        stopPrice := na
+        peak := na
+    if strategy.position_size > 0
+        peak := math.max(nz(peak, high), high)
+        stopPrice := math.max(nz(stopPrice, strategy.position_avg_price - stopMult * atrValue), peak - trailMult * atrValue)
+        strategy.exit("Protective", "Long", stop=stopPrice, disable_alert=true)
+        if trendExit or time_close > endDate
+            strategy.close("Long", disable_alert=true)
+    // Do not reenter on a bar that already contained an exit.
+    if allowEntries and inWindow and warm and atrValue > 0 and close - stopMult * atrValue > 0 and entryCondition and strategy.position_size == 0 and strategy.closedtrades == nz(strategy.closedtrades[1])
+        stopPrice := close - stopMult * atrValue
+        peak := close
+        strategy.entry("Long", strategy.long, disable_alert=true)
+        // Attach the initial protective order immediately to the pending entry.
+        strategy.exit("Protective", "Long", stop=stopPrice, disable_alert=true)
+        alert(payload("ENTRY_CANDIDATE"), alert.freq_once_per_bar_close)
+plot(strategy.position_size > 0 ? stopPrice : na, "Research stop", color=color.red, style=plot.style_linebr)

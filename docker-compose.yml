@@ -1,0 +1,54 @@
+services:
+  postgres:
+    image: postgres:16-bookworm
+    environment:
+      POSTGRES_USER: halal
+      POSTGRES_PASSWORD: halal
+      POSTGRES_DB: halal_quant
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U halal -d halal_quant"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+  migrate:
+    build:
+      context: .
+      dockerfile: infra/docker/api.Dockerfile
+      secrets:
+        - proxy_ca
+    environment:
+      DATABASE_URL: postgresql+psycopg://halal:halal@postgres:5432/halal_quant
+    depends_on:
+      postgres:
+        condition: service_healthy
+    command: [".venv/bin/alembic", "upgrade", "head"]
+  api:
+    build:
+      context: .
+      dockerfile: infra/docker/api.Dockerfile
+      secrets:
+        - proxy_ca
+    environment:
+      DATABASE_URL: postgresql+psycopg://halal:halal@postgres:5432/halal_quant
+      DASHBOARD_API_KEY: ${DASHBOARD_API_KEY:-}
+      TRADINGVIEW_WEBHOOK_KEY: ${TRADINGVIEW_WEBHOOK_KEY:-}
+      LIVE_TRADING_ENABLED: "false"
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    ports:
+      - "127.0.0.1:8000:8000"
+    healthcheck:
+      test: ["CMD", ".venv/bin/python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health/ready', timeout=3)"]
+      interval: 5s
+      timeout: 4s
+      retries: 20
+volumes:
+  postgres_data:
+secrets:
+  proxy_ca:
+    file: ${HALAL_CA_BUNDLE:-/etc/ssl/certs/ca-certificates.crt}
