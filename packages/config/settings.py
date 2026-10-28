@@ -1,6 +1,6 @@
 from functools import lru_cache
 
-from pydantic import Field, field_validator, model_validator
+from pydantic import Field, SecretStr, field_validator, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -11,11 +11,18 @@ class Settings(BaseSettings):
     tradingview_webhook_key: str = ""
     data_ingestion_key: str = ""
     analysis_api_key: str = ""
+    gemini_enabled: bool = False
+    gemini_api_key: SecretStr = SecretStr("")
+    gemini_model: str | None = Field(
+        default=None, max_length=128, pattern=r"^gemini-[A-Za-z0-9][A-Za-z0-9._-]*$"
+    )
+    gemini_timeout_seconds: float = Field(default=15, ge=0.1, le=20, allow_inf_nan=False)
+    gemini_max_output_tokens: int = Field(default=4096, ge=512, le=8192)
     news_provider: str | None = Field(default=None, max_length=64, pattern=r"^[A-Za-z0-9_.-]+$")
     calendar_provider: str | None = Field(default=None, max_length=64, pattern=r"^[A-Za-z0-9_.-]+$")
     live_trading_enabled: bool = False
 
-    @field_validator("news_provider", "calendar_provider", mode="before")
+    @field_validator("news_provider", "calendar_provider", "gemini_model", mode="before")
     @classmethod
     def blank_provider_is_unconfigured(cls, value):
         return value or None

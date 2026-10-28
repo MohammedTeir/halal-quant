@@ -147,7 +147,7 @@ Cash-dividend facts can be stored but are not used to adjust prices here.
 ## Acceptance and operations
 
 The data increment added 17 ingestion/API tests and 11 split-audit tests.
-The current full suite has 153 passing tests. It covers migrations/drift, preserving existing signals through
+The current full suite has 201 passing tests. It covers migrations/drift, preserving existing signals through
 upgrade, concurrent idempotency, receipt/publication timing, corrections,
 attribution, scope filters, stale/missing/synthetic feeds, invalid/atomic batches,
 forward/reverse splits, volume, revisions and CLI exit codes. An actual full-stack
@@ -157,7 +157,7 @@ and [split-audit evidence](../reports/split-audit-smoke.json).
 With matching credentials exported for the running local API, run
 `uv run python -m scripts.data_smoke --output reports/generated/data-smoke.json`.
 It intentionally persists three synthetic facts and their audits. The additive
-migration is `0002_data_events`. Current API readiness additionally requires `0003_intelligence`; see the intelligence guide. Downgrading
+migration is `0002_data_events`. Current API readiness additionally requires `0004_gemini_jobs`; see the intelligence/Gemini guides. Downgrading
 to 0001 removes data-event tables and their contents, so only test that path against
 disposable databases. Existing signal/audit tables are retained by that downgrade.
 

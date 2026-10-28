@@ -32,3 +32,5 @@ jobs:
       - run: uv run pytest -q
       - name: Synthetic research CLI acceptance
         run: uv run python -m scripts.research_smoke --output reports/generated/ci
+      - name: Gemini mock API acceptance (no real key or provider calls)
+        run: uv run python -m scripts.gemini_mock_smoke --output reports/generated/gemini-mock-ci.json

@@ -8,6 +8,7 @@ read [milestones](milestones.md) for implementation status and acceptance eviden
 | [Master blueprint v2](blueprint-v2.md) | Original full project requirements and acceptance gates |
 | [Milestones](milestones.md) | Progress, verification evidence, pending gates and next work |
 | [Architecture](architecture.md) | Current module boundaries, storage and intended evolution |
+| [Gemini backend](gemini.md) | Project key/model setup, structured inference, durable replay, cost behavior and mocked acceptance |
 | [Intelligence and decisions](intelligence-decisions.md) | Advisory output contracts, evidence grounding, event policies, gate traces and missing authorities |
 | [Data ingestion](data-ingestion.md) | Versioned facts, receipt/publication timing, freshness, split audits and remaining provider work |
 | [Python research](python-research.md) | Primary strategy workflow, CSV contracts, costs, reproducible reports and limitations |

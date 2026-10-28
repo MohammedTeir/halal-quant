@@ -1,0 +1,41 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "classification_id": {
+      "maxLength": 200,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.:/-]+$",
+      "title": "Classification Id",
+      "type": "string"
+    },
+    "source_id": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Source Id",
+      "type": "string"
+    },
+    "symbol": {
+      "maxLength": 64,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.:/-]+$",
+      "title": "Symbol",
+      "type": "string"
+    },
+    "asset_class": {
+      "enum": [
+        "stock",
+        "etf",
+        "gold"
+      ],
+      "title": "Asset Class",
+      "type": "string"
+    }
+  },
+  "required": [
+    "classification_id",
+    "source_id",
+    "symbol",
+    "asset_class"
+  ],
+  "title": "GenerationRequest",
+  "type": "object"
+}

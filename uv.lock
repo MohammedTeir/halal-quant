@@ -149,6 +149,7 @@ dependencies = [
     { name = "alembic" },
     { name = "backtesting" },
     { name = "fastapi" },
+    { name = "httpx" },
     { name = "psycopg", extra = ["binary"] },
     { name = "pydantic-settings" },
     { name = "sqlalchemy" },
@@ -157,7 +158,6 @@ dependencies = [
 
 [package.dev-dependencies]
 dev = [
-    { name = "httpx" },
     { name = "pytest" },
     { name = "ruff" },
 ]
@@ -167,6 +167,7 @@ requires-dist = [
     { name = "alembic", specifier = ">=1.14,<2" },
     { name = "backtesting", specifier = ">=0.6.5,<0.7" },
     { name = "fastapi", specifier = ">=0.115,<1" },
+    { name = "httpx", specifier = ">=0.28,<1" },
     { name = "psycopg", extras = ["binary"], specifier = ">=3.2,<4" },
     { name = "pydantic-settings", specifier = ">=2.7,<3" },
     { name = "sqlalchemy", specifier = ">=2.0,<3" },
@@ -175,7 +176,6 @@ requires-dist = [
 
 [package.metadata.requires-dev]
 dev = [
-    { name = "httpx", specifier = ">=0.28,<1" },
     { name = "pytest", specifier = ">=8,<9" },
     { name = "ruff", specifier = ">=0.11,<1" },
 ]

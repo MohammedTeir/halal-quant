@@ -76,3 +76,27 @@ New model outputs require new classification IDs; they do not overwrite history.
 Source corrections or expired assessments require a new classification. Exact
 retries use the old receipt/result and do not refresh evidence. Downgrading to 0002
 destroys model/decision tables but retains earlier facts/signals and audit logs.
+
+## Gemini backend operations
+
+Read [Gemini setup](gemini.md). Apply head `0004_gemini_jobs`. Set server-only
+GEMINI_API_KEY, an account-available GEMINI_MODEL and GEMINI_ENABLED=true only when
+you intend generation requests. No key or enablement is needed for automated mock
+tests. Do not put the key in chat, Git, browser variables or an API body.
+
+Compose mounts the host's trusted CA bundle at runtime and uses SSL_CERT_FILE for
+HTTPS; preserve proxy settings and never disable verification. Restart/recreate
+the API after changing its environment. Keep Gemini disabled for environment smoke
+checks that should not contact the provider.
+
+Generation records transition RUNNING → SUCCEEDED/FAILED; a crash may leave RUNNING.
+Inspect the dashboard-authenticated classification-jobs endpoint before creating
+another ID. Never implement a blind restart/expiry retry over ambiguous requests.
+Read errors/timeouts can follow a billable provider execution. Failed grounding
+never stores an assessment; available token usage can still be recorded.
+
+`uv run python -m scripts.gemini_mock_smoke --output reports/generated/new-gemini-mock.json`
+uses an isolated temporary DB, fixture key and MockTransport; zero real provider
+calls. Existing generation IDs and output report paths must not be overwritten.
+The jobs table is not an implemented scheduler/worker. Production quotas, operator
+recovery and model-quality validation remain pending.

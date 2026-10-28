@@ -1,0 +1,17 @@
+{
+  "authorized": false,
+  "decision_status": "WAIT_DATA",
+  "job_status": "SUCCEEDED",
+  "key_absent_from_job_response": true,
+  "mock_provider_requests": 1,
+  "purpose": "gemini_http_mock_acceptance_only",
+  "real_provider_calls": 0,
+  "replay_avoided_second_provider_request": true,
+  "reported_mock_model_version": "gemini-mock-001",
+  "temporary_database": true,
+  "usage_fixture": {
+    "candidatesTokenCount": 30,
+    "promptTokenCount": 20,
+    "totalTokenCount": 50
+  }
+}

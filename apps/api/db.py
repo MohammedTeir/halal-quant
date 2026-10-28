@@ -83,3 +83,16 @@ class DecisionRecord(Base):
     signal_id: Mapped[str] = mapped_column(String(200), index=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), index=True)
     response: Mapped[dict] = mapped_column(JSON)
+
+
+class GenerationJob(Base):
+    __tablename__ = "classification_jobs"
+    id: Mapped[str] = mapped_column(String(200), primary_key=True)
+    request_sha256: Mapped[str] = mapped_column(String(64))
+    owner: Mapped[str] = mapped_column(String(64))
+    status: Mapped[str] = mapped_column(String(16))
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), index=True)
+    completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    error_code: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    payload: Mapped[dict] = mapped_column(JSON)
+    result_metadata: Mapped[dict | None] = mapped_column(JSON, nullable=True)

@@ -2,7 +2,7 @@
 
 from sqlalchemy import select
 
-from apps.api.db import AuditRecord, ClassificationRecord, NewsRecord
+from apps.api.db import AuditRecord, ClassificationRecord, GenerationJob, NewsRecord
 from packages.schemas.intelligence import ClassificationRequest
 from services.market_data.event_store import (
     ImportConflict,
@@ -14,7 +14,12 @@ from services.market_data.event_store import (
 from services.news_intelligence.classification import parse_output, validate_evidence
 
 
-def store_classification(session, request: ClassificationRequest, now):
+def store_classification(
+    session, request: ClassificationRequest, now, *, generation_owner=None, generation_metadata=None
+):
+    reserved = session.get(GenerationJob, request.classification_id)
+    if reserved and reserved.status != "SUCCEEDED" and reserved.owner != generation_owner:
+        raise ImportConflict("Classification ID is reserved by a generation job")
     checksum = digest(request.model_dump(mode="json"))
     existing = session.get(ClassificationRecord, request.classification_id)
     if existing:
@@ -36,6 +41,8 @@ def store_classification(session, request: ClassificationRequest, now):
         "source_snapshots": sources,
         "synthetic": any(source["synthetic"] for source in sources.values()),
     }
+    if generation_metadata is not None:
+        payload["generation"] = generation_metadata
     row = ClassificationRecord(
         id=request.classification_id, request_sha256=checksum, created_at=now, payload=payload
     )
@@ -59,6 +66,7 @@ def classification_view(row):
         "synthetic": row.payload["synthetic"],
         "assessment": row.payload["assessment"],
         "advisory_only": True,
+        "generation": row.payload.get("generation"),
     }
 
 

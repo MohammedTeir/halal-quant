@@ -1,0 +1,11 @@
+{
+  "api_ready": true,
+  "gemini_enabled": false,
+  "live_execution": false,
+  "purpose": "gemini_disabled_container_acceptance_only",
+  "real_provider_calls": 0,
+  "runtime_ca_bundle_loads": true,
+  "signal_data_decision_smokes_passed": true,
+  "unconfigured_generation_did_not_create_job": true,
+  "unconfigured_generation_status": 503
+}

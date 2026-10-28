@@ -11,7 +11,12 @@ from packages.config.settings import Settings, get_settings
 
 
 @pytest.fixture
-def client(tmp_path, monkeypatch):
+def api_overrides():
+    return {}
+
+
+@pytest.fixture
+def client(tmp_path, monkeypatch, api_overrides):
     url = os.getenv("TEST_DATABASE_URL", f"sqlite:///{tmp_path / 'test.db'}")
     monkeypatch.setenv("DATABASE_URL", url)
     get_settings.cache_clear()
@@ -20,14 +25,19 @@ def client(tmp_path, monkeypatch):
     command.check(config)
     app = create_app(
         Settings(
-            database_url=url,
-            dashboard_api_key="dashboard-test",
-            tradingview_webhook_key="webhook-test",
-            data_ingestion_key="data-test",
-            analysis_api_key="analysis-test",
-            news_provider="fixture",
-            calendar_provider="fixture",
-            _env_file=None,
+            **(
+                {
+                    "database_url": url,
+                    "dashboard_api_key": "dashboard-test",
+                    "tradingview_webhook_key": "webhook-test",
+                    "data_ingestion_key": "data-test",
+                    "analysis_api_key": "analysis-test",
+                    "news_provider": "fixture",
+                    "calendar_provider": "fixture",
+                    "_env_file": None,
+                }
+                | api_overrides
+            )
         )
     )
     with TestClient(app) as test_client:

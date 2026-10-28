@@ -1,9 +1,10 @@
 # Advisory intelligence and deterministic decisions — Milestone 4
 
 Status: classification contracts, source grounding, immutable persistence, event
-policies and research decision gates are implemented and locally validated. No
-real LLM, provider SDK, AI worker or model-quality evaluation is connected. This
-is a tested integration boundary and policy core, not a validated AI trading system.
+policies and research decision gates are implemented and locally validated. A [Gemini backend adapter](gemini.md) now implements structured
+inference with durable claims and mocked provider acceptance. No live account/model
+or model-quality evaluation has been validated. There is no AI acquisition worker;
+this remains a research integration boundary, not a validated AI trading system.
 
 ## Trust boundary
 
@@ -23,8 +24,8 @@ exists. This is deliberate fail-closed behavior, not an AI service outage.
 A fourth distinct credential, `ANALYSIS_API_KEY` in `X-Analysis-Key`, permits
 assessment import and decision evaluation. Dashboard bearer credentials read
 results; data and webhook credentials retain their existing separate roles.
-All four values must differ and remain outside source control. No external LLM
-credential is required by this increment.
+All four values must differ and remain outside source control. No LLM key is required for offline fixture tests. Actual Gemini generation
+requires a separate backend GEMINI_API_KEY, configured model and explicit enable flag.
 
 ## Strict assessment contract
 
@@ -58,7 +59,8 @@ responses into an accepted result.
 
 `build_prompt` keeps a fixed system instruction separate from JSON-encoded source
 documents and supplies the response schema. The adapter protocol accepts that
-prompt and returns text; tests use a local fixture adapter. Adapter implementations
+prompt and returns text; tests use fixture adapters and HTTP-mocked Gemini. The
+Gemini production path uses target-bound prompt version news-classification-v2. Adapter implementations
 are trusted application code, while their output is untrusted. Prompt-injection
 tests demonstrate boundary isolation and denial of privileged output; they do not
 establish that an untested real model is immune to prompt injection.
@@ -74,8 +76,8 @@ establish that an untested real model is immune to prompt injection.
 | `GET /api/v1/decisions/{evaluation_id}` | Dashboard bearer | The exact immutable recorded evaluation |
 
 [ClassificationRequest](contracts/classification-request-v1.schema.json) contains a
-unique classification ID, declared model name/version, the fixed prompt version
-`news-classification-v1`, and **raw_output as a JSON string**. Model provenance is
+unique classification ID, declared model name/version, declared prompt version
+`news-classification-v1` or `news-classification-v2`, and **raw_output as a JSON string**. Model provenance is
 supplied metadata, not independent evidence that the named model was actually used.
 Source snapshots, raw output, parsed assessment, model/prompt versions and server
 receipt time are retained. New model outputs require new IDs and never overwrite
@@ -167,16 +169,18 @@ sample's signal placeholder with an actual known signal ID. Old article examples
 may fall outside the recent-news window even though their classification can be
 stored. Do not backdate receipt times or mutate existing source revisions.
 
-Automated checks: 153 tests total, including 51 new schema/parser/policy/core tests
-and 13 assessment/decision API tests. The full PostgreSQL suite, targeted final
+The intelligence increment added 51 schema/parser/policy/core tests and 13
+assessment/decision API tests. The current suite has 201 passing tests, including
+48 Gemini-specific mocked checks. The full PostgreSQL suite, targeted final
 source-scope checks and SQLite API workflow pass. Migrations preserve existing
 facts/signals; concurrent replays create one classification/decision audit.
 [Recorded smoke evidence](../reports/decision-smoke.json) is synthetic software
 acceptance, not model accuracy or market performance.
 
-Apply migration `0003_intelligence` before API readiness. Downgrading to 0002
+Migration `0003_intelligence` creates these records; current API readiness requires
+`0004_gemini_jobs` as well. Downgrading to 0002
 removes classifications and decisions while preserving earlier facts/signals;
 its audit entries remain. Use rollback tests only on disposable databases and
 back up real data before any schema change. Production RBAC, review workflows,
-paginated archives, real source verification, selected LLM adapters/model evaluation,
+paginated archives, real source verification, live Gemini/model-quality evaluation,
 portfolio risk, compliance and broker authorization remain unfinished.

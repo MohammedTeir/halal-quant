@@ -4,7 +4,8 @@ A modular monolith: FastAPI ingress, explicit Pydantic contracts, SQLAlchemy sto
 Alembic migrations, and pure Python indicators. PostgreSQL is the system of record.
 The first migration creates signals and audit logs; the second adds immutable
 news/calendar/corporate-action revisions and successful data-import observations.
-The third migration adds immutable model classifications and recorded decisions. Domain
+The third migration adds immutable model classifications and recorded decisions;
+the fourth adds durable generation claims and outcome metadata. Domain
 schemas will be added alongside their implementations rather than creating empty
 trading subsystems that imply unimplemented guarantees.
 
@@ -20,8 +21,12 @@ atomically stores versioned source facts;
 news observations; `services/macro_intelligence` reads calendar revisions. These
 modules now validate source-bound advisory output and calendar facts.
 `services/decision_engine` applies deterministic event restrictions and mandatory
-research gates, preserving a complete decision snapshot. No real LLM is connected;
-classification adapters currently have only a text-in/text-out boundary and fixture tests.
+research gates, preserving a complete decision snapshot. The Gemini provider adapter
+uses fixed-host HTTPS and structured output behind a backend-only enable/key/model
+configuration. Generation claims commit before the network call and finish in a
+separate transaction with source revalidation; no SQL transaction spans inference.
+Provider requests are synchronous, not a background queue. Real Gemini behavior
+and model quality remain unverified; acceptance uses HTTP mocks.
 There is no acquisition worker, portfolio research engine or broker adapter yet. The research
 CLI is independent of HTTP ingestion and cannot authorize paper orders.
 

@@ -23,7 +23,10 @@
       "type": "string"
     },
     "prompt_version": {
-      "const": "news-classification-v1",
+      "enum": [
+        "news-classification-v1",
+        "news-classification-v2"
+      ],
       "title": "Prompt Version",
       "type": "string"
     },

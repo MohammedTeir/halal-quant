@@ -70,7 +70,7 @@ class ClassificationRequest(BaseModel):
     classification_id: Identifier
     model_name: Identifier
     model_version: Identifier
-    prompt_version: Literal["news-classification-v1"]
+    prompt_version: Literal["news-classification-v1", "news-classification-v2"]
     raw_output: str = Field(min_length=2, max_length=65536)
 
 
@@ -85,3 +85,11 @@ class EvaluationRequest(BaseModel):
     @classmethod
     def utc_cutoff(cls, value):
         return value.astimezone(UTC) if value else None
+
+
+class GenerationRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    classification_id: Identifier
+    source_id: SourceId
+    symbol: Symbol
+    asset_class: AssetClass

@@ -12,10 +12,11 @@ Milestone 1 (foundation) and revised Milestone 2 (Python strategies) are impleme
 and locally validated. Milestone 3 now has CSV, versioned news/calendar/action
 ingestion and split audits; Milestone 6 has an early single-instrument research
 runner. Both remain incomplete. Milestone 4 has an advisory assessment boundary
-and deterministic gates; its real LLM integration/evaluation remains pending.
+and deterministic gates. The Gemini backend adapter passes mocked provider
+acceptance; live-account compatibility and model-quality evaluation remain pending.
 Milestones 5 and 7–8 have not started; optional live integration (Milestone 9) is disabled.
 
-The full suite has **153 passing tests**, including research, data integrity,
+The full suite has **201 passing tests**, including research, data integrity,
 advisory-output security and deterministic decision checks. All three
 default strategies and cost-matched buy-and-hold baselines execute on synthetic
 fixtures, finish flat, and reproduce reports byte-for-byte. These are software
@@ -103,6 +104,8 @@ TradingView validation is an optional manual gate. Optional Pine source checks d
 - `POST /api/v1/news/classifications`: grounded advisory assessments via `X-Analysis-Key`.
 - `POST /api/v1/decisions/evaluate`: server-owned gates and immutable evidence snapshots.
 - `GET /api/v1/news/classifications` and `/api/v1/decisions`: recorded analysis/history.
+- `POST /api/v1/news/classifications/generate`: optional server-configured Gemini inference.
+- `GET /api/v1/news/classification-jobs/{classification_id}`: durable generation status.
 - `/docs`: generated API documentation.
 
 Accepted candidates always return `authorized: false`. Same ID and payload is a
@@ -120,7 +123,19 @@ export the same dashboard and webhook credentials used by the running API. It wr
 one clearly named synthetic `smoke:*` event and audit record to the development DB.
 
 The [advisory intelligence guide](docs/intelligence-decisions.md) explains source-bound
-quotes, model-version history, event windows and fail-closed decisions. No real LLM
-is connected. Public entry evaluations currently return WAIT_DATA; exits require
+quotes, model-version history, event windows and fail-closed decisions. The optional
+[Gemini adapter](docs/gemini.md) reads GEMINI_API_KEY and GEMINI_MODEL only on the
+backend and stays disabled until GEMINI_ENABLED=true. No real Gemini call has been
+used for the recorded acceptance tests. Public entry evaluations currently return WAIT_DATA; exits require
 authoritative ownership. Neither a positive model output nor a perfect score can
 provide missing compliance/risk/broker evidence or authorize trading.
+
+Test Gemini integration without a key or charges:
+
+```sh
+uv run python -m scripts.gemini_mock_smoke --output reports/generated/gemini-mock.json
+```
+
+This uses a temporary database and mocked HTTP responses. For actual use, configure
+your backend's ignored `.env` or deployment secrets; follow [Gemini setup](docs/gemini.md).
+Never expose GEMINI_API_KEY to the frontend, source control or a client request body.

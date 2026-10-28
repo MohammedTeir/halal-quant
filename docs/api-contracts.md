@@ -88,7 +88,7 @@ Freshness measures a successful poll, not article age. Empty successful batches
 are allowed. Synthetic feeds never satisfy `required_feed_available`; provider
 verification and entry authorization remain false. Data import is not available
 to dashboard/webhook credentials. Source failures and production rate/body limits
-remain future adapter/operations work. Current API readiness requires `0003_intelligence`.
+remain future adapter/operations work. Current API readiness requires `0004_gemini_jobs`.
 
 ## Advisory intelligence and decisions
 
@@ -115,3 +115,28 @@ entries and WAIT_OWNERSHIP for unverified exits because trusted authorities do n
 yet exist. Every result has `authorized: false`; there is no execution endpoint.
 A fresh webhook price is not a verified market snapshot. Prompt-injection text is
 stored as source data and cannot add order/permission fields to an assessment.
+
+## Server-generated Gemini classifications
+
+`POST /api/v1/news/classifications/generate` uses X-Analysis-Key and accepts only
+classification_id, one current source_id, symbol and asset_class. The key, model,
+endpoint, token cap and prompt are backend configuration. See [Gemini](gemini.md)
+and [GenerationRequest](contracts/generation-request-v1.schema.json).
+
+Disabled/unconfigured generation returns 503 and creates no job. Missing/stale/
+out-of-scope sources or unknown input fields return 422 before a provider call.
+The RUNNING job and start audit commit first. Exact completed replays return the
+stored assessment with duplicate:true; changed, already-running, failed or occupied
+IDs return 409 without another generation. A new ID is an explicit new attempt.
+
+Success returns the existing classification view with generation provenance. Safe
+provider/output errors return 502, rate limiting/unavailability 503. Known failed
+attempts are recorded as FAILED without an assessment; ambiguous process/commit
+failures may remain RUNNING. No automatic regeneration is performed.
+
+`GET /api/v1/news/classification-jobs/{classification_id}` uses dashboard bearer
+authentication and returns status/timing/target/safe error/usage metadata; unknown
+IDs return 404. It never returns the key or raw provider error body. Model metadata
+from this path includes server-selected model, provider-reported version and token
+counts when available. Legacy manual classification views have generation:null.
+All assessments remain advisory and cannot authorize orders.

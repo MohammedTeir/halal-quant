@@ -4,14 +4,14 @@ Source: [master blueprint v2](blueprint-v2.md). The agreed change is to use Pyth
 for strategy development and acceptance, retaining TradingView/Pine as optional.
 Milestones 1 and 2 are locally validated; this does not imply production readiness.
 CSV and versioned fact ingestion, split audits and single-instrument research start parts of 3 and 6.
-Their broader data/portfolio requirements remain incomplete. Milestone 4 now has a validated advisory boundary and policy core; real-model validation is pending.
+Their broader data/portfolio requirements remain incomplete. Milestone 4 now has a validated advisory boundary and policy core; Gemini adapter mock acceptance is complete; live-model validation is pending.
 
 | # | Deliverable | State | Acceptance and evidence |
 |---|---|---|---|
-| 1 | Foundation and architecture | Implemented; locally validated | FastAPI boots; PostgreSQL 16 migrations upgrade/downgrade and metadata check pass; 153 tests pass across foundation, research, ingestion and decisions; Docker API image builds; actual HTTP smoke and restart persistence checked. CI is defined; its hosted result has not been verified here. |
+| 1 | Foundation and architecture | Implemented; locally validated | FastAPI boots; PostgreSQL 16 migrations upgrade/downgrade and metadata check pass; 201 tests pass across foundation, research, ingestion, decisions and mocked Gemini; Docker API image builds; actual HTTP smoke and restart persistence checked. CI is defined; its hosted result has not been verified here. |
 | 2 | Three Python strategies; optional Pine | Implemented; automated local acceptance passed | Stock pullback, ETF regime trend, gold breakout/retest; configurable periods/stops/dates/costs; 32 research tests; all defaults execute nonzero train/holdout trades on synthetic inputs and repeat byte-for-byte. Optional Pine compilation/parity remains unverified. |
 | 3 | Market and news data | Provider-neutral foundation validated; real feeds pending | Historical CSV validation, split/volume audits, immutable news/calendar/action revisions, authoritative server receipt times, point-in-time reads, conservative URL deduplication and missing/stale/synthetic feed checks pass. Real providers, workers, exchange sessions, verified action completeness and historical availability archives remain outstanding. |
-| 4 | AI intelligence and decision engine | Contract/policy core locally validated; real LLM pending | Strict output/evidence schemas, source revision grounding, prompt-boundary/privilege rejection tests, immutable model history, calendar restrictions, deterministic gate traces and replay pass. Real model adapters, accuracy/robustness evaluation, source verification and human review workflow remain unimplemented. |
+| 4 | AI intelligence and decision engine | Core and Gemini adapter validated with mocks; live/model quality pending | Strict evidence contracts, immutable model history, event/gate policies, Gemini REST structured-output adapter, durable generation claims, bounded transport retries and mocked API tests pass. Real-account/model compatibility, quality/robustness evaluation, source verification and human review remain incomplete. |
 | 5 | Compliance and risk engines | Not started | Reject forbidden instrument/ownership/margin/lending cases and insufficient cash; verify risk sizing, portfolio caps and protective-exit independence. Select scholarly methodology and verified gold structure. |
 | 6 | Research and backtesting | Started: technical single-instrument prototype | Fixed chronological split, explicit costs, whole shares, next-open fills and exposure-matched buy-and-hold reports implemented. Still required: portfolio simulation, historical news/compliance replay, verified corporate actions, walk-forward/Monte Carlo analysis, liquidity modeling and real-data research gates. No promotion without blueprint performance and violation gates. |
 | 7 | Dashboard and Telegram | Not started | Next.js scanner/portfolio/analytics/operations and end-to-end signal-to-notification tests, with credentials outside source. |
@@ -36,7 +36,7 @@ Their broader data/portfolio requirements remain incomplete. Milestone 4 now has
 
 ## Python increment acceptance
 
-- The Python increment originally passed 61 tests (32 research); the current full suite passes 153.
+- The Python increment originally passed 61 tests (32 research); the current full suite passes 201.
 - Every strategy exercises both entry and exit behavior; tests reject a zero-trade
   fixture as acceptance. Prefix and future-mutation tests validate causal signals;
   gold uses only completed higher-timeframe buckets.
@@ -53,7 +53,7 @@ Their broader data/portfolio requirements remain incomplete. Milestone 4 now has
 
 ## Data increment acceptance
 
-- The data increment passed 89 tests: the earlier 61 plus 17 data/API and 11 split-audit tests. Current total: 153.
+- The data increment passed 89 tests: the earlier 61 plus 17 data/API and 11 split-audit tests. Current total: 201.
 - `0002_data_events` upgrades the existing schema without removing signals; drift,
   readiness and downgrade/re-upgrade checks pass. New source revisions, imports and
   audits are durable and atomic; concurrent identical imports create one audit.
@@ -71,7 +71,7 @@ Their broader data/portfolio requirements remain incomplete. Milestone 4 now has
 
 ## Intelligence/decision increment acceptance
 
-- 153 tests pass overall: the earlier 89 plus 51 parser/schema/policy/core and 13
+- The intelligence/decision increment passed 153 tests: the earlier 89 plus 51 parser/schema/policy/core and 13
   classification/decision API tests. SQLite's 40 API tests also pass.
 - Model output accepts only strict JSON, known current source IDs and exact quoted
   evidence. Invented sources/quotes, duplicate JSON keys, order/tool/approval fields,
@@ -90,12 +90,29 @@ Their broader data/portfolio requirements remain incomplete. Milestone 4 now has
   [synthetic runtime evidence](../reports/decision-smoke.json). No real LLM, accuracy
   assessment, live feed or order was involved. This does not complete Milestone 4.
 
+## Gemini adapter increment acceptance
+
+- 201 tests pass: the previous 153 plus 31 adapter/config and 17 generation API tests.
+  SQLite's 57 API tests also pass. All provider traffic in tests is HTTP-mocked.
+- Backend-only key, fixed Google endpoint, verified TLS/proxy trust, no redirects,
+  no caller-selected model/URL/key/tool, and target-bound JSON output are tested.
+- Claims commit before inference; concurrent/duplicate requests do not recall the
+  model. Success atomically stores assessment/model/usage/audits. Invalid evidence
+  or a source correction during inference fails without storing an assessment.
+- Two transport attempts maximum, limited transient retries, no ambiguous read/
+  delivery retries, safe error codes, bounded response size and retained usage
+  metadata pass. Crashed/ambiguous jobs stay blocked rather than auto-regenerating.
+- `0004_gemini_jobs` preserves earlier records. Mock API smoke passes without a real
+  key/call; the container stack loads its CA bundle and denies disabled generation.
+- See [Gemini setup](gemini.md) and its recorded mock/container evidence. Real account,
+  selected model, model accuracy and prompt-injection robustness remain unverified.
+
 ## Next work
 
 Choose a verified historical-data provider and import real adjusted candles with
 source/session metadata. Connect the tested corporate-action and news/economic-calendar contracts to verified
 provider adapters and acquisition workers for Milestone 3. Keep real holdout periods frozen before reviewing results.
-Implement trusted compliance/risk/ownership services for Milestone 5, and select/evaluate a real advisory model before calling Milestone 4 complete. No paper promotion until its prerequisites pass. Complete Milestone 6's
+Implement trusted compliance/risk/ownership services for Milestone 5, and configure/evaluate the selected Gemini model against real-account and quality gates before calling Milestone 4 complete. No paper promotion until its prerequisites pass. Complete Milestone 6's
 portfolio and point-in-time research requirements before interpreting strategy
 performance as release evidence. Optional Pine validation is not a blocker for
 Python development. Live trading remains disabled.

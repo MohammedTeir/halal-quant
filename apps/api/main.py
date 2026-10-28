@@ -14,6 +14,7 @@ from apps.api.db import (
     DataImport,
     DecisionRecord,
     EconomicRecord,
+    GenerationJob,
     NewsRecord,
     SignalRecord,
     session_factory,
@@ -21,7 +22,11 @@ from apps.api.db import (
 )
 from packages.config.settings import Settings, get_settings
 from packages.schemas.data_events import DataBatch, Identifier, Provider, Symbol
-from packages.schemas.intelligence import ClassificationRequest, EvaluationRequest
+from packages.schemas.intelligence import (
+    ClassificationRequest,
+    EvaluationRequest,
+    GenerationRequest,
+)
 from packages.schemas.signals import Signal
 from services.decision_engine.store import store_evaluation
 from services.macro_intelligence.calendar import calendar_as_of
@@ -34,6 +39,8 @@ from services.market_data.event_store import (
     observation,
 )
 from services.news_intelligence.assessment_store import classifications_as_of, store_classification
+from services.news_intelligence.generation import generate_classification, job_view
+from services.news_intelligence.providers.gemini import GeminiAdapter, GeminiError
 from services.news_intelligence.queries import news_as_of
 
 
@@ -42,6 +49,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     engine, sessions = session_factory(settings.database_url)
     app = FastAPI(title="HALAL QUANT", version="0.1.0")
     app.state.engine = engine
+    app.state.gemini_adapter_factory = GeminiAdapter
 
     def authenticate(provided, expected):
         if (
@@ -108,9 +116,10 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                     CorporateActionRecord,
                     ClassificationRecord,
                     DecisionRecord,
+                    GenerationJob,
                 ):
                     connection.execute(select(table.id).limit(1))
-                if version != "0003_intelligence":
+                if version != "0004_gemini_jobs":
                     raise HTTPException(503, "Database migration required")
         except SQLAlchemyError:
             raise HTTPException(503, "Database unavailable or migrations missing") from None
@@ -160,6 +169,44 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     @app.post("/api/v1/data/import", dependencies=[Depends(data_ingestion)])
     def ingest_data(batch: DataBatch):
         return persist(lambda session: import_batch(session, batch, utcnow()))
+
+    @app.post("/api/v1/news/classifications/generate", dependencies=[Depends(analysis)])
+    def generate_assessment(request: GenerationRequest):
+        try:
+            return generate_classification(
+                sessions,
+                request,
+                settings,
+                utcnow,
+                adapter_factory=app.state.gemini_adapter_factory,
+            )
+        except ImportConflict as error:
+            raise HTTPException(409, str(error)) from error
+        except GeminiError as error:
+            unavailable = error.code in {
+                "GEMINI_DISABLED",
+                "GEMINI_NOT_CONFIGURED",
+                "GEMINI_RATE_LIMITED",
+                "GEMINI_UNAVAILABLE",
+            }
+            raise HTTPException(503 if unavailable else 502, error.code) from None
+        except ValueError as error:
+            raise HTTPException(422, str(error)) from error
+        except SQLAlchemyError:
+            raise HTTPException(
+                503, "Generation store unavailable; inspect job before retry"
+            ) from None
+
+    @app.get(
+        "/api/v1/news/classification-jobs/{classification_id:path}",
+        dependencies=[Depends(dashboard)],
+    )
+    def generation_status(classification_id: Identifier):
+        with sessions() as session:
+            row = session.get(GenerationJob, classification_id)
+            if row is None:
+                raise HTTPException(404, "Unknown generation job")
+            return job_view(row)
 
     @app.post("/api/v1/news/classifications", dependencies=[Depends(analysis)])
     def ingest_classification(request: ClassificationRequest):
