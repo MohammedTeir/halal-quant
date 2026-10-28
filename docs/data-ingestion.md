@@ -40,8 +40,9 @@ execution hook in ingestion.
 
 ## Import and read
 
-The running API must have three distinct external credentials:
-`DASHBOARD_API_KEY`, `TRADINGVIEW_WEBHOOK_KEY`, and `DATA_INGESTION_KEY`. The new key
+The running API uses distinct external credentials:
+`DASHBOARD_API_KEY`, `TRADINGVIEW_WEBHOOK_KEY`, `DATA_INGESTION_KEY` and
+`ANALYSIS_API_KEY` (see the intelligence guide). The new key
 is only for importing facts; it cannot read dashboard routes. Dashboard and webhook
 credentials cannot import data. Blank credentials deny access. Configure values
 in your local environment or preserved `.env`; never commit or paste credentials.
@@ -78,7 +79,7 @@ Dashboard bearer authentication protects:
 Fact reads accept `as_of` (aware, not in the future), `symbol` and `limit` 1–100;
 news/calendar also accept `asset_class`. Tags match exactly; combined filters use
 AND. Calendar-wide macro events without explicit symbols require asset-class or
-unfiltered reads. Results include receipt time and immutable provenance. These
+unfiltered reads. Results include receipt time, immutable server `source_id` and provenance. These
 are bounded inspection endpoints, not a complete paginated archive export.
 
 ## Point-in-time behavior and deduplication
@@ -145,8 +146,8 @@ Cash-dividend facts can be stored but are not used to adjust prices here.
 
 ## Acceptance and operations
 
-The full suite has 89 passing tests, including 17 new ingestion/API tests and 11
-split-audit tests. It covers migrations/drift, preserving existing signals through
+The data increment added 17 ingestion/API tests and 11 split-audit tests.
+The current full suite has 153 passing tests. It covers migrations/drift, preserving existing signals through
 upgrade, concurrent idempotency, receipt/publication timing, corrections,
 attribution, scope filters, stale/missing/synthetic feeds, invalid/atomic batches,
 forward/reverse splits, volume, revisions and CLI exit codes. An actual full-stack
@@ -156,7 +157,7 @@ and [split-audit evidence](../reports/split-audit-smoke.json).
 With matching credentials exported for the running local API, run
 `uv run python -m scripts.data_smoke --output reports/generated/data-smoke.json`.
 It intentionally persists three synthetic facts and their audits. The additive
-migration is `0002_data_events`; API readiness rejects an older schema. Downgrading
+migration is `0002_data_events`. Current API readiness additionally requires `0003_intelligence`; see the intelligence guide. Downgrading
 to 0001 removes data-event tables and their contents, so only test that path against
 disposable databases. Existing signal/audit tables are retained by that downgrade.
 
@@ -164,5 +165,6 @@ Remaining Milestone 3 work: select and verify real data sources, handle source
 licensing/quality, implement fetch workers and health/failure observations, validate
 actual corporate actions and exchange sessions, and acquire trustworthy historical
 news availability. The research runner is still technical-only and does not yet
-consume these fact stores or enforce event windows. Milestones 4–5 must add
-intelligence, deterministic decisions, compliance and risk before paper promotion.
+consume these fact stores or enforce event windows. Milestone 4 now adds advisory contracts and deterministic entry restrictions; real
+model validation and Milestone 5 compliance/risk authorities remain necessary before
+paper promotion.

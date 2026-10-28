@@ -66,3 +66,20 @@ class EconomicRecord(ImportedEvent, Base):
 
 class CorporateActionRecord(ImportedEvent, Base):
     __tablename__ = "corporate_actions"
+
+
+class ClassificationRecord(Base):
+    __tablename__ = "news_classifications"
+    id: Mapped[str] = mapped_column(String(200), primary_key=True)
+    request_sha256: Mapped[str] = mapped_column(String(64))
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), index=True)
+    payload: Mapped[dict] = mapped_column(JSON)
+
+
+class DecisionRecord(Base):
+    __tablename__ = "decisions"
+    id: Mapped[str] = mapped_column(String(200), primary_key=True)
+    request_sha256: Mapped[str] = mapped_column(String(64))
+    signal_id: Mapped[str] = mapped_column(String(200), index=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), index=True)
+    response: Mapped[dict] = mapped_column(JSON)

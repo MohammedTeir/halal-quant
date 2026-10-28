@@ -3,7 +3,8 @@
 A modular monolith: FastAPI ingress, explicit Pydantic contracts, SQLAlchemy storage,
 Alembic migrations, and pure Python indicators. PostgreSQL is the system of record.
 The first migration creates signals and audit logs; the second adds immutable
-news/calendar/corporate-action revisions and successful data-import observations. Domain
+news/calendar/corporate-action revisions and successful data-import observations.
+The third migration adds immutable model classifications and recorded decisions. Domain
 schemas will be added alongside their implementations rather than creating empty
 trading subsystems that imply unimplemented guarantees.
 
@@ -17,7 +18,10 @@ atomically stores versioned source facts;
 `services/backtesting` runs single-instrument experiments through Backtesting.py.
 `services/news_intelligence` normalizes attribution URLs and groups point-in-time
 news observations; `services/macro_intelligence` reads calendar revisions. These
-modules do not yet perform AI analysis or event-window trading decisions.
+modules now validate source-bound advisory output and calendar facts.
+`services/decision_engine` applies deterministic event restrictions and mandatory
+research gates, preserving a complete decision snapshot. No real LLM is connected;
+classification adapters currently have only a text-in/text-out boundary and fixture tests.
 There is no acquisition worker, portfolio research engine or broker adapter yet. The research
 CLI is independent of HTTP ingestion and cannot authorize paper orders.
 
@@ -28,7 +32,8 @@ authorization. Dashboard, Redis, Telegram, workers and live adapters are deferre
 according to the milestone tracker.
 
 A dashboard credential grants read access; the webhook credential grants only
-technical signal ingestion, and a third data credential grants source-fact imports. These development service credentials are not production RBAC or
+technical signal ingestion; a third data credential grants source-fact imports,
+and a fourth analysis credential grants classification/evaluation writes. These development service credentials are not production RBAC or
 session management. Database errors fail readiness. Event IDs provide atomic
 idempotency through the primary key and transaction rollback on races. Database
 and audit tables are not immutable against administrators; production retention,

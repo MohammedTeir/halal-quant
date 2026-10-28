@@ -88,4 +88,30 @@ Freshness measures a successful poll, not article age. Empty successful batches
 are allowed. Synthetic feeds never satisfy `required_feed_available`; provider
 verification and entry authorization remain false. Data import is not available
 to dashboard/webhook credentials. Source failures and production rate/body limits
-remain future adapter/operations work. API readiness now requires `0002_data_events`.
+remain future adapter/operations work. Current API readiness requires `0003_intelligence`.
+
+## Advisory intelligence and decisions
+
+See [intelligence/decisions](intelligence-decisions.md) for the complete contracts.
+`POST /api/v1/news/classifications` and `POST /api/v1/decisions/evaluate` require the
+fourth distinct `X-Analysis-Key`. The former accepts a classification ID, declared
+model/prompt versions and a strict JSON `raw_output` string referencing current
+news `source_id` values with exact evidence quotes. The latter accepts only an
+evaluation ID, stored signal ID, finite numeric score and optional aware cutoff.
+No caller-supplied holdings, approvals or policy overrides are accepted.
+
+Dashboard bearer reads are `GET /api/v1/news/classifications`, `GET /api/v1/decisions`
+and `GET /api/v1/decisions/{evaluation_id}`. Lists accept bounded `limit` and aware
+`as_of`; classifications also accept exact `symbol`. Missing recorded evaluations
+return 404. Replays return the original immutable result with `duplicate: true`;
+changed requests under an existing ID return 409. Invalid untrusted output,
+invented citations, stale-source submissions and future/naive cutoffs return 422.
+Successful writes and their audits commit together; concurrent repeats are idempotent.
+
+Entry status is the first failed gate in data → compliance → instrument → events
+→ risk → score order, with every check retained in `trace`. Positive advisory
+recommendations cannot clear gates. The current public API returns WAIT_DATA for
+entries and WAIT_OWNERSHIP for unverified exits because trusted authorities do not
+yet exist. Every result has `authorized: false`; there is no execution endpoint.
+A fresh webhook price is not a verified market snapshot. Prompt-injection text is
+stored as source data and cannot add order/permission fields to an assessment.

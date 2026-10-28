@@ -9,11 +9,14 @@ research performance gates or received a Shariah approval.
 ## Current progress
 
 Milestone 1 (foundation) and revised Milestone 2 (Python strategies) are implemented
-and locally validated. Milestone 3 now has CSV, versioned news/calendar/action ingestion and split audits; Milestone 6 has an
-early single-instrument research runner. Both remain incomplete. Milestones 4–5
-and 7–8 have not started; optional live integration (Milestone 9) is disabled.
+and locally validated. Milestone 3 now has CSV, versioned news/calendar/action
+ingestion and split audits; Milestone 6 has an early single-instrument research
+runner. Both remain incomplete. Milestone 4 has an advisory assessment boundary
+and deterministic gates; its real LLM integration/evaluation remains pending.
+Milestones 5 and 7–8 have not started; optional live integration (Milestone 9) is disabled.
 
-The full suite has **89 passing tests**, including 32 research tests, 17 new ingestion/API tests and 11 split-audit tests. All three
+The full suite has **153 passing tests**, including research, data integrity,
+advisory-output security and deterministic decision checks. All three
 default strategies and cost-matched buy-and-hold baselines execute on synthetic
 fixtures, finish flat, and reproduce reports byte-for-byte. These are software
 acceptance checks, not evidence of real-world returns or paper-trading readiness.
@@ -47,7 +50,8 @@ cd /workspace/halal-quant
 export UV_CACHE_DIR=/tmp/halal-quant-uv-cache
 uv sync --frozen
 test -e .env || cp .env.example .env
-# Set distinct random DASHBOARD_API_KEY, TRADINGVIEW_WEBHOOK_KEY and DATA_INGESTION_KEY in .env.
+# Set four distinct keys in .env: DASHBOARD_API_KEY, TRADINGVIEW_WEBHOOK_KEY,
+# DATA_INGESTION_KEY and ANALYSIS_API_KEY.
 docker compose up -d --wait postgres
 uv run alembic upgrade head
 uv run uvicorn apps.api.main:app --host 0.0.0.0 --port 8000
@@ -96,6 +100,9 @@ TradingView validation is an optional manual gate. Optional Pine source checks d
 - `POST /api/v1/data/import`: separate `X-Data-Key` credential; atomic source batches.
 - `GET /api/v1/news`, `/api/v1/economic-events`, `/api/v1/corporate-actions`: point-in-time facts.
 - `GET /api/v1/data/status`: missing/stale/synthetic feed checks.
+- `POST /api/v1/news/classifications`: grounded advisory assessments via `X-Analysis-Key`.
+- `POST /api/v1/decisions/evaluate`: server-owned gates and immutable evidence snapshots.
+- `GET /api/v1/news/classifications` and `/api/v1/decisions`: recorded analysis/history.
 - `/docs`: generated API documentation.
 
 Accepted candidates always return `authorized: false`. Same ID and payload is a
@@ -106,8 +113,14 @@ webhook observations is not a protective-order or portfolio-risk policy.
 
 See [milestones and acceptance evidence](docs/milestones.md),
 [architecture](docs/architecture.md), [Pine validation](docs/pine-validation.md),
-[data ingestion](docs/data-ingestion.md), and [operations](docs/operations-runbook.md).
+[data ingestion](docs/data-ingestion.md), [intelligence/decisions](docs/intelligence-decisions.md), and [operations](docs/operations-runbook.md).
 
 A real local API smoke check is available as `.venv/bin/python scripts/smoke.py`;
 export the same dashboard and webhook credentials used by the running API. It writes
 one clearly named synthetic `smoke:*` event and audit record to the development DB.
+
+The [advisory intelligence guide](docs/intelligence-decisions.md) explains source-bound
+quotes, model-version history, event windows and fail-closed decisions. No real LLM
+is connected. Public entry evaluations currently return WAIT_DATA; exits require
+authoritative ownership. Neither a positive model output nor a perfect score can
+provide missing compliance/risk/broker evidence or authorize trading.

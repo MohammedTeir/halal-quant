@@ -127,7 +127,7 @@ def latest_events(session, kind, as_of, provider=None):
 
 
 def observation(row):
-    return row.payload | {"received_at": aware(row.received_at).isoformat()}
+    return row.payload | {"source_id": row.id, "received_at": aware(row.received_at).isoformat()}
 
 
 def relevant(payload, symbol=None, asset_class=None):

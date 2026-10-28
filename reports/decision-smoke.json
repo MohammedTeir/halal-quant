@@ -1,0 +1,17 @@
+{
+  "authorized": false,
+  "credential_separation_checked": true,
+  "decisions_persist_across_restart": true,
+  "entry_status": "WAIT_DATA",
+  "evaluation_ids": [
+    "evaluation-d655932f34b24b7fb5b86d32effae1c1-ENTRY_CANDIDATE",
+    "evaluation-d655932f34b24b7fb5b86d32effae1c1-EXIT_CANDIDATE"
+  ],
+  "exit_status": "WAIT_OWNERSHIP",
+  "forged_approval_rejected": true,
+  "idempotent_replay_checked": true,
+  "positive_advisory_did_not_clear_event_window": true,
+  "purpose": "synthetic_decision_contract_acceptance_only",
+  "real_llm_invoked": false,
+  "recorded_at": "2026-10-28T14:24:01.838846+00:00"
+}

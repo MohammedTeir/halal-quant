@@ -54,3 +54,25 @@ Back up data before schema changes. Downgrading to 0001 deletes imported fact/fe
 observations, while preserving signal/audit tables; full downgrade deletes those too.
 Production providers and failure/retry workers are not connected, and current read
 endpoints are bounded inspection views, not paginated archival exports.
+
+## Advisory intelligence
+
+Apply Alembic head `0003_intelligence` before readiness. ANALYSIS_API_KEY is a fourth
+distinct credential for assessment/evaluation writes; it is not a broker key.
+Optional NEWS_PROVIDER/CALENDAR_PROVIDER select server-side fact providers for
+research snapshots; blank means unconfigured and neither setting verifies a source.
+See [intelligence and decisions](intelligence-decisions.md).
+
+For synthetic local HTTP acceptance, configure both provider IDs as synthetic_smoke
+in the API environment and export four matching keys to the shell. Run
+`uv run python -m scripts.decision_smoke --output reports/generated/new-decision-smoke.json`.
+It persists offline-fixture assessments and blocked research decisions, never calls
+a real model, and never authorizes orders. Choose a new output path. Positive
+classification text must not be used to work around WAIT_DATA or WAIT_OWNERSHIP.
+Those statuses reflect missing verified market/broker/compliance/risk/ownership
+authorities, not a reason to inject approval flags into a request.
+
+New model outputs require new classification IDs; they do not overwrite history.
+Source corrections or expired assessments require a new classification. Exact
+retries use the old receipt/result and do not refresh evidence. Downgrading to 0002
+destroys model/decision tables but retains earlier facts/signals and audit logs.

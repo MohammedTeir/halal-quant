@@ -13,3 +13,8 @@ real holdout selection before evaluating it.
 replay/audit behavior, point-in-time exclusion, synthetic feed guard and restart
 persistence. `split-audit-smoke.json` records the checked-in synthetic raw/adjusted
 example's arithmetic result. Neither verifies an external provider or real data.
+
+`decision-smoke.json` records a synthetic offline-fixture classification-to-decision
+HTTP run: positive advisory output cannot clear an earnings window or missing
+authorities, forged approval fields are rejected, and recorded decisions survive
+restart. No real model was invoked, and every result denies authorization.

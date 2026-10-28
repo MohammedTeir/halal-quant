@@ -1,0 +1,45 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "evaluation_id": {
+      "maxLength": 200,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.:/-]+$",
+      "title": "Evaluation Id",
+      "type": "string"
+    },
+    "signal_id": {
+      "maxLength": 200,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.:/-]+$",
+      "title": "Signal Id",
+      "type": "string"
+    },
+    "score": {
+      "maximum": 1,
+      "minimum": 0,
+      "title": "Score",
+      "type": "number"
+    },
+    "as_of": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "As Of"
+    }
+  },
+  "required": [
+    "evaluation_id",
+    "signal_id",
+    "score"
+  ],
+  "title": "EvaluationRequest",
+  "type": "object"
+}

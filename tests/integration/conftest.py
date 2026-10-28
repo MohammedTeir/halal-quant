@@ -24,6 +24,9 @@ def client(tmp_path, monkeypatch):
             dashboard_api_key="dashboard-test",
             tradingview_webhook_key="webhook-test",
             data_ingestion_key="data-test",
+            analysis_api_key="analysis-test",
+            news_provider="fixture",
+            calendar_provider="fixture",
             _env_file=None,
         )
     )

@@ -1,0 +1,46 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "classification_id": {
+      "maxLength": 200,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.:/-]+$",
+      "title": "Classification Id",
+      "type": "string"
+    },
+    "model_name": {
+      "maxLength": 200,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.:/-]+$",
+      "title": "Model Name",
+      "type": "string"
+    },
+    "model_version": {
+      "maxLength": 200,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.:/-]+$",
+      "title": "Model Version",
+      "type": "string"
+    },
+    "prompt_version": {
+      "const": "news-classification-v1",
+      "title": "Prompt Version",
+      "type": "string"
+    },
+    "raw_output": {
+      "maxLength": 65536,
+      "minLength": 2,
+      "title": "Raw Output",
+      "type": "string"
+    }
+  },
+  "required": [
+    "classification_id",
+    "model_name",
+    "model_version",
+    "prompt_version",
+    "raw_output"
+  ],
+  "title": "ClassificationRequest",
+  "type": "object"
+}

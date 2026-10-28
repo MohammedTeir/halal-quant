@@ -1,0 +1,7 @@
+{
+  "classification_id": "fixture-classification-1",
+  "model_name": "offline_fixture",
+  "model_version": "fixture-v1",
+  "prompt_version": "news-classification-v1",
+  "raw_output": "{\"schema_version\":\"1.0\",\"event_id\":\"758807fcb1c85d8efa455ef347e629020a1edd14d8c4e4a60ca2a1a5c7c4d60f\",\"symbol\":\"EXAMPLE\",\"asset_class\":\"stock\",\"event_type\":\"other\",\"sentiment\":\"neutral\",\"sentiment_score\":0.0,\"relevance\":1.0,\"severity\":\"low\",\"confidence\":1.0,\"source_ids\":[\"758807fcb1c85d8efa455ef347e629020a1edd14d8c4e4a60ca2a1a5c7c4d60f\"],\"evidence\":[{\"source_id\":\"758807fcb1c85d8efa455ef347e629020a1edd14d8c4e4a60ca2a1a5c7c4d60f\",\"quote\":\"Synthetic article for development\"}],\"market_impact\":\"uncertain\",\"recommended_policy\":\"REVIEW\",\"requires_human_review\":true}"
+}

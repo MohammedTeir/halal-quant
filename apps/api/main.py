@@ -9,8 +9,10 @@ from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 
 from apps.api.db import (
     AuditRecord,
+    ClassificationRecord,
     CorporateActionRecord,
     DataImport,
+    DecisionRecord,
     EconomicRecord,
     NewsRecord,
     SignalRecord,
@@ -18,8 +20,10 @@ from apps.api.db import (
     utcnow,
 )
 from packages.config.settings import Settings, get_settings
-from packages.schemas.data_events import DataBatch, Provider, Symbol
+from packages.schemas.data_events import DataBatch, Identifier, Provider, Symbol
+from packages.schemas.intelligence import ClassificationRequest, EvaluationRequest
 from packages.schemas.signals import Signal
+from services.decision_engine.store import store_evaluation
 from services.macro_intelligence.calendar import calendar_as_of
 from services.market_data.event_store import (
     ImportConflict,
@@ -29,6 +33,7 @@ from services.market_data.event_store import (
     latest_events,
     observation,
 )
+from services.news_intelligence.assessment_store import classifications_as_of, store_classification
 from services.news_intelligence.queries import news_as_of
 
 
@@ -58,6 +63,25 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     def data_ingestion(x_data_key: Annotated[str | None, Header()] = None):
         authenticate(x_data_key, settings.data_ingestion_key)
 
+    def analysis(x_analysis_key: Annotated[str | None, Header()] = None):
+        authenticate(x_analysis_key, settings.analysis_api_key)
+
+    def persist(operation):
+        for attempt in range(2):
+            try:
+                with sessions.begin() as session:
+                    result = operation(session)
+                return result
+            except ImportConflict as error:
+                raise HTTPException(409, str(error)) from error
+            except ValueError as error:
+                raise HTTPException(422, str(error)) from error
+            except IntegrityError:
+                if attempt:
+                    raise HTTPException(409, "Concurrent write conflict") from None
+            except SQLAlchemyError:
+                raise HTTPException(503, "Data store unavailable") from None
+
     def cutoff(as_of):
         try:
             return check_as_of(as_of or utcnow(), utcnow())
@@ -77,9 +101,16 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                 version = connection.execute(
                     text("SELECT version_num FROM alembic_version")
                 ).scalar()
-                for table in (DataImport, NewsRecord, EconomicRecord, CorporateActionRecord):
+                for table in (
+                    DataImport,
+                    NewsRecord,
+                    EconomicRecord,
+                    CorporateActionRecord,
+                    ClassificationRecord,
+                    DecisionRecord,
+                ):
                     connection.execute(select(table.id).limit(1))
-                if version != "0002_data_events":
+                if version != "0003_intelligence":
                     raise HTTPException(503, "Database migration required")
         except SQLAlchemyError:
             raise HTTPException(503, "Database unavailable or migrations missing") from None
@@ -128,21 +159,50 @@ def create_app(settings: Settings | None = None) -> FastAPI:
 
     @app.post("/api/v1/data/import", dependencies=[Depends(data_ingestion)])
     def ingest_data(batch: DataBatch):
-        # Retry only a diagnosed unique-key race; rollback leaves no partial batch/audit.
-        for attempt in range(2):
-            try:
-                with sessions.begin() as session:
-                    result = import_batch(session, batch, utcnow())
-                return result
-            except ImportConflict as error:
-                raise HTTPException(409, str(error)) from error
-            except ValueError as error:
-                raise HTTPException(422, str(error)) from error
-            except IntegrityError:
-                if attempt:
-                    raise HTTPException(409, "Concurrent data import conflict") from None
-            except SQLAlchemyError:
-                raise HTTPException(503, "Data store unavailable") from None
+        return persist(lambda session: import_batch(session, batch, utcnow()))
+
+    @app.post("/api/v1/news/classifications", dependencies=[Depends(analysis)])
+    def ingest_classification(request: ClassificationRequest):
+        return persist(lambda session: store_classification(session, request, utcnow()))
+
+    @app.get("/api/v1/news/classifications", dependencies=[Depends(dashboard)])
+    def classifications(
+        as_of: AwareDatetime | None = None,
+        symbol: Symbol | None = None,
+        limit: Annotated[int, Query(ge=1, le=100)] = 50,
+    ):
+        time = cutoff(as_of)
+        with sessions() as session:
+            return {
+                "as_of": time.isoformat(),
+                "items": classifications_as_of(session, time, symbol, limit),
+            }
+
+    @app.post("/api/v1/decisions/evaluate", dependencies=[Depends(analysis)])
+    def evaluate_candidate(request: EvaluationRequest):
+        return persist(lambda session: store_evaluation(session, request, utcnow(), settings))
+
+    @app.get("/api/v1/decisions", dependencies=[Depends(dashboard)])
+    def decisions(
+        as_of: AwareDatetime | None = None, limit: Annotated[int, Query(ge=1, le=100)] = 50
+    ):
+        time = cutoff(as_of)
+        with sessions() as session:
+            rows = session.scalars(
+                select(DecisionRecord)
+                .where(DecisionRecord.created_at <= time)
+                .order_by(DecisionRecord.created_at.desc(), DecisionRecord.id)
+                .limit(limit)
+            )
+            return {"as_of": time.isoformat(), "items": [row.response for row in rows]}
+
+    @app.get("/api/v1/decisions/{evaluation_id:path}", dependencies=[Depends(dashboard)])
+    def decision(evaluation_id: Identifier):
+        with sessions() as session:
+            row = session.get(DecisionRecord, evaluation_id)
+            if row is None:
+                raise HTTPException(404, "Unknown evaluation")
+            return row.response
 
     @app.get("/api/v1/news", dependencies=[Depends(dashboard)])
     def news(
