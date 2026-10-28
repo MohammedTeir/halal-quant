@@ -1,0 +1,392 @@
+{
+  "$defs": {
+    "CorporateAction": {
+      "additionalProperties": false,
+      "properties": {
+        "provider": {
+          "maxLength": 64,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.-]+$",
+          "title": "Provider",
+          "type": "string"
+        },
+        "item_id": {
+          "maxLength": 200,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$",
+          "title": "Item Id",
+          "type": "string"
+        },
+        "revision": {
+          "default": 1,
+          "maximum": 2147483647,
+          "minimum": 1,
+          "title": "Revision",
+          "type": "integer"
+        },
+        "synthetic": {
+          "default": false,
+          "title": "Synthetic",
+          "type": "boolean"
+        },
+        "published_at": {
+          "format": "date-time",
+          "title": "Published At",
+          "type": "string"
+        },
+        "kind": {
+          "const": "corporate_actions",
+          "default": "corporate_actions",
+          "title": "Kind",
+          "type": "string"
+        },
+        "symbol": {
+          "maxLength": 64,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$",
+          "title": "Symbol",
+          "type": "string"
+        },
+        "action_type": {
+          "enum": [
+            "split",
+            "cash_dividend"
+          ],
+          "title": "Action Type",
+          "type": "string"
+        },
+        "effective_at": {
+          "format": "date-time",
+          "title": "Effective At",
+          "type": "string"
+        },
+        "split_ratio": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Split Ratio"
+        },
+        "cash_amount": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cash Amount"
+        },
+        "currency": {
+          "const": "USD",
+          "default": "USD",
+          "title": "Currency",
+          "type": "string"
+        }
+      },
+      "required": [
+        "provider",
+        "item_id",
+        "published_at",
+        "symbol",
+        "action_type",
+        "effective_at"
+      ],
+      "title": "CorporateAction",
+      "type": "object"
+    },
+    "EconomicEvent": {
+      "additionalProperties": false,
+      "properties": {
+        "provider": {
+          "maxLength": 64,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.-]+$",
+          "title": "Provider",
+          "type": "string"
+        },
+        "item_id": {
+          "maxLength": 200,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$",
+          "title": "Item Id",
+          "type": "string"
+        },
+        "revision": {
+          "default": 1,
+          "maximum": 2147483647,
+          "minimum": 1,
+          "title": "Revision",
+          "type": "integer"
+        },
+        "synthetic": {
+          "default": false,
+          "title": "Synthetic",
+          "type": "boolean"
+        },
+        "published_at": {
+          "format": "date-time",
+          "title": "Published At",
+          "type": "string"
+        },
+        "kind": {
+          "const": "calendar",
+          "default": "calendar",
+          "title": "Kind",
+          "type": "string"
+        },
+        "title": {
+          "maxLength": 500,
+          "minLength": 1,
+          "title": "Title",
+          "type": "string"
+        },
+        "event_type": {
+          "enum": [
+            "earnings",
+            "fed",
+            "cpi",
+            "employment",
+            "other"
+          ],
+          "title": "Event Type",
+          "type": "string"
+        },
+        "scheduled_at": {
+          "format": "date-time",
+          "title": "Scheduled At",
+          "type": "string"
+        },
+        "severity": {
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "title": "Severity",
+          "type": "string"
+        },
+        "symbols": {
+          "items": {
+            "maxLength": 64,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9_.:/-]+$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Symbols",
+          "type": "array"
+        },
+        "asset_classes": {
+          "items": {
+            "enum": [
+              "stock",
+              "etf",
+              "gold"
+            ],
+            "type": "string"
+          },
+          "maxItems": 3,
+          "title": "Asset Classes",
+          "type": "array"
+        },
+        "cancelled": {
+          "default": false,
+          "title": "Cancelled",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "provider",
+        "item_id",
+        "published_at",
+        "title",
+        "event_type",
+        "scheduled_at",
+        "severity"
+      ],
+      "title": "EconomicEvent",
+      "type": "object"
+    },
+    "NewsEvent": {
+      "additionalProperties": false,
+      "properties": {
+        "provider": {
+          "maxLength": 64,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.-]+$",
+          "title": "Provider",
+          "type": "string"
+        },
+        "item_id": {
+          "maxLength": 200,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$",
+          "title": "Item Id",
+          "type": "string"
+        },
+        "revision": {
+          "default": 1,
+          "maximum": 2147483647,
+          "minimum": 1,
+          "title": "Revision",
+          "type": "integer"
+        },
+        "synthetic": {
+          "default": false,
+          "title": "Synthetic",
+          "type": "boolean"
+        },
+        "published_at": {
+          "format": "date-time",
+          "title": "Published At",
+          "type": "string"
+        },
+        "kind": {
+          "const": "news",
+          "default": "news",
+          "title": "Kind",
+          "type": "string"
+        },
+        "source_name": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Source Name",
+          "type": "string"
+        },
+        "url": {
+          "format": "uri",
+          "maxLength": 2083,
+          "minLength": 1,
+          "title": "Url",
+          "type": "string"
+        },
+        "headline": {
+          "maxLength": 1000,
+          "minLength": 1,
+          "title": "Headline",
+          "type": "string"
+        },
+        "summary": {
+          "default": "",
+          "maxLength": 20000,
+          "title": "Summary",
+          "type": "string"
+        },
+        "symbols": {
+          "items": {
+            "maxLength": 64,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9_.:/-]+$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Symbols",
+          "type": "array"
+        },
+        "asset_classes": {
+          "items": {
+            "enum": [
+              "stock",
+              "etf",
+              "gold"
+            ],
+            "type": "string"
+          },
+          "maxItems": 3,
+          "title": "Asset Classes",
+          "type": "array"
+        }
+      },
+      "required": [
+        "provider",
+        "item_id",
+        "published_at",
+        "source_name",
+        "url",
+        "headline"
+      ],
+      "title": "NewsEvent",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "provider": {
+      "maxLength": 64,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.-]+$",
+      "title": "Provider",
+      "type": "string"
+    },
+    "kind": {
+      "enum": [
+        "news",
+        "calendar",
+        "corporate_actions"
+      ],
+      "title": "Kind",
+      "type": "string"
+    },
+    "batch_id": {
+      "maxLength": 200,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.:/-]+$",
+      "title": "Batch Id",
+      "type": "string"
+    },
+    "synthetic": {
+      "default": false,
+      "title": "Synthetic",
+      "type": "boolean"
+    },
+    "records": {
+      "items": {
+        "discriminator": {
+          "mapping": {
+            "calendar": "#/$defs/EconomicEvent",
+            "corporate_actions": "#/$defs/CorporateAction",
+            "news": "#/$defs/NewsEvent"
+          },
+          "propertyName": "kind"
+        },
+        "oneOf": [
+          {
+            "$ref": "#/$defs/NewsEvent"
+          },
+          {
+            "$ref": "#/$defs/EconomicEvent"
+          },
+          {
+            "$ref": "#/$defs/CorporateAction"
+          }
+        ]
+      },
+      "maxItems": 100,
+      "title": "Records",
+      "type": "array"
+    }
+  },
+  "required": [
+    "provider",
+    "kind",
+    "batch_id"
+  ],
+  "title": "DataBatch",
+  "type": "object"
+}

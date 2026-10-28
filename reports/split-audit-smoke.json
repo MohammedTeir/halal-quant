@@ -1,0 +1,60 @@
+{
+  "action_observations_sha256": "3c076869b5fea22fa2422348a443de28c07bc721d9a033243e7542892c7a5d2b",
+  "adjusted": {
+    "csv_sha256": "5aa9996d2929906cb88f0aa1153dc94b6076bf708d50e4119ea5dbf29d89ae50",
+    "first_bar_close": "2020-01-01T00:00:00+00:00",
+    "last_bar_close": "2020-01-06T00:00:00+00:00",
+    "metadata": {
+      "asset_class": "stock",
+      "currency": "USD",
+      "price_basis": "split_adjusted",
+      "retrieved_at": "2020-01-08T00:00:00Z",
+      "schema_version": "1.0",
+      "source": "manual_fixture",
+      "symbol": "EXAMPLE",
+      "synthetic": true,
+      "timeframe_seconds": 86400,
+      "timestamp_semantics": "bar_close",
+      "volume_basis": "split_adjusted"
+    },
+    "metadata_sha256": "b85b438dae0b3be08b56c54d34a67dfaceb9d2d00a731bdaf5e99005a3f6dc2b",
+    "rows": 6
+  },
+  "applied_splits": [
+    {
+      "effective_at": "2020-01-04T00:00:00+00:00",
+      "item_id": "historical-split",
+      "revision": 1,
+      "split_ratio": "2"
+    }
+  ],
+  "as_of": "2020-01-08T00:00:00+00:00",
+  "authorized_for_paper": false,
+  "consistent": true,
+  "prices_consistent": true,
+  "provider_independently_verified": false,
+  "raw": {
+    "csv_sha256": "2e62deddfd3f08356acea3a4ef718199d92203a7f957e7fa3d75701b90d6c127",
+    "first_bar_close": "2020-01-01T00:00:00+00:00",
+    "last_bar_close": "2020-01-06T00:00:00+00:00",
+    "metadata": {
+      "asset_class": "stock",
+      "currency": "USD",
+      "price_basis": "unadjusted",
+      "retrieved_at": "2020-01-08T00:00:00Z",
+      "schema_version": "1.0",
+      "source": "manual_fixture",
+      "symbol": "EXAMPLE",
+      "synthetic": true,
+      "timeframe_seconds": 86400,
+      "timestamp_semantics": "bar_close",
+      "volume_basis": "as_reported"
+    },
+    "metadata_sha256": "cf21477a2f22409319958a561875abdf41ccb3c8d6295dd8ad2efed7f5e55372",
+    "rows": 6
+  },
+  "schema_version": "1.0",
+  "synthetic": true,
+  "volume_basis": "split_adjusted",
+  "volume_consistent": true
+}

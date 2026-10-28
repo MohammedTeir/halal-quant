@@ -57,3 +57,35 @@ TradingView cannot attach the custom authentication header directly. A trusted,
 TLS-protected gateway must authenticate the source and forward the header. That
 gateway and its delivery acceptance are not implemented. Public production ingress
 also needs rate/body limits, operational monitoring and production access controls.
+
+## Data-fact API increment
+
+The following routes now supplement the first increment. See [data ingestion](data-ingestion.md)
+for the full contracts, examples, revision rules and remaining provider limitations.
+
+| Method and path | Credential | Behavior |
+|---|---|---|
+| `POST /api/v1/data/import` | `X-Data-Key` | Atomic, idempotent batch for one provider/kind; server receipt and audit |
+| `GET /api/v1/news` | Dashboard bearer | Latest known revisions grouped by normalized article URL; attribution retained |
+| `GET /api/v1/economic-events` | Dashboard bearer | Point-in-time calendar schedules and cancellations |
+| `GET /api/v1/corporate-actions` | Dashboard bearer | Point-in-time split/dividend facts |
+| `GET /api/v1/data/status` | Dashboard bearer | Missing/stale/fresh observation and synthetic guard |
+
+Read routes support aware `as_of`; fact lists also accept exact `symbol`, `limit`
+1–100, and news/calendar accept `asset_class`. Future/naive cutoffs return 422.
+Both publication and server receipt must be <= cutoff. Data imports reject future
+publication, supplied receipt times, mixed provider/kind/synthetic labels, invalid
+action fields and source-revision mutation. Use a new revision for corrections.
+
+A batch response contains `batch_id`, `duplicate`, original `inserted`/`duplicates`
+counters and server `received_at`. HTTP 200 is a durable fact import, not order
+approval. Replays do not refresh feeds or duplicate audits. Conflicts return 409,
+invalid data 422, invalid credentials 401 and unavailable write storage 503.
+The successful new-batch counter `duplicates` counts pre-existing source records;
+`duplicate` indicates replay of the entire batch.
+
+Freshness measures a successful poll, not article age. Empty successful batches
+are allowed. Synthetic feeds never satisfy `required_feed_available`; provider
+verification and entry authorization remain false. Data import is not available
+to dashboard/webhook credentials. Source failures and production rate/body limits
+remain future adapter/operations work. API readiness now requires `0002_data_events`.

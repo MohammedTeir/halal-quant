@@ -67,6 +67,8 @@ def features(dataset: Dataset, config: StrategyConfig, benchmark: Dataset | None
         or spec.timeframe_seconds not in periods[spec.asset_class]
     ):
         raise ValueError("Strategy asset class or supported timeframe mismatch")
+    if spec.asset_class in ("stock", "etf") and spec.price_basis == "unadjusted":
+        raise ValueError("Raw equity prices may only be loaded for corporate-action audits")
     c = bars.Close
     a = _series(
         atr(bars.High.tolist(), bars.Low.tolist(), c.tolist(), config.atr_period), bars.index

@@ -1,0 +1,15 @@
+{
+  "atomic_imports": 3,
+  "authorized_for_entry": false,
+  "news_persists_across_api_restart": true,
+  "point_in_time_exclusion": true,
+  "purpose": "synthetic_data_ingestion_acceptance_only",
+  "received_at": [
+    "2026-10-28T12:46:48.807096+00:00",
+    "2026-10-28T12:46:48.826035+00:00",
+    "2026-10-28T12:46:48.842580+00:00"
+  ],
+  "replay_single_audit_per_batch": true,
+  "synthetic_feed_cannot_satisfy_required_feed": true,
+  "three_fact_routes_checked": true
+}

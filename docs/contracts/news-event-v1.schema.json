@@ -1,0 +1,101 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "provider": {
+      "maxLength": 64,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.-]+$",
+      "title": "Provider",
+      "type": "string"
+    },
+    "item_id": {
+      "maxLength": 200,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.:/-]+$",
+      "title": "Item Id",
+      "type": "string"
+    },
+    "revision": {
+      "default": 1,
+      "maximum": 2147483647,
+      "minimum": 1,
+      "title": "Revision",
+      "type": "integer"
+    },
+    "synthetic": {
+      "default": false,
+      "title": "Synthetic",
+      "type": "boolean"
+    },
+    "published_at": {
+      "format": "date-time",
+      "title": "Published At",
+      "type": "string"
+    },
+    "kind": {
+      "const": "news",
+      "default": "news",
+      "title": "Kind",
+      "type": "string"
+    },
+    "source_name": {
+      "maxLength": 200,
+      "minLength": 1,
+      "title": "Source Name",
+      "type": "string"
+    },
+    "url": {
+      "format": "uri",
+      "maxLength": 2083,
+      "minLength": 1,
+      "title": "Url",
+      "type": "string"
+    },
+    "headline": {
+      "maxLength": 1000,
+      "minLength": 1,
+      "title": "Headline",
+      "type": "string"
+    },
+    "summary": {
+      "default": "",
+      "maxLength": 20000,
+      "title": "Summary",
+      "type": "string"
+    },
+    "symbols": {
+      "items": {
+        "maxLength": 64,
+        "minLength": 1,
+        "pattern": "^[A-Za-z0-9_.:/-]+$",
+        "type": "string"
+      },
+      "maxItems": 100,
+      "title": "Symbols",
+      "type": "array"
+    },
+    "asset_classes": {
+      "items": {
+        "enum": [
+          "stock",
+          "etf",
+          "gold"
+        ],
+        "type": "string"
+      },
+      "maxItems": 3,
+      "title": "Asset Classes",
+      "type": "array"
+    }
+  },
+  "required": [
+    "provider",
+    "item_id",
+    "published_at",
+    "source_name",
+    "url",
+    "headline"
+  ],
+  "title": "NewsEvent",
+  "type": "object"
+}

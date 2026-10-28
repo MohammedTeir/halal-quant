@@ -1,0 +1,113 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "provider": {
+      "maxLength": 64,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.-]+$",
+      "title": "Provider",
+      "type": "string"
+    },
+    "item_id": {
+      "maxLength": 200,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.:/-]+$",
+      "title": "Item Id",
+      "type": "string"
+    },
+    "revision": {
+      "default": 1,
+      "maximum": 2147483647,
+      "minimum": 1,
+      "title": "Revision",
+      "type": "integer"
+    },
+    "synthetic": {
+      "default": false,
+      "title": "Synthetic",
+      "type": "boolean"
+    },
+    "published_at": {
+      "format": "date-time",
+      "title": "Published At",
+      "type": "string"
+    },
+    "kind": {
+      "const": "calendar",
+      "default": "calendar",
+      "title": "Kind",
+      "type": "string"
+    },
+    "title": {
+      "maxLength": 500,
+      "minLength": 1,
+      "title": "Title",
+      "type": "string"
+    },
+    "event_type": {
+      "enum": [
+        "earnings",
+        "fed",
+        "cpi",
+        "employment",
+        "other"
+      ],
+      "title": "Event Type",
+      "type": "string"
+    },
+    "scheduled_at": {
+      "format": "date-time",
+      "title": "Scheduled At",
+      "type": "string"
+    },
+    "severity": {
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ],
+      "title": "Severity",
+      "type": "string"
+    },
+    "symbols": {
+      "items": {
+        "maxLength": 64,
+        "minLength": 1,
+        "pattern": "^[A-Za-z0-9_.:/-]+$",
+        "type": "string"
+      },
+      "maxItems": 100,
+      "title": "Symbols",
+      "type": "array"
+    },
+    "asset_classes": {
+      "items": {
+        "enum": [
+          "stock",
+          "etf",
+          "gold"
+        ],
+        "type": "string"
+      },
+      "maxItems": 3,
+      "title": "Asset Classes",
+      "type": "array"
+    },
+    "cancelled": {
+      "default": false,
+      "title": "Cancelled",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "provider",
+    "item_id",
+    "published_at",
+    "title",
+    "event_type",
+    "scheduled_at",
+    "severity"
+  ],
+  "title": "EconomicEvent",
+  "type": "object"
+}

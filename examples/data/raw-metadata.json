@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "source": "manual_fixture",
+  "symbol": "EXAMPLE",
+  "asset_class": "stock",
+  "timeframe_seconds": 86400,
+  "price_basis": "unadjusted",
+  "volume_basis": "as_reported",
+  "currency": "USD",
+  "retrieved_at": "2020-01-08T00:00:00Z",
+  "synthetic": true,
+  "timestamp_semantics": "bar_close"
+}

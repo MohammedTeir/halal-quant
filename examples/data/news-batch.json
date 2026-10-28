@@ -1,0 +1,26 @@
+{
+  "provider": "manual_fixture",
+  "kind": "news",
+  "batch_id": "news-example-1",
+  "synthetic": true,
+  "records": [
+    {
+      "provider": "manual_fixture",
+      "item_id": "news-example-1",
+      "revision": 1,
+      "synthetic": true,
+      "published_at": "2026-10-27T12:00:00Z",
+      "kind": "news",
+      "source_name": "Synthetic fixture",
+      "url": "https://news.example/fixture",
+      "headline": "Synthetic article for development",
+      "summary": "",
+      "symbols": [
+        "EXAMPLE"
+      ],
+      "asset_classes": [
+        "stock"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "$defs": {
+    "CorporateAction": {
+      "additionalProperties": false,
+      "properties": {
+        "provider": {
+          "maxLength": 64,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.-]+$",
+          "title": "Provider",
+          "type": "string"
+        },
+        "item_id": {
+          "maxLength": 200,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$",
+          "title": "Item Id",
+          "type": "string"
+        },
+        "revision": {
+          "default": 1,
+          "maximum": 2147483647,
+          "minimum": 1,
+          "title": "Revision",
+          "type": "integer"
+        },
+        "synthetic": {
+          "default": false,
+          "title": "Synthetic",
+          "type": "boolean"
+        },
+        "published_at": {
+          "format": "date-time",
+          "title": "Published At",
+          "type": "string"
+        },
+        "kind": {
+          "const": "corporate_actions",
+          "default": "corporate_actions",
+          "title": "Kind",
+          "type": "string"
+        },
+        "symbol": {
+          "maxLength": 64,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$",
+          "title": "Symbol",
+          "type": "string"
+        },
+        "action_type": {
+          "enum": [
+            "split",
+            "cash_dividend"
+          ],
+          "title": "Action Type",
+          "type": "string"
+        },
+        "effective_at": {
+          "format": "date-time",
+          "title": "Effective At",
+          "type": "string"
+        },
+        "split_ratio": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Split Ratio"
+        },
+        "cash_amount": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cash Amount"
+        },
+        "currency": {
+          "const": "USD",
+          "default": "USD",
+          "title": "Currency",
+          "type": "string"
+        }
+      },
+      "required": [
+        "provider",
+        "item_id",
+        "published_at",
+        "symbol",
+        "action_type",
+        "effective_at"
+      ],
+      "title": "CorporateAction",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "action": {
+      "$ref": "#/$defs/CorporateAction"
+    },
+    "received_at": {
+      "format": "date-time",
+      "title": "Received At",
+      "type": "string"
+    }
+  },
+  "required": [
+    "action",
+    "received_at"
+  ],
+  "title": "ActionObservation",
+  "type": "object"
+}

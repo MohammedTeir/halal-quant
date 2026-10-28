@@ -20,6 +20,7 @@ class DataSpec(BaseModel):
     asset_class: Literal["stock", "etf", "gold"]
     timeframe_seconds: int = Field(gt=0)
     price_basis: Literal["split_adjusted", "total_return_adjusted", "unadjusted"]
+    volume_basis: Literal["as_reported", "split_adjusted"] = "as_reported"
     currency: Literal["USD"] = "USD"
     retrieved_at: AwareDatetime
     synthetic: bool = False
@@ -44,7 +45,9 @@ class Dataset:
         }
 
 
-def load_csv(csv_path: str | Path, metadata_path: str | Path) -> Dataset:
+def load_csv(
+    csv_path: str | Path, metadata_path: str | Path, *, allow_raw_for_audit=False
+) -> Dataset:
     raw = Path(csv_path).read_bytes()
     metadata = Path(metadata_path).read_bytes()
     spec = DataSpec.model_validate_json(metadata)
@@ -75,7 +78,11 @@ def load_csv(csv_path: str | Path, metadata_path: str | Path) -> Dataset:
         raise ValueError("Invalid OHLC bounds")
     if (index.to_series().diff().dropna().dt.total_seconds() < spec.timeframe_seconds).any():
         raise ValueError("Bars overlap the declared timeframe")
-    if spec.asset_class in ("stock", "etf") and spec.price_basis == "unadjusted":
+    if (
+        not allow_raw_for_audit
+        and spec.asset_class in ("stock", "etf")
+        and spec.price_basis == "unadjusted"
+    ):
         raise ValueError("Equity research requires explicitly adjusted OHLC data")
     return Dataset(
         frame, spec, hashlib.sha256(raw).hexdigest(), hashlib.sha256(metadata).hexdigest()

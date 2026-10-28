@@ -36,6 +36,7 @@ services:
       DATABASE_URL: postgresql+psycopg://halal:halal@postgres:5432/halal_quant
       DASHBOARD_API_KEY: ${DASHBOARD_API_KEY:-}
       TRADINGVIEW_WEBHOOK_KEY: ${TRADINGVIEW_WEBHOOK_KEY:-}
+      DATA_INGESTION_KEY: ${DATA_INGESTION_KEY:-}
       LIVE_TRADING_ENABLED: "false"
     depends_on:
       migrate:

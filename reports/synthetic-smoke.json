@@ -21,15 +21,16 @@
             "symbol": "DEMO_STOCK",
             "synthetic": true,
             "timeframe_seconds": 86400,
-            "timestamp_semantics": "bar_close"
+            "timestamp_semantics": "bar_close",
+            "volume_basis": "as_reported"
           },
-          "metadata_sha256": "3096caff6e244628f98f29f2704fffa35631dd8713dee36fd5b35187cdc43eaf",
+          "metadata_sha256": "341863075379f02a595a32fe7c3a1cfa7e5876d7ff2e3f0aeb08101c8fdea701",
           "rows": 1000
         }
       },
       "lockfile_sha256": "ab1679554d2843de9d88b0f243fb11f8c287b7e77e24bbf9a46b61df6c6944d0",
-      "run_id": "eca2fb7581985d2b889ae74ac5c83468df80228c4490c086941e280ab5d2216f",
-      "source_sha256": "984d756026626dcab6cd1c12e5bbb15081eb990ca1834c92b0f00151a8ea02ce",
+      "run_id": "2963d156d1e72059df913233dce0b96f15df7ba63cd34b72d24e9f3da42498f8",
+      "source_sha256": "c68aa0b207686fbfdf9ee0dc2e2a29f2f630b714a482a73f6893e736a36a22ee",
       "windows": {
         "holdout": {
           "buy_and_hold": {
@@ -91,15 +92,16 @@
             "symbol": "DEMO_GOLD",
             "synthetic": true,
             "timeframe_seconds": 14400,
-            "timestamp_semantics": "bar_close"
+            "timestamp_semantics": "bar_close",
+            "volume_basis": "as_reported"
           },
-          "metadata_sha256": "9fa27bdc82f7a041b8f87728a83c317be2875abd7525fe49e9adba85183b5a40",
+          "metadata_sha256": "414b61c514f3362263ece5626761c6a5e8625fd0b620bdb6449732e0dec9ebbf",
           "rows": 6000
         }
       },
       "lockfile_sha256": "ab1679554d2843de9d88b0f243fb11f8c287b7e77e24bbf9a46b61df6c6944d0",
-      "run_id": "e461042d74562e35b26b3693a7a15eb0bea9f91daa52a74c9ebacb9cc3aab4ea",
-      "source_sha256": "984d756026626dcab6cd1c12e5bbb15081eb990ca1834c92b0f00151a8ea02ce",
+      "run_id": "364c6ae3a8dabc20735e8c73b1fe0b95ceebdf8d157d21abfe97a0d90348a263",
+      "source_sha256": "c68aa0b207686fbfdf9ee0dc2e2a29f2f630b714a482a73f6893e736a36a22ee",
       "windows": {
         "holdout": {
           "buy_and_hold": {
@@ -160,9 +162,10 @@
             "symbol": "DEMO_BENCHMARK",
             "synthetic": true,
             "timeframe_seconds": 86400,
-            "timestamp_semantics": "bar_close"
+            "timestamp_semantics": "bar_close",
+            "volume_basis": "as_reported"
           },
-          "metadata_sha256": "c73ce3668b15a35f905a9e28de7584c884f9acf838bc4f0034479e79ee406b2a",
+          "metadata_sha256": "2347d946cb47ba10be0958ef5cfab3f48751aab708ccfcbadf143ea05552a94e",
           "rows": 1000
         },
         "instrument": {
@@ -179,15 +182,16 @@
             "symbol": "DEMO_ETF",
             "synthetic": true,
             "timeframe_seconds": 86400,
-            "timestamp_semantics": "bar_close"
+            "timestamp_semantics": "bar_close",
+            "volume_basis": "as_reported"
           },
-          "metadata_sha256": "d3d16032ed63107c267a113df110e941664fc07f6e7022cc6e3951001e5cba84",
+          "metadata_sha256": "4c23c0893ad5a0631dccf11a0bb284a3746c2eb706145737e28297335bdcf076",
           "rows": 1000
         }
       },
       "lockfile_sha256": "ab1679554d2843de9d88b0f243fb11f8c287b7e77e24bbf9a46b61df6c6944d0",
-      "run_id": "cbe751d503f8b4ffcc2d47cdc80c0fe0c89f922b4242486672af7c18117ad2d3",
-      "source_sha256": "984d756026626dcab6cd1c12e5bbb15081eb990ca1834c92b0f00151a8ea02ce",
+      "run_id": "140cf9e8866a4579aefd7a82220d7d3c1a65f3b7d85de2a8015c4d8f280b8c49",
+      "source_sha256": "c68aa0b207686fbfdf9ee0dc2e2a29f2f630b714a482a73f6893e736a36a22ee",
       "windows": {
         "holdout": {
           "buy_and_hold": {

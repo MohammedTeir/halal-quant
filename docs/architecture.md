@@ -2,7 +2,8 @@
 
 A modular monolith: FastAPI ingress, explicit Pydantic contracts, SQLAlchemy storage,
 Alembic migrations, and pure Python indicators. PostgreSQL is the system of record.
-The first migration intentionally creates only signals and audit logs. Domain
+The first migration creates signals and audit logs; the second adds immutable
+news/calendar/corporate-action revisions and successful data-import observations. Domain
 schemas will be added alongside their implementations rather than creating empty
 trading subsystems that imply unimplemented guarantees.
 
@@ -10,10 +11,14 @@ trading subsystems that imply unimplemented guarantees.
 owns the shared candidate contract; `packages/config` owns configuration and the
 live-mode guard; `packages/indicators` owns causal reference calculations. `pine`
 contains optional independently configurable TradingView strategies.
-`services/market_data` validates research CSV inputs and provenance;
+`services/market_data` validates CSV provenance, audits split adjustments and
+atomically stores versioned source facts;
 `services/technical_signals` calculates causal Python strategy candidates;
 `services/backtesting` runs single-instrument experiments through Backtesting.py.
-There is no worker, portfolio research engine or broker adapter yet. The research
+`services/news_intelligence` normalizes attribution URLs and groups point-in-time
+news observations; `services/macro_intelligence` reads calendar revisions. These
+modules do not yet perform AI analysis or event-window trading decisions.
+There is no acquisition worker, portfolio research engine or broker adapter yet. The research
 CLI is independent of HTTP ingestion and cannot authorize paper orders.
 
 Flow: closed chart bar → technical candidate → authenticated ingress → validated
@@ -22,8 +27,8 @@ data, intelligence, compliance, risk and a decision engine **before** paper orde
 authorization. Dashboard, Redis, Telegram, workers and live adapters are deferred
 according to the milestone tracker.
 
-A dashboard credential grants read access; the separate webhook credential grants
-only ingestion. These development service credentials are not production RBAC or
+A dashboard credential grants read access; the webhook credential grants only
+technical signal ingestion, and a third data credential grants source-fact imports. These development service credentials are not production RBAC or
 session management. Database errors fail readiness. Event IDs provide atomic
 idempotency through the primary key and transaction rollback on races. Database
 and audit tables are not immutable against administrators; production retention,

@@ -40,6 +40,15 @@
       "title": "Price Basis",
       "type": "string"
     },
+    "volume_basis": {
+      "default": "as_reported",
+      "enum": [
+        "as_reported",
+        "split_adjusted"
+      ],
+      "title": "Volume Basis",
+      "type": "string"
+    },
     "currency": {
       "const": "USD",
       "default": "USD",

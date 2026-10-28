@@ -1,0 +1,25 @@
+{
+  "provider": "manual_fixture",
+  "kind": "calendar",
+  "batch_id": "calendar-example-1",
+  "synthetic": true,
+  "records": [
+    {
+      "provider": "manual_fixture",
+      "item_id": "calendar-example-1",
+      "revision": 1,
+      "synthetic": true,
+      "published_at": "2026-10-27T12:00:00Z",
+      "kind": "calendar",
+      "title": "Synthetic economic release",
+      "event_type": "cpi",
+      "scheduled_at": "2026-10-29T12:00:00Z",
+      "severity": "high",
+      "symbols": [],
+      "asset_classes": [
+        "gold"
+      ],
+      "cancelled": false
+    }
+  ]
+}

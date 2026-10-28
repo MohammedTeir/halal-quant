@@ -36,3 +36,21 @@ output path to preserve experiments. See [Python research](python-research.md) f
 individual strategies, historical CSV metadata, costs and date limits. Reports
 and input datasets are separate from the API database and are not submitted as
 orders. Generated data/reports are ignored by Git and excluded from Docker context.
+
+## Versioned data ingestion
+
+Keep DATA_INGESTION_KEY distinct from dashboard/webhook keys and outside source
+control. Apply Alembic head (`0002_data_events`) before readiness. New data-fact
+tables do not replace signal/audit tables. See [data ingestion](data-ingestion.md)
+for import examples, timestamp rules, split audits and feed-state interpretation.
+
+Run `uv run python -m scripts.data_smoke --output reports/generated/new-data-smoke.json`
+with matching dashboard/data credentials exported to test actual local HTTP imports.
+It persists clearly labelled synthetic facts; they never authorize trading. Reusing
+a batch ID is a replay and does not act as a new health heartbeat. A new successful
+poll requires a new ID. Never falsify receipt time to make historical replay pass.
+
+Back up data before schema changes. Downgrading to 0001 deletes imported fact/feed
+observations, while preserving signal/audit tables; full downgrade deletes those too.
+Production providers and failure/retry workers are not connected, and current read
+endpoints are bounded inspection views, not paginated archival exports.

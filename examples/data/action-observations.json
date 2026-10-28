@@ -1,0 +1,19 @@
+[
+  {
+    "action": {
+      "provider": "manual_fixture",
+      "item_id": "historical-split",
+      "revision": 1,
+      "synthetic": true,
+      "published_at": "2019-12-20T00:00:00Z",
+      "kind": "corporate_actions",
+      "symbol": "EXAMPLE",
+      "action_type": "split",
+      "effective_at": "2020-01-04T00:00:00Z",
+      "split_ratio": "2",
+      "cash_amount": null,
+      "currency": "USD"
+    },
+    "received_at": "2019-12-21T00:00:00Z"
+  }
+]

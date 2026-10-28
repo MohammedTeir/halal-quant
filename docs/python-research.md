@@ -78,8 +78,9 @@ nonpositive/nonfinite prices, invalid OHLC bounds, negative/missing volume,
 naive/duplicate/unsorted timestamps and overlapping bars. It records SHA-256 hashes
 of CSV and metadata. Adjustment declarations are assertions from the supplier;
 this loader does not independently reconstruct corporate actions or verify them.
-It is not a live-feed freshness monitor. Vendor adapters, exchange calendars,
-corporate-action processing and news ingestion remain Milestone 3 work.
+It is not a live-feed freshness monitor. [Data ingestion](data-ingestion.md) now
+provides separate versioned fact storage and split-adjustment audits; vendor
+adapters, exchange calendars and verified real source data remain Milestone 3 work.
 
 Stock timeframes: 4H or 1D. ETF: 1D or 1W (periods count chart bars, so a 200-period
 weekly SMA covers 200 weeks). Gold: 1H or 4H. ETF requires a distinct ETF benchmark
