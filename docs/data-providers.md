@@ -15,8 +15,9 @@ completeness remain unverified. The original first-four completion request remai
 | U.S. stock/ETF daily candles and sessions | [Alpaca Basic](https://docs.alpaca.markets/docs/about-market-data-api) | IEX coverage is a subset of U.S. trading; historical access, delay and quotas depend on account entitlement. This adapter requests split adjustment, not total return. |
 | Company news | [Finnhub](https://finnhub.io/docs/api/company-news) | Free-tier availability, archive depth and quotas must be checked for your account; publication metadata does not establish publisher credibility or complete target coverage. |
 | CPI and employment release schedule | [BLS](https://www.bls.gov/schedule/news_release/) | Public calendar, no API key. It does not supply FOMC meetings, company earnings or a comprehensive economic calendar. |
-| FOMC releases/schedules | [Federal Reserve](https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm) | Official reference; automatic adapter not yet implemented. Use verified normalized calendar imports until implemented. |
-| Spot gold and complete corporate actions | Provider selection still required | IEX equity candles do not supply spot gold. A gold ETF must not silently substitute for the blueprint's gold instrument. Corporate-action completeness requires separate evidence. |
+| FOMC releases/schedules | [Federal Reserve](https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm) | Read-only official adapter is implemented and imported eight 2026 events; date-only/observed-time provenance is explicit. |
+| Spot gold reference history | HistData XAUUSD bid | All 12 months of 2025 pass structural checks with explicit exact-duplicate normalization; source-venue/session completeness and liquidity are not certified. No ETF substitution. |
+| Corporate actions | Alpaca read-only adapter | Splits/dividends acquisition and a real split/volume audit are implemented; complete historical coverage still requires separate evidence. |
 
 These are starting recommendations, not a claim that all required historical data
 is available free. Confirm current terms, allowed use and pricing before deployment.
@@ -241,3 +242,5 @@ explicit lossless duplicate elimination, not an inferred daylight-saving correct
 The original strict annual failure remains historical evidence; the new normalized
 annual audit passes all 12 months, with 5,855 1h and 1,263 4h bars. Session/price/source
 suitability approval remains a separate release concern.
+
+See the [completed gold session investigation](gold-session-review.md) for all 300 observed gaps and the explicitly non-certifying OANDA reference comparison.

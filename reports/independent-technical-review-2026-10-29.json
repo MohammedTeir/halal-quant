@@ -1,0 +1,275 @@
+{
+  "review_id": "independent-technical-review-2026-10-29",
+  "reviewed_at": "2026-10-29T17:46:56.435768+00:00",
+  "reviewer": {
+    "type": "separate_ai_review_agent",
+    "task": "/root/independent_source_policy_review",
+    "independent_of_implementation_author_role": true,
+    "independent_of_project_gemini_inference": true,
+    "human_review": false,
+    "blind_to_prior_model_results": false,
+    "context_limit": "Inherited project conversation and reviewed existing outcomes; separate technical assessment, not independent model-family/statistical or institutional audit"
+  },
+  "review_authorization": "User selected another assistant for independent technical review; no human expert sign-off requested or inferred",
+  "reviewed_base_commit": "56b2b2eaecb0875ba167e1ed6c6ff93a48c64d66",
+  "uncommitted_scope": "gold_sessions.py/comparison/tests as present at review time",
+  "overall_verdict": "CONDITIONAL_RESEARCH_ONLY_NO_DEPLOYMENT_APPROVAL",
+  "technical_review_completed": true,
+  "project_human_signoff": false,
+  "session_certification_approved": false,
+  "source_authority_blanket_approval": false,
+  "execution_authorized": false,
+  "checks_performed": {
+    "reviewed_code_and_policy": true,
+    "original_external_archive_hash_verified": true,
+    "external_sample_reconstructed_from_original_labels": true,
+    "external_sentiment_recount": "30/30;10 per label",
+    "primary_excerpt_and_raw_source_hash_checks": "12/12 latest expanded/fresh real-source cases",
+    "v5_expanded_recount": "16/16;8/8 attacks safe policy+review",
+    "v5_fresh_recount": "8/8;4/4 attacks safe policy+review",
+    "provider_traffic_or_gemini_calls": 0,
+    "new_independent_full_suite_run": false,
+    "scope_note": "Root runs regression suite; reviewer performed offline source/label/hash/code checks and did not repeat every historical acceptance claim",
+    "reference_rule_fix_independently_checked": true,
+    "current_provider_table_fix_independently_checked": true
+  },
+  "source_sample": {
+    "retained_events": 108,
+    "independent_sample_count": 1,
+    "source_name_claims": {
+      "Yahoo": 86,
+      "CNBC": 8,
+      "Benzinga": 12,
+      "SeekingAlpha": 2
+    },
+    "url_hostnames": {
+      "finnhub.io": 108
+    },
+    "source_name_is_verified_publisher_identity": false,
+    "empty_summaries": 0
+  },
+  "positive_controls": [
+    "Strict extra-field/duplicate-key/nonfinite JSON rejection and exact target/source/quote binding",
+    "Generation claims commit before inference; immutable success replay; current source revisions rechecked before persistence",
+    "Publication and server receipt both limit point-in-time visibility; local revisions do not invent historical source vintages",
+    "Required feeds/source verification and event restrictions cannot be cleared by model ALLOW",
+    "Public evaluator constructs missing trusted authorities and engine always returns authorized=false",
+    "Comparator retains all unresolved gaps and refuses provider-session certification"
+  ],
+  "policy_verdict": {
+    "status": "CONDITIONAL_RESEARCH_IMPLEMENTATION_ACCEPTED",
+    "version": "decision-v1",
+    "scope": "Conservative deterministic implementation of documented windows/review/ownership/authority gates",
+    "thresholds_are_statistically_calibrated": false,
+    "empirical_performance_or_shariah_approval": false,
+    "conditions": [
+      "Keep unavailable source/broker/compliance/risk/ownership authorities fail-closed",
+      "Keep model self-confidence advisory",
+      "Treat policy windows/thresholds as provisional engineering rules until independently validated for deployment"
+    ]
+  },
+  "sources": [
+    {
+      "source": "Federal Reserve FOMC/direct releases",
+      "verdict": "APPROVED_FOR_NARROW_RESEARCH_FACT_SCOPE",
+      "scope": "Its own calendar dates/statements; observed-time and conservative date-only restrictions",
+      "limits": [
+        "Not a complete economic calendar",
+        "No inferred historical receipt/vintage or predictable gold return",
+        "No implied cancellation from absence"
+      ]
+    },
+    {
+      "source": "BLS direct calendar/releases",
+      "verdict": "APPROVED_FOR_NARROW_RESEARCH_FACT_SCOPE",
+      "scope": "BLS scheduled releases/statistical statements under explicit receipt and publication-basis provenance",
+      "limits": [
+        "No complete FOMC/earnings/PCE calendar",
+        "Revisions and schedule changes require continued acquisition; present retrieval is not historical availability"
+      ]
+    },
+    {
+      "source": "Issuer primary releases, including Apple",
+      "verdict": "CONDITIONAL_ADVISORY_RESEARCH_ONLY",
+      "scope": "Attribution of issuer-reported figures and primary-text classification tests",
+      "limits": [
+        "Issuer promotional incentives",
+        "No independent audit/valuation/return/compliance approval"
+      ]
+    },
+    {
+      "source": "Finnhub company-news/earnings intermediary",
+      "verdict": "CONDITIONAL_ADVISORY_RESEARCH_ONLY",
+      "scope": "Versioned delivery/receipt, target-scoped polling and candidate news classification",
+      "limits": [
+        "ITR-01: original publisher identity/domain/content unverified for actual sample",
+        "No representative full-target or historical point-in-time completeness",
+        "Terms/rights and corrected/cancelled data need release validation"
+      ]
+    },
+    {
+      "source": "Alpaca IEX candles/corporate actions",
+      "verdict": "CONDITIONAL_RESEARCH_INPUT_ONLY",
+      "scope": "Demonstrated limited equity session/split audits with retained provenance",
+      "limits": [
+        "IEX is not consolidated US volume/liquidity",
+        "No complete corporate-action ledger or return certification"
+      ]
+    },
+    {
+      "source": "HistData XAUUSD bid OHLC",
+      "verdict": "CONDITIONAL_STRUCTURAL_RESEARCH_ONLY",
+      "scope": "Retained/normalized minute data, exact-row proof and complete UTC bucket construction",
+      "limits": [
+        "Session completeness and quote venue unverified",
+        "Missing volume cannot establish liquidity",
+        "No execution/custody/Shariah/strategy-promotion approval"
+      ]
+    },
+    {
+      "source": "OANDA BVI metals-CFD hours",
+      "verdict": "APPROVED_AS_DIAGNOSTIC_REFERENCE_ONLY",
+      "scope": "Current regular-hour comparator with DST and mismatch counts",
+      "limits": [
+        "Not source-bound historical HistData schedule",
+        "Not approval of CFDs or margin instruments",
+        "Holidays and boundary precision unverified"
+      ]
+    },
+    {
+      "source": "FinancialPhraseBank all-agree",
+      "verdict": "APPROVED_FOR_DECLARED_NONCOMMERCIAL_RESEARCH_BENCHMARK_ONLY",
+      "scope": "Original external human sentiment labels, fixed balanced30-case sample",
+      "limits": [
+        "CC BY-NC-SA3.0 and retained README terms; not production runtime/news license",
+        "Helsinki historical distribution and possible pretraining overlap",
+        "No independent event/policy/attack labels or project human sign-off"
+      ]
+    },
+    {
+      "source": "Gemini v5 classifier",
+      "verdict": "CONDITIONAL_ADVISORY_RESEARCH_ONLY",
+      "scope": "Target/schema/exact-evidence-bound classifications and observed diagnostic scores",
+      "limits": [
+        "Model assertions/self-confidence remain untrusted",
+        "No tools/order/approval authority",
+        "No established representative calibration or production accuracy"
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "id": "ITR-01",
+      "severity": "medium",
+      "release_blocker": true,
+      "title": "Finnhub delivery does not establish original-publisher identity or credibility",
+      "evidence": [
+        "services/news_intelligence/providers/finnhub.py:72",
+        "services/market_data/coverage.py:70",
+        "data/live-20261029/finnhub-aapl/observations.json"
+      ],
+      "observation": "108 retained AAPL events use finnhub.io URLs; provider source_name claims Yahoo86/CNBC8/Benzinga12/SeekingAlpha2. Both retained archives contain the same distribution and are not independent 216-event corroboration.",
+      "disposition": "Allow intermediary/advisory ingestion only; reject blanket publisher-authority approval.",
+      "required_before_release": "Establish original publisher URL/identity/content provenance, permitted use and representative target coverage; do not convert source_name into a verified-authority flag.",
+      "status": "OPEN_RELEASE_CONDITION"
+    },
+    {
+      "id": "ITR-02",
+      "severity": "medium",
+      "release_blocker": true,
+      "title": "No verified HistData venue/historical holiday binding",
+      "evidence": [
+        "services/market_data/gold_sessions.py:26",
+        "services/market_data/gold_sessions.py:195",
+        "reports/gold-session-comparison-2025-2026-10-29.json"
+      ],
+      "observation": "Current OANDA BVI CFD regular hours are not evidence of HistData venue identity or effective 2025 holidays. The reference comparison has 14133 absent minutes while reference-open and 9459 observations while reference-closed. These differences cannot be equated with genuine loss or genuine closure.",
+      "disposition": "Approve comparison-only diagnostic; reject certified session-completeness/closure claims.",
+      "required_before_release": "Obtain source-bound historical regular/holiday/exception evidence or an appropriately assessed replacement source; reconcile every unresolved interval without guessing time corrections.",
+      "status": "OPEN_RELEASE_CONDITION"
+    },
+    {
+      "id": "ITR-03",
+      "severity": "medium",
+      "release_blocker": true,
+      "title": "Perfect small-sample scores do not validate deployed policy/calibration",
+      "evidence": [
+        "services/news_intelligence/external_benchmark.py:64",
+        "services/news_intelligence/evaluation.py:116",
+        "services/decision_engine/policies.py:14"
+      ],
+      "observation": "FinancialPhraseBank supplies independent original sentiment labels but all event/policy options are allowed and there are no attack cases. The primary/adversarial pilot labels are author-supplied. Self-reported confidence0.7 and fixed event windows have no demonstrated production calibration/performance basis.",
+      "disposition": "Approve observed benchmark agreement and deterministic restriction implementation only.",
+      "required_before_release": "Define representative US/ETF/gold/source-conflict/correction policy cases and independent expected decisions, assess calibration/error severity, and validate policy suitability on point-in-time histories before deployment.",
+      "status": "OPEN_RELEASE_CONDITION"
+    },
+    {
+      "id": "ITR-04",
+      "severity": "low",
+      "release_blocker": false,
+      "title": "Exact quoted evidence is structural grounding, not semantic fact verification",
+      "evidence": [
+        "services/news_intelligence/classification.py:61",
+        "services/news_intelligence/classification.py:76"
+      ],
+      "observation": "Membership of an exact headline/summary quote does not prove that sentiment, severity or market-impact assertions follow from that quote. This is a known limit of schema/evidence checks.",
+      "disposition": "Retain advisory-only scope and manual/source review; do not label all model assertions verified facts.",
+      "required_before_release": "Add semantic evidence review to representative quality assessment; never use exact-quote success alone as a source-authority approval.",
+      "status": "KNOWN_LIMITATION"
+    },
+    {
+      "id": "ITR-05",
+      "severity": "low",
+      "release_blocker": false,
+      "title": "Session reference rule is manually bound rather than extracted from evidence",
+      "evidence": [
+        "services/market_data/gold_sessions.py:48",
+        "services/market_data/gold_sessions.py:58",
+        "services/market_data/gold_sessions.py:211"
+      ],
+      "observation": "The comparator verifies an HTML hash/status but originally hardcodes18:05\u201316:59 without machine-checking that the supplied snapshot supports those exact rule values. Current archived text supports them; a changed future snapshot could be paired with unchanged constants.",
+      "disposition": "Current comparison evidence acceptable with manual source confirmation; improve reproducible rule-to-snapshot binding.",
+      "required_before_release": "Record extracted rule/excerpt and assert it matches the snapshot; unsupported snapshots should not inherit old reference hours.",
+      "status": "RESOLVED_AND_REVIEWED",
+      "resolution": "Implementation author added verify_reference_rule, strict unique exact XAU/USD table extraction, fixed-URL bounded acquisition and comparison rule verification. Reviewer independently confirmed actual snapshot row is accepted and an18:06 mutation rejected."
+    },
+    {
+      "id": "ITR-06",
+      "severity": "low",
+      "release_blocker": false,
+      "title": "Current-facing provider table contains obsolete implementation claims",
+      "evidence": [
+        "docs/data-providers.md:18"
+      ],
+      "observation": "At review start, the provider table still called the FOMC adapter unimplemented and gold provider selection unresolved despite existing adapters/conditional source.",
+      "disposition": "Update current-facing table while retaining historical reports unchanged.",
+      "required_before_release": "Align overview with actual implemented/conditional capabilities and explicit remaining evidence gates.",
+      "status": "RESOLVED_AND_REVIEWED",
+      "resolution": "Reviewer independently confirmed current provider table now states implemented official FOMC, conditional HistData reference history and Alpaca actions."
+    }
+  ],
+  "immediate_execution_bypass_found_in_reviewed_paths": false,
+  "artifact_hashes_at_review": {
+    "services/news_intelligence/classification.py": "e102baf4ceef29c6b2f01671c461b4ff57f59773f453703e0f0208341014a62f",
+    "services/news_intelligence/generation.py": "2b3c0655ea8e733549e4e3a54a22111ca236fde646c506686492d9b00950593b",
+    "services/news_intelligence/assessment_store.py": "e8d4e74c4ac8b05b71406cbf86c6d3db9c7e69369ec00697b9d2d90bef67b642",
+    "services/news_intelligence/providers/finnhub.py": "b01ecf50e951f1ef12042f31edc61c9f520d1adce205c9577975f294e87b5350",
+    "services/news_intelligence/external_benchmark.py": "42681cb4bfd01178d6671bc846ea70a0aff3360ad794212710f6084e10b4ce20",
+    "services/decision_engine/policies.py": "58d3077a1deba506318e53dbb30690b33f76a8de0cabe60b72ca35752b87d7cf",
+    "services/decision_engine/engine.py": "b4f2e71b37f96e7d89f0b0ec0564b8a2698cb97a997b6354fe748ff666a5f40a",
+    "services/decision_engine/store.py": "0f42b8b0e9dd3947745c9e592aafeb41ad6d2ec78cc50cf322e748f631540ae5",
+    "services/market_data/coverage.py": "92817ea9d5085e11d8d31558b8dcf4ffebbbc13398f7075533214ba4a5e7706e",
+    "services/market_data/event_store.py": "095799a9e0f86c8a68547264596542e1564ba96200ec8f487d45916e512a23b4",
+    "services/market_data/gold_sessions.py": "a2b5f929efcd004980920d30a1f57f53d02badd7b7f9a2f6da11745cf807023a",
+    "reports/gold-session-comparison-2025-2026-10-29.json": "bd24c5c18e0a311c1efd99c0c828f4019bceb60bac9f1b18a879aa8108865106",
+    "reports/financial-phrasebank-v5-external-2026-10-29.json": "eecd6698e3e5e0dedc0edad07d0d57fb0e82fe170310264b9610b7e581263ec8",
+    "reports/real-primary-v5-expanded-regression-2026-10-29.json": "5f19d9f9da8eeed8786801826a29764ee24f69acb0ad0200a87868ca1aded5d7",
+    "reports/real-primary-v5-fresh-pilot-2026-10-29.json": "29786e43d6c5a08fcae237dffbf436c92ae72dc10f876a9c2c776a6a16c33572"
+  },
+  "limitations": [
+    "Separate AI technical review is not an independent human/domain/legal/Shariah or institutional audit",
+    "Prior outputs were visible; this review did not create a new blind holdout",
+    "Network traffic, historical truth, licensing approval and vendor historical schedules were not independently authenticated",
+    "No live trading or profitability validation; remaining release blockers must not be removed by a passing diagnostic"
+  ]
+}

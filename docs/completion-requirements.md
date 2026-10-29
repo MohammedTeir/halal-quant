@@ -20,7 +20,7 @@ This closes the duplicate-row structural blocker without guessing a timezone fix
 
 ## Gold research-release concern
 
-An authoritative source/venue-specific gold session schedule remains unavailable.
+The [completed session investigation](gold-session-review.md) now inventories all 300 gaps and compares them with verified official regular reference hours. An authoritative source/venue-specific gold session schedule remains unavailable.
 HistData's public FAQ does not establish holidays, exceptional closures or daily
 breaks sufficiently to classify every observed gap. A structurally valid year cannot
 certify session completeness, price accuracy or executable liquidity. Obtain that
@@ -36,9 +36,7 @@ sentiment labels**, fixed hash-ranked balanced sampling and unchanged v5. This i
 noncommercial research evidence, not independently labeled event/policy/attack ground
 truth or human approval of HALAL QUANT. See [external-label evaluation](external-label-evaluation.md).
 
-Project-specific reviewer approval remains unperformed. A reviewer should inspect
-source suitability, label disagreements, secondary-source/ETF/company-event omissions
-and whether the small samples fit intended deployment. [Prepared review material](independent-review.md)
+The user-selected separate AI [technical review](independent-technical-review-2026-10-29.md) is now complete with conditional research-only acceptance. It independently checked actual retained sources/labels and authority paths, resolved two low findings, and leaves original-publisher provenance, historical gold session binding and representative policy/calibration validation open before deployment. It is not a human or institutional sign-off. [Prepared review material](independent-review.md)
 remains available. Public historical corpora may overlap model pretraining.
 
 Keys, endpoint access, model compatibility, official FOMC ingestion and structural

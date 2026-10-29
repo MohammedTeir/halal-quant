@@ -6,10 +6,10 @@ Implementation acceptance and independent release sign-off are tracked separatel
 
 | # | Deliverable | Current state | Evidence / remaining acceptance |
 |---|---|---|---|
-| 1 | Foundation and architecture | Implemented; software acceptance passes | Boot/persistence, credentials, migrations through `0005_feed_coverage`, schema drift, replay and CI checks. Latest local suite: 323 passed. Hosted CI passed for `8afc05d`; check the current commit's run after push. |
+| 1 | Foundation and architecture | Implemented; software acceptance passes | Boot/persistence, credentials, migrations through `0005_feed_coverage`, schema drift, replay and CI checks. Latest local suite: 334 passed. Hosted CI passed for `8afc05d`; check the current commit's run after push. |
 | 2 | Three Python strategies; optional Pine | Agreed Python acceptance passes | Long-only causal stock/ETF/gold strategies; nonzero synthetic train/holdout trades, explicit costs, flat reconciliation and byte-identical reports. Pine compilation/parity remains unverified and optional. |
 | 3 | Market and news data | Implementation acceptance passes; historical/source sign-off incomplete | Real Alpaca candles/actions, Finnhub news/earnings, BLS and official FOMC ingestion; immutable revisions, point-in-time provenance, scoped freshness, corporate-action and session checks. A normalized 2025 audit validates all 12 months (5,855 1h / 1,263 4h bars), retaining proof of 60 identical duplicates removed. Source/session research-release approval remains unavailable. |
-| 4 | AI intelligence and decisions | Implementation acceptance passes; independent quality sign-off incomplete | Strict schemas/evidence/targets, durable Gemini jobs, event policies and deterministic gates; v5 passes 16/16 exposed real-primary/adversarial regression and 8/8 fresh blind pilot. Independent reviewer approval and representative real-news/secondary-source/ETF/company-event coverage remain open. |
+| 4 | AI intelligence and decisions | Implementation acceptance passes; independent quality sign-off incomplete | Strict schemas/evidence/targets, durable Gemini jobs, event policies and deterministic gates; v5 passes 16/16 exposed real-primary/adversarial regression and 8/8 fresh blind pilot. Separate AI technical review now completed with conditional research-only acceptance; publisher identity, gold session binding and representative policy/calibration conditions remain open before deployment. |
 | 5 | Compliance and risk | Not started | Screening methodology, ownership/custody, cash/position sizing, exposure/loss limits and protective-exit authority. |
 | 6 | Research and backtesting | Technical single-instrument prototype | Portfolio simulation, point-in-time news/compliance replay, verified historical coverage, walk-forward/Monte Carlo, liquidity and blueprint performance gates remain. |
 | 7 | Dashboard and Telegram | Not started | UI and end-to-end notification acceptance. |
@@ -57,7 +57,7 @@ Implementation acceptance and independent release sign-off are tracked separatel
 
 ## Verification and release limits
 
-The current full isolated SQLite suite passes **323 tests** with one existing
+The current full isolated SQLite suite passes **334 tests** with one existing
 Starlette/httpx TestClient deprecation warning. Lint/format checks pass. Hosted CI
 uses PostgreSQL and runs migrations, regression tests, synthetic research and mock
 Gemini/offline evaluation; it never makes live provider calls. Historical reports
@@ -85,3 +85,20 @@ An [external original-human-label benchmark](external-label-evaluation.md) adds
 balanced FinancialPhraseBank sentiment checks independent of author labels. It does
 not confer human project approval or independently label event/policy/attack behavior.
 The published source is limited to noncommercial research, and text is not runtime data.
+
+
+## User-selected independent technical review and session investigation
+
+The separate AI [review](independent-technical-review-2026-10-29.md) is complete,
+with conditional research-only acceptance and three medium release conditions.
+The reviewer independently recounted model/source evidence and verified two fixes:
+reference table-rule extraction and the obsolete provider table. It found no direct
+execution-authority bypass in the inspected paths. It is not human/institutional
+approval, blind model-family independence or blanket source authority.
+
+The [gold session investigation](gold-session-review.md) inventories all 300 absent
+runs across 353,940 observed minutes, including coverage boundaries, and compares
+against a hash-bound, machine-verified official reference table with New York DST.
+Provider/2025 holiday binding remains unverified; no reference gap is certified as a
+HistData market closure. Full current regression: **334 passed**. Historical
+reports preserve their earlier states; the review does not grant execution approval.

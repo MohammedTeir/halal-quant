@@ -1,8 +1,8 @@
 # Independent source and classification review
 
 The author cannot sign off their own implementation as independently reviewed.
-The current artifacts explicitly retain `independent_of_implementation_author=false`
-and `human_review_completed=false`. No approval has been granted.
+The original author-label artifacts explicitly retain `independent_of_implementation_author=false`
+and `human_review_completed=false`; those historical fields remain unchanged. The user-selected separate AI [technical review](independent-technical-review-2026-10-29.md) is now completed with conditional research-only acceptance. It does not retrospectively make the label-generation process independent or constitute human/institutional approval.
 
 ## Prepared material
 

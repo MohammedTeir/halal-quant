@@ -19,12 +19,15 @@ real-source review exposed instruction and sentiment weaknesses. Prompt v5 passe
 an unchanged 16-case regression and a separate 8-case fresh blind pilot. See the
 [source and label review](docs/source-and-label-review.md): this is AI-assisted
 review, not independent human sign-off or broad source-completeness certification.
+A user-selected [separate AI technical review](docs/independent-technical-review-2026-10-29.md)
+is now complete with conditional research-only acceptance. The [gold session audit](docs/gold-session-review.md)
+records all 300 gaps without certifying unknown provider/holiday closures.
 An additional external original-human-label sentiment benchmark passes 30/30;
 [its research scope and limits](docs/external-label-evaluation.md) remain explicit.
 Milestone 6 remains an early single-instrument research prototype.
 Milestones 5 and 7–8 have not started; optional live integration (Milestone 9) is disabled.
 
-The full suite has **323 passing tests**, including research, data integrity,
+The full suite has **334 passing tests**, including research, data integrity,
 advisory-output security and deterministic decision checks. All three
 default strategies and cost-matched buy-and-hold baselines execute on synthetic
 fixtures, finish flat, and reproduce reports byte-for-byte. These are software

@@ -77,3 +77,12 @@ report remains. Text/license/outputs are local noncommercial research artifacts,
 not runtime inputs or independent human approval of the project.
 
 `first-four-current-2026-10-29.json` is the latest software-acceptance summary; older reports retain their historical failure/status claims. Full independent release sign-off remains distinct from original blueprint software acceptance.
+
+
+`gold-session-comparison-2025-2026-10-29.json` inventories all minute gaps and
+strictly binds its diagnostic reference to the official HTML table. It never
+certifies HistData venue/holiday equivalence or missing-minute explanations.
+`independent-technical-review-2026-10-29.json` is the user-selected separate AI
+reviewer's conditional research-only verdict, findings and inspected artifact hashes.
+Two low findings were resolved; three medium release conditions remain. Human and
+execution approval stay false.

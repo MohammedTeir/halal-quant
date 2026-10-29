@@ -46,6 +46,6 @@ Latest [source/label review](source-and-label-review.md) records the real v3 pil
 failure, v4 correction, gold archive rejection and precise reviewer-independence
 limits. No independent human approval is claimed.
 
-Latest follow-up: **323 local tests pass**. [Annual gold audit](../reports/gold-history-audit-2025-2026-10-29.json), [expanded model results](../reports/real-primary-v5-expanded-regression-2026-10-29.json) and [prepared independent review](independent-review.md) replace sample-only validation. Full external sign-off remains open.
+Latest follow-up: **334 local tests pass**. [Annual gold audit](../reports/gold-history-audit-2025-2026-10-29.json), [expanded model results](../reports/real-primary-v5-expanded-regression-2026-10-29.json) and [prepared independent review](independent-review.md) replace sample-only validation. Full external sign-off remains open.
 
 The new [normalized annual audit](../reports/gold-history-normalized-2025-2026-10-29.json) supersedes the strict duplicate rejection for structural-history acceptance; the original failed evidence remains unchanged. [External-label research score](../reports/financial-phrasebank-v5-external-2026-10-29.json): 30/30, not human approval of this project.

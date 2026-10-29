@@ -6,6 +6,9 @@ read [milestones](milestones.md) for implementation status and acceptance eviden
 | Document | Purpose |
 |---|---|
 | [حالة المراحل الأربع بالعربية](first-four-status.ar.md) | ملخص الجاهزية البرمجية وحدود اعتماد البحث والتشغيل |
+| [Gold session investigation](gold-session-review.md) | All 2025 minute gaps, bounded official reference and unresolved source/holiday binding |
+| [نتيجة تدقيق جلسات الذهب](gold-session-review.ar.md) | توضيح عربي للنتائج وحدود اعتماد الإغلاقات |
+| [Independent technical review](independent-technical-review-2026-10-29.md) | Separate AI reviewer findings, evidence and conditional research-only verdict |
 | [Master blueprint v2](blueprint-v2.md) | Original full project requirements and acceptance gates |
 | [External human-label evaluation](external-label-evaluation.md) | Independent original sentiment labels, frozen research sampling and limits |
 | [Independent review packet](independent-review.md) | Prepared blind labels, separate model results and reviewer procedure |
