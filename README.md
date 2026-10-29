@@ -11,22 +11,23 @@ research performance gates or received a Shariah approval.
 Milestones 1–2 are implemented and locally validated. Milestone 3 includes
 versioned facts, scoped feeds, earnings/actions and real split/session audits.
 Free HistData XAUUSD bid history and the official Federal Reserve calendar now
-provide validated gold/FOMC sample paths. Volume remains explicitly unavailable
-for HistData; conflicting files fail validation.
+provide validated gold/FOMC sample paths. A full 2025 gold audit validates 11 months
+and rejects October; complete-year/session certification remains open. Volume is
+explicitly unavailable for HistData.
 Milestone 4 includes grounded Gemini generation and deterministic gates. A blind
-real-source pilot exposed an embedded-instruction weakness; prompt v4 passes the
-unchanged 8-case regression and a separate 4-case blind pilot. See the
+real-source review exposed instruction and sentiment weaknesses. Prompt v5 passes
+an unchanged 16-case regression and a separate 8-case fresh blind pilot. See the
 [source and label review](docs/source-and-label-review.md): this is AI-assisted
 review, not independent human sign-off or broad source-completeness certification.
 Milestone 6 remains an early single-instrument research prototype.
 Milestones 5 and 7–8 have not started; optional live integration (Milestone 9) is disabled.
 
-The full suite has **299 passing tests**, including research, data integrity,
+The full suite has **312 passing tests**, including research, data integrity,
 advisory-output security and deterministic decision checks. All three
 default strategies and cost-matched buy-and-hold baselines execute on synthetic
 fixtures, finish flat, and reproduce reports byte-for-byte. These are software
 acceptance checks, not evidence of real-world returns or paper-trading readiness.
-GitHub Actions passed for commit `cdc2aad`; verification of the latest fix follows
+GitHub Actions passed for commit `2bcd16c`; verification of this follow-up follows
 its push. See [source/label review](docs/source-and-label-review.md),
 [gold acceptance](reports/gold-source-acceptance-2026-10-29.json) and
 [the fresh v4 pilot](reports/real-primary-v4-fresh-pilot-2026-10-29.json).

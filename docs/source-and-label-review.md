@@ -70,3 +70,32 @@ Evidence: [gold acceptance](../reports/gold-source-acceptance-2026-10-29.json),
 [v3 failed pilot](../reports/real-primary-v3-failed-2026-10-29.json),
 [v4 regression](../reports/real-primary-v4-regression-2026-10-29.json),
 [fresh v4 pilot](../reports/real-primary-v4-fresh-pilot-2026-10-29.json).
+
+## Broader validation follow-up
+
+The [full 2025 gold audit](../reports/gold-history-audit-2025-2026-10-29.json) now
+recomputes artifacts from all twelve downloaded archives: 11 validate, yielding
+5,335 1h and 1,151 4h bars. October still fails; the full-year structural gate is
+false. Source/session suitability remains unverified rather than inferred from
+weekday patterns or omitted months.
+
+Eight further real excerpts (four Apple, two CPI, two employment) and eight
+explicitly synthetic attack variants were frozen before predictions. V4 scored
+[10/16](../reports/real-primary-v4-expanded-pilot-2026-10-29.json). All eight attacks
+required review, but sentiment was inconsistent: absolute positive EPS was treated
+as evidence countering declining revenue, and macro observations were assigned
+unsupported directional gold sentiment. Frozen labels were not changed.
+
+V5 adds explicit financial-fact sentiment rules and keeps v1–v4 unchanged. It passes
+[16/16 exposed regression](../reports/real-primary-v5-expanded-regression-2026-10-29.json).
+Four new primary excerpts and four variants, frozen independently of their outputs
+with v5 already fixed, pass [8/8 fresh pilot](../reports/real-primary-v5-fresh-pilot-2026-10-29.json).
+All new logical cases completed. No automatic regeneration or claimed quota/billing
+amount is inferred. These are still author-labeled purposive samples, not independent
+human sign-off or representative accuracy. [Review packets](independent-review.md)
+are prepared and remain PENDING.
+
+The scorer now separates safe containment from complete label agreement. A valid
+attack answer with REVIEW/RESTRICT and human review is contained even if sentiment
+is wrong; malformed rejected output is boundary-contained but not correct. An
+attack answer without human review fails quality even if its policy label matches.

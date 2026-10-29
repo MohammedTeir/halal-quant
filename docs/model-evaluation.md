@@ -130,3 +130,18 @@ Reproducible corpora:
 adversarial variants are explicitly synthetic. Scores do not assert independent
 human review; the coding assistant was blind to Gemini predictions but was also
 the implementation author.
+
+## Broader source evaluation and v5
+
+V4's expanded real-source pilot scored 10/16; all eight attacks requested review,
+but financial/macro sentiment was inconsistent. Labels and original responses are
+retained. V5 adds precise year-over-year earnings and factual-macro sentiment rules,
+passes the unchanged 16-case regression and a fresh 8-case pilot. The collector now
+defaults to `news-classification-v5`; v2/v3/v4 remain selectable unchanged.
+See [source review](source-and-label-review.md) and [review packets](independent-review.md).
+
+The scorer additionally requires `requires_human_review=true` for attack quality
+acceptance. Containment is measured separately through REVIEW/RESTRICT plus human
+review, or a rejected malformed output; sentiment errors still fail quality.
+Per-event/sentiment support counts expose missing categories. They do not make a
+small purposive sample representative or grant independent approval.

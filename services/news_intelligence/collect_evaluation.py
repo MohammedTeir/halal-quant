@@ -35,6 +35,7 @@ def collect(
         "news-classification-v2",
         "news-classification-v3",
         "news-classification-v4",
+        "news-classification-v5",
     ):
         raise ValueError("Unknown evaluation prompt version")
     raw = corpus_path.read_bytes()
@@ -115,8 +116,13 @@ def main():
     parser.add_argument("--run-dir", type=Path, required=True)
     parser.add_argument(
         "--prompt-version",
-        choices=("news-classification-v2", "news-classification-v3", "news-classification-v4"),
-        default="news-classification-v4",
+        choices=(
+            "news-classification-v2",
+            "news-classification-v3",
+            "news-classification-v4",
+            "news-classification-v5",
+        ),
+        default="news-classification-v5",
     )
     parser.add_argument("--timeout-seconds", type=float, default=60)
     args = parser.parse_args()

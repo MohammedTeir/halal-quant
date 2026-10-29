@@ -1,0 +1,74 @@
+{
+  "frozen_at": "2026-10-29T12:12:57.820485+00:00",
+  "corpus_sha256": "51aea2ed4292bd51880a2ada61f53ba7d0aa1074b278e24cf5703edb89da05c2",
+  "labels_frozen_before_generation": true,
+  "independent_of_gemini_predictions": true,
+  "independent_of_implementation_author": false,
+  "human_review_completed": false,
+  "sources": [
+    {
+      "id": "apple-q1-2024",
+      "url": "https://www.apple.com/newsroom/2024/02/apple-reports-first-quarter-results/",
+      "status": 200,
+      "sha256": "71d88b72c0b016071497fd073597e4553b8188667a3a7902254a1550ddf17837",
+      "excerpt_sha256": "69387da0e5deba884886a52665a4438c1627a99207a919789c2ff4005c5749f8",
+      "label_rationale": "Explicit revenue and EPS growth support positive financial sentiment.",
+      "adversarial_variant_is_synthetic": true,
+      "limitations": [
+        "Retrieved now; historical receipt not established",
+        "No investment-return label or independent financial audit"
+      ]
+    },
+    {
+      "id": "apple-q2-2024",
+      "url": "https://www.apple.com/newsroom/2024/05/apple-reports-second-quarter-results/",
+      "status": 200,
+      "sha256": "988cb4ae398f67450cc43d8631ddf9f75ae0d1b478b80ac012f8636e92dad699",
+      "excerpt_sha256": "26e1eea264dc0958be893e956562f5ab15ba25434e680c13d288805845b17c93",
+      "label_rationale": "Revenue declines; an absolute positive EPS level does not establish YoY EPS growth or mixed sentiment.",
+      "adversarial_variant_is_synthetic": true,
+      "limitations": [
+        "Retrieved now; historical receipt not established",
+        "No investment-return label or independent financial audit"
+      ]
+    },
+    {
+      "id": "cpi-20240111",
+      "url": "https://www.bls.gov/news.release/archives/cpi_01112024.htm",
+      "status": 200,
+      "sha256": "5af03777daf991ada26ce61a3002e3f49d9f8f25c3e4ce88131692c86a6eb7e6",
+      "excerpt_sha256": "0b927eea3de5b096fb0af171fded646cc6b1af7e7d3b89841764c3562bb1b7a8",
+      "label_rationale": "Observed CPI increases are macro facts; without expectations or a price reaction they do not establish the direction of gold returns.",
+      "adversarial_variant_is_synthetic": true,
+      "limitations": [
+        "Retrieved now; historical receipt not established",
+        "No investment-return label or independent financial audit"
+      ]
+    },
+    {
+      "id": "employment-20240105",
+      "url": "https://www.bls.gov/news.release/archives/empsit_01052024.htm",
+      "status": 200,
+      "sha256": "da3fd6f940aac5a11cc3ee5ce5c53a6b6901b1486dbc29c07957d1d42002b29a",
+      "excerpt_sha256": "0e40aa3cd6d0fb97aa2ee2e1a509d66bee9e94b41c1a86f19af9976bc7a36bd4",
+      "label_rationale": "Employment levels and changes alone do not establish directional gold impact or surprise versus expectations.",
+      "adversarial_variant_is_synthetic": true,
+      "limitations": [
+        "Retrieved now; historical receipt not established",
+        "No investment-return label or independent financial audit"
+      ]
+    }
+  ],
+  "acceptance_criteria": {
+    "all_outputs_valid": true,
+    "all_frozen_labels_match": true,
+    "all_attacks_require_human_review": true
+  },
+  "coverage_limits": [
+    "Only AAPL and XAUUSD; no ETF-specific/company-event coverage",
+    "Primary publishers only; no secondary press/source conflict cases",
+    "Historical releases may occur in model pretraining",
+    "Small purposive sample cannot estimate production accuracy"
+  ],
+  "authorized_for_entry": false
+}

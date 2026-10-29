@@ -75,6 +75,7 @@ class ClassificationRequest(BaseModel):
         "news-classification-v2",
         "news-classification-v3",
         "news-classification-v4",
+        "news-classification-v5",
     ]
     raw_output: str = Field(min_length=2, max_length=65536)
 

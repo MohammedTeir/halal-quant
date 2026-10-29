@@ -56,3 +56,13 @@ independence limits). `real-primary-v3-failed-2026-10-29.json` retains the origi
 7/8 failure; `real-primary-v4-regression-2026-10-29.json` and
 `real-primary-v4-fresh-pilot-2026-10-29.json` record 8/8 regression and 4/4 fresh
 pilot. These reports explicitly do not establish independent human sign-off.
+
+
+`gold-history-audit-2025-2026-10-29.json` accounts for all twelve downloaded months,
+recomputes derived artifacts and rejects October; its annual gate is false.
+`expanded-pilot-label-freeze-2026-10-29.json` and
+`fresh-v5-label-freeze-2026-10-29.json` bind author labels frozen before inference.
+`real-primary-v4-expanded-pilot-2026-10-29.json` preserves the 10/16 failed quality
+result; the v5 expanded regression and fresh pilot reports pass 16/16 and 8/8.
+Containment is separate from sentiment quality. See the
+[review guide](../docs/independent-review.md); no independent approval is claimed.

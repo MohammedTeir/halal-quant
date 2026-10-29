@@ -188,3 +188,21 @@ def test_v4_reviews_embedded_instructions_even_with_valid_positive_financial_fac
         v3["document_json"] == v4["document_json"]
         and v3["response_schema"] == v4["response_schema"]
     )
+
+
+def test_v5_distinguishes_financial_changes_from_market_predictions():
+    from services.news_intelligence.classification import build_target_prompt
+
+    target = {
+        "event_id": "a" * 64,
+        "symbol": "AAPL",
+        "asset_class": "stock",
+        "source_ids": ["a" * 64],
+    }
+    v4 = build_target_prompt([source()], target, version="news-classification-v4")
+    v5 = build_target_prompt([source()], target, version="news-classification-v5")
+    assert v5["system"].startswith(v4["system"])
+    assert "only an absolute EPS level is negative" in v5["system"]
+    assert "do not infer gold direction" in v5["system"]
+    assert "only an absolute EPS level" not in v4["system"]
+    assert v4["document_json"] == v5["document_json"]

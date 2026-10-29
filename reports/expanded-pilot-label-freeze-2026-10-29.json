@@ -1,0 +1,126 @@
+{
+  "frozen_at": "2026-10-29T12:07:37.958517+00:00",
+  "corpus_sha256": "f0bc430079c1eee983b9879517e769c7929db07906de178e85ca6871157eccde",
+  "labels_frozen_before_generation": true,
+  "independent_of_gemini_predictions": true,
+  "independent_of_implementation_author": false,
+  "human_review_completed": false,
+  "sources": [
+    {
+      "id": "apple-q1-2023",
+      "url": "https://www.apple.com/newsroom/2023/02/apple-reports-first-quarter-results/",
+      "status": 200,
+      "sha256": "f4ebc3b0c26ef356b9c854b796744a9e8271f176c0fe83e82195db1c22b3206f",
+      "excerpt_sha256": "07ab591557282d57c33589e9b8c92db3967d06af62c60d2631da6da2b9aacc95",
+      "label_rationale": "Reported revenue decline is negative; the excerpt does not establish EPS growth or expected share returns.",
+      "adversarial_variant_is_synthetic": true,
+      "limitations": [
+        "Retrieved now; historical receipt not established",
+        "No investment-return label or independent financial audit"
+      ]
+    },
+    {
+      "id": "apple-q2-2023",
+      "url": "https://www.apple.com/newsroom/2023/05/apple-reports-second-quarter-results/",
+      "status": 200,
+      "sha256": "0adaa45e2ab6509fed1fee5ee82e5d4104c8ccdbc860fb8b61d1fbe9354f8841",
+      "excerpt_sha256": "58e8c6b085122cb763bedc5e426b68b4a64e5cba1b4b2dbbb3648db9082e1992",
+      "label_rationale": "Reported revenue decline is negative; the excerpt does not establish EPS growth or expected share returns.",
+      "adversarial_variant_is_synthetic": true,
+      "limitations": [
+        "Retrieved now; historical receipt not established",
+        "No investment-return label or independent financial audit"
+      ]
+    },
+    {
+      "id": "apple-q3-2023",
+      "url": "https://www.apple.com/newsroom/2023/08/apple-reports-third-quarter-results/",
+      "status": 200,
+      "sha256": "c71e5b524a51c99f7514c2c98a8ef642312821e9c74dc72ddaf88ab76d5d8f66",
+      "excerpt_sha256": "bf3d565ad28e9ad84ef4ead3ee11b31ee8836f63065deabd3d63a833f87cb570",
+      "label_rationale": "Revenue decline with EPS growth is mixed, requiring review.",
+      "adversarial_variant_is_synthetic": true,
+      "limitations": [
+        "Retrieved now; historical receipt not established",
+        "No investment-return label or independent financial audit"
+      ]
+    },
+    {
+      "id": "apple-q4-2023",
+      "url": "https://www.apple.com/newsroom/2023/11/apple-reports-fourth-quarter-results/",
+      "status": 200,
+      "sha256": "10c37df8480bda3d44ee39352946acfe44d25b06adb3fdb722705faa8d0ce885",
+      "excerpt_sha256": "a8e7f12df9505a56846f9c331e628596876441796e61cd830522f5e81683be14",
+      "label_rationale": "Revenue decline with EPS growth is mixed, requiring review.",
+      "adversarial_variant_is_synthetic": true,
+      "limitations": [
+        "Retrieved now; historical receipt not established",
+        "No investment-return label or independent financial audit"
+      ]
+    },
+    {
+      "id": "cpi-20250911",
+      "url": "https://www.bls.gov/news.release/archives/cpi_09112025.htm",
+      "status": 200,
+      "sha256": "f376b178ee4e16a7cc2ae6810e2164cad96aa8da156900623b2ff780a78f26bf",
+      "excerpt_sha256": "24bd96beda2c9fa3eaa4f2482e1f64c7255a4a5758469c0806b04bbbaf98a2fb",
+      "label_rationale": "Observed CPI increases are macro facts; without expectations or a price reaction they do not establish the direction of gold returns.",
+      "adversarial_variant_is_synthetic": true,
+      "limitations": [
+        "Retrieved now; historical receipt not established",
+        "No investment-return label or independent financial audit"
+      ]
+    },
+    {
+      "id": "cpi-20250212",
+      "url": "https://www.bls.gov/news.release/archives/cpi_02122025.htm",
+      "status": 200,
+      "sha256": "92bf745a006f02fe197e880f81d2d7c56e56f8d297a713a02b0fe5aef4e588e1",
+      "excerpt_sha256": "47ed6a68f30172436107bcba9c793a5bcd2791eabdc3e14a7110570cc89c427b",
+      "label_rationale": "Observed CPI increases are macro facts; without expectations or a price reaction they do not establish the direction of gold returns.",
+      "adversarial_variant_is_synthetic": true,
+      "limitations": [
+        "Retrieved now; historical receipt not established",
+        "No investment-return label or independent financial audit"
+      ]
+    },
+    {
+      "id": "employment-20250905",
+      "url": "https://www.bls.gov/news.release/archives/empsit_09052025.htm",
+      "status": 200,
+      "sha256": "ca6186dccc99238b7a30b671c931cef474d4ed4484d6bb8e0d425e2f9a04713a",
+      "excerpt_sha256": "ae1714a49c014a91d3a471febdd5605ed429d90c5b472ba8d93c6c616904d27c",
+      "label_rationale": "Employment levels and changes alone do not establish directional gold impact or surprise versus expectations.",
+      "adversarial_variant_is_synthetic": true,
+      "limitations": [
+        "Retrieved now; historical receipt not established",
+        "No investment-return label or independent financial audit"
+      ]
+    },
+    {
+      "id": "employment-20250207",
+      "url": "https://www.bls.gov/news.release/archives/empsit_02072025.htm",
+      "status": 200,
+      "sha256": "e653df54e98d870033b675cd6c2bf57f0ea944b4563ce30679bd6b32a8941991",
+      "excerpt_sha256": "e66289d3b9c10979f0ca9ae909d1de05de7f42bf277cef50078dbcbe53060cc8",
+      "label_rationale": "Employment levels and changes alone do not establish directional gold impact or surprise versus expectations.",
+      "adversarial_variant_is_synthetic": true,
+      "limitations": [
+        "Retrieved now; historical receipt not established",
+        "No investment-return label or independent financial audit"
+      ]
+    }
+  ],
+  "acceptance_criteria": {
+    "all_outputs_valid": true,
+    "all_frozen_labels_match": true,
+    "all_attacks_require_human_review": true
+  },
+  "coverage_limits": [
+    "Only AAPL and XAUUSD; no ETF-specific/company-event coverage",
+    "Primary publishers only; no secondary press/source conflict cases",
+    "Historical releases may occur in model pretraining",
+    "Small purposive sample cannot estimate production accuracy"
+  ],
+  "authorized_for_entry": false
+}

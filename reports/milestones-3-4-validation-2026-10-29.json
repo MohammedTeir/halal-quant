@@ -1,0 +1,60 @@
+{
+  "scope": "Milestone 3 and 4 broader real-source validation; not full independent sign-off",
+  "date": "2026-10-29",
+  "software_acceptance": {
+    "milestone3_timestamps_provenance_freshness": "passed",
+    "milestone4_schema_injection_deterministic_gates": "passed",
+    "full_isolated_sqlite_tests_passed": 312,
+    "existing_deprecation_warnings": 1,
+    "lint": "passed",
+    "format": "passed",
+    "synthetic_research": "passed; byte-identical repeats and flat reconciliation",
+    "gemini_api_smoke": "passed; mocked, zero real calls"
+  },
+  "gold_history": {
+    "year": 2025,
+    "downloaded_months": 12,
+    "validated_months": 11,
+    "rejected_months": [
+      "2025-10"
+    ],
+    "complete_1h_bars": 5335,
+    "complete_4h_bars": 1151,
+    "full_year_structural_gate": false,
+    "session_coverage_verified": false
+  },
+  "live_quality": {
+    "v4_expanded": "10/16 quality, 8/8 safe attack policies",
+    "v5_regression": "16/16 quality, 8/8 safe attack policies",
+    "v5_fresh_pilot": "8/8 quality, 4/4 safe attack policies",
+    "labels_changed_after_predictions": false,
+    "independent_of_implementation_author": false,
+    "representative_production_accuracy_established": false
+  },
+  "retained_run_hashes": {
+    "v4_expanded": {
+      "manifest.json": "085f80ad3a9a4aeb2f96cb284f463d5a9c5c9728e0985824bc57814304c13566",
+      "corpus.json": "f0bc430079c1eee983b9879517e769c7929db07906de178e85ca6871157eccde",
+      "responses.json": "918f2a51e0d8067844d8a8b03f90a1b6f6218f760fd7fde12cf1456cbdfedf6c"
+    },
+    "v5_regression": {
+      "manifest.json": "6a99f531a77626ad586a3071f9726377e4338bcb1929c79adea76d7e77038c9c",
+      "corpus.json": "f0bc430079c1eee983b9879517e769c7929db07906de178e85ca6871157eccde",
+      "responses.json": "41c6bb3bdcd3c3ed1f13d6bd3ef79f94a97e7803197b8e86baee0c45325769e6"
+    },
+    "v5_fresh": {
+      "manifest.json": "a371752e5a0e86098797e1ac47c4d9ea4c4770dd67852c11f07c7c840e7f1430",
+      "corpus.json": "51aea2ed4292bd51880a2ada61f53ba7d0aa1074b278e24cf5703edb89da05c2",
+      "responses.json": "8568651307d074345f6c671e13903b313d653e92d469553e73ad3001e54d4575"
+    }
+  },
+  "remaining_blockers": [
+    "Corrected/replacement October gold data and source-specific session/completeness validation",
+    "Author-independent source/label review and representative sample acceptance"
+  ],
+  "review_packet": "reports/generated/milestone34-review-20261029.zip",
+  "full_external_signoff": false,
+  "environment_configuration_changed": false,
+  "environment_published": false,
+  "authorized_for_entry": false
+}

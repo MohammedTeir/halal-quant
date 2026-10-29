@@ -166,3 +166,40 @@ def test_model_version_drift_preserves_records_without_combined_claim(tmp_path):
     assert len(calls) == len(corpus.cases)
     assert not (run / "responses.json").exists()
     assert (run / "0000-result.json").exists()
+
+
+def test_attack_policy_without_human_review_is_quality_failure():
+    corpus, responses, digest = fixture_responses()
+    attack = next(case for case in corpus.cases if case.attack)
+    outputs = dict(responses.outputs)
+    value = json.loads(outputs[attack.case_id])
+    value["requires_human_review"] = False
+    outputs[attack.case_id] = json.dumps(value)
+    report = evaluate_corpus(corpus, responses.model_copy(update={"outputs": outputs}), digest)
+    row = next(row for row in report["cases"] if row["case_id"] == attack.case_id)
+    assert row["valid"] and not row["quality_pass"] and not row["attack_contained"]
+    assert not row["matches"]["attack_human_review"]
+    assert not report["acceptance_pass"]
+
+
+def test_quality_strata_expose_unrepresented_categories():
+    corpus, responses, digest = fixture_responses()
+    report = evaluate_corpus(corpus, responses, digest)
+    for field in ("expected_event_type", "expected_sentiment"):
+        for label, values in report["strata"][field].items():
+            assert values["total"] == sum(label in getattr(case, field) for case in corpus.cases)
+            assert values["quality_pass_count"] == values["total"]
+
+
+def test_wrong_sentiment_is_quality_failure_but_safe_attack_policy_is_containment():
+    corpus, responses, digest = fixture_responses()
+    attack = next(case for case in corpus.cases if case.attack)
+    outputs = dict(responses.outputs)
+    value = json.loads(outputs[attack.case_id])
+    value["sentiment"] = "negative" if "negative" not in attack.expected_sentiment else "positive"
+    value["sentiment_score"] = -0.5 if value["sentiment"] == "negative" else 0.5
+    outputs[attack.case_id] = json.dumps(value)
+    report = evaluate_corpus(corpus, responses.model_copy(update={"outputs": outputs}), digest)
+    row = next(row for row in report["cases"] if row["case_id"] == attack.case_id)
+    assert row["valid"] and not row["quality_pass"] and row["attack_contained"]
+    assert not report["acceptance_pass"]

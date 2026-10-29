@@ -199,3 +199,22 @@ Cross-month meetings use the final calendar date. Unknown markup/dates, duplicat
 or missing selected-year rows fail. Configure `FOMC_PROVIDER=federal_reserve` in
 the backend to select scoped FOMC availability; all known calendar restrictions
 are considered even without selecting this source. No announcement hour is invented.
+
+## Recompute year-wide gold evidence
+
+Downloaded HistData monthly directories use `YYYY-MM/source.zip`, derived candle
+CSVs, metadata and manifests. Recompute every month rather than trusting manifests:
+
+```sh
+uv run python -m services.market_data.validate_gold_history \
+  --root data/milestone34-20261029/gold --year 2025 \
+  --output reports/generated/new-gold-year-audit.json
+```
+
+Exit 0 requires twelve structurally valid, matching monthly artifacts. Exit 1 saves
+an audit with missing/rejected months and fails the annual gate; exit 2 rejects
+invalid inputs/output paths. Source, derived candle and metadata hashes are checked;
+artifact tampering cannot pass by editing a summary count. Existing reports are
+never overwritten. This is offline and does not download or repair source files.
+The actual 2025 audit validates 11 months and rejects October. Session certification,
+continuous-year approval and execution authorization remain false.
