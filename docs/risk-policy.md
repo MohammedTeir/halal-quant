@@ -1,6 +1,6 @@
 # Risk policy specification
 
-Status: **requirements only; portfolio risk and policy-based order sizing are not implemented**.
+Status: **hypothetical portfolio checks and Decimal sizing implemented; operational risk state/authorization is not yet implemented**. See [Milestone 5 increment](milestone-5-controls.md).
 The Python/Pine 10% simulated allocation is a research setting, not enforcement of this policy.
 The Python research adapter uses whole shares and cash-only margin, but these
 local constraints do not implement the portfolio limits below.
@@ -30,6 +30,5 @@ historical approval cannot substitute for current broker/account evidence.
 
 Milestone 5 acceptance includes boundary sizing, insufficient cash, pending-order
 capacity, portfolio/sector caps, stale data, disconnected broker and owned protective
-exit cases. Reset timing, valuation conventions and cooldown duration must be made
-explicit before implementing those policies. Critical live risk-limit changes
+exit cases. The preview uses explicit New York loss-day, day-start/peak-equity and 60-minute cooldown conventions; authoritative valuation/history and broker integration remain required before operational use. Critical live risk-limit changes
 require human approval under the blueprint.

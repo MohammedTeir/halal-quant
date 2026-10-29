@@ -10,7 +10,7 @@ Implementation acceptance and independent release sign-off are tracked separatel
 | 2 | Three Python strategies; optional Pine | Agreed Python acceptance passes | Long-only causal stock/ETF/gold strategies; nonzero synthetic train/holdout trades, explicit costs, flat reconciliation and byte-identical reports. Pine compilation/parity remains unverified and optional. |
 | 3 | Market and news data | Implementation acceptance passes; historical/source sign-off incomplete | Real Alpaca candles/actions, Finnhub news/earnings, BLS and official FOMC ingestion; immutable revisions, point-in-time provenance, scoped freshness, corporate-action and session checks. A normalized 2025 audit validates all 12 months (5,855 1h / 1,263 4h bars), retaining proof of 60 identical duplicates removed. Source/session research-release approval remains unavailable. |
 | 4 | AI intelligence and decisions | Implementation acceptance passes; independent quality sign-off incomplete | Strict schemas/evidence/targets, durable Gemini jobs, event policies and deterministic gates; v5 passes 16/16 exposed real-primary/adversarial regression and 8/8 fresh blind pilot. Separate AI technical review now completed with conditional research-only acceptance; publisher identity, gold session binding and representative policy/calibration conditions remain open before deployment. |
-| 5 | Compliance and risk | Not started | Screening methodology, ownership/custody, cash/position sizing, exposure/loss limits and protective-exit authority. |
+| 5 | Compliance and risk | Started: hypothetical controls core | Strict evidence/scope/expiry checks, forbidden transactions, Decimal sizing, reservations, caps/loss/cooldown/kill-switch guards and owned-exit simulation pass. [First increment](milestone-5-controls.md). Actual scholarly/broker authority, versioned persistence and operational integration remain. |
 | 6 | Research and backtesting | Technical single-instrument prototype | Portfolio simulation, point-in-time news/compliance replay, verified historical coverage, walk-forward/Monte Carlo, liquidity and blueprint performance gates remain. |
 | 7 | Dashboard and Telegram | Not started | UI and end-to-end notification acceptance. |
 | 8 | Paper trading | Not started | Broker simulation, ledger, order lifecycle, reconciliation and stable forward test. |
@@ -102,3 +102,11 @@ against a hash-bound, machine-verified official reference table with New York DS
 Provider/2025 holiday binding remains unverified; no reference gap is certified as a
 HistData market closure. Full current regression: **334 passed**. Historical
 reports preserve their earlier states; the review does not grant execution approval.
+
+
+## Milestone 5 initial implementation
+
+The [controls increment](milestone-5-controls.md) adds 78 hypothetical engine/API tests;
+full regression is **412 passed**. Preview is authenticated/read-only and does not
+promote caller facts into real broker/compliance/ownership state. Scope is research
+simulation; methodology defaults unselected and no operational approval is granted.

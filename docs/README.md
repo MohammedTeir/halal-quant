@@ -9,6 +9,8 @@ read [milestones](milestones.md) for implementation status and acceptance eviden
 | [Gold session investigation](gold-session-review.md) | All 2025 minute gaps, bounded official reference and unresolved source/holiday binding |
 | [نتيجة تدقيق جلسات الذهب](gold-session-review.ar.md) | توضيح عربي للنتائج وحدود اعتماد الإغلاقات |
 | [Independent technical review](independent-technical-review-2026-10-29.md) | Separate AI reviewer findings, evidence and conditional research-only verdict |
+| [المرحلة الخامسة بالعربية](milestone-5-controls.ar.md) | المنجز في الجزء الأول وما تبقى قبل الاعتماد التشغيلي |
+| [Milestone 5 controls](milestone-5-controls.md) | Hypothetical compliance/risk API and CLI, acceptance, explicit conventions and remaining authority work |
 | [Master blueprint v2](blueprint-v2.md) | Original full project requirements and acceptance gates |
 | [External human-label evaluation](external-label-evaluation.md) | Independent original sentiment labels, frozen research sampling and limits |
 | [Independent review packet](independent-review.md) | Prepared blind labels, separate model results and reviewer procedure |

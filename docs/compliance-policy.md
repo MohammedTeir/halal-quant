@@ -1,6 +1,6 @@
 # Compliance policy specification
 
-Status: **requirements only; the compliance engine is not implemented**. No
+Status: **hypothetical control checks implemented; operational compliance authority is not yet implemented**. See [Milestone 5 increment](milestone-5-controls.md). No
 instrument is approved by this repository. The screening methodology, qualified
 review process, provider and gold instrument remain undecided.
 

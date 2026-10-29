@@ -1,0 +1,1091 @@
+{
+  "$defs": {
+    "AccountSnapshot": {
+      "additionalProperties": false,
+      "properties": {
+        "account_id": {
+          "maxLength": 200,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$",
+          "title": "Account Id",
+          "type": "string"
+        },
+        "evidence": {
+          "$ref": "#/$defs/ControlEvidence"
+        },
+        "connected": {
+          "default": false,
+          "title": "Connected",
+          "type": "boolean"
+        },
+        "account_type": {
+          "default": "unknown",
+          "enum": [
+            "cash",
+            "margin",
+            "unknown"
+          ],
+          "title": "Account Type",
+          "type": "string"
+        },
+        "lending_enabled": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Lending Enabled"
+        },
+        "borrowing_enabled": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Borrowing Enabled"
+        },
+        "positions_complete": {
+          "default": false,
+          "title": "Positions Complete",
+          "type": "boolean"
+        },
+        "reservations_complete": {
+          "default": false,
+          "title": "Reservations Complete",
+          "type": "boolean"
+        },
+        "equity": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Equity"
+        },
+        "day_start_equity": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Day Start Equity"
+        },
+        "peak_equity": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Peak Equity"
+        },
+        "settled_cash": {
+          "anyOf": [
+            {
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Settled Cash"
+        },
+        "other_cash_holds": {
+          "anyOf": [
+            {
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "default": "0",
+          "title": "Other Cash Holds"
+        },
+        "trading_day": {
+          "format": "date",
+          "title": "Trading Day",
+          "type": "string"
+        },
+        "realized_pnl_today": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "default": "0",
+          "title": "Realized Pnl Today"
+        },
+        "consecutive_losses": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Consecutive Losses",
+          "type": "integer"
+        },
+        "last_loss_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Last Loss At"
+        },
+        "positions": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/Position"
+          },
+          "maxItems": 500,
+          "title": "Positions",
+          "type": "array"
+        },
+        "reservations": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/Reservation"
+          },
+          "maxItems": 500,
+          "title": "Reservations",
+          "type": "array"
+        }
+      },
+      "required": [
+        "account_id",
+        "evidence",
+        "equity",
+        "day_start_equity",
+        "peak_equity",
+        "settled_cash",
+        "trading_day"
+      ],
+      "title": "AccountSnapshot",
+      "type": "object"
+    },
+    "AssetScreen": {
+      "additionalProperties": false,
+      "properties": {
+        "symbol": {
+          "maxLength": 64,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$",
+          "title": "Symbol",
+          "type": "string"
+        },
+        "asset_class": {
+          "enum": [
+            "stock",
+            "etf",
+            "gold"
+          ],
+          "title": "Asset Class",
+          "type": "string"
+        },
+        "status": {
+          "default": "PENDING",
+          "enum": [
+            "APPROVED",
+            "PENDING",
+            "REJECTED"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "methodology": {
+          "maxLength": 200,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$",
+          "title": "Methodology",
+          "type": "string"
+        },
+        "evidence": {
+          "$ref": "#/$defs/ControlEvidence"
+        },
+        "purification_guidance": {
+          "maxLength": 2000,
+          "minLength": 1,
+          "title": "Purification Guidance",
+          "type": "string"
+        },
+        "business_activity_pass": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Business Activity Pass"
+        },
+        "financial_ratios_pass": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Financial Ratios Pass"
+        },
+        "fund_mandate_pass": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Fund Mandate Pass"
+        },
+        "holdings_process_pass": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Holdings Process Pass"
+        },
+        "fund_structure_pass": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Fund Structure Pass"
+        },
+        "shariah_supervision_pass": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Shariah Supervision Pass"
+        },
+        "gold_ownership_pass": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Gold Ownership Pass"
+        },
+        "gold_possession_pass": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Gold Possession Pass"
+        },
+        "gold_custody_pass": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Gold Custody Pass"
+        },
+        "gold_settlement_pass": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Gold Settlement Pass"
+        },
+        "gold_redemption_pass": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Gold Redemption Pass"
+        }
+      },
+      "required": [
+        "symbol",
+        "asset_class",
+        "methodology",
+        "evidence",
+        "purification_guidance"
+      ],
+      "title": "AssetScreen",
+      "type": "object"
+    },
+    "ControlCandidate": {
+      "additionalProperties": false,
+      "properties": {
+        "symbol": {
+          "maxLength": 64,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$",
+          "title": "Symbol",
+          "type": "string"
+        },
+        "asset_class": {
+          "enum": [
+            "stock",
+            "etf",
+            "gold"
+          ],
+          "title": "Asset Class",
+          "type": "string"
+        },
+        "sector": {
+          "maxLength": 200,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$",
+          "title": "Sector",
+          "type": "string"
+        },
+        "action": {
+          "enum": [
+            "BUY",
+            "SELL",
+            "SHORT"
+          ],
+          "title": "Action",
+          "type": "string"
+        },
+        "quantity": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Quantity"
+        },
+        "stop_price": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Stop Price"
+        },
+        "margin_requested": {
+          "default": false,
+          "title": "Margin Requested",
+          "type": "boolean"
+        },
+        "borrow_requested": {
+          "default": false,
+          "title": "Borrow Requested",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "symbol",
+        "asset_class",
+        "sector",
+        "action"
+      ],
+      "title": "ControlCandidate",
+      "type": "object"
+    },
+    "ControlEvidence": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence_id": {
+          "maxLength": 200,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$",
+          "title": "Evidence Id",
+          "type": "string"
+        },
+        "provider": {
+          "maxLength": 64,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.-]+$",
+          "title": "Provider",
+          "type": "string"
+        },
+        "document_sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Document Sha256",
+          "type": "string"
+        },
+        "observed_at": {
+          "format": "date-time",
+          "title": "Observed At",
+          "type": "string"
+        },
+        "recorded_at": {
+          "format": "date-time",
+          "title": "Recorded At",
+          "type": "string"
+        },
+        "effective_at": {
+          "format": "date-time",
+          "title": "Effective At",
+          "type": "string"
+        },
+        "expires_at": {
+          "format": "date-time",
+          "title": "Expires At",
+          "type": "string"
+        }
+      },
+      "required": [
+        "evidence_id",
+        "provider",
+        "document_sha256",
+        "observed_at",
+        "recorded_at",
+        "effective_at",
+        "expires_at"
+      ],
+      "title": "ControlEvidence",
+      "type": "object"
+    },
+    "ControlPolicy": {
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "default": "controls-research-v1",
+          "maxLength": 200,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$",
+          "title": "Version",
+          "type": "string"
+        },
+        "methodology": {
+          "anyOf": [
+            {
+              "maxLength": 200,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_.:/-]+$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Methodology"
+        },
+        "risk_per_trade": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "maximum": 1.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "default": "0.005",
+          "title": "Risk Per Trade"
+        },
+        "max_open_risk": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "maximum": 1.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "default": "0.03",
+          "title": "Max Open Risk"
+        },
+        "max_position": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "maximum": 1.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "default": "0.10",
+          "title": "Max Position"
+        },
+        "max_sector": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "maximum": 1.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "default": "0.25",
+          "title": "Max Sector"
+        },
+        "max_daily_loss": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "maximum": 1.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "default": "0.02",
+          "title": "Max Daily Loss"
+        },
+        "max_drawdown": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "maximum": 1.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "default": "0.10",
+          "title": "Max Drawdown"
+        },
+        "consecutive_loss_limit": {
+          "default": 3,
+          "exclusiveMinimum": 0,
+          "title": "Consecutive Loss Limit",
+          "type": "integer"
+        },
+        "cooldown_minutes": {
+          "default": 60,
+          "exclusiveMinimum": 0,
+          "maximum": 10080,
+          "title": "Cooldown Minutes",
+          "type": "integer"
+        },
+        "broker_max_age_seconds": {
+          "default": 30,
+          "exclusiveMinimum": 0,
+          "maximum": 86400,
+          "title": "Broker Max Age Seconds",
+          "type": "integer"
+        },
+        "quote_max_age_seconds": {
+          "default": 15,
+          "exclusiveMinimum": 0,
+          "maximum": 86400,
+          "title": "Quote Max Age Seconds",
+          "type": "integer"
+        },
+        "loss_day_timezone": {
+          "default": "America/New_York",
+          "title": "Loss Day Timezone",
+          "type": "string"
+        },
+        "kill_switch": {
+          "default": false,
+          "title": "Kill Switch",
+          "type": "boolean"
+        },
+        "fee_per_share": {
+          "anyOf": [
+            {
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "default": "0",
+          "title": "Fee Per Share"
+        },
+        "fee_per_order": {
+          "anyOf": [
+            {
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "default": "0",
+          "title": "Fee Per Order"
+        },
+        "slippage_bps": {
+          "anyOf": [
+            {
+              "exclusiveMaximum": 10000.0,
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "default": "0",
+          "title": "Slippage Bps"
+        }
+      },
+      "title": "ControlPolicy",
+      "type": "object"
+    },
+    "InstrumentReview": {
+      "additionalProperties": false,
+      "properties": {
+        "symbol": {
+          "maxLength": 64,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$",
+          "title": "Symbol",
+          "type": "string"
+        },
+        "asset_class": {
+          "enum": [
+            "stock",
+            "etf",
+            "gold"
+          ],
+          "title": "Asset Class",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "equity",
+            "fund",
+            "allocated_gold",
+            "cfd",
+            "future",
+            "option",
+            "unknown"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "evidence": {
+          "$ref": "#/$defs/ControlEvidence"
+        },
+        "settlement_and_possession_pass": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Settlement And Possession Pass"
+        }
+      },
+      "required": [
+        "symbol",
+        "asset_class",
+        "kind",
+        "evidence"
+      ],
+      "title": "InstrumentReview",
+      "type": "object"
+    },
+    "MarketQuote": {
+      "additionalProperties": false,
+      "properties": {
+        "symbol": {
+          "maxLength": 64,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$",
+          "title": "Symbol",
+          "type": "string"
+        },
+        "asset_class": {
+          "enum": [
+            "stock",
+            "etf",
+            "gold"
+          ],
+          "title": "Asset Class",
+          "type": "string"
+        },
+        "evidence": {
+          "$ref": "#/$defs/ControlEvidence"
+        },
+        "bid": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Bid"
+        },
+        "ask": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Ask"
+        },
+        "required_feeds_fresh": {
+          "default": false,
+          "title": "Required Feeds Fresh",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "symbol",
+        "asset_class",
+        "evidence",
+        "bid",
+        "ask"
+      ],
+      "title": "MarketQuote",
+      "type": "object"
+    },
+    "Position": {
+      "additionalProperties": false,
+      "properties": {
+        "symbol": {
+          "maxLength": 64,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$",
+          "title": "Symbol",
+          "type": "string"
+        },
+        "asset_class": {
+          "enum": [
+            "stock",
+            "etf",
+            "gold"
+          ],
+          "title": "Asset Class",
+          "type": "string"
+        },
+        "sector": {
+          "maxLength": 200,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$",
+          "title": "Sector",
+          "type": "string"
+        },
+        "quantity": {
+          "anyOf": [
+            {
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Quantity"
+        },
+        "sellable_quantity": {
+          "anyOf": [
+            {
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Sellable Quantity"
+        },
+        "market_value": {
+          "anyOf": [
+            {
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Market Value"
+        },
+        "open_risk": {
+          "anyOf": [
+            {
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Open Risk"
+        }
+      },
+      "required": [
+        "symbol",
+        "asset_class",
+        "sector",
+        "quantity",
+        "sellable_quantity",
+        "market_value"
+      ],
+      "title": "Position",
+      "type": "object"
+    },
+    "Reservation": {
+      "additionalProperties": false,
+      "properties": {
+        "reservation_id": {
+          "maxLength": 200,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$",
+          "title": "Reservation Id",
+          "type": "string"
+        },
+        "symbol": {
+          "maxLength": 64,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$",
+          "title": "Symbol",
+          "type": "string"
+        },
+        "sector": {
+          "maxLength": 200,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$",
+          "title": "Sector",
+          "type": "string"
+        },
+        "side": {
+          "enum": [
+            "BUY",
+            "SELL"
+          ],
+          "title": "Side",
+          "type": "string"
+        },
+        "quantity": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Quantity"
+        },
+        "notional": {
+          "anyOf": [
+            {
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Notional"
+        },
+        "estimated_fee": {
+          "anyOf": [
+            {
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Estimated Fee"
+        },
+        "planned_risk": {
+          "anyOf": [
+            {
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Planned Risk"
+        }
+      },
+      "required": [
+        "reservation_id",
+        "symbol",
+        "sector",
+        "side",
+        "quantity",
+        "notional",
+        "estimated_fee"
+      ],
+      "title": "Reservation",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "mode": {
+      "const": "hypothetical",
+      "default": "hypothetical",
+      "title": "Mode",
+      "type": "string"
+    },
+    "as_of": {
+      "format": "date-time",
+      "title": "As Of",
+      "type": "string"
+    },
+    "candidate": {
+      "$ref": "#/$defs/ControlCandidate"
+    },
+    "policy": {
+      "$ref": "#/$defs/ControlPolicy"
+    },
+    "assessment": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/AssetScreen"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "instrument": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/InstrumentReview"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "account": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/AccountSnapshot"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "quote": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/MarketQuote"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    }
+  },
+  "required": [
+    "as_of",
+    "candidate"
+  ],
+  "title": "ControlScenario",
+  "type": "object"
+}

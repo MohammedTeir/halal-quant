@@ -25,8 +25,8 @@ research gates, preserving a complete decision snapshot. The Gemini provider ada
 uses fixed-host HTTPS and structured output behind a backend-only enable/key/model
 configuration. Generation claims commit before the network call and finish in a
 separate transaction with source revalidation; no SQL transaction spans inference.
-Provider requests are synchronous, not a background queue. Real Gemini behavior
-and model quality remain unverified; acceptance uses HTTP mocks.
+Provider requests are synchronous, not a background queue. Configured Gemini compatibility and limited source-quality diagnostics have live
+evidence; representative production quality remains unverified. CI uses mocks.
 Read-only Alpaca/Finnhub/BLS acquisition and a restart-safe normalized batch worker
 are available as explicit operator commands; live provider coverage remains unverified.
 There is no portfolio research engine or broker adapter yet. The research
@@ -54,3 +54,10 @@ The [frozen evaluation workflow](model-evaluation.md) collects and scores model
 responses separately from order decisions. [Provider acquisition](data-providers.md)
 archives source inputs and preserves server receipt/revision semantics. Neither
 workflow supplies compliance, risk, ownership or execution authority.
+
+
+`services/controls` and `packages/schemas/controls.py` now implement the first
+Milestone 5 hypothetical compliance/risk boundary. The read-only authenticated
+preview has no path into persisted TrustedState or broker authority. It consumes
+only caller-supplied hypothetical evidence; server candidate evaluation retains
+its missing-authority gates. [Operational integration remains](milestone-5-controls.md).

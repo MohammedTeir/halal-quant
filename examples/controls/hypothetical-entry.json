@@ -1,0 +1,86 @@
+{
+  "mode": "hypothetical",
+  "as_of": "2025-01-02T15:00:00+00:00",
+  "candidate": {
+    "symbol": "EXAMPLE",
+    "asset_class": "stock",
+    "sector": "technology",
+    "action": "BUY",
+    "stop_price": "95"
+  },
+  "policy": {
+    "methodology": "demo-fixture-v1"
+  },
+  "assessment": {
+    "symbol": "EXAMPLE",
+    "asset_class": "stock",
+    "status": "APPROVED",
+    "methodology": "demo-fixture-v1",
+    "evidence": {
+      "evidence_id": "screen-fixture",
+      "provider": "demo_fixture",
+      "document_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "observed_at": "2025-01-02T15:00:00+00:00",
+      "recorded_at": "2025-01-02T15:00:00+00:00",
+      "effective_at": "2025-01-01T15:00:00+00:00",
+      "expires_at": "2025-01-03T15:00:00+00:00"
+    },
+    "purification_guidance": "Synthetic example only; no real asset or scholarly approval.",
+    "business_activity_pass": true,
+    "financial_ratios_pass": true
+  },
+  "instrument": {
+    "symbol": "EXAMPLE",
+    "asset_class": "stock",
+    "kind": "equity",
+    "evidence": {
+      "evidence_id": "instrument-fixture",
+      "provider": "demo_fixture",
+      "document_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "observed_at": "2025-01-02T15:00:00+00:00",
+      "recorded_at": "2025-01-02T15:00:00+00:00",
+      "effective_at": "2025-01-01T15:00:00+00:00",
+      "expires_at": "2025-01-03T15:00:00+00:00"
+    },
+    "settlement_and_possession_pass": true
+  },
+  "account": {
+    "account_id": "demo-cash",
+    "evidence": {
+      "evidence_id": "account-fixture",
+      "provider": "demo_fixture",
+      "document_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "observed_at": "2025-01-02T15:00:00+00:00",
+      "recorded_at": "2025-01-02T15:00:00+00:00",
+      "effective_at": "2025-01-01T15:00:00+00:00",
+      "expires_at": "2025-01-03T15:00:00+00:00"
+    },
+    "connected": true,
+    "account_type": "cash",
+    "lending_enabled": false,
+    "borrowing_enabled": false,
+    "positions_complete": true,
+    "reservations_complete": true,
+    "equity": "10000",
+    "day_start_equity": "10000",
+    "peak_equity": "10000",
+    "settled_cash": "10000",
+    "trading_day": "2025-01-02"
+  },
+  "quote": {
+    "symbol": "EXAMPLE",
+    "asset_class": "stock",
+    "evidence": {
+      "evidence_id": "quote-fixture",
+      "provider": "demo_fixture",
+      "document_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "observed_at": "2025-01-02T15:00:00+00:00",
+      "recorded_at": "2025-01-02T15:00:00+00:00",
+      "effective_at": "2025-01-01T15:00:00+00:00",
+      "expires_at": "2025-01-03T15:00:00+00:00"
+    },
+    "bid": "100",
+    "ask": "100",
+    "required_feeds_fresh": true
+  }
+}

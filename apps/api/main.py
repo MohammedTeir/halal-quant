@@ -22,6 +22,7 @@ from apps.api.db import (
     utcnow,
 )
 from packages.config.settings import Settings, get_settings
+from packages.schemas.controls import ControlScenario
 from packages.schemas.data_events import DataBatch, Identifier, Provider, Symbol
 from packages.schemas.intelligence import (
     ClassificationRequest,
@@ -29,6 +30,7 @@ from packages.schemas.intelligence import (
     GenerationRequest,
 )
 from packages.schemas.signals import Signal
+from services.controls.engine import preview as preview_controls
 from services.decision_engine.store import store_evaluation
 from services.macro_intelligence.calendar import calendar_as_of
 from services.market_data.coverage import coverage_status
@@ -363,6 +365,11 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                     for r in records
                 ]
             }
+
+    @app.post("/api/v1/controls/preview", dependencies=[Depends(analysis)])
+    def controls_preview(scenario: ControlScenario):
+        cutoff(scenario.as_of)
+        return preview_controls(scenario)
 
     return app
 

@@ -86,3 +86,9 @@ certifies HistData venue/holiday equivalence or missing-minute explanations.
 reviewer's conditional research-only verdict, findings and inspected artifact hashes.
 Two low findings were resolved; three medium release conditions remain. Human and
 execution approval stay false.
+
+`milestone5-controls-acceptance-2026-10-29.json` records the first hypothetical
+compliance/risk increment, 78 new tests and 412 total passing tests. Its cases are
+fictional caller-supplied scenarios; SIMULATION_PASS never establishes broker,
+reviewer, source or execution authority. Operational storage/integration remains
+incomplete. See [scope and remaining work](../docs/milestone-5-controls.md).

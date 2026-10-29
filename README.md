@@ -25,9 +25,10 @@ records all 300 gaps without certifying unknown provider/holiday closures.
 An additional external original-human-label sentiment benchmark passes 30/30;
 [its research scope and limits](docs/external-label-evaluation.md) remain explicit.
 Milestone 6 remains an early single-instrument research prototype.
-Milestones 5 and 7–8 have not started; optional live integration (Milestone 9) is disabled.
+[Milestone 5 has started](docs/milestone-5-controls.md): hypothetical compliance, cash/risk sizing, reservation and owned-exit controls. Real authority/persistence integration remains.
+Milestones 7–8 have not started; optional live integration (Milestone 9) is disabled.
 
-The full suite has **334 passing tests**, including research, data integrity,
+The full suite has **412 passing tests**, including research, data integrity,
 advisory-output security and deterministic decision checks. All three
 default strategies and cost-matched buy-and-hold baselines execute on synthetic
 fixtures, finish flat, and reproduce reports byte-for-byte. These are software
@@ -127,7 +128,7 @@ TradingView validation is an optional manual gate. Optional Pine source checks d
 - `/docs`: generated API documentation.
 
 Accepted candidates always return `authorized: false`. Same ID and payload is a
-no-op; same ID with different payload returns 409. New signals older than 15
+no-op; same ID with different payload returns 412. New signals older than 15
 minutes or over 30 seconds in the future return 422. Entry and exit candidates
 are technical observations, never broker orders. The freshness restriction on
 webhook observations is not a protective-order or portfolio-risk policy.

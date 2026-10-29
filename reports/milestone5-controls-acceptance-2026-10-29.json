@@ -1,0 +1,121 @@
+{
+  "date": "2026-10-29",
+  "scope": "Milestone 5 first increment: hypothetical controls only",
+  "milestone5_complete": false,
+  "full_isolated_suite_passed": 412,
+  "new_controls_api_tests": 78,
+  "warnings": 1,
+  "lint": "passed",
+  "format": "passed",
+  "cli_byte_identical_repeat": true,
+  "research_smoke": "passed; byte-identical, trades and flat reconciliation",
+  "gemini_api_smoke": "passed; mocked, zero real calls",
+  "schema_export_matches": true,
+  "scenario_sha256": "cd8d69bcf8af10d322889eb695e79ff1f11aba27e08465e024e4a9209e02795a",
+  "results": {
+    "blueprint_entry": {
+      "status": "SIMULATION_PASS",
+      "checks": {
+        "compliance": {
+          "passed": true,
+          "reasons": []
+        },
+        "risk": {
+          "passed": true,
+          "reasons": [],
+          "maximum_quantity": 10,
+          "quantity": 10,
+          "capacity_by_limit": {
+            "trade_risk": 10,
+            "open_risk": 60,
+            "cash": 100,
+            "position": 10,
+            "sector": 25
+          },
+          "entry_with_slippage": "100",
+          "stop_with_slippage": "95",
+          "planned_risk": "50",
+          "estimated_cash_required": "1000"
+        }
+      },
+      "mode": "hypothetical",
+      "input_authority": "caller_supplied_unverified_scenario",
+      "authorized": false,
+      "evidence_authority_verified": false,
+      "policy_version": "controls-research-v1",
+      "scenario_sha256": "0065a32614cc3a4f5fdb14baf7e81304ebc322c39c158bb0a3e9acfe3b4b0620",
+      "policy_sha256": "be61af6b8a6d52d6f4f9fc5bbea254ad2cee7f7e3276bfc741766bbfebfb22ab",
+      "as_of": "2025-01-02T15:00:00+00:00"
+    },
+    "methodology_unselected": {
+      "status": "SIMULATION_BLOCKED",
+      "checks": {
+        "compliance": {
+          "passed": false,
+          "reasons": [
+            "METHODOLOGY_UNSELECTED",
+            "METHODOLOGY_MISMATCH"
+          ]
+        },
+        "risk": {
+          "passed": true,
+          "reasons": [],
+          "maximum_quantity": 10,
+          "quantity": 10,
+          "capacity_by_limit": {
+            "trade_risk": 10,
+            "open_risk": 60,
+            "cash": 100,
+            "position": 10,
+            "sector": 25
+          },
+          "entry_with_slippage": "100",
+          "stop_with_slippage": "95",
+          "planned_risk": "50",
+          "estimated_cash_required": "1000"
+        }
+      },
+      "mode": "hypothetical",
+      "input_authority": "caller_supplied_unverified_scenario",
+      "authorized": false,
+      "evidence_authority_verified": false,
+      "policy_version": "controls-research-v1",
+      "scenario_sha256": "0c168d14ba9df338f43b2dd14265d79772cf22de4bb2913931d6f46ad178d898",
+      "policy_sha256": "ba6e143b849d01b9cd8bc10ba3ca0cfbece404ddfbd48dc0545bf8993f1edbc3",
+      "as_of": "2025-01-02T15:00:00+00:00"
+    },
+    "owned_exit_during_kill_and_compliance_review": {
+      "status": "SIMULATION_PASS",
+      "checks": {
+        "exit": {
+          "passed": true,
+          "reasons": [],
+          "available_sellable_quantity": "8",
+          "quantity": "1",
+          "noncompliance_review_required": true,
+          "broker_connected": true
+        }
+      },
+      "mode": "hypothetical",
+      "input_authority": "caller_supplied_unverified_scenario",
+      "authorized": false,
+      "evidence_authority_verified": false,
+      "policy_version": "controls-research-v1",
+      "scenario_sha256": "f679a3468a0a8f874f916848f990317e51d8b5761f1545ef964471b85aa2bf47",
+      "policy_sha256": "f48c28607a9bc33ba587adc8b78fd0d6053dd0f7463c8e06542da76e383296b3",
+      "as_of": "2025-01-02T15:00:00+00:00"
+    }
+  },
+  "trusted_broker_or_compliance_integration": false,
+  "authority_or_order_writes": 0,
+  "real_provider_requests": 0,
+  "environment_modified_or_published": false,
+  "authorized_for_entry": false,
+  "remaining": [
+    "Qualified screening methodology/provider and verified gold structure",
+    "Versioned approval/policy/operational risk/kill-switch persistence and roles",
+    "Authoritative broker lots/cash/reservation/valuation/history reconciliation",
+    "Atomic shared-capacity reservation and execution-time revalidation",
+    "Integrate verified controls into server decisions and complete release acceptance"
+  ]
+}

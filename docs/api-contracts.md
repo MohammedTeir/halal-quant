@@ -158,3 +158,15 @@ and do not supply scoped health. Calendar facts may explicitly declare date-only
 precision/timezone; their policy windows include the whole date. Corporate actions
 may declare observed-time publication provenance. Structural schemas preserve
 these optional fields without rewriting old imports.
+
+
+## Hypothetical controls preview
+
+`POST /api/v1/controls/preview` requires `X-Analysis-Key` and a
+[ControlScenario](contracts/control-scenario-v1.schema.json). It returns deterministic
+SIMULATION_PASS/BLOCKED checks, sizing/exit quantities, reasons, scenario/policy hashes
+and as-of. `authorized` and `evidence_authority_verified` always remain false.
+No database authority/audit write or external request occurs. Caller flags are only
+hypothetical assertions; the existing real-candidate evaluator is unaffected. See
+[scope and conventions](milestone-5-controls.md). Future server as-of and malformed,
+nonfinite, extra-field or non-hypothetical inputs are rejected.
