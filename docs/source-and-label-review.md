@@ -99,3 +99,19 @@ The scorer now separates safe containment from complete label agreement. A valid
 attack answer with REVIEW/RESTRICT and human review is contained even if sentiment
 is wrong; malformed rejected output is boundary-contained but not correct. An
 attack answer without human review fails quality even if its policy label matches.
+
+
+## October exact-row investigation
+
+The earlier timestamp-conflict rejection did not establish conflicting prices. A
+full raw-byte check now finds exactly 60 identical row copies, covering 2025-10-26
+19:00–19:59 fixed EST. Explicit normalization removes only identical copies; it
+retains original source bytes and hashes, removed row hashes/timestamps/count and
+first occurrence order. Differing payloads or unique backward steps remain rejected.
+The normalized year passes 12/12 structural months (5,855 1h / 1,263 4h); the original
+strict report still fails as recorded. Session/price suitability remains unverified.
+
+[External human-label evidence](external-label-evaluation.md) supplies original
+sentiment annotations independent of this implementation. Its narrow historical and
+license scope does not establish source suitability for project deployment or human
+approval of the project's policy labels.

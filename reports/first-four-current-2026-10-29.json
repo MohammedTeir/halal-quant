@@ -1,0 +1,54 @@
+{
+  "date": "2026-10-29",
+  "scope": "Original blueprint first-four software acceptance; independent release approval tracked separately",
+  "milestones": {
+    "1": {
+      "software_acceptance": "passed",
+      "execution_authorized": false
+    },
+    "2": {
+      "software_acceptance": "passed",
+      "execution_authorized": false
+    },
+    "3": {
+      "software_acceptance": "passed",
+      "execution_authorized": false
+    },
+    "4": {
+      "software_acceptance": "passed",
+      "execution_authorized": false
+    }
+  },
+  "tests": {
+    "full_isolated_suite": 323,
+    "warnings": 1,
+    "lint": "passed",
+    "format": "passed"
+  },
+  "gold": {
+    "original_strict_failure_retained": true,
+    "normalization": "exact-byte-identical-row-deduplication-v1",
+    "removed_october_rows": 60,
+    "prices_or_timestamps_changed": false,
+    "validated_months": 12,
+    "complete_1h_bars": 5855,
+    "complete_4h_bars": 1263,
+    "session_schedule_independently_verified": false
+  },
+  "intelligence": {
+    "v5_primary_regression": "16/16",
+    "v5_fresh_primary_pilot": "8/8",
+    "external_original_human_sentiment_labels": "30/30",
+    "external_sentiment_threshold_frozen_before_predictions": 0.9,
+    "labels_or_prompt_changed_after_external_predictions": false,
+    "project_specific_human_signoff": false,
+    "representative_production_accuracy_established": false
+  },
+  "remaining_release_requirements": [
+    "Source/venue-specific gold session schedule and gap reconciliation",
+    "Project-specific source/policy suitability approval; broader representative deployment coverage",
+    "Milestones 5,6,8,9 controls before any trading release"
+  ],
+  "environment_changed_or_published": false,
+  "authorized_for_entry": false
+}

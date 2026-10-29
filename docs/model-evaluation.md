@@ -145,3 +145,15 @@ acceptance. Containment is measured separately through REVIEW/RESTRICT plus huma
 review, or a rejected malformed output; sentiment errors still fail quality.
 Per-event/sentiment support counts expose missing categories. They do not make a
 small purposive sample representative or grant independent approval.
+
+
+## External original-human labels and quota pacing
+
+[FinancialPhraseBank research](external-label-evaluation.md) adds a balanced fixed
+30-case original-human-label check: v5 passes 30/30 without label/prompt changes.
+It is separate from project policy/adversarial acceptance and does not approve
+source suitability or deployment. Text stays outside tracked/runtime files.
+
+The collector optionally accepts `--min-interval-seconds 8` (0..60; default 0).
+It spaces starts, retains the interval in the manifest, stops on provider failure,
+and never auto-resumes a run. The API adapter's bounded retry rules are unchanged.

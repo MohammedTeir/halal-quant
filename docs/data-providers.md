@@ -218,3 +218,26 @@ artifact tampering cannot pass by editing a summary count. Existing reports are
 never overwritten. This is offline and does not download or repair source files.
 The actual 2025 audit validates 11 months and rejects October. Session certification,
 continuous-year approval and execution authorization remain false.
+
+### Explicit exact-duplicate normalization
+
+The October investigation established that all 60 repeated timestamp rows are
+**byte-identical copies**, not differing prices for the same timestamp. The default
+strict importer still rejects them. An explicit normalization mode removes only
+identical repeated row bytes, preserves first occurrence order, never sorts or edits
+prices/timestamps, and rejects any differing duplicate or remaining backward step:
+
+```sh
+uv run python -m services.market_data.acquire_gold \
+  --year 2025 --month 10 --normalize-exact-duplicates \
+  --output data/gold/new-october-normalized
+```
+
+The original source ZIP is retained. Both timeframe audits retain removed row count,
+timestamps, removed-byte digest, original archive hash and a no-price/time-edit flag.
+The manifest declares `exact-byte-identical-row-deduplication-v1`. Year recomputation
+checks that proof and the derived bytes; editing the proof fails validation. This is
+explicit lossless duplicate elimination, not an inferred daylight-saving correction.
+The original strict annual failure remains historical evidence; the new normalized
+annual audit passes all 12 months, with 5,855 1h and 1,263 4h bars. Session/price/source
+suitability approval remains a separate release concern.

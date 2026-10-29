@@ -11,12 +11,25 @@ def main():
     parser.add_argument("--year", type=int, required=True)
     parser.add_argument("--month", type=int, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument(
+        "--normalize-exact-duplicates",
+        action="store_true",
+        help="Remove byte-identical repeated rows only; retain raw archive and proof",
+    )
     args = parser.parse_args()
     if args.output.exists():
         parser.error("Output exists; retain prior source archives")
     try:
         raw, url, received = download_month(args.year, args.month)
-        manifest = save_month(args.output, raw, args.year, args.month, received, url)
+        manifest = save_month(
+            args.output,
+            raw,
+            args.year,
+            args.month,
+            received,
+            url,
+            normalize_exact_duplicates=args.normalize_exact_duplicates,
+        )
     except HistDataError as error:
         parser.exit(1, str(error) + "\n")
     except (ValueError, OSError):

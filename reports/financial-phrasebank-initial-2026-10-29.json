@@ -1,0 +1,755 @@
+{
+  "corpus_sha256": "981e79351a8445c5e7a926852bffd14eceed3af0fc8fc5b658fc914baa0b9a83",
+  "corpus_version": "financial-phrasebank-allagree-research-v1",
+  "synthetic": false,
+  "label_provenance": "External original human sentiment labels, all annotators agree. Fixed hash-ranked stratified sample. EVAL_ONLY is a synthetic evaluation target, not an issuer/ticker claim. Policy/event labels are unconstrained and not independently annotated. Noncommercial research only; no production approval.",
+  "model_name": "gemini-3.5-flash-lite",
+  "model_version": "gemini-3.5-flash-lite",
+  "prompt_version": "news-classification-v5",
+  "response_origin": "live",
+  "total": 30,
+  "valid_count": 15,
+  "quality_pass_count": 15,
+  "quality_accuracy": 0.5,
+  "strata": {
+    "expected_event_type": {
+      "company": {
+        "total": 30,
+        "quality_pass_count": 15
+      },
+      "cpi": {
+        "total": 30,
+        "quality_pass_count": 15
+      },
+      "earnings": {
+        "total": 30,
+        "quality_pass_count": 15
+      },
+      "employment": {
+        "total": 30,
+        "quality_pass_count": 15
+      },
+      "fed": {
+        "total": 30,
+        "quality_pass_count": 15
+      },
+      "other": {
+        "total": 30,
+        "quality_pass_count": 15
+      }
+    },
+    "expected_sentiment": {
+      "negative": {
+        "total": 10,
+        "quality_pass_count": 10
+      },
+      "neutral": {
+        "total": 10,
+        "quality_pass_count": 5
+      },
+      "positive": {
+        "total": 10,
+        "quality_pass_count": 0
+      }
+    }
+  },
+  "attack_count": 0,
+  "attack_contained_count": 0,
+  "acceptance_pass": false,
+  "deployment_approved": false,
+  "independently_reviewed": false,
+  "authorized_for_entry": false,
+  "cases": [
+    {
+      "case_id": "fpb-000",
+      "attack": false,
+      "expected_event_type": [
+        "earnings",
+        "company",
+        "other",
+        "fed",
+        "cpi",
+        "employment"
+      ],
+      "expected_sentiment": [
+        "negative"
+      ],
+      "valid": true,
+      "quality_pass": true,
+      "matches": {
+        "sentiment": true,
+        "policy": true,
+        "event_type": true,
+        "attack_human_review": true
+      },
+      "code": "VALID",
+      "attack_contained": null
+    },
+    {
+      "case_id": "fpb-001",
+      "attack": false,
+      "expected_event_type": [
+        "earnings",
+        "company",
+        "other",
+        "fed",
+        "cpi",
+        "employment"
+      ],
+      "expected_sentiment": [
+        "negative"
+      ],
+      "valid": true,
+      "quality_pass": true,
+      "matches": {
+        "sentiment": true,
+        "policy": true,
+        "event_type": true,
+        "attack_human_review": true
+      },
+      "code": "VALID",
+      "attack_contained": null
+    },
+    {
+      "case_id": "fpb-002",
+      "attack": false,
+      "expected_event_type": [
+        "earnings",
+        "company",
+        "other",
+        "fed",
+        "cpi",
+        "employment"
+      ],
+      "expected_sentiment": [
+        "negative"
+      ],
+      "valid": true,
+      "quality_pass": true,
+      "matches": {
+        "sentiment": true,
+        "policy": true,
+        "event_type": true,
+        "attack_human_review": true
+      },
+      "code": "VALID",
+      "attack_contained": null
+    },
+    {
+      "case_id": "fpb-003",
+      "attack": false,
+      "expected_event_type": [
+        "earnings",
+        "company",
+        "other",
+        "fed",
+        "cpi",
+        "employment"
+      ],
+      "expected_sentiment": [
+        "negative"
+      ],
+      "valid": true,
+      "quality_pass": true,
+      "matches": {
+        "sentiment": true,
+        "policy": true,
+        "event_type": true,
+        "attack_human_review": true
+      },
+      "code": "VALID",
+      "attack_contained": null
+    },
+    {
+      "case_id": "fpb-004",
+      "attack": false,
+      "expected_event_type": [
+        "earnings",
+        "company",
+        "other",
+        "fed",
+        "cpi",
+        "employment"
+      ],
+      "expected_sentiment": [
+        "negative"
+      ],
+      "valid": true,
+      "quality_pass": true,
+      "matches": {
+        "sentiment": true,
+        "policy": true,
+        "event_type": true,
+        "attack_human_review": true
+      },
+      "code": "VALID",
+      "attack_contained": null
+    },
+    {
+      "case_id": "fpb-005",
+      "attack": false,
+      "expected_event_type": [
+        "earnings",
+        "company",
+        "other",
+        "fed",
+        "cpi",
+        "employment"
+      ],
+      "expected_sentiment": [
+        "negative"
+      ],
+      "valid": true,
+      "quality_pass": true,
+      "matches": {
+        "sentiment": true,
+        "policy": true,
+        "event_type": true,
+        "attack_human_review": true
+      },
+      "code": "VALID",
+      "attack_contained": null
+    },
+    {
+      "case_id": "fpb-006",
+      "attack": false,
+      "expected_event_type": [
+        "earnings",
+        "company",
+        "other",
+        "fed",
+        "cpi",
+        "employment"
+      ],
+      "expected_sentiment": [
+        "negative"
+      ],
+      "valid": true,
+      "quality_pass": true,
+      "matches": {
+        "sentiment": true,
+        "policy": true,
+        "event_type": true,
+        "attack_human_review": true
+      },
+      "code": "VALID",
+      "attack_contained": null
+    },
+    {
+      "case_id": "fpb-007",
+      "attack": false,
+      "expected_event_type": [
+        "earnings",
+        "company",
+        "other",
+        "fed",
+        "cpi",
+        "employment"
+      ],
+      "expected_sentiment": [
+        "negative"
+      ],
+      "valid": true,
+      "quality_pass": true,
+      "matches": {
+        "sentiment": true,
+        "policy": true,
+        "event_type": true,
+        "attack_human_review": true
+      },
+      "code": "VALID",
+      "attack_contained": null
+    },
+    {
+      "case_id": "fpb-008",
+      "attack": false,
+      "expected_event_type": [
+        "earnings",
+        "company",
+        "other",
+        "fed",
+        "cpi",
+        "employment"
+      ],
+      "expected_sentiment": [
+        "negative"
+      ],
+      "valid": true,
+      "quality_pass": true,
+      "matches": {
+        "sentiment": true,
+        "policy": true,
+        "event_type": true,
+        "attack_human_review": true
+      },
+      "code": "VALID",
+      "attack_contained": null
+    },
+    {
+      "case_id": "fpb-009",
+      "attack": false,
+      "expected_event_type": [
+        "earnings",
+        "company",
+        "other",
+        "fed",
+        "cpi",
+        "employment"
+      ],
+      "expected_sentiment": [
+        "negative"
+      ],
+      "valid": true,
+      "quality_pass": true,
+      "matches": {
+        "sentiment": true,
+        "policy": true,
+        "event_type": true,
+        "attack_human_review": true
+      },
+      "code": "VALID",
+      "attack_contained": null
+    },
+    {
+      "case_id": "fpb-010",
+      "attack": false,
+      "expected_event_type": [
+        "earnings",
+        "company",
+        "other",
+        "fed",
+        "cpi",
+        "employment"
+      ],
+      "expected_sentiment": [
+        "neutral"
+      ],
+      "valid": true,
+      "quality_pass": true,
+      "matches": {
+        "sentiment": true,
+        "policy": true,
+        "event_type": true,
+        "attack_human_review": true
+      },
+      "code": "VALID",
+      "attack_contained": null
+    },
+    {
+      "case_id": "fpb-011",
+      "attack": false,
+      "expected_event_type": [
+        "earnings",
+        "company",
+        "other",
+        "fed",
+        "cpi",
+        "employment"
+      ],
+      "expected_sentiment": [
+        "neutral"
+      ],
+      "valid": true,
+      "quality_pass": true,
+      "matches": {
+        "sentiment": true,
+        "policy": true,
+        "event_type": true,
+        "attack_human_review": true
+      },
+      "code": "VALID",
+      "attack_contained": null
+    },
+    {
+      "case_id": "fpb-012",
+      "attack": false,
+      "expected_event_type": [
+        "earnings",
+        "company",
+        "other",
+        "fed",
+        "cpi",
+        "employment"
+      ],
+      "expected_sentiment": [
+        "neutral"
+      ],
+      "valid": true,
+      "quality_pass": true,
+      "matches": {
+        "sentiment": true,
+        "policy": true,
+        "event_type": true,
+        "attack_human_review": true
+      },
+      "code": "VALID",
+      "attack_contained": null
+    },
+    {
+      "case_id": "fpb-013",
+      "attack": false,
+      "expected_event_type": [
+        "earnings",
+        "company",
+        "other",
+        "fed",
+        "cpi",
+        "employment"
+      ],
+      "expected_sentiment": [
+        "neutral"
+      ],
+      "valid": true,
+      "quality_pass": true,
+      "matches": {
+        "sentiment": true,
+        "policy": true,
+        "event_type": true,
+        "attack_human_review": true
+      },
+      "code": "VALID",
+      "attack_contained": null
+    },
+    {
+      "case_id": "fpb-014",
+      "attack": false,
+      "expected_event_type": [
+        "earnings",
+        "company",
+        "other",
+        "fed",
+        "cpi",
+        "employment"
+      ],
+      "expected_sentiment": [
+        "neutral"
+      ],
+      "valid": true,
+      "quality_pass": true,
+      "matches": {
+        "sentiment": true,
+        "policy": true,
+        "event_type": true,
+        "attack_human_review": true
+      },
+      "code": "VALID",
+      "attack_contained": null
+    },
+    {
+      "case_id": "fpb-015",
+      "attack": false,
+      "expected_event_type": [
+        "earnings",
+        "company",
+        "other",
+        "fed",
+        "cpi",
+        "employment"
+      ],
+      "expected_sentiment": [
+        "neutral"
+      ],
+      "valid": false,
+      "quality_pass": false,
+      "code": "MISSING_RESPONSE",
+      "attack_contained": null
+    },
+    {
+      "case_id": "fpb-016",
+      "attack": false,
+      "expected_event_type": [
+        "earnings",
+        "company",
+        "other",
+        "fed",
+        "cpi",
+        "employment"
+      ],
+      "expected_sentiment": [
+        "neutral"
+      ],
+      "valid": false,
+      "quality_pass": false,
+      "code": "MISSING_RESPONSE",
+      "attack_contained": null
+    },
+    {
+      "case_id": "fpb-017",
+      "attack": false,
+      "expected_event_type": [
+        "earnings",
+        "company",
+        "other",
+        "fed",
+        "cpi",
+        "employment"
+      ],
+      "expected_sentiment": [
+        "neutral"
+      ],
+      "valid": false,
+      "quality_pass": false,
+      "code": "MISSING_RESPONSE",
+      "attack_contained": null
+    },
+    {
+      "case_id": "fpb-018",
+      "attack": false,
+      "expected_event_type": [
+        "earnings",
+        "company",
+        "other",
+        "fed",
+        "cpi",
+        "employment"
+      ],
+      "expected_sentiment": [
+        "neutral"
+      ],
+      "valid": false,
+      "quality_pass": false,
+      "code": "MISSING_RESPONSE",
+      "attack_contained": null
+    },
+    {
+      "case_id": "fpb-019",
+      "attack": false,
+      "expected_event_type": [
+        "earnings",
+        "company",
+        "other",
+        "fed",
+        "cpi",
+        "employment"
+      ],
+      "expected_sentiment": [
+        "neutral"
+      ],
+      "valid": false,
+      "quality_pass": false,
+      "code": "MISSING_RESPONSE",
+      "attack_contained": null
+    },
+    {
+      "case_id": "fpb-020",
+      "attack": false,
+      "expected_event_type": [
+        "earnings",
+        "company",
+        "other",
+        "fed",
+        "cpi",
+        "employment"
+      ],
+      "expected_sentiment": [
+        "positive"
+      ],
+      "valid": false,
+      "quality_pass": false,
+      "code": "MISSING_RESPONSE",
+      "attack_contained": null
+    },
+    {
+      "case_id": "fpb-021",
+      "attack": false,
+      "expected_event_type": [
+        "earnings",
+        "company",
+        "other",
+        "fed",
+        "cpi",
+        "employment"
+      ],
+      "expected_sentiment": [
+        "positive"
+      ],
+      "valid": false,
+      "quality_pass": false,
+      "code": "MISSING_RESPONSE",
+      "attack_contained": null
+    },
+    {
+      "case_id": "fpb-022",
+      "attack": false,
+      "expected_event_type": [
+        "earnings",
+        "company",
+        "other",
+        "fed",
+        "cpi",
+        "employment"
+      ],
+      "expected_sentiment": [
+        "positive"
+      ],
+      "valid": false,
+      "quality_pass": false,
+      "code": "MISSING_RESPONSE",
+      "attack_contained": null
+    },
+    {
+      "case_id": "fpb-023",
+      "attack": false,
+      "expected_event_type": [
+        "earnings",
+        "company",
+        "other",
+        "fed",
+        "cpi",
+        "employment"
+      ],
+      "expected_sentiment": [
+        "positive"
+      ],
+      "valid": false,
+      "quality_pass": false,
+      "code": "MISSING_RESPONSE",
+      "attack_contained": null
+    },
+    {
+      "case_id": "fpb-024",
+      "attack": false,
+      "expected_event_type": [
+        "earnings",
+        "company",
+        "other",
+        "fed",
+        "cpi",
+        "employment"
+      ],
+      "expected_sentiment": [
+        "positive"
+      ],
+      "valid": false,
+      "quality_pass": false,
+      "code": "MISSING_RESPONSE",
+      "attack_contained": null
+    },
+    {
+      "case_id": "fpb-025",
+      "attack": false,
+      "expected_event_type": [
+        "earnings",
+        "company",
+        "other",
+        "fed",
+        "cpi",
+        "employment"
+      ],
+      "expected_sentiment": [
+        "positive"
+      ],
+      "valid": false,
+      "quality_pass": false,
+      "code": "MISSING_RESPONSE",
+      "attack_contained": null
+    },
+    {
+      "case_id": "fpb-026",
+      "attack": false,
+      "expected_event_type": [
+        "earnings",
+        "company",
+        "other",
+        "fed",
+        "cpi",
+        "employment"
+      ],
+      "expected_sentiment": [
+        "positive"
+      ],
+      "valid": false,
+      "quality_pass": false,
+      "code": "MISSING_RESPONSE",
+      "attack_contained": null
+    },
+    {
+      "case_id": "fpb-027",
+      "attack": false,
+      "expected_event_type": [
+        "earnings",
+        "company",
+        "other",
+        "fed",
+        "cpi",
+        "employment"
+      ],
+      "expected_sentiment": [
+        "positive"
+      ],
+      "valid": false,
+      "quality_pass": false,
+      "code": "MISSING_RESPONSE",
+      "attack_contained": null
+    },
+    {
+      "case_id": "fpb-028",
+      "attack": false,
+      "expected_event_type": [
+        "earnings",
+        "company",
+        "other",
+        "fed",
+        "cpi",
+        "employment"
+      ],
+      "expected_sentiment": [
+        "positive"
+      ],
+      "valid": false,
+      "quality_pass": false,
+      "code": "MISSING_RESPONSE",
+      "attack_contained": null
+    },
+    {
+      "case_id": "fpb-029",
+      "attack": false,
+      "expected_event_type": [
+        "earnings",
+        "company",
+        "other",
+        "fed",
+        "cpi",
+        "employment"
+      ],
+      "expected_sentiment": [
+        "positive"
+      ],
+      "valid": false,
+      "quality_pass": false,
+      "code": "MISSING_RESPONSE",
+      "attack_contained": null
+    }
+  ],
+  "external_sentiment_gate_pass": false,
+  "external_label_provenance": {
+    "archive_sha256": "0e1a06c4900fdae46091d031068601e3773ba067c7cecb5b0da1dcba5ce989a6",
+    "member": "FinancialPhraseBank-v1.0/Sentences_AllAgree.txt",
+    "source_rows": 2264,
+    "unique_texts": 2259,
+    "duplicate_handling": "Identical text/label pairs sampled once; conflicting labels rejected",
+    "per_label": 10,
+    "selection_seed": "halal-quant-external-labels-v1-20261029",
+    "selection_method": "sha256(seed + text), lowest per label",
+    "corpus_sha256": "981e79351a8445c5e7a926852bffd14eceed3af0fc8fc5b658fc914baa0b9a83",
+    "source_url": "https://huggingface.co/datasets/takala/financial_phrasebank",
+    "paper_url": "https://arxiv.org/abs/1307.5336",
+    "attribution": "Malo, Sinha, Takala, Korhonen and Wallenius (2013), FinancialPhraseBank v1.0",
+    "license": "CC BY-NC-SA 3.0; retained original license and README terms",
+    "noncommercial_research_only": true,
+    "independent_human_sentiment_labels": true,
+    "project_human_signoff": false,
+    "threshold_frozen_before_predictions": {
+      "minimum_sentiment_accuracy": 0.9,
+      "all_responses_valid": true
+    },
+    "limits": [
+      "OMX Helsinki financial news, not representative US/ETF/gold news",
+      "Pretraining overlap unknown",
+      "Individual publisher URLs/receipt timestamps unavailable",
+      "No independent event/policy/attack labels"
+    ],
+    "authorized_for_entry": false
+  },
+  "responses_sha256": "3acd5be025433a8556e56b1eed78382d5e7b1dee71c5bd9e1f11a7ccced67e8c"
+}

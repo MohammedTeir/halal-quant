@@ -106,3 +106,42 @@ def test_missing_volume_metadata_cannot_label_reported_volume_as_placeholder(
     csv_path, metadata = files(tmp_path, dataset)
     with pytest.raises(ValueError, match="Unavailable volume"):
         load_csv(csv_path, metadata)
+
+
+def test_exact_duplicate_normalization_is_explicit_and_lossless():
+    clean = archive(720)
+    repeated = archive(720, duplicate=True)
+    with pytest.raises(HistDataError, match="DUPLICATE_OR_UNORDERED"):
+        convert_archive(repeated, 2025, 9, 3600)
+    expected, _ = convert_archive(clean, 2025, 9, 3600)
+    actual, audit = convert_archive(repeated, 2025, 9, 3600, normalize_exact_duplicates=True)
+    assert actual == expected
+    proof = audit["exact_duplicate_normalization"]
+    assert proof["removed_rows"] == 1 and not proof["timestamps_or_prices_changed"]
+    assert len(proof["original_archive_sha256"]) == 64
+
+
+def test_duplicate_timestamp_with_different_bytes_is_never_normalized():
+    raw = archive(720, duplicate=True)
+    with ZipFile(io.BytesIO(raw)) as z:
+        member = z.namelist()[0]
+        lines = z.read(member).decode().splitlines()
+    lines[-1] = lines[-1].replace(";2001;", ";2000;")
+    output = io.BytesIO()
+    with ZipFile(output, "w") as z:
+        z.writestr(member, "\n".join(lines))
+    with pytest.raises(HistDataError, match="CONFLICTING_DUPLICATE"):
+        convert_archive(output.getvalue(), 2025, 9, 3600, normalize_exact_duplicates=True)
+
+
+def test_unique_backward_rows_are_never_sorted_as_a_repair():
+    raw = archive(720)
+    with ZipFile(io.BytesIO(raw)) as z:
+        member = z.namelist()[0]
+        lines = z.read(member).decode().splitlines()
+    lines[2], lines[3] = lines[3], lines[2]
+    output = io.BytesIO()
+    with ZipFile(output, "w") as z:
+        z.writestr(member, "\n".join(lines))
+    with pytest.raises(HistDataError, match="DUPLICATE_OR_UNORDERED"):
+        convert_archive(output.getvalue(), 2025, 9, 3600, normalize_exact_duplicates=True)

@@ -232,6 +232,6 @@ injected control text separate from financial facts. All legacy prompt versions
 retain their original text and stored history.
 
 V5 passes 16/16 exposed regression and 8/8 separately frozen fresh pilot. The current
-full suite passes 312 tests. [Source review](source-and-label-review.md) retains
+full suite passes 323 tests. [Source review](source-and-label-review.md) retains
 failures and independence limits; [review packets](independent-review.md) remain
 PENDING. These scores are not representative accuracy or independent approval.

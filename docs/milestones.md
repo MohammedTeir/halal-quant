@@ -6,9 +6,9 @@ Implementation acceptance and independent release sign-off are tracked separatel
 
 | # | Deliverable | Current state | Evidence / remaining acceptance |
 |---|---|---|---|
-| 1 | Foundation and architecture | Implemented; software acceptance passes | Boot/persistence, credentials, migrations through `0005_feed_coverage`, schema drift, replay and CI checks. Latest local suite: 312 passed. Hosted CI passed for `8afc05d`; check the current commit's run after push. |
+| 1 | Foundation and architecture | Implemented; software acceptance passes | Boot/persistence, credentials, migrations through `0005_feed_coverage`, schema drift, replay and CI checks. Latest local suite: 323 passed. Hosted CI passed for `8afc05d`; check the current commit's run after push. |
 | 2 | Three Python strategies; optional Pine | Agreed Python acceptance passes | Long-only causal stock/ETF/gold strategies; nonzero synthetic train/holdout trades, explicit costs, flat reconciliation and byte-identical reports. Pine compilation/parity remains unverified and optional. |
-| 3 | Market and news data | Implementation acceptance passes; historical/source sign-off incomplete | Real Alpaca candles/actions, Finnhub news/earnings, BLS and official FOMC ingestion; immutable revisions, point-in-time provenance, scoped freshness, corporate-action and session checks. A full 2025 gold archive audit validates 11 months and rejects October. A continuous full-year history and independently verified gold session schedule/source suitability remain unavailable. |
+| 3 | Market and news data | Implementation acceptance passes; historical/source sign-off incomplete | Real Alpaca candles/actions, Finnhub news/earnings, BLS and official FOMC ingestion; immutable revisions, point-in-time provenance, scoped freshness, corporate-action and session checks. A normalized 2025 audit validates all 12 months (5,855 1h / 1,263 4h bars), retaining proof of 60 identical duplicates removed. Source/session research-release approval remains unavailable. |
 | 4 | AI intelligence and decisions | Implementation acceptance passes; independent quality sign-off incomplete | Strict schemas/evidence/targets, durable Gemini jobs, event policies and deterministic gates; v5 passes 16/16 exposed real-primary/adversarial regression and 8/8 fresh blind pilot. Independent reviewer approval and representative real-news/secondary-source/ETF/company-event coverage remain open. |
 | 5 | Compliance and risk | Not started | Screening methodology, ownership/custody, cash/position sizing, exposure/loss limits and protective-exit authority. |
 | 6 | Research and backtesting | Technical single-instrument prototype | Portfolio simulation, point-in-time news/compliance replay, verified historical coverage, walk-forward/Monte Carlo, liquidity and blueprint performance gates remain. |
@@ -57,7 +57,7 @@ Implementation acceptance and independent release sign-off are tracked separatel
 
 ## Verification and release limits
 
-The current full isolated SQLite suite passes **312 tests** with one existing
+The current full isolated SQLite suite passes **323 tests** with one existing
 Starlette/httpx TestClient deprecation warning. Lint/format checks pass. Hosted CI
 uses PostgreSQL and runs migrations, regression tests, synthetic research and mock
 Gemini/offline evaluation; it never makes live provider calls. Historical reports
@@ -71,3 +71,17 @@ sign-off**. See [exact blockers](completion-requirements.md).
 
 All decisions still deny execution authority. No profitability, paper-trading
 readiness, ownership/compliance verification or Shariah approval is claimed.
+
+
+## Exact-duplicate and external-label follow-up
+
+The original strict gold failure remains unchanged. All repeated October rows are
+byte-identical; an explicit lossless normalization with hash/count/timestamp proof
+now passes [12/12 annual structural checks](../reports/gold-history-normalized-2025-2026-10-29.json).
+It never edits/sorts timestamps or prices; differing duplicates still fail. Source
+session completeness and suitability remain separate release gates.
+
+An [external original-human-label benchmark](external-label-evaluation.md) adds
+balanced FinancialPhraseBank sentiment checks independent of author labels. It does
+not confer human project approval or independently label event/policy/attack behavior.
+The published source is limited to noncommercial research, and text is not runtime data.

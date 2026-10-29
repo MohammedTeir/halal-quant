@@ -40,3 +40,23 @@ def test_history_rejects_tampered_artifacts_and_conflicting_sources(tmp_path, ch
     row = report["months"][8]
     assert row["status"] == ("REJECTED_SOURCE" if change == "source" else "REJECTED_ARTIFACT")
     assert report["validated_months"] == 0 and not report["structural_history_pass"]
+
+
+def test_history_recomputes_normalization_proof(tmp_path):
+    path = tmp_path / "2025-09"
+    save_month(
+        path,
+        archive(720, duplicate=True),
+        2025,
+        9,
+        NOW,
+        "https://www.histdata.com/",
+        normalize_exact_duplicates=True,
+    )
+    report = audit_history(tmp_path, 2025)
+    assert report["validated_months"] == 1
+    assert report["months"][8]["normalization"] == "exact-byte-identical-row-deduplication-v1"
+    manifest = json.loads((path / "manifest.json").read_bytes())
+    manifest["datasets"]["1h"]["audit"]["exact_duplicate_normalization"]["removed_rows"] = 50
+    (path / "manifest.json").write_text(json.dumps(manifest))
+    assert audit_history(tmp_path, 2025)["months"][8]["status"] == "REJECTED_ARTIFACT"

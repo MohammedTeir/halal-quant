@@ -1,0 +1,35 @@
+{
+  "endpoints": [
+    {
+      "name": "dukascopy-october-bid-h1",
+      "url": "https://datafeed.dukascopy.com/datafeed/XAUUSD/2025/09/BID_candles_hour_1.bi5",
+      "status": 429,
+      "bytes": 113,
+      "sha256": "00263559f89985697555da4ae87977c2fb2fd72858dd9ca6d4415c168f2594d4",
+      "received_at": "2026-10-29T12:25:49.939555+00:00"
+    },
+    {
+      "name": "histdata-october-ticks",
+      "url": "https://www.histdata.com/download-free-forex-historical-data/?/ascii/tick-data-quotes/XAUUSD/2025/10",
+      "status": 200,
+      "bytes": 31534,
+      "sha256": "e259b3f13bdc80e5dcd42f052e0402f92e48846f4f95d45bcf056872354b5146",
+      "received_at": "2026-10-29T12:25:50.691404+00:00"
+    },
+    {
+      "name": "yahoo-xauusd-hour",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/XAUUSD=X?period1=1759276800&period2=1761955200&interval=1h",
+      "status": 429,
+      "bytes": 23,
+      "sha256": "0d24c98db98d3b4a87b9626a026e7d72c99754ab6bd88211a17bc372350b7d89",
+      "received_at": "2026-10-29T12:25:50.833340+00:00"
+    }
+  ],
+  "tick_archive": {
+    "status": "ABORTED_AT_LOCAL_SIZE_BOUND",
+    "limit_bytes": 67108864,
+    "used_for_validation": false
+  },
+  "solution": "Exact-byte duplicate normalization of retained original M1 source; no guessed timezone or price repair",
+  "authorized_for_entry": false
+}

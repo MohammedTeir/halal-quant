@@ -27,12 +27,28 @@ def audit_history(root: Path, year: int):
         raw = archive.read_bytes()
         row["source_sha256"] = hashlib.sha256(raw).hexdigest()
         try:
+            # A missing manifest still permits strict source rejection diagnosis.
+            manifest = (
+                json.loads((path / "manifest.json").read_bytes())
+                if (path / "manifest.json").exists()
+                else {}
+            )
+            if not isinstance(manifest, dict):
+                raise TypeError("Invalid manifest")
+            mode = manifest.get("normalization")
+            if mode not in (None, "exact-byte-identical-row-deduplication-v1"):
+                raise ValueError("Unknown normalization")
             converted = {
-                label: convert_archive(raw, year, month, seconds)
+                label: convert_archive(
+                    raw, year, month, seconds, normalize_exact_duplicates=mode is not None
+                )
                 for label, seconds in (("1h", 3600), ("4h", 14400))
             }
         except HistDataError as error:
             row.update(status="REJECTED_SOURCE", code=str(error))
+            continue
+        except (ValueError, OSError, TypeError):
+            row.update(status="REJECTED_ARTIFACT", code="GOLD_ARTIFACT_MISMATCH")
             continue
         try:
             manifest = json.loads((path / "manifest.json").read_bytes())
@@ -71,7 +87,7 @@ def audit_history(root: Path, year: int):
                     "first_bar_close": dataset.manifest()["first_bar_close"],
                     "last_bar_close": dataset.manifest()["last_bar_close"],
                 }
-            row.update(status="VALIDATED", datasets=audits)
+            row.update(status="VALIDATED", normalization=mode, datasets=audits)
         except (ValueError, OSError, KeyError, TypeError):
             row.update(status="REJECTED_ARTIFACT", code="GOLD_ARTIFACT_MISMATCH")
     valid = [row for row in rows if row["status"] == "VALIDATED"]

@@ -66,3 +66,14 @@ recomputes derived artifacts and rejects October; its annual gate is false.
 result; the v5 expanded regression and fresh pilot reports pass 16/16 and 8/8.
 Containment is separate from sentiment quality. See the
 [review guide](../docs/independent-review.md); no independent approval is claimed.
+
+
+`gold-history-normalized-2025-2026-10-29.json` passes 12/12 structural months after
+explicit byte-identical duplicate removal, retaining per-timeframe normalization
+proof and raw-source hashes. The strict failure remains historical evidence.
+`financial-phrasebank-v5-external-2026-10-29.json` records 30/30 original-human
+sentiment labels, fixed selection and both run hashes. The initial quota-stopped
+report remains. Text/license/outputs are local noncommercial research artifacts,
+not runtime inputs or independent human approval of the project.
+
+`first-four-current-2026-10-29.json` is the latest software-acceptance summary; older reports retain their historical failure/status claims. Full independent release sign-off remains distinct from original blueprint software acceptance.

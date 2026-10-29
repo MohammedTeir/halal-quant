@@ -5,7 +5,9 @@ read [milestones](milestones.md) for implementation status and acceptance eviden
 
 | Document | Purpose |
 |---|---|
+| [حالة المراحل الأربع بالعربية](first-four-status.ar.md) | ملخص الجاهزية البرمجية وحدود اعتماد البحث والتشغيل |
 | [Master blueprint v2](blueprint-v2.md) | Original full project requirements and acceptance gates |
+| [External human-label evaluation](external-label-evaluation.md) | Independent original sentiment labels, frozen research sampling and limits |
 | [Independent review packet](independent-review.md) | Prepared blind labels, separate model results and reviewer procedure |
 | [Source and label review](source-and-label-review.md) | Verified gold/FOMC paths, real-source labels, failure findings and review independence |
 | [Remaining completion requirements](completion-requirements.md) | Exact provider access and independent-review gates |

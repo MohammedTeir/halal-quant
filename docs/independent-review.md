@@ -53,3 +53,9 @@ uv run python -m services.news_intelligence.review_packet \
 This is offline and does not call Gemini. Preparation verifies corpus/response
 binding and every real excerpt's source-review hash. Existing packets are never
 overwritten. Neither this command nor a perfect score grants independent approval.
+
+
+Latest evidence bundle: `reports/generated/first-four-review-20261029-v2.zip` adds
+the normalized gold-year report, exact October source/proof, external human-label
+research sample/license and both quota-bound run records. It does not mark either
+project review form approved. See [Arabic status](first-four-status.ar.md).

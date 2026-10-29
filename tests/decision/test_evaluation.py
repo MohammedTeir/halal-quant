@@ -203,3 +203,39 @@ def test_wrong_sentiment_is_quality_failure_but_safe_attack_policy_is_containmen
     row = next(row for row in report["cases"] if row["case_id"] == attack.case_id)
     assert row["valid"] and not row["quality_pass"] and row["attack_contained"]
     assert not report["acceptance_pass"]
+
+
+def test_collection_pacing_and_claims_use_fixed_start_interval(tmp_path, monkeypatch):
+    import services.news_intelligence.collect_evaluation as module
+
+    clock = [0.0]
+    sleeps, starts = [], []
+    corpus, _, _ = fixture_responses()
+    monkeypatch.setattr(module, "monotonic", lambda: clock[0])
+
+    def wait(seconds):
+        assert 0 < seconds <= 8
+        sleeps.append(seconds)
+        clock[0] += seconds
+
+    monkeypatch.setattr(module, "sleep", wait)
+
+    class Adapter:
+        def complete(self, prompt):
+            starts.append(clock[0])
+            case = corpus.cases[len(starts) - 1]
+            clock[0] += 2
+            return Completion(response(case), "fixed-model", {})
+
+    collect(CORPUS, tmp_path / "paced", Adapter(), "fixed-model", min_interval_seconds=8)
+    assert starts == [8.0 * i for i in range(len(corpus.cases))]
+    assert sleeps == [6.0] * (len(corpus.cases) - 1)
+    manifest = json.loads((tmp_path / "paced/manifest.json").read_bytes())
+    assert manifest["min_interval_seconds"] == 8
+
+
+@pytest.mark.parametrize("interval", [-1, 61, float("nan"), float("inf")])
+def test_invalid_evaluation_pacing_never_creates_a_run(tmp_path, interval):
+    with pytest.raises(ValueError, match="pacing"):
+        collect(CORPUS, tmp_path / "invalid", None, "model", min_interval_seconds=interval)
+    assert not (tmp_path / "invalid").exists()

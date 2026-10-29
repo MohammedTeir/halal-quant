@@ -100,7 +100,7 @@ def download_month(year, month, *, transport=None):
         raise HistDataError("HISTDATA_UNAVAILABLE") from None
 
 
-def convert_archive(raw, year, month, seconds):
+def convert_archive(raw, year, month, seconds, *, normalize_exact_duplicates=False):
     if seconds not in (3600, 14400) or len(raw) > MAX_ARCHIVE:
         raise ValueError("Only 1h/4h bounded historical archives are supported")
     try:
@@ -132,6 +132,32 @@ def convert_archive(raw, year, month, seconds):
         if any((stamp.year, stamp.month) != (year, month) or stamp.second != 0 for stamp in stamps):
             raise ValueError("Out-of-month or non-minute observation")
         index = pd.DatetimeIndex([stamp.replace(tzinfo=EST).astimezone(UTC) for stamp in stamps])
+        normalization = None
+        if normalize_exact_duplicates:
+            lines = data.splitlines()
+            if len(lines) != len(frame):
+                raise HistDataError("HISTDATA_INVALID_ARCHIVE")
+            seen, keep, removed = {}, [], []
+            for i, (stamp, line) in enumerate(zip(index, lines, strict=True)):
+                if stamp in seen:
+                    if seen[stamp] != line:
+                        raise HistDataError("HISTDATA_CONFLICTING_DUPLICATE")
+                    removed.append((stamp.isoformat(), line))
+                else:
+                    seen[stamp] = line
+                    keep.append(i)
+            frame = frame.iloc[keep].copy()
+            index = index[keep]
+            normalization = {
+                "method": "exact-byte-identical-row-deduplication-v1",
+                "removed_rows": len(removed),
+                "removed_timestamps": [stamp for stamp, _ in removed],
+                "removed_rows_sha256": hashlib.sha256(
+                    b"\n".join(line for _, line in removed)
+                ).hexdigest(),
+                "timestamps_or_prices_changed": False,
+                "original_archive_sha256": hashlib.sha256(raw).hexdigest(),
+            }
         if index.has_duplicates or not index.is_monotonic_increasing:
             raise HistDataError("HISTDATA_DUPLICATE_OR_UNORDERED")
         frame.index = index
@@ -173,7 +199,7 @@ def convert_archive(raw, year, month, seconds):
         writer.writerow(["timestamp", "Open", "High", "Low", "Close", "Volume"])
         writer.writerows(rows)
         gaps = int((index.to_series().diff().dropna() > pd.Timedelta(minutes=1)).sum())
-        return output.getvalue(), {
+        audit = {
             "minute_rows": len(frame),
             "complete_bars": len(rows),
             "incomplete_buckets": incomplete,
@@ -189,11 +215,16 @@ def convert_archive(raw, year, month, seconds):
             "timezone": "fixed EST (UTC-05:00), no DST",
             "volume_available": False,
         }
+        if normalization is not None:
+            audit["exact_duplicate_normalization"] = normalization
+        return output.getvalue(), audit
     except (ValueError, TypeError, BadZipFile, KeyError, OverflowError):
         raise HistDataError("HISTDATA_INVALID_ARCHIVE") from None
 
 
-def save_month(path: Path, raw, year, month, received, source_url):
+def save_month(
+    path: Path, raw, year, month, received, source_url, *, normalize_exact_duplicates=False
+):
     path.mkdir(parents=True, exist_ok=False)
     (path / "source.zip").write_bytes(raw)
     manifest = {
@@ -207,8 +238,12 @@ def save_month(path: Path, raw, year, month, received, source_url):
         "authorized_for_entry": False,
         "datasets": {},
     }
+    if normalize_exact_duplicates:
+        manifest["normalization"] = "exact-byte-identical-row-deduplication-v1"
     for seconds in (3600, 14400):
-        text, audit = convert_archive(raw, year, month, seconds)
+        text, audit = convert_archive(
+            raw, year, month, seconds, normalize_exact_duplicates=normalize_exact_duplicates
+        )
         label = "1h" if seconds == 3600 else "4h"
         spec = DataSpec(
             source="histdata_xauusd_bid",

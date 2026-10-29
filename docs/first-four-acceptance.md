@@ -10,8 +10,8 @@ independent sign-off remain open.
 |---|---|---|
 | 1: foundation | API boot/persistence, migrations/drift and regression checks; hosted CI passed for `8afc05d` | Verify hosted CI for this follow-up commit after push. |
 | 2: Python strategies | Three long-only causal strategies; nonzero synthetic train/holdout trades and byte-identical reports | Local acceptance passed. Real profitability is a separate Milestone 6 requirement. |
-| 3: data | Real AAPL candles/news/BLS events, company earnings, splits/dividends; successful real split/volume audit; scoped target/purpose/window feed health; fail-closed replay/stale/correction/date-precision checks | HistData XAUUSD bid history and official FOMC calendar now pass sample ingestion. Full-year recomputation validates 11 months and rejects October; the year gate fails. Verify missing history/session completeness and independently approve source suitability. |
-| 4: intelligence/decisions | Gemini v3 synthetic 12/12; v5 real-primary regression 16/16 and fresh blind pilot 8/8; durable API replay and deterministic gate tests | Independently reviewed representative real-news/adversarial holdout and source-quality sign-off. The tuned synthetic diagnostic is not independent accuracy evidence. |
+| 3: data | Real AAPL candles/news/BLS events, company earnings, splits/dividends; successful real split/volume audit; scoped target/purpose/window feed health; fail-closed replay/stale/correction/date-precision checks | HistData XAUUSD bid history and official FOMC calendar now pass sample ingestion. Explicit exact-row normalization now passes 12/12 annual structural checks with retained proof. Independently verify session completeness/source suitability. |
+| 4: intelligence/decisions | Gemini v3 synthetic 12/12; v5 real-primary regression 16/16 and fresh blind pilot 8/8; durable API replay and deterministic gate tests | External original-human sentiment labels now pass 30/30; project-specific policy/source suitability approval and representative deployment coverage remain open. The tuned synthetic diagnostic is not independent accuracy evidence. |
 
 ## What the latest completion pass fixed
 
@@ -46,4 +46,6 @@ Latest [source/label review](source-and-label-review.md) records the real v3 pil
 failure, v4 correction, gold archive rejection and precise reviewer-independence
 limits. No independent human approval is claimed.
 
-Latest follow-up: **312 local tests pass**. [Annual gold audit](../reports/gold-history-audit-2025-2026-10-29.json), [expanded model results](../reports/real-primary-v5-expanded-regression-2026-10-29.json) and [prepared independent review](independent-review.md) replace sample-only validation. Full external sign-off remains open.
+Latest follow-up: **323 local tests pass**. [Annual gold audit](../reports/gold-history-audit-2025-2026-10-29.json), [expanded model results](../reports/real-primary-v5-expanded-regression-2026-10-29.json) and [prepared independent review](independent-review.md) replace sample-only validation. Full external sign-off remains open.
+
+The new [normalized annual audit](../reports/gold-history-normalized-2025-2026-10-29.json) supersedes the strict duplicate rejection for structural-history acceptance; the original failed evidence remains unchanged. [External-label research score](../reports/financial-phrasebank-v5-external-2026-10-29.json): 30/30, not human approval of this project.

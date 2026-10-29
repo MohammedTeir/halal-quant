@@ -9,7 +9,7 @@ import hashlib
 import json
 from datetime import UTC, datetime
 from pathlib import Path
-from time import monotonic
+from time import monotonic, sleep
 
 from packages.config.settings import get_settings
 from services.news_intelligence.classification import build_target_prompt
@@ -30,6 +30,7 @@ def collect(
     model_name: str,
     *,
     prompt_version="news-classification-v2",
+    min_interval_seconds=0,
 ):
     if prompt_version not in (
         "news-classification-v2",
@@ -38,6 +39,8 @@ def collect(
         "news-classification-v5",
     ):
         raise ValueError("Unknown evaluation prompt version")
+    if not 0 <= min_interval_seconds <= 60:
+        raise ValueError("Evaluation pacing must be 0..60 seconds")
     raw = corpus_path.read_bytes()
     corpus = Corpus.model_validate_json(raw)
     if len(corpus.cases) > 100:
@@ -55,15 +58,22 @@ def collect(
             "case_count": len(corpus.cases),
             "origin": "live",
             "automatic_resume": False,
+            "min_interval_seconds": min_interval_seconds,
         },
     )
     # Persist the exact input for independent later review.
     (run_dir / "corpus.json").write_bytes(raw)
     outputs, versions = {}, set()
+    previous_started = None
     for index, case in enumerate(corpus.cases):
+        if previous_started is not None:
+            delay = min_interval_seconds - (monotonic() - previous_started)
+            if delay > 0:
+                sleep(delay)
         # Filenames use an index, never caller-supplied case IDs/paths.
         _write(run_dir / f"{index:04d}-started.json", {"case_id": case.case_id})
         started = monotonic()
+        previous_started = started
         try:
             completion = adapter.complete(
                 build_target_prompt([case.source()], case.target(), version=prompt_version)
@@ -125,6 +135,7 @@ def main():
         default="news-classification-v5",
     )
     parser.add_argument("--timeout-seconds", type=float, default=60)
+    parser.add_argument("--min-interval-seconds", type=float, default=0)
     args = parser.parse_args()
     try:
         if not 0.1 <= args.timeout_seconds <= 120:
@@ -139,6 +150,7 @@ def main():
             GeminiAdapter(settings),
             settings.gemini_model,
             prompt_version=args.prompt_version,
+            min_interval_seconds=args.min_interval_seconds,
         )
         expected = len(Corpus.model_validate_json(args.corpus.read_bytes()).cases)
         if len(result["outputs"]) != expected:

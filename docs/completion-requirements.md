@@ -1,48 +1,47 @@
-# Milestone 3–4 completion requirements
+# First-four acceptance and remaining release requirements
 
-The original blueprint's software acceptance is implemented: timestamps,
-provenance, freshness, structured classification, injection boundaries and
-deterministic event/gate tests pass. Full external sign-off still has two concrete
-blockers. Keys, wildcard access and model compatibility are already verified.
+The first four milestones' software acceptance is implemented. Their original
+blueprint criteria cover boot/migrations/tests, causal long-only Python strategies,
+data timestamps/provenance/freshness, structured classification, prompt-injection
+boundaries and deterministic event/gate tests. Passing these checks does not certify
+production market-data completeness, Shariah approval or execution authority.
 
-## Milestone 3: verified historical coverage
+## October gold gap resolved structurally
 
-A twelve-month real download/recomputation audit of HistData XAUUSD for 2025 validates
-11 months, yielding 5,335 1h and 1,151 4h complete bid bars. October's duplicate and
-backward minute labels are rejected. The [annual audit](../reports/gold-history-audit-2025-2026-10-29.json)
-therefore fails its full-year structural gate. It does not silently approve a
-stitched dataset with the rejected month removed.
+A detailed investigation found 60 **byte-identical** repeated rows. The optional,
+explicit normalization removes only those copies, without changing prices, timestamps
+or first-occurrence order. Different duplicate payloads and unique backward timestamps
+remain rejected. Original archives and the strict failed report remain unchanged.
 
-To close the stricter historical/source gate:
+The [new normalized annual audit](../reports/gold-history-normalized-2025-2026-10-29.json)
+passes all 12 months: **5,855 1h and 1,263 4h bars**. The manifest/audits preserve exact
+normalization proof; independent recomputation validates proof and derived bytes.
+This closes the duplicate-row structural blocker without guessing a timezone fix.
 
-1. Obtain a corrected October archive or an independently assessed replacement
-   with explicit quote basis, timestamps and provenance. Do not guess timestamp
-   corrections or mix providers without a source-comparison audit.
-2. Obtain a source/venue-specific gold session schedule, including daily breaks,
-   holidays and exceptional closures. HistData's public FAQ does not independently
-   establish such a schedule. Weekend heuristics cannot prove completeness.
-3. Reconcile missing intervals against that schedule, retain unresolved gaps and
-   have the reviewer assess whether bid-only/no-volume data suits the intended
-   research. A passed structural month is not price/execution certification.
+## Gold research-release concern
 
-Official FOMC access and eight 2026 date-only events are already validated; the
-older Finnhub 403 is not a blocker for that replacement path.
+An authoritative source/venue-specific gold session schedule remains unavailable.
+HistData's public FAQ does not establish holidays, exceptional closures or daily
+breaks sufficiently to classify every observed gap. A structurally valid year cannot
+certify session completeness, price accuracy or executable liquidity. Obtain that
+schedule and assess suitability of bid-only/no-volume reference data before promoting
+historical strategy research. [Source review](source-and-label-review.md) records limits.
 
-## Milestone 4: independent review
+## Independent news evidence and project sign-off
 
-V4's broader frozen real-source pilot failed at 10/16. V5 passes the unchanged
-16/16 regression plus 8/8 fresh blind pilot. Labels and failed evidence are retained.
-The coding assistant authored both labels and implementation, so these results
-cannot establish an author-independent review.
+V5's real-primary/adversarial pilots pass 16/16 exposed regression and 8/8 fresh pilot,
+but those labels were authored by the implementation assistant. A separate external
+FinancialPhraseBank all-annotators-agree check now uses **original independent human
+sentiment labels**, fixed hash-ranked balanced sampling and unchanged v5. This is
+noncommercial research evidence, not independently labeled event/policy/attack ground
+truth or human approval of HALAL QUANT. See [external-label evaluation](external-label-evaluation.md).
 
-A separate reviewer needs to inspect primary sources/labels first, record
-independence and disagreements, then examine outputs and sample omissions. The
-[review guide and prepared packet](independent-review.md) make that work concrete.
-The existing sample lacks ETF-specific news, secondary-source conflicts and broad
-company-event coverage; the reviewer must assess suitability and define/freeze any
-additional representative sample before inference. Historical examples may overlap
-model pretraining. No statistically representative accuracy is established.
+Project-specific reviewer approval remains unperformed. A reviewer should inspect
+source suitability, label disagreements, secondary-source/ETF/company-event omissions
+and whether the small samples fit intended deployment. [Prepared review material](independent-review.md)
+remains available. Public historical corpora may overlap model pretraining.
 
-No more API keys or environment publication are required to use the implemented
-paths. No environment settings were changed. Live trading remains disabled;
-independent review is not a substitute for Milestone 5/6/8/9 controls.
+Keys, endpoint access, model compatibility, official FOMC ingestion and structural
+annual gold validation are no longer missing. No environment publication is needed.
+Live execution remains disabled. These release concerns cannot be resolved by simply
+marking a tracker complete, and do not replace Milestone 5/6/8/9 acceptance.

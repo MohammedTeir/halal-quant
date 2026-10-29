@@ -11,18 +11,20 @@ research performance gates or received a Shariah approval.
 Milestones 1–2 are implemented and locally validated. Milestone 3 includes
 versioned facts, scoped feeds, earnings/actions and real split/session audits.
 Free HistData XAUUSD bid history and the official Federal Reserve calendar now
-provide validated gold/FOMC sample paths. A full 2025 gold audit validates 11 months
-and rejects October; complete-year/session certification remains open. Volume is
+provide validated gold/FOMC sample paths. An explicit exact-duplicate normalization now validates all 12 months of 2025,
+retaining raw archives and removal proof. Session/source certification remains open. Volume is
 explicitly unavailable for HistData.
 Milestone 4 includes grounded Gemini generation and deterministic gates. A blind
 real-source review exposed instruction and sentiment weaknesses. Prompt v5 passes
 an unchanged 16-case regression and a separate 8-case fresh blind pilot. See the
 [source and label review](docs/source-and-label-review.md): this is AI-assisted
 review, not independent human sign-off or broad source-completeness certification.
+An additional external original-human-label sentiment benchmark passes 30/30;
+[its research scope and limits](docs/external-label-evaluation.md) remain explicit.
 Milestone 6 remains an early single-instrument research prototype.
 Milestones 5 and 7–8 have not started; optional live integration (Milestone 9) is disabled.
 
-The full suite has **312 passing tests**, including research, data integrity,
+The full suite has **323 passing tests**, including research, data integrity,
 advisory-output security and deterministic decision checks. All three
 default strategies and cost-matched buy-and-hold baselines execute on synthetic
 fixtures, finish flat, and reproduce reports byte-for-byte. These are software
