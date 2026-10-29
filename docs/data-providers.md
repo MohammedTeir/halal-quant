@@ -2,9 +2,10 @@
 
 Milestone 3 now includes read-only Alpaca daily candles, Finnhub company-news and
 BLS release-calendar adapters, an atomic ingestion worker, and exchange-session
-validation. These adapters have **mocked HTTP acceptance only**. No paid/free account
-entitlement, live response compatibility, completeness or provider accuracy has
-been established. The original first-four completion request remains open until
+validation. A live follow-up passed on 2026-10-29: 17 AAPL IEX daily candles, 108 company-news
+observations and 313 BLS calendar events. Sample compatibility is established;
+complete historical coverage, account entitlements, provider accuracy and action
+completeness remain unverified. The original first-four completion request remains open until
 [the external acceptance checklist](first-four-acceptance.md) passes.
 
 ## Recommended starting combination
@@ -30,8 +31,7 @@ ignored `.env` or deployment environment. Commands read the same Pydantic settin
 as the API. Never put values in command arguments, Git, frontend bundles or chat.
 In this managed cloud, allow HTTPS destinations `data.alpaca.markets`,
 `paper-api.alpaca.markets`, `finnhub.io`, `www.bls.gov`, and
-`generativelanguage.googleapis.com` through environment configuration. They are
-currently absent from the enforced policy. Keep the proxy and TLS verification.
+`generativelanguage.googleapis.com` through environment configuration. These provider domains are now active in the published cloud environment. Keep the proxy and TLS verification.
 
 ## Acquire and audit candles
 
@@ -87,8 +87,13 @@ Finnhub requires an explicitly scoped company request. Its upstream item ID plus
 target identifies a local source. BLS uses iCalendar UID; UTC/TZID dates, folded
 lines, cancellations and source stamps are checked. Unsupported recurrence,
 unknown timezone, malformed/empty calendars or future source stamps fail the poll.
-BLS `LAST-MODIFIED`/`DTSTAMP` is retained as the source stamp; it is **not independently
-verified historical publication evidence**. No backfilled local receipt is invented.
+BLS `LAST-MODIFIED`/`DTSTAMP`, when present, is labeled `publication_basis=provider_timestamp`;
+it is not independently verified publication evidence. The actual live calendar
+has no such stamp: `published_at` then records first observation with explicit
+`publication_basis=observed_at`. Source publication time remains unknown. Unchanged
+polls preserve the first observed event time; corrections receive a new revision
+and observation time. No historical receipt is backdated. Legacy normalized events
+without this optional field serialize exactly as before, preserving import IDs.
 
 Adapters without monotonic upstream revisions receive a locally assigned revision
 when observed content changes. Unchanged polls preserve earlier event receipts;

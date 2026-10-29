@@ -30,3 +30,12 @@ against the frozen synthetic corpus. Its perfect fixture score is evaluator
 software evidence only; no real model was called and no independent review or
 deployment approval is implied. `first-four-acceptance.json` records current local
 checks and the unpassed external gates; milestones 3 and 4 remain open.
+
+`live-provider-acceptance-2026-10-29.json` records real sample acquisition and
+provider/model metadata responses after published credentials became ready. It
+contains counts/hashes, not credentials or licensed news content.
+`gemini-live-diagnostic-2026-10-29.json` records failed real-model diagnostic
+acceptance, including ambiguity/missing cases and run provenance. Historical
+`first-four-acceptance.json` describes the earlier local-only pass and is superseded
+by these follow-up results for credential/access readiness. Neither live report
+establishes complete data coverage, independent model quality or trading approval.

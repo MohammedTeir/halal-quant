@@ -13,15 +13,19 @@ and locally validated. Milestone 3 now has CSV, versioned news/calendar/action
 ingestion, split/session audits, and mocked Alpaca/Finnhub/BLS acquisition; Milestone 6 has an early single-instrument research
 runner. Both remain incomplete. Milestone 4 has an advisory assessment boundary
 and deterministic gates, plus frozen adversarial/quality evaluation tooling. The Gemini backend adapter passes mocked provider
-acceptance; live-account compatibility and model-quality evaluation remain pending.
+acceptance. Real Alpaca/Finnhub/BLS acquisition and Gemini generation have now been
+exercised. The live Gemini diagnostic did not pass: 8 valid responses, 7 label
+matches out of 12 cases, two ambiguous timeouts and two unattempted cases.
 Milestones 5 and 7–8 have not started; optional live integration (Milestone 9) is disabled.
 
-The full suite has **257 passing tests**, including research, data integrity,
+The full suite has **259 passing tests**, including research, data integrity,
 advisory-output security and deterministic decision checks. All three
 default strategies and cost-matched buy-and-hold baselines execute on synthetic
 fixtures, finish flat, and reproduce reports byte-for-byte. These are software
 acceptance checks, not evidence of real-world returns or paper-trading readiness.
-GitHub Actions is configured; its hosted outcome has not been verified here.
+GitHub Actions passed for commit `68ab48f`; verification of the latest fix follows
+its push. See [live acceptance evidence](reports/live-provider-acceptance-2026-10-29.json)
+and the [diagnostic results](reports/gemini-live-diagnostic-2026-10-29.json).
 
 The [first-four completion checklist](docs/first-four-acceptance.md) records the remaining
 real-provider, coverage and independent model-quality gates. Setup commands are in

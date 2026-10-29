@@ -29,6 +29,17 @@ def persist_poll(engine, events, now, poll_id, *, provider="finnhub", kind="news
             prior = current.get(event.item_id)
             if prior:
                 candidate = event.model_copy(update={"revision": prior.revision})
+                if (
+                    getattr(event, "publication_basis", None) == "observed_at"
+                    and prior.payload.get("publication_basis") == "observed_at"
+                ):
+                    # Compare provider content without inventing a new source publication
+                    # on every unchanged poll. Retain the first observation timestamp.
+                    candidate = candidate.model_copy(
+                        update={
+                            "published_at": datetime.fromisoformat(prior.payload["published_at"])
+                        }
+                    )
                 event = (
                     candidate
                     if candidate.model_dump(mode="json") == prior.payload

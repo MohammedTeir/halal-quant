@@ -8,7 +8,7 @@ Their broader data/portfolio requirements remain incomplete. Milestone 4 now has
 
 | # | Deliverable | State | Acceptance and evidence |
 |---|---|---|---|
-| 1 | Foundation and architecture | Implemented; locally validated | FastAPI boots; PostgreSQL 16 migrations upgrade/downgrade and metadata check pass; 257 tests pass across foundation, research, ingestion, decisions and mocked Gemini; Docker API image builds; actual HTTP smoke and restart persistence checked. CI is defined; its hosted result has not been verified here. |
+| 1 | Foundation and architecture | Implemented; locally validated | FastAPI boots; PostgreSQL 16 migrations upgrade/downgrade and metadata check pass; 259 tests pass across foundation, research, ingestion, decisions and mocked Gemini; Docker API image builds; actual HTTP smoke and restart persistence checked. CI is defined; its hosted result has not been verified here. |
 | 2 | Three Python strategies; optional Pine | Implemented; automated local acceptance passed | Stock pullback, ETF regime trend, gold breakout/retest; configurable periods/stops/dates/costs; 32 research tests; all defaults execute nonzero train/holdout trades on synthetic inputs and repeat byte-for-byte. Optional Pine compilation/parity remains unverified. |
 | 3 | Market and news data | Provider-neutral foundation validated; real feeds pending | Historical CSV validation, split/volume audits, immutable news/calendar/action revisions, authoritative server receipt times, point-in-time reads, conservative URL deduplication and missing/stale/synthetic feed checks pass. Read-only Alpaca/Finnhub/BLS adapters, a restart-safe batch worker and sourced session audits now pass mocked acceptance. Real feed/account validation, complete action/gold/FOMC/earnings coverage, per-target verification and historical archives remain outstanding. |
 | 4 | AI intelligence and decision engine | Core and Gemini adapter validated with mocks; live/model quality pending | Strict evidence contracts, immutable model history, event/gate policies, Gemini REST structured-output adapter, durable generation claims, bounded transport retries and mocked API tests pass. Frozen quality/adversarial evaluation and one-shot collection tooling are implemented. Real-account/model compatibility, held-out quality/robustness results, source verification and human review remain incomplete. |
@@ -36,7 +36,7 @@ Their broader data/portfolio requirements remain incomplete. Milestone 4 now has
 
 ## Python increment acceptance
 
-- The Python increment originally passed 61 tests (32 research); the current full suite passes 257.
+- The Python increment originally passed 61 tests (32 research); the current full suite passes 259.
 - Every strategy exercises both entry and exit behavior; tests reject a zero-trade
   fixture as acceptance. Prefix and future-mutation tests validate causal signals;
   gold uses only completed higher-timeframe buckets.
@@ -53,7 +53,7 @@ Their broader data/portfolio requirements remain incomplete. Milestone 4 now has
 
 ## Data increment acceptance
 
-- The data increment passed 89 tests: the earlier 61 plus 17 data/API and 11 split-audit tests. Current total: 257.
+- The data increment passed 89 tests: the earlier 61 plus 17 data/API and 11 split-audit tests. Current total: 259.
 - `0002_data_events` upgrades the existing schema without removing signals; drift,
   readiness and downgrade/re-upgrade checks pass. New source revisions, imports and
   audits are durable and atomic; concurrent identical imports create one audit.
@@ -128,3 +128,23 @@ Implement trusted compliance/risk/ownership services for Milestone 5, and config
 portfolio and point-in-time research requirements before interpreting strategy
 performance as release evidence. Optional Pine validation is not a blocker for
 Python development. Live trading remains disabled.
+
+## Published-environment live follow-up (2026-10-29)
+
+- Provider credentials and Gemini model/enablement are ready; allowed destinations
+  are enforced. No environment draft edits or publication were performed.
+- Actual Alpaca IEX acquisition: 17 AAPL daily candles pass full session checks.
+  Finnhub: 108 news observations imported. BLS: 313 calendar events imported;
+  source publication stamps are absent and explicitly labeled as first observation.
+- Fixed unstamped BLS support without inventing historical publication: optional
+  provenance metadata preserves legacy canonical payloads; unchanged re-polls
+  preserve source revisions/first observed times. Two regression tests added.
+- Current full isolated SQLite suite: **259 passed**, one existing warning.
+  Hosted PostgreSQL CI passed for `68ab48f`; the latest fix needs its own CI result.
+- Real `gemini-3.5-flash-lite` metadata/generation verified. Diagnostic failed:
+  8 valid responses, 7 label matches out of 12, two ambiguous timeouts (not
+  recalled), two unattempted cases. Independent holdout/source review remains open.
+- [Live evidence](../reports/live-provider-acceptance-2026-10-29.json) and
+  [diagnostic scores](../reports/gemini-live-diagnostic-2026-10-29.json) supersede
+  earlier statements that no live calls had occurred. Milestones 3/4 remain open
+  for complete data coverage and a successful independently reviewed quality gate.

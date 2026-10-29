@@ -147,3 +147,50 @@ def test_local_revisions_and_atomic_batches_preserve_receipt_history(tmp_path):
             assert session.scalar(select(func.count()).select_from(DataImport)) == before
     finally:
         engine.dispose()
+
+
+def test_bls_missing_source_stamp_preserves_first_observation_and_versions_changes(tmp_path):
+    raw = ICS.replace(b"DTSTAMP:20261001T120000Z\n", b"")
+    before = datetime.now(UTC)
+    _, polled = fetch_calendar(
+        transport=httpx.MockTransport(lambda request: httpx.Response(200, content=raw))
+    )
+    assert before <= polled[0].published_at <= datetime.now(UTC)
+    engine = create_engine(f"sqlite:///{tmp_path / 'observed.db'}")
+    Base.metadata.create_all(engine)
+    try:
+        first = parse_calendar(raw, received_at=NOW)
+        assert first[0].published_at == NOW
+        assert first[0].publication_basis == "observed_at"
+        persist_poll(engine, first, NOW, "first", provider="bls", kind="calendar")
+        later = NOW + timedelta(minutes=5)
+        second = parse_calendar(raw, received_at=later)
+        persist_poll(engine, second, later, "second", provider="bls", kind="calendar")
+        corrected = parse_calendar(
+            raw.replace(b"20261110T083000", b"20261111T083000"), received_at=later
+        )
+        persist_poll(engine, corrected, later, "corrected", provider="bls", kind="calendar")
+        with Session(engine) as session:
+            assert session.scalar(select(func.count()).select_from(EconomicRecord)) == 2
+            original = latest_events(session, "calendar", NOW)[0]
+            latest = latest_events(session, "calendar", later)[0]
+            assert (
+                original.payload["published_at"] == first[0].model_dump(mode="json")["published_at"]
+            )
+            assert latest.payload["publication_basis"] == "observed_at"
+            assert latest.revision == 2 and latest.payload[
+                "published_at"
+            ] == later.isoformat().replace("+00:00", "Z")
+    finally:
+        engine.dispose()
+
+
+def test_bls_last_modified_without_dtstamp_and_legacy_payload_compatibility():
+    raw = ICS.replace(b"DTSTAMP", b"LAST-MODIFIED")
+    event = parse_calendar(raw, received_at=NOW)[0]
+    assert event.publication_basis == "provider_timestamp"
+    payload = event.model_dump(mode="json")
+    payload.pop("publication_basis")
+    from packages.schemas.data_events import EconomicEvent
+
+    assert EconomicEvent.model_validate(payload).model_dump(mode="json") == payload

@@ -70,6 +70,10 @@ class EconomicEvent(SourceEvent):
     symbols: list[Symbol] = Field(default_factory=list, max_length=100)
     asset_classes: list[AssetClass] = Field(default_factory=list, max_length=3)
     cancelled: bool = False
+    # Omit absent metadata to preserve canonical payloads of existing imports.
+    publication_basis: Literal["provider_timestamp", "observed_at"] | None = Field(
+        default=None, exclude_if=lambda value: value is None
+    )
 
     @field_validator("scheduled_at")
     @classmethod

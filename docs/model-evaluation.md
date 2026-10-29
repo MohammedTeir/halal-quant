@@ -83,3 +83,21 @@ wrong labels, missing cases, invented evidence and changed targets.
 
 Structural schemas: [corpus](contracts/evaluation-corpus-v1.schema.json) and
 [responses](contracts/evaluation-responses-v1.schema.json).
+
+## First live diagnostic (2026-10-29)
+
+The configured `gemini-3.5-flash-lite` model was confirmed through its metadata
+endpoint and returned structured responses. The frozen diagnostic **did not pass**:
+8 of 12 cases have valid grounded responses, 7 match the frozen labels. The Fed
+uncertainty case returned a policy outside its expected label. Two adversarial
+requests timed out with ambiguous delivery and were not recalled; two cases remain
+unattempted. Missing answers do not establish attack containment.
+
+Only previously unattempted cases were collected in a second exclusive run; no
+case was sent twice by the evaluation collector. Combined scoring preserves both
+run manifest/response hashes and the original frozen corpus hash. See the
+[per-case live report](../reports/gemini-live-diagnostic-2026-10-29.json).
+These are synthetic diagnostic cases, not an independent real-news holdout.
+Investigate latency and prompt/policy behavior, keep prompt versions distinct for
+changes, and review ambiguous upstream requests before any deliberate regeneration.
+Do not change frozen labels to turn this failed run into a pass.

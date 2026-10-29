@@ -22,7 +22,7 @@ def main():
         parser.error("Archive exists; preserve previous source polls")
     engine = None
     try:
-        raw, events = fetch_calendar(received_at=datetime.now(UTC))
+        raw, events = fetch_calendar()
         received = datetime.now(UTC)
         args.archive.mkdir(parents=True, exist_ok=False)
         (args.archive / "source.ics").write_bytes(raw)
@@ -32,7 +32,7 @@ def main():
                 {
                     "poll_id": poll_id,
                     "received_at": received.isoformat(),
-                    "source_stamp_semantics": "iCalendar LAST-MODIFIED or DTSTAMP; publication time not independently verified",
+                    "source_stamp_semantics": "iCalendar LAST-MODIFIED/DTSTAMP when available; otherwise first observed time with publication_basis=observed_at; source publication is unknown",
                     "events": [event.model_dump(mode="json") for event in events],
                 },
                 output,

@@ -193,3 +193,7 @@ establish any of those live properties.
 one-shot real-response collector and offline semantic/evidence scorer. Live runs
 require explicit backend enablement and consume quota. No real-model score or
 independent review has been established.
+
+The first live follow-up confirmed `gemini-3.5-flash-lite` metadata and structured
+generation; [the diagnostic failed](../reports/gemini-live-diagnostic-2026-10-29.json).
+Model compatibility on this sample is not a release-quality or robustness pass.

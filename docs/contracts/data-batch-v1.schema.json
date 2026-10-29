@@ -209,6 +209,22 @@
           "default": false,
           "title": "Cancelled",
           "type": "boolean"
+        },
+        "publication_basis": {
+          "anyOf": [
+            {
+              "enum": [
+                "provider_timestamp",
+                "observed_at"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Publication Basis"
         }
       },
       "required": [

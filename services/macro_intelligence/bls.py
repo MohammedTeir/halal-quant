@@ -1,6 +1,6 @@
 """Bounded BLS iCalendar acquisition with explicit timezone and revision semantics.
 
-Only standalone, timestamped events are supported. Recurrence/cancellation and
+Only standalone events with explicit scheduled times are supported. Recurrence and
 unknown timezones fail the whole poll instead of silently dropping restrictions.
 """
 
@@ -92,7 +92,8 @@ def parse_calendar(raw: bytes, *, received_at: datetime):
                     )
                     else "other"
                 )
-                published = _stamp(*active.get("LAST-MODIFIED", active["DTSTAMP"]))
+                source_stamp = active.get("LAST-MODIFIED") or active.get("DTSTAMP")
+                published = _stamp(*source_stamp) if source_stamp else received_at
                 if published > received_at:
                     raise ValueError("Future source stamp")
                 events.append(
@@ -100,6 +101,7 @@ def parse_calendar(raw: bytes, *, received_at: datetime):
                         provider="bls",
                         item_id=digest(uid),
                         published_at=published,
+                        publication_basis="provider_timestamp" if source_stamp else "observed_at",
                         title=title,
                         event_type=event_type,
                         scheduled_at=_stamp(*active["DTSTART"]),
@@ -126,7 +128,7 @@ def parse_calendar(raw: bytes, *, received_at: datetime):
         raise BlsError("BLS_INVALID_CALENDAR") from None
 
 
-def fetch_calendar(*, received_at: datetime, transport=None):
+def fetch_calendar(*, received_at: datetime | None = None, transport=None):
     try:
         with (
             httpx.Client(
@@ -143,4 +145,4 @@ def fetch_calendar(*, received_at: datetime, transport=None):
                     raise BlsError("BLS_RESPONSE_TOO_LARGE")
     except httpx.HTTPError:
         raise BlsError("BLS_UNAVAILABLE") from None
-    return bytes(raw), parse_calendar(bytes(raw), received_at=received_at)
+    return bytes(raw), parse_calendar(bytes(raw), received_at=received_at or datetime.now(UTC))

@@ -1,0 +1,95 @@
+{
+  "authorized_for_entry": false,
+  "environment_configuration_changed": false,
+  "gemini": {
+    "acceptance_pass": false,
+    "ambiguous_timeouts": 2,
+    "automatically_retried_ambiguous_cases": false,
+    "diagnostic_cases": 12,
+    "independent_holdout_review_completed": false,
+    "logical_generation_attempts": 10,
+    "model": "gemini-3.5-flash-lite",
+    "model_metadata_confirmed": true,
+    "quality_matches": 7,
+    "remaining_unattempted_cases": [
+      "secret-exfiltration",
+      "markup"
+    ],
+    "valid_responses": 8
+  },
+  "hosted_ci": {
+    "conclusion": "success",
+    "new_fix_commit_status": "pending verification",
+    "url": "https://github.com/MohammedTeir/halal-quant/actions/runs/40730630223",
+    "verified_commit": "68ab48fb7c6e0198879a53abf5e87580f2b0309f"
+  },
+  "live_trading_enabled": false,
+  "milestones_3_and_4_complete": false,
+  "mode": "research-only",
+  "providers": {
+    "alpaca": {
+      "asset_class": "stock",
+      "candle_count": 17,
+      "consolidated_market_coverage": false,
+      "corporate_action_completeness_verified": false,
+      "feed": "iex",
+      "manifest_sha256": "30a143c888582d2086190b797221f69cf6fe6eba098ff9bb227fa5190f5da72a",
+      "session_consistent": true,
+      "symbol": "AAPL"
+    },
+    "bls": {
+      "comprehensive_calendar": false,
+      "events": 313,
+      "publication_basis": "observed_at when source lacks stamp; historical publication unknown",
+      "source_sha256": "92a350111ace106deaab5584e4084366bd367b594a0d0bad116008d82d63e501",
+      "unchanged_repoll": {
+        "duplicates": 313,
+        "inserted": 0
+      }
+    },
+    "finnhub": {
+      "all_symbol_coverage_verified": false,
+      "inserted": 108,
+      "observations_sha256": "43be8dc410c848fbfce3696b46c3486bfedd6081547b2d5a5b7c7236ae802fe9",
+      "target": "AAPL"
+    },
+    "preflight": [
+      {
+        "bytes": 646,
+        "name": "alpaca-calendar",
+        "status": 200
+      },
+      {
+        "bytes": 66238,
+        "name": "finnhub-news",
+        "status": 200
+      },
+      {
+        "bytes": 455,
+        "methods": [
+          "generateContent",
+          "countTokens",
+          "createCachedContent",
+          "batchGenerateContent"
+        ],
+        "model": "models/gemini-3.5-flash-lite",
+        "name": "gemini-model",
+        "status": 200
+      },
+      {
+        "bytes": 80672,
+        "name": "bls-calendar",
+        "status": 200
+      }
+    ]
+  },
+  "recorded_at": "2026-10-29T07:35:41.118080+00:00",
+  "regression": {
+    "backend": "isolated SQLite",
+    "live_credentials_removed_from_test_process": true,
+    "passed": 259,
+    "warnings": 1
+  },
+  "schema_version": "1.0",
+  "storage": "isolated SQLite acceptance database; no development/user database modified"
+}
