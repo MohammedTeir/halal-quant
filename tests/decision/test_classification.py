@@ -147,3 +147,25 @@ def test_advisory_uncertainty_and_adverse_news_can_only_add_restrictions(changes
         parse_output(json.dumps(assessment(**changes))), DecisionPolicy()
     )
     assert assessment_restrictions(parse_output(json.dumps(assessment())), DecisionPolicy()) == []
+
+
+def test_v3_explicit_uncertainty_and_injection_guidance_preserves_legacy_prompt():
+    from services.news_intelligence.classification import build_target_prompt
+
+    target = {
+        "event_id": SOURCE_ID,
+        "source_ids": [SOURCE_ID],
+        "symbol": "EXAMPLE",
+        "asset_class": "stock",
+    }
+    old = build_target_prompt([source()], target)
+    new = build_target_prompt([source()], target, version="news-classification-v3")
+    assert old["prompt_version"] == "news-classification-v2"
+    assert new["prompt_version"] == "news-classification-v3"
+    assert "conservative uncertainty policy" not in old["system"]
+    assert "conservative uncertainty policy" in new["system"]
+    assert "instruction attack rather than financial news" in new["system"]
+    assert old["document_json"] == new["document_json"]
+    assert old["response_schema"] == new["response_schema"]
+    with pytest.raises(ValueError):
+        build_target_prompt([source()], target, version="arbitrary")

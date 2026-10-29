@@ -17,15 +17,22 @@ def main():
     parser.add_argument("--start", type=date.fromisoformat, required=True)
     parser.add_argument("--end", type=date.fromisoformat, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--adjustment", choices=("split", "raw"), default="split")
     args = parser.parse_args()
     if args.output.exists():
         parser.error("Snapshot directory exists; preserve previous acquisitions")
     try:
         settings = get_settings()
         adapter = AlpacaDaily(settings.alpaca_api_key, settings.alpaca_secret_key)
-        snapshot = adapter.fetch(args.symbol, args.asset_class, args.start, args.end)
+        snapshot = adapter.fetch(
+            args.symbol, args.asset_class, args.start, args.end, adjustment=args.adjustment
+        )
         save_snapshot(args.output, snapshot)
-        dataset = load_csv(args.output / "bars.csv", args.output / "metadata.json")
+        dataset = load_csv(
+            args.output / "bars.csv",
+            args.output / "metadata.json",
+            allow_raw_for_audit=args.adjustment == "raw",
+        )
         schedule = Schedule.model_validate(snapshot["schedule"])
         result = audit_sessions(dataset, schedule, dataset.spec.retrieved_at)
         if not result["consistent"]:

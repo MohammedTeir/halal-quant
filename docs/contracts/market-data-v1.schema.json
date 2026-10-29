@@ -49,6 +49,23 @@
       "title": "Volume Basis",
       "type": "string"
     },
+    "adjustment_rounding_quantum": {
+      "anyOf": [
+        {
+          "maximum": 0.01,
+          "minimum": 1e-08,
+          "type": "number"
+        },
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Adjustment Rounding Quantum"
+    },
     "currency": {
       "const": "USD",
       "default": "USD",

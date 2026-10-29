@@ -18,7 +18,7 @@ variable, browser bundle, Pine script, news record or API request body.
 | `GEMINI_API_KEY` | Empty | Server-only Gemini credential; masked in settings representations |
 | `GEMINI_MODEL` | Unconfigured | Bare `gemini-...` model ID available to your Google AI Studio account |
 | `GEMINI_ENABLED` | false | Explicitly enables billable generation requests |
-| `GEMINI_TIMEOUT_SECONDS` | 15 | Per-phase HTTP timeout; range 0.1–20 seconds |
+| `GEMINI_TIMEOUT_SECONDS` | 60 | Per-phase HTTP inactivity timeout; range 0.1–120 seconds |
 | `GEMINI_MAX_OUTPUT_TOKENS` | 4096 | Response token ceiling; range 512–8192 |
 
 Set the key and a JSON-output-capable model available to your account, then set
@@ -176,7 +176,7 @@ and 17 generated-assessment API tests. All 57 API tests also pass on SQLite.
 mocked inference from deployment startup. The latter checks API readiness, CA
 loading and disabled generation with no job/model call.
 
-Apply migration `0004_gemini_jobs` before readiness. It preserves existing facts,
+Apply Alembic head `0005_feed_coverage` before current readiness. Migration `0004_gemini_jobs` introduced the generation ledger. It preserves existing facts,
 classifications and decisions. Downgrading to 0003 deletes generation claims; do
 not use it on operational data without backup/recovery planning, since deleting
 failed/in-flight history destroys replay protection. Never automatically recall
@@ -197,3 +197,18 @@ independent review has been established.
 The first live follow-up confirmed `gemini-3.5-flash-lite` metadata and structured
 generation; [the diagnostic failed](../reports/gemini-live-diagnostic-2026-10-29.json).
 Model compatibility on this sample is not a release-quality or robustness pass.
+
+## Version 3 completion pass
+
+The active backend generation prompt is now `news-classification-v3`. It explicitly
+requires conservative review for conditional/uncertain impact and instruction-only
+source attacks. Legacy v1/v2 imports and historical results remain readable. Failed
+v2 jobs/runs were not restarted. A separate v3 experiment on unchanged frozen
+labels passes [12/12 diagnostic cases](../reports/gemini-v3-diagnostic-2026-10-29.json).
+A [real-news API check](../reports/gemini-real-news-api-2026-10-29.json) confirms
+durable success/replay without a second provider call and a blocked decision.
+Default timeout is 60 seconds; a smaller explicitly configured value still applies.
+This fixes observed timeout sensitivity but does not promise future requests cannot
+time out. Ambiguous requests retain their failure/claim and are not auto-regenerated.
+Independent real-world holdout/source review remains required; see
+[completion requirements](completion-requirements.md).

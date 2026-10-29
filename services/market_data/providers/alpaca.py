@@ -10,6 +10,7 @@ import io
 import json
 import math
 from datetime import UTC, date, datetime, time
+from decimal import Decimal
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -47,7 +48,16 @@ class AlpacaDaily:
         except (httpx.HTTPError, ValueError):
             raise AlpacaError("ALPACA_RESPONSE_UNAVAILABLE") from None
 
-    def fetch(self, symbol: str, asset_class: str, start: date, end: date, *, clock=None):
+    def fetch(
+        self,
+        symbol: str,
+        asset_class: str,
+        start: date,
+        end: date,
+        *,
+        clock=None,
+        adjustment="split",
+    ):
         # This adapter intentionally supports whole-session equity candles only.
         if (
             not symbol.isascii()
@@ -57,6 +67,7 @@ class AlpacaDaily:
             or not isinstance(start, date)
             or not isinstance(end, date)
             or start > end
+            or adjustment not in ("split", "raw")
         ):
             raise ValueError("Valid equity symbol, asset class and date window required")
         received = (clock or (lambda: datetime.now(UTC)))()
@@ -74,7 +85,7 @@ class AlpacaDaily:
             "start": start_at.isoformat(),
             "end": end_at.isoformat(),
             "timeframe": "1Day",
-            "adjustment": "split",
+            "adjustment": adjustment,
             "feed": "iex",
             "limit": 10000,
         }
@@ -165,8 +176,9 @@ class AlpacaDaily:
                 symbol=symbol,
                 asset_class=asset_class,
                 timeframe_seconds=86400,
-                price_basis="split_adjusted",
-                volume_basis="split_adjusted",
+                price_basis="split_adjusted" if adjustment == "split" else "unadjusted",
+                volume_basis="split_adjusted" if adjustment == "split" else "as_reported",
+                adjustment_rounding_quantum=Decimal("0.01") if adjustment == "split" else None,
                 retrieved_at=received,
             )
             schedule = Schedule(

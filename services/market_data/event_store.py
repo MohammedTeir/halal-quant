@@ -6,7 +6,14 @@ from datetime import UTC, datetime, timedelta
 
 from sqlalchemy import select
 
-from apps.api.db import AuditRecord, CorporateActionRecord, DataImport, EconomicRecord, NewsRecord
+from apps.api.db import (
+    AuditRecord,
+    CorporateActionRecord,
+    DataImport,
+    EconomicRecord,
+    FeedCoverageRecord,
+    NewsRecord,
+)
 from packages.schemas.data_events import DataBatch
 from services.news_intelligence.normalization import canonical_url
 
@@ -97,6 +104,21 @@ def import_batch(session, batch: DataBatch, now: datetime):
             duplicates=duplicates,
         )
     )
+    if batch.coverage is not None:
+        coverage = batch.coverage
+        for symbol in coverage.symbols or ["*"]:
+            for asset_class in coverage.asset_classes:
+                session.add(
+                    FeedCoverageRecord(
+                        id=digest([identity, symbol, asset_class]),
+                        import_id=identity,
+                        symbol=symbol,
+                        asset_class=asset_class,
+                        purpose=coverage.purpose,
+                        starts_at=coverage.starts_at,
+                        ends_at=coverage.ends_at,
+                    )
+                )
     session.add(AuditRecord(action=f"data_import_{batch.kind}", subject=identity, created_at=now))
     session.flush()
     return {

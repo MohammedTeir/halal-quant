@@ -112,3 +112,17 @@ failed/ambiguous runs before deliberately retrying. Enter provider credentials o
 in backend/deployment secrets or secure environment settings. The cloud draft
 contains the required destinations and secret requirements; saving a draft does
 not activate access or publish a snapshot.
+
+## Coverage migration and latest Gemini defaults
+
+Run `uv run alembic upgrade head` before starting the new API/acquisition commands.
+Current head is `0005_feed_coverage`. This additive migration preserves prior
+imports/signals/classifications/jobs and creates target coverage metadata. Downgrade
+removes coverage; replaying an older successful batch does not recreate it. A fresh
+source poll with a new batch ID is required, preserving authoritative receipt time.
+Never use a production/user database for upgrade/downgrade tests.
+
+Gemini's default timeout is now 60 seconds, bounded to 0.1–120; existing explicit
+configuration overrides it. Reverse-proxy/client timeouts must accommodate the
+chosen request budget. Request timeouts remain ambiguous; do not auto-regenerate.
+No deployment/environment settings were edited or published during development.

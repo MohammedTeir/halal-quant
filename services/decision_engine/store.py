@@ -13,12 +13,12 @@ from services.decision_engine.policies import (
     assessment_restrictions,
     calendar_restrictions,
 )
+from services.market_data.coverage import coverage_status
 from services.market_data.event_store import (
     ImportConflict,
     aware,
     check_as_of,
     digest,
-    feed_status,
     latest_events,
     observation,
 )
@@ -32,7 +32,7 @@ def _scope(payload, symbol, asset_class):
     )
 
 
-def _feed(session, provider, kind, as_of, policy):
+def _feed(session, provider, kind, as_of, policy, signal, purpose):
     if provider is None:
         return {
             "provider": None,
@@ -42,12 +42,45 @@ def _feed(session, provider, kind, as_of, policy):
             "provider_independently_verified": False,
             "authorized_for_entry": False,
         }
-    return feed_status(session, provider, kind, as_of, timedelta(minutes=policy.feed_age_minutes))
+    before = (
+        policy.news_lookback_hours
+        if kind == "news"
+        else policy.earnings_before_hours
+        if purpose == "earnings"
+        else policy.macro_after_hours
+    )
+    after = (
+        0
+        if kind == "news"
+        else policy.earnings_after_hours
+        if purpose == "earnings"
+        else policy.macro_before_hours
+    )
+    return coverage_status(
+        session,
+        provider,
+        signal.symbol,
+        signal.asset_class,
+        purpose,
+        as_of,
+        as_of - timedelta(hours=before),
+        as_of + timedelta(hours=after),
+        timedelta(minutes=policy.feed_age_minutes),
+    )
 
 
 def intelligence_snapshot(session, signal, as_of, settings, policy):
-    news_feed = _feed(session, settings.news_provider, "news", as_of, policy)
-    calendar_feed = _feed(session, settings.calendar_provider, "calendar", as_of, policy)
+    news_feed = _feed(
+        session, settings.news_provider, "news", as_of, policy, signal, "company_news"
+    )
+    calendar_feed = _feed(
+        session, settings.calendar_provider, "calendar", as_of, policy, signal, "macro_releases"
+    )
+    feeds = {"news": news_feed, "calendar": calendar_feed}
+    if signal.asset_class == "stock":
+        feeds["earnings"] = _feed(
+            session, settings.earnings_provider, "calendar", as_of, policy, signal, "earnings"
+        )
     articles = [
         row
         for row in latest_events(session, "news", as_of, settings.news_provider)
@@ -57,7 +90,7 @@ def intelligence_snapshot(session, signal, as_of, settings, policy):
     ]
     calendar = [
         observation(row)
-        for row in latest_events(session, "calendar", as_of, settings.calendar_provider)
+        for row in latest_events(session, "calendar", as_of)
         if settings.calendar_provider is not None
     ]
     windows = calendar_restrictions(calendar, signal.symbol, signal.asset_class, as_of, policy)
@@ -108,7 +141,7 @@ def intelligence_snapshot(session, signal, as_of, settings, policy):
         )
     # Positive advisory text never clears source-verification, missing-feed or calendar gates.
     blockers = []
-    for name, feed in (("news", news_feed), ("calendar", calendar_feed)):
+    for name, feed in feeds.items():
         if not feed["required_feed_available"]:
             blockers.append(
                 {"code": "REQUIRED_FEED_UNAVAILABLE", "kind": name, "state": feed["state"]}
@@ -121,7 +154,7 @@ def intelligence_snapshot(session, signal, as_of, settings, policy):
     return {
         "allows_entry": not (blockers or windows or reviews),
         "feed_blockers": blockers,
-        "feeds": {"news": news_feed, "calendar": calendar_feed},
+        "feeds": feeds,
         "event_restrictions": windows,
         "assessment_restrictions": reviews,
         "classifications": considered,

@@ -148,3 +148,27 @@ Python development. Live trading remains disabled.
   [diagnostic scores](../reports/gemini-live-diagnostic-2026-10-29.json) supersede
   earlier statements that no live calls had occurred. Milestones 3/4 remain open
   for complete data coverage and a successful independently reviewed quality gate.
+
+## Milestone 3–4 completion follow-up
+
+- Current isolated SQLite regression: **286 passed**, one existing warning.
+- Gemini v3: **12/12 live synthetic diagnostic cases valid and label-correct**,
+  unchanged corpus/labels. Default timeout 60 seconds (0.1–120 supported) matches
+  observed latency; old failed jobs/runs remain untouched. One actual news API
+  generation succeeds durably, replays without another provider call and remains
+  unauthorized in decision evaluation. Independent real-news review is still open.
+- Added live earnings/actions acquisition, stable earnings fiscal-period revisions,
+  conservative date-only/DST windows and explicit observed-time provenance.
+- Real AAPL 2020 raw/adjusted audit passes on 25 bars with 4-for-1 split and correct
+  volume. Explicit split-adjustment rounding handles cent-rounded changed bars
+  without relaxing unchanged bars, undeclared precision, share counts or volume.
+- Added `0005_feed_coverage` and authenticated target/asset/purpose/window health.
+  Source polls cannot refresh unrelated targets/purposes, and legacy unscoped polls
+  cannot supply scoped availability. Coverage UTC normalization, atomicity, replay,
+  stale/missing/reduced-window behavior and migration-loss fail-closed tests pass.
+- Remaining external data gaps are now measured: existing Finnhub key returns 403
+  for spot-gold candles and broad economic calendar; official FOMC domain is not
+  in the active allowlist. No environment configuration was changed or published.
+- [Evidence](../reports/milestones-3-4-followup-2026-10-29.json) and
+  [exact remaining requirements](completion-requirements.md). Milestones 3/4 are
+  not declared fully signed off without those sources and independent review.

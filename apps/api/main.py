@@ -14,6 +14,7 @@ from apps.api.db import (
     DataImport,
     DecisionRecord,
     EconomicRecord,
+    FeedCoverageRecord,
     GenerationJob,
     NewsRecord,
     SignalRecord,
@@ -30,6 +31,7 @@ from packages.schemas.intelligence import (
 from packages.schemas.signals import Signal
 from services.decision_engine.store import store_evaluation
 from services.macro_intelligence.calendar import calendar_as_of
+from services.market_data.coverage import coverage_status
 from services.market_data.event_store import (
     ImportConflict,
     check_as_of,
@@ -105,12 +107,14 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         try:
             with engine.connect() as connection:
                 connection.execute(select(SignalRecord.event_id).limit(1))
+                connection.execute(select(FeedCoverageRecord.id).limit(1))
                 connection.execute(select(AuditRecord.id).limit(1))
                 version = connection.execute(
                     text("SELECT version_num FROM alembic_version")
                 ).scalar()
                 for table in (
                     DataImport,
+                    FeedCoverageRecord,
                     NewsRecord,
                     EconomicRecord,
                     CorporateActionRecord,
@@ -119,7 +123,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                     GenerationJob,
                 ):
                     connection.execute(select(table.id).limit(1))
-                if version != "0004_gemini_jobs":
+                if version != "0005_feed_coverage":
                     raise HTTPException(503, "Database migration required")
         except SQLAlchemyError:
             raise HTTPException(503, "Database unavailable or migrations missing") from None
@@ -309,6 +313,38 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             return feed_status(
                 session, provider, kind, time, timedelta(seconds=maximum_age_seconds)
             )
+
+    @app.get("/api/v1/data/coverage", dependencies=[Depends(dashboard)])
+    def data_coverage(
+        provider: Provider,
+        symbol: Symbol,
+        asset_class: Literal["stock", "etf", "gold"],
+        purpose: Literal["company_news", "earnings", "macro_releases", "corporate_actions"],
+        window_start: AwareDatetime,
+        window_end: AwareDatetime,
+        as_of: AwareDatetime | None = None,
+        maximum_age_seconds: Annotated[int, Query(ge=1, le=86400)] = 900,
+    ):
+        time = cutoff(as_of)
+        try:
+            with sessions() as session:
+                return coverage_status(
+                    session,
+                    provider,
+                    symbol,
+                    asset_class,
+                    purpose,
+                    time,
+                    window_start,
+                    window_end,
+                    timedelta(seconds=maximum_age_seconds),
+                )
+        except ValueError as error:
+            raise HTTPException(422, str(error)) from error
+        except SQLAlchemyError:
+            raise HTTPException(
+                503, "Data store unavailable or coverage migration missing"
+            ) from None
 
     @app.get("/api/v1/audit", dependencies=[Depends(dashboard)])
     def audit(limit: Annotated[int, Query(ge=1, le=100)] = 50):

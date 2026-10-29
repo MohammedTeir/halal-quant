@@ -3,6 +3,7 @@
 import hashlib
 import json
 from dataclasses import dataclass
+from decimal import Decimal
 from io import BytesIO
 from pathlib import Path
 from typing import Literal
@@ -21,6 +22,13 @@ class DataSpec(BaseModel):
     timeframe_seconds: int = Field(gt=0)
     price_basis: Literal["split_adjusted", "total_return_adjusted", "unadjusted"]
     volume_basis: Literal["as_reported", "split_adjusted"] = "as_reported"
+    adjustment_rounding_quantum: Decimal | None = Field(
+        default=None,
+        ge=Decimal("0.00000001"),
+        le=Decimal("0.01"),
+        allow_inf_nan=False,
+        exclude_if=lambda value: value is None,
+    )
     currency: Literal["USD"] = "USD"
     retrieved_at: AwareDatetime
     synthetic: bool = False
@@ -71,6 +79,8 @@ def load_csv(
         raise ValueError("Non-finite market observation")
     if (frame[["Open", "High", "Low", "Close"]] <= 0).any().any():
         raise ValueError("Prices must be positive")
+    if spec.adjustment_rounding_quantum is not None and spec.price_basis != "split_adjusted":
+        raise ValueError("Adjustment rounding applies only to split-adjusted snapshots")
     if (frame.Volume < 0).any():
         raise ValueError("Volume must be nonnegative")
     if (

@@ -82,9 +82,21 @@ def verify_split_adjustments(
             }
         )
     expected = raw.bars[["Open", "High", "Low", "Close"]].to_numpy() * factors[:, None]
-    price_consistent = bool(
-        np.allclose(expected, adjusted.bars[["Open", "High", "Low", "Close"]], rtol=1e-7, atol=1e-8)
+    actual = adjusted.bars[["Open", "High", "Low", "Close"]].to_numpy()
+    max_price_error = float(np.max(np.abs(expected - actual)))
+    quantum = (
+        float(adjusted.spec.adjustment_rounding_quantum)
+        if adjusted.spec.adjustment_rounding_quantum
+        else None
     )
+    checks = np.isclose(expected, actual, rtol=1e-7, atol=1e-8)
+    if quantum is not None:
+        changed = factors != 1
+        units = actual[changed] / quantum
+        checks[changed] = np.abs(expected[changed] - actual[changed]) <= quantum / 2 + 1e-8
+        if not np.allclose(units, np.round(units), rtol=0, atol=1e-6):
+            checks[changed] = False
+    price_consistent = bool(checks.all())
     expected_volume = raw.bars.Volume.to_numpy()
     if adjusted.spec.volume_basis == "split_adjusted":
         expected_volume = expected_volume / factors
@@ -106,6 +118,10 @@ def verify_split_adjustments(
         or adjusted.spec.synthetic
         or any(item.action.synthetic for item in observations),
         "prices_consistent": price_consistent,
+        "adjustment_rounding_quantum": str(adjusted.spec.adjustment_rounding_quantum)
+        if quantum is not None
+        else None,
+        "maximum_price_error": max_price_error,
         "volume_consistent": volume_consistent,
         "volume_basis": adjusted.spec.volume_basis,
         "applied_splits": sorted(applied, key=lambda a: (a["effective_at"], a["item_id"])),

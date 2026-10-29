@@ -1,54 +1,42 @@
 # First four milestones: completion checklist
 
-The first four milestones are **not all complete**. Local automated acceptance is
-recorded below; external evidence cannot be replaced by fixtures or documentation.
-Milestones 1 and the agreed Python version of 2 meet their local acceptance gates.
-Optional Pine compilation is not required for the agreed Python workflow.
+Milestones 1 and the agreed Python version of 2 pass local acceptance. Milestone 4's
+implementation now passes its live synthetic diagnostic, but independent review
+remains outstanding. Milestone 3 is blocked by concrete source-access gaps.
+**The first four are not all fully signed off.**
 
-| Milestone | Local evidence | Remaining completion gate |
+| Milestone | Evidence now available | Remaining gate |
 |---|---|---|
-| 1: foundation | API/container startup and persistence previously passed; current full PostgreSQL regression, migrations and schema-drift checks pass | Hosted CI passed for `68ab48f`; final fix revision still needs its own hosted result. |
-| 2: strategies | All three Python implementations execute long-only; causal/future-mutation tests, synthetic default train/holdout runs and repeatability pass | No outstanding local implementation gate. Real-data profitability belongs to Milestone 6 and is not claimed here. |
-| 3: data | Alpaca/Finnhub/BLS adapters pass mocked HTTP/normalization tests; atomic revisioned imports, resumable file worker, action arithmetic, retrieval cutoffs, session/DST/early-close/missing-bar checks pass | Real acquisition passed for 17 AAPL IEX candles, 108 news observations and 313 BLS events. Broader entitlements/provenance remain unverified. Obtain complete action history and spot-gold candles. Complete company-earnings/FOMC calendar coverage and per-target feed-health verification. Audit real raw/adjusted snapshots and retained historical receipt evidence. |
-| 4: intelligence/decisions | Strict evidence/target contracts, deterministic gates, durable Gemini jobs, adversarial boundary tests, frozen quality scorer and crash-safe collector pass | Configured model metadata and real generation pass; the frozen diagnostic fails (7/12 label matches, 8 valid responses, two ambiguous timeouts and two unattempted cases). Diagnose latency/policy behavior without automatically recalling ambiguous cases. Independently review labels, source credibility, representative held-out quality and adversarial results; retain actual model versions/usage and human review evidence. |
+| 1: foundation | API boot/persistence, migrations/drift and regression checks; hosted CI passed for `cdc2aad` | Verify hosted CI for this follow-up commit after push. |
+| 2: Python strategies | Three long-only causal strategies; nonzero synthetic train/holdout trades and byte-identical reports | Local acceptance passed. Real profitability is a separate Milestone 6 requirement. |
+| 3: data | Real AAPL candles/news/BLS events, company earnings, splits/dividends; successful real split/volume audit; scoped target/purpose/window feed health; fail-closed replay/stale/correction/date-precision checks | Real spot-gold history and FOMC coverage require source access. Verify complete historical/action/session availability and independent source credibility. |
+| 4: intelligence/decisions | Gemini v3: 12/12 live synthetic diagnostic cases valid and label-correct; one real-news durable API generation/replay; strict evidence contracts, uncertainty/injection and deterministic gate tests | Independently reviewed representative real-news/adversarial holdout and source-quality sign-off. The tuned synthetic diagnostic is not independent accuracy evidence. |
 
-## What changed in this completion pass
+## What the latest completion pass fixed
 
-- Read-only, bounded/paginated Alpaca IEX daily acquisition with raw archives,
-  hashes and session-label-to-close conversion. Finite OHLCV and full schedule
-  coverage are validated; incomplete/duplicate/current-day data fail.
-- Finnhub company-news acquisition and BLS schedule acquisition with local content
-  revisions, authoritative server receipts and atomic multi-batch poll persistence.
-- Restart-safe provider-normalized file worker; malformed/conflicting batches cannot
-  refresh feed health; replays do not invent a new receipt.
-- Retrieval cutoff enforcement and sourced exchange-session audit tooling.
-- Frozen model-quality/adversarial corpus, strict scorer and exclusive-run Gemini
-  collector. Mock acceptance cannot become a live-quality or approval claim.
-- Provider/key instructions, limits and reproducible commands in
-  [data providers](data-providers.md) and [model evaluation](model-evaluation.md).
+- Versioned `news-classification-v3` adds explicit conservative uncertainty and
+  instruction-attack rules; v1/v2 history and failed v2 runs remain unchanged.
+- Default Gemini HTTP inactivity timeout is now 60 seconds (configurable 0.1–120),
+  reflecting observed live latency. Ambiguous read/delivery failures still never
+  trigger automatic generation retries. Collector result files retain durations.
+- Read-only company earnings use stable fiscal-period identity and explicitly
+  date-only New York timestamps. Restriction windows include the whole date,
+  preserving DST and avoiding invented release times.
+- Corporate-action acquisition records observed-time provenance. Raw equity data
+  is available only for audits. Declared split-adjustment rounding is bounded to
+  half a quantum of at most one cent and checked only on adjusted bars; unchanged
+  bars and volume retain strict checks. The original failed strict audit is retained.
+- `0005_feed_coverage` records provider/target/asset/purpose/window metadata in the
+  same transaction as successful imports. One company's poll cannot refresh another
+  company, earnings cannot substitute for macro coverage, and replay cannot refresh
+  receipt time or recreate lost coverage. Legacy unscoped facts do not satisfy scoped
+  gates. Date offsets normalize to UTC before SQL storage.
+- New protected `/api/v1/data/coverage` exposes these checks. Decisions use scoped
+  feed evidence, include the selected stock earnings feed, and consider all known
+  calendar restrictions. Source verification/ownership/compliance/risk authorities
+  are still unavailable, so entry authorization remains false.
 
-## Published configuration and remaining external gates
-
-1. Alpaca/Finnhub credentials are now ready and real requests succeeded. Confirm
-   account entitlements, coverage and current free-tier limits beyond this sample.
-2. Gemini credentials/model/enablement are ready; `gemini-3.5-flash-lite` metadata
-   and generation succeeded. Resolve the failed diagnostic and independently review quality.
-3. Provider HTTPS destinations are now active. TLS verification and the proxy
-   were preserved. No environment configuration was edited or published during testing.
-4. Run the acquisition/audit and live evaluation commands in the linked guides;
-   preserve reports and independently review the source/model limitations.
-5. Fill the missing gold/action/FOMC/earnings and per-target coverage gates before
-   declaring Milestone 3 complete. No API key alone fills these data requirements.
-
-Keep this checklist open until its evidence exists. Live trading remains disabled;
-no data/model test establishes Shariah approval or permission to execute an order.
-
-## Recorded live follow-up (2026-10-29)
-
-See [provider results](../reports/live-provider-acceptance-2026-10-29.json) and
-[Gemini diagnostic](../reports/gemini-live-diagnostic-2026-10-29.json). The current
-regression passes 259 tests on isolated SQLite with real credentials removed from
-the test process. BLS lacks source publication stamps in this response; the fix
-marks first observation explicitly and preserves existing payload identities.
-A real unchanged re-poll preserves event revisions. Raw source archives and the
-isolated acceptance database remain in ignored local data directories.
+See [precise remaining requirements](completion-requirements.md),
+[provider commands](data-providers.md) and [model evaluation](model-evaluation.md).
+No environment draft edits/publication occurred during this pass. A passing
+software/diagnostic check is not Shariah approval or permission to trade.

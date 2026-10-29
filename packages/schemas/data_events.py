@@ -1,9 +1,10 @@
 """Facts and provenance, never AI classification or trade permissions."""
 
-from datetime import UTC, datetime
+from datetime import UTC, datetime, time
 from decimal import Decimal
 from typing import Annotated, Literal
 from urllib.parse import urlsplit
+from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 from pydantic import (
     AwareDatetime,
@@ -70,6 +71,27 @@ class EconomicEvent(SourceEvent):
     symbols: list[Symbol] = Field(default_factory=list, max_length=100)
     asset_classes: list[AssetClass] = Field(default_factory=list, max_length=3)
     cancelled: bool = False
+    scheduled_precision: Literal["date"] | None = Field(
+        default=None, exclude_if=lambda value: value is None
+    )
+    scheduled_timezone: str | None = Field(
+        default=None, max_length=64, exclude_if=lambda value: value is None
+    )
+
+    @model_validator(mode="after")
+    def explicit_date_precision(self):
+        if self.scheduled_precision is None and self.scheduled_timezone is None:
+            return self
+        if self.scheduled_precision != "date" or self.scheduled_timezone is None:
+            raise ValueError("Date-only scheduling requires an explicit timezone")
+        try:
+            zone = ZoneInfo(self.scheduled_timezone)
+        except (ZoneInfoNotFoundError, ValueError):
+            raise ValueError("Unknown schedule timezone") from None
+        if self.scheduled_at.astimezone(zone).time() != time.min:
+            raise ValueError("Date-only timestamps must identify local midnight")
+        return self
+
     # Omit absent metadata to preserve canonical payloads of existing imports.
     publication_basis: Literal["provider_timestamp", "observed_at"] | None = Field(
         default=None, exclude_if=lambda value: value is None
@@ -90,6 +112,9 @@ class EconomicEvent(SourceEvent):
 
 class CorporateAction(SourceEvent):
     kind: Literal["corporate_actions"] = "corporate_actions"
+    publication_basis: Literal["provider_timestamp", "observed_at"] | None = Field(
+        default=None, exclude_if=lambda value: value is None
+    )
     symbol: Symbol
     action_type: Literal["split", "cash_dividend"]
     effective_at: AwareDatetime
@@ -115,6 +140,32 @@ class CorporateAction(SourceEvent):
 Event = Annotated[NewsEvent | EconomicEvent | CorporateAction, Field(discriminator="kind")]
 
 
+class FeedCoverage(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    symbols: list[Symbol] = Field(default_factory=list, max_length=100)
+    asset_classes: list[AssetClass] = Field(min_length=1, max_length=3)
+    purpose: Literal["company_news", "earnings", "macro_releases", "corporate_actions"]
+    starts_at: AwareDatetime
+    ends_at: AwareDatetime
+
+    @field_validator("starts_at", "ends_at")
+    @classmethod
+    def utc_coverage(cls, value):
+        return value.astimezone(UTC)
+
+    @model_validator(mode="after")
+    def valid_scope(self):
+        if self.starts_at >= self.ends_at:
+            raise ValueError("Coverage window must increase")
+        if not self.symbols and self.purpose != "macro_releases":
+            raise ValueError("Only macro releases may declare an all-symbol scope")
+        if len(set(self.symbols)) != len(self.symbols) or len(set(self.asset_classes)) != len(
+            self.asset_classes
+        ):
+            raise ValueError("Coverage scopes must be unique")
+        return self
+
+
 class DataBatch(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True)
     provider: Provider
@@ -122,9 +173,42 @@ class DataBatch(BaseModel):
     batch_id: Identifier
     synthetic: bool = False
     records: list[Event] = Field(default_factory=list, max_length=100)
+    coverage: FeedCoverage | None = Field(default=None, exclude_if=lambda value: value is None)
 
     @model_validator(mode="after")
     def uniform_source(self):
+        if self.coverage is not None:
+            expected_kind = {
+                "company_news": "news",
+                "earnings": "calendar",
+                "macro_releases": "calendar",
+                "corporate_actions": "corporate_actions",
+            }[self.coverage.purpose]
+            if self.kind != expected_kind:
+                raise ValueError("Coverage purpose does not match source kind")
+            for record in self.records:
+                if record.kind == "news":
+                    stamp = record.published_at
+                    symbols = record.symbols
+                    classes = record.asset_classes
+                elif record.kind == "calendar":
+                    if (self.coverage.purpose == "earnings") != (record.event_type == "earnings"):
+                        raise ValueError("Calendar coverage purpose does not match event type")
+                    stamp = record.scheduled_at
+                    symbols = record.symbols
+                    classes = record.asset_classes
+                else:
+                    stamp = record.effective_at
+                    symbols, classes = [record.symbol], []
+                if (
+                    not self.coverage.starts_at <= stamp <= self.coverage.ends_at
+                    or (
+                        self.coverage.symbols
+                        and (not symbols or not set(symbols) <= set(self.coverage.symbols))
+                    )
+                    or (classes and not set(classes) <= set(self.coverage.asset_classes))
+                ):
+                    raise ValueError("Event is outside declared poll coverage")
         if any(
             record.provider != self.provider
             or record.kind != self.kind

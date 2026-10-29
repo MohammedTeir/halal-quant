@@ -1,0 +1,19 @@
+{
+  "authorized": false,
+  "classification_id": "live-v3-1985b001ad3f4116843b971807ac4be9",
+  "configured_model": "gemini-3.5-flash-lite",
+  "decision_status": "WAIT_DATA",
+  "error_code": null,
+  "generation_http_status": 200,
+  "independent_accuracy_claim": false,
+  "job_status": "SUCCEEDED",
+  "model_version": "gemini-3.5-flash-lite",
+  "prompt_version": "news-classification-v3",
+  "real_news_source_id": "9ff153c145a71ce17c624351ad70588462a463ce85917412c7b83d7548b433ba",
+  "replay_duplicate": true,
+  "usage": {
+    "candidatesTokenCount": 368,
+    "promptTokenCount": 758,
+    "totalTokenCount": 1126
+  }
+}

@@ -88,7 +88,7 @@ Freshness measures a successful poll, not article age. Empty successful batches
 are allowed. Synthetic feeds never satisfy `required_feed_available`; provider
 verification and entry authorization remain false. Data import is not available
 to dashboard/webhook credentials. Source failures and production rate/body limits
-remain future adapter/operations work. Current API readiness requires `0004_gemini_jobs`.
+remain future adapter/operations work. Current API readiness requires `0005_feed_coverage`.
 
 ## Advisory intelligence and decisions
 
@@ -140,3 +140,21 @@ IDs return 404. It never returns the key or raw provider error body. Model metad
 from this path includes server-selected model, provider-reported version and token
 counts when available. Legacy manual classification views have generation:null.
 All assessments remain advisory and cannot authorize orders.
+
+## Scoped feed coverage and calendar precision
+
+`GET /api/v1/data/coverage` uses dashboard bearer authentication. Required query
+fields are provider, symbol, asset_class, purpose (`company_news`, `earnings`,
+`macro_releases`, `corporate_actions`), window_start and window_end. Optional as_of
+must not be future; maximum_age_seconds defaults to 900 (1..86400). Results include
+MISSING, STALE, INCOMPLETE_WINDOW or FRESH; availability is separate from independent
+provider verification and always denies entry authorization. Invalid windows return
+422; missing migration/store failure returns 503.
+
+DataBatch's optional [coverage](contracts/feed-coverage-v1.schema.json) metadata is
+validated against event kind/target/time and stored atomically. Only macro scope
+may omit specific symbols. Old payloads without this metadata serialize unchanged
+and do not supply scoped health. Calendar facts may explicitly declare date-only
+precision/timezone; their policy windows include the whole date. Corporate actions
+may declare observed-time publication provenance. Structural schemas preserve
+these optional fields without rewriting old imports.

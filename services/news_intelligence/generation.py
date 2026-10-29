@@ -14,7 +14,11 @@ from services.market_data.event_store import (
     observation,
 )
 from services.news_intelligence.assessment_store import classification_view, store_classification
-from services.news_intelligence.classification import build_target_prompt, parse_output
+from services.news_intelligence.classification import (
+    TARGET_PROMPT_VERSION,
+    build_target_prompt,
+    parse_output,
+)
 from services.news_intelligence.providers.gemini import GeminiAdapter, GeminiError
 
 
@@ -72,8 +76,9 @@ def _claim(session, request, settings, now):
         "request": request.model_dump(mode="json"),
         "source": snapshot,
         "configured_model": settings.gemini_model,
-        "prompt_version": "news-classification-v2",
+        "prompt_version": TARGET_PROMPT_VERSION,
         "max_output_tokens": settings.gemini_max_output_tokens,
+        "timeout_seconds": settings.gemini_timeout_seconds,
     }
     row = GenerationJob(
         id=request.classification_id,
@@ -120,7 +125,9 @@ def generate_classification(
         "symbol": request.symbol,
         "asset_class": request.asset_class,
     }
-    prompt = build_target_prompt([claim["payload"]["source"]], target)
+    prompt = build_target_prompt(
+        [claim["payload"]["source"]], target, version=claim["payload"]["prompt_version"]
+    )
     metadata = None
     try:
         completion = adapter_factory(settings).complete(prompt)
@@ -142,7 +149,7 @@ def generate_classification(
             classification_id=request.classification_id,
             model_name=f"gemini/{claim['payload']['configured_model']}",
             model_version=completion.model_version,
-            prompt_version="news-classification-v2",
+            prompt_version=claim["payload"]["prompt_version"],
             raw_output=completion.text,
         )
         with sessions.begin() as session:

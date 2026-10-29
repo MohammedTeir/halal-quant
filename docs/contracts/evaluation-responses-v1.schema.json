@@ -18,6 +18,14 @@
       "title": "Model Version",
       "type": "string"
     },
+    "prompt_version": {
+      "enum": [
+        "news-classification-v2",
+        "news-classification-v3"
+      ],
+      "title": "Prompt Version",
+      "type": "string"
+    },
     "origin": {
       "enum": [
         "mock",
@@ -33,11 +41,6 @@
       },
       "title": "Outputs",
       "type": "object"
-    },
-    "prompt_version": {
-      "const": "news-classification-v2",
-      "title": "Prompt Version",
-      "type": "string"
     }
   },
   "required": [

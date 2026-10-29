@@ -216,3 +216,24 @@ def test_cli_success_failure_reports_and_no_overwrite(tmp_path, make_dataset, mo
         main()
     assert error.value.code == 1
     assert not json.loads(failed.read_text())["consistent"]
+
+
+def test_declared_rounding_only_applies_to_changed_split_bars(make_dataset):
+    from decimal import Decimal
+
+    raw, adjusted, observations = snapshots(make_dataset, ratio=4)
+    # Source adjusts pre-split bars to cents while retaining original post-split precision.
+    columns = ["Open", "High", "Low", "Close"]
+    adjusted.bars.loc[adjusted.bars.index[:3], columns] = adjusted.bars.loc[
+        adjusted.bars.index[:3], columns
+    ].round(2)
+    adjusted.spec = adjusted.spec.model_copy(
+        update={"adjustment_rounding_quantum": Decimal("0.01")}
+    )
+    result = verify_split_adjustments(raw, adjusted, [observations], AS_OF)
+    assert result["consistent"] and result["adjustment_rounding_quantum"] == "0.01"
+    adjusted.bars.iloc[0, adjusted.bars.columns.get_loc("Close")] += 0.02
+    assert not verify_split_adjustments(raw, adjusted, [observations], AS_OF)["consistent"]
+    adjusted.bars.iloc[0, adjusted.bars.columns.get_loc("Close")] -= 0.02
+    adjusted.bars.iloc[-1, adjusted.bars.columns.get_loc("Close")] += 0.001
+    assert not verify_split_adjustments(raw, adjusted, [observations], AS_OF)["consistent"]

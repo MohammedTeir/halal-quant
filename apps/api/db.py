@@ -96,3 +96,14 @@ class GenerationJob(Base):
     error_code: Mapped[str | None] = mapped_column(String(64), nullable=True)
     payload: Mapped[dict] = mapped_column(JSON)
     result_metadata: Mapped[dict | None] = mapped_column(JSON, nullable=True)
+
+
+class FeedCoverageRecord(Base):
+    __tablename__ = "feed_coverage"
+    id: Mapped[str] = mapped_column(String(64), primary_key=True)
+    import_id: Mapped[str] = mapped_column(String(64), index=True)
+    symbol: Mapped[str] = mapped_column(String(64), index=True)
+    asset_class: Mapped[str] = mapped_column(String(16))
+    purpose: Mapped[str] = mapped_column(String(32))
+    starts_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+    ends_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))

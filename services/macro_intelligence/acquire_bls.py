@@ -3,13 +3,14 @@
 import argparse
 import json
 import uuid
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
 from sqlalchemy import create_engine
 from sqlalchemy.exc import SQLAlchemyError
 
 from packages.config.settings import get_settings
+from packages.schemas.data_events import FeedCoverage
 from services.macro_intelligence.bls import BlsError, fetch_calendar
 from services.market_data.acquire_news import persist_poll
 
@@ -41,7 +42,21 @@ def main():
             )
             output.write("\n")
         engine = create_engine(get_settings().database_url)
-        result = persist_poll(engine, events, received, poll_id, provider="bls", kind="calendar")
+        result = persist_poll(
+            engine,
+            events,
+            received,
+            poll_id,
+            provider="bls",
+            kind="calendar",
+            coverage=FeedCoverage(
+                symbols=[],
+                asset_classes=["stock", "etf", "gold"],
+                purpose="macro_releases",
+                starts_at=min(event.scheduled_at for event in events),
+                ends_at=max(event.scheduled_at for event in events) + timedelta(seconds=1),
+            ),
+        )
         with (args.archive / "import-result.json").open("x") as output:
             json.dump(result, output, sort_keys=True, indent=2)
             output.write("\n")

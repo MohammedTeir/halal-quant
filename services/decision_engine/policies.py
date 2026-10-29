@@ -1,6 +1,7 @@
 """Entry restrictions from known facts and validated assessments; never permission."""
 
 from datetime import datetime, timedelta
+from zoneinfo import ZoneInfo
 
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -48,7 +49,13 @@ def calendar_restrictions(
                 continue
             before, after = policy.macro_before_hours, policy.macro_after_hours
         scheduled = datetime.fromisoformat(event["scheduled_at"])
-        if scheduled - timedelta(hours=before) <= as_of <= scheduled + timedelta(hours=after):
+        start, end = scheduled, scheduled
+        if event.get("scheduled_precision") == "date":
+            start = scheduled.astimezone(ZoneInfo(event["scheduled_timezone"]))
+            end = start + timedelta(days=1)
+        window_start = start - timedelta(hours=before)
+        window_end = end + timedelta(hours=after)
+        if window_start <= as_of <= window_end:
             reasons.append(
                 {
                     "code": "EVENT_SCOPE_REVIEW"

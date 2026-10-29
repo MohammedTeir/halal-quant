@@ -40,6 +40,22 @@
           "title": "Kind",
           "type": "string"
         },
+        "publication_basis": {
+          "anyOf": [
+            {
+              "enum": [
+                "provider_timestamp",
+                "observed_at"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Publication Basis"
+        },
         "symbol": {
           "maxLength": 64,
           "minLength": 1,
@@ -210,6 +226,32 @@
           "title": "Cancelled",
           "type": "boolean"
         },
+        "scheduled_precision": {
+          "anyOf": [
+            {
+              "const": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Scheduled Precision"
+        },
+        "scheduled_timezone": {
+          "anyOf": [
+            {
+              "maxLength": 64,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Scheduled Timezone"
+        },
         "publication_basis": {
           "anyOf": [
             {
@@ -237,6 +279,64 @@
         "severity"
       ],
       "title": "EconomicEvent",
+      "type": "object"
+    },
+    "FeedCoverage": {
+      "additionalProperties": false,
+      "properties": {
+        "symbols": {
+          "items": {
+            "maxLength": 64,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9_.:/-]+$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Symbols",
+          "type": "array"
+        },
+        "asset_classes": {
+          "items": {
+            "enum": [
+              "stock",
+              "etf",
+              "gold"
+            ],
+            "type": "string"
+          },
+          "maxItems": 3,
+          "minItems": 1,
+          "title": "Asset Classes",
+          "type": "array"
+        },
+        "purpose": {
+          "enum": [
+            "company_news",
+            "earnings",
+            "macro_releases",
+            "corporate_actions"
+          ],
+          "title": "Purpose",
+          "type": "string"
+        },
+        "starts_at": {
+          "format": "date-time",
+          "title": "Starts At",
+          "type": "string"
+        },
+        "ends_at": {
+          "format": "date-time",
+          "title": "Ends At",
+          "type": "string"
+        }
+      },
+      "required": [
+        "asset_classes",
+        "purpose",
+        "starts_at",
+        "ends_at"
+      ],
+      "title": "FeedCoverage",
       "type": "object"
     },
     "NewsEvent": {
@@ -396,6 +496,17 @@
       "maxItems": 100,
       "title": "Records",
       "type": "array"
+    },
+    "coverage": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/FeedCoverage"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
     }
   },
   "required": [

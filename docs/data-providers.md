@@ -134,3 +134,44 @@ completeness, restart drills and real history remain acceptance work.
 
 The [schedule JSON Schema](contracts/session-schedule-v1.schema.json) describes
 provider-normalized session inputs. It does not attest to their provenance.
+
+## Corporate actions, date-only earnings and scoped freshness
+
+Run Alembic head `0005_feed_coverage` before acquisition/API startup.
+
+```sh
+uv run python -m services.market_data.acquire_actions \
+  --symbol AAPL --start 2020-08-01 --end 2020-09-04 \
+  --archive data/alpaca/unique-actions
+uv run python -m services.macro_intelligence.acquire_earnings \
+  --symbol AAPL --start 2026-10-01 --end 2026-11-30 \
+  --archive data/finnhub/unique-earnings
+```
+
+Actions support positive forward/reverse splits and USD cash dividends; unsupported
+action types/foreign structures fail instead of silently asserting completeness.
+Publication time is unknown and explicitly marked as first observation.
+Earnings use stable symbol/fiscal-year/quarter IDs so a date correction becomes
+a new revision. Before/after-market tags do not invent an exact release time:
+`scheduled_precision=date` and `scheduled_timezone=America/New_York` conservatively
+block the whole date plus configured margins. Absence from a later poll does not
+silently cancel a known event. This adapter covers US-stock date semantics only.
+
+`acquire_alpaca --adjustment raw` saves unadjusted audit inputs; strategy loading
+still rejects them. The split-adjusted adapter declares
+`adjustment_rounding_quantum=0.01`. The audit allows at most half this quantum only
+on bars changed by split factors, checks their rounded grid, and keeps unchanged
+bars/volume strict. Old snapshots without the declaration keep strict arithmetic.
+The declaration cannot exceed one cent. The real AAPL 2020 split/volume audit
+passes; that arithmetic does not establish a complete historical action ledger.
+
+News, BLS, earnings and action commands attach target/purpose/window coverage to
+successful polls. `GET /api/v1/data/coverage` requires dashboard authentication and
+`provider`, `symbol`, `asset_class`, `purpose`, `window_start`, `window_end`; optional
+`as_of` and `maximum_age_seconds` select point-in-time freshness. Coverage describes
+the provider query window, not a guarantee of upstream completeness. It never
+grants independent provider verification or trading permission. Macro-only polls
+cannot satisfy earnings; old unscoped imports cannot satisfy target coverage.
+Use `EARNINGS_PROVIDER=finnhub_earnings` to select the earnings source in decisions.
+Spot-gold and broad Finnhub economic-calendar requests currently return 403. See
+[remaining source requirements](completion-requirements.md).

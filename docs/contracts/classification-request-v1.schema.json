@@ -25,7 +25,8 @@
     "prompt_version": {
       "enum": [
         "news-classification-v1",
-        "news-classification-v2"
+        "news-classification-v2",
+        "news-classification-v3"
       ],
       "title": "Prompt Version",
       "type": "string"

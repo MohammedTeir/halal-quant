@@ -98,6 +98,32 @@
       "title": "Cancelled",
       "type": "boolean"
     },
+    "scheduled_precision": {
+      "anyOf": [
+        {
+          "const": "date",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Scheduled Precision"
+    },
+    "scheduled_timezone": {
+      "anyOf": [
+        {
+          "maxLength": 64,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Scheduled Timezone"
+    },
     "publication_basis": {
       "anyOf": [
         {

@@ -101,3 +101,16 @@ These are synthetic diagnostic cases, not an independent real-news holdout.
 Investigate latency and prompt/policy behavior, keep prompt versions distinct for
 changes, and review ambiguous upstream requests before any deliberate regeneration.
 Do not change frozen labels to turn this failed run into a pass.
+
+## Version 3 diagnostic follow-up
+
+The original corpus/labels remain unchanged. A new v3 experiment with a 60-second
+HTTP inactivity timeout returned 12 valid, label-correct results (12/12). The CLI
+now defaults to `--prompt-version news-classification-v3 --timeout-seconds 60`;
+v2 remains selectable for historical comparisons. Result files include elapsed
+seconds. API generations pin and retain their actual prompt version and timeout.
+The earlier failed runs are preserved; this is a new experiment after code changes,
+not automatic job regeneration. [Passing diagnostic](../reports/gemini-v3-diagnostic-2026-10-29.json).
+Because this diagnostic informed prompt tuning, it cannot be claimed as an
+independent holdout. Complete [independent review](completion-requirements.md) before
+claiming full Milestone 4 quality sign-off.

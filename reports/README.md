@@ -39,3 +39,11 @@ acceptance, including ambiguity/missing cases and run provenance. Historical
 `first-four-acceptance.json` describes the earlier local-only pass and is superseded
 by these follow-up results for credential/access readiness. Neither live report
 establishes complete data coverage, independent model quality or trading approval.
+
+`gemini-v3-diagnostic-2026-10-29.json` records the 12/12 passing v3 live diagnostic
+against unchanged synthetic labels; it is a tuned diagnostic, not an independent
+holdout. `gemini-real-news-api-2026-10-29.json` records actual grounded durable
+generation/replay and the unauthorized decision. `aapl-live-split-audit-2026-10-29.json`
+records the real raw/adjusted 4-for-1 audit, explicit rounding bound and volume check.
+`milestones-3-4-followup-2026-10-29.json` records scoped data/earnings/action progress
+and the still-blocked gold/FOMC and independent-review requirements.

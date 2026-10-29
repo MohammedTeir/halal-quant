@@ -1,0 +1,68 @@
+{
+  "action_observations_sha256": "0aff6438f17e10332b1f3974618de8ef217444ee9a006e26e302d9562f9903c5",
+  "adjusted": {
+    "csv_sha256": "4bb842c7f24fe450bdeff625c9c8582de93fdbafff4a91cad45506130f7a0df3",
+    "first_bar_close": "2020-08-03T20:00:00+00:00",
+    "last_bar_close": "2020-09-04T20:00:00+00:00",
+    "metadata": {
+      "adjustment_rounding_quantum": "0.01",
+      "asset_class": "stock",
+      "currency": "USD",
+      "price_basis": "split_adjusted",
+      "retrieved_at": "2026-10-29T07:44:55.908663Z",
+      "schema_version": "1.0",
+      "source": "alpaca_iex",
+      "symbol": "AAPL",
+      "synthetic": false,
+      "timeframe_seconds": 86400,
+      "timestamp_semantics": "bar_close",
+      "volume_basis": "split_adjusted"
+    },
+    "metadata_sha256": "82f3ed9db135df45d37f794471a9a437c50a76ef7b845a2f19eb7c832a5684df",
+    "rows": 25
+  },
+  "adjustment_rounding_quantum": "0.01",
+  "applied_splits": [
+    {
+      "effective_at": "2020-08-31T04:00:00+00:00",
+      "item_id": "d209b6c2-9231-474c-a80e-1a79dacadbb2",
+      "revision": 1,
+      "split_ratio": "4"
+    }
+  ],
+  "as_of": "2026-10-29T07:51:38.957664+00:00",
+  "authorized_for_paper": false,
+  "consistent": true,
+  "maximum_price_error": 0.005000000000009663,
+  "precision_metadata_provenance": {
+    "added_declaration": "adjustment_rounding_quantum=0.01 applies only to bars changed by split adjustment; raw provider prices retained",
+    "derived_from_original_metadata": "data/completion-20261029/aapl-adjusted/metadata.json",
+    "original_failed_strict_audit_retained": true
+  },
+  "prices_consistent": true,
+  "provider_independently_verified": false,
+  "raw": {
+    "csv_sha256": "42b3e42e3cd48fc699036139a73ef0fd68d5ed2e6bdd63295de8a3f6aafd4da5",
+    "first_bar_close": "2020-08-03T20:00:00+00:00",
+    "last_bar_close": "2020-09-04T20:00:00+00:00",
+    "metadata": {
+      "asset_class": "stock",
+      "currency": "USD",
+      "price_basis": "unadjusted",
+      "retrieved_at": "2026-10-29T07:44:57.544116Z",
+      "schema_version": "1.0",
+      "source": "alpaca_iex",
+      "symbol": "AAPL",
+      "synthetic": false,
+      "timeframe_seconds": 86400,
+      "timestamp_semantics": "bar_close",
+      "volume_basis": "as_reported"
+    },
+    "metadata_sha256": "0b961239e405d6e2973d6278850a1edd9566f9177b65b6b30515964e28532579",
+    "rows": 25
+  },
+  "schema_version": "1.0",
+  "synthetic": false,
+  "volume_basis": "split_adjusted",
+  "volume_consistent": true
+}

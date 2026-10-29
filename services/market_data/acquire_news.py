@@ -7,7 +7,7 @@ invented as historical facts: the authoritative receipt remains the local poll t
 import argparse
 import json
 import uuid
-from datetime import UTC, date, datetime
+from datetime import UTC, date, datetime, time, timedelta
 from pathlib import Path
 
 from sqlalchemy import create_engine
@@ -15,12 +15,12 @@ from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session
 
 from packages.config.settings import get_settings
-from packages.schemas.data_events import DataBatch
+from packages.schemas.data_events import DataBatch, FeedCoverage
 from services.market_data.event_store import import_batch, latest_events
 from services.news_intelligence.providers.finnhub import FinnhubError, FinnhubNews
 
 
-def persist_poll(engine, events, now, poll_id, *, provider="finnhub", kind="news"):
+def persist_poll(engine, events, now, poll_id, *, provider="finnhub", kind="news", coverage=None):
     # Caller owns retry policy. A racing correction rolls back rather than silently overwriting.
     with Session(engine) as session, session.begin():
         current = {row.item_id: row for row in latest_events(session, kind, now, provider)}
@@ -58,6 +58,7 @@ def persist_poll(engine, events, now, poll_id, *, provider="finnhub", kind="news
                         kind=kind,
                         batch_id=f"{poll_id}:{index}",
                         records=records,
+                        coverage=coverage,
                     ),
                     now,
                 )
@@ -97,7 +98,19 @@ def main():
             )
             output.write("\n")
         engine = create_engine(get_settings().database_url)
-        result = persist_poll(engine, events, received, poll_id)
+        result = persist_poll(
+            engine,
+            events,
+            received,
+            poll_id,
+            coverage=FeedCoverage(
+                symbols=[args.symbol],
+                asset_classes=[args.asset_class],
+                purpose="company_news",
+                starts_at=datetime.combine(args.start, time.min, UTC),
+                ends_at=datetime.combine(args.end + timedelta(days=1), time.min, UTC),
+            ),
+        )
         with (args.archive / "import-result.json").open("x") as output:
             json.dump(result, output, indent=2, sort_keys=True)
             output.write("\n")
