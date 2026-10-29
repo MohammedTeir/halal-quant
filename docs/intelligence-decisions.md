@@ -170,7 +170,7 @@ may fall outside the recent-news window even though their classification can be
 stored. Do not backdate receipt times or mutate existing source revisions.
 
 The intelligence increment added 51 schema/parser/policy/core tests and 13
-assessment/decision API tests. The current suite has 201 passing tests, including
+assessment/decision API tests. That historical adapter increment had 201 passing tests, including
 48 Gemini-specific mocked checks. The full PostgreSQL suite, targeted final
 source-scope checks and SQLite API workflow pass. Migrations preserve existing
 facts/signals; concurrent replays create one classification/decision audit.
@@ -178,7 +178,7 @@ facts/signals; concurrent replays create one classification/decision audit.
 acceptance, not model accuracy or market performance.
 
 Migration `0003_intelligence` creates these records; current API readiness requires
-`0004_gemini_jobs` as well. Downgrading to 0002
+head `0005_feed_coverage`, including `0004_gemini_jobs`. Downgrading to 0002
 removes classifications and decisions while preserving earlier facts/signals;
 its audit entries remain. Use rollback tests only on disposable databases and
 back up real data before any schema change. Production RBAC, review workflows,

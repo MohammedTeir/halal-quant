@@ -8,7 +8,7 @@ independent sign-off remain open.
 
 | Milestone | Evidence now available | Remaining gate |
 |---|---|---|
-| 1: foundation | API boot/persistence, migrations/drift and regression checks; hosted CI passed for `2bcd16c` | Verify hosted CI for this follow-up commit after push. |
+| 1: foundation | API boot/persistence, migrations/drift and regression checks; hosted CI passed for `8afc05d` | Verify hosted CI for this follow-up commit after push. |
 | 2: Python strategies | Three long-only causal strategies; nonzero synthetic train/holdout trades and byte-identical reports | Local acceptance passed. Real profitability is a separate Milestone 6 requirement. |
 | 3: data | Real AAPL candles/news/BLS events, company earnings, splits/dividends; successful real split/volume audit; scoped target/purpose/window feed health; fail-closed replay/stale/correction/date-precision checks | HistData XAUUSD bid history and official FOMC calendar now pass sample ingestion. Full-year recomputation validates 11 months and rejects October; the year gate fails. Verify missing history/session completeness and independently approve source suitability. |
 | 4: intelligence/decisions | Gemini v3 synthetic 12/12; v5 real-primary regression 16/16 and fresh blind pilot 8/8; durable API replay and deterministic gate tests | Independently reviewed representative real-news/adversarial holdout and source-quality sign-off. The tuned synthetic diagnostic is not independent accuracy evidence. |

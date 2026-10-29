@@ -169,7 +169,7 @@ makes zero real provider calls. It exercises API import → generated structured
 response → evidence validation → durable job/replay → blocked decision. Choose a
 new report path each time; outputs are not overwritten.
 
-Current acceptance: 201 tests overall, including 31 transport/schema/config tests
+Historical adapter-increment acceptance: 201 tests overall, including 31 transport/schema/config tests
 and 17 generated-assessment API tests. All 57 API tests also pass on SQLite.
 [Mock evidence](../reports/gemini-mock-smoke.json) and
 [disabled-container evidence](../reports/gemini-container-smoke.json) distinguish
@@ -182,17 +182,16 @@ not use it on operational data without backup/recovery planning, since deleting
 failed/in-flight history destroys replay protection. Never automatically recall
 ambiguous requests after restoring an older database snapshot.
 
-Real-account authentication, selected-model structured-output compatibility,
-response quality, prompt-injection robustness and quota behavior still require
-controlled validation after you configure your backend. The mock suite does not
-establish any of those live properties.
+Real-account authentication and selected-model structured-output compatibility now
+have live evidence below. Independent quality/robustness review and quota behavior
+remain separate concerns; mocked checks do not establish them.
 
 ## Frozen quality evaluation
 
 [Model evaluation](model-evaluation.md) documents the synthetic adversarial corpus,
 one-shot real-response collector and offline semantic/evidence scorer. Live runs
-require explicit backend enablement and consume quota. No real-model score or
-independent review has been established.
+require explicit backend enablement and consume quota. Live diagnostic scores are recorded below; independent reviewer approval remains
+open.
 
 The first live follow-up confirmed `gemini-3.5-flash-lite` metadata and structured
 generation; [the diagnostic failed](../reports/gemini-live-diagnostic-2026-10-29.json).
@@ -200,7 +199,7 @@ Model compatibility on this sample is not a release-quality or robustness pass.
 
 ## Version 3 completion pass
 
-The active backend generation prompt is now `news-classification-v3`. It explicitly
+That increment used `news-classification-v3`. It explicitly
 requires conservative review for conditional/uncertain impact and instruction-only
 source attacks. Legacy v1/v2 imports and historical results remain readable. Failed
 v2 jobs/runs were not restarted. A separate v3 experiment on unchanged frozen
@@ -213,11 +212,26 @@ time out. Ambiguous requests retain their failure/claim and are not auto-regener
 Independent real-world holdout/source review remains required; see
 [completion requirements](completion-requirements.md).
 
-## Current prompt v4
+## Historical prompt v4
 
-The active server generation prompt is `news-classification-v4`. A primary-source
+The following increment used `news-classification-v4`. A primary-source
 pilot found a mixed factual-news/instruction-attack case that v3 did not restrict.
 V4 requires review for that combination while preserving factual sentiment/event
 type. V3 text and failed pilot evidence are retained. See
 [source/label review](source-and-label-review.md) for 8/8 regression, 4/4 fresh
 pilot and the explicit independence limits.
+
+
+## Current prompt v5
+
+The active server generation prompt and collector default are
+`news-classification-v5`. Broader real-source evaluation exposed v4 sentiment errors
+(10/16), while all eight attacks requested review. V5 defines year-over-year
+financial sentiment, avoids inferred gold direction from macro readings, and keeps
+injected control text separate from financial facts. All legacy prompt versions
+retain their original text and stored history.
+
+V5 passes 16/16 exposed regression and 8/8 separately frozen fresh pilot. The current
+full suite passes 312 tests. [Source review](source-and-label-review.md) retains
+failures and independence limits; [review packets](independent-review.md) remain
+PENDING. These scores are not representative accuracy or independent approval.

@@ -27,7 +27,7 @@ advisory-output security and deterministic decision checks. All three
 default strategies and cost-matched buy-and-hold baselines execute on synthetic
 fixtures, finish flat, and reproduce reports byte-for-byte. These are software
 acceptance checks, not evidence of real-world returns or paper-trading readiness.
-GitHub Actions passed for commit `2bcd16c`; verification of this follow-up follows
+GitHub Actions passed for commit `8afc05d`; verification of this follow-up follows
 its push. See [source/label review](docs/source-and-label-review.md),
 [gold acceptance](reports/gold-source-acceptance-2026-10-29.json) and
 [the fresh v4 pilot](reports/real-primary-v4-fresh-pilot-2026-10-29.json).
