@@ -76,7 +76,13 @@ def intelligence_snapshot(session, signal, as_of, settings, policy):
     calendar_feed = _feed(
         session, settings.calendar_provider, "calendar", as_of, policy, signal, "macro_releases"
     )
-    feeds = {"news": news_feed, "calendar": calendar_feed}
+    feeds = {
+        "news": news_feed,
+        "calendar": calendar_feed,
+        "fomc": _feed(
+            session, settings.fomc_provider, "calendar", as_of, policy, signal, "macro_releases"
+        ),
+    }
     if signal.asset_class == "stock":
         feeds["earnings"] = _feed(
             session, settings.earnings_provider, "calendar", as_of, policy, signal, "earnings"

@@ -1,0 +1,67 @@
+{
+  "calendar_dates_authority": "official Federal Reserve publication; subject to updates",
+  "event_count": 8,
+  "events": [
+    {
+      "precision": "date",
+      "publication_basis": "observed_at",
+      "scheduled_at": "2026-01-28T05:00:00Z"
+    },
+    {
+      "precision": "date",
+      "publication_basis": "observed_at",
+      "scheduled_at": "2026-03-18T04:00:00Z"
+    },
+    {
+      "precision": "date",
+      "publication_basis": "observed_at",
+      "scheduled_at": "2026-04-29T04:00:00Z"
+    },
+    {
+      "precision": "date",
+      "publication_basis": "observed_at",
+      "scheduled_at": "2026-06-17T04:00:00Z"
+    },
+    {
+      "precision": "date",
+      "publication_basis": "observed_at",
+      "scheduled_at": "2026-07-29T04:00:00Z"
+    },
+    {
+      "precision": "date",
+      "publication_basis": "observed_at",
+      "scheduled_at": "2026-09-16T04:00:00Z"
+    },
+    {
+      "precision": "date",
+      "publication_basis": "observed_at",
+      "scheduled_at": "2026-10-28T04:00:00Z"
+    },
+    {
+      "precision": "date",
+      "publication_basis": "observed_at",
+      "scheduled_at": "2026-12-09T05:00:00Z"
+    }
+  ],
+  "execution_authorized": false,
+  "historical_publication_verified": false,
+  "scoped_coverage": {
+    "as_of": "2026-10-29T08:45:18.752747+00:00",
+    "asset_class": "gold",
+    "authorized_for_entry": false,
+    "coverage_end": "2027-01-01T05:00:00+00:00",
+    "coverage_start": "2026-01-01T05:00:00+00:00",
+    "last_successful_at": "2026-10-29T08:45:17.752747+00:00",
+    "provider": "federal_reserve",
+    "provider_independently_verified": false,
+    "purpose": "macro_releases",
+    "required_feed_available": true,
+    "state": "FRESH",
+    "symbol": "XAUUSD",
+    "synthetic": false,
+    "window_end": "2026-12-10T00:00:00+00:00",
+    "window_start": "2026-12-08T00:00:00+00:00"
+  },
+  "source_sha256": "f3f8e21c175d32960bfc2f36576475591c9cb7c4b8f352733442c79a94f04801",
+  "source_url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+}

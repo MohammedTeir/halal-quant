@@ -47,3 +47,12 @@ generation/replay and the unauthorized decision. `aapl-live-split-audit-2026-10-
 records the real raw/adjusted 4-for-1 audit, explicit rounding bound and volume check.
 `milestones-3-4-followup-2026-10-29.json` records scoped data/earnings/action progress
 and the still-blocked gold/FOMC and independent-review requirements.
+
+Latest source-review evidence: `gold-source-acceptance-2026-10-29.json` (usable
+September sample and rejected October archive), `fomc-source-acceptance-2026-10-29.json`
+(official calendar), `primary-source-label-review-2026-10-29.json` and
+`fresh-pilot-label-freeze-2026-10-29.json` (blind labels, provenance and explicit
+independence limits). `real-primary-v3-failed-2026-10-29.json` retains the original
+7/8 failure; `real-primary-v4-regression-2026-10-29.json` and
+`real-primary-v4-fresh-pilot-2026-10-29.json` record 8/8 regression and 4/4 fresh
+pilot. These reports explicitly do not establish independent human sign-off.

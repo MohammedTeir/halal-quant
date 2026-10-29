@@ -172,3 +172,25 @@ Python development. Live trading remains disabled.
 - [Evidence](../reports/milestones-3-4-followup-2026-10-29.json) and
   [exact remaining requirements](completion-requirements.md). Milestones 3/4 are
   not declared fully signed off without those sources and independent review.
+
+## Gold/FOMC and blind source-review follow-up
+
+- Published wildcard/Fed access is active and enforced; public requests succeed.
+  The assistant did not edit/publish environment configuration.
+- Official Fed calendar: 8 real 2026 events imported with observed-time provenance,
+  whole New York date restrictions and target-scoped macro coverage.
+- HistData free XAUUSD reference bid history: 30,208 M1 observations in September
+  2025 yield 502 complete 1h and 108 complete 4h UTC bars. Missing volume is explicit
+  and gaps/partial buckets are never filled. October is rejected for conflicting
+  duplicate minute labels/backward ordering. This is conditional research data,
+  not certification of all historical prices, sessions or liquidity.
+- Six primary excerpts/two adversarial variants were blind-labeled before Gemini
+  prediction. V3 failed 1 case (mixed valid earnings/injected control text). The
+  result and labels were retained; v4 fixes the source-integrity review requirement.
+- V4: 8/8 exposed regression plus 4/4 new pre-labeled blind pilot. These are small
+  AI-assisted reviews independent of Gemini outputs, not independent of the coding
+  author and not human sign-off. No frozen label was changed to make a score pass.
+- Current isolated regression: **299 passed**, one existing warning; source-safe
+  ZIP/form parsing, fixed EST, missing minute/volume handling, FOMC markup and
+  cross-month/date precision, legacy prompts and v4 behavior are tested.
+- [Review and evidence](source-and-label-review.md); [remaining strict sign-off](completion-requirements.md).

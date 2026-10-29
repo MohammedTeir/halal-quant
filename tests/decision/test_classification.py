@@ -169,3 +169,22 @@ def test_v3_explicit_uncertainty_and_injection_guidance_preserves_legacy_prompt(
     assert old["response_schema"] == new["response_schema"]
     with pytest.raises(ValueError):
         build_target_prompt([source()], target, version="arbitrary")
+
+
+def test_v4_reviews_embedded_instructions_even_with_valid_positive_financial_facts():
+    from services.news_intelligence.classification import build_target_prompt
+
+    target = {
+        "event_id": SOURCE_ID,
+        "source_ids": [SOURCE_ID],
+        "symbol": "EXAMPLE",
+        "asset_class": "stock",
+    }
+    v3 = build_target_prompt([source()], target, version="news-classification-v3")
+    v4 = build_target_prompt([source()], target, version="news-classification-v4")
+    assert "even when the source also contains legitimate positive financial" not in v3["system"]
+    assert "even when the source also contains legitimate positive financial" in v4["system"]
+    assert (
+        v3["document_json"] == v4["document_json"]
+        and v3["response_schema"] == v4["response_schema"]
+    )

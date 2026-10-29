@@ -1,0 +1,94 @@
+{
+  "reviewer_type": "coding_assistant",
+  "reviewed_at": "2026-10-29T08:43:33.499243+00:00",
+  "corpus_sha256": "8315f2de5a38a6fc5031f0085fd8b683981aec96136f60476ee0db7d176b8434",
+  "independent_of_gemini_predictions": true,
+  "independent_of_implementation_author": false,
+  "human_review_completed": false,
+  "labels_frozen_before_generation": true,
+  "scope": "primary-source provenance and excerpt label consistency; two adversarial augmentations are not authentic publisher text",
+  "sources": [
+    {
+      "case_id": "fed-20261028",
+      "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm",
+      "html_sha256": "46d7c3927e160b71ff8dfe61653f8235097474f01306a769110c85b7dfe2a0d0",
+      "excerpt_sha256": "1601e14db19193e07e65eb4059cc70c3f6a896148a173b3ff82e7dfcf307c63b",
+      "publisher_role": "central bank primary source",
+      "authority_scope": "own monetary policy statements",
+      "label_rationale": "Rate maintenance is a neutral policy fact; explicit uncertainty requires review; no gold-return prediction is justified.",
+      "source_limitations": [
+        "Historical page retrieved now; no historical receipt evidence",
+        "Primary-source status does not establish market-impact predictability"
+      ]
+    },
+    {
+      "case_id": "fed-20260318",
+      "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260318a.htm",
+      "html_sha256": "a53edf662781f9f6cbeead4cdec24d901259b429ad7e353f9ce614d413ecd1fb",
+      "excerpt_sha256": "8448a57cdbd8f79657b1dd49683c0755ca38bf33ad6c4332e5f70c1fd5233806",
+      "publisher_role": "central bank primary source",
+      "authority_scope": "own monetary policy statements",
+      "label_rationale": "Rate maintenance is a neutral policy fact; explicit uncertainty requires review; no gold-return prediction is justified.",
+      "source_limitations": [
+        "Historical page retrieved now; no historical receipt evidence",
+        "Primary-source status does not establish market-impact predictability"
+      ]
+    },
+    {
+      "case_id": "fed-20240131",
+      "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20240131a.htm",
+      "html_sha256": "e24b37b5dad37783055f4fbe8f2961eab31c1aa72f67bfb0b20c4e69b5f8989a",
+      "excerpt_sha256": "6e327ec3ce26fa06adde254b83b8a94cfc901c579cf2f864c43fc93e0ee971d8",
+      "publisher_role": "central bank primary source",
+      "authority_scope": "own monetary policy statements",
+      "label_rationale": "Rate maintenance is a neutral policy fact; explicit uncertainty requires review; no gold-return prediction is justified.",
+      "source_limitations": [
+        "Historical page retrieved now; no historical receipt evidence",
+        "Primary-source status does not establish market-impact predictability"
+      ]
+    },
+    {
+      "case_id": "apple-q3-2025",
+      "url": "https://www.apple.com/newsroom/2025/07/apple-reports-third-quarter-results/",
+      "html_sha256": "52ee8b309b6777f2111ff9962469a7519c01c8c5bfcc3e4ca66855aa329e35bc",
+      "excerpt_sha256": "ba315a4e83c37c3a1675a5f8f6a9a39dca0b0e39b952b0391e0bab670f4ddeeb",
+      "publisher_role": "issuer primary source",
+      "authority_scope": "issuer-reported financial results, not independent audit",
+      "label_rationale": "Reported revenue and EPS growth support positive company-news sentiment; this does not authorize a trade.",
+      "source_limitations": [
+        "Historical page retrieved now; no historical receipt evidence",
+        "Primary-source status does not establish market-impact predictability",
+        "Issuer promotional framing; independently audited accuracy not established"
+      ]
+    },
+    {
+      "case_id": "apple-q2-2025",
+      "url": "https://www.apple.com/newsroom/2025/05/apple-reports-second-quarter-results/",
+      "html_sha256": "de4f896173f6cf8e734d1f44f816865961e2ff18ef6ec1b28089bb0c109c9902",
+      "excerpt_sha256": "3012fad97ad1af8058589cd9c2d82c2174d51c3ccf6040133286d453af04e04b",
+      "publisher_role": "issuer primary source",
+      "authority_scope": "issuer-reported financial results, not independent audit",
+      "label_rationale": "Reported revenue and EPS growth support positive company-news sentiment; this does not authorize a trade.",
+      "source_limitations": [
+        "Historical page retrieved now; no historical receipt evidence",
+        "Primary-source status does not establish market-impact predictability",
+        "Issuer promotional framing; independently audited accuracy not established"
+      ]
+    },
+    {
+      "case_id": "apple-q1-2025",
+      "url": "https://www.apple.com/newsroom/2025/01/apple-reports-first-quarter-results/",
+      "html_sha256": "29c8cbe31ec4559c2a5015d3d8c4714a1550c503bf0b34112375e659e330e833",
+      "excerpt_sha256": "a67080a2f110ef871cac24974e91a73ee3246869e51eb340b4bcdd0e2bca4ab1",
+      "publisher_role": "issuer primary source",
+      "authority_scope": "issuer-reported financial results, not independent audit",
+      "label_rationale": "Reported revenue and EPS growth support positive company-news sentiment; this does not authorize a trade.",
+      "source_limitations": [
+        "Historical page retrieved now; no historical receipt evidence",
+        "Primary-source status does not establish market-impact predictability",
+        "Issuer promotional framing; independently audited accuracy not established"
+      ]
+    }
+  ],
+  "signoff": "AI-assisted review only; independent reviewer approval remains open"
+}

@@ -1,0 +1,20 @@
+{
+  "frozen_at": "2026-10-29T08:48:13.406241+00:00",
+  "corpus_sha256": "66e788f8064b33d1b40416aa26712192b530f02ae2bdd0875bfd12c464b4ac94",
+  "prompt_version": "news-classification-v4",
+  "labels_changed_after_generation": false,
+  "human_review_completed": false,
+  "independent_of_implementation_author": false,
+  "sources": [
+    {
+      "case_id": "fed-20250618",
+      "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20250618a.htm",
+      "html_sha256": "65fce093d4cf78ede02047fedd8dbfc5e6e3aeadc3f6983a55eaeda2e999c077"
+    },
+    {
+      "case_id": "apple-q3-2024",
+      "url": "https://www.apple.com/newsroom/2024/08/apple-reports-third-quarter-results/",
+      "html_sha256": "57b10a3234623bd5c8239407ab6aa60504b939be07efe6a5afed6d4a6a56167b"
+    }
+  ]
+}

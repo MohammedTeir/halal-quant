@@ -114,3 +114,19 @@ not automatic job regeneration. [Passing diagnostic](../reports/gemini-v3-diagno
 Because this diagnostic informed prompt tuning, it cannot be claimed as an
 independent holdout. Complete [independent review](completion-requirements.md) before
 claiming full Milestone 4 quality sign-off.
+
+## Real-primary-source review and v4
+
+[Source and label review](source-and-label-review.md) documents frozen real excerpts,
+label provenance, independence limits and the retained 7/8 v3 failure. V4 adds
+mandatory review for embedded control instructions even alongside positive facts.
+It passes the exposed 8-case regression and a fresh 4-case blind pilot. The CLI
+now defaults to `--prompt-version news-classification-v4`; legacy versions remain
+selectable. The original labels and failed results were not altered.
+
+Reproducible corpora:
+[primary pilot](../examples/intelligence/primary-review/primary-pilot-v1.json) and
+[fresh pilot](../examples/intelligence/primary-review/fresh-pilot-v2.json). Their
+adversarial variants are explicitly synthetic. Scores do not assert independent
+human review; the coding assistant was blind to Gemini predictions but was also
+the implementation author.

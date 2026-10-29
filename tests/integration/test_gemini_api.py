@@ -90,7 +90,7 @@ def test_generated_assessment_grounding_metadata_replay_and_decision_gate(client
     assert response.status_code == 200
     result = response.json()
     assert result["advisory_only"] and result["synthetic"]
-    assert result["prompt_version"] == "news-classification-v3"
+    assert result["prompt_version"] == "news-classification-v4"
     assert (
         result["model_name"] == "gemini/gemini-test"
         and result["model_version"] == "gemini-test-001"

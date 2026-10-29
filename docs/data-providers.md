@@ -175,3 +175,27 @@ cannot satisfy earnings; old unscoped imports cannot satisfy target coverage.
 Use `EARNINGS_PROVIDER=finnhub_earnings` to select the earnings source in decisions.
 Spot-gold and broad Finnhub economic-calendar requests currently return 403. See
 [remaining source requirements](completion-requirements.md).
+
+## Free XAUUSD reference history and official FOMC replacement
+
+```sh
+uv run python -m services.market_data.acquire_gold \
+  --year 2025 --month 9 --output data/gold/unique-september
+uv run python -m services.macro_intelligence.acquire_fomc \
+  --year 2026 --archive data/fomc/unique-2026
+```
+
+Gold uses HistData's normal free XAUUSD ASCII M1 download form; no account key or
+payment is sent. Metadata records `quote_basis=bid` and
+`volume_semantics=unavailable_zero_placeholder`. Source labels are fixed EST
+without DST. Complete UTC buckets only are emitted; gaps/partial buckets are
+reported. ZIP size/member and timestamp/OHLC checks fail closed; no files are
+extracted using untrusted ZIP paths. September 2025 passes; October fails conflicting
+duplicate-time checks. This conditional reference source is not certified execution
+or liquidity data. See [source assessment](source-and-label-review.md).
+
+FOMC uses the official calendar and imports observed-time, whole New York dates.
+Cross-month meetings use the final calendar date. Unknown markup/dates, duplicates
+or missing selected-year rows fail. Configure `FOMC_PROVIDER=federal_reserve` in
+the backend to select scoped FOMC availability; all known calendar restrictions
+are considered even without selecting this source. No announcement hour is invented.

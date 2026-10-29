@@ -71,7 +71,10 @@ class ClassificationRequest(BaseModel):
     model_name: Identifier
     model_version: Identifier
     prompt_version: Literal[
-        "news-classification-v1", "news-classification-v2", "news-classification-v3"
+        "news-classification-v1",
+        "news-classification-v2",
+        "news-classification-v3",
+        "news-classification-v4",
     ]
     raw_output: str = Field(min_length=2, max_length=65536)
 

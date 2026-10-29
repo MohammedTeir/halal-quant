@@ -31,7 +31,11 @@ def collect(
     *,
     prompt_version="news-classification-v2",
 ):
-    if prompt_version not in ("news-classification-v2", "news-classification-v3"):
+    if prompt_version not in (
+        "news-classification-v2",
+        "news-classification-v3",
+        "news-classification-v4",
+    ):
         raise ValueError("Unknown evaluation prompt version")
     raw = corpus_path.read_bytes()
     corpus = Corpus.model_validate_json(raw)
@@ -111,8 +115,8 @@ def main():
     parser.add_argument("--run-dir", type=Path, required=True)
     parser.add_argument(
         "--prompt-version",
-        choices=("news-classification-v2", "news-classification-v3"),
-        default="news-classification-v3",
+        choices=("news-classification-v2", "news-classification-v3", "news-classification-v4"),
+        default="news-classification-v4",
     )
     parser.add_argument("--timeout-seconds", type=float, default=60)
     args = parser.parse_args()

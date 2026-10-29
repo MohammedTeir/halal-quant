@@ -2,15 +2,16 @@
 
 Milestones 1 and the agreed Python version of 2 pass local acceptance. Milestone 4's
 implementation now passes its live synthetic diagnostic, but independent review
-remains outstanding. Milestone 3 is blocked by concrete source-access gaps.
+remains outstanding. Gold/FOMC replacement sources are now accessible; source completeness and strict
+independent sign-off remain open.
 **The first four are not all fully signed off.**
 
 | Milestone | Evidence now available | Remaining gate |
 |---|---|---|
 | 1: foundation | API boot/persistence, migrations/drift and regression checks; hosted CI passed for `cdc2aad` | Verify hosted CI for this follow-up commit after push. |
 | 2: Python strategies | Three long-only causal strategies; nonzero synthetic train/holdout trades and byte-identical reports | Local acceptance passed. Real profitability is a separate Milestone 6 requirement. |
-| 3: data | Real AAPL candles/news/BLS events, company earnings, splits/dividends; successful real split/volume audit; scoped target/purpose/window feed health; fail-closed replay/stale/correction/date-precision checks | Real spot-gold history and FOMC coverage require source access. Verify complete historical/action/session availability and independent source credibility. |
-| 4: intelligence/decisions | Gemini v3: 12/12 live synthetic diagnostic cases valid and label-correct; one real-news durable API generation/replay; strict evidence contracts, uncertainty/injection and deterministic gate tests | Independently reviewed representative real-news/adversarial holdout and source-quality sign-off. The tuned synthetic diagnostic is not independent accuracy evidence. |
+| 3: data | Real AAPL candles/news/BLS events, company earnings, splits/dividends; successful real split/volume audit; scoped target/purpose/window feed health; fail-closed replay/stale/correction/date-precision checks | HistData XAUUSD bid history and official FOMC calendar now pass sample ingestion. Verify broader historical/session completeness and independently approve source suitability. |
+| 4: intelligence/decisions | Gemini v3 synthetic 12/12; v4 real-primary regression 8/8 and fresh blind pilot 4/4; durable API replay and deterministic gate tests | Independently reviewed representative real-news/adversarial holdout and source-quality sign-off. The tuned synthetic diagnostic is not independent accuracy evidence. |
 
 ## What the latest completion pass fixed
 
@@ -40,3 +41,7 @@ See [precise remaining requirements](completion-requirements.md),
 [provider commands](data-providers.md) and [model evaluation](model-evaluation.md).
 No environment draft edits/publication occurred during this pass. A passing
 software/diagnostic check is not Shariah approval or permission to trade.
+
+Latest [source/label review](source-and-label-review.md) records the real v3 pilot
+failure, v4 correction, gold archive rejection and precise reviewer-independence
+limits. No independent human approval is claimed.

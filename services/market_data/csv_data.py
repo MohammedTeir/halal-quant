@@ -29,6 +29,12 @@ class DataSpec(BaseModel):
         allow_inf_nan=False,
         exclude_if=lambda value: value is None,
     )
+    quote_basis: Literal["bid", "ask", "mid", "trade"] | None = Field(
+        default=None, exclude_if=lambda value: value is None
+    )
+    volume_semantics: Literal["provider_reported", "unavailable_zero_placeholder"] | None = Field(
+        default=None, exclude_if=lambda value: value is None
+    )
     currency: Literal["USD"] = "USD"
     retrieved_at: AwareDatetime
     synthetic: bool = False
@@ -81,6 +87,8 @@ def load_csv(
         raise ValueError("Prices must be positive")
     if spec.adjustment_rounding_quantum is not None and spec.price_basis != "split_adjusted":
         raise ValueError("Adjustment rounding applies only to split-adjusted snapshots")
+    if spec.volume_semantics == "unavailable_zero_placeholder" and (frame.Volume != 0).any():
+        raise ValueError("Unavailable volume must use explicitly marked zero placeholders")
     if (frame.Volume < 0).any():
         raise ValueError("Volume must be nonnegative")
     if (

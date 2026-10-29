@@ -1,55 +1,34 @@
-# Requirements still preventing complete Milestone 3–4 sign-off
+# Remaining Milestone 3–4 sign-off requirements
 
-The implemented paths now pass automated acceptance, including a **12/12 live
-Gemini v3 synthetic diagnostic**, real-news durable generation/replay, a real
-corporate-action audit and target-specific feed checks. This does not replace
-missing sources or independent review.
+The source-access gaps have now been addressed with actual downloads and validation:
 
-## Data access: concrete blocked operations
+- **Official FOMC:** eight 2026 events imported from the Federal Reserve, with
+  date-only timing, observation provenance and scoped coverage.
+- **Free gold reference history:** HistData September 2025 XAUUSD bid quotes provide
+  validated 1h/4h OHLC datasets. Volume is explicitly unavailable; incomplete buckets
+  are omitted and reported. October's conflicting timestamps are rejected.
+- **Real-source quality work:** a blind AI-assisted review of primary-source labels
+  exposed a v3 policy failure. V4 passes the unchanged 8-case regression and a new
+  4-case blind primary/adversarial pilot. Historical failed evidence is retained.
 
-The configured Finnhub key successfully reads company news and company earnings,
-but returns **HTTP 403** for both:
+See [source/label review](source-and-label-review.md) for exact evidence and limits.
+The older Finnhub 403 results remain historical account-access facts, but no longer
+block these replacement source paths. Network access is active; no environment
+configuration or publication was changed by the assistant.
 
-- `GET /api/v1/forex/candle` for `OANDA:XAU_USD` (spot-gold candles).
-- `GET /api/v1/calendar/economic` (broader macro/FOMC calendar).
+## What remains for strict independent completion
 
-Repeated requests or changing the model cannot fix these access denials. Either
-provide a Finnhub entitlement allowing these resources, or select another source.
-For the gold strategy we need verified spot-gold intraday OHLC data (1h/4h), explicit
-UTC bar-close timestamps, acquisition/source metadata and declared volume semantics.
-A gold ETF is not silently substituted for spot gold. Provider-neutral CSV import
-already exists; real source/session validation remains required.
+The coding assistant reviewed the source facts without consulting Gemini's outputs,
+but also authored the implementation and prompt. The review therefore does **not**
+establish independence from the implementation author or human approval. The
+review artifacts explicitly mark both as false.
 
-Official FOMC calendar reference:
-<https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm>.
-`www.federalreserve.gov` is absent from the active managed network allowlist.
-Add it through the supported environment settings before this environment can
-inspect and validate the official source. No proxy bypass or environment draft
-change was performed. An API key is not needed for the public reference, but an
-untested calendar parser or guessed meeting time is not acceptance evidence.
-Date-only calendar imports are now supported with conservative whole-date windows.
+A separate domain reviewer must approve source suitability, frozen labels, a
+representative held-out evaluation and acceptance criteria. Gold data also needs
+broader historical/session/completeness validation before release-quality research:
+one structurally valid month and one rejected month do not certify the provider.
+Primary-source corporate statements are not independently audited financial truth.
 
-## Independent quality/source review
-
-The passing diagnostic uses developer-authored synthetic labels and was used to
-improve prompt v3. It is **not an independent holdout**. The separate real-news
-API check demonstrates transport, grounding, durable persistence and replay;
-it does not establish classification accuracy.
-
-A domain reviewer must freeze representative real-news/adversarial labels and
-source credibility decisions before a separate holdout evaluation. Preserve the
-reviewer identity, review time, exact corpus hash, label provenance, model/prompt
-versions, per-case outcomes and accepted quality criteria. Review scope and
-calendar/action completeness separately. No automated step claims to be that
-human reviewer or grants trading permission.
-
-## Implemented evidence
-
-- [Gemini v3 diagnostic](../reports/gemini-v3-diagnostic-2026-10-29.json).
-- [Real-news API generation/replay](../reports/gemini-real-news-api-2026-10-29.json).
-- [AAPL raw/adjusted split audit](../reports/aapl-live-split-audit-2026-10-29.json).
-- [Completion-pass summary](../reports/milestones-3-4-followup-2026-10-29.json).
-
-Milestone 3 remains open for the missing gold/FOMC source validation and complete
-source coverage. Milestone 4's implementation and current diagnostic pass; its
-independent quality/source-review sign-off remains open. Live trading stays disabled.
+The software and limited live paths are implemented and validated. These independent
+review/completeness requirements prevent an honest claim of full external sign-off.
+Live trading remains disabled and all candidate decisions deny authorization.

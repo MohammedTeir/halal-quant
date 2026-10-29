@@ -71,7 +71,9 @@ class Responses(BaseModel):
     corpus_sha256: SourceId
     model_name: str = Field(min_length=1, max_length=200)
     model_version: str = Field(min_length=1, max_length=200)
-    prompt_version: Literal["news-classification-v2", "news-classification-v3"]
+    prompt_version: Literal[
+        "news-classification-v2", "news-classification-v3", "news-classification-v4"
+    ]
     origin: Literal["mock", "live", "manual"]
     outputs: dict[str, str]
 

@@ -6,6 +6,7 @@ read [milestones](milestones.md) for implementation status and acceptance eviden
 | Document | Purpose |
 |---|---|
 | [Master blueprint v2](blueprint-v2.md) | Original full project requirements and acceptance gates |
+| [Source and label review](source-and-label-review.md) | Verified gold/FOMC paths, real-source labels, failure findings and review independence |
 | [Remaining completion requirements](completion-requirements.md) | Exact provider access and independent-review gates |
 | [First four acceptance](first-four-acceptance.md) | Exact local evidence and external completion blockers |
 | [Data providers](data-providers.md) | Free-tier starting recommendations, read-only acquisition, sessions and restart-safe worker |

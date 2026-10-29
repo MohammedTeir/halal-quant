@@ -24,10 +24,16 @@ class Settings(BaseSettings):
     news_provider: str | None = Field(default=None, max_length=64, pattern=r"^[A-Za-z0-9_.-]+$")
     calendar_provider: str | None = Field(default=None, max_length=64, pattern=r"^[A-Za-z0-9_.-]+$")
     earnings_provider: str | None = Field(default=None, max_length=64, pattern=r"^[A-Za-z0-9_.-]+$")
+    fomc_provider: str | None = Field(default=None, max_length=64, pattern=r"^[A-Za-z0-9_.-]+$")
     live_trading_enabled: bool = False
 
     @field_validator(
-        "news_provider", "calendar_provider", "earnings_provider", "gemini_model", mode="before"
+        "news_provider",
+        "calendar_provider",
+        "earnings_provider",
+        "fomc_provider",
+        "gemini_model",
+        mode="before",
     )
     @classmethod
     def blank_provider_is_unconfigured(cls, value):

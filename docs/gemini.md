@@ -212,3 +212,12 @@ This fixes observed timeout sensitivity but does not promise future requests can
 time out. Ambiguous requests retain their failure/claim and are not auto-regenerated.
 Independent real-world holdout/source review remains required; see
 [completion requirements](completion-requirements.md).
+
+## Current prompt v4
+
+The active server generation prompt is `news-classification-v4`. A primary-source
+pilot found a mixed factual-news/instruction-attack case that v3 did not restrict.
+V4 requires review for that combination while preserving factual sentiment/event
+type. V3 text and failed pilot evidence are retained. See
+[source/label review](source-and-label-review.md) for 8/8 regression, 4/4 fresh
+pilot and the explicit independence limits.

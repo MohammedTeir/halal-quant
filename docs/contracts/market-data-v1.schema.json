@@ -66,6 +66,40 @@
       "default": null,
       "title": "Adjustment Rounding Quantum"
     },
+    "quote_basis": {
+      "anyOf": [
+        {
+          "enum": [
+            "bid",
+            "ask",
+            "mid",
+            "trade"
+          ],
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Quote Basis"
+    },
+    "volume_semantics": {
+      "anyOf": [
+        {
+          "enum": [
+            "provider_reported",
+            "unavailable_zero_placeholder"
+          ],
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Volume Semantics"
+    },
     "currency": {
       "const": "USD",
       "default": "USD",
