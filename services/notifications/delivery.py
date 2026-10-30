@@ -127,11 +127,12 @@ def deliver_one(sessions, telegram, now=None):
         record = db.get(Outbox, identity)
         if record.status != "SENDING":
             return True
+        # The provider-wide pause still applies when this message exhausts its budget.
+        if retry and error == "TELEGRAM_RATE_LIMIT":
+            db.get(ServiceState, "delivery").value = retry
         if status == "RETRY" and record.attempts >= 5:
             status, error, retry = "FAILED", "SAFE_RETRIES_EXHAUSTED", None
         record.status, record.error, record.message_id = status, error, message_id
         if retry:
             record.available = retry
-            if error == "TELEGRAM_RATE_LIMIT":
-                db.get(ServiceState, "delivery").value = retry
     return True

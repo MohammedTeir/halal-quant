@@ -20,7 +20,7 @@
     },
     "regression": {
       "command": ".venv/bin/pytest -q",
-      "passed": 518,
+      "passed": 519,
       "warnings": 1,
       "warning": "Existing Starlette/httpx TestClient deprecation",
       "database": "Temporary SQLite; migration upgrade/downgrade and schema-drift checks included"
@@ -46,7 +46,12 @@
       "scripts.gemini_mock_smoke: passed, zero real provider calls",
       "services.news_intelligence.evaluation: completed with fixed mock responses"
     ],
-    "hosted_postgresql_ci": "Check current commit workflow after push; this report does not claim a result in advance"
+    "hosted_postgresql_ci": {
+      "implementation_commit": "e5bfa51a56a4c37ac810689232cc572e8c6989b4",
+      "implementation_run": "https://github.com/MohammedTeir/halal-quant/actions/runs/41073297891",
+      "implementation_result": "success; PostgreSQL regression, lint, syntax and all offline smokes passed",
+      "followup": "Provider-wide 429 pause also retained after per-message retry exhaustion; check the followup commit workflow after push"
+    }
   },
   "implemented": [
     "Invitation-only users and backend roles; administrator-assisted recovery; no public registration or email transport",

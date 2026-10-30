@@ -130,3 +130,17 @@ resolved findings; bounded research acceptance does not supply human/Shariah,
 custody, source/session, profitability or execution release approval. API role keys
 and qualified actors are deliberately not enabled by default. No environment draft
 or publication was changed.
+
+
+## Milestone 7 accounts and delivery software acceptance
+
+The current isolated SQLite regression passes **519 tests**; lint/format,
+JavaScript syntax, Chromium English/Arabic/mobile account flows, and offline
+research/portfolio/mock-Gemini checks pass. The initial accounts/delivery commit
+also passed [hosted PostgreSQL CI](https://github.com/MohammedTeir/halal-quant/actions/runs/41073297891).
+The final rate-limit follow-up retains the global pause even when one message
+exhausts its retry budget; verify that commit's hosted workflow after push.
+[Acceptance evidence](../reports/milestone7-accounts-telegram-acceptance-2026-10-30.json)
+separates tests from required server/BotFather configuration and real delivery.
+Earlier counts above are historical checkpoints; earlier external acceptance
+gates remain unchanged. Milestone 7 deployment acceptance remains pending.

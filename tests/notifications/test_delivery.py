@@ -221,3 +221,17 @@ def test_poll_offset_survives_restart(sessions):
     poll_links(sessions, Poller())
     with sessions() as db:
         assert db.get(ServiceState, "telegram_offset").value == 8
+
+
+def test_exhausted_rate_limit_still_pauses_other_messages(sessions):
+    identity = queued(sessions)
+    now = int(time.time())
+    fake = Transport(
+        response(429, {"ok": False, "error_code": 429, "parameters": {"retry_after": 30}})
+    )
+    for attempt in range(5):
+        deliver_one(sessions, fake, now=now + attempt * 31)
+    assert record(sessions, identity).status == "FAILED"
+    queued(sessions, "another-message")
+    assert not deliver_one(sessions, fake, now=now + 125)
+    assert len(fake.calls) == 5
