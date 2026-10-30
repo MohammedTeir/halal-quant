@@ -1,6 +1,6 @@
 {
   "date": "2026-10-30",
-  "status": "LOGIN_AND_LINKING_REPORTED_REAL_DELIVERY_PENDING",
+  "status": "CONTROLLED_PRIVATE_CHAT_DELIVERY_CONFIRMED_OPERATIONAL_ACCEPTANCE_PENDING",
   "render_origin": "https://halal-quant.onrender.com",
   "vercel_origin": "https://halal-quant.vercel.app",
   "read_only_http_checks": [
@@ -55,21 +55,23 @@
   ],
   "not_yet_verified": [
     "Independent administrator role and authenticated CSRF/session revocation checks",
-    "Approved real setup-message delivery and confirmation",
-    "Continuous worker hosting reliability"
+    "Dashboard SENT history confirmation",
+    "Continuous worker hosting reliability and live coverage beyond the one controlled private-chat setup check"
   ],
   "operator_next_steps": [
-    "Set Render PUBLIC_BASE_URL=https://halal-quant.vercel.app and redeploy",
-    "Run trusted SQL Editor bootstrap only on the same database after its PostgreSQL CI test passes, or use existing local CLI",
-    "Keep setup link private; set password through Vercel and sign in"
+    "Start the regular worker if ongoing notifications are wanted",
+    "Refresh dashboard delivery history and verify SENT",
+    "Verify deployed role/session controls and evaluate reliable hosting"
   ],
   "external_effects": {
     "http_requests": "GET only",
     "user_database_writes_by_agent": 0,
     "real_email_messages": 0,
-    "real_telegram_messages": 0
+    "real_telegram_messages": 0,
+    "scope": "Read-only agent checks; the one real setup message was explicitly sent by the operator on their device",
+    "real_telegram_messages_sent_by_operator": 1
   },
-  "milestone7_delivery_acceptance": "PENDING",
+  "milestone7_delivery_acceptance": "ONE_CONTROLLED_PRIVATE_SETUP_MESSAGE_CONFIRMED; other deployment acceptance remains pending",
   "earlier_acceptance_gates_changed": false,
   "operator_confirmation": {
     "login": "User reports successful login on the Vercel dashboard",
@@ -82,6 +84,14 @@
       "messages_sent": 0,
       "verification_type": "user-provided worker output"
     },
-    "destination_linking": "User screenshot shows one verified destination, disabled, with notification preferences selected"
-  }
+    "destination_linking": "User screenshot shows one verified destination, disabled, with notification preferences selected",
+    "real_delivery": {
+      "status": "SENT",
+      "message_id": "4",
+      "attempts": 1,
+      "recipient_saw_message": true,
+      "provenance": "User terminal output and confirmation"
+    }
+  },
+  "delivery_evidence": "milestone7-telegram-delivery-2026-10-30.json"
 }

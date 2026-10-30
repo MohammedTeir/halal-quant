@@ -196,8 +196,8 @@ See the [dated acceptance report](../reports/milestone7-accounts-telegram-accept
 configuration, first administrator bootstrap, trusted sharing of invitation and
 recovery links, BotFather/token secret setup, supervised worker, private/group
 linking, and an explicitly approved real-message delivery check. Real provider
-availability and real delivery are not certified by mocks. Milestone 7 therefore
-has software acceptance with deployment delivery acceptance pending.
+availability and real delivery are not certified by mocks. Milestone 7 has software acceptance. The later operator-confirmed private-chat
+setup delivery is recorded below; remaining operational/account checks still apply.
 
 Earlier milestone evidence and open gates remain in [milestones](milestones.md),
 [completion requirements](completion-requirements.md), and their linked reports.
@@ -223,3 +223,14 @@ previews by default. Explicit `--send` attempts one deterministic setup outbox
 record for one verified, enabled destination and cannot drain other messages.
 It creates no trading signals or control events and does not restart uncertain
 deliveries. Actual delivery remains subject to the user's explicit approval.
+
+
+## Operator-confirmed live delivery follow-up
+
+One explicitly approved private-chat setup message has now been confirmed:
+Telegram returned `SENT`, `message_id=4`, `attempts=1`, and the recipient reported
+seeing it. See [the delivery evidence](../reports/milestone7-telegram-delivery-2026-10-30.json).
+This is separate from automated mock tests. Termux is a temporary host; continuous
+reliability, deployed account/session checks, and dashboard history confirmation
+remain open. Normal ongoing delivery must be started deliberately after the setup
+check and may deliver other queued events to enabled destinations.

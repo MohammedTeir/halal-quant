@@ -198,6 +198,7 @@ uncertain and are not automatically repeated.
 
 A laptop that sleeps or a phone that is suspended stops polling and delivery.
 Restart after resolving connection failures. For permanent operation, use an OS
-service supervisor on an always-on computer/server. Real delivery and ongoing
-hosting acceptance remain unverified until tested on your selected host; no email
-or real Telegram message was sent in development.
+service supervisor on an always-on computer/server. One approved setup delivery was operator-confirmed on Termux (`SENT`, message ID
+`4`, one attempt). Ongoing hosting reliability remains unverified. Automated
+development tests sent no real email or Telegram messages; the live setup check
+was a separate, explicit operator action.

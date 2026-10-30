@@ -100,3 +100,5 @@ incomplete. See [scope and remaining work](../docs/milestone-5-controls.md).
 - [Vercel/Render public deployment check](milestone7-public-deployment-check-2026-10-30.json): read-only reachability/proxy checks; administrator and Telegram delivery acceptance remain pending.
 
 - [Computer/Termux worker setup readiness](milestone7-worker-hosting-readiness-2026-10-30.json): check-only/link-only mode tests; real host, token and delivery verification remain pending.
+
+- [Operator-confirmed private Telegram delivery](milestone7-telegram-delivery-2026-10-30.json): one approved setup message, Telegram SENT and recipient confirmation; ongoing operational acceptance remains pending.

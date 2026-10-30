@@ -1,6 +1,6 @@
 {
   "date": "2026-10-30",
-  "status": "HOST_PREFLIGHT_AND_LINKING_REPORTED_CONTROLLED_DELIVERY_PENDING",
+  "status": "CONTROLLED_PRIVATE_CHAT_DELIVERY_CONFIRMED_OPERATIONAL_ACCEPTANCE_PENDING",
   "bot_username": "halalquant_bot",
   "selected_hosts": [
     "existing computer",
@@ -19,20 +19,19 @@
     "lint": "passed",
     "format": "passed",
     "help_command": "passed",
-    "telegram_calls": "mocked only",
+    "telegram_calls": "Automated tests use mocks; one real delivery was separately confirmed by the operator",
     "actual_termux_installation_tested": true,
     "actual_bot_token_tested": true,
-    "actual_messages_sent": 0,
+    "actual_messages_sent": 1,
     "hosted_ci": "Check the pushed commit workflow for PostgreSQL results",
     "targeted_setup_check_tests": 4,
-    "actual_host_verification_provenance": "User-provided terminal output and dashboard screenshot; not independent host access"
+    "actual_host_verification_provenance": "User-provided terminal output and dashboard screenshot; not independent host access",
+    "agent_real_messages_sent": 0
   },
   "deployment_next_steps": [
-    "Install worker on the chosen host and create private ignored .env with same Neon URL and BotFather token",
-    "Run --check --expected-bot halalquant_bot and review pending count",
-    "Run --link-only --expected-bot halalquant_bot",
-    "Link destination through dashboard and bot command, keep it disabled until acceptance event/destination is agreed",
-    "Agree and authorize concrete delivery check before starting normal delivery"
+    "Start normal ongoing delivery if wanted",
+    "Confirm dashboard SENT history",
+    "Verify continuous host reliability and remaining deployment/account checks"
   ],
   "limitations": [
     "Android/laptop sleep or connectivity can stop polling and delivery",
@@ -50,7 +49,14 @@
       "webhook": false,
       "messages_sent": 0
     },
-    "linking": "User screenshot shows a verified, disabled private destination"
+    "linking": "User screenshot shows a verified, disabled private destination",
+    "real_delivery": {
+      "status": "SENT",
+      "message_id": "4",
+      "attempts": 1,
+      "recipient_saw_message": true,
+      "provenance": "User terminal output and confirmation"
+    }
   },
   "controlled_setup_check": {
     "preview_default": true,
@@ -60,6 +66,7 @@
     "can_drain_other_messages": false,
     "same_destination_setup_id_is_stable": true,
     "sent_or_uncertain_is_not_resent": true,
-    "actual_real_delivery": "PENDING explicit user opt-in and confirmation"
-  }
+    "actual_real_delivery": "CONFIRMED: Telegram SENT, message_id 4, attempts 1, recipient confirmation"
+  },
+  "delivery_evidence": "milestone7-telegram-delivery-2026-10-30.json"
 }

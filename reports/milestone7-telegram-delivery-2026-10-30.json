@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-30",
+  "status": "CONTROLLED_PRIVATE_CHAT_DELIVERY_CONFIRMED",
+  "bot": "@halalquant_bot",
+  "host": "User-operated Termux with Debian proot",
+  "application_commit": "cb626d3b6e01c76465446779f7b47fecb2792795",
+  "authorization": "User explicitly ran the setup_check command with --send after the one-message action and target were described",
+  "provenance": "User-provided terminal output and recipient confirmation; no direct agent access to the worker/database/chat",
+  "evidence": {
+    "destination_linking": "User screenshot showed a verified private destination",
+    "disabled_destination_guard": "Initial command refused to send until the destination was enabled and saved",
+    "terminal_result": {
+      "status": "SENT",
+      "error": null,
+      "message_id": "4",
+      "attempts": 1
+    },
+    "recipient_confirmation": "I see the message",
+    "expected_english_message": "HALAL QUANT: This is a one-time notification setup check. Not a trading signal or order."
+  },
+  "scope": {
+    "one_controlled_real_setup_message": true,
+    "normal_signal_decision_or_risk_event_created": false,
+    "all_notification_types_live_tested": false,
+    "group_delivery_live_tested": false,
+    "ongoing_worker_started_or_supervised_by_agent": false,
+    "agent_sent_real_messages": 0,
+    "operator_approved_real_messages_confirmed": 1
+  },
+  "remaining": [
+    "Start the continuous worker on the chosen host if ongoing notifications are wanted",
+    "Confirm SENT in dashboard delivery history",
+    "Deployed role and session-revocation acceptance checks",
+    "Continuous worker reliability remains unverified on temporary Android hosting"
+  ],
+  "full_milestone7_deployment_acceptance": "PENDING remaining operational/account checks",
+  "earlier_milestone_gates_changed": false
+}

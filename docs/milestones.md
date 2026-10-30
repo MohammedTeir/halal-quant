@@ -12,7 +12,7 @@ Implementation acceptance and independent release sign-off are tracked separatel
 | 4 | AI intelligence and decisions | Implementation acceptance passes; independent quality sign-off incomplete | Strict schemas/evidence/targets, durable Gemini jobs, event policies and deterministic gates; v5 passes 16/16 exposed real-primary/adversarial regression and 8/8 fresh blind pilot. Separate AI technical review now completed with conditional research-only acceptance; publisher identity, gold session binding and representative policy/calibration conditions remain open before deployment. |
 | 5 | Compliance and risk | Software implemented and tested for bounded research; full operational sign-off pending | Versioned role attestations, stock-ratio rules, read-only broker/quote capture, loss/peak reconciliation, serialized research holds/kill switch and linked decision revalidation pass. [Current workflow](milestone-5-operations.md). Named qualified review and real cash/settlement/lending/custody proofs remain unprovided; real orders are deferred. |
 | 6 | Research and backtesting | Portfolio/replay/optimization software implemented; performance acceptance pending | [Current research workflow](milestone-6-research.md): shared-cash portfolio, PIT compliance/news/macro replay, training-only walk-forward selection, separate portfolio holdout periods with cost stress, technical/buy-and-hold baselines, liquidity proxy, seeded Monte Carlo and explicit gates. Actual 2025 gold diagnostic is blocked by default warm-up history and unavailable volume. Verified representative history and successful untouched out-of-sample performance remain required; broker reconciliation belongs to milestone 8. |
-| 7 | Dashboard and Telegram | Accounts and persistent delivery implemented; deployment acceptance pending | [Accounts and Telegram guide](milestone-7-accounts-telegram.md): invitation-only accounts, backend roles, server sessions/revocation, one-time recovery, verified private/group linking, preferences, transactional outbox and conservative worker retries. English-default/Arabic dashboard exposes account and delivery controls. BotFather/server configuration and approved real-message acceptance remain. |
+| 7 | Dashboard and Telegram | Software acceptance passes; one real private-chat delivery confirmed; operational checks pending | [Accounts and Telegram guide](milestone-7-accounts-telegram.md): invitation-only accounts, backend roles, server sessions/revocation, one-time recovery, verified private/group linking, preferences, transactional outbox and conservative worker retries. English-default/Arabic dashboard exposes account and delivery controls. Vercel/Render/Neon, Termux preflight, private linking and one approved setup message are operator-confirmed. Continuous hosting and remaining deployed account checks remain. |
 | 8 | Paper trading | Not started | Broker simulation, ledger, order lifecycle, reconciliation and stable forward test. |
 | 9 | Optional live broker integration | Disabled; not started | Compatible structure/broker, independent compliance review and explicit live-readiness approval. |
 
@@ -144,3 +144,19 @@ exhausts its retry budget; verify that commit's hosted workflow after push.
 separates tests from required server/BotFather configuration and real delivery.
 Earlier counts above are historical checkpoints; earlier external acceptance
 gates remain unchanged. Milestone 7 deployment acceptance remains pending.
+
+
+## Milestone 7 live private-chat delivery
+
+The operator ran the explicitly approved, targeted setup check on Termux. Telegram
+returned **SENT**, message ID **4**, in **one attempt**, and the recipient confirmed
+seeing it. The disabled-destination guard first refused delivery until settings
+were enabled and saved. [Delivery evidence](../reports/milestone7-telegram-delivery-2026-10-30.json)
+records user-provided output and confirmation, rather than independent access to
+the user's database or chat. This was one labelled setup message; no trading
+signal, decision, broker fact or risk-stop event was created for it.
+
+This closes the missing proof of one actual private-chat delivery. It does not
+certify all notification types/groups live, dashboard history, deployed role and
+session-revocation checks, or continuous Android hosting. Full operational
+acceptance remains pending. Earlier milestone gates remain unchanged.
