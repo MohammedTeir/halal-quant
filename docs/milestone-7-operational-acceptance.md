@@ -84,6 +84,19 @@ create paid storage or upload anything. Confirm the off-device copy or your
 provider-managed recovery retention separately. Choose a backup schedule and
 repeat restore verification after material schema changes.
 
+### Before an actual disaster cutover
+
+The restore test never starts an application/worker against the recovered copy.
+For a real recovery, keep that copy isolated until an operator reconciles changes
+made after the backup. Disable restored Telegram destinations, quarantine old
+QUEUED/RETRY/SENDING messages as uncertain, and invalidate restored sessions and
+one-time links before enabling the site. Reconcile account/role/password changes
+and event ingestion after the snapshot. A database snapshot cannot roll back
+messages already sent to Telegram; never replay old messages just because an
+older backup says they were queued. Do not point the running worker at the
+recovered database automatically. Maintain the application's execution-disabled
+state and revalidate current operational evidence before any later use.
+
 ## 3. Supervise the worker on Termux
 
 A tmux session keeps a terminal alive; it does not restart an exited worker.
@@ -199,3 +212,13 @@ Final evidence must distinguish:
 Until actual operator outputs and the confirmed group target are available,
 these remaining deployment checks stay pending. No earlier milestone approval,
 compliance/source/performance gate, or real-order authority is granted here.
+
+
+## Prepared procedure verification
+
+[Hosted PostgreSQL CI](https://github.com/MohammedTeir/halal-quant/actions/runs/41131560271)
+passed **541 tests**, including an actual encrypted dump/decrypt/isolated restore
+on synthetic data. Static-build tests and the Chromium account/language/mobile
+smoke also pass. This certifies the prepared procedure on the tested environment;
+it does not claim that the operator has run it against Neon, installed runit on
+their phone, copied backups off-device, or completed the additional live sends.

@@ -50,5 +50,14 @@
   ],
   "runbook": "docs/milestone-7-operational-acceptance.md",
   "milestone7_acceptance": "PENDING actual operator results, not merely script preparation",
-  "earlier_milestone_gates_changed": false
+  "earlier_milestone_gates_changed": false,
+  "hosted_verification": {
+    "source_commit": "8ffbc744984630d4c9deedb58aba32b581e62f58",
+    "run": "https://github.com/MohammedTeir/halal-quant/actions/runs/41131560271",
+    "conclusion": "success",
+    "postgresql_tests_passed": 541,
+    "real_encrypted_dump_decrypt_isolated_restore_test": true,
+    "environment": "Ubuntu 24.04 and matching PostgreSQL 16 client/server",
+    "scope": "Dedicated synthetic CI database, not the operator Neon database"
+  }
 }
