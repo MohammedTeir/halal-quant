@@ -10,6 +10,7 @@ read [milestones](milestones.md) for implementation status and acceptance eviden
 | [نتيجة تدقيق جلسات الذهب](gold-session-review.ar.md) | توضيح عربي للنتائج وحدود اعتماد الإغلاقات |
 | [Independent technical review](independent-technical-review-2026-10-29.md) | Separate AI reviewer findings, evidence and conditional research-only verdict |
 | [المرحلة الخامسة بالعربية](milestone-5-controls.ar.md) | المنجز في الجزء الأول وما تبقى قبل الاعتماد التشغيلي |
+| [إغلاق المرحلة الخامسة تشغيليًا](milestone-5-release-handoff.ar.md) | الأدلة المطلوبة والمسؤوليات وفجوة مصدر النقد وخطوات التحقق |
 | [Stored Milestone 5 workflow](milestone-5-operations.md) | Versioned reviewer controls, broker captures, risk state, reservations, verification and release boundary |
 | [M5 independent technical review](milestone-5-independent-review-2026-10-29.md) | Separate AI review, six resolved software findings and remaining release limits |
 | [Milestone 5 controls](milestone-5-controls.md) | Hypothetical compliance/risk API and CLI, acceptance, explicit conventions and remaining authority work |

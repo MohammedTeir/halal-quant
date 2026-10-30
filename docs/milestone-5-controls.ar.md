@@ -33,3 +33,5 @@
 [المراجعة التقنية المستقلة](milestone-5-independent-review-2026-10-29.md).
 
 [تقرير القبول البرمجي والأدلة المنقّحة](../reports/milestone5-operations-acceptance-2026-10-30.json).
+
+[قائمة الأدلة وخطوات إغلاق الاعتماد التشغيلي](milestone-5-release-handoff.ar.md).
