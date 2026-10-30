@@ -1,0 +1,54 @@
+{
+  "date": "2026-10-30",
+  "status": "REMAINING_CHECKS_AUTOMATED_OPERATOR_EXECUTION_PENDING",
+  "already_confirmed": [
+    "Public Vercel/Render connectivity",
+    "Owner-reported login",
+    "Termux database/bot preflight",
+    "Private destination linking",
+    "One approved setup message SENT and seen by recipient"
+  ],
+  "approved_next_messages": {
+    "private_chat": "Four labelled category/language tests to the previously verified private chat",
+    "group": "Group linking requested; exact recipient ID still needs operator confirmation"
+  },
+  "prepared": {
+    "accounts": "Disposable temporary accounts exercise real HTTPS invitation/recovery/expiry/CSRF/roles/sessions; scoped cleanup; no owner password requested",
+    "backup": "age-encrypted pg_dump snapshot; actual isolated pg_restore; row-count/migration comparison; generated restore DB removed; source never restored over",
+    "worker": "Termux runit service plus persistent heartbeat, status endpoint/dashboard and bounded observation/restart checks",
+    "notifications": "At most four deterministic labelled private cases and one separately confirmed group setup; no trading/control source records created",
+    "dashboard": "Authenticated history/worker summary export without credentials"
+  },
+  "local_verification": {
+    "regression_passed": 539,
+    "skipped": 2,
+    "skip_scope": "PostgreSQL-only bootstrap and actual pg_dump/age restore; require hosted PostgreSQL CI",
+    "node_deployment_tests": 2,
+    "browser": "English/Arabic, account flows, session reload/logout and mobile smoke passed with zero JS errors",
+    "lint": "passed",
+    "format": "passed",
+    "shell_syntax": "passed"
+  },
+  "live_execution_by_agent": {
+    "account_fixtures": false,
+    "backup_of_user_database": false,
+    "worker_supervisor_installed_on_user_phone": false,
+    "additional_real_telegram_messages": 0
+  },
+  "operator_results_required": [
+    "Live account runner PASSED and fixtures removed",
+    "Encrypted backup/restore PASSED plus separately confirmed off-device storage/key arrangement",
+    "Bounded RECENT delivery-mode observation and restart observation",
+    "Private four-case SENT results and recipient confirmation",
+    "Confirmed group linking/target, SENT and recipient confirmation",
+    "Dashboard history export"
+  ],
+  "limits": [
+    "Android app termination is outside runit process supervision",
+    "A bounded observation is not future-uptime certification",
+    "Backup script does not provision off-device storage or verify Neon PITR retention"
+  ],
+  "runbook": "docs/milestone-7-operational-acceptance.md",
+  "milestone7_acceptance": "PENDING actual operator results, not merely script preparation",
+  "earlier_milestone_gates_changed": false
+}

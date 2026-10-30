@@ -134,7 +134,7 @@ or publication was changed.
 
 ## Milestone 7 accounts and delivery software acceptance
 
-The current isolated SQLite regression passes **519 tests**; lint/format,
+The initial accounts/delivery SQLite checkpoint passed **519 tests**; lint/format,
 JavaScript syntax, Chromium English/Arabic/mobile account flows, and offline
 research/portfolio/mock-Gemini checks pass. The initial accounts/delivery commit
 also passed [hosted PostgreSQL CI](https://github.com/MohammedTeir/halal-quant/actions/runs/41073297891).
@@ -160,3 +160,14 @@ This closes the missing proof of one actual private-chat delivery. It does not
 certify all notification types/groups live, dashboard history, deployed role and
 session-revocation checks, or continuous Android hosting. Full operational
 acceptance remains pending. Earlier milestone gates remain unchanged.
+
+
+## Remaining deployed acceptance protocol
+
+The [operational runbook](milestone-7-operational-acceptance.md) replaces the old
+setup-only pending list. It provides disposable-account live checks, encrypted
+snapshot backup plus isolated restore, supervisor/heartbeat/restart observation,
+approved finite private category/language messages, separately confirmed group
+linking/delivery, and a dashboard history export. These remain pending until
+operator outputs are provided; preparation and CI do not count as live execution.
+A successful bounded Termux observation retains Android reliability limits.

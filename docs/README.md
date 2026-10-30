@@ -56,3 +56,5 @@ mark a manual gate complete without its evidence.
 - [Free Render API deployment without Blueprint](deploy-render-free.md)
 
 - [Telegram worker on an existing computer or Termux](telegram-worker-computer-termux.md)
+
+- [Finish Milestone 7 live operational acceptance](milestone-7-operational-acceptance.md)

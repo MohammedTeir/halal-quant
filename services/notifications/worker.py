@@ -10,6 +10,7 @@ from sqlalchemy.exc import SQLAlchemyError
 from apps.api.db import session_factory
 from packages.config.settings import get_settings
 from services.notifications.delivery import deliver_one
+from services.notifications.health import heartbeat
 from services.notifications.linking import poll_links
 from services.notifications.models import Outbox, ServiceState
 from services.notifications.telegram import Telegram
@@ -86,13 +87,25 @@ def main():
             print(json.dumps(result))
         if args.check:
             return
+        last_heartbeat = 0.0
+        first_heartbeat = True
         while True:
+            polled = True
             try:
                 poll_links(sessions, telegram)
             except ValueError:
+                polled = False
                 print("Telegram linking unavailable; check server configuration.")
             if not args.link_only:
                 deliver_one(sessions, telegram)
+            if not args.once and polled and time.monotonic() - last_heartbeat >= 15:
+                heartbeat(
+                    sessions,
+                    mode="link-only" if args.link_only else "delivery",
+                    started=first_heartbeat,
+                )
+                first_heartbeat = False
+                last_heartbeat = time.monotonic()
             if args.once:
                 break
             time.sleep(1)

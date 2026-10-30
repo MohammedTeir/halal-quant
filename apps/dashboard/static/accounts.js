@@ -5,6 +5,17 @@
     en: {
       sign_in: "Sign in",
       sign_out: "Sign out",
+      verify_history: "Verify delivery history",
+      worker_health: "Worker polling status",
+      worker_scope:
+        "Recent polling does not guarantee delivery or continuous uptime.",
+      RECENT: "Recent activity",
+      STALE: "No recent activity",
+      UNKNOWN: "Not yet observed",
+      CLOCK_ERROR: "Check the worker host clock",
+      delivery: "Delivery mode",
+      "link-only": "Link-only mode",
+      worker_starts: "Successful starts",
       email: "Email",
       password: "Password",
       save: "Save",
@@ -58,6 +69,16 @@
     ar: {
       sign_in: "تسجيل الدخول",
       sign_out: "تسجيل الخروج",
+      verify_history: "التحقق من سجل التسليم",
+      worker_health: "حالة عامل التنبيهات",
+      worker_scope: "النشاط الحديث لا يضمن التسليم أو الاستمرار دون انقطاع.",
+      RECENT: "نشاط حديث",
+      STALE: "لا يوجد نشاط حديث",
+      UNKNOWN: "لم يُرصد بعد",
+      CLOCK_ERROR: "تحقق من ساعة جهاز العامل",
+      delivery: "وضع التسليم",
+      "link-only": "وضع الربط فقط",
+      worker_starts: "مرات البدء الناجحة",
       email: "البريد الإلكتروني",
       password: "كلمة المرور",
       save: "حفظ",
@@ -188,11 +209,16 @@
   async function settings() {
     if (!user) return;
     const currentVersion = version;
-    const [sessions, dests, deliveries, users] = await Promise.all([
+    const [sessions, dests, deliveries, users, worker] = await Promise.all([
       call("auth/sessions"),
       call("telegram/destinations"),
       call("telegram/deliveries"),
       user.role === "admin" ? call("admin/users") : Promise.resolve(null),
+      call("telegram/worker-status").catch(() => ({
+        state: "UNKNOWN",
+        mode: null,
+        successful_starts: 0,
+      })),
     ]);
     if (currentVersion !== version || !user) return;
     const host = $("account-content");
@@ -282,7 +308,59 @@
       );
       host.append(row);
     });
-    host.append(el("h3", t("deliveries")));
+    host.append(
+      el("h3", t("worker_health")),
+      el(
+        "p",
+        t(worker.state) +
+          (worker.mode ? " · " + t(worker.mode) : "") +
+          " · " +
+          t("worker_starts") +
+          ": " +
+          worker.successful_starts,
+      ),
+      el("p", t("worker_scope")),
+    );
+    host.append(
+      el("h3", t("deliveries")),
+      button("verify_history", async () => {
+        const [history, status, me, links] = await Promise.all([
+          call("telegram/deliveries"),
+          call("telegram/worker-status"),
+          call("auth/me"),
+          call("telegram/destinations"),
+        ]);
+        tell(
+          JSON.stringify({
+            authenticated: true,
+            account_role: me.user.role,
+            setup_history_sent: history.items.some(
+              (x) =>
+                x.event_key === "notification-setup-v1" && x.status === "SENT",
+            ),
+            group_setup_history_sent: history.items.some(
+              (x) =>
+                x.event_key === "notification-setup-v1" &&
+                x.status === "SENT" &&
+                links.items.some(
+                  (d) => d.id === x.destination_id && d.chat_id.startsWith("-"),
+                ),
+            ),
+            live_suite_cases_sent: history.items
+              .filter(
+                (x) =>
+                  x.event_key.startsWith("acceptance-v1:") &&
+                  x.status === "SENT",
+              )
+              .map((x) => x.event_key),
+            worker_state: status.state,
+            worker_mode: status.mode,
+            restart_observed: status.restart_observed,
+            interface_language: document.documentElement.lang,
+          }),
+        );
+      }),
+    );
     deliveries.items.forEach((d) =>
       host.append(
         el(

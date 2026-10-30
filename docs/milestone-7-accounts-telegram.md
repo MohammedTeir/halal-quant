@@ -192,12 +192,18 @@ fixture credentials and system Chromium; it requires Node with Playwright availa
 (`require("playwright")`) and `chromium` on PATH. It never starts a Telegram worker.
 See the [dated acceptance report](../reports/milestone7-accounts-telegram-acceptance-2026-10-30.json) for exact results.
 
-**Still required on your deployment:** persistent database backups, HTTPS/proxy
-configuration, first administrator bootstrap, trusted sharing of invitation and
-recovery links, BotFather/token secret setup, supervised worker, private/group
-linking, and an explicitly approved real-message delivery check. Real provider
-availability and real delivery are not certified by mocks. Milestone 7 has software acceptance. The later operator-confirmed private-chat
-setup delivery is recorded below; remaining operational/account checks still apply.
+**Current deployment evidence:** Vercel/Render/Neon connectivity, owner login,
+Termux preflight, private linking and one explicitly approved received setup
+message are recorded in the [live delivery report](../reports/milestone7-telegram-delivery-2026-10-30.json).
+Those setup steps are complete for this deployment, rather than still pending.
+
+**Remaining operator verification:** deployed account/session checks, dashboard
+history, encrypted backup with isolated restore and off-device retention,
+supervised bounded worker/restart observation, the four approved labelled private
+category/language checks and the separately confirmed group. Follow the
+[operational acceptance runbook](milestone-7-operational-acceptance.md).
+Tests/scripts alone do not close these live checks; Android hosting limits remain
+explicit even after a successful bounded observation.
 
 Earlier milestone evidence and open gates remain in [milestones](milestones.md),
 [completion requirements](completion-requirements.md), and their linked reports.
@@ -211,7 +217,7 @@ API clients use `POST /admin/invitations` and
 `POST /admin/users/{id}/recovery`. The returned raw token is shown once, then
 redemption uses `POST /auth/recover`. No bot token is exposed by any endpoint.
 
-For the selected Vercel/Render hosting with external Neon or Supabase PostgreSQL, see the [deployment walkthrough in Arabic](deploy-vercel-render.ar.md). Hosting account linking, secrets, actual service URLs and real-delivery acceptance remain operator steps.
+For the selected Vercel/Render hosting with external Neon or Supabase PostgreSQL, see the [deployment walkthrough in Arabic](deploy-vercel-render.ar.md). The account linking, service URLs and first private delivery are now evidenced; remaining operator checks are listed in the operational acceptance runbook.
 
 For the selected temporary computer/Termux worker and @halalquant_bot, follow the
 [worker setup guide](telegram-worker-computer-termux.md). Use `--check` for read-only

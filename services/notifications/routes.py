@@ -18,6 +18,12 @@ class Preferences(BaseModel):
 def mount_notifications(app, sessions, current):
     current_dependency = Depends(current)
 
+    @app.get("/api/v1/telegram/worker-status")
+    def worker_status(user=current_dependency):
+        from services.notifications.health import view
+
+        return view(sessions)
+
     @app.post("/api/v1/telegram/link-code")
     def link_code(user=current_dependency):
         with locked(sessions) as db:
@@ -85,6 +91,7 @@ def mount_notifications(app, sessions, current):
                         "id": r.id,
                         "kind": r.kind,
                         "event_key": r.event_key,
+                        "destination_id": r.destination_id,
                         "status": r.status,
                         "error": r.error,
                         "attempts": r.attempts,

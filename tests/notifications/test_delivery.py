@@ -285,3 +285,50 @@ def test_setup_send_requires_enabled_destination(sessions):
     assert sender.calls == []
     with sessions() as db:
         assert db.scalar(select(Outbox)) is None
+
+
+def test_live_four_case_suite_is_targeted_and_idempotent(sessions, monkeypatch):
+    from services.operations import live_notifications as suite
+
+    other = queued(sessions, "unrelated-event")
+    clock = {"now": int(time.time())}
+    original = deliver_one
+
+    def tick(factory, telegram, *, only_id):
+        clock["now"] += 4
+        return original(factory, telegram, now=clock["now"], only_id=only_id)
+
+    monkeypatch.setattr(suite, "deliver_one", tick)
+    sender = Transport(response(200, {"ok": True, "result": {"message_id": 88}}))
+    first = suite.run_suite(sessions, sender, "123", send=True)
+    assert first["status"] == "PASSED" and len(first["results"]) == 4
+    assert len(sender.calls) == 4
+    assert any("اختبار قبول" in payload["text"] for _, payload in sender.calls)
+    assert record(sessions, other).status == "QUEUED"
+    assert suite.run_suite(sessions, sender, "123", send=True)["status"] == "PASSED"
+    assert len(sender.calls) == 4
+
+
+def test_live_suite_stops_on_uncertainty_and_does_not_queue_more(sessions):
+    from services.operations.live_notifications import run_suite
+
+    sender = Transport(error=httpx.ReadTimeout("sensitive transport detail"))
+    result = run_suite(sessions, sender, "123", send=True)
+    assert result["status"] == "INCOMPLETE" and result["results"][0]["status"] == "UNCERTAIN"
+    assert len(result["results"]) == 1 and len(sender.calls) == 1
+    assert run_suite(sessions, sender, "123", send=True)["status"] == "INCOMPLETE"
+    assert len(sender.calls) == 1
+
+
+def test_live_suite_preview_and_preferences_never_send(sessions):
+    from services.operations.live_notifications import run_suite
+
+    sender = Transport()
+    assert run_suite(sessions, sender, "123")["mode"] == "preview"
+    with locked(sessions) as db:
+        db.get(Destination, "d").kinds = ["signal"]
+    with pytest.raises(ValueError):
+        run_suite(sessions, sender, "123", send=True)
+    assert sender.calls == []
+    with sessions() as db:
+        assert db.scalar(select(Outbox)) is None

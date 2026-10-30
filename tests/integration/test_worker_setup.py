@@ -89,3 +89,44 @@ def test_normal_worker_mode_can_deliver_after_identity_check(client, monkeypatch
     poll.assert_called_once_with(sessions, telegram)
     send.assert_called_once_with(sessions, telegram)
     telegram.close.assert_called_once()
+
+
+def test_persistent_worker_status_is_private_and_detects_restart(client):
+    import time
+
+    from services.accounts.access import password_hash
+    from services.notifications.health import heartbeat, view
+    from services.notifications.models import User
+
+    sessions = sessionmaker(client.app.state.engine)
+    with sessions.begin() as db:
+        db.add(
+            User(
+                id="status-user",
+                email="status@example.test",
+                password=password_hash("status-test-password"),
+                role="viewer",
+                enabled=True,
+            )
+        )
+    assert client.get("/api/v1/telegram/worker-status").status_code == 401
+    now = int(time.time())
+    heartbeat(sessions, mode="link-only", started=True, now=now - 100)
+    assert view(sessions, now)["state"] == "STALE"
+    heartbeat(sessions, mode="delivery", started=True, now=now)
+    result = view(sessions, now)
+    assert result["state"] == "RECENT" and result["restart_observed"]
+    assert result["successful_starts"] == 2 and result["mode"] == "delivery"
+    assert view(sessions, now + 91)["state"] == "STALE"
+    assert view(sessions, now - 10)["state"] == "CLOCK_ERROR"
+    client.post(
+        "/api/v1/auth/login",
+        json={"email": "status@example.test", "password": "status-test-password"},
+    )
+    # The client fixture uses HTTP; set the cookie explicitly for this read-only route.
+    cookie = client.cookies.get("hq_session")
+    response = client.get(
+        "/api/v1/telegram/worker-status", headers={"Cookie": "hq_session=" + cookie}
+    )
+    assert response.status_code == 200 and response.json()["restart_observed"]
+    assert response.headers["cache-control"] == "no-store"

@@ -37,6 +37,8 @@ jobs:
           node --check scripts/dashboard_browser_smoke.cjs
       - name: Vercel static build and origin configuration
         run: node --test tests/deployment/dashboard.test.mjs
+      - name: Encrypted backup and restore verification tools
+        run: sudo apt-get update && sudo apt-get install -y age postgresql-client
       - run: uv run pytest -q
       - name: Synthetic research CLI acceptance
         run: uv run python -m scripts.research_smoke --output reports/generated/ci

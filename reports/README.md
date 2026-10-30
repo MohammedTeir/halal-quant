@@ -102,3 +102,5 @@ incomplete. See [scope and remaining work](../docs/milestone-5-controls.md).
 - [Computer/Termux worker setup readiness](milestone7-worker-hosting-readiness-2026-10-30.json): check-only/link-only mode tests; real host, token and delivery verification remain pending.
 
 - [Operator-confirmed private Telegram delivery](milestone7-telegram-delivery-2026-10-30.json): one approved setup message, Telegram SENT and recipient confirmation; ongoing operational acceptance remains pending.
+
+- [Remaining operational acceptance readiness](milestone7-operational-readiness-2026-10-30.json): prepared/tested runners; real operator outputs and off-device backup confirmation remain required.
