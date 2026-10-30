@@ -33,8 +33,15 @@ def main():
         type=Path,
         help="Fixed-parameter chronological validation partition JSON",
     )
+    parser.add_argument(
+        "--candidate-configs",
+        type=Path,
+        help="Predeclared StrategyConfig JSON array; requires walk-forward",
+    )
     parser.add_argument("--output", required=True, type=Path)
     args = parser.parse_args()
+    if args.candidate_configs and not args.walk_forward_config:
+        parser.error("Candidate configurations require walk-forward mode")
     if bool(args.benchmark_csv) != bool(args.benchmark_metadata):
         parser.error("Provide both benchmark files")
     if args.output.exists():
@@ -60,7 +67,13 @@ def main():
             from services.backtesting.walk_forward import WalkForwardConfig, walk_forward
 
             plan = WalkForwardConfig.model_validate_json(args.walk_forward_config.read_text())
-            report = walk_forward(dataset, config, settings, plan, benchmark)
+            candidates = None
+            if args.candidate_configs:
+                raw = json.loads(args.candidate_configs.read_text())
+                if not isinstance(raw, list) or not 1 <= len(raw) <= 50:
+                    raise ValueError("Expected one to fifty candidate configurations")
+                candidates = [StrategyConfig.model_validate(c) for c in raw]
+            report = walk_forward(dataset, config, settings, plan, benchmark, candidates)
         else:
             report = research(dataset, config, settings, benchmark)
     except (ValueError, OSError) as error:

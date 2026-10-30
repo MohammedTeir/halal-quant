@@ -1,0 +1,70 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "effective_at": {
+      "format": "date-time",
+      "title": "Effective At",
+      "type": "string"
+    },
+    "expires_at": {
+      "format": "date-time",
+      "title": "Expires At",
+      "type": "string"
+    },
+    "kind": {
+      "enum": [
+        "compliance",
+        "news",
+        "macro"
+      ],
+      "title": "Kind",
+      "type": "string"
+    },
+    "published_at": {
+      "format": "date-time",
+      "title": "Published At",
+      "type": "string"
+    },
+    "received_at": {
+      "format": "date-time",
+      "title": "Received At",
+      "type": "string"
+    },
+    "revision_id": {
+      "minLength": 1,
+      "title": "Revision Id",
+      "type": "string"
+    },
+    "scope": {
+      "minLength": 1,
+      "title": "Scope",
+      "type": "string"
+    },
+    "source_sha256": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Source Sha256",
+      "type": "string"
+    },
+    "state": {
+      "enum": [
+        "ALLOW",
+        "BLOCK"
+      ],
+      "title": "State",
+      "type": "string"
+    }
+  },
+  "required": [
+    "revision_id",
+    "scope",
+    "kind",
+    "state",
+    "published_at",
+    "received_at",
+    "effective_at",
+    "expires_at",
+    "source_sha256"
+  ],
+  "title": "ReplayEvidence",
+  "type": "object"
+}

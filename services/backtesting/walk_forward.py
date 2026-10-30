@@ -19,9 +19,11 @@ class WalkForwardConfig(BaseModel):
     final_holdout_bars: int = Field(ge=4, strict=True)
 
 
-def walk_forward(dataset, config, settings, plan, benchmark=None):
+def walk_forward(dataset, config, settings, plan, benchmark=None, candidates=None):
     if settings.start_at is not None or settings.end_at is not None:
         raise ValueError("Walk-forward uses explicit bar partitions; omit run start/end dates")
+    if candidates and any(c.name != config.name for c in candidates):
+        raise ValueError("Candidate family must match requested strategy")
     bars = dataset.bars
     development_end = len(bars) - plan.final_holdout_bars
     if development_end - plan.initial_history_bars < plan.test_bars:
@@ -41,12 +43,25 @@ def walk_forward(dataset, config, settings, plan, benchmark=None):
             if benchmark is not None
             else None
         )
-        signals = features(prefix, config, reference)
+        chosen, selection = config, None
+        if candidates:
+            from services.backtesting.selection import select_parameters
+
+            training = replace(dataset, bars=bars.iloc[:start].copy())
+            training_reference = (
+                replace(benchmark, bars=benchmark.bars.loc[: training.bars.index[-1]].copy())
+                if benchmark is not None
+                else None
+            )
+            chosen, selection = select_parameters(
+                training, candidates, settings, training_reference
+            )
+        signals = features(prefix, chosen, reference)
         first = prefix.bars.index[start]
         if not bool(signals.loc[first, "ready"]):
             raise ValueError("Initial history is insufficient for indicator warm-up")
         runs = {
-            name: simulate(prefix.bars, signals, config, settings, first, baseline=baseline)
+            name: simulate(prefix.bars, signals, chosen, settings, first, baseline=baseline)
             for name, baseline in [("strategy", False), ("buy_and_hold", True)]
         }
         if any(run["open_positions"] or run["pending_orders"] for run in runs.values()):
@@ -54,6 +69,8 @@ def walk_forward(dataset, config, settings, plan, benchmark=None):
         results.append(
             {
                 "kind": kind,
+                "selection": selection,
+                "strategy_configuration": chosen.model_dump(mode="json"),
                 "history_bars": start,
                 "test_bars": end - start,
                 "signal_start": first.isoformat(),
@@ -70,6 +87,7 @@ def walk_forward(dataset, config, settings, plan, benchmark=None):
             "instrument": dataset.manifest(),
             "benchmark": benchmark.manifest() if benchmark else None,
         },
+        "candidates": [c.model_dump(mode="json") for c in candidates] if candidates else None,
         "source_sha256": source_hash(),
         "lockfile_sha256": hashlib.sha256(
             (Path(__file__).resolve().parents[2] / "uv.lock").read_bytes()
@@ -81,10 +99,14 @@ def walk_forward(dataset, config, settings, plan, benchmark=None):
     return {
         **provenance,
         "run_id": hashlib.sha256(json.dumps(provenance, sort_keys=True).encode()).hexdigest(),
-        "mode": "fixed_parameter_walk_forward_research_only",
+        "mode": "training_selected_walk_forward_research_only"
+        if candidates
+        else "fixed_parameter_walk_forward_research_only",
         "authorized_for_paper": False,
         "synthetic": dataset.spec.synthetic or bool(benchmark and benchmark.spec.synthetic),
-        "parameter_selection": "none; one configuration fixed before all windows",
+        "parameter_selection": "historical prefix only; predeclared candidates; no holdout objective"
+        if candidates
+        else "none; one configuration fixed before all windows",
         "capital_policy": "independent windows reset cash; returns must not be summed as a portfolio",
         "holdout_policy": "final holdout excluded from development; no automatic pass/fail or selection",
         "execution": "next bar open; final bar reserved for liquidation; existing per-side cost model",

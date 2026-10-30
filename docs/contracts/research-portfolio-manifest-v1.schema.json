@@ -1,0 +1,399 @@
+{
+  "$defs": {
+    "Instrument": {
+      "additionalProperties": false,
+      "properties": {
+        "benchmark_csv": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Benchmark Csv"
+        },
+        "benchmark_metadata": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Benchmark Metadata"
+        },
+        "csv": {
+          "title": "Csv",
+          "type": "string"
+        },
+        "metadata": {
+          "title": "Metadata",
+          "type": "string"
+        },
+        "sector": {
+          "minLength": 1,
+          "title": "Sector",
+          "type": "string"
+        },
+        "strategy": {
+          "$ref": "#/$defs/StrategyConfig"
+        }
+      },
+      "required": [
+        "csv",
+        "metadata",
+        "sector",
+        "strategy"
+      ],
+      "title": "Instrument",
+      "type": "object"
+    },
+    "PortfolioConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "cash": {
+          "default": 10000,
+          "exclusiveMinimum": 0,
+          "title": "Cash",
+          "type": "number"
+        },
+        "commission_rate": {
+          "default": 0.001,
+          "exclusiveMaximum": 0.1,
+          "minimum": 0,
+          "title": "Commission Rate",
+          "type": "number"
+        },
+        "max_positions": {
+          "default": 5,
+          "minimum": 1,
+          "title": "Max Positions",
+          "type": "integer"
+        },
+        "position_fraction": {
+          "default": 0.1,
+          "exclusiveMinimum": 0,
+          "maximum": 1,
+          "title": "Position Fraction",
+          "type": "number"
+        },
+        "risk_fraction": {
+          "default": 0.01,
+          "exclusiveMinimum": 0,
+          "maximum": 0.1,
+          "title": "Risk Fraction",
+          "type": "number"
+        },
+        "sector_fraction": {
+          "default": 0.3,
+          "exclusiveMinimum": 0,
+          "maximum": 1,
+          "title": "Sector Fraction",
+          "type": "number"
+        },
+        "slippage_bps": {
+          "default": 2,
+          "exclusiveMaximum": 1000,
+          "minimum": 0,
+          "title": "Slippage Bps",
+          "type": "number"
+        },
+        "spread_bps": {
+          "default": 5,
+          "exclusiveMaximum": 1000,
+          "minimum": 0,
+          "title": "Spread Bps",
+          "type": "number"
+        },
+        "total_risk_fraction": {
+          "default": 0.05,
+          "exclusiveMinimum": 0,
+          "maximum": 0.5,
+          "title": "Total Risk Fraction",
+          "type": "number"
+        },
+        "volume_participation": {
+          "default": 0.01,
+          "exclusiveMinimum": 0,
+          "maximum": 1,
+          "title": "Volume Participation",
+          "type": "number"
+        }
+      },
+      "title": "PortfolioConfig",
+      "type": "object"
+    },
+    "ReplayEvidence": {
+      "additionalProperties": false,
+      "properties": {
+        "effective_at": {
+          "format": "date-time",
+          "title": "Effective At",
+          "type": "string"
+        },
+        "expires_at": {
+          "format": "date-time",
+          "title": "Expires At",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "compliance",
+            "news",
+            "macro"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "published_at": {
+          "format": "date-time",
+          "title": "Published At",
+          "type": "string"
+        },
+        "received_at": {
+          "format": "date-time",
+          "title": "Received At",
+          "type": "string"
+        },
+        "revision_id": {
+          "minLength": 1,
+          "title": "Revision Id",
+          "type": "string"
+        },
+        "scope": {
+          "minLength": 1,
+          "title": "Scope",
+          "type": "string"
+        },
+        "source_sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Source Sha256",
+          "type": "string"
+        },
+        "state": {
+          "enum": [
+            "ALLOW",
+            "BLOCK"
+          ],
+          "title": "State",
+          "type": "string"
+        }
+      },
+      "required": [
+        "revision_id",
+        "scope",
+        "kind",
+        "state",
+        "published_at",
+        "received_at",
+        "effective_at",
+        "expires_at",
+        "source_sha256"
+      ],
+      "title": "ReplayEvidence",
+      "type": "object"
+    },
+    "StrategyConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "adx_period": {
+          "default": 14,
+          "minimum": 2,
+          "title": "Adx Period",
+          "type": "integer"
+        },
+        "atr_period": {
+          "default": 14,
+          "minimum": 1,
+          "title": "Atr Period",
+          "type": "integer"
+        },
+        "channel_period": {
+          "default": 20,
+          "minimum": 2,
+          "title": "Channel Period",
+          "type": "integer"
+        },
+        "fast_period": {
+          "default": 50,
+          "minimum": 2,
+          "title": "Fast Period",
+          "type": "integer"
+        },
+        "higher_timeframe_hours": {
+          "default": 24,
+          "minimum": 1,
+          "title": "Higher Timeframe Hours",
+          "type": "integer"
+        },
+        "maximum_atr_percent": {
+          "default": 3,
+          "exclusiveMinimum": 0,
+          "title": "Maximum Atr Percent",
+          "type": "number"
+        },
+        "minimum_adx": {
+          "default": 20,
+          "maximum": 100,
+          "minimum": 0,
+          "title": "Minimum Adx",
+          "type": "number"
+        },
+        "name": {
+          "enum": [
+            "adaptive_pullback",
+            "regime_trend",
+            "breakout_retest"
+          ],
+          "title": "Name",
+          "type": "string"
+        },
+        "pullback_atr": {
+          "default": 0.5,
+          "minimum": 0,
+          "title": "Pullback Atr",
+          "type": "number"
+        },
+        "pullback_period": {
+          "default": 20,
+          "minimum": 2,
+          "title": "Pullback Period",
+          "type": "integer"
+        },
+        "require_retest": {
+          "default": true,
+          "title": "Require Retest",
+          "type": "boolean"
+        },
+        "retest_atr": {
+          "default": 0.25,
+          "minimum": 0,
+          "title": "Retest Atr",
+          "type": "number"
+        },
+        "retest_bars": {
+          "default": 5,
+          "minimum": 1,
+          "title": "Retest Bars",
+          "type": "integer"
+        },
+        "rsi_period": {
+          "default": 14,
+          "minimum": 2,
+          "title": "Rsi Period",
+          "type": "integer"
+        },
+        "rsi_threshold": {
+          "default": 50,
+          "exclusiveMaximum": 100,
+          "exclusiveMinimum": 0,
+          "title": "Rsi Threshold",
+          "type": "number"
+        },
+        "slope_period": {
+          "default": 20,
+          "minimum": 1,
+          "title": "Slope Period",
+          "type": "integer"
+        },
+        "slow_period": {
+          "default": 200,
+          "minimum": 3,
+          "title": "Slow Period",
+          "type": "integer"
+        },
+        "stop_atr": {
+          "default": 2,
+          "exclusiveMinimum": 0,
+          "title": "Stop Atr",
+          "type": "number"
+        },
+        "trail_atr": {
+          "default": 3,
+          "exclusiveMinimum": 0,
+          "title": "Trail Atr",
+          "type": "number"
+        },
+        "volume_multiplier": {
+          "default": 1,
+          "exclusiveMinimum": 0,
+          "title": "Volume Multiplier",
+          "type": "number"
+        },
+        "volume_period": {
+          "default": 20,
+          "minimum": 1,
+          "title": "Volume Period",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "title": "StrategyConfig",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "evidence": {
+      "items": {
+        "$ref": "#/$defs/ReplayEvidence"
+      },
+      "title": "Evidence",
+      "type": "array"
+    },
+    "instruments": {
+      "items": {
+        "$ref": "#/$defs/Instrument"
+      },
+      "maxItems": 100,
+      "minItems": 1,
+      "title": "Instruments",
+      "type": "array"
+    },
+    "monte_carlo_iterations": {
+      "default": 1000,
+      "maximum": 10000,
+      "minimum": 1,
+      "title": "Monte Carlo Iterations",
+      "type": "integer"
+    },
+    "monte_carlo_seed": {
+      "default": 0,
+      "title": "Monte Carlo Seed",
+      "type": "integer"
+    },
+    "settings": {
+      "$ref": "#/$defs/PortfolioConfig",
+      "default": {
+        "cash": 10000.0,
+        "commission_rate": 0.001,
+        "max_positions": 5,
+        "position_fraction": 0.1,
+        "risk_fraction": 0.01,
+        "sector_fraction": 0.3,
+        "slippage_bps": 2.0,
+        "spread_bps": 5.0,
+        "total_risk_fraction": 0.05,
+        "volume_participation": 0.01
+      }
+    },
+    "start_at": {
+      "format": "date-time",
+      "title": "Start At",
+      "type": "string"
+    }
+  },
+  "required": [
+    "instruments",
+    "start_at"
+  ],
+  "title": "Manifest",
+  "type": "object"
+}

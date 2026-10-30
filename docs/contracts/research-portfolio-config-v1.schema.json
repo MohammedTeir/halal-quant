@@ -1,0 +1,75 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "cash": {
+      "default": 10000,
+      "exclusiveMinimum": 0,
+      "title": "Cash",
+      "type": "number"
+    },
+    "commission_rate": {
+      "default": 0.001,
+      "exclusiveMaximum": 0.1,
+      "minimum": 0,
+      "title": "Commission Rate",
+      "type": "number"
+    },
+    "max_positions": {
+      "default": 5,
+      "minimum": 1,
+      "title": "Max Positions",
+      "type": "integer"
+    },
+    "position_fraction": {
+      "default": 0.1,
+      "exclusiveMinimum": 0,
+      "maximum": 1,
+      "title": "Position Fraction",
+      "type": "number"
+    },
+    "risk_fraction": {
+      "default": 0.01,
+      "exclusiveMinimum": 0,
+      "maximum": 0.1,
+      "title": "Risk Fraction",
+      "type": "number"
+    },
+    "sector_fraction": {
+      "default": 0.3,
+      "exclusiveMinimum": 0,
+      "maximum": 1,
+      "title": "Sector Fraction",
+      "type": "number"
+    },
+    "slippage_bps": {
+      "default": 2,
+      "exclusiveMaximum": 1000,
+      "minimum": 0,
+      "title": "Slippage Bps",
+      "type": "number"
+    },
+    "spread_bps": {
+      "default": 5,
+      "exclusiveMaximum": 1000,
+      "minimum": 0,
+      "title": "Spread Bps",
+      "type": "number"
+    },
+    "total_risk_fraction": {
+      "default": 0.05,
+      "exclusiveMinimum": 0,
+      "maximum": 0.5,
+      "title": "Total Risk Fraction",
+      "type": "number"
+    },
+    "volume_participation": {
+      "default": 0.01,
+      "exclusiveMinimum": 0,
+      "maximum": 1,
+      "title": "Volume Participation",
+      "type": "number"
+    }
+  },
+  "title": "PortfolioConfig",
+  "type": "object"
+}

@@ -1,0 +1,72 @@
+{
+  "authorized": false,
+  "byte_identical_optimization_repeat": true,
+  "byte_identical_portfolio_repeat": true,
+  "date": "2026-10-30",
+  "environment_modified": false,
+  "lockfile_sha256": "1d61746cd3a4495229b555beacc157ce4f4932500bdcbd8f21b0078e476defc5",
+  "monte_carlo": {
+    "iterations": 100,
+    "limitation": "fixed realized cash PnL permutation, not compound sizing, liquidity or overlapping-position replay",
+    "maximum_drawdown_p50_percent": 1.499239652991219,
+    "maximum_drawdown_p95_percent": 2.1751147176526526,
+    "ruin_fraction": 0.0,
+    "seed": 17,
+    "status": "COMPLETED",
+    "terminal_cash": 10003.806929684673
+  },
+  "new_tests": 9,
+  "orders_canceled": 0,
+  "orders_submitted": 0,
+  "portfolio_run_id": "7ac9bfa3ff8daec92b53d291db40255552f6f8accf8f07849977b8980cb30010",
+  "purpose": "synthetic_software_acceptance_only",
+  "real_provider_calls": 0,
+  "remaining_acceptance": [
+    "Representative real historical price/news/macro/compliance sources independently verified.",
+    "Successful untouched multiple-period out-of-sample gates after costs; synthetic results cannot satisfy this.",
+    "Actual broker order/settlement reconciliation remains milestone 8."
+  ],
+  "research_gates": {
+    "authorized": false,
+    "checks": {
+      "drawdown_below_15_each_window": true,
+      "no_unreconciled_orders": true,
+      "pit_sources_independently_verified": false,
+      "positive_expectancy_each_window": true,
+      "positive_return_multiple_periods": false,
+      "profit_factor_above_1_3_each_window": false,
+      "representative_history_independently_verified": false
+    },
+    "lookahead_and_compliance_assurance": "Not inferred from PnL; requires provenance review and independent causal/control tests",
+    "passed": false
+  },
+  "runs": {
+    "buy_and_hold": {
+      "maximum_drawdown_percent": 1.653471528324281,
+      "open_positions": 0,
+      "pending_orders": 0,
+      "profit_factor": null,
+      "return_percent": 5.315971429992761,
+      "trade_count": 2
+    },
+    "controlled": {
+      "maximum_drawdown_percent": 1.4977901889028937,
+      "open_positions": 0,
+      "pending_orders": 0,
+      "profit_factor": 1.0090221097163745,
+      "return_percent": 0.038069296846687806,
+      "trade_count": 31
+    },
+    "technical_only": {
+      "maximum_drawdown_percent": 1.5226801066078623,
+      "open_positions": 0,
+      "pending_orders": 0,
+      "profit_factor": 1.2996590949007134,
+      "return_percent": 1.2782857910848877,
+      "trade_count": 34
+    }
+  },
+  "source_sha256": "a714d53bd6262cde0211ed369ca17bf6f904bd8e6ae5e59045b68d49bfbec4d5",
+  "status": "SOFTWARE_ACCEPTANCE_PASSED_PERFORMANCE_ACCEPTANCE_PENDING",
+  "tests_passed": 471
+}

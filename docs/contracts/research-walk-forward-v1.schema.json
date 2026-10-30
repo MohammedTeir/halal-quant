@@ -1,0 +1,27 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "final_holdout_bars": {
+      "minimum": 4,
+      "title": "Final Holdout Bars",
+      "type": "integer"
+    },
+    "initial_history_bars": {
+      "minimum": 10,
+      "title": "Initial History Bars",
+      "type": "integer"
+    },
+    "test_bars": {
+      "minimum": 4,
+      "title": "Test Bars",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "initial_history_bars",
+    "test_bars",
+    "final_holdout_bars"
+  ],
+  "title": "WalkForwardConfig",
+  "type": "object"
+}
