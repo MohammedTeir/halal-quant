@@ -48,3 +48,5 @@ When completing a milestone, update its state, record the exact checks and outco
 and distinguish local validation from hosted CI and external platform acceptance.
 Keep API, strategy and policy documents aligned with the implementation. Never
 mark a manual gate complete without its evidence.
+
+- [Milestone 7 accounts, Telegram and deployment guide](milestone-7-accounts-telegram.md)

@@ -277,7 +277,7 @@ def kill_switch(session, request, engaged, actor, now):
     lock_controls(session)
     now = utcnow()  # Capacity and receipt time are sampled after lock waits.
     payload = request.model_dump(mode="json") | {"engaged": engaged}
-    return put_revision(
+    result = put_revision(
         session,
         "kill",
         request.account_id,
@@ -289,6 +289,12 @@ def kill_switch(session, request, engaged, actor, now):
         None,
         digest({"request": request.model_dump(mode="json"), "engaged": engaged, "actor": actor}),
     )
+
+    if engaged and not result["duplicate"]:
+        from services.notifications.delivery import enqueue
+
+        enqueue(session, "risk_stop", "kill:" + request.record_id, {"status": "ENGAGED"})
+    return result
 
 
 def capture_latest(session, kind, scope, as_of):
@@ -910,6 +916,21 @@ def check_and_reserve(session, request, now, settings):
             payload=result,
         )
     )
+    risk_stops = sorted(
+        set(result["blockers"])
+        & {
+            "KILL_SWITCH_ACTIVE",
+            "DAILY_LOSS_LIMIT",
+            "DRAWDOWN_LIMIT",
+            "CONSECUTIVE_LOSS_COOLDOWN",
+        }
+    )
+    if risk_stops:
+        from services.notifications.delivery import enqueue
+
+        enqueue(
+            session, "risk_stop", "check:" + request.check_id, {"status": ", ".join(risk_stops)}
+        )
     session.add(AuditRecord(action="controls_checked", subject=request.check_id, created_at=now))
     session.flush()
     return result

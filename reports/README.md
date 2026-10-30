@@ -92,3 +92,5 @@ compliance/risk increment, 78 new tests and 412 total passing tests. Its cases a
 fictional caller-supplied scenarios; SIMULATION_PASS never establishes broker,
 reviewer, source or execution authority. Operational storage/integration remains
 incomplete. See [scope and remaining work](../docs/milestone-5-controls.md).
+
+- [Milestone 7 accounts and Telegram software acceptance](milestone7-accounts-telegram-acceptance-2026-10-30.json): isolated tests; live deployment/delivery acceptance remains pending.

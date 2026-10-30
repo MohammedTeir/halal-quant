@@ -54,7 +54,7 @@ def mount_dashboard(app, sessions, authenticate):
                 "mode": "research",
                 "authorized": False,
                 "live_execution": False,
-                "telegram_delivery": "NOT_CONFIGURED_PREVIEW_ONLY",
+                "telegram_delivery": "SERVER_OUTBOX_REQUIRES_CONFIGURED_WORKER",
                 "counts": {
                     name: session.scalar(select(func.count()).select_from(model))
                     for name, model in [
@@ -65,7 +65,7 @@ def mount_dashboard(app, sessions, authenticate):
                 },
                 "milestones": {
                     "current": 7,
-                    "dashboard": "INITIAL_READ_ONLY_INCREMENT",
+                    "dashboard": "BILINGUAL_ACCOUNTS_AND_DELIVERY",
                     "research_performance_accepted": False,
                     "qualified_operational_signoff": False,
                 },

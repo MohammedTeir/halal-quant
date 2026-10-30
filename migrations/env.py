@@ -3,6 +3,7 @@ from sqlalchemy import create_engine, pool
 
 from apps.api.db import Base
 from packages.config.settings import get_settings
+from services.notifications import models  # noqa: F401
 
 url = get_settings().database_url
 if context.is_offline_mode():

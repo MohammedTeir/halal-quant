@@ -12,3 +12,8 @@
 .research-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.research-grid>.card{min-width:0}.footnote{overflow-wrap:anywhere}.status-row{gap:12px}.status-row span{min-width:0}.status-row strong{flex-shrink:0}
 @media(max-width:680px){.research-grid{grid-template-columns:minmax(0,1fr)}}
 .hero h1 .hero-first{color:var(--text)}.breadcrumb>span[data-i18n]{margin:0;color:inherit}
+#account-settings input:not([type=checkbox]), #account-login input {display:block;max-width:100%;margin:8px 0 12px;padding:10px;border:1px solid var(--border);border-radius:6px;background:transparent;color:inherit}
+#account-settings label {display:inline-block;margin:8px 12px 8px 0}
+#account-settings button {margin:6px}
+#settings-message {overflow-wrap:anywhere;white-space:pre-wrap}
+#legacy-access {margin:12px 0}

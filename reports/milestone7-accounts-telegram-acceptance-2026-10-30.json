@@ -1,0 +1,84 @@
+{
+  "date": "2026-10-30",
+  "milestone": 7,
+  "base_commit": "3d45ad36c6f98e894b306f99a78a200f565ca260",
+  "status": "SOFTWARE_ACCEPTANCE_PASSED_DEPLOYMENT_DELIVERY_PENDING",
+  "recovery": {
+    "worktree_initially_clean": true,
+    "stashes": 0,
+    "unreachable_git_objects": 0,
+    "remote_main_confirmed": true,
+    "previous_runtime_access_available": false,
+    "implementation": "Reimplemented missing accounts/Telegram work; existing dashboard preserved",
+    "environment_deleted_or_published": false
+  },
+  "verification": {
+    "dependencies": "uv sync --locked (UV_CACHE_DIR=/tmp/uv-cache)",
+    "baseline": {
+      "command": "pytest -q on git archive 3d45ad3 in isolated /tmp checkout",
+      "passed": 484
+    },
+    "regression": {
+      "command": ".venv/bin/pytest -q",
+      "passed": 518,
+      "warnings": 1,
+      "warning": "Existing Starlette/httpx TestClient deprecation",
+      "database": "Temporary SQLite; migration upgrade/downgrade and schema-drift checks included"
+    },
+    "lint": ".venv/bin/ruff check .: passed",
+    "format": ".venv/bin/ruff format --check .: passed",
+    "javascript": "node --check on dashboard scripts and browser smoke script: passed",
+    "chromium": {
+      "command": ".venv/bin/python -m scripts.dashboard_browser_smoke",
+      "english_default": true,
+      "arabic_rtl": true,
+      "invitation_and_recovery": true,
+      "login": true,
+      "link_code": true,
+      "session_reload": true,
+      "logout_revocation": true,
+      "mobile_no_overflow": true,
+      "javascript_errors": 0
+    },
+    "smoke": [
+      "scripts.research_smoke: passed synthetic reproducibility/flat reconciliation",
+      "scripts.portfolio_smoke: passed synthetic portfolio/selection reproducibility",
+      "scripts.gemini_mock_smoke: passed, zero real provider calls",
+      "services.news_intelligence.evaluation: completed with fixed mock responses"
+    ],
+    "hosted_postgresql_ci": "Check current commit workflow after push; this report does not claim a result in advance"
+  },
+  "implemented": [
+    "Invitation-only users and backend roles; administrator-assisted recovery; no public registration or email transport",
+    "Scrypt passwords; hashed server sessions and one-time expiring invitation/recovery/link tokens",
+    "CSRF, Secure/HttpOnly/SameSite cookies, persistent login throttles and explicit session revocation",
+    "Revocation on password change/recovery, disabling and role change; last active administrator protection",
+    "Private chat and group linking from trusted Telegram polling; group sender and bot admin verification",
+    "Owner-scoped destination preferences, notification kinds/language, disable/unlink and delivery history",
+    "Transactional signal, decision, persisted kill-switch and risk-limit-check notifications with deduplication",
+    "Persistent background outbox with per-chat/global pacing, retry_after, bounded safe retries and sanitized failures",
+    "Uncertain deliveries and abandoned claims are never automatically resent",
+    "English-default and Arabic/RTL account and delivery interface; repeatable isolated browser smoke"
+  ],
+  "external_effects_during_testing": {
+    "real_email_messages": 0,
+    "real_telegram_messages": 0,
+    "real_telegram_api_calls": 0,
+    "cloud_environment_configuration_published": false
+  },
+  "deployment_required": [
+    "Back up persistent DB and apply 0007_access_delivery",
+    "Configure HTTPS, trusted proxy, public origin and secure cookies",
+    "Bootstrap administrator and share invitations/recovery through a trusted channel",
+    "Create bot through verified BotFather and supply TELEGRAM_BOT_TOKEN via server secret manager",
+    "Supervise a polling/delivery worker with HTTPS access to api.telegram.org; no competing webhook/poller",
+    "Verify private/group destination, select language/types and explicitly enable notifications",
+    "Perform an explicitly approved real-message acceptance check on the configured deployment"
+  ],
+  "earlier_milestones": {
+    "tracker_and_completion_requirements_reviewed": true,
+    "acceptance_states_changed": false,
+    "source_session_qualified_compliance_cash_custody_performance_gates": "Remain open as documented",
+    "execution_authorized": false
+  }
+}

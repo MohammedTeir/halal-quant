@@ -272,5 +272,8 @@ def store_evaluation(session, request: EvaluationRequest, now, settings):
     session.add(
         AuditRecord(action="candidate_evaluated", subject=request.evaluation_id, created_at=now)
     )
+    from services.notifications.delivery import enqueue
+
+    enqueue(session, "decision", request.evaluation_id, response)
     session.flush()
     return response

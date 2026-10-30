@@ -29,6 +29,12 @@ jobs:
       - run: uv sync --frozen
       - run: uv run ruff check .
       - run: uv run ruff format --check .
+      - name: Dashboard JavaScript syntax
+        run: |
+          node --check apps/dashboard/static/app.js
+          node --check apps/dashboard/static/accounts.js
+          node --check apps/dashboard/static/i18n.js
+          node --check scripts/dashboard_browser_smoke.cjs
       - run: uv run pytest -q
       - name: Synthetic research CLI acceptance
         run: uv run python -m scripts.research_smoke --output reports/generated/ci

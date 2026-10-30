@@ -8,6 +8,10 @@ class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
     database_url: str = "postgresql+psycopg://halal:halal@localhost:5432/halal_quant"
     dashboard_api_key: str = ""
+    session_cookie_secure: bool = True
+    session_hours: int = Field(default=12, ge=1, le=168)
+    public_base_url: str = "https://localhost"
+    telegram_bot_token: SecretStr = SecretStr("")
     tradingview_webhook_key: str = ""
     data_ingestion_key: str = ""
     analysis_api_key: str = ""

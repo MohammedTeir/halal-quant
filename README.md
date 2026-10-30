@@ -163,4 +163,14 @@ Never expose GEMINI_API_KEY to the frontend, source control or a client request 
 
 ### Dashboard (Milestone 7 initial increment)
 
-Open `http://127.0.0.1:8000/dashboard` after starting the API. Authenticate with your configured `DASHBOARD_API_KEY`; credentials stay in page memory. English is the default; choose العربية in the header for Arabic and RTL layout. Only the language preference is saved in browser storage. This read-only dashboard includes signal/decision views, broker observation freshness, research reports, audit and Telegram text previews. No messages are sent. See the [dashboard guide](docs/dashboard.md) or [Arabic guide](docs/milestone-7-dashboard.ar.md).
+Open `/dashboard` after starting the API. English is the default; choose العربية for Arabic and RTL. Sign in with an invited account to manage your sessions and Telegram preferences. The dashboard includes signal/decision views, broker observation freshness, research reports, audit and notification previews. A separately configured worker delivers queued Telegram notifications. See the [dashboard guide](docs/dashboard.md) and [accounts/Telegram setup](docs/milestone-7-accounts-telegram.md).
+
+### Accounts and Telegram (Milestone 7)
+
+The English-default dashboard supports Arabic, invitation-only accounts, backend
+roles, revocable server sessions, administrator-assisted password recovery,
+verified Telegram destinations and a durable delivery outbox. Apply migration
+`0007_access_delivery`, bootstrap your administrator locally, and configure the
+bot token only on the server. Follow the [accounts, BotFather and worker guide](docs/milestone-7-accounts-telegram.md).
+Software verification is separate from your deployment's real-message acceptance;
+no emails or real Telegram messages are sent by tests.

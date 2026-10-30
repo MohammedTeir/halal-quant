@@ -2,7 +2,7 @@ import hmac
 from datetime import timedelta
 from typing import Annotated, Literal
 
-from fastapi import Depends, FastAPI, Header, HTTPException, Query
+from fastapi import Depends, FastAPI, Header, HTTPException, Query, Request
 from pydantic import AwareDatetime
 from sqlalchemy import select, text
 from sqlalchemy.exc import IntegrityError, SQLAlchemyError
@@ -47,6 +47,7 @@ from packages.schemas.intelligence import (
     GenerationRequest,
 )
 from packages.schemas.signals import Signal
+from services.accounts.access import mount_accounts
 from services.controls import store as controls_store
 from services.controls.broker import AlpacaControls, BrokerError
 from services.controls.capture import refresh as refresh_controls
@@ -66,6 +67,9 @@ from services.news_intelligence.assessment_store import classifications_as_of, s
 from services.news_intelligence.generation import generate_classification, job_view
 from services.news_intelligence.providers.gemini import GeminiAdapter, GeminiError
 from services.news_intelligence.queries import news_as_of
+from services.notifications.delivery import enqueue
+from services.notifications.models import AccessSession, Outbox, User
+from services.notifications.routes import mount_notifications
 
 
 def create_app(settings: Settings | None = None) -> FastAPI:
@@ -76,6 +80,18 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.state.gemini_adapter_factory = GeminiAdapter
     app.state.controls_broker_factory = lambda: AlpacaControls(settings)
 
+    current_user, _require_role = mount_accounts(app, sessions, settings)
+    mount_notifications(app, sessions, current_user)
+
+    @app.middleware("http")
+    async def private_access_responses(request, call_next):
+        response = await call_next(request)
+        if request.url.path.startswith("/api/v1/"):
+            response.headers["Cache-Control"] = "no-store"
+            response.headers["Referrer-Policy"] = "no-referrer"
+            response.headers["X-Content-Type-Options"] = "nosniff"
+        return response
+
     def authenticate(provided, expected):
         if (
             not expected
@@ -84,7 +100,9 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         ):
             raise HTTPException(401, "Invalid credentials")
 
-    def dashboard(authorization: Annotated[str | None, Header()] = None):
+    def dashboard(request: Request, authorization: Annotated[str | None, Header()] = None):
+        if request.cookies.get("hq_session"):
+            return current_user(request)
         authenticate(
             authorization,
             f"Bearer {settings.dashboard_api_key}" if settings.dashboard_api_key else "",
@@ -96,10 +114,22 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     def data_ingestion(x_data_key: Annotated[str | None, Header()] = None):
         authenticate(x_data_key, settings.data_ingestion_key)
 
-    def analysis(x_analysis_key: Annotated[str | None, Header()] = None):
+    def analysis(request: Request, x_analysis_key: Annotated[str | None, Header()] = None):
+        if request.cookies.get("hq_session"):
+            actor = current_user(request)
+            if actor.role != "analyst":
+                raise HTTPException(403, "Role permission required")
+            return actor.id
         authenticate(x_analysis_key, settings.analysis_api_key)
 
-    def controls_reviewer(x_controls_reviewer_key: Annotated[str | None, Header()] = None):
+    def controls_reviewer(
+        request: Request, x_controls_reviewer_key: Annotated[str | None, Header()] = None
+    ):
+        if request.cookies.get("hq_session"):
+            actor = current_user(request)
+            if actor.role != "reviewer":
+                raise HTTPException(403, "Role permission required")
+            return actor.id
         authenticate(x_controls_reviewer_key, settings.controls_reviewer_key)
         if (
             not settings.controls_reviewer_identity
@@ -108,7 +138,14 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             raise HTTPException(503, "Configure the reviewer identity before attesting controls")
         return settings.controls_reviewer_identity
 
-    def controls_operator(x_controls_operator_key: Annotated[str | None, Header()] = None):
+    def controls_operator(
+        request: Request, x_controls_operator_key: Annotated[str | None, Header()] = None
+    ):
+        if request.cookies.get("hq_session"):
+            actor = current_user(request)
+            if actor.role != "operator":
+                raise HTTPException(403, "Role permission required")
+            return actor.id
         authenticate(x_controls_operator_key, settings.controls_operator_key)
         if (
             not settings.controls_operator_identity
@@ -117,7 +154,14 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             raise HTTPException(503, "Configure the risk operator identity")
         return settings.controls_operator_identity
 
-    def controls_broker(x_controls_broker_key: Annotated[str | None, Header()] = None):
+    def controls_broker(
+        request: Request, x_controls_broker_key: Annotated[str | None, Header()] = None
+    ):
+        if request.cookies.get("hq_session"):
+            actor = current_user(request)
+            if actor.role != "broker_reader":
+                raise HTTPException(403, "Role permission required")
+            return actor.id
         authenticate(x_controls_broker_key, settings.controls_broker_key)
 
     def persist(operation):
@@ -168,6 +212,9 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                     BrokerCapture,
                     ControlCheckRecord,
                     ControlReservation,
+                    User,
+                    AccessSession,
+                    Outbox,
                 ):
                     connection.execute(select(table.id).limit(1))
                 connection.execute(select(ControlRevision.sequence).limit(1))
@@ -178,7 +225,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                     != "controls-v1"
                 ):
                     raise HTTPException(503, "Controls lock migration required")
-                if version != "0006_controls":
+                if version != "0007_access_delivery":
                     raise HTTPException(503, "Database migration required")
         except SQLAlchemyError:
             raise HTTPException(503, "Database unavailable or migrations missing") from None
@@ -206,6 +253,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                 )
             )
             try:
+                enqueue(session, "signal", signal.event_id, payload)
                 session.commit()
             except IntegrityError:
                 session.rollback()

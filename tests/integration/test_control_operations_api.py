@@ -504,7 +504,33 @@ def test_owned_noncompliance_change_creates_audited_review_not_automatic_sale(cl
 
 
 def test_server_loss_and_cooldown_reconciliation_guard(client):
+    from sqlalchemy import select
+    from sqlalchemy.orm import sessionmaker
+
+    from services.notifications.models import Destination, Outbox, User
+
     seed(client)
+    sessions = sessionmaker(client.app.state.engine)
+    with sessions.begin() as db:
+        db.add(
+            User(
+                id="risk-subscriber",
+                email="risk@example.test",
+                password="",
+                role="viewer",
+                enabled=True,
+            )
+        )
+        db.add(
+            Destination(
+                id="risk-destination",
+                user_id="risk-subscriber",
+                chat_id="1234",
+                enabled=True,
+                language="en",
+                kinds=["risk_stop"],
+            )
+        )
     body = risk_state("risk-loss")
     body["realized_pnl_today"] = "-200"
     post(client, "reviews/risk-reconciliations", body)
@@ -514,6 +540,12 @@ def test_server_loss_and_cooldown_reconciliation_guard(client):
     body["last_loss_at"] = (datetime.now(UTC) - timedelta(minutes=1)).isoformat()
     post(client, "reviews/risk-reconciliations", body)
     assert "CONSECUTIVE_LOSS_COOLDOWN" in check(client, "cooldown-check")["blockers"]
+    check(client, "cooldown-check")  # Replay cannot enqueue another alert.
+    with sessions() as db:
+        alerts = db.scalars(select(Outbox)).all()
+        assert len(alerts) == 2 and all(a.kind == "risk_stop" for a in alerts)
+        assert any("DAILY_LOSS_LIMIT" in a.text for a in alerts)
+        assert any("CONSECUTIVE_LOSS_COOLDOWN" in a.text for a in alerts)
 
 
 def test_stored_policy_and_kill_state_survive_new_api_instance(client):
