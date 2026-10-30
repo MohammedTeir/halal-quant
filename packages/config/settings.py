@@ -36,6 +36,16 @@ class Settings(BaseSettings):
     fomc_provider: str | None = Field(default=None, max_length=64, pattern=r"^[A-Za-z0-9_.-]+$")
     live_trading_enabled: bool = False
 
+    @field_validator("database_url", mode="before")
+    @classmethod
+    def postgres_psycopg_driver(cls, value):
+        # Hosted PostgreSQL providers return generic URLs; psycopg v3 is installed.
+        if isinstance(value, str):
+            for prefix in ("postgres://", "postgresql://"):
+                if value.startswith(prefix):
+                    return "postgresql+psycopg://" + value[len(prefix) :]
+        return value
+
     @field_validator(
         "news_provider",
         "calendar_provider",

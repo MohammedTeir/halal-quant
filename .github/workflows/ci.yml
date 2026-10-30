@@ -35,6 +35,8 @@ jobs:
           node --check apps/dashboard/static/accounts.js
           node --check apps/dashboard/static/i18n.js
           node --check scripts/dashboard_browser_smoke.cjs
+      - name: Vercel static build and origin configuration
+        run: node --test tests/deployment/dashboard.test.mjs
       - run: uv run pytest -q
       - name: Synthetic research CLI acceptance
         run: uv run python -m scripts.research_smoke --output reports/generated/ci

@@ -1,0 +1,49 @@
+# Application deployment blueprint, not Codex environment configuration.
+# Uses external Neon or Supabase PostgreSQL. No Render database is provisioned.
+# starter plans are paid; review Render's displayed cost before creating services.
+services:
+  - type: web
+    name: halal-quant-api
+    runtime: python
+    branch: main
+    plan: starter
+    numInstances: 1
+    autoDeployTrigger: checksPass
+    buildCommand: pip install uv==0.12.23 && uv sync --frozen --no-dev
+    preDeployCommand: .venv/bin/alembic upgrade head
+    startCommand: .venv/bin/uvicorn apps.api.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health/ready
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.12
+      - key: DATABASE_URL
+        sync: false
+      - key: PUBLIC_BASE_URL
+        value: https://localhost
+      - key: SESSION_COOKIE_SECURE
+        value: "true"
+      - key: GEMINI_ENABLED
+        value: "false"
+      - key: LIVE_TRADING_ENABLED
+        value: "false"
+  - type: worker
+    name: halal-quant-telegram
+    runtime: python
+    branch: main
+    plan: starter
+    numInstances: 1
+    autoDeployTrigger: checksPass
+    buildCommand: pip install uv==0.12.23 && uv sync --frozen --no-dev
+    startCommand: .venv/bin/python -m services.notifications.worker
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.12
+      - key: DATABASE_URL
+        fromService:
+          type: web
+          name: halal-quant-api
+          envVarKey: DATABASE_URL
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: LIVE_TRADING_ENABLED
+        value: "false"

@@ -210,3 +210,5 @@ New account/Telegram APIs are under `/api/v1/auth`, `/api/v1/admin` and
 API clients use `POST /admin/invitations` and
 `POST /admin/users/{id}/recovery`. The returned raw token is shown once, then
 redemption uses `POST /auth/recover`. No bot token is exposed by any endpoint.
+
+For the selected Vercel/Render hosting with external Neon or Supabase PostgreSQL, see the [deployment walkthrough in Arabic](deploy-vercel-render.ar.md). Hosting account linking, secrets, actual service URLs and real-delivery acceptance remain operator steps.

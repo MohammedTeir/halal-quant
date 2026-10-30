@@ -41,3 +41,15 @@ def test_missing_credentials_deny_access_and_missing_migrations_not_ready(tmp_pa
         assert client.post("/api/v1/decisions/evaluate", json={}).status_code == 401
         assert client.post("/api/v1/news/classifications", json={}).status_code == 401
     app.state.engine.dispose()
+
+
+@pytest.mark.parametrize("scheme", ["postgres", "postgresql", "postgresql+psycopg"])
+def test_hosted_postgres_urls_use_psycopg3_and_preserve_tls(scheme):
+    settings = Settings(
+        database_url=f"{scheme}://test:password@database.example.test/app?sslmode=require",
+        _env_file=None,
+    )
+    assert (
+        settings.database_url
+        == "postgresql+psycopg://test:password@database.example.test/app?sslmode=require"
+    )

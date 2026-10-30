@@ -9,3 +9,6 @@ node_modules/
 .next/
 /data/
 /reports/generated/
+
+/dist/
+/.vercel/

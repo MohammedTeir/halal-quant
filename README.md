@@ -174,3 +174,5 @@ verified Telegram destinations and a durable delivery outbox. Apply migration
 bot token only on the server. Follow the [accounts, BotFather and worker guide](docs/milestone-7-accounts-telegram.md).
 Software verification is separate from your deployment's real-message acceptance;
 no emails or real Telegram messages are sent by tests.
+
+For Vercel + Render with external Neon/Supabase PostgreSQL, follow the [Arabic deployment guide](docs/deploy-vercel-render.ar.md). The Render API hostname must be configured in `vercel.json` before Vercel deployment; the initial `.invalid` target intentionally fails closed.

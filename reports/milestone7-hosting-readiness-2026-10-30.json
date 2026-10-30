@@ -1,0 +1,59 @@
+{
+  "date": "2026-10-30",
+  "status": "CONFIGURATION_PREPARED_NOT_DEPLOYED",
+  "layout": {
+    "frontend": "Vercel static dashboard with same-origin external API rewrites",
+    "backend": "Render native Python web service",
+    "telegram": "Render background worker, one instance",
+    "database_options": [
+      "External Neon PostgreSQL (recommended)",
+      "External Supabase PostgreSQL"
+    ],
+    "render_database_provisioned": false
+  },
+  "verification": {
+    "pytest_passed": 522,
+    "node_deployment_tests_passed": 2,
+    "lint": "passed",
+    "format": "passed",
+    "static_build": "passed; only public HTML/CSS/JS copied",
+    "official_schema_instance_validation": [
+      {
+        "file": "render.yaml",
+        "schema_url": "https://render.com/schema/render.yaml.json",
+        "schema_sha256": "8a3fb8da6b4f55fe686fbefa790e011d3dd7895f013f355953c572a21ab6494a",
+        "passed": true
+      },
+      {
+        "file": "vercel.json",
+        "schema_url": "https://openapi.vercel.sh/vercel.json",
+        "schema_sha256": "7a8bbf15e5fc35062f7f247dc4b707e40896bbc62b806a921833c90d71fcbca8",
+        "passed": true
+      }
+    ],
+    "hosted_ci": "Check workflow for the commit containing this report after push"
+  },
+  "safety_properties": [
+    "No secrets included in Vercel output",
+    "Initial Render rewrite target is a reserved .invalid domain until actual service URL is supplied",
+    "Origin configuration rejects non-HTTPS, non-Render hosts, credentials, query strings and non-root paths",
+    "PostgreSQL URL normalization preserves TLS options and credentials without printing them",
+    "Hosted account secrets stay in provider dashboards",
+    "No Codex environment configuration changed or published"
+  ],
+  "operator_steps_pending": [
+    "Connect GitHub repository to Render and Vercel from your accounts",
+    "Create external Neon/Supabase database and set DATABASE_URL securely in Render",
+    "Create Telegram bot with BotFather and set TELEGRAM_BOT_TOKEN on worker",
+    "Review paid Render starter web/worker plans before provisioning",
+    "Provide actual public Render API URL; update Vercel rewrites and push",
+    "Deploy Vercel; set Render PUBLIC_BASE_URL to actual Vercel origin",
+    "Bootstrap administrator privately through Render Shell",
+    "Verify actual proxy cookies, CSRF, revocation, role permissions and linked Telegram destination",
+    "Approve a concrete real-message acceptance check before sending"
+  ],
+  "actual_deployment_performed": false,
+  "real_email_or_telegram_messages_sent": 0,
+  "milestone7_deployment_acceptance": "PENDING",
+  "earlier_milestone_gates_changed": false
+}
