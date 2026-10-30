@@ -128,6 +128,40 @@
       "title": "PortfolioConfig",
       "type": "object"
     },
+    "PortfolioValidationConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "cost_multipliers": {
+          "default": [
+            1,
+            2
+          ],
+          "items": {
+            "type": "number"
+          },
+          "maxItems": 5,
+          "minItems": 1,
+          "title": "Cost Multipliers",
+          "type": "array"
+        },
+        "final_holdout_bars": {
+          "minimum": 4,
+          "title": "Final Holdout Bars",
+          "type": "integer"
+        },
+        "test_bars": {
+          "minimum": 4,
+          "title": "Test Bars",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "test_bars",
+        "final_holdout_bars"
+      ],
+      "title": "PortfolioValidationConfig",
+      "type": "object"
+    },
     "ReplayEvidence": {
       "additionalProperties": false,
       "properties": {
@@ -388,6 +422,17 @@
       "format": "date-time",
       "title": "Start At",
       "type": "string"
+    },
+    "validation": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PortfolioValidationConfig"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
     }
   },
   "required": [

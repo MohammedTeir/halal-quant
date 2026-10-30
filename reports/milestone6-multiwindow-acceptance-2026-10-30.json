@@ -1,0 +1,218 @@
+{
+  "authorized": false,
+  "byte_identical_optimization_repeat": true,
+  "byte_identical_portfolio_repeat": true,
+  "cloud_environment_modified": false,
+  "date": "2026-10-30",
+  "lockfile_sha256": "1d61746cd3a4495229b555beacc157ce4f4932500bdcbd8f21b0078e476defc5",
+  "monte_carlo": {
+    "iterations": 100,
+    "limitation": "fixed realized cash PnL permutation, not compound sizing, liquidity or overlapping-position replay",
+    "maximum_drawdown_p50_percent": 1.499239652991219,
+    "maximum_drawdown_p95_percent": 2.1751147176526526,
+    "ruin_fraction": 0.0,
+    "seed": 17,
+    "status": "COMPLETED",
+    "terminal_cash": 10003.806929684673
+  },
+  "orders_canceled": 0,
+  "orders_submitted": 0,
+  "portfolio_run_id": "21150ce80d1fe78a16e245d1e1b23757d5b5180703c72dd0fc283a8ccf334c38",
+  "portfolio_validation": {
+    "performance_accepted": false,
+    "scenarios": [
+      {
+        "cost_multiplier": 1.0,
+        "gates": {
+          "authorized": false,
+          "checks": {
+            "drawdown_below_15_each_window": true,
+            "no_unreconciled_orders": true,
+            "pit_sources_independently_verified": false,
+            "positive_expectancy_each_window": false,
+            "positive_return_multiple_periods": false,
+            "profit_factor_above_1_3_each_window": false,
+            "representative_history_independently_verified": false
+          },
+          "lookahead_and_compliance_assurance": "Not inferred from PnL; requires provenance review and independent causal/control tests",
+          "passed": false
+        },
+        "windows": [
+          {
+            "controlled_return_percent": 0.2939102957271622,
+            "controlled_trade_count": 5,
+            "kind": "development",
+            "last_bar_close": "2020-12-09T00:00:00+00:00",
+            "signal_start": "2020-09-01T00:00:00+00:00",
+            "unreconciled_orders": 0,
+            "unreconciled_positions": 0
+          },
+          {
+            "controlled_return_percent": -0.4098316810724256,
+            "controlled_trade_count": 4,
+            "kind": "development",
+            "last_bar_close": "2021-03-19T00:00:00+00:00",
+            "signal_start": "2020-12-10T00:00:00+00:00",
+            "unreconciled_orders": 0,
+            "unreconciled_positions": 0
+          },
+          {
+            "controlled_return_percent": -0.3260717407578162,
+            "controlled_trade_count": 4,
+            "kind": "development",
+            "last_bar_close": "2021-06-27T00:00:00+00:00",
+            "signal_start": "2021-03-20T00:00:00+00:00",
+            "unreconciled_orders": 0,
+            "unreconciled_positions": 0
+          },
+          {
+            "controlled_return_percent": -0.07863264244418744,
+            "controlled_trade_count": 4,
+            "kind": "development",
+            "last_bar_close": "2021-10-05T00:00:00+00:00",
+            "signal_start": "2021-06-28T00:00:00+00:00",
+            "unreconciled_orders": 0,
+            "unreconciled_positions": 0
+          },
+          {
+            "controlled_return_percent": 0.523956525428515,
+            "controlled_trade_count": 3,
+            "kind": "development",
+            "last_bar_close": "2022-01-13T00:00:00+00:00",
+            "signal_start": "2021-10-06T00:00:00+00:00",
+            "unreconciled_orders": 0,
+            "unreconciled_positions": 0
+          },
+          {
+            "controlled_return_percent": 0.5356841145691682,
+            "controlled_trade_count": 10,
+            "kind": "final_holdout",
+            "last_bar_close": "2022-09-26T00:00:00+00:00",
+            "signal_start": "2022-03-11T00:00:00+00:00",
+            "unreconciled_orders": 0,
+            "unreconciled_positions": 0
+          }
+        ]
+      },
+      {
+        "cost_multiplier": 2.0,
+        "gates": {
+          "authorized": false,
+          "checks": {
+            "drawdown_below_15_each_window": true,
+            "no_unreconciled_orders": true,
+            "pit_sources_independently_verified": false,
+            "positive_expectancy_each_window": false,
+            "positive_return_multiple_periods": false,
+            "profit_factor_above_1_3_each_window": false,
+            "representative_history_independently_verified": false
+          },
+          "lookahead_and_compliance_assurance": "Not inferred from PnL; requires provenance review and independent causal/control tests",
+          "passed": false
+        },
+        "windows": [
+          {
+            "controlled_return_percent": 0.15161432216159731,
+            "controlled_trade_count": 5,
+            "kind": "development",
+            "last_bar_close": "2020-12-09T00:00:00+00:00",
+            "signal_start": "2020-09-01T00:00:00+00:00",
+            "unreconciled_orders": 0,
+            "unreconciled_positions": 0
+          },
+          {
+            "controlled_return_percent": -0.5156361788072883,
+            "controlled_trade_count": 4,
+            "kind": "development",
+            "last_bar_close": "2021-03-19T00:00:00+00:00",
+            "signal_start": "2020-12-10T00:00:00+00:00",
+            "unreconciled_orders": 0,
+            "unreconciled_positions": 0
+          },
+          {
+            "controlled_return_percent": -0.4342380830529291,
+            "controlled_trade_count": 4,
+            "kind": "development",
+            "last_bar_close": "2021-06-27T00:00:00+00:00",
+            "signal_start": "2021-03-20T00:00:00+00:00",
+            "unreconciled_orders": 0,
+            "unreconciled_positions": 0
+          },
+          {
+            "controlled_return_percent": -0.1891817794107742,
+            "controlled_trade_count": 4,
+            "kind": "development",
+            "last_bar_close": "2021-10-05T00:00:00+00:00",
+            "signal_start": "2021-06-28T00:00:00+00:00",
+            "unreconciled_orders": 0,
+            "unreconciled_positions": 0
+          },
+          {
+            "controlled_return_percent": 0.4771997998456623,
+            "controlled_trade_count": 3,
+            "kind": "development",
+            "last_bar_close": "2022-01-13T00:00:00+00:00",
+            "signal_start": "2021-10-06T00:00:00+00:00",
+            "unreconciled_orders": 0,
+            "unreconciled_positions": 0
+          },
+          {
+            "controlled_return_percent": 0.2675706704893699,
+            "controlled_trade_count": 10,
+            "kind": "final_holdout",
+            "last_bar_close": "2022-09-26T00:00:00+00:00",
+            "signal_start": "2022-03-11T00:00:00+00:00",
+            "unreconciled_orders": 0,
+            "unreconciled_positions": 0
+          }
+        ]
+      }
+    ],
+    "unused_development_bars": 56
+  },
+  "purpose": "synthetic_software_acceptance_only",
+  "real_gold_diagnostic": "milestone6-real-gold-diagnostic-2026-10-30.json",
+  "research_gates": {
+    "authorized": false,
+    "checks": {
+      "drawdown_below_15_each_window": true,
+      "no_unreconciled_orders": true,
+      "pit_sources_independently_verified": false,
+      "positive_expectancy_each_window": true,
+      "positive_return_multiple_periods": false,
+      "profit_factor_above_1_3_each_window": false,
+      "representative_history_independently_verified": false
+    },
+    "lookahead_and_compliance_assurance": "Not inferred from PnL; requires provenance review and independent causal/control tests",
+    "passed": false
+  },
+  "runs": {
+    "buy_and_hold": {
+      "maximum_drawdown_percent": 1.653471528324281,
+      "open_positions": 0,
+      "pending_orders": 0,
+      "profit_factor": null,
+      "return_percent": 5.315971429992761,
+      "trade_count": 2
+    },
+    "controlled": {
+      "maximum_drawdown_percent": 1.4977901889028937,
+      "open_positions": 0,
+      "pending_orders": 0,
+      "profit_factor": 1.0090221097163745,
+      "return_percent": 0.038069296846687806,
+      "trade_count": 31
+    },
+    "technical_only": {
+      "maximum_drawdown_percent": 1.5226801066078623,
+      "open_positions": 0,
+      "pending_orders": 0,
+      "profit_factor": 1.2996590949007134,
+      "return_percent": 1.2782857910848877,
+      "trade_count": 34
+    }
+  },
+  "source_sha256": "c9ceff87aa314d1e5c0bcae78a9bc5d7f5c8ee3402bdcd81b75add42aa70c971",
+  "status": "SOFTWARE_ACCEPTANCE_PASSED_PERFORMANCE_ACCEPTANCE_FAILED_OR_UNVERIFIED",
+  "tests_passed": 475
+}

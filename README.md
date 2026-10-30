@@ -30,7 +30,7 @@ Milestone 6 remains an early single-instrument research prototype.
 [Milestone 6 research](docs/milestone-6-research.md) now includes shared-cash portfolio replay, training-only walk-forward selection, historical evidence gates and seeded trade-order Monte Carlo. Representative real-history and out-of-sample performance acceptance remain pending.
 Milestones 7–8 have not started; optional live integration (Milestone 9) is disabled.
 
-The full suite has **471 passing tests**, including research, data integrity,
+The full suite has **475 passing tests**, including research, data integrity,
 advisory-output security and deterministic decision checks. All three
 default strategies and cost-matched buy-and-hold baselines execute on synthetic
 fixtures, finish flat, and reproduce reports byte-for-byte. These are software

@@ -112,3 +112,45 @@ Full milestone performance acceptance remains pending representative verified
 historical data and successful untouched out-of-sample gates. Failing results are
 retained rather than promoted by changing thresholds. Paper execution and real
 broker settlement/reconciliation remain milestone 8 work.
+
+## Multi-period portfolio validation and cost stress
+
+The manifest now optionally accepts:
+
+```json
+"validation": {
+  "test_bars": 100,
+  "final_holdout_bars": 200,
+  "cost_multipliers": [1, 2]
+}
+```
+
+`start_at` fixes the first development period. Development windows are disjoint;
+the trailing final holdout is separate. Partial leftover development bars are
+reported explicitly. All instrument/signal grids must match before slicing.
+Each window resets cash and runs controlled, technical-only and buy-and-hold
+comparisons. Costs are multiplied together (commission, spread and slippage);
+portfolio constraints and the historical evidence remain fixed. Invalid stressed
+cost configurations fail validation instead of being silently clipped. Seeded
+trade-order Monte Carlo runs independently per window; samples from reset-cash
+periods are never pooled as a continuous portfolio. Gates are evaluated across
+all periods for each scenario. No scenario grants trading authority.
+
+The synthetic CI fixture now reproduces these entire multi-period scenarios
+byte-for-byte as part of the existing portfolio smoke acceptance.
+
+## Actual 2025 gold history diagnostic
+
+[The real-history diagnostic](../reports/milestone6-real-gold-diagnostic-2026-10-30.json)
+checks all twelve normalized monthly CSV and metadata hashes against the prior
+normalization audit and concatenates them without inserting missing bars. Both
+1h and 4h datasets have zero eligible warm-up bars under the unchanged default
+gold strategy: there are insufficient complete higher-timeframe observations for
+its configured indicators. Both also contain unavailable-volume zero placeholders.
+Thus technical walk-forward is blocked on indicator history; liquidity-aware
+execution and historical compliance/news/macro coverage are unverified as well.
+
+This is a failed eligibility diagnostic, not an untouched out-of-sample performance
+claim. It neither substitutes smaller indicator periods nor fabricates volume to
+make acceptance pass. Longer suitable history, validated sessions and credible
+liquidity/evidence coverage are needed before a real performance experiment.

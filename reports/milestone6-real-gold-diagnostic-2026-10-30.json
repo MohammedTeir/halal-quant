@@ -1,0 +1,246 @@
+{
+  "authorized": false,
+  "datasets": {
+    "1h": {
+      "allocated_gold_custody_verified": false,
+      "blockers": [
+        "VOLUME_UNAVAILABLE_ZERO_PLACEHOLDER",
+        "SOURCE_SESSION_BINDING_UNVERIFIED",
+        "HISTORICAL_NEWS_MACRO_COMPLIANCE_COVERAGE_UNAVAILABLE",
+        "ALLOCATED_GOLD_CUSTODY_UNVERIFIED"
+      ],
+      "combined": {
+        "csv_sha256": "c14342ffd159166f86c50c300c4e7238591a3e98751bf0d99c696af3949a4705",
+        "first_bar_close": "2025-01-02T00:00:00+00:00",
+        "last_bar_close": "2025-12-31T21:00:00+00:00",
+        "metadata": {
+          "asset_class": "gold",
+          "currency": "USD",
+          "price_basis": "unadjusted",
+          "quote_basis": "bid",
+          "retrieved_at": "2026-10-29T12:32:02.414256Z",
+          "schema_version": "1.0",
+          "source": "histdata_xauusd_bid",
+          "symbol": "XAUUSD",
+          "synthetic": false,
+          "timeframe_seconds": 3600,
+          "timestamp_semantics": "bar_close",
+          "volume_basis": "as_reported",
+          "volume_semantics": "unavailable_zero_placeholder"
+        },
+        "metadata_sha256": "5ef541e0f76a64240cf9d3a25886427674c1b047832a73ec34a48c484fbdcf70",
+        "rows": 5855
+      },
+      "execution_eligible": false,
+      "nonzero_volume_bars": 0,
+      "parts": [
+        {
+          "csv_sha256": "171b50ded946641d67153067df04e2c79106ddb4fead8128043af7462af76f29",
+          "metadata_sha256": "f6c1782d85463338ae1a77524ff66c31a5a8dfd7678950b32f18036693573696",
+          "month": "2025-01",
+          "rows": 498
+        },
+        {
+          "csv_sha256": "b440816b4ffa683579b31342b04dfac1c47b7884162964af01d5eade5c9dd303",
+          "metadata_sha256": "334efc57d2ae3170b6576380fe2a0a8b0cbcbbfe6af5513fcfa5fb481851fabb",
+          "month": "2025-02",
+          "rows": 451
+        },
+        {
+          "csv_sha256": "6f05cf3b1916d107292e726d40b579417527b56cf89123d487f0ec57412cf1a9",
+          "metadata_sha256": "fe6498efb3c7f949057f499992b6a8533c1b84f2fb378d6c00637cf36c47a4bf",
+          "month": "2025-03",
+          "rows": 484
+        },
+        {
+          "csv_sha256": "dac776aca360f3288743bad5e5b86e58d347eed09ae6f4adeb46cc6911b7e6b0",
+          "metadata_sha256": "1b85e011be984b18067b00ccaaca53ddfbedcafdac33881e09bb00a6b5ce0f63",
+          "month": "2025-04",
+          "rows": 475
+        },
+        {
+          "csv_sha256": "799688d6603957d8b65e89da0369a84277cb4873e162d729c8d3f6a88f94daf3",
+          "metadata_sha256": "2c5a5cd4b7e95f20d2ee2127f437266a6416ba632655783a252fa906b91f0f98",
+          "month": "2025-05",
+          "rows": 495
+        },
+        {
+          "csv_sha256": "27ed21ad4768e5130598c06f0469d2288a2ff529584325195ed9b50b98535c85",
+          "metadata_sha256": "1107f6d998dffbc7d4d45caa208eb19fa8c4d58f3d66c5ed426a388d96cb5a31",
+          "month": "2025-06",
+          "rows": 485
+        },
+        {
+          "csv_sha256": "3f3abc6f07f32dc55f018dc0a333d5c8c277ff45c40b00f81724f724c7aa7885",
+          "metadata_sha256": "b57db815fd2a9c7dc255f5a3e6fec0c8ae81b8a2f7e3188eb4ccfb489d23a10c",
+          "month": "2025-07",
+          "rows": 523
+        },
+        {
+          "csv_sha256": "c9fb1daa17e6ef113b672130537ce92e8bb7db0da0b9c4b63e191bf0ea94eb06",
+          "metadata_sha256": "04b9dc8db43410aa6b27d1d1e4d2375a8f5d07dcaddc44a114f70d0b23d33c48",
+          "month": "2025-08",
+          "rows": 480
+        },
+        {
+          "csv_sha256": "4ba7188dcd621fa71e2785019081e0ba50202e82094307a64a19ad220487232f",
+          "metadata_sha256": "e019d4d98c6bfa96f6718937cbaa01f253d2626d47216a96c31d6503842d6b2c",
+          "month": "2025-09",
+          "rows": 502
+        },
+        {
+          "csv_sha256": "9aaec80d0872b5d261706f809572430e769b319e9d255aae32dd11c233f80c74",
+          "metadata_sha256": "5ef541e0f76a64240cf9d3a25886427674c1b047832a73ec34a48c484fbdcf70",
+          "month": "2025-10",
+          "rows": 520
+        },
+        {
+          "csv_sha256": "292b6ca95ef1d3e869471b615ff39045b0f97f2b9425ff40663c6a8dfa58e486",
+          "metadata_sha256": "16645654a25c9f0e1301ca869865923c2662b0ea772dd34ca905b2cfb991abef",
+          "month": "2025-11",
+          "rows": 457
+        },
+        {
+          "csv_sha256": "1bcb119f46293f279dba12ba8017643f51919e9e2718e2b8aa6cc7d4a4cc1fa0",
+          "metadata_sha256": "ebb2ad274a640d8acb1b9186f0950043a5f908d8b4cb33272ad6032e2a2c026b",
+          "month": "2025-12",
+          "rows": 485
+        }
+      ],
+      "plan": {
+        "final_holdout_bars": 255,
+        "initial_history_bars": 5000,
+        "test_bars": 200
+      },
+      "plan_chosen_before_diagnostic": true,
+      "ready_bars": 0,
+      "reason": "Initial history is insufficient for indicator warm-up",
+      "session_coverage_verified": false,
+      "technical_entry_candidates": 0,
+      "technical_walk_forward_status": "BLOCKED"
+    },
+    "4h": {
+      "allocated_gold_custody_verified": false,
+      "blockers": [
+        "VOLUME_UNAVAILABLE_ZERO_PLACEHOLDER",
+        "SOURCE_SESSION_BINDING_UNVERIFIED",
+        "HISTORICAL_NEWS_MACRO_COMPLIANCE_COVERAGE_UNAVAILABLE",
+        "ALLOCATED_GOLD_CUSTODY_UNVERIFIED"
+      ],
+      "combined": {
+        "csv_sha256": "3fbe79bde6afb2b282bce8c5cbd93d40258e61d992fb7f247b28bed92e1756d3",
+        "first_bar_close": "2025-01-02T04:00:00+00:00",
+        "last_bar_close": "2025-12-31T20:00:00+00:00",
+        "metadata": {
+          "asset_class": "gold",
+          "currency": "USD",
+          "price_basis": "unadjusted",
+          "quote_basis": "bid",
+          "retrieved_at": "2026-10-29T12:32:02.414256Z",
+          "schema_version": "1.0",
+          "source": "histdata_xauusd_bid",
+          "symbol": "XAUUSD",
+          "synthetic": false,
+          "timeframe_seconds": 14400,
+          "timestamp_semantics": "bar_close",
+          "volume_basis": "as_reported",
+          "volume_semantics": "unavailable_zero_placeholder"
+        },
+        "metadata_sha256": "06f63a49af9f4cc73c266b9c8bda268069d3a9b49e7da420d10d0e286b51f441",
+        "rows": 1263
+      },
+      "execution_eligible": false,
+      "nonzero_volume_bars": 0,
+      "parts": [
+        {
+          "csv_sha256": "2de6b38d0997341fb0f65dfe6461546a3e6067d5d21fdcd2bfca66807062def6",
+          "metadata_sha256": "907600f947daa9d9bc8702d271c8fb15f6d4f437139b2cb8c55732cc1894a011",
+          "month": "2025-01",
+          "rows": 109
+        },
+        {
+          "csv_sha256": "ba4475a000ebfd2a1ecf12d08a6376b8b81576c9f0932316f74b87af70f0134d",
+          "metadata_sha256": "8cb394cd51e4452f00bb7bab2b1a65d846a304ac69bca616d1bed172c40a402b",
+          "month": "2025-02",
+          "rows": 98
+        },
+        {
+          "csv_sha256": "6bb4cda4aaf6eca3e57e828fa27dd380288ba57fc4b063c06344caa14a95a32d",
+          "metadata_sha256": "33a250da9f4b9f846f0c5f111feb946c224716a6339efc8895eefeeedf9ca96a",
+          "month": "2025-03",
+          "rows": 104
+        },
+        {
+          "csv_sha256": "3065f67cb2d46b119bee18bfc29bea7829d6b56c173d2b281c1cbefa0b4e227e",
+          "metadata_sha256": "ab26f27cf6f9ee4f481601bf90247106b56b414fdd26ef8a3506e163d72ee857",
+          "month": "2025-04",
+          "rows": 101
+        },
+        {
+          "csv_sha256": "838b7511b6af0a80e9c84d7674ce3d40f279e91a652d0014a01e296c298db183",
+          "metadata_sha256": "e76ee2fcdfc8f0369403196d8bbb7aa5b35b8324f9d0714858deb6128a42596e",
+          "month": "2025-05",
+          "rows": 107
+        },
+        {
+          "csv_sha256": "ff4f4b52ecca0fc5f205406061738029b59b1e3106e484d7eaf9f72a124aa4d4",
+          "metadata_sha256": "9f9e5e401a4c08f4c4933c878e5c1fa599634cd5d4083b54d7edec253dffca08",
+          "month": "2025-06",
+          "rows": 105
+        },
+        {
+          "csv_sha256": "9a8987d7abc3a5a182ee61242aa6bb0691588102c90aea1276009d838ca24975",
+          "metadata_sha256": "2050f7ed942207f3f5dce22e8632de02ee0e4468315a9c583835d39028dc9e51",
+          "month": "2025-07",
+          "rows": 113
+        },
+        {
+          "csv_sha256": "3ce8dad5bd81fcc1920119fbf45ed10d39f394b6de06467c03a464896461a70c",
+          "metadata_sha256": "5f6f94881fb01a3965713d7d5e22e44b2688f278e0eca3b985c3c002256c7fca",
+          "month": "2025-08",
+          "rows": 103
+        },
+        {
+          "csv_sha256": "663ec8a19de196e4079dd85d7b11ad4290f0746c5c8197e6b8db9e589c993ee1",
+          "metadata_sha256": "3fe1e2632132750f6c8aef89d0042f8d5e4c93fa09be2eb4bc497691c5edd59b",
+          "month": "2025-09",
+          "rows": 108
+        },
+        {
+          "csv_sha256": "a03adf63e2297d32a61dacf8b851a92ef770130f1e4436479cee54e889e1305a",
+          "metadata_sha256": "06f63a49af9f4cc73c266b9c8bda268069d3a9b49e7da420d10d0e286b51f441",
+          "month": "2025-10",
+          "rows": 112
+        },
+        {
+          "csv_sha256": "e3c4adcd9b7224f3368babc9789084955b3bee4e95f4080dd34bab7cf8d57b54",
+          "metadata_sha256": "db3aea832473c544d1c1c5ae22663b4f93d42b612ac0933c6eff2c0b8522430a",
+          "month": "2025-11",
+          "rows": 97
+        },
+        {
+          "csv_sha256": "f03828eff2b6535f3ccb5d782d4947f2e65d39c7749cd804d745b3fbcaf0d7ab",
+          "metadata_sha256": "f4f0ea6c698cf3e68019e15d9dc174623126b8cd513a175a61c6f300e82d46ed",
+          "month": "2025-12",
+          "rows": 106
+        }
+      ],
+      "plan": {
+        "final_holdout_bars": 163,
+        "initial_history_bars": 900,
+        "test_bars": 100
+      },
+      "plan_chosen_before_diagnostic": true,
+      "ready_bars": 0,
+      "reason": "Initial history is insufficient for indicator warm-up",
+      "session_coverage_verified": false,
+      "technical_entry_candidates": 0,
+      "technical_walk_forward_status": "BLOCKED"
+    }
+  },
+  "normalization_report_sha256": "4b94f40eb4fbaba8f02ddcde7626cd40353661029297b4b74af9a9b84a8f5148",
+  "pit_sources_verified": false,
+  "purpose": "real_history_eligibility_diagnostic_not_performance_acceptance",
+  "representative_history_verified": false,
+  "source_sha256": "da95567c6b62e4f45bf06a41d721325fba72957fc31586410539bf4e589d4713"
+}

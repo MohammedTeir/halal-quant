@@ -10,6 +10,7 @@ from pydantic import AwareDatetime, BaseModel, ConfigDict, Field
 
 from services.backtesting.engine import source_hash
 from services.backtesting.portfolio import PortfolioConfig, portfolio
+from services.backtesting.portfolio_validation import PortfolioValidationConfig, validate_portfolio
 from services.backtesting.replay import ReplayEvidence
 from services.backtesting.validation import monte_carlo, research_gates
 from services.market_data.csv_data import load_csv
@@ -32,6 +33,7 @@ class Manifest(BaseModel):
     settings: PortfolioConfig = PortfolioConfig()
     start_at: AwareDatetime
     evidence: list[ReplayEvidence] = Field(default_factory=list)
+    validation: PortfolioValidationConfig | None = None
     monte_carlo_seed: int = 0
     monte_carlo_iterations: int = Field(default=1000, ge=1, le=10000, strict=True)
 
@@ -86,6 +88,19 @@ def run(manifest, base):
         "authorized": False,
         "synthetic": any(d.spec.synthetic for d in datasets.values()),
         "historical_sources_verified": False,
+        "validation": validate_portfolio(
+            datasets,
+            signals,
+            sectors,
+            manifest.settings,
+            manifest.evidence,
+            manifest.start_at,
+            manifest.validation,
+            seed=manifest.monte_carlo_seed,
+            iterations=manifest.monte_carlo_iterations,
+        )
+        if manifest.validation
+        else None,
         "baseline_note": "Technical-only and buy-and-hold bypass replay evidence as counterfactual comparisons only; no approvals",
         "runs": runs,
         "gates": research_gates([controlled]),

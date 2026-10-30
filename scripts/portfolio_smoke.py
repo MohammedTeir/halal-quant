@@ -70,6 +70,7 @@ def main():
         "instruments": instruments,
         "start_at": "2020-09-01T00:00:00Z",
         "evidence": evidence,
+        "validation": {"test_bars": 100, "final_holdout_bars": 200, "cost_multipliers": [1, 2]},
         "monte_carlo_seed": 17,
         "monte_carlo_iterations": 100,
     }
@@ -161,6 +162,33 @@ def main():
         },
         "research_gates": report["gates"],
         "monte_carlo": report["monte_carlo"],
+        "portfolio_validation": {
+            "performance_accepted": report["validation"]["performance_accepted"],
+            "unused_development_bars": report["validation"]["unused_development_bars"],
+            "scenarios": [
+                {
+                    "cost_multiplier": scenario["cost_multiplier"],
+                    "gates": scenario["gates"],
+                    "windows": [
+                        {
+                            "kind": window["kind"],
+                            "signal_start": window["signal_start"],
+                            "last_bar_close": window["last_bar_close"],
+                            "controlled_trade_count": window["runs"]["controlled"]["trade_count"],
+                            "controlled_return_percent": window["runs"]["controlled"][
+                                "return_percent"
+                            ],
+                            "unreconciled_positions": window["runs"]["controlled"][
+                                "open_positions"
+                            ],
+                            "unreconciled_orders": window["runs"]["controlled"]["pending_orders"],
+                        }
+                        for window in scenario["windows"]
+                    ],
+                }
+                for scenario in report["validation"]["scenarios"]
+            ],
+        },
     }
     (output / "summary.json").write_text(json.dumps(summary, sort_keys=True, indent=2) + "\n")
     print("PASS: portfolio and training-only selection reproduce; research promotion remains gated")
