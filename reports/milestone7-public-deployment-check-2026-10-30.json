@@ -1,6 +1,6 @@
 {
   "date": "2026-10-30",
-  "status": "PUBLIC_DEPLOYMENT_LOGIN_REPORTED_TELEGRAM_SETUP_PENDING",
+  "status": "LOGIN_AND_LINKING_REPORTED_REAL_DELIVERY_PENDING",
   "render_origin": "https://halal-quant.onrender.com",
   "vercel_origin": "https://halal-quant.vercel.app",
   "read_only_http_checks": [
@@ -55,8 +55,8 @@
   ],
   "not_yet_verified": [
     "Independent administrator role and authenticated CSRF/session revocation checks",
-    "Telegram worker configuration on the selected computer/Termux host",
-    "Destination verification and approved real delivery"
+    "Approved real setup-message delivery and confirmation",
+    "Continuous worker hosting reliability"
   ],
   "operator_next_steps": [
     "Set Render PUBLIC_BASE_URL=https://halal-quant.vercel.app and redeploy",
@@ -73,6 +73,15 @@
   "earlier_acceptance_gates_changed": false,
   "operator_confirmation": {
     "login": "User reports successful login on the Vercel dashboard",
-    "verification_type": "manual user confirmation, not an automated authenticated probe"
+    "verification_type": "manual user confirmation, not an automated authenticated probe",
+    "worker_preflight": {
+      "database": "ready",
+      "bot": "@halalquant_bot",
+      "pending_messages": 0,
+      "webhook": false,
+      "messages_sent": 0,
+      "verification_type": "user-provided worker output"
+    },
+    "destination_linking": "User screenshot shows one verified destination, disabled, with notification preferences selected"
   }
 }

@@ -141,24 +141,63 @@ but **never calls the outbox delivery function**.
 No confirmation message is sent by the bot during linking; the dashboard is the
 confirmation. Do not share the linking code or use two polling workers at once.
 
-## Step 3: delivery after an approved, concrete acceptance check
+## Step 3: preview and explicitly authorize one setup message
 
-After the destination/event is agreed and delivery is authorized, stop the
-link-only worker with **Ctrl+C**, then start:
+The setup check writes only a clearly labelled outbox record. It does not insert
+trading signals, decisions, broker facts or risk-stop records. It uses one of the
+destination's selected notification categories so normal preference checks still
+apply. Its deterministic ID permits only one setup record per linked destination.
+
+From the repository, preview the text without creating an outbox record or
+calling Telegram (replace CHAT_ID with the verified destination shown in settings):
+
+```sh
+.venv/bin/python -m services.notifications.setup_check --chat-id CHAT_ID --expected-bot halalquant_bot
+```
+
+After approving that one real message, enable the verified destination in the
+dashboard, select at least one notification type, and save. Stop the link-only
+worker with Ctrl+C if it occupies your terminal. Then explicitly opt in:
+
+```sh
+.venv/bin/python -m services.notifications.setup_check --chat-id CHAT_ID --expected-bot halalquant_bot --send
+```
+
+**The `--send` command sends a real message.** It verifies the bot identity and
+absence of a webhook, queues the setup check, and attempts delivery of only that
+record. It cannot drain other queued events or destinations. It respects the
+existing global/chat rate limits and conservative uncertainty rules. It does not
+start a continuous delivery loop.
+
+The English message is:
+
+> HALAL QUANT: This is a one-time notification setup check. Not a trading signal or order.
+
+Arabic is used if selected for the destination. A successful result has `SENT`
+and a Telegram `message_id`. Verify the message in the private chat and refresh
+dashboard delivery history. Repeating the exact command never creates a second
+setup record and never resends `SENT` or `UNCERTAIN` messages. `QUEUED` or `RETRY`
+can be retried later with the same command; `UNCERTAIN` must be investigated,
+never reset to queued. A confirmed terminal failure is retained for review.
+
+## Step 4: normal ongoing delivery
+
+Once the approved setup check has been received and ongoing notifications are
+wanted, run the regular worker:
 
 ```sh
 .venv/bin/python -m services.notifications.worker --expected-bot halalquant_bot
 ```
 
-This last command **can send queued messages** to enabled destinations. Review
-pending messages and destination preferences before starting. Normal event
-notifications use the persistent outbox and its existing safe retry/uncertainty
-rules. Never manually reset `SENDING`/`UNCERTAIN` records to queued to force resend.
-After a worker interruption, restart using the same database; abandoned sends
-remain uncertain and are not automatically repeated.
+This command **can send all queued messages** to enabled destinations, including
+normal events waiting while the worker was in link-only mode. Review pending
+messages and preferences first. Never run two polling workers for the same bot.
+Never manually reset `SENDING`/`UNCERTAIN` records to queued to force resend.
+After an interruption, restart using the same database; abandoned sends remain
+uncertain and are not automatically repeated.
 
 A laptop that sleeps or a phone that is suspended stops polling and delivery.
-Restart the process after resolving connection failures. For permanent operation,
-use an OS service supervisor on an always-on computer/server. Real delivery and
-ongoing hosting acceptance remain unverified until tested on your selected host;
-no email or real Telegram message was sent in development.
+Restart after resolving connection failures. For permanent operation, use an OS
+service supervisor on an always-on computer/server. Real delivery and ongoing
+hosting acceptance remain unverified until tested on your selected host; no email
+or real Telegram message was sent in development.

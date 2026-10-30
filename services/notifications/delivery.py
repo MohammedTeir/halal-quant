@@ -49,24 +49,23 @@ def enqueue(db, kind, event_key, payload):
         )
 
 
-def deliver_one(sessions, telegram, now=None):
+def deliver_one(sessions, telegram, now=None, *, only_id=None):
     now = int(time.time()) if now is None else now
     with locked(sessions, "delivery") as db:
         # Stale claims may already have reached Telegram. Never retry them.
-        db.execute(
-            update(Outbox)
-            .where(Outbox.status == "SENDING", Outbox.available <= now - 120)
-            .values(status="UNCERTAIN", error="WORKER_INTERRUPTED")
-        )
+        stale = update(Outbox).where(Outbox.status == "SENDING", Outbox.available <= now - 120)
+        if only_id is not None:
+            stale = stale.where(Outbox.id == only_id)
+        db.execute(stale.values(status="UNCERTAIN", error="WORKER_INTERRUPTED"))
         gate = db.get(ServiceState, "delivery")
         if gate.value > now:
             return False
-        record = db.scalar(
-            select(Outbox)
-            .where(Outbox.status.in_(["QUEUED", "RETRY"]), Outbox.available <= now)
-            .order_by(Outbox.available, Outbox.id)
-            .limit(1)
+        query = select(Outbox).where(
+            Outbox.status.in_(["QUEUED", "RETRY"]), Outbox.available <= now
         )
+        if only_id is not None:
+            query = query.where(Outbox.id == only_id)
+        record = db.scalar(query.order_by(Outbox.available, Outbox.id).limit(1))
         if record is None:
             return False
         dest = db.get(Destination, record.destination_id)

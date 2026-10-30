@@ -235,3 +235,53 @@ def test_exhausted_rate_limit_still_pauses_other_messages(sessions):
     queued(sessions, "another-message")
     assert not deliver_one(sessions, fake, now=now + 125)
     assert len(fake.calls) == 5
+
+
+def test_setup_preview_does_not_queue_or_enable(sessions):
+    from services.notifications.setup_check import preview
+
+    with locked(sessions) as db:
+        db.get(Destination, "d").enabled = False
+    result = preview(sessions, "123")
+    assert result["mode"] == "preview" and result["messages_sent"] == 0
+    assert result["enabled"] is False and result["status"] == "NOT_QUEUED"
+    with sessions() as db:
+        assert db.scalar(select(Outbox)) is None
+
+
+def test_setup_send_is_targeted_and_idempotent(sessions):
+    from services.notifications.setup_check import send_once
+
+    other = queued(sessions, "real-existing-event")
+    with locked(sessions) as db:
+        db.get(Outbox, other).status = "SENDING"
+        db.get(Outbox, other).available = int(time.time()) - 121
+    sender = Transport(response(200, {"ok": True, "result": {"message_id": 77}}))
+    first = send_once(sessions, sender, "123")
+    assert first["status"] == "SENT" and first["message_id"] == "77"
+    assert "Not a trading signal or order" in sender.calls[0][1]["text"]
+    assert record(sessions, other).status == "SENDING"
+    assert send_once(sessions, sender, "123")["status"] == "SENT"
+    assert len(sender.calls) == 1
+
+
+def test_setup_uncertain_message_is_never_resent(sessions):
+    from services.notifications.setup_check import send_once
+
+    sender = Transport(error=httpx.ReadTimeout("private transport detail"))
+    assert send_once(sessions, sender, "123")["status"] == "UNCERTAIN"
+    assert send_once(sessions, sender, "123")["status"] == "UNCERTAIN"
+    assert len(sender.calls) == 1
+
+
+def test_setup_send_requires_enabled_destination(sessions):
+    from services.notifications.setup_check import send_once
+
+    with locked(sessions) as db:
+        db.get(Destination, "d").enabled = False
+    sender = Transport()
+    with pytest.raises(ValueError, match="Enable this verified destination"):
+        send_once(sessions, sender, "123")
+    assert sender.calls == []
+    with sessions() as db:
+        assert db.scalar(select(Outbox)) is None

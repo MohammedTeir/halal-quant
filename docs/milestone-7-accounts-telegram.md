@@ -217,3 +217,9 @@ For the selected temporary computer/Termux worker and @halalquant_bot, follow th
 [worker setup guide](telegram-worker-computer-termux.md). Use `--check` for read-only
 checks, then `--link-only` while verifying the destination. Neither setup mode
 sends outbox messages. Full delivery remains an explicit later step.
+
+A dedicated operator [setup-check command](telegram-worker-computer-termux.md#step-3-preview-and-explicitly-authorize-one-setup-message)
+previews by default. Explicit `--send` attempts one deterministic setup outbox
+record for one verified, enabled destination and cannot drain other messages.
+It creates no trading signals or control events and does not restart uncertain
+deliveries. Actual delivery remains subject to the user's explicit approval.

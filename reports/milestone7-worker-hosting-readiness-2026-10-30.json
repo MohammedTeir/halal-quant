@@ -1,6 +1,6 @@
 {
   "date": "2026-10-30",
-  "status": "WORKER_SETUP_PREPARED_HOST_VERIFICATION_PENDING",
+  "status": "HOST_PREFLIGHT_AND_LINKING_REPORTED_CONTROLLED_DELIVERY_PENDING",
   "bot_username": "halalquant_bot",
   "selected_hosts": [
     "existing computer",
@@ -12,7 +12,7 @@
     "normal": "Existing persistent delivery behavior, only after destination/event authorization"
   },
   "verification": {
-    "local_regression_passed": 528,
+    "local_regression_passed": 532,
     "local_skipped": 1,
     "skipped_test": "PostgreSQL-only SQL Editor bootstrap; covered by hosted PostgreSQL CI",
     "worker_setup_tests": 6,
@@ -20,10 +20,12 @@
     "format": "passed",
     "help_command": "passed",
     "telegram_calls": "mocked only",
-    "actual_termux_installation_tested": false,
-    "actual_bot_token_tested": false,
+    "actual_termux_installation_tested": true,
+    "actual_bot_token_tested": true,
     "actual_messages_sent": 0,
-    "hosted_ci": "Check the pushed commit workflow for PostgreSQL results"
+    "hosted_ci": "Check the pushed commit workflow for PostgreSQL results",
+    "targeted_setup_check_tests": 4,
+    "actual_host_verification_provenance": "User-provided terminal output and dashboard screenshot; not independent host access"
   },
   "deployment_next_steps": [
     "Install worker on the chosen host and create private ignored .env with same Neon URL and BotFather token",
@@ -38,5 +40,26 @@
     "Phone hosting is temporary; continuous delivery remains unverified"
   ],
   "milestone7_deployment_acceptance": "PENDING",
-  "earlier_milestone_gates_changed": false
+  "earlier_milestone_gates_changed": false,
+  "operator_confirmation": {
+    "termux_installation": "User reports successful dependency installation in Debian proot",
+    "read_only_preflight": {
+      "database": "ready",
+      "bot": "@halalquant_bot",
+      "pending_messages": 0,
+      "webhook": false,
+      "messages_sent": 0
+    },
+    "linking": "User screenshot shows a verified, disabled private destination"
+  },
+  "controlled_setup_check": {
+    "preview_default": true,
+    "send_requires_explicit_flag": true,
+    "requires_enabled_verified_destination": true,
+    "creates_trading_records": false,
+    "can_drain_other_messages": false,
+    "same_destination_setup_id_is_stable": true,
+    "sent_or_uncertain_is_not_resent": true,
+    "actual_real_delivery": "PENDING explicit user opt-in and confirmation"
+  }
 }
