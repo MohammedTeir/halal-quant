@@ -1,0 +1,23 @@
+{
+  "all_six_panels_both_languages_mobile_390px": "PASS_NO_PAGE_OVERFLOW",
+  "arabic_switch": "PASS",
+  "artifact_hashes": {
+    "apps/dashboard/routes.py": "6e7db3eb3aad9357a92796c20eaa092f92b53e9ede955eacb475a840e1bc4249",
+    "apps/dashboard/static/app.js": "5ed19d0e07faa403a4d4988411e40c1afeefdb9cf94dfd5c99e768ca783854a7",
+    "apps/dashboard/static/i18n.js": "b00c308c5fee57db02f73a46e2542018ee834a0d3662dadb7bcfd6c252e44b9c",
+    "apps/dashboard/static/index.html": "0a33fc0b56c038c00064acf2a0d818cd295bbd3a7f25be1f247300039804ee94",
+    "apps/dashboard/static/style.css": "7b53fb9fcafd0270715468ddc29086d88b6edf33ec48d656ee93671b2fcc9863",
+    "services/notifications/preview.py": "8ac12b89459b2c461a26ebb4f2234661984785c943299622ccc2a99c0dcce8cd"
+  },
+  "cloud_configuration_modified": false,
+  "credentials_persist": false,
+  "date": "2026-10-30",
+  "default_language": "en",
+  "javascript_errors": [],
+  "language_preference_persists": true,
+  "localized_preview": "PASS",
+  "rtl_ltr": "PASS",
+  "session_data_preserved_during_switch": true,
+  "telegram_messages_sent": 0,
+  "tests_passed": 484
+}

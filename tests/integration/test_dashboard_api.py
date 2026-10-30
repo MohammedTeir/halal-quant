@@ -27,14 +27,14 @@ def test_dashboard_data_is_private_and_not_cached(client, path):
 def test_shell_has_strict_csp_and_no_embedded_credentials(client):
     response = client.get("/dashboard")
     assert response.status_code == 200
-    assert 'lang="ar" dir="rtl"' in response.text
+    assert 'lang="en" dir="ltr"' in response.text
     assert "dashboard-test" not in response.text
     assert "frame-ancestors 'none'" in response.headers["content-security-policy"]
     assert "'unsafe-inline'" not in response.headers["content-security-policy"]
     js = client.get("/dashboard/assets/app.js")
     assert js.status_code == 200
     assert "innerHTML" not in js.text
-    assert "localStorage" not in js.text
+    assert "halal-quant.language" in js.text
 
 
 def test_signal_to_notification_preview_replays_without_sending(client):
@@ -124,3 +124,19 @@ def test_old_portfolio_observation_is_labeled_stale(client):
             },
         )
     assert client.get("/api/v1/portfolio", headers=READ).json()["status"] == "STALE_OBSERVATION"
+
+
+def test_notification_preview_defaults_to_english_and_supports_arabic(client):
+    client.post(
+        "/api/v1/webhooks/tradingview", headers={"X-Webhook-Key": "webhook-test"}, json=signal()
+    )
+    english = client.get("/api/v1/notifications/preview", headers=READ).json()["items"][0]
+    arabic = client.get("/api/v1/notifications/preview?language=ar", headers=READ).json()["items"][
+        0
+    ]
+    assert english["language"] == "en"
+    assert "Research signal" in english["text"]
+    assert arabic["language"] == "ar"
+    assert "إشارة بحثية" in arabic["text"]
+    assert english["texts"] == arabic["texts"]
+    assert client.get("/api/v1/notifications/preview?language=fr", headers=READ).status_code == 422

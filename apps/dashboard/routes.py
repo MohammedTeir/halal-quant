@@ -3,6 +3,7 @@
 import json
 from datetime import datetime, timedelta
 from pathlib import Path
+from typing import Literal
 
 from fastapi import APIRouter, Depends
 from fastapi.responses import FileResponse
@@ -158,7 +159,7 @@ def mount_dashboard(app, sessions, authenticate):
         return {"items": items, "performance_accepted": False, "authorized": False}
 
     @router.get("/api/v1/notifications/preview")
-    def notifications():
+    def notifications(language: Literal["en", "ar"] = "en"):
         with sessions() as session:
             rows = session.scalars(
                 select(SignalRecord)
@@ -167,7 +168,7 @@ def mount_dashboard(app, sessions, authenticate):
             )
             return {
                 "delivery_enabled": False,
-                "items": [signal_preview(row.payload) for row in rows],
+                "items": [signal_preview(row.payload, language) for row in rows],
             }
 
     app.include_router(router)
