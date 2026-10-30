@@ -1,0 +1,183 @@
+{
+  "$defs": {
+    "ControlEvidence": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence_id": {
+          "maxLength": 200,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$",
+          "title": "Evidence Id",
+          "type": "string"
+        },
+        "provider": {
+          "maxLength": 64,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.-]+$",
+          "title": "Provider",
+          "type": "string"
+        },
+        "document_sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Document Sha256",
+          "type": "string"
+        },
+        "observed_at": {
+          "format": "date-time",
+          "title": "Observed At",
+          "type": "string"
+        },
+        "recorded_at": {
+          "format": "date-time",
+          "title": "Recorded At",
+          "type": "string"
+        },
+        "effective_at": {
+          "format": "date-time",
+          "title": "Effective At",
+          "type": "string"
+        },
+        "expires_at": {
+          "format": "date-time",
+          "title": "Expires At",
+          "type": "string"
+        }
+      },
+      "required": [
+        "evidence_id",
+        "provider",
+        "document_sha256",
+        "observed_at",
+        "recorded_at",
+        "effective_at",
+        "expires_at"
+      ],
+      "title": "ControlEvidence",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "note": {
+      "maxLength": 4000,
+      "minLength": 10,
+      "title": "Note",
+      "type": "string"
+    },
+    "references": {
+      "items": {
+        "format": "uri",
+        "maxLength": 2083,
+        "minLength": 1,
+        "type": "string"
+      },
+      "maxItems": 20,
+      "minItems": 1,
+      "title": "References",
+      "type": "array"
+    },
+    "record_id": {
+      "maxLength": 200,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.:/-]+$",
+      "title": "Record Id",
+      "type": "string"
+    },
+    "methodology_id": {
+      "maxLength": 200,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.:/-]+$",
+      "title": "Methodology Id",
+      "type": "string"
+    },
+    "status": {
+      "default": "PENDING",
+      "enum": [
+        "APPROVED",
+        "PENDING",
+        "REVOKED"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "evidence": {
+      "$ref": "#/$defs/ControlEvidence"
+    },
+    "denominator": {
+      "enum": [
+        "total_assets",
+        "average_market_cap"
+      ],
+      "title": "Denominator",
+      "type": "string"
+    },
+    "maximum_debt_ratio": {
+      "anyOf": [
+        {
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "type": "number"
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "title": "Maximum Debt Ratio"
+    },
+    "maximum_interest_assets_ratio": {
+      "anyOf": [
+        {
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "type": "number"
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "title": "Maximum Interest Assets Ratio"
+    },
+    "maximum_impure_income_ratio": {
+      "anyOf": [
+        {
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "type": "number"
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "title": "Maximum Impure Income Ratio"
+    },
+    "ratio_boundary": {
+      "enum": [
+        "strictly_below",
+        "at_or_below"
+      ],
+      "title": "Ratio Boundary",
+      "type": "string"
+    },
+    "divestment_guidance": {
+      "maxLength": 4000,
+      "minLength": 10,
+      "title": "Divestment Guidance",
+      "type": "string"
+    }
+  },
+  "required": [
+    "note",
+    "references",
+    "record_id",
+    "methodology_id",
+    "evidence",
+    "denominator",
+    "maximum_debt_ratio",
+    "maximum_interest_assets_ratio",
+    "maximum_impure_income_ratio",
+    "ratio_boundary",
+    "divestment_guidance"
+  ],
+  "title": "MethodologyApproval",
+  "type": "object"
+}

@@ -1,0 +1,32 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "release_id": {
+      "maxLength": 200,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.:/-]+$",
+      "title": "Release Id",
+      "type": "string"
+    },
+    "reservation_id": {
+      "maxLength": 200,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.:/-]+$",
+      "title": "Reservation Id",
+      "type": "string"
+    },
+    "reason": {
+      "maxLength": 1000,
+      "minLength": 10,
+      "title": "Reason",
+      "type": "string"
+    }
+  },
+  "required": [
+    "release_id",
+    "reservation_id",
+    "reason"
+  ],
+  "title": "ReleaseReservation",
+  "type": "object"
+}

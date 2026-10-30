@@ -11,6 +11,11 @@ class Settings(BaseSettings):
     tradingview_webhook_key: str = ""
     data_ingestion_key: str = ""
     analysis_api_key: str = ""
+    controls_reviewer_key: str = ""
+    controls_operator_key: str = ""
+    controls_broker_key: str = ""
+    controls_reviewer_identity: str | None = Field(default=None, max_length=200)
+    controls_operator_identity: str | None = Field(default=None, max_length=200)
     alpaca_api_key: SecretStr = SecretStr("")
     alpaca_secret_key: SecretStr = SecretStr("")
     finnhub_api_key: SecretStr = SecretStr("")
@@ -50,6 +55,9 @@ class Settings(BaseSettings):
                 self.tradingview_webhook_key,
                 self.data_ingestion_key,
                 self.analysis_api_key,
+                self.controls_reviewer_key,
+                self.controls_operator_key,
+                self.controls_broker_key,
             )
             if key
         ]

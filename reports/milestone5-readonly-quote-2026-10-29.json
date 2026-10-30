@@ -1,0 +1,12 @@
+{
+  "refresh_id": "live-paper-quote-20261029",
+  "kind": "quote",
+  "status": "SUCCEEDED",
+  "error_code": null,
+  "completed_at": "2026-10-29T18:48:34.935012+00:00",
+  "authorized": false,
+  "duplicate": false,
+  "raw_response_sha256": "ff9a6fd4f23d28b8735e8451dc89f3c6d18b1cbd0a819d6cdb620c6284329721",
+  "read_only": true,
+  "authorized_for_entry": false
+}

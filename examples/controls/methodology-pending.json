@@ -1,0 +1,24 @@
+{
+  "note": "Fictional mathematical example; thresholds are not a recommended scholarly standard",
+  "references": [
+    "https://example.invalid/fixture-proof"
+  ],
+  "record_id": "demo-method-review-v1",
+  "methodology_id": "demo-method",
+  "status": "PENDING",
+  "evidence": {
+    "evidence_id": "method-proof",
+    "provider": "qualified_fixture",
+    "document_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "observed_at": "2026-10-29T19:04:57.396338+00:00",
+    "recorded_at": "2026-10-29T19:04:58.396338+00:00",
+    "effective_at": "2026-10-29T18:59:59.396338+00:00",
+    "expires_at": "2026-10-29T20:04:59.396338+00:00"
+  },
+  "denominator": "total_assets",
+  "maximum_debt_ratio": "0.30",
+  "maximum_interest_assets_ratio": "0.30",
+  "maximum_impure_income_ratio": "0.05",
+  "ratio_boundary": "strictly_below",
+  "divestment_guidance": "Qualified reviewer decides divestment; no automatic liquidation"
+}

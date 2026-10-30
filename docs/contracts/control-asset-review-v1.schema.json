@@ -1,0 +1,449 @@
+{
+  "$defs": {
+    "AssetScreen": {
+      "additionalProperties": false,
+      "properties": {
+        "symbol": {
+          "maxLength": 64,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$",
+          "title": "Symbol",
+          "type": "string"
+        },
+        "asset_class": {
+          "enum": [
+            "stock",
+            "etf",
+            "gold"
+          ],
+          "title": "Asset Class",
+          "type": "string"
+        },
+        "status": {
+          "default": "PENDING",
+          "enum": [
+            "APPROVED",
+            "PENDING",
+            "REJECTED"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "methodology": {
+          "maxLength": 200,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$",
+          "title": "Methodology",
+          "type": "string"
+        },
+        "evidence": {
+          "$ref": "#/$defs/ControlEvidence"
+        },
+        "purification_guidance": {
+          "maxLength": 2000,
+          "minLength": 1,
+          "title": "Purification Guidance",
+          "type": "string"
+        },
+        "business_activity_pass": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Business Activity Pass"
+        },
+        "financial_ratios_pass": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Financial Ratios Pass"
+        },
+        "fund_mandate_pass": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Fund Mandate Pass"
+        },
+        "holdings_process_pass": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Holdings Process Pass"
+        },
+        "fund_structure_pass": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Fund Structure Pass"
+        },
+        "shariah_supervision_pass": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Shariah Supervision Pass"
+        },
+        "gold_ownership_pass": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Gold Ownership Pass"
+        },
+        "gold_possession_pass": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Gold Possession Pass"
+        },
+        "gold_custody_pass": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Gold Custody Pass"
+        },
+        "gold_settlement_pass": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Gold Settlement Pass"
+        },
+        "gold_redemption_pass": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Gold Redemption Pass"
+        }
+      },
+      "required": [
+        "symbol",
+        "asset_class",
+        "methodology",
+        "evidence",
+        "purification_guidance"
+      ],
+      "title": "AssetScreen",
+      "type": "object"
+    },
+    "ControlEvidence": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence_id": {
+          "maxLength": 200,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$",
+          "title": "Evidence Id",
+          "type": "string"
+        },
+        "provider": {
+          "maxLength": 64,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.-]+$",
+          "title": "Provider",
+          "type": "string"
+        },
+        "document_sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Document Sha256",
+          "type": "string"
+        },
+        "observed_at": {
+          "format": "date-time",
+          "title": "Observed At",
+          "type": "string"
+        },
+        "recorded_at": {
+          "format": "date-time",
+          "title": "Recorded At",
+          "type": "string"
+        },
+        "effective_at": {
+          "format": "date-time",
+          "title": "Effective At",
+          "type": "string"
+        },
+        "expires_at": {
+          "format": "date-time",
+          "title": "Expires At",
+          "type": "string"
+        }
+      },
+      "required": [
+        "evidence_id",
+        "provider",
+        "document_sha256",
+        "observed_at",
+        "recorded_at",
+        "effective_at",
+        "expires_at"
+      ],
+      "title": "ControlEvidence",
+      "type": "object"
+    },
+    "FinancialScreen": {
+      "additionalProperties": false,
+      "properties": {
+        "denominator": {
+          "enum": [
+            "total_assets",
+            "average_market_cap"
+          ],
+          "title": "Denominator",
+          "type": "string"
+        },
+        "denominator_value": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Denominator Value"
+        },
+        "debt": {
+          "anyOf": [
+            {
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Debt"
+        },
+        "interest_assets": {
+          "anyOf": [
+            {
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Interest Assets"
+        },
+        "total_revenue": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Total Revenue"
+        },
+        "impure_revenue": {
+          "anyOf": [
+            {
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Impure Revenue"
+        }
+      },
+      "required": [
+        "denominator",
+        "denominator_value",
+        "debt",
+        "interest_assets",
+        "total_revenue",
+        "impure_revenue"
+      ],
+      "title": "FinancialScreen",
+      "type": "object"
+    },
+    "InstrumentReview": {
+      "additionalProperties": false,
+      "properties": {
+        "symbol": {
+          "maxLength": 64,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$",
+          "title": "Symbol",
+          "type": "string"
+        },
+        "asset_class": {
+          "enum": [
+            "stock",
+            "etf",
+            "gold"
+          ],
+          "title": "Asset Class",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "equity",
+            "fund",
+            "allocated_gold",
+            "cfd",
+            "future",
+            "option",
+            "unknown"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "evidence": {
+          "$ref": "#/$defs/ControlEvidence"
+        },
+        "settlement_and_possession_pass": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Settlement And Possession Pass"
+        }
+      },
+      "required": [
+        "symbol",
+        "asset_class",
+        "kind",
+        "evidence"
+      ],
+      "title": "InstrumentReview",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "note": {
+      "maxLength": 4000,
+      "minLength": 10,
+      "title": "Note",
+      "type": "string"
+    },
+    "references": {
+      "items": {
+        "format": "uri",
+        "maxLength": 2083,
+        "minLength": 1,
+        "type": "string"
+      },
+      "maxItems": 20,
+      "minItems": 1,
+      "title": "References",
+      "type": "array"
+    },
+    "record_id": {
+      "maxLength": 200,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.:/-]+$",
+      "title": "Record Id",
+      "type": "string"
+    },
+    "sector": {
+      "maxLength": 200,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.:/-]+$",
+      "title": "Sector",
+      "type": "string"
+    },
+    "assessment": {
+      "$ref": "#/$defs/AssetScreen"
+    },
+    "instrument": {
+      "$ref": "#/$defs/InstrumentReview"
+    },
+    "financials": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/FinancialScreen"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    }
+  },
+  "required": [
+    "note",
+    "references",
+    "record_id",
+    "sector",
+    "assessment",
+    "instrument"
+  ],
+  "title": "AssetApproval",
+  "type": "object"
+}

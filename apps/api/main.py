@@ -9,7 +9,12 @@ from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 
 from apps.api.db import (
     AuditRecord,
+    BrokerCapture,
     ClassificationRecord,
+    ControlCheckRecord,
+    ControlLock,
+    ControlReservation,
+    ControlRevision,
     CorporateActionRecord,
     DataImport,
     DecisionRecord,
@@ -22,6 +27,17 @@ from apps.api.db import (
     utcnow,
 )
 from packages.config.settings import Settings, get_settings
+from packages.schemas.control_operations import (
+    AssetApproval,
+    BrokerRefresh,
+    ControlCheck,
+    KillSwitchChange,
+    MethodologyApproval,
+    PolicyApproval,
+    QuoteRefresh,
+    ReleaseReservation,
+    RiskReconciliation,
+)
 from packages.schemas.controls import ControlScenario
 from packages.schemas.data_events import DataBatch, Identifier, Provider, Symbol
 from packages.schemas.intelligence import (
@@ -30,6 +46,9 @@ from packages.schemas.intelligence import (
     GenerationRequest,
 )
 from packages.schemas.signals import Signal
+from services.controls import store as controls_store
+from services.controls.broker import AlpacaControls, BrokerError
+from services.controls.capture import refresh as refresh_controls
 from services.controls.engine import preview as preview_controls
 from services.decision_engine.store import store_evaluation
 from services.macro_intelligence.calendar import calendar_as_of
@@ -54,6 +73,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app = FastAPI(title="HALAL QUANT", version="0.1.0")
     app.state.engine = engine
     app.state.gemini_adapter_factory = GeminiAdapter
+    app.state.controls_broker_factory = lambda: AlpacaControls(settings)
 
     def authenticate(provided, expected):
         if (
@@ -77,6 +97,27 @@ def create_app(settings: Settings | None = None) -> FastAPI:
 
     def analysis(x_analysis_key: Annotated[str | None, Header()] = None):
         authenticate(x_analysis_key, settings.analysis_api_key)
+
+    def controls_reviewer(x_controls_reviewer_key: Annotated[str | None, Header()] = None):
+        authenticate(x_controls_reviewer_key, settings.controls_reviewer_key)
+        if (
+            not settings.controls_reviewer_identity
+            or not settings.controls_reviewer_identity.strip()
+        ):
+            raise HTTPException(503, "Configure the reviewer identity before attesting controls")
+        return settings.controls_reviewer_identity
+
+    def controls_operator(x_controls_operator_key: Annotated[str | None, Header()] = None):
+        authenticate(x_controls_operator_key, settings.controls_operator_key)
+        if (
+            not settings.controls_operator_identity
+            or not settings.controls_operator_identity.strip()
+        ):
+            raise HTTPException(503, "Configure the risk operator identity")
+        return settings.controls_operator_identity
+
+    def controls_broker(x_controls_broker_key: Annotated[str | None, Header()] = None):
+        authenticate(x_controls_broker_key, settings.controls_broker_key)
 
     def persist(operation):
         for attempt in range(2):
@@ -123,9 +164,20 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                     ClassificationRecord,
                     DecisionRecord,
                     GenerationJob,
+                    BrokerCapture,
+                    ControlCheckRecord,
+                    ControlReservation,
                 ):
                     connection.execute(select(table.id).limit(1))
-                if version != "0005_feed_coverage":
+                connection.execute(select(ControlRevision.sequence).limit(1))
+                if (
+                    connection.execute(
+                        select(ControlLock.id).where(ControlLock.id == "controls-v1")
+                    ).scalar()
+                    != "controls-v1"
+                ):
+                    raise HTTPException(503, "Controls lock migration required")
+                if version != "0006_controls":
                     raise HTTPException(503, "Database migration required")
         except SQLAlchemyError:
             raise HTTPException(503, "Database unavailable or migrations missing") from None
@@ -364,6 +416,116 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                     }
                     for r in records
                 ]
+            }
+
+    @app.post("/api/v1/controls/reviews/methodologies")
+    def review_methodology(request: MethodologyApproval, actor: str = Depends(controls_reviewer)):
+        return persist(
+            lambda session: controls_store.review(session, "methodology", request, actor, utcnow())
+        )
+
+    @app.post("/api/v1/controls/reviews/assets")
+    def review_asset(request: AssetApproval, actor: str = Depends(controls_reviewer)):
+        return persist(
+            lambda session: controls_store.review(session, "asset", request, actor, utcnow())
+        )
+
+    @app.post("/api/v1/controls/reviews/policies")
+    def review_policy(request: PolicyApproval, actor: str = Depends(controls_reviewer)):
+        return persist(
+            lambda session: controls_store.review(session, "policy", request, actor, utcnow())
+        )
+
+    @app.post("/api/v1/controls/reviews/risk-reconciliations")
+    def review_reconciliation(request: RiskReconciliation, actor: str = Depends(controls_reviewer)):
+        return persist(
+            lambda session: controls_store.review(session, "risk", request, actor, utcnow())
+        )
+
+    @app.post("/api/v1/controls/kill-switch/engage")
+    def engage_kill(request: KillSwitchChange, actor: str = Depends(controls_operator)):
+        return persist(
+            lambda session: controls_store.kill_switch(session, request, True, actor, utcnow())
+        )
+
+    @app.post("/api/v1/controls/kill-switch/clear")
+    def clear_kill(request: KillSwitchChange, actor: str = Depends(controls_reviewer)):
+        return persist(
+            lambda session: controls_store.kill_switch(session, request, False, actor, utcnow())
+        )
+
+    def capture_response(refresh_id, kind, symbol):
+        try:
+            return refresh_controls(
+                sessions, refresh_id, kind, symbol, app.state.controls_broker_factory
+            )
+        except ImportConflict as error:
+            raise HTTPException(409, str(error)) from error
+        except BrokerError as error:
+            raise HTTPException(503, str(error)) from error
+        except SQLAlchemyError:
+            raise HTTPException(503, "Broker capture store unavailable") from None
+
+    @app.post("/api/v1/controls/broker/refresh", dependencies=[Depends(controls_broker)])
+    def broker_refresh(request: BrokerRefresh):
+        return capture_response(request.refresh_id, "account", None)
+
+    @app.post("/api/v1/controls/quotes/refresh", dependencies=[Depends(controls_broker)])
+    def quote_refresh(request: QuoteRefresh):
+        return capture_response(request.refresh_id, "quote", request.symbol)
+
+    @app.get("/api/v1/controls/broker/captures/{refresh_id}", dependencies=[Depends(dashboard)])
+    def capture_status(refresh_id: str):
+        with sessions() as session:
+            record = controls_store.get_capture(session, refresh_id)
+            if record is None:
+                raise HTTPException(404, "Unknown broker capture")
+            return controls_store.capture_view(record)
+
+    @app.post("/api/v1/controls/check", dependencies=[Depends(analysis)])
+    def check_controls(request: ControlCheck):
+        return persist(
+            lambda session: controls_store.check_and_reserve(session, request, utcnow(), settings)
+        )
+
+    @app.post("/api/v1/controls/reservations/release")
+    def release_controls(request: ReleaseReservation, actor: str = Depends(controls_operator)):
+        return persist(lambda session: controls_store.release(session, request, actor, utcnow()))
+
+    @app.get("/api/v1/controls/history", dependencies=[Depends(dashboard)])
+    def control_history(
+        scope: str,
+        kind: Literal["methodology", "asset", "policy", "risk", "kill", "release", "divestment"],
+        as_of: AwareDatetime | None = None,
+    ):
+        time = cutoff(as_of)
+        with sessions() as session:
+            records = session.scalars(
+                select(ControlRevision)
+                .where(
+                    ControlRevision.scope == scope,
+                    ControlRevision.kind == kind,
+                    ControlRevision.received_at <= time,
+                )
+                .order_by(ControlRevision.sequence.desc())
+                .limit(100)
+            ).all()
+            return {
+                "items": [
+                    {
+                        "record_id": r.record_id,
+                        "kind": r.kind,
+                        "scope": r.scope,
+                        "actor": r.actor,
+                        "received_at": r.received_at.isoformat(),
+                        "effective_at": r.effective_at.isoformat(),
+                        "expires_at": r.expires_at.isoformat() if r.expires_at else None,
+                        "request_sha256": r.request_sha256,
+                        "payload": r.payload,
+                    }
+                    for r in records
+                ],
+                "authorized": False,
             }
 
     @app.post("/api/v1/controls/preview", dependencies=[Depends(analysis)])

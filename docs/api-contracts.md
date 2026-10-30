@@ -170,3 +170,22 @@ No database authority/audit write or external request occurs. Caller flags are o
 hypothetical assertions; the existing real-candidate evaluator is unaffected. See
 [scope and conventions](milestone-5-controls.md). Future server as-of and malformed,
 nonfinite, extra-field or non-hypothetical inputs are rejected.
+
+
+## Stored controls workflow
+
+Migration `0006_controls` adds reviewer/operator/broker-reader roles and versioned
+review/capture/check/reservation records. [Workflow and headers](milestone-5-operations.md)
+describe the implemented `/api/v1/controls/reviews/*`, `/broker/refresh`,
+`/quotes/refresh`, `/check`, `/kill-switch/*`, `/reservations/release`, `/history`
+and redacted capture-status routes. Only server captures supply broker observations;
+client bodies cannot upload ownership, cash or trust flags. Separate qualified
+review credentials attest methodology/asset/policy/reconciled-loss facts. All results
+remain research-only and unauthorized for execution.
+
+Decision evaluation optionally references `control_check_id`; known signal binding,
+active research hold and current controls are revalidated under the global lock.
+The as-of snapshot preserves source references and authority basis. Market/source
+gates remain independent. No key/URL/actor override, order submission or cancellation
+route exists. Historical evaluation remains historical and never grants current
+execution authority.

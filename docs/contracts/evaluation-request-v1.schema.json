@@ -33,6 +33,21 @@
       ],
       "default": null,
       "title": "As Of"
+    },
+    "control_check_id": {
+      "anyOf": [
+        {
+          "maxLength": 200,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Control Check Id"
     }
   },
   "required": [

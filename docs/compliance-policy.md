@@ -1,6 +1,6 @@
 # Compliance policy specification
 
-Status: **hypothetical control checks implemented; operational compliance authority is not yet implemented**. See [Milestone 5 increment](milestone-5-controls.md). No
+Status: **versioned role-attested compliance workflow and deterministic checks implemented**. See [current Milestone 5 workflow](milestone-5-operations.md). Actual reviewer qualification, methodology and source truth still require external evidence. No
 instrument is approved by this repository. The screening methodology, qualified
 review process, provider and gold instrument remain undecided.
 

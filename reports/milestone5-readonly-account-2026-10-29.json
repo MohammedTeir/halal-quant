@@ -1,0 +1,24 @@
+{
+  "refresh_id": "live-paper-account-20261029",
+  "kind": "account",
+  "status": "SUCCEEDED",
+  "error_code": null,
+  "completed_at": "2026-10-29T18:45:25.905200+00:00",
+  "authorized": false,
+  "duplicate": false,
+  "capabilities": {
+    "provider": "alpaca_paper",
+    "positions_complete": true,
+    "orders_complete": true,
+    "activity_complete": true,
+    "cash_account_verified": false,
+    "settled_cash_verified": false,
+    "lending_disabled_verified": false,
+    "borrowing_disabled_verified": false
+  },
+  "position_count": 0,
+  "open_order_count": 0,
+  "raw_response_sha256": "e2b30b7ac3d0e8b655182cd3cb4e324cee849d362bed45368dcf81b7152d3d36",
+  "read_only": true,
+  "authorized_for_entry": false
+}

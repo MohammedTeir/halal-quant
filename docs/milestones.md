@@ -10,7 +10,7 @@ Implementation acceptance and independent release sign-off are tracked separatel
 | 2 | Three Python strategies; optional Pine | Agreed Python acceptance passes | Long-only causal stock/ETF/gold strategies; nonzero synthetic train/holdout trades, explicit costs, flat reconciliation and byte-identical reports. Pine compilation/parity remains unverified and optional. |
 | 3 | Market and news data | Implementation acceptance passes; historical/source sign-off incomplete | Real Alpaca candles/actions, Finnhub news/earnings, BLS and official FOMC ingestion; immutable revisions, point-in-time provenance, scoped freshness, corporate-action and session checks. A normalized 2025 audit validates all 12 months (5,855 1h / 1,263 4h bars), retaining proof of 60 identical duplicates removed. Source/session research-release approval remains unavailable. |
 | 4 | AI intelligence and decisions | Implementation acceptance passes; independent quality sign-off incomplete | Strict schemas/evidence/targets, durable Gemini jobs, event policies and deterministic gates; v5 passes 16/16 exposed real-primary/adversarial regression and 8/8 fresh blind pilot. Separate AI technical review now completed with conditional research-only acceptance; publisher identity, gold session binding and representative policy/calibration conditions remain open before deployment. |
-| 5 | Compliance and risk | Started: hypothetical controls core | Strict evidence/scope/expiry checks, forbidden transactions, Decimal sizing, reservations, caps/loss/cooldown/kill-switch guards and owned-exit simulation pass. [First increment](milestone-5-controls.md). Actual scholarly/broker authority, versioned persistence and operational integration remain. |
+| 5 | Compliance and risk | Software implemented and tested for bounded research; full operational sign-off pending | Versioned role attestations, stock-ratio rules, read-only broker/quote capture, loss/peak reconciliation, serialized research holds/kill switch and linked decision revalidation pass. [Current workflow](milestone-5-operations.md). Named qualified review and real cash/settlement/lending/custody proofs remain unprovided; real orders are deferred. |
 | 6 | Research and backtesting | Technical single-instrument prototype | Portfolio simulation, point-in-time news/compliance replay, verified historical coverage, walk-forward/Monte Carlo, liquidity and blueprint performance gates remain. |
 | 7 | Dashboard and Telegram | Not started | UI and end-to-end notification acceptance. |
 | 8 | Paper trading | Not started | Broker simulation, ledger, order lifecycle, reconciliation and stable forward test. |
@@ -110,3 +110,23 @@ The [controls increment](milestone-5-controls.md) adds 78 hypothetical engine/AP
 full regression is **412 passed**. Preview is authenticated/read-only and does not
 promote caller facts into real broker/compliance/ownership state. Scope is research
 simulation; methodology defaults unselected and no operational approval is granted.
+
+
+## Milestone 5 stored workflow follow-up
+
+The [stored workflow](milestone-5-operations.md) implements migration `0006_controls`,
+separate reviewer/operator/broker-reader credentials, immutable review IDs/hashes,
+stable methodology withdrawal, server receipt/as-of history, reviewer-bound
+financial ratios and loss reconciliation, durable kill/divestment-review records,
+read-only provider capture claims and server-only current control checks. Shared
+capacity and linked revalidation lock state before taking the current-time sample.
+No stale retry extends reservations or clears a later kill/revocation.
+
+Full local regression: **459 passed**; 47 new checks after the 412-test checkpoint.
+Actual paper-account and quote read-only probes succeeded; the account had no
+positions/orders, and cash/settlement/lending contract proof remains false.
+[Independent AI review](milestone-5-independent-review-2026-10-29.md) rechecked all six
+resolved findings; bounded research acceptance does not supply human/Shariah,
+custody, source/session, profitability or execution release approval. API role keys
+and qualified actors are deliberately not enabled by default. No environment draft
+or publication was changed.

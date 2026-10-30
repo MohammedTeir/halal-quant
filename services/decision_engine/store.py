@@ -170,6 +170,13 @@ def intelligence_snapshot(session, signal, as_of, settings, policy):
 
 
 def store_evaluation(session, request: EvaluationRequest, now, settings):
+    if request.control_check_id:
+        from services.controls.store import lock_controls
+
+        lock_controls(session)
+        from apps.api.db import utcnow
+
+        now = utcnow()
     checksum = digest(request.model_dump(mode="json"))
     existing = session.get(DecisionRecord, request.evaluation_id)
     if existing:
@@ -188,7 +195,33 @@ def store_evaluation(session, request: EvaluationRequest, now, settings):
     fresh_signal = as_of - signal.bar_time <= timedelta(minutes=15)
     # These authorities do not exist yet. Do not promote webhook prices, imported
     # text, model claims or caller-supplied flags into broker/compliance evidence.
+    controls = None
+    context = None
     state = TrustedState(data_is_fresh=False, news_allows_entry=intelligence["allows_entry"])
+    if request.control_check_id:
+        from services.controls.store import revalidate_evaluation
+
+        controls, context = revalidate_evaluation(
+            session, request.control_check_id, signal, as_of, settings
+        )
+        passed = controls["research_controls_pass"]
+        state = TrustedState(
+            data_is_fresh=False,
+            news_allows_entry=intelligence["allows_entry"],
+            compliance_status=(
+                "APPROVED"
+                if context and context["compliance_pass"]
+                else "REJECTED"
+                if context and context["assessment"] and context["assessment"].status == "REJECTED"
+                else "PENDING"
+            ),
+            instrument_permitted=bool(context and context["instrument_pass"]),
+            risk_limits_allow_entry=bool(passed),
+            ownership_verified=bool(passed and signal.action == "EXIT_CANDIDATE"),
+            sellable_quantity=controls.get("quantity", "0")
+            if passed and signal.action == "EXIT_CANDIDATE"
+            else "0",
+        )
     result = evaluate(signal.action, request.score, state, policy)
     response = result | {
         "evaluation_id": request.evaluation_id,
@@ -203,13 +236,27 @@ def store_evaluation(session, request: EvaluationRequest, now, settings):
             "policy": policy.model_dump(),
             "intelligence": intelligence,
             "trusted_state": state.model_dump(mode="json"),
+            "controls": controls,
+            "authority_basis": {
+                "broker": "server_read_only_observation"
+                if context and context["account_capture"]
+                else "missing",
+                "compliance": "role_attested_review"
+                if context and context["assessment"]
+                else "missing",
+                "execution": "not_implemented",
+            },
             "unavailable_authorities": [
                 "verified_market_data",
-                "broker",
-                "asset_compliance",
-                "instrument_review",
-                "portfolio_risk",
-                "ownership",
+                *(["broker"] if not context or not context["account_capture"] else []),
+                *(["asset_compliance"] if not context or not context["assessment"] else []),
+                *(["instrument_review"] if not context or not context["instrument"] else []),
+                *(
+                    ["portfolio_risk"]
+                    if not controls or not controls["research_controls_pass"]
+                    else []
+                ),
+                *(["ownership"] if not state.ownership_verified else []),
             ],
         },
     }

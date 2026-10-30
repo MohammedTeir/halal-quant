@@ -1,0 +1,70 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "check_id": {
+      "maxLength": 200,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.:/-]+$",
+      "title": "Check Id",
+      "type": "string"
+    },
+    "account_id": {
+      "maxLength": 200,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.:/-]+$",
+      "title": "Account Id",
+      "type": "string"
+    },
+    "signal_id": {
+      "maxLength": 200,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.:/-]+$",
+      "title": "Signal Id",
+      "type": "string"
+    },
+    "stop_price": {
+      "anyOf": [
+        {
+          "exclusiveMinimum": 0.0,
+          "type": "number"
+        },
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Stop Price"
+    },
+    "quantity": {
+      "anyOf": [
+        {
+          "exclusiveMinimum": 0.0,
+          "type": "number"
+        },
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Quantity"
+    },
+    "reserve": {
+      "default": true,
+      "title": "Reserve",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "check_id",
+    "account_id",
+    "signal_id"
+  ],
+  "title": "ControlCheck",
+  "type": "object"
+}

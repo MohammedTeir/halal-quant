@@ -1,0 +1,301 @@
+{
+  "$defs": {
+    "ControlEvidence": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence_id": {
+          "maxLength": 200,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$",
+          "title": "Evidence Id",
+          "type": "string"
+        },
+        "provider": {
+          "maxLength": 64,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.-]+$",
+          "title": "Provider",
+          "type": "string"
+        },
+        "document_sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Document Sha256",
+          "type": "string"
+        },
+        "observed_at": {
+          "format": "date-time",
+          "title": "Observed At",
+          "type": "string"
+        },
+        "recorded_at": {
+          "format": "date-time",
+          "title": "Recorded At",
+          "type": "string"
+        },
+        "effective_at": {
+          "format": "date-time",
+          "title": "Effective At",
+          "type": "string"
+        },
+        "expires_at": {
+          "format": "date-time",
+          "title": "Expires At",
+          "type": "string"
+        }
+      },
+      "required": [
+        "evidence_id",
+        "provider",
+        "document_sha256",
+        "observed_at",
+        "recorded_at",
+        "effective_at",
+        "expires_at"
+      ],
+      "title": "ControlEvidence",
+      "type": "object"
+    },
+    "ControlPolicy": {
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "default": "controls-research-v1",
+          "maxLength": 200,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$",
+          "title": "Version",
+          "type": "string"
+        },
+        "methodology": {
+          "anyOf": [
+            {
+              "maxLength": 200,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_.:/-]+$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Methodology"
+        },
+        "risk_per_trade": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "maximum": 1.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "default": "0.005",
+          "title": "Risk Per Trade"
+        },
+        "max_open_risk": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "maximum": 1.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "default": "0.03",
+          "title": "Max Open Risk"
+        },
+        "max_position": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "maximum": 1.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "default": "0.10",
+          "title": "Max Position"
+        },
+        "max_sector": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "maximum": 1.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "default": "0.25",
+          "title": "Max Sector"
+        },
+        "max_daily_loss": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "maximum": 1.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "default": "0.02",
+          "title": "Max Daily Loss"
+        },
+        "max_drawdown": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "maximum": 1.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "default": "0.10",
+          "title": "Max Drawdown"
+        },
+        "consecutive_loss_limit": {
+          "default": 3,
+          "exclusiveMinimum": 0,
+          "title": "Consecutive Loss Limit",
+          "type": "integer"
+        },
+        "cooldown_minutes": {
+          "default": 60,
+          "exclusiveMinimum": 0,
+          "maximum": 10080,
+          "title": "Cooldown Minutes",
+          "type": "integer"
+        },
+        "broker_max_age_seconds": {
+          "default": 30,
+          "exclusiveMinimum": 0,
+          "maximum": 86400,
+          "title": "Broker Max Age Seconds",
+          "type": "integer"
+        },
+        "quote_max_age_seconds": {
+          "default": 15,
+          "exclusiveMinimum": 0,
+          "maximum": 86400,
+          "title": "Quote Max Age Seconds",
+          "type": "integer"
+        },
+        "loss_day_timezone": {
+          "default": "America/New_York",
+          "title": "Loss Day Timezone",
+          "type": "string"
+        },
+        "kill_switch": {
+          "default": false,
+          "title": "Kill Switch",
+          "type": "boolean"
+        },
+        "fee_per_share": {
+          "anyOf": [
+            {
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "default": "0",
+          "title": "Fee Per Share"
+        },
+        "fee_per_order": {
+          "anyOf": [
+            {
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "default": "0",
+          "title": "Fee Per Order"
+        },
+        "slippage_bps": {
+          "anyOf": [
+            {
+              "exclusiveMaximum": 10000.0,
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "default": "0",
+          "title": "Slippage Bps"
+        }
+      },
+      "title": "ControlPolicy",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "note": {
+      "maxLength": 4000,
+      "minLength": 10,
+      "title": "Note",
+      "type": "string"
+    },
+    "references": {
+      "items": {
+        "format": "uri",
+        "maxLength": 2083,
+        "minLength": 1,
+        "type": "string"
+      },
+      "maxItems": 20,
+      "minItems": 1,
+      "title": "References",
+      "type": "array"
+    },
+    "record_id": {
+      "maxLength": 200,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.:/-]+$",
+      "title": "Record Id",
+      "type": "string"
+    },
+    "account_id": {
+      "maxLength": 200,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.:/-]+$",
+      "title": "Account Id",
+      "type": "string"
+    },
+    "evidence": {
+      "$ref": "#/$defs/ControlEvidence"
+    },
+    "policy": {
+      "$ref": "#/$defs/ControlPolicy"
+    }
+  },
+  "required": [
+    "note",
+    "references",
+    "record_id",
+    "account_id",
+    "evidence",
+    "policy"
+  ],
+  "title": "PolicyApproval",
+  "type": "object"
+}

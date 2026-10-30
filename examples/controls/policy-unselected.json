@@ -1,0 +1,21 @@
+{
+  "note": "Fictional test reviewer attestation only",
+  "references": [
+    "https://example.invalid/fixture-proof"
+  ],
+  "record_id": "demo-policy-review-v1",
+  "account_id": "DEMO_ACCOUNT",
+  "evidence": {
+    "evidence_id": "policy-proof",
+    "provider": "qualified_fixture",
+    "document_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "observed_at": "2026-10-29T19:04:57.396379+00:00",
+    "recorded_at": "2026-10-29T19:04:58.396379+00:00",
+    "effective_at": "2026-10-29T18:59:59.396379+00:00",
+    "expires_at": "2026-10-29T20:04:59.396379+00:00"
+  },
+  "policy": {
+    "version": "demo-policy-review-v1",
+    "methodology": null
+  }
+}

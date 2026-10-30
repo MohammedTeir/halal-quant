@@ -116,7 +116,7 @@ not activate access or publish a snapshot.
 ## Coverage migration and latest Gemini defaults
 
 Run `uv run alembic upgrade head` before starting the new API/acquisition commands.
-Current head is `0005_feed_coverage`. This additive migration preserves prior
+Current head is `0006_controls` (after `0005_feed_coverage`). This additive migration preserves prior
 imports/signals/classifications/jobs and creates target coverage metadata. Downgrade
 removes coverage; replaying an older successful batch does not recreate it. A fresh
 source poll with a new batch ID is required, preserving authoritative receipt time.

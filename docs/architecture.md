@@ -29,7 +29,7 @@ Provider requests are synchronous, not a background queue. Configured Gemini com
 evidence; representative production quality remains unverified. CI uses mocks.
 Read-only Alpaca/Finnhub/BLS acquisition and a restart-safe normalized batch worker
 are available as explicit operator commands; live provider coverage remains unverified.
-There is no portfolio research engine or broker adapter yet. The research
+There is no portfolio research engine or order-execution broker adapter yet; controls now have a fixed-host read-only broker adapter. The research
 CLI is independent of HTTP ingestion and cannot authorize paper orders.
 
 Flow: closed chart bar → technical candidate → authenticated ingress → validated
@@ -61,3 +61,15 @@ Milestone 5 hypothetical compliance/risk boundary. The read-only authenticated
 preview has no path into persisted TrustedState or broker authority. It consumes
 only caller-supplied hypothetical evidence; server candidate evaluation retains
 its missing-authority gates. [Operational integration remains](milestone-5-controls.md).
+
+
+The current `services/controls` stored workflow uses `0006_controls` revisions,
+machine capture claims, check records, simulation reservations and a seeded global
+lock. Reviewer/operator/broker-reader roles are independent of analysis/data keys.
+Current-time mutations and linked decision evaluations sample time after lock waits;
+PostgreSQL locks the shared row and SQLite uses an immediate transaction. Broker
+HTTP happens between claim and completion transactions, with no open SQL transaction
+spanning network waits. Model or preview bodies never supply broker facts. The
+server rechecks pinned quantity against current qualified-role attestations and
+read-only observations; missing funding/custody/source evidence still blocks entry.
+See [workflow and release limits](milestone-5-operations.md).

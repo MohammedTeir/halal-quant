@@ -1,0 +1,42 @@
+{
+  "note": "Fictional test reviewer attestation only",
+  "references": [
+    "https://example.invalid/fixture-proof"
+  ],
+  "record_id": "demo-asset-review-v1",
+  "sector": "technology",
+  "assessment": {
+    "symbol": "DEMO_ONLY",
+    "asset_class": "stock",
+    "status": "PENDING",
+    "methodology": "demo-method",
+    "evidence": {
+      "evidence_id": "asset-proof",
+      "provider": "qualified_fixture",
+      "document_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "observed_at": "2026-10-29T19:04:57.396363+00:00",
+      "recorded_at": "2026-10-29T19:04:58.396363+00:00",
+      "effective_at": "2026-10-29T18:59:59.396363+00:00",
+      "expires_at": "2026-10-29T20:04:59.396363+00:00"
+    },
+    "purification_guidance": "Fictional guidance; actual scholar review required",
+    "business_activity_pass": null,
+    "financial_ratios_pass": null
+  },
+  "instrument": {
+    "symbol": "DEMO_ONLY",
+    "asset_class": "stock",
+    "kind": "equity",
+    "evidence": {
+      "evidence_id": "instrument-proof",
+      "provider": "qualified_fixture",
+      "document_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "observed_at": "2026-10-29T19:04:57.396370+00:00",
+      "recorded_at": "2026-10-29T19:04:58.396370+00:00",
+      "effective_at": "2026-10-29T18:59:59.396370+00:00",
+      "expires_at": "2026-10-29T20:04:59.396370+00:00"
+    },
+    "settlement_and_possession_pass": null
+  },
+  "financials": null
+}

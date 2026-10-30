@@ -1,7 +1,6 @@
 # Milestone 5: first controls increment
 
-Status: **started; deterministic hypothetical controls core implemented**. The full
-milestone is not complete. No real asset, broker account, instrument or scholarly
+Status: **initial hypothetical increment implemented; stored workflow subsequently implemented**. This page describes the initial checkpoint. See [current stored controls and completion boundary](milestone-5-operations.md). No real asset, broker account, instrument or scholarly
 methodology is approved by this increment. All results retain `authorized=false`
 and `evidence_authority_verified=false`.
 
@@ -86,7 +85,7 @@ The client can vary hypothetical policies, including its kill switch. This never
 changes a persisted policy or actual operational kill switch. Limits and windows
 need validation and approval before operational use; model confidence supplies none.
 
-## Remaining Milestone 5 work
+## Work outstanding at the initial checkpoint
 
 1. Select a qualified screening methodology/reviewer/provider and verified gold
    structure; calculate/validate the actual screening evidence and purification/
@@ -101,6 +100,6 @@ need validation and approval before operational use; model confidence supplies n
 5. Integrate verified controls into server candidate snapshots and complete accepted
    instrument/broker workflows, qualified compliance review and operational tests.
 
-Full regression: **412 tests pass**, including **78 new control/API checks**. CLI
+Initial-checkpoint regression: **412 tests pass**, including **78 new control/API checks**. CLI
 example/repeat is byte-identical. All new acceptance inputs are fictional; no real
 compliance approval, ownership, cash, risk authority or order is established.

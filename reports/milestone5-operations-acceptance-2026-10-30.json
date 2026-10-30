@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "date": "2026-10-30",
+  "status": "BOUNDED_RESEARCH_SOFTWARE_ACCEPTANCE_PASSED",
+  "milestone": 5,
+  "sqlite_tests_passed": 459,
+  "new_tests_since_initial_checkpoint": 47,
+  "lint_and_format": "PASS",
+  "synthetic_research_smoke": "PASS_THREE_STRATEGIES_BYTE_IDENTICAL_REPEATS",
+  "gemini_mock_smoke": "PASS_ZERO_REAL_PROVIDER_CALLS",
+  "independent_review": "milestone5-independent-review-2026-10-29.json",
+  "review_is_human_or_shariah_signoff": false,
+  "read_only_provider_probe": {
+    "account": "milestone5-readonly-account-2026-10-29.json",
+    "quote": "milestone5-readonly-quote-2026-10-29.json",
+    "positions": 0,
+    "open_orders": 0,
+    "nonempty_order_lifecycle_verified": false
+  },
+  "orders_submitted": 0,
+  "orders_canceled": 0,
+  "live_trading_enabled": false,
+  "authorized": false,
+  "environment_published_or_modified": false,
+  "remaining_operational_release_requirements": [
+    "Qualified methodology and asset/custody reviews with real evidence, identities and scoped credentials.",
+    "An authoritative source/adapter proving cash-account status, settled cash, lending disabled and borrowing disabled; current Alpaca adapter cannot provide these proofs and therefore blocks BUY.",
+    "Real order lifecycle, atomic execution revalidation and settlement acceptance belong to milestone 8; research reservations are not broker orders."
+  ],
+  "postgres_validation": "Exact pushed commit must pass foundation GitHub Actions; see commit check status."
+}

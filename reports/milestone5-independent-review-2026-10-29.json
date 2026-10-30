@@ -1,0 +1,166 @@
+{
+  "review_id": "milestone5-independent-review-2026-10-29",
+  "reviewed_at": "2026-10-29T19:15:15.113433+00:00",
+  "reviewer": {
+    "type": "separate_ai_technical_reviewer",
+    "task": "/root/independent_source_policy_review",
+    "independent_of_implementation_author_role": true,
+    "human_or_institutional_signoff": false,
+    "blind_to_author_context": false
+  },
+  "review_state": "COMPLETED_AFTER_AUTHOR_IDENTIFIED_TEMPORAL_FIX_REVIEW",
+  "scope": "Milestone5 stored role attestations/read-only capture/research reservations/server decision revalidation; not execution release",
+  "network_or_provider_calls_by_reviewer": 0,
+  "implementation_files_changed_by_reviewer": [],
+  "findings": [
+    {
+      "id": "M5-IR-01",
+      "severity": "medium",
+      "title": "Protective stop must have correct side/status/symbol/remaining quantity",
+      "status": "RESOLVED_AND_INDEPENDENTLY_REVIEWED",
+      "final_code_references": "services/controls/store.py:_build_account",
+      "resolution": "Active protective legs now require SELL, us_equity, exact symbol, supported active status, positive stop and enough remaining quantity; unknown protection retains unknown-risk blockers. Reviewer inspected code and the new wrong-status/symbol/quantity/side regression cases."
+    },
+    {
+      "id": "M5-IR-02",
+      "severity": "medium",
+      "title": "Captured activity day must match operational loss-day policy",
+      "status": "RESOLVED_AND_INDEPENDENTLY_REVIEWED",
+      "final_code_references": "packages/schemas/control_operations.py:PolicyApproval.version;services/controls/broker.py:AlpacaControls.account;services/controls/store.py:_check",
+      "resolution": "Operational policy is constrained to America/New_York; captures retain activity_trading_day/coverage_start/observed time; checks reject current-day mismatch. Reviewer independently instantiated UTC policy and confirmed rejection."
+    },
+    {
+      "id": "M5-IR-03",
+      "severity": "medium",
+      "title": "Control revalidation must share writer serialization before first DB read",
+      "status": "RESOLVED_AND_INDEPENDENTLY_REVIEWED",
+      "final_code_references": "services/decision_engine/store.py:store_evaluation;services/controls/store.py:lock_controls",
+      "resolution": "A supplied control_check_id acquires the shared controls lock before the first decision DB read. Writers/capture completion/release use the same seeded lock. SQLite begins immediate before prior DB reads; PostgreSQL locks the shared row."
+    },
+    {
+      "id": "M5-IR-04",
+      "severity": "medium",
+      "title": "Methodology withdrawal needs stable scope and immutable revision/status",
+      "status": "RESOLVED_AND_INDEPENDENTLY_REVIEWED",
+      "final_code_references": "packages/schemas/control_operations.py:MethodologyApproval;services/controls/store.py:review,operational_context",
+      "resolution": "Stable methodology_id separates scope from immutable revision record_id. Explicit APPROVED/PENDING/REVOKED revisions are selected without fallback, and asset approvals pin the exact method revision. Reviewer independently validated a same-scope/new-ID REVOKED contract and read runtime/test guards."
+    },
+    {
+      "id": "M5-IR-05",
+      "severity": "medium",
+      "title": "Unknown/non-equity/unowned pending broker orders must not bypass exposure checks",
+      "status": "RESOLVED_AND_INDEPENDENTLY_REVIEWED",
+      "final_code_references": "services/controls/broker.py:AlpacaControls.account.order;services/controls/store.py:_build_account",
+      "resolution": "Normalized orders preserve asset_class; unknown/non-us_equity root orders block entry; root SELL totals exceeding observed owned quantity block entry. Remaining nested ordergraph/atomic fill compatibility is a release limitation, not inferred from empty-account probes."
+    },
+    {
+      "id": "M5-IR-06",
+      "severity": "medium",
+      "title": "Pre-lock timestamps could omit a competitor committed while waiting for serialization",
+      "origin": "implementation_author_identified_after_initial_independent_review",
+      "status": "RESOLVED_AND_INDEPENDENTLY_REVIEWED",
+      "observation": "Mutation/evaluation timestamps captured before the global lock could filter later-committed reservations or kill/revocation records from a supposedly serialized current check. Refresh authoritative server time after lock acquisition; retain explicit historical evaluation semantics.",
+      "final_code_references": "services/controls/store.py:review,kill_switch,check_and_reserve,release;services/decision_engine/store.py:store_evaluation;tests/integration/test_control_operations_api.py:test_prelock_clock_cannot_hide_a_competitor_reservation,test_linked_decision_refreshes_prelock_clock_after_kill_change",
+      "resolution": "All mutation clocks refresh after acquiring shared serialization; linked current evaluation refreshes before its first DB read/default cutoff. A reservation or kill committed while waiting is no longer omitted by a stale pre-lock as_of. Explicit request.as_of remains labeled historical research, not execution authority."
+    }
+  ],
+  "actual_sanitized_probe_observations": {
+    "account_status": "SUCCEEDED",
+    "quote_status": "SUCCEEDED",
+    "position_count": 0,
+    "open_order_count": 0,
+    "cash_account_verified": false,
+    "settled_cash_verified": false,
+    "lending_disabled_verified": false,
+    "borrowing_disabled_verified": false
+  },
+  "release_approval": false,
+  "human_shariah_approval": false,
+  "execution_authorized": false,
+  "remaining_release_conditions": [
+    "External qualified review/evidence truth",
+    "Cash/settlement/lending/borrowing/custody proof",
+    "Atomic broker order/fill/cancel/settlement reconciliation and protection lifecycle",
+    "Symbol-to-immutable asset/corporate-action continuity",
+    "Milestone8/9 explicit readiness approvals",
+    "Current runtime Alpaca adapter leaves all cash/lending/borrowing/settled-cash proof flags false, so real BUY research checks cannot legitimately pass",
+    "Actual empty-account probes do not demonstrate owned sellability or filled/OCO/stop execution semantics",
+    "Original Milestones3/4 source/session and verified-market-data release conditions remain separate"
+  ],
+  "artifact_hashes_at_final_review": {
+    "services/controls/store.py": "a2b76aec6d9e7fd5f265114d5deed313a883e10d388293ca3dad3ba6a0eafcb8",
+    "services/controls/broker.py": "7aa49c11a63f06c6ad6319fd9bd0afd0c41be742bfea1ae08c26f72e25f17747",
+    "services/controls/capture.py": "f361a63751fe06bd597db8091ff35de98225795a8708a9a2b281a716dc2e09ed",
+    "services/controls/acquire_broker.py": "125fcb514196527dc712b7b3dfd6ac56300e7d49ecf4065aa76f41f9f47003cd",
+    "services/controls/engine.py": "a9ebc8797d96f7ebd85c7a9d61d9a43f702c8064ec950973405a08693c8ca7ca",
+    "packages/schemas/control_operations.py": "02013b29f15c96575524d08999fc9df83a7f5f520fea2b1ccbb47e946d45f7fa",
+    "packages/schemas/controls.py": "d845ea31726687ce580593cedb3391fa5756b634bc42ae05e68ae77201761d32",
+    "packages/schemas/intelligence.py": "ff09f863bd786e01598b20cf68dfea1313a886d7f59e940020e51180bf06c524",
+    "packages/config/settings.py": "8198d135cb86934df0007c675129b6efeb14afebad53eb9ad4840be5c9193a23",
+    "migrations/versions/0006_controls.py": "5043d1d34e2496847ead6295cba053d5172524a20aa46309aef2f1086b8cc779",
+    "apps/api/db.py": "57491b6c8e176849a6c3d15f4cf0de40956aeca4e77bdc2a2b9f15e78b949bdb",
+    "apps/api/main.py": "f57c2a20d5ee6fd29f3126b1f1d89b2abff7850b740fff783716a28a3f558337",
+    "services/decision_engine/store.py": "8b7ca7f1576a3a8bf6e33f7b7ff2de8e833b407434be2ace4cec28d3ad7c59fe",
+    "services/decision_engine/engine.py": "b4f2e71b37f96e7d89f0b0ec0564b8a2698cb97a997b6354fe748ff666a5f40a",
+    "tests/controls/test_broker.py": "053d0f4c29427724cde5b39b3fde88ca123ca00f505257c5e64646ff5bf12514",
+    "tests/integration/test_control_operations_api.py": "c7c8cbdf976fd400b1bd716d84049cc525fe3b993014d146ae9e4508062a32e2",
+    "tests/controls/operations_fixtures.py": "354e794bff0a30bdc33afdc872b064b88e9d6ebe1eeff6f08997f4bdf9f58da2",
+    "reports/generated/milestone5-live-paper-account-20261029.json": "79dc8bca3a2b3b7fbb81b92f8d7c938a6c5a074897c71dea475676758643b6c1",
+    "reports/generated/milestone5-live-paper-quote-20261029.json": "3232972111b7b867497ebf26caaa896a9a4254e78e4697895bfbab5104e34d2a"
+  },
+  "reviewed_git_base": "d45237be30b1f7299d3fb1efe164e5f53587dab0",
+  "verdict": "BOUNDED_RESEARCH_WORKFLOW_ACCEPTED_NO_EXECUTION_RELEASE",
+  "scope_acceptance": {
+    "role_separated_attestation_persistence": true,
+    "read_only_broker_capture": true,
+    "server_derived_research_capacity_checks": true,
+    "serialized_short_lived_simulation_holds": true,
+    "linked_decision_revalidation": true,
+    "real_cash_account_or_settlement_contract_approval": false,
+    "human_or_scholarly_truth_verified": false,
+    "paper_or_live_order_execution_release": false
+  },
+  "review_checks": {
+    "code_and_new_regression_cases_inspected": true,
+    "pure_methodology_withdrawal_contract_independently_exercised": true,
+    "pure_non_NY_operational_policy_independently_rejected": true,
+    "live_probe_evidence_inspected": "sanitized retained account/quote JSON only; no independent provider calls",
+    "new_targeted_tests_as_reported_by_implementation_author": 43,
+    "new_targeted_tests_breakdown_as_reported": "32 operations API +11 broker",
+    "independent_full_suite_execution": false,
+    "immediate_order_execution_bypass_found_in_reviewed_paths": false,
+    "limits": "Separate AI reviewer saw author context and tests; this is not independent empirical broker/market/human truth authentication",
+    "post_lock_server_clock_refresh_independently_code_checked": true,
+    "stale_prelock_hold_and_kill_regression_cases_inspected": true,
+    "local_capture_expected_error_details_suppression_independently_code_checked": true
+  },
+  "post_lock_temporal_re_review": {
+    "reviewed_at": "2026-10-29T19:11:56.623954+00:00",
+    "issue_origin": "Implementation author identified after initial separate-agent review",
+    "independent_fix_verification": "Reviewed fresh utcnow() immediately after lock_controls() in review,kill_switch,check_and_reserve,release and linked store_evaluation before DB reads/default as_of; deterministic stale-prelock hold/kill regressions inspected",
+    "explicit_historical_as_of_preserved": true,
+    "tests_as_reported_by_author": {
+      "latest_targeted_operations_tests_passed": 35,
+      "independent_test_execution": false
+    },
+    "previous_changed_file_hashes": {
+      "services/controls/store.py": "cecb0894b94ecd426edf78681bd1c1cdb33287f3a9cabf16aed93f90af9aaa83",
+      "services/decision_engine/store.py": "8fdbc9826a2e16a3f660934a1a6d9d825174f471997c9c54318a418b57ac6bce",
+      "tests/integration/test_control_operations_api.py": "e997282b72e322e95574851cf294f0e75dde150235ee8a73cbd26d0dfd0c045e"
+    },
+    "remaining_clock_assumption": "Trusted coherent server UTC clock; no order executor or new historical authority is introduced"
+  },
+  "capture_cli_confidentiality_re_review": {
+    "reviewed_at": "2026-10-29T19:15:15.113359+00:00",
+    "scope": "Expected settings/database/broker/read/write failures in local administrative capture CLI",
+    "finding_origin": "Implementation author confidentiality hardening after temporal re-review",
+    "independent_assessment": "get_settings, session_factory, capture/read and sanitized report writing are inside the try; SQLAlchemyError/ValueError/OSError/BrokerError now exit with a constant generic message without interpolating exception details. Cleanup retains engine disposal. No state/authority semantics changed.",
+    "regression_inspected": "test_local_capture_cli_does_not_dump_private_database_error_details injects a private SQLAlchemyError into session_factory and asserts generic exit2, no secret detail in stdout/stderr, no report written",
+    "independent_test_execution": false,
+    "previous_affected_hashes": {
+      "services/controls/acquire_broker.py": "7682dd42e89ce1c43ffce6259ae3f56a7dcb075b7e72a8defa4711bfa0a1c62a",
+      "tests/controls/test_broker.py": "ef5a830097cc271bfebc20a56f8a3cae79ca344eafc2c21251fbb6b1f98a995d"
+    },
+    "assessment": "ACCEPTED_FOR_DECLARED_EXPECTED_ERROR_SCOPE"
+  }
+}

@@ -107,3 +107,56 @@ class FeedCoverageRecord(Base):
     purpose: Mapped[str] = mapped_column(String(32))
     starts_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
     ends_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+
+
+class ControlLock(Base):
+    __tablename__ = "control_lock"
+    id: Mapped[str] = mapped_column(String(64), primary_key=True)
+
+
+class ControlRevision(Base):
+    __tablename__ = "control_revisions"
+    sequence: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    record_id: Mapped[str] = mapped_column(String(200), unique=True)
+    kind: Mapped[str] = mapped_column(String(32), index=True)
+    scope: Mapped[str] = mapped_column(String(200), index=True)
+    request_sha256: Mapped[str] = mapped_column(String(64))
+    actor: Mapped[str] = mapped_column(String(200))
+    received_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), index=True)
+    effective_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+    expires_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    payload: Mapped[dict] = mapped_column(JSON)
+
+
+class BrokerCapture(Base):
+    __tablename__ = "broker_captures"
+    sequence: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    id: Mapped[str] = mapped_column(String(200), unique=True)
+    request_sha256: Mapped[str] = mapped_column(String(64))
+    kind: Mapped[str] = mapped_column(String(16), index=True)
+    scope: Mapped[str | None] = mapped_column(String(200), index=True, nullable=True)
+    status: Mapped[str] = mapped_column(String(16))
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), index=True)
+    completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    error_code: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    payload: Mapped[dict | None] = mapped_column(JSON, nullable=True)
+
+
+class ControlCheckRecord(Base):
+    __tablename__ = "control_checks"
+    id: Mapped[str] = mapped_column(String(200), primary_key=True)
+    request_sha256: Mapped[str] = mapped_column(String(64))
+    account_id: Mapped[str] = mapped_column(String(200), index=True)
+    signal_id: Mapped[str] = mapped_column(String(200))
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), index=True)
+    payload: Mapped[dict] = mapped_column(JSON)
+
+
+class ControlReservation(Base):
+    __tablename__ = "control_reservations"
+    id: Mapped[str] = mapped_column(String(200), primary_key=True)
+    account_id: Mapped[str] = mapped_column(String(200), index=True)
+    signal_id: Mapped[str] = mapped_column(String(200))
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+    expires_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), index=True)
+    payload: Mapped[dict] = mapped_column(JSON)

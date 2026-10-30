@@ -1,0 +1,45 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "note": {
+      "maxLength": 4000,
+      "minLength": 10,
+      "title": "Note",
+      "type": "string"
+    },
+    "references": {
+      "items": {
+        "format": "uri",
+        "maxLength": 2083,
+        "minLength": 1,
+        "type": "string"
+      },
+      "maxItems": 20,
+      "minItems": 1,
+      "title": "References",
+      "type": "array"
+    },
+    "record_id": {
+      "maxLength": 200,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.:/-]+$",
+      "title": "Record Id",
+      "type": "string"
+    },
+    "account_id": {
+      "maxLength": 200,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.:/-]+$",
+      "title": "Account Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "note",
+    "references",
+    "record_id",
+    "account_id"
+  ],
+  "title": "KillSwitchChange",
+  "type": "object"
+}

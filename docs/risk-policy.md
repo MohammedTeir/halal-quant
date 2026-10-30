@@ -1,6 +1,6 @@
 # Risk policy specification
 
-Status: **hypothetical portfolio checks and Decimal sizing implemented; operational risk state/authorization is not yet implemented**. See [Milestone 5 increment](milestone-5-controls.md).
+Status: **Decimal sizing, versioned risk state/policies, durable kill switch and serialized research reservations implemented**. See [current Milestone 5 workflow](milestone-5-operations.md). Actual order/settlement/execution authority remains unavailable.
 The Python/Pine 10% simulated allocation is a research setting, not enforcement of this policy.
 The Python research adapter uses whole shares and cash-only margin, but these
 local constraints do not implement the portfolio limits below.

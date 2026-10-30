@@ -1,0 +1,17 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "refresh_id": {
+      "maxLength": 200,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.:/-]+$",
+      "title": "Refresh Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "refresh_id"
+  ],
+  "title": "BrokerRefresh",
+  "type": "object"
+}

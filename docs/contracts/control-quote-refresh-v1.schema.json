@@ -1,0 +1,25 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "refresh_id": {
+      "maxLength": 200,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.:/-]+$",
+      "title": "Refresh Id",
+      "type": "string"
+    },
+    "symbol": {
+      "maxLength": 64,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.:/-]+$",
+      "title": "Symbol",
+      "type": "string"
+    }
+  },
+  "required": [
+    "refresh_id",
+    "symbol"
+  ],
+  "title": "QuoteRefresh",
+  "type": "object"
+}

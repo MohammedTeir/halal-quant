@@ -86,6 +86,9 @@ class EvaluationRequest(BaseModel):
     signal_id: Identifier
     score: float = Field(ge=0, le=1, strict=True)
     as_of: AwareDatetime | None = None
+    control_check_id: Identifier | None = Field(
+        default=None, exclude_if=lambda value: value is None
+    )
 
     @field_validator("as_of")
     @classmethod

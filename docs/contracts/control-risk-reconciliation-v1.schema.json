@@ -1,0 +1,181 @@
+{
+  "$defs": {
+    "ControlEvidence": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence_id": {
+          "maxLength": 200,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$",
+          "title": "Evidence Id",
+          "type": "string"
+        },
+        "provider": {
+          "maxLength": 64,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.-]+$",
+          "title": "Provider",
+          "type": "string"
+        },
+        "document_sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Document Sha256",
+          "type": "string"
+        },
+        "observed_at": {
+          "format": "date-time",
+          "title": "Observed At",
+          "type": "string"
+        },
+        "recorded_at": {
+          "format": "date-time",
+          "title": "Recorded At",
+          "type": "string"
+        },
+        "effective_at": {
+          "format": "date-time",
+          "title": "Effective At",
+          "type": "string"
+        },
+        "expires_at": {
+          "format": "date-time",
+          "title": "Expires At",
+          "type": "string"
+        }
+      },
+      "required": [
+        "evidence_id",
+        "provider",
+        "document_sha256",
+        "observed_at",
+        "recorded_at",
+        "effective_at",
+        "expires_at"
+      ],
+      "title": "ControlEvidence",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "note": {
+      "maxLength": 4000,
+      "minLength": 10,
+      "title": "Note",
+      "type": "string"
+    },
+    "references": {
+      "items": {
+        "format": "uri",
+        "maxLength": 2083,
+        "minLength": 1,
+        "type": "string"
+      },
+      "maxItems": 20,
+      "minItems": 1,
+      "title": "References",
+      "type": "array"
+    },
+    "record_id": {
+      "maxLength": 200,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.:/-]+$",
+      "title": "Record Id",
+      "type": "string"
+    },
+    "account_id": {
+      "maxLength": 200,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.:/-]+$",
+      "title": "Account Id",
+      "type": "string"
+    },
+    "evidence": {
+      "$ref": "#/$defs/ControlEvidence"
+    },
+    "trading_day": {
+      "format": "date",
+      "title": "Trading Day",
+      "type": "string"
+    },
+    "day_start_equity": {
+      "anyOf": [
+        {
+          "exclusiveMinimum": 0.0,
+          "type": "number"
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "title": "Day Start Equity"
+    },
+    "peak_equity": {
+      "anyOf": [
+        {
+          "exclusiveMinimum": 0.0,
+          "type": "number"
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "title": "Peak Equity"
+    },
+    "realized_pnl_today": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "title": "Realized Pnl Today"
+    },
+    "consecutive_losses": {
+      "maximum": 100000,
+      "minimum": 0,
+      "title": "Consecutive Losses",
+      "type": "integer"
+    },
+    "last_loss_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Last Loss At"
+    },
+    "history_complete": {
+      "default": false,
+      "title": "History Complete",
+      "type": "boolean"
+    },
+    "broker_activity_sha256": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Broker Activity Sha256",
+      "type": "string"
+    }
+  },
+  "required": [
+    "note",
+    "references",
+    "record_id",
+    "account_id",
+    "evidence",
+    "trading_day",
+    "day_start_equity",
+    "peak_equity",
+    "realized_pnl_today",
+    "consecutive_losses",
+    "broker_activity_sha256"
+  ],
+  "title": "RiskReconciliation",
+  "type": "object"
+}
