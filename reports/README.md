@@ -98,3 +98,5 @@ incomplete. See [scope and remaining work](../docs/milestone-5-controls.md).
 - [Vercel/Render hosting readiness with external Neon/Supabase](milestone7-hosting-readiness-2026-10-30.json): configuration/build verification; no actual deployment or real delivery acceptance claimed.
 
 - [Vercel/Render public deployment check](milestone7-public-deployment-check-2026-10-30.json): read-only reachability/proxy checks; administrator and Telegram delivery acceptance remain pending.
+
+- [Computer/Termux worker setup readiness](milestone7-worker-hosting-readiness-2026-10-30.json): check-only/link-only mode tests; real host, token and delivery verification remain pending.

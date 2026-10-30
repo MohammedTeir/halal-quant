@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-30",
+  "status": "WORKER_SETUP_PREPARED_HOST_VERIFICATION_PENDING",
+  "bot_username": "halalquant_bot",
+  "selected_hosts": [
+    "existing computer",
+    "temporary Termux with Debian proot"
+  ],
+  "modes": {
+    "check": "Read-only DB readiness, bot identity and webhook checks; no getUpdates or message delivery",
+    "link_only": "Verify linking codes; do not call outbox delivery",
+    "normal": "Existing persistent delivery behavior, only after destination/event authorization"
+  },
+  "verification": {
+    "local_regression_passed": 528,
+    "local_skipped": 1,
+    "skipped_test": "PostgreSQL-only SQL Editor bootstrap; covered by hosted PostgreSQL CI",
+    "worker_setup_tests": 6,
+    "lint": "passed",
+    "format": "passed",
+    "help_command": "passed",
+    "telegram_calls": "mocked only",
+    "actual_termux_installation_tested": false,
+    "actual_bot_token_tested": false,
+    "actual_messages_sent": 0,
+    "hosted_ci": "Check the pushed commit workflow for PostgreSQL results"
+  },
+  "deployment_next_steps": [
+    "Install worker on the chosen host and create private ignored .env with same Neon URL and BotFather token",
+    "Run --check --expected-bot halalquant_bot and review pending count",
+    "Run --link-only --expected-bot halalquant_bot",
+    "Link destination through dashboard and bot command, keep it disabled until acceptance event/destination is agreed",
+    "Agree and authorize concrete delivery check before starting normal delivery"
+  ],
+  "limitations": [
+    "Android/laptop sleep or connectivity can stop polling and delivery",
+    "Frequent polling can keep Neon compute active and consume plan allowance",
+    "Phone hosting is temporary; continuous delivery remains unverified"
+  ],
+  "milestone7_deployment_acceptance": "PENDING",
+  "earlier_milestone_gates_changed": false
+}

@@ -212,3 +212,8 @@ API clients use `POST /admin/invitations` and
 redemption uses `POST /auth/recover`. No bot token is exposed by any endpoint.
 
 For the selected Vercel/Render hosting with external Neon or Supabase PostgreSQL, see the [deployment walkthrough in Arabic](deploy-vercel-render.ar.md). Hosting account linking, secrets, actual service URLs and real-delivery acceptance remain operator steps.
+
+For the selected temporary computer/Termux worker and @halalquant_bot, follow the
+[worker setup guide](telegram-worker-computer-termux.md). Use `--check` for read-only
+checks, then `--link-only` while verifying the destination. Neither setup mode
+sends outbox messages. Full delivery remains an explicit later step.

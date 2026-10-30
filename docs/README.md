@@ -54,3 +54,5 @@ mark a manual gate complete without its evidence.
 - [النشر على Vercel وRender مع Neon أو Supabase](deploy-vercel-render.ar.md)
 
 - [Free Render API deployment without Blueprint](deploy-render-free.md)
+
+- [Telegram worker on an existing computer or Termux](telegram-worker-computer-termux.md)

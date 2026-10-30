@@ -103,3 +103,5 @@ usable password until single-use redemption. It logs the account ID but never
 writes the raw setup token into application audit logs. The link is returned only
 to your SQL Editor result: do not share that result or screenshots containing it.
 The SQL text contains no database connection string or account password.
+
+For the existing-computer/phone option, see [worker setup for @halalquant_bot](telegram-worker-computer-termux.md), including check-only and link-only modes before delivery.
