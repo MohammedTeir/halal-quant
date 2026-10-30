@@ -27,6 +27,7 @@ read [milestones](milestones.md) for implementation status and acceptance eviden
 | [Gemini backend](gemini.md) | Project key/model setup, structured inference, durable replay, cost behavior and mocked acceptance |
 | [Intelligence and decisions](intelligence-decisions.md) | Advisory output contracts, evidence grounding, event policies, gate traces and missing authorities |
 | [Data ingestion](data-ingestion.md) | Versioned facts, receipt/publication timing, freshness, split audits and remaining provider work |
+| [المرحلة السابعة بالعربية](milestone-7-dashboard.ar.md) | تشغيل لوحة التحكم وحدود معاينات التنبيه وما تبقى للتسليم |
 | [المرحلة السادسة بالعربية](milestone-6-research.ar.md) | المنجز البرمجي وحدود قبول الأداء |
 | [Portfolio and validation research](milestone-6-research.md) | Shared-cash replay, historical gates, training-only selection and Monte Carlo |
 | [Walk-forward research](walk-forward-research.md) | Fixed parameters, disjoint chronological tests and separate final holdout |

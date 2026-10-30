@@ -26,6 +26,7 @@ from apps.api.db import (
     session_factory,
     utcnow,
 )
+from apps.dashboard.routes import mount_dashboard
 from packages.config.settings import Settings, get_settings
 from packages.schemas.control_operations import (
     AssetApproval,
@@ -533,6 +534,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         cutoff(scenario.as_of)
         return preview_controls(scenario)
 
+    mount_dashboard(app, sessions, dashboard)
     return app
 
 

@@ -189,3 +189,7 @@ The as-of snapshot preserves source references and authority basis. Market/sourc
 gates remain independent. No key/URL/actor override, order submission or cancellation
 route exists. Historical evaluation remains historical and never grants current
 execution authority.
+
+## Initial dashboard routes
+
+The Arabic read-only shell is served at `/dashboard`. The dashboard Bearer credential protects GET `/api/v1/dashboard/overview`, `/api/v1/portfolio`, `/api/v1/dashboard/research` and `/api/v1/notifications/preview`. Portfolio data is an observation with explicit freshness; it grants no execution authority. Notification previews do not enqueue or deliver messages. See [the dashboard guide](milestone-7-dashboard.ar.md).

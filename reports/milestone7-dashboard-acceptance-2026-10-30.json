@@ -1,0 +1,30 @@
+{
+  "artifact_hashes": {
+    "apps/dashboard/routes.py": "458129899e3ae17bc4fd897065f9eb8db80dcfd8874e17f5e53e3bcb9ef2706e",
+    "apps/dashboard/static/app.js": "7f7b26a0fb8e5e0bfaab5a053cd7be7f14ee50b55b10f35da886091b36331c05",
+    "apps/dashboard/static/index.html": "6232dd07e7266cf0561468334ed330937d1f1a750ded5519db0aff81077934f6",
+    "apps/dashboard/static/style.css": "6dfb09e3ff306c969cf3d3a78833d0f08d0c4f80a8c85fa4a5c57c24c4cf39d2",
+    "services/notifications/preview.py": "4b6148d670de9c4a0d9d4e82de0484b4622c19206987ca32facc94fdf5313450"
+  },
+  "credentials_persisted": false,
+  "date": "2026-10-30",
+  "desktop": "PASS",
+  "environment_configuration_modified": false,
+  "external_messages_sent": 0,
+  "javascript_errors": [],
+  "live_trading_enabled": false,
+  "lock_clears_data": true,
+  "mobile_390px": "PASS_NO_PAGE_OVERFLOW",
+  "new_api_tests": 8,
+  "purpose": "isolated_synthetic_dashboard_browser_acceptance",
+  "real_provider_calls": 0,
+  "remaining": [
+    "Persistent notification outbox and idempotent delivery worker.",
+    "Backend Telegram credentials and recipient configuration; actual delivery acceptance.",
+    "Broader scanner filters, analytics and dashboard workflows."
+  ],
+  "signal_to_preview": "PASS_3_SIGNALS_3_PREVIEWS",
+  "status": "INITIAL_DASHBOARD_ACCEPTANCE_PASSED_MILESTONE7_IN_PROGRESS",
+  "telegram_delivery_implemented": false,
+  "tests_passed": 483
+}

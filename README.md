@@ -30,7 +30,7 @@ Milestone 6 remains an early single-instrument research prototype.
 [Milestone 6 research](docs/milestone-6-research.md) now includes shared-cash portfolio replay, training-only walk-forward selection, historical evidence gates and seeded trade-order Monte Carlo. Representative real-history and out-of-sample performance acceptance remain pending.
 Milestones 7–8 have not started; optional live integration (Milestone 9) is disabled.
 
-The full suite has **475 passing tests**, including research, data integrity,
+The full suite has **483 passing tests**, including research, data integrity,
 advisory-output security and deterministic decision checks. All three
 default strategies and cost-matched buy-and-hold baselines execute on synthetic
 fixtures, finish flat, and reproduce reports byte-for-byte. These are software
@@ -160,3 +160,7 @@ uv run python -m scripts.gemini_mock_smoke --output reports/generated/gemini-moc
 This uses a temporary database and mocked HTTP responses. For actual use, configure
 your backend's ignored `.env` or deployment secrets; follow [Gemini setup](docs/gemini.md).
 Never expose GEMINI_API_KEY to the frontend, source control or a client request body.
+
+### Arabic dashboard (Milestone 7 initial increment)
+
+Open `http://127.0.0.1:8000/dashboard` after starting the API. Authenticate with your configured `DASHBOARD_API_KEY`; credentials stay in page memory. This read-only dashboard includes signal/decision views, broker observation freshness, research reports, audit and Telegram text previews. No messages are sent. See the [Arabic dashboard guide](docs/milestone-7-dashboard.ar.md).

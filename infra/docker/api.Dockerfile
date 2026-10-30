@@ -10,6 +10,7 @@ COPY apps apps
 COPY packages packages
 COPY services services
 COPY scripts scripts
+COPY reports reports
 COPY migrations migrations
 COPY alembic.ini ./
 RUN chmod -R a+rX /app && useradd --uid 10001 --no-create-home halal
