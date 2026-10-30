@@ -52,3 +52,5 @@ mark a manual gate complete without its evidence.
 - [Milestone 7 accounts, Telegram and deployment guide](milestone-7-accounts-telegram.md)
 
 - [النشر على Vercel وRender مع Neon أو Supabase](deploy-vercel-render.ar.md)
+
+- [Free Render API deployment without Blueprint](deploy-render-free.md)

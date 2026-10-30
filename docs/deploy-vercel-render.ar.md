@@ -4,6 +4,14 @@
 PostgreSQL دائمة على Neon أو Supabase. لا ينشئ `render.yaml` قاعدة بيانات على Render.
 هذه ملفات جاهزية للنشر؛ وجودها في GitHub لا يعني أن الخدمات نُشرت بالفعل.
 
+## استخدام Render المجاني دون Blueprint
+
+إذا أردت خدمة API مجانية، استخدم **New → Web Service** يدويًا بدل Blueprint.
+اتبع [إعداد Render المجاني](deploy-render-free.md)؛ يتضمن أمر بدء يطبق الترحيلات
+دون pre-deploy مدفوع، وطريقة إنشاء المسؤول دون Render Shell. ملف `render.yaml`
+أدناه يصف المسار المدفوع فقط. عامل Telegram الدائم ليس مجانيًا على Render؛
+نحتاج له خطة مدفوعة أو خادمًا آخر، وإلى ذلك الحين يبقى قبول التسليم معلّقًا.
+
 ## 1. قاعدة البيانات
 
 الاختيار المقترح هو **Neon PostgreSQL**. أنشئ مشروعًا من [Neon](https://console.neon.tech)
