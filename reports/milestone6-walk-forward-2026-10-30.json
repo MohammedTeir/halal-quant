@@ -1,0 +1,124 @@
+{
+  "authorized_for_paper": false,
+  "byte_identical_repeat": true,
+  "capital_policy": "independent windows reset cash; returns must not be summed as a portfolio",
+  "engine": {
+    "backtesting": "0.6.6",
+    "numpy": "2.5.4",
+    "pandas": "3.1.0"
+  },
+  "execution": "next bar open; final bar reserved for liquidation; existing per-side cost model",
+  "holdout_policy": "final holdout excluded from development; no automatic pass/fail or selection",
+  "inputs": {
+    "benchmark": null,
+    "instrument": {
+      "csv_sha256": "a0a82e1ddeb83cad16fa924d3b449a2feb28cf4d11e0b2bcd06ccf2c89b75510",
+      "first_bar_close": "2020-01-01T00:00:00+00:00",
+      "last_bar_close": "2022-09-26T00:00:00+00:00",
+      "metadata": {
+        "asset_class": "stock",
+        "currency": "USD",
+        "price_basis": "split_adjusted",
+        "retrieved_at": "2026-10-28T00:00:00Z",
+        "schema_version": "1.0",
+        "source": "deterministic_synthetic_demo_v1",
+        "symbol": "DEMO_STOCK",
+        "synthetic": true,
+        "timeframe_seconds": 86400,
+        "timestamp_semantics": "bar_close",
+        "volume_basis": "as_reported"
+      },
+      "metadata_sha256": "341863075379f02a595a32fe7c3a1cfa7e5876d7ff2e3f0aeb08101c8fdea701",
+      "rows": 1000
+    }
+  },
+  "lockfile_sha256": "1d61746cd3a4495229b555beacc157ce4f4932500bdcbd8f21b0078e476defc5",
+  "mode": "fixed_parameter_walk_forward_research_only",
+  "parameter_selection": "none; one configuration fixed before all windows",
+  "run_id": "61606e81b811813d94048d4a17624d339ea9298b9acdab2fc48fce6f537a4f60",
+  "run_settings": {
+    "allocation": 0.1,
+    "cash": 10000.0,
+    "commission_rate": 0.001,
+    "end_at": null,
+    "slippage_bps": 2.0,
+    "spread_bps": 5.0,
+    "start_at": null,
+    "train_fraction": 0.7
+  },
+  "schema_version": "1.0",
+  "source_sha256": "a8b7cc0e6b62ca2cf63e58fd9d26bc4ee5047ba26841b5f4ec9fe30d213e66a4",
+  "strategy": {
+    "adx_period": 14,
+    "atr_period": 14,
+    "channel_period": 20,
+    "fast_period": 50,
+    "higher_timeframe_hours": 24,
+    "maximum_atr_percent": 3.0,
+    "minimum_adx": 20.0,
+    "name": "adaptive_pullback",
+    "pullback_atr": 0.5,
+    "pullback_period": 20,
+    "require_retest": true,
+    "retest_atr": 0.25,
+    "retest_bars": 5,
+    "rsi_period": 14,
+    "rsi_threshold": 50.0,
+    "slope_period": 20,
+    "slow_period": 200,
+    "stop_atr": 2.0,
+    "trail_atr": 3.0,
+    "volume_multiplier": 1.0,
+    "volume_period": 20
+  },
+  "synthetic": true,
+  "tests_passed": 462,
+  "unused_development_bars": 0,
+  "walk_forward_settings": {
+    "final_holdout_bars": 200,
+    "initial_history_bars": 500,
+    "test_bars": 100
+  },
+  "windows": [
+    {
+      "baseline_trade_count": 1,
+      "flat_at_end": true,
+      "history_bars": 500,
+      "kind": "development",
+      "last_bar_close": "2021-08-22T00:00:00+00:00",
+      "signal_start": "2021-05-15T00:00:00+00:00",
+      "strategy_trade_count": 1,
+      "test_bars": 100
+    },
+    {
+      "baseline_trade_count": 1,
+      "flat_at_end": true,
+      "history_bars": 600,
+      "kind": "development",
+      "last_bar_close": "2021-11-30T00:00:00+00:00",
+      "signal_start": "2021-08-23T00:00:00+00:00",
+      "strategy_trade_count": 1,
+      "test_bars": 100
+    },
+    {
+      "baseline_trade_count": 1,
+      "flat_at_end": true,
+      "history_bars": 700,
+      "kind": "development",
+      "last_bar_close": "2022-03-10T00:00:00+00:00",
+      "signal_start": "2021-12-01T00:00:00+00:00",
+      "strategy_trade_count": 1,
+      "test_bars": 100
+    },
+    {
+      "baseline_trade_count": 1,
+      "flat_at_end": true,
+      "history_bars": 800,
+      "kind": "final_holdout",
+      "last_bar_close": "2022-09-26T00:00:00+00:00",
+      "signal_start": "2022-03-11T00:00:00+00:00",
+      "strategy_trade_count": 2,
+      "test_bars": 200
+    }
+  ]
+}

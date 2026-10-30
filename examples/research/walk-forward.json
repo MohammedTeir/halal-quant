@@ -1,0 +1,5 @@
+{
+  "initial_history_bars": 500,
+  "test_bars": 100,
+  "final_holdout_bars": 200
+}

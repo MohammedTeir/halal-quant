@@ -28,7 +28,7 @@ Milestone 6 remains an early single-instrument research prototype.
 [Milestone 5 now has a stored controls workflow](docs/milestone-5-operations.md): versioned review/policy/loss state, read-only broker capture, serialized research reservations and server decision revalidation. Qualified review and real cash/custody contract proofs remain required; execution is disabled.
 Milestones 7–8 have not started; optional live integration (Milestone 9) is disabled.
 
-The full suite has **459 passing tests**, including research, data integrity,
+The full suite has **462 passing tests**, including research, data integrity,
 advisory-output security and deterministic decision checks. All three
 default strategies and cost-matched buy-and-hold baselines execute on synthetic
 fixtures, finish flat, and reproduce reports byte-for-byte. These are software

@@ -27,6 +27,7 @@ read [milestones](milestones.md) for implementation status and acceptance eviden
 | [Gemini backend](gemini.md) | Project key/model setup, structured inference, durable replay, cost behavior and mocked acceptance |
 | [Intelligence and decisions](intelligence-decisions.md) | Advisory output contracts, evidence grounding, event policies, gate traces and missing authorities |
 | [Data ingestion](data-ingestion.md) | Versioned facts, receipt/publication timing, freshness, split audits and remaining provider work |
+| [Walk-forward research](walk-forward-research.md) | Fixed parameters, disjoint chronological tests and separate final holdout |
 | [Python research](python-research.md) | Primary strategy workflow, CSV contracts, costs, reproducible reports and limitations |
 | [Strategy specifications](strategy-specs.md) | Strategy defaults, entry/exit behavior and deferred gates |
 | [Compliance policy](compliance-policy.md) | Required screening and transaction rules; implementation status |

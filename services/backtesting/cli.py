@@ -28,6 +28,11 @@ def main():
     parser.add_argument(
         "--run-config", type=Path, help="RunConfig JSON; costs, split and allocation"
     )
+    parser.add_argument(
+        "--walk-forward-config",
+        type=Path,
+        help="Fixed-parameter chronological validation partition JSON",
+    )
     parser.add_argument("--output", required=True, type=Path)
     args = parser.parse_args()
     if bool(args.benchmark_csv) != bool(args.benchmark_metadata):
@@ -51,7 +56,13 @@ def main():
         benchmark = (
             load_csv(args.benchmark_csv, args.benchmark_metadata) if args.benchmark_csv else None
         )
-        report = research(dataset, config, settings, benchmark)
+        if args.walk_forward_config:
+            from services.backtesting.walk_forward import WalkForwardConfig, walk_forward
+
+            plan = WalkForwardConfig.model_validate_json(args.walk_forward_config.read_text())
+            report = walk_forward(dataset, config, settings, plan, benchmark)
+        else:
+            report = research(dataset, config, settings, benchmark)
     except (ValueError, OSError) as error:
         parser.error(str(error))
     args.output.parent.mkdir(parents=True, exist_ok=True)
