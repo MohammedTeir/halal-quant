@@ -50,8 +50,10 @@ cd /root/halal-quant
 .venv/bin/python -m services.operations.backup --run
 ```
 
-The PostgreSQL client must be at least as new as your server. A version mismatch
-is reported without connection credentials; install the matching/newer official
+Use PostgreSQL clients matching your server major version for this same-version
+restore test. The runner automatically selects matching Debian binaries under
+`/usr/lib/postgresql/VERSION/bin` if installed. A version mismatch
+is reported without connection credentials; install the matching official
 PostgreSQL client before retrying. The operator role must have permission to
 create a temporary database in the same PostgreSQL project/branch.
 

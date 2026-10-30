@@ -125,11 +125,23 @@ def backup_and_verify(url, output_dir):
                 connection.begin(),
             ):
                 connection.execute(text("SET TRANSACTION READ ONLY"))
+                server_major = int(connection.scalar(text("SHOW server_version_num"))) // 10000
+                binaries = {}
+                for program in ("pg_dump", "pg_restore"):
+                    packaged = Path(f"/usr/lib/postgresql/{server_major}/bin") / program
+                    binary = str(packaged) if packaged.is_file() else program
+                    version = command([binary, "--version"], env, program + " version")
+                    match = re.search(r"(\d+)\.", version)
+                    if match is None or int(match.group(1)) != server_major:
+                        raise BackupFailure(
+                            f"Install postgresql-client-{server_major} to match this server for restore verification"
+                        )
+                    binaries[program] = binary
                 snapshot = connection.scalar(text("SELECT pg_export_snapshot()"))
                 counts = row_counts(connection)
                 command(
                     [
-                        "pg_dump",
+                        binaries["pg_dump"],
                         "--format=custom",
                         "--no-owner",
                         "--no-acl",
@@ -163,7 +175,7 @@ def backup_and_verify(url, output_dir):
             restore_env = libpq_environment(url, database=restore_name)
             command(
                 [
-                    "pg_restore",
+                    binaries["pg_restore"],
                     "--dbname",
                     restore_name,
                     "--clean",
@@ -208,6 +220,7 @@ def backup_and_verify(url, output_dir):
         "private_key_file": str(key),
         "encrypted_backup_sha256": checksum,
         "source_tables": len(counts),
+        "postgresql_major": server_major,
         "snapshot_row_counts_match": verified,
         "temporary_restore_database_removed": created,
         "source_database_restored_over": False,
