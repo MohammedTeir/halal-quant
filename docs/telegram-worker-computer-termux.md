@@ -202,3 +202,47 @@ service supervisor on an always-on computer/server. One approved setup delivery 
 `4`, one attempt). Ongoing hosting reliability remains unverified. Automated
 development tests sent no real email or Telegram messages; the live setup check
 was a separate, explicit operator action.
+
+## Update and run an existing supervised Termux installation
+
+Run from the main Termux `~ $` shell, not Debian. This is for the existing
+`/root/halal-quant` checkout, private `.env`, installed uv, and runit service;
+it is not a fresh-phone installation. Initial service installation is documented
+in [operational acceptance](milestone-7-operational-acceptance.md).
+
+```sh
+proot-distro login debian -- bash -lc 'cd /root/halal-quant && git pull --ff-only' &&
+proot-distro login debian -- cat /root/halal-quant/infra/termux/update-worker.sh > "$TMPDIR/halal-update-worker.sh" &&
+bash "$TMPDIR/halal-update-worker.sh"
+```
+
+The script uses explicit service paths, stops supervised restarts, forwards TERM
+to the managed proot wrapper's Python worker child when needed, and waits up to
+30 seconds for shutdown. It never force-kills unrelated processes. It then pulls
+main, syncs frozen production dependencies, performs the read-only bot check,
+and starts the service. Failed shutdown or update stops the procedure before
+starting another worker. Resolve the printed error before retrying; an update
+failure can leave the service stopped.
+
+Startup waits up to 90 seconds for a delivery-mode heartbeat with a start timestamp
+from this restart, then observes activity for 60 seconds. A stale heartbeat from
+the previous process is not accepted as a successful restart. The wait can make
+the whole procedure longer than one minute. No additional setup/test messages
+are created, but normal delivery can send existing queued notifications to enabled
+destinations. Do not also launch a tmux polling worker.
+
+To inspect the service or its log:
+
+```sh
+sv status "$PREFIX/var/service/halal-quant"
+tail -n 20 "$PREFIX/var/log/sv/halal-quant/current"
+```
+
+Operator-provided acceptance on 2026-10-31 confirmed live account checks with
+fixture cleanup, four private notification cases, one received group setup
+message, PostgreSQL 18 encrypted backup with matching row counts across 22 tables
+and removal of the isolated restore database, and a 60-second delivery heartbeat
+observation (five samples, restart observed). These are operator-reported results,
+not direct access by the development environment. The newer reusable update
+script is syntax-checked but still needs an operator run. Off-device backup and
+separate private key storage remain unconfirmed; Android can still stop Termux.
