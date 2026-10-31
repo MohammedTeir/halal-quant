@@ -613,9 +613,9 @@ def fill_order(session, account, body, actor, now, checksum):
         or not fresh(q, now, config.policy.quote_max_age_seconds)
     ):
         raise ValueError("Matching fresh quote required")
-    if aware(datetime.fromisoformat(q.payload["observed_at"])) < aware(order.created_at) or aware(
+    if aware(datetime.fromisoformat(q.payload["observed_at"])) <= aware(order.created_at) or aware(
         q.created_at
-    ) < aware(order.created_at):
+    ) <= aware(order.created_at):
         raise ValueError("Fills require a quote observed and received after order submission")
     if current_quote(session, account.id, order.request["symbol"]).id != q.id:
         raise ValueError("Latest quote required")

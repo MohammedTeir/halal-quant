@@ -17,3 +17,4 @@
 #account-settings button {margin:6px}
 #settings-message {overflow-wrap:anywhere;white-space:pre-wrap}
 #legacy-access {margin:12px 0}
+#paper-account{max-width:100%;background:var(--surface);color:var(--text);border:1px solid var(--line);padding:8px;border-radius:7px}#paper-summary strong{overflow-wrap:anywhere}

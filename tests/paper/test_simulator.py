@@ -85,6 +85,8 @@ def test_cash_ownership_partial_fills_settlement_and_restart(sim):
     submitted = buy(sim, quantity=10)
     assert "order_id" in submitted, submitted
     order = submitted["order_id"]
+    with pytest.raises(ValueError, match="after order"):
+        fill(sim, order, engine.key("paper-test", "q1"), "pre-order-quote", 1)
     assert state(sim)["available_cash"] == "99000"
     q = quote(sim, "q2", 1, size=4)
     result = fill(sim, order, q)
