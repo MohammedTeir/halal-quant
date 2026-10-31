@@ -580,7 +580,11 @@
     "unknowns_replaced_with_zero": false,
     "reviewer_impersonation_or_permission_bypass": false,
     "licensing_or_login_controls_bypassed": false,
-    "combined_screening_tests_passed": 12
+    "combined_screening_tests_passed": 12,
+    "hosted_postgresql_tests_passed": 679,
+    "ci_url": "https://github.com/MohammedTeir/halal-quant/actions/runs/41228609105",
+    "ci_conclusion": "success",
+    "source_commit": "42520dcd7722ce767c054291db44e5a4cd108bea"
   },
   "historical_cap_endpoint": {
     "provider": "Finnhub",
@@ -593,5 +597,6 @@
     "scope": "Configured development credential was rejected for this endpoint. This does not prove the phone credential has the same entitlement; no paid plan was purchased or access control bypassed."
   },
   "approval_requested_by_user": true,
-  "approval_decision": "WITHHELD_INSUFFICIENT_AND_ADVERSE_EVIDENCE"
+  "approval_decision": "WITHHELD_INSUFFICIENT_AND_ADVERSE_EVIDENCE",
+  "denominator_proposal_scope": "The 365-day window is an unapproved research proposal, not a mandatory milestone acceptance term. An evidenced qualified methodology/report may define a different denominator through normal review; no definition was silently substituted."
 }

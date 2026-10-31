@@ -49,3 +49,7 @@ A public compliant badge is useful supporting evidence but does not fill `Financ
 Twelve focused screening tests pass, including six new calculation tests covering overlapping debt totals, discrepancies/missing data, date/currency scope, partial gross income, net-income exclusions and missing/duplicate/nonfinite daily-cap samples. Lint and formatting pass.
 
 The [dated evidence report](../reports/milestone8-approval-evidence-2026-10-31.json) records public page URLs, receipt hashes, labels and partial calculations. Raw public-page snapshots remain under ignored private `data/`. No real broker orders, emails or Telegram messages were sent. No production approval, account/protocol mutation or earlier milestone acceptance was changed.
+
+The 365-day averaging definition was an unapproved research proposal, not an already accepted milestone requirement or an independently verified AAOIFI rule. A qualified provider's documented methodology and full screening report may supply the reviewed denominator/financial inputs through the normal methodology review. Any different definition must be explicit; the current proposal is not silently changed and public labels alone still do not fill quantitative fields.
+
+[Hosted CI](https://github.com/MohammedTeir/halal-quant/actions/runs/41228609105) passed **679 tests** on PostgreSQL for source `42520dc`, including encrypted backup/restore and the existing offline acceptance steps. This validates software regressions; it does not grant campaign approval.
