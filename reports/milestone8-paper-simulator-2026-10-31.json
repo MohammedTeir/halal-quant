@@ -18,7 +18,8 @@
       "passed": 583,
       "skipped": 2,
       "skip_scope": "PostgreSQL-only admin bootstrap and real encrypted dump/restore; hosted CI required",
-      "warning": "Existing Starlette/httpx TestClient deprecation"
+      "warning": "Existing Starlette/httpx TestClient deprecation",
+      "scope": "Local checkpoint: 583 passed/two PostgreSQL checks skipped. Final quote-time boundary also passed all 44 focused tests; final hosted source passed all 585 tests."
     },
     "browser": {
       "english": true,
@@ -88,14 +89,40 @@
     "note": "Injected synthetic time and prices; not elapsed forward testing, representative market history, compliance approval or profitability evidence."
   },
   "hosted_ci": {
-    "status": "PENDING_PUSH"
+    "status": "PASSED",
+    "source_commit": "28c148eb04412fed77be2e7a28c1bde773ce6b4b",
+    "run": "https://github.com/MohammedTeir/halal-quant/actions/runs/41185718212",
+    "postgresql_tests_passed": 585,
+    "encrypted_backup_and_restore": "PASSED on synthetic PostgreSQL 16",
+    "paper_smoke": "PASSED",
+    "other_offline_research_portfolio_gemini_evaluation_steps": "PASSED"
   },
   "deployment": {
     "paper_writes_default_enabled": false,
     "server_configuration_changed": false,
     "real_broker_orders_submitted": 0,
     "real_telegram_messages_sent": 0,
-    "new_schema_operator_deployment_acceptance": "NOT_PERFORMED"
+    "new_schema_operator_deployment_acceptance": "NOT_PERFORMED",
+    "public_read_only_checks": [
+      {
+        "url": "https://halal-quant.onrender.com/health/ready",
+        "status": 200
+      },
+      {
+        "url": "https://halal-quant.vercel.app/health/ready",
+        "status": 200
+      },
+      {
+        "url": "https://halal-quant.vercel.app/api/v1/paper/accounts",
+        "status": 401
+      },
+      {
+        "url": "https://halal-quant.vercel.app/dashboard",
+        "status": 200,
+        "paper_panel_present": true
+      }
+    ],
+    "scope": "Public readiness, dashboard panel presence and paper-route authentication boundary observed. Does not certify authenticated simulator configuration or exact deployed Git SHA."
   },
   "limits": [
     "Synthetic elapsed time/prices are not actual stable forward testing or performance evidence.",

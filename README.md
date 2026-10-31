@@ -45,7 +45,9 @@ its push. See [source/label review](docs/source-and-label-review.md),
 
 The [Milestone 8 simulator checkpoint](reports/milestone8-paper-simulator-2026-10-31.json)
 records **583 local tests passed, two PostgreSQL-only checks skipped**, 44 simulator
-tests, and English/Arabic paper-dashboard browser acceptance.
+tests, and English/Arabic paper-dashboard browser acceptance. Final simulator
+source also passed **585 hosted PostgreSQL tests**; see the linked report for CI
+provenance and remaining forward-test requirements.
 
 The [first-four completion checklist](docs/first-four-acceptance.md) records the remaining
 real-provider, coverage and independent model-quality gates. Setup commands are in

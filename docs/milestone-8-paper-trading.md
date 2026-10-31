@@ -146,3 +146,20 @@ the bounded simulator stage only. Still required:
 
 Milestone 9 remains disabled. Earlier milestone approvals are not inferred from
 this simulator, and no source/compliance/performance gate is marked complete.
+
+## Verified implementation checkpoint
+
+[Final source CI](https://github.com/MohammedTeir/halal-quant/actions/runs/41185718212)
+passed **585 tests** on PostgreSQL for source `28c148e`, including encrypted
+backup/isolated restore and all **44 paper tests**. The local regression checkpoint
+passed 583 with the two PostgreSQL-only checks skipped; focused timing-boundary
+tests, lint/format, deployment tests and the English/Arabic/mobile Chromium smoke
+also pass. The hosted accelerated paper smoke and existing offline research,
+portfolio, Gemini-mock and evaluation steps passed.
+
+Public GET checks observed ready responses from Render and the Vercel proxy, the
+new dashboard panel, and 401 for an unauthenticated paper-account request. These
+do not verify authenticated operator simulation on the deployment or establish
+its exact Git SHA. No server flag was changed, and no new real email/Telegram
+messages or external broker orders were submitted by this work. See the
+[dated report](../reports/milestone8-paper-simulator-2026-10-31.json).
