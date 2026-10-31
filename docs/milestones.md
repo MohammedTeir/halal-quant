@@ -12,7 +12,7 @@ Implementation acceptance and independent release sign-off are tracked separatel
 | 4 | AI intelligence and decisions | Implementation acceptance passes; independent quality sign-off incomplete | Strict schemas/evidence/targets, durable Gemini jobs, event policies and deterministic gates; v5 passes 16/16 exposed real-primary/adversarial regression and 8/8 fresh blind pilot. Separate AI technical review now completed with conditional research-only acceptance; publisher identity, gold session binding and representative policy/calibration conditions remain open before deployment. |
 | 5 | Compliance and risk | Software implemented and tested for bounded research; full operational sign-off pending | Versioned role attestations, stock-ratio rules, read-only broker/quote capture, loss/peak reconciliation, serialized research holds/kill switch and linked decision revalidation pass. [Current workflow](milestone-5-operations.md). Named qualified review and real cash/settlement/lending/custody proofs remain unprovided; real orders are deferred. |
 | 6 | Research and backtesting | Portfolio/replay/optimization software implemented; performance acceptance pending | [Current research workflow](milestone-6-research.md): shared-cash portfolio, PIT compliance/news/macro replay, training-only walk-forward selection, separate portfolio holdout periods with cost stress, technical/buy-and-hold baselines, liquidity proxy, seeded Monte Carlo and explicit gates. Actual 2025 gold diagnostic is blocked by default warm-up history and unavailable volume. Verified representative history and successful untouched out-of-sample performance remain required; broker reconciliation belongs to milestone 8. |
-| 7 | Dashboard and Telegram | Software and reported live operational checks pass; evidence limits retained | [2026-10-31 operator evidence](../reports/milestone7-operator-acceptance-2026-10-31.json): deployed accounts/roles/revocation, four private SENT cases, received group delivery, encrypted PostgreSQL 18 isolated restore, off-device backup/separate key confirmation, and supervised restart with 60 seconds of activity. Dashboard screenshots show delivery history; complete history export and explicit Arabic visual receipt remain unprovided. Android uptime is limited; earlier milestone gates remain unchanged. |
+| 7 | Dashboard and Telegram | Complete for the documented deployment; Android hosting limits retained | [2026-10-31 operator evidence](../reports/milestone7-operator-acceptance-2026-10-31.json): deployed accounts/roles/revocation, four private SENT cases, received group delivery, encrypted PostgreSQL 18 isolated restore, off-device backup/separate key confirmation, and supervised restart with 60 seconds of activity. Authenticated dashboard export confirms all four cases and private/group setup history; received Arabic text was supplied. Android uptime is limited; earlier milestone gates remain unchanged. |
 | 8 | Paper trading | Not started | Broker simulation, ledger, order lifecycle, reconciliation and stable forward test. |
 | 9 | Optional live broker integration | Disabled; not started | Compatible structure/broker, independent compliance review and explicit live-readiness approval. |
 
@@ -186,9 +186,11 @@ temporary restore database, and never restored over the source. The operator the
 confirmed the archive was copied off-device and its key saved separately. A
 supervised restart and 60-second observation passed with five heartbeat samples.
 
-Evidence is user-provided, not direct inspection of private systems. The complete
-dashboard summary export and explicit per-message/Arabic visual receipt were not
-supplied. No uninterrupted future uptime, unattended reboot, scheduled backup, or
+The operator subsequently supplied the authenticated dashboard summary, confirming
+all four cases, both setup histories, recent delivery activity and restart, plus
+the received Arabic test message text. Milestone 7 acceptance is complete for this
+documented deployment. Evidence is user-provided, not direct inspection of private
+systems. No uninterrupted future uptime, unattended reboot, scheduled backup, or
 provider PITR claim follows from these checks. Android can terminate Termux. Earlier
 milestone source, qualified review, custody and performance gates remain unchanged;
 this update does not authorize orders.

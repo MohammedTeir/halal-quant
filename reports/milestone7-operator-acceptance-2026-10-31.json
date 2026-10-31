@@ -1,6 +1,6 @@
 {
   "date": "2026-10-31",
-  "status": "OPERATOR_LIVE_RESULTS_RECORDED_WITH_LIMITS",
+  "status": "MILESTONE_7_ACCEPTANCE_COMPLETE_WITH_DOCUMENTED_HOSTING_LIMITS",
   "evidence_source": "Operator-provided CLI JSON, dashboard screenshots and explicit chat confirmations; no independent access to operator credentials, database, device or backup storage.",
   "accounts": {
     "status": "PASSED",
@@ -55,7 +55,9 @@
       }
     ],
     "source_trading_or_risk_records_created": 0,
-    "scope": "Transport/category/language test messages; not actual market events. Per-message recipient/Arabic visual confirmation not separately supplied."
+    "scope": "Transport/category/language tests, not actual market events. Operator supplied received English risk-stop and Arabic test message text; all four cases are confirmed in the authenticated dashboard summary.",
+    "arabic_received_text": "HALAL QUANT [اختبار قبول]: تم فحص تسليم التنبيه بالعربية. لم تُنشأ إشارة تداول أو أوامر أو تغييرات مخاطر.",
+    "arabic_receipt_operator_confirmed": true
   },
   "group": {
     "verified_destination_visible_in_dashboard": true,
@@ -73,8 +75,24 @@
       "Recent delivery-mode worker activity",
       "SENT entries for signal-ar, risk-stop-en and decision-en"
     ],
-    "sanitized_history_export_provided": false,
-    "scope": "Screenshot evidence, not a complete exported four-case history summary."
+    "sanitized_history_export_provided": true,
+    "scope": "Operator-supplied authenticated dashboard export confirms setup/private/group history, all four live cases, English interface and recent delivery worker/restart. Earlier screenshots also show enabled destinations.",
+    "summary": {
+      "authenticated": true,
+      "account_role": "admin",
+      "setup_history_sent": true,
+      "group_setup_history_sent": true,
+      "live_suite_cases_sent": [
+        "acceptance-v1:signal-ar",
+        "acceptance-v1:risk-stop-en",
+        "acceptance-v1:decision-en",
+        "acceptance-v1:signal-en"
+      ],
+      "worker_state": "RECENT",
+      "worker_mode": "delivery",
+      "restart_observed": true,
+      "interface_language": "en"
+    }
   },
   "backup": {
     "status": "PASSED",
@@ -100,9 +118,7 @@
     "supervisor": "Termux runit",
     "scope": "Successful bounded activity and controlled restart; not a forced-crash recovery test or future uptime certification."
   },
-  "outstanding_evidence": [
-    "Complete sanitized dashboard history export and explicit recipient/Arabic visual confirmation were not supplied; do not describe those as independently verified."
-  ],
+  "outstanding_evidence": [],
   "deployment_limits": [
     "Android can terminate the entire Termux app; runit cannot restart an OS-terminated app.",
     "No 24/7 uptime guarantee, unattended reboot acceptance or scheduled off-device backup evidence.",

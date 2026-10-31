@@ -104,4 +104,4 @@ incomplete. See [scope and remaining work](../docs/milestone-5-controls.md).
 - [Operator-confirmed private Telegram delivery](milestone7-telegram-delivery-2026-10-30.json): one approved setup message, Telegram SENT and recipient confirmation; ongoing operational acceptance remains pending.
 
 - [Historical operational readiness](milestone7-operational-readiness-2026-10-30.json): preparation checkpoint, superseded by the operator evidence below.
-- [Operator acceptance, 2026-10-31](milestone7-operator-acceptance-2026-10-31.json): live account checks, private/group delivery, encrypted isolated restore, confirmed off-device archive/separate key storage, dashboard screenshots and bounded supervised worker restart; remaining evidence and hosting limits are explicit.
+- [Operator acceptance, 2026-10-31](milestone7-operator-acceptance-2026-10-31.json): live account checks, private/group delivery, encrypted isolated restore, confirmed off-device archive/separate key storage, dashboard screenshots/export, received Arabic text and bounded supervised worker restart; Milestone 7 acceptance complete with documented hosting limits.

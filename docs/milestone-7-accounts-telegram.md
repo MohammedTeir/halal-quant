@@ -202,9 +202,10 @@ separate key storage were subsequently confirmed. Supervised restart and a
 See the [current operator report](../reports/milestone7-operator-acceptance-2026-10-31.json)
 and [operational runbook](milestone-7-operational-acceptance.md).
 
-**Evidence limits:** these are operator-provided outputs and confirmations.
-Complete dashboard summary export and explicit Arabic visual receipt were not
-supplied. Android can terminate Termux; bounded activity does not certify future
+**Acceptance complete:** the operator also supplied the authenticated dashboard
+summary showing all four cases and private/group setup history, and the received
+Arabic message text. These are operator-provided outputs and confirmations.
+Android can terminate Termux; bounded activity does not certify future
 uptime. Scheduled backups and Neon PITR retention are not evidenced.
 
 Earlier milestone evidence and open gates remain in [milestones](milestones.md),

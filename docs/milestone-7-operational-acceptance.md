@@ -4,8 +4,10 @@ The [2026-10-31 operator report](../reports/milestone7-operator-acceptance-2026-
 records actual passing deployed account checks, four private SENT cases, received
 group delivery, encrypted PostgreSQL 18 isolated restore with 22 matching tables,
 confirmed off-device archive/separate key storage, and a supervised restart with
-60 seconds of observed activity. Dashboard screenshots show delivery history;
-complete summary export and explicit Arabic visual receipt were not provided.
+60 seconds of observed activity. The operator subsequently supplied a passing
+authenticated dashboard summary covering all four cases and both setup histories,
+and the received Arabic test text. Milestone 7 acceptance is complete for the
+documented deployment.
 These user-provided results supersede the earlier pending list. Commands below
 remain reproducible procedures, not requests to repeat completed live sends.
 Android uptime, scheduled backups and provider PITR remain outside the evidence.
@@ -220,7 +222,7 @@ Final evidence must distinguish:
 - An encrypted restore-tested archive from its off-device storage/retention.
 
 Operator outputs and the confirmed group have now been recorded in the dated
-report. Missing visual/export evidence remains explicitly identified. No earlier milestone approval,
+report, including dashboard export and received Arabic text. No earlier milestone approval,
 compliance/source/performance gate, or real-order authority is granted here.
 
 
