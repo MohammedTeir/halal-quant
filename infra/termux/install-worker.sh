@@ -13,7 +13,9 @@ if [ -d "$service" ]; then
   echo 'The managed service already exists. Use sv up halal-quant or sv restart halal-quant.'
   exit 0
 fi
-if pgrep -f 'python.*services[.]notifications[.]worker' >/dev/null; then
+# Match the Python executable at the start of argv, not a tmux launcher
+# whose arguments contain the original worker command.
+if pgrep -f '^([^[:space:]]*/)?python([0-9]+([.][0-9]+)*)?[[:space:]]+-m[[:space:]]+services[.]notifications[.]worker([[:space:]]|$)' >/dev/null; then
   echo 'Stop the old worker with Ctrl+C before installing the supervised worker.'
   exit 1
 fi
