@@ -5,6 +5,7 @@ import getpass
 import hashlib
 import json
 import os
+import sys
 import warnings
 from datetime import timedelta
 from decimal import Decimal
@@ -176,6 +177,29 @@ def configure(path, *, prompt=hidden):
     get_settings.cache_clear()
 
 
+class SubmissionError(ValueError):
+    """Static actionable message, without remote response bodies or credentials."""
+
+
+def check_response(response, stage):
+    if 200 <= response.status_code < 300:
+        return
+    hints = {
+        401: "Check the operator email/password and that the invitation was accepted.",
+        403: "Check the operator role and session/CSRF access.",
+        409: "An immutable account/run ID conflicts. Preserve drafts; do not overwrite existing records.",
+        422: "Enter the full operator email and password; ensure the invitation was accepted."
+        if stage == "login"
+        else "The server rejected the proposal contract. Preserve the draft for diagnosis.",
+        429: "Login or API rate limit reached. Wait before retrying.",
+        503: "Check PAPER_TRADING_ENABLED and PAPER_FORWARD_ENABLED on Render, redeploy, and verify database readiness.",
+    }
+    raise SubmissionError(
+        f"{stage.upper()}_HTTP_{response.status_code}: "
+        + hints.get(response.status_code, "Check deployment availability and current API version.")
+    )
+
+
 def submit(folder, origin, email, password, *, transport=None):
     """Use ordinary operator auth/CSRF; never reviewer endpoints or order routes."""
     parsed = urlsplit(origin)
@@ -193,12 +217,14 @@ def submit(folder, origin, email, password, *, transport=None):
         base_url=origin.rstrip("/"), timeout=30, follow_redirects=False, transport=transport
     ) as client:
         response = client.post("/api/v1/auth/login", json={"email": email, "password": password})
-        response.raise_for_status()
+        check_response(response, "login")
         try:
             identity = response.json()
             headers = {"X-CSRF-Token": identity["csrf"], "Origin": origin.rstrip("/")}
             if identity["user"]["role"] != "operator":
-                raise ValueError("An operator login is required; administrator rights are separate")
+                raise SubmissionError(
+                    "OPERATOR_ROLE_REQUIRED: An operator login is required; administrator rights are separate"
+                )
             results = []
             for filename, route in (("account.json", "accounts"), ("protocol.json", "runs")):
                 response = client.post(
@@ -206,7 +232,7 @@ def submit(folder, origin, email, password, *, transport=None):
                     json=json.loads((folder / filename).read_text()),
                     headers=headers,
                 )
-                response.raise_for_status()
+                check_response(response, route)
                 result = response.json()
                 if (
                     route == "accounts"
@@ -256,12 +282,37 @@ def main():
             settings = get_settings()
             if "database_url" not in settings.model_fields_set:
                 raise ValueError("Explicit private database configuration required")
-            summary["sources"] = single_poll(account, ROOT / "data/paper-sources")
+            print(
+                "Polling sources sequentially; this can take several minutes. Retry submission with --submit alone to skip these polls.",
+                file=sys.stderr,
+                flush=True,
+            )
+            summary["sources"] = single_poll(
+                account,
+                ROOT / "data/paper-sources",
+                progress=lambda message: print(message, file=sys.stderr, flush=True),
+            )
         if args.submit:
             email = input("Operator email: ").strip()
             password = hidden("Operator password (hidden): ")
             summary["proposal"] = submit(args.output, args.origin, email, password)
         print(json.dumps(summary))
+    except SubmissionError as error:
+        parser.exit(
+            1,
+            str(error)
+            + "\nRetry with --submit only; source polling does not need to repeat. No approval was created.\n",
+        )
+    except httpx.RequestError:
+        parser.exit(
+            1,
+            "NETWORK_UNAVAILABLE: The API request timed out or could not connect. Check Render readiness, then retry with --submit only. No automatic retry was sent.\n",
+        )
+    except KeyboardInterrupt:
+        parser.exit(
+            130,
+            "Preparation interrupted. Preserve generated files; retry with --submit only if source polling already finished.\n",
+        )
     except (ValueError, OSError, KeyError, EOFError, httpx.HTTPError):
         parser.exit(
             1,

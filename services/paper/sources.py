@@ -99,7 +99,7 @@ def execute(command, stop):
         return child.returncode == 0
 
 
-def poll(account, archive, stop, *, run=execute, now=None):
+def poll(account, archive, stop, *, run=execute, now=None, progress=None):
     now = now or utcnow()
     plan = jobs(account, now)
     if (
@@ -112,11 +112,15 @@ def poll(account, archive, stop, *, run=execute, now=None):
     folder = archive / (now.strftime("%Y%m%dT%H%M%SZ") + "-" + uuid.uuid4().hex[:12])
     folder.mkdir(parents=True, mode=0o700, exist_ok=False)
     results = []
-    for name, module, arguments in plan:
+    for index, (name, module, arguments) in enumerate(plan, 1):
         if stop.is_set():
             break
+        if progress:
+            progress(f"[{index}/{len(plan)}] {name}: reading source and saving observations…")
         ok = run([sys.executable, "-m", module, *arguments, "--archive", str(folder / name)], stop)
         results.append({"source": name, "status": "IMPORTED" if ok else "FAILED"})
+        if progress:
+            progress(f"[{index}/{len(plan)}] {name}: {results[-1]['status']}")
     result = {
         "status": "OBSERVATIONS_IMPORTED"
         if len(results) == len(plan) and all(r["status"] == "IMPORTED" for r in results)
@@ -136,12 +140,12 @@ def poll(account, archive, stop, *, run=execute, now=None):
     return result
 
 
-def single_poll(account, archive, *, stop=None):
+def single_poll(account, archive, *, stop=None, progress=None):
     archive = archive.resolve()
     archive.mkdir(parents=True, exist_ok=True, mode=0o700)
     with (archive / "worker.lock").open("a") as lock:
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
-        return poll(account, archive, stop or threading.Event())
+        return poll(account, archive, stop or threading.Event(), progress=progress)
 
 
 def main():

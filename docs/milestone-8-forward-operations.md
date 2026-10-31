@@ -291,3 +291,13 @@ outcome is preserved in the [connectivity report](../reports/milestone8-source-c
 No adjustment to the query window, false empty poll or coverage approval was used
 to hide this mismatch. Prospective corporate-action completeness remains unproven.
 No real emails/Telegram messages or external orders were sent.
+
+### Fast retry after a submission failure
+
+The combined command runs 32 sequential acquisitions before login, which can take several minutes on a phone/remote database. Progress now identifies each source. If login or proposal submission fails after polling, keep the hash-checked generated files and retry only submission:
+
+```sh
+proot-distro login debian -- bash -lc 'cd /root/halal-quant && git pull --ff-only && .venv/bin/python -m services.paper.prepare --submit'
+```
+
+This skips source polling and source configuration. Use the Risk operator account's actual email/password; input is hidden for passwords. Errors now identify the login/account/protocol stage and HTTP status, with static guidance for credentials, role, Render flags, immutable ID conflicts and rate limits. Response bodies and credentials are never printed. HTTP/network failures are not automatically retried. Preserve any partially created account/protocol; exact retries are idempotent. Source polling can be resumed separately once submission works.

@@ -233,3 +233,41 @@ def test_shutdown_does_not_start_remaining_source_jobs(tmp_path):
     result = sources.poll(account, tmp_path, stop, run=run, now=NOW)
     assert result["status"] == "INCOMPLETE"
     assert len(calls) == 1
+
+
+@pytest.mark.parametrize("status", [401, 403, 409, 422, 429, 503])
+def test_submission_errors_explain_http_status_without_echoing_response_secrets(status):
+    response = httpx.Response(status, text="PRIVATE-RESPONSE-SECRET")
+    with pytest.raises(prepare.SubmissionError) as caught:
+        prepare.check_response(response, "accounts")
+    assert f"ACCOUNTS_HTTP_{status}" in str(caught.value)
+    assert "PRIVATE-RESPONSE-SECRET" not in str(caught.value)
+
+
+def test_poll_reports_progress_without_provider_responses(tmp_path):
+    messages = []
+    account = OpenAccount(account_id="a", mode="forward", universe={"AAPL": "technology"})
+    result = sources.poll(
+        account, tmp_path, threading.Event(), run=lambda *_: True, now=NOW, progress=messages.append
+    )
+    assert result["status"] == "OBSERVATIONS_IMPORTED"
+    assert messages[0].startswith("[1/6] bls:")
+    assert messages[-1] == "[6/6] actions-AAPL: IMPORTED"
+
+
+def test_submit_only_retry_does_not_repeat_polls_or_reconfigure_sources(
+    tmp_path, monkeypatch, capsys
+):
+    import sys
+
+    monkeypatch.setattr(sys, "argv", ["prepare", "--output", str(tmp_path), "--submit"])
+    monkeypatch.setattr(prepare, "prepare", lambda *_: {"account.json": "hash"})
+    monkeypatch.setattr(prepare, "configure", lambda *_: pytest.fail("Must not reconfigure"))
+    monkeypatch.setattr(prepare, "single_poll", lambda *_: pytest.fail("Must not repoll"))
+    monkeypatch.setattr("builtins.input", lambda *_: "op@example.test")
+    monkeypatch.setattr(prepare, "hidden", lambda *_: "PRIVATE-PASSWORD")
+    monkeypatch.setattr(prepare, "submit", lambda *_: {"status": "PROPOSED_PENDING_REVIEW"})
+    prepare.main()
+    output = capsys.readouterr().out
+    assert "PROPOSED_PENDING_REVIEW" in output
+    assert "PRIVATE-PASSWORD" not in output
