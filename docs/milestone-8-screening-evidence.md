@@ -33,3 +33,7 @@ Keep the campaign pending until these facts and reviews exist. Assigning the rev
 The safe operational activity available while review is pending is the read-only source acquisition workflow documented in the [forward runbook](milestone-8-forward-operations.md#automated-preparation-and-source-polling). Those source polls do not count as an accepted paper campaign or its required market sessions.
 
 This checkpoint performed no production database mutations, external broker orders, emails or Telegram sends.
+
+## Primary-source review follow-up
+
+The [SEC review](milestone-8-primary-screening-review.md) checks 40 historical facts, identifies nine newer filings and inventories 81 selected primary disclosures. It proposes a defined averaging window for review while preserving all missing evidence and approval gates.

@@ -1,0 +1,1210 @@
+{
+  "observed_at": "2026-10-31T17:53:07.455798+00:00",
+  "status": "TECHNICAL_EVIDENCE_REVIEW_ONLY",
+  "items": [
+    {
+      "symbol": "AAPL",
+      "status": "NOT_APPROVED",
+      "source_sha256": "cd549561fde7919edea7b50965c8a59228fca89f0ee548d372a46e1c923a9c80",
+      "cik": "0000320193",
+      "reviewed_filing": "0000320193-25-000079",
+      "sec_status": "OBSERVED",
+      "submissions_sha256": "2a1c62401f90039b5f3c10a80e3c4bb7f112c6e833ef0a163469f8b949396510",
+      "companyfacts_sha256": "73a86c6aedc31f77cac2ea4df5f80f0b3bd7e6eb58bb4e01444fbedf3afb9c43",
+      "latest_sec_filing": {
+        "form": "10-Q",
+        "filingDate": "2026-07-31",
+        "reportDate": "2026-06-27",
+        "accessionNumber": "0000320193-26-000020",
+        "primaryDocument": "aapl-20260627.htm"
+      },
+      "newer_financial_filing_available": true,
+      "facts": [
+        {
+          "section": "bs",
+          "concept": "us-gaap_CashAndCashEquivalentsAtCarryingValue",
+          "unit": "usd",
+          "value": 35934000000.0,
+          "comparison": "EXACT_MATCH"
+        },
+        {
+          "section": "bs",
+          "concept": "us-gaap_MarketableSecuritiesCurrent",
+          "unit": "usd",
+          "value": 18763000000.0,
+          "comparison": "EXACT_MATCH"
+        },
+        {
+          "section": "bs",
+          "concept": "us-gaap_MarketableSecuritiesNoncurrent",
+          "unit": "usd",
+          "value": 77723000000.0,
+          "comparison": "EXACT_MATCH"
+        },
+        {
+          "section": "bs",
+          "concept": "us-gaap_CommercialPaper",
+          "unit": "usd",
+          "value": 7979000000,
+          "comparison": "EXACT_MATCH"
+        },
+        {
+          "section": "bs",
+          "concept": "us-gaap_LongTermDebtCurrent",
+          "unit": "usd",
+          "value": 12350000000.0,
+          "comparison": "EXACT_MATCH"
+        },
+        {
+          "section": "bs",
+          "concept": "us-gaap_LongTermDebtNoncurrent",
+          "unit": "usd",
+          "value": 78328000000.0,
+          "comparison": "EXACT_MATCH"
+        },
+        {
+          "section": "ic",
+          "concept": "us-gaap_RevenueFromContractWithCustomerExcludingAssessedTax",
+          "unit": "usd",
+          "value": 416161000000.0,
+          "comparison": "EXACT_MATCH"
+        }
+      ],
+      "unresolved": [
+        "Historical average market-cap denominator",
+        "Reviewed consolidated debt/investment mappings",
+        "Non-permissible revenue calculation",
+        "Business activity, purification and instrument evidence",
+        "Current reviewed approvals"
+      ],
+      "latest_primary_disclosures": [
+        {
+          "concept": "CashAndCashEquivalentsAtCarryingValue",
+          "value": "39544000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-06-27"
+        },
+        {
+          "concept": "CommercialPaper",
+          "value": "1997000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-06-27"
+        },
+        {
+          "concept": "LongTermDebt",
+          "value": "82300000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-06-27"
+        },
+        {
+          "concept": "LongTermDebtCurrent",
+          "value": "11007000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-06-27"
+        },
+        {
+          "concept": "LongTermDebtNoncurrent",
+          "value": "71340000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-06-27"
+        },
+        {
+          "concept": "MarketableSecuritiesCurrent",
+          "value": "22855000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-06-27"
+        },
+        {
+          "concept": "MarketableSecuritiesNoncurrent",
+          "value": "84118000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-06-27"
+        },
+        {
+          "concept": "NonoperatingIncomeExpense",
+          "value": "572000000",
+          "unit": "USD",
+          "start": "2026-03-29",
+          "end": "2026-06-27"
+        },
+        {
+          "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "value": "109417000000",
+          "unit": "USD",
+          "start": "2026-03-29",
+          "end": "2026-06-27"
+        }
+      ],
+      "aggregation_or_screening_performed": false
+    },
+    {
+      "symbol": "NVDA",
+      "status": "NOT_APPROVED",
+      "source_sha256": "9e6f7ba827cfa57ffa5476621cf45c78f8dbb7dc4e886299bd316e5b68057b5f",
+      "cik": "0001045810",
+      "reviewed_filing": "0001045810-26-000021",
+      "sec_status": "OBSERVED",
+      "submissions_sha256": "d0d8527d09b31831022a6367d05bbdd5f2d2b3eda55323fd3383395016b90aaa",
+      "companyfacts_sha256": "19ef503a5770f5660964b3c3aea6937579d9b359da344afe6a9adf59c63d26ff",
+      "latest_sec_filing": {
+        "form": "10-Q",
+        "filingDate": "2026-08-26",
+        "reportDate": "2026-07-26",
+        "accessionNumber": "0001045810-26-000075",
+        "primaryDocument": "nvda-20260726.htm"
+      },
+      "newer_financial_filing_available": true,
+      "facts": [
+        {
+          "section": "bs",
+          "concept": "us-gaap_CashAndCashEquivalentsAtCarryingValue",
+          "unit": "usd",
+          "value": 10605000000,
+          "comparison": "EXACT_MATCH"
+        },
+        {
+          "section": "bs",
+          "concept": "nvda_MarketableSecuritiesAndEquitySecuritiesFVNI",
+          "unit": "usd",
+          "value": 51951000000,
+          "comparison": "NOT_COVERED_BY_EXACT_SEC_FACT"
+        },
+        {
+          "section": "bs",
+          "concept": "us-gaap_DebtCurrent",
+          "unit": "usd",
+          "value": 999000000,
+          "comparison": "EXACT_MATCH"
+        },
+        {
+          "section": "bs",
+          "concept": "us-gaap_LongTermDebtNoncurrent",
+          "unit": "usd",
+          "value": 7469000000.0,
+          "comparison": "EXACT_MATCH"
+        },
+        {
+          "section": "ic",
+          "concept": "us-gaap_Revenues",
+          "unit": "usd",
+          "value": 215938000000.0,
+          "comparison": "EXACT_MATCH"
+        },
+        {
+          "section": "ic",
+          "concept": "us-gaap_InvestmentIncomeInterest",
+          "unit": "usd",
+          "value": 2300000000,
+          "comparison": "EXACT_MATCH"
+        }
+      ],
+      "unresolved": [
+        "Historical average market-cap denominator",
+        "Reviewed consolidated debt/investment mappings",
+        "Non-permissible revenue calculation",
+        "Business activity, purification and instrument evidence",
+        "Current reviewed approvals"
+      ],
+      "latest_primary_disclosures": [
+        {
+          "concept": "AvailableForSaleSecuritiesDebtSecurities",
+          "value": "46900000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-07-26"
+        },
+        {
+          "concept": "CashAndCashEquivalentsAtCarryingValue",
+          "value": "22443000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-07-26"
+        },
+        {
+          "concept": "InvestmentIncomeInterest",
+          "value": "496000000",
+          "unit": "USD",
+          "start": "2026-04-27",
+          "end": "2026-07-26"
+        },
+        {
+          "concept": "LongTermDebt",
+          "value": "33366000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-07-26"
+        },
+        {
+          "concept": "LongTermDebtCurrent",
+          "value": "1000000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-07-26"
+        },
+        {
+          "concept": "LongTermDebtNoncurrent",
+          "value": "32366000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-07-26"
+        },
+        {
+          "concept": "NonoperatingIncomeExpense",
+          "value": "7773000000",
+          "unit": "USD",
+          "start": "2026-04-27",
+          "end": "2026-07-26"
+        },
+        {
+          "concept": "Revenues",
+          "value": "96221000000",
+          "unit": "USD",
+          "start": "2026-04-27",
+          "end": "2026-07-26"
+        }
+      ],
+      "aggregation_or_screening_performed": false
+    },
+    {
+      "symbol": "MSFT",
+      "status": "NOT_APPROVED",
+      "source_sha256": "4e8d0b433107398686a7e3d1fc8fe7665d26de6a8fcb1aa3691996e73e5c984b",
+      "cik": "0000789019",
+      "reviewed_filing": "0001193125-26-323660",
+      "sec_status": "OBSERVED",
+      "submissions_sha256": "46f3d184653f44f040005c30746b50f6e6a3e93b6e08630d4b400a73a9f6738e",
+      "companyfacts_sha256": "464cc12cc4796c90a6a0c709eb4920788aa7d4d5eee8b44f2d11d7d44804ae37",
+      "latest_sec_filing": {
+        "form": "10-Q",
+        "filingDate": "2026-10-28",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001193125-26-436133",
+        "primaryDocument": "msft-20260930.htm"
+      },
+      "newer_financial_filing_available": true,
+      "facts": [
+        {
+          "section": "ic",
+          "concept": "us-gaap_RevenueFromContractWithCustomerExcludingAssessedTax",
+          "unit": "u_usd",
+          "value": 331839000000.0,
+          "comparison": "NOT_COVERED_BY_EXACT_SEC_FACT"
+        }
+      ],
+      "unresolved": [
+        "Historical average market-cap denominator",
+        "Reviewed consolidated debt/investment mappings",
+        "Non-permissible revenue calculation",
+        "Business activity, purification and instrument evidence",
+        "Current reviewed approvals"
+      ],
+      "latest_primary_disclosures": [
+        {
+          "concept": "AvailableForSaleSecuritiesDebtSecurities",
+          "value": "58894000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-09-30"
+        },
+        {
+          "concept": "CashAndCashEquivalentsAtCarryingValue",
+          "value": "20281000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-09-30"
+        },
+        {
+          "concept": "CashCashEquivalentsAndShortTermInvestments",
+          "value": "64509000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-09-30"
+        },
+        {
+          "concept": "DebtInstrumentCarryingAmount",
+          "value": "41269000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-09-30"
+        },
+        {
+          "concept": "InvestmentIncomeNet",
+          "value": "744000000",
+          "unit": "USD",
+          "start": "2026-07-01",
+          "end": "2026-09-30"
+        },
+        {
+          "concept": "LongTermDebt",
+          "value": "35481000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-09-30"
+        },
+        {
+          "concept": "LongTermDebtCurrent",
+          "value": "4391000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-09-30"
+        },
+        {
+          "concept": "LongTermDebtNoncurrent",
+          "value": "31090000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-09-30"
+        },
+        {
+          "concept": "LongTermInvestments",
+          "value": "37808000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-09-30"
+        },
+        {
+          "concept": "NonoperatingIncomeExpense",
+          "value": "38000000",
+          "unit": "USD",
+          "start": "2026-07-01",
+          "end": "2026-09-30"
+        },
+        {
+          "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "value": "92279000000",
+          "unit": "USD",
+          "start": "2026-07-01",
+          "end": "2026-09-30"
+        },
+        {
+          "concept": "ShortTermInvestments",
+          "value": "44228000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-09-30"
+        }
+      ],
+      "aggregation_or_screening_performed": false
+    },
+    {
+      "symbol": "GOOGL",
+      "status": "NOT_APPROVED",
+      "source_sha256": "ba7edc4d0b6b6a21f79b9cbe84f3c6f686be3536fb4116fc2cbae4b148d910f2",
+      "cik": "0001652044",
+      "reviewed_filing": "0001652044-26-000018",
+      "sec_status": "OBSERVED",
+      "submissions_sha256": "f511541380630b90a80ec59dd6a4c7f2e37b9c32ff1f6cfa60ec022fdbadbf11",
+      "companyfacts_sha256": "ec4a3095d634583925b5ea450db8a5ed974dc48f6f1b4f594022310bc78d4032",
+      "latest_sec_filing": {
+        "form": "10-Q",
+        "filingDate": "2026-10-29",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001652044-26-000084",
+        "primaryDocument": "goog-20260930.htm"
+      },
+      "newer_financial_filing_available": true,
+      "facts": [
+        {
+          "section": "bs",
+          "concept": "us-gaap_CashAndCashEquivalentsAtCarryingValue",
+          "unit": "usd",
+          "value": 30708000000,
+          "comparison": "EXACT_MATCH"
+        },
+        {
+          "section": "bs",
+          "concept": "us-gaap_MarketableSecuritiesCurrent",
+          "unit": "usd",
+          "value": 96135000000,
+          "comparison": "EXACT_MATCH"
+        },
+        {
+          "section": "bs",
+          "concept": "us-gaap_CashCashEquivalentsAndShortTermInvestments",
+          "unit": "usd",
+          "value": 126843000000,
+          "comparison": "EXACT_MATCH"
+        },
+        {
+          "section": "bs",
+          "concept": "us-gaap_LongTermDebtNoncurrent",
+          "unit": "usd",
+          "value": 46547000000.0,
+          "comparison": "EXACT_MATCH"
+        },
+        {
+          "section": "ic",
+          "concept": "us-gaap_Revenues",
+          "unit": "usd",
+          "value": 402836000000.0,
+          "comparison": "EXACT_MATCH"
+        }
+      ],
+      "unresolved": [
+        "Historical average market-cap denominator",
+        "Reviewed consolidated debt/investment mappings",
+        "Non-permissible revenue calculation",
+        "Business activity, purification and instrument evidence",
+        "Current reviewed approvals"
+      ],
+      "latest_primary_disclosures": [
+        {
+          "concept": "AvailableForSaleSecuritiesDebtSecurities",
+          "value": "118380000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-09-30"
+        },
+        {
+          "concept": "CashAndCashEquivalentsAtCarryingValue",
+          "value": "56334000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-09-30"
+        },
+        {
+          "concept": "CashCashEquivalentsAndShortTermInvestments",
+          "value": "265098000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-09-30"
+        },
+        {
+          "concept": "CommercialPaper",
+          "value": "0",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-09-30"
+        },
+        {
+          "concept": "LongTermDebtCurrent",
+          "value": "1016000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-09-30"
+        },
+        {
+          "concept": "LongTermDebtNoncurrent",
+          "value": "125102000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-09-30"
+        },
+        {
+          "concept": "MarketableSecuritiesCurrent",
+          "value": "208764000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-09-30"
+        },
+        {
+          "concept": "NonoperatingIncomeExpense",
+          "value": "-8221000000",
+          "unit": "USD",
+          "start": "2026-07-01",
+          "end": "2026-09-30"
+        },
+        {
+          "concept": "Revenues",
+          "value": "127577000000",
+          "unit": "USD",
+          "start": "2026-07-01",
+          "end": "2026-09-30"
+        },
+        {
+          "concept": "DebtInstrumentCarryingAmount",
+          "value": "127485000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-09-30"
+        }
+      ],
+      "aggregation_or_screening_performed": false
+    },
+    {
+      "symbol": "AMZN",
+      "status": "NOT_APPROVED",
+      "source_sha256": "e06631d512439b78ba1a84553adb680d58aa8f671c08a86a0dbeace3129cc06d",
+      "cik": "0001018724",
+      "reviewed_filing": "0001018724-26-000004",
+      "sec_status": "OBSERVED",
+      "submissions_sha256": "32d842f937f5a283afdff5b782324978f03e42a88fde0893446c231fc66ec79b",
+      "companyfacts_sha256": "acddb7c0a6973a1fd08372de3b292298a34eae7f42a7eedc4bdebd3ac659c8fd",
+      "latest_sec_filing": {
+        "form": "10-Q",
+        "filingDate": "2026-10-30",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001018724-26-000040",
+        "primaryDocument": "amzn-20260930.htm"
+      },
+      "newer_financial_filing_available": true,
+      "facts": [
+        {
+          "section": "bs",
+          "concept": "us-gaap_CashAndCashEquivalentsAtCarryingValue",
+          "unit": "usd",
+          "value": 86810000000.0,
+          "comparison": "EXACT_MATCH"
+        },
+        {
+          "section": "bs",
+          "concept": "us-gaap_MarketableSecuritiesCurrent",
+          "unit": "usd",
+          "value": 36219000000,
+          "comparison": "EXACT_MATCH"
+        },
+        {
+          "section": "bs",
+          "concept": "us-gaap_LongTermDebtNoncurrent",
+          "unit": "usd",
+          "value": 65648000000,
+          "comparison": "EXACT_MATCH"
+        },
+        {
+          "section": "ic",
+          "concept": "us-gaap_RevenueFromContractWithCustomerExcludingAssessedTax",
+          "unit": "usd",
+          "value": 716924000000.0,
+          "comparison": "EXACT_MATCH"
+        },
+        {
+          "section": "ic",
+          "concept": "us-gaap_InvestmentIncomeInterest",
+          "unit": "usd",
+          "value": 4381000000,
+          "comparison": "EXACT_MATCH"
+        }
+      ],
+      "unresolved": [
+        "Historical average market-cap denominator",
+        "Reviewed consolidated debt/investment mappings",
+        "Non-permissible revenue calculation",
+        "Business activity, purification and instrument evidence",
+        "Current reviewed approvals"
+      ],
+      "latest_primary_disclosures": [
+        {
+          "concept": "AvailableForSaleSecuritiesDebtSecurities",
+          "value": "146200000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-09-30"
+        },
+        {
+          "concept": "CashAndCashEquivalentsAtCarryingValue",
+          "value": "55783000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-09-30"
+        },
+        {
+          "concept": "DebtInstrumentCarryingAmount",
+          "value": "173125000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-09-30"
+        },
+        {
+          "concept": "InvestmentIncomeInterest",
+          "value": "1187000000",
+          "unit": "USD",
+          "start": "2026-07-01",
+          "end": "2026-09-30"
+        },
+        {
+          "concept": "LongTermDebt",
+          "value": "180887000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-09-30"
+        },
+        {
+          "concept": "LongTermDebtCurrent",
+          "value": "6827000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-09-30"
+        },
+        {
+          "concept": "LongTermDebtNoncurrent",
+          "value": "173125000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-09-30"
+        },
+        {
+          "concept": "MarketableSecuritiesCurrent",
+          "value": "58443000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-09-30"
+        },
+        {
+          "concept": "NonoperatingIncomeExpense",
+          "value": "-1207000000",
+          "unit": "USD",
+          "start": "2026-07-01",
+          "end": "2026-09-30"
+        },
+        {
+          "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "value": "201944000000",
+          "unit": "USD",
+          "start": "2026-07-01",
+          "end": "2026-09-30"
+        },
+        {
+          "concept": "ShortTermBorrowings",
+          "value": "380000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-09-30"
+        }
+      ],
+      "aggregation_or_screening_performed": false
+    },
+    {
+      "symbol": "TSLA",
+      "status": "NOT_APPROVED",
+      "source_sha256": "7d8d5775b7f199010aac6e54abe7f2948cf759e1d1ab146526809ea4c39a4cc6",
+      "cik": "0001318605",
+      "reviewed_filing": "0001628280-26-003952",
+      "sec_status": "OBSERVED",
+      "submissions_sha256": "739acb4d54a0d5a3660847a550dd8a3e0fb427015c6f6e23e67908b82cf30e3b",
+      "companyfacts_sha256": "c951e0ae2402dd8cf8f39319928adccc4196b997941fe40b0d4d6b8060802db1",
+      "latest_sec_filing": {
+        "form": "10-Q",
+        "filingDate": "2026-10-22",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001628280-26-066775",
+        "primaryDocument": "tsla-20260930.htm"
+      },
+      "newer_financial_filing_available": true,
+      "facts": [
+        {
+          "section": "bs",
+          "concept": "us-gaap_CashAndCashEquivalentsAtCarryingValue",
+          "unit": "usd",
+          "value": 16513000000.0,
+          "comparison": "EXACT_MATCH"
+        },
+        {
+          "section": "bs",
+          "concept": "us-gaap_ShortTermInvestments",
+          "unit": "usd",
+          "value": 27546000000.0,
+          "comparison": "EXACT_MATCH"
+        },
+        {
+          "section": "bs",
+          "concept": "tsla_LongTermDebtAndFinanceLeasesCurrent",
+          "unit": "usd",
+          "value": 1640000000.0,
+          "comparison": "NOT_COVERED_BY_EXACT_SEC_FACT"
+        },
+        {
+          "section": "bs",
+          "concept": "tsla_LongTermDebtAndFinanceLeasesNoncurrent",
+          "unit": "usd",
+          "value": 6736000000.0,
+          "comparison": "NOT_COVERED_BY_EXACT_SEC_FACT"
+        },
+        {
+          "section": "ic",
+          "concept": "us-gaap_RevenueFromContractWithCustomerExcludingAssessedTax",
+          "unit": "usd",
+          "value": 94827000000.0,
+          "comparison": "EXACT_MATCH"
+        },
+        {
+          "section": "ic",
+          "concept": "us-gaap_InvestmentIncomeInterest",
+          "unit": "usd",
+          "value": 1680000000,
+          "comparison": "EXACT_MATCH"
+        }
+      ],
+      "unresolved": [
+        "Historical average market-cap denominator",
+        "Reviewed consolidated debt/investment mappings",
+        "Non-permissible revenue calculation",
+        "Business activity, purification and instrument evidence",
+        "Current reviewed approvals"
+      ],
+      "latest_primary_disclosures": [
+        {
+          "concept": "CashAndCashEquivalentsAtCarryingValue",
+          "value": "17853000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-09-30"
+        },
+        {
+          "concept": "DebtInstrumentCarryingAmount",
+          "value": "9284000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-09-30"
+        },
+        {
+          "concept": "InvestmentIncomeInterest",
+          "value": "445000000",
+          "unit": "USD",
+          "start": "2026-07-01",
+          "end": "2026-09-30"
+        },
+        {
+          "concept": "LongTermDebt",
+          "value": "7956000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-09-30"
+        },
+        {
+          "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "value": "28046000000",
+          "unit": "USD",
+          "start": "2026-07-01",
+          "end": "2026-09-30"
+        },
+        {
+          "concept": "Revenues",
+          "value": "28046000000",
+          "unit": "USD",
+          "start": "2026-07-01",
+          "end": "2026-09-30"
+        },
+        {
+          "concept": "ShortTermInvestments",
+          "value": "27594000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-09-30"
+        }
+      ],
+      "aggregation_or_screening_performed": false
+    },
+    {
+      "symbol": "META",
+      "status": "NOT_APPROVED",
+      "source_sha256": "9ad402a95983ad0a6a7816904003116454683e930bac989b6d2efe8434eedb72",
+      "cik": "0001326801",
+      "reviewed_filing": "0001628280-26-003942",
+      "sec_status": "OBSERVED",
+      "submissions_sha256": "22b3d14392e7ad9740a5d5c6f977b7383024ba14cc33ebc33c1ddb1366745e0f",
+      "companyfacts_sha256": "b0d0d92870b68488cec086cffd83514f2cc6c80d3e8c4f91e192b17ce3e7c946",
+      "latest_sec_filing": {
+        "form": "10-Q",
+        "filingDate": "2026-10-22",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001628280-26-066773",
+        "primaryDocument": "meta-20260930.htm"
+      },
+      "newer_financial_filing_available": true,
+      "facts": [
+        {
+          "section": "bs",
+          "concept": "us-gaap_CashAndCashEquivalentsAtCarryingValue",
+          "unit": "usd",
+          "value": 35873000000.0,
+          "comparison": "EXACT_MATCH"
+        },
+        {
+          "section": "bs",
+          "concept": "us-gaap_MarketableSecuritiesCurrent",
+          "unit": "usd",
+          "value": 45719000000.0,
+          "comparison": "EXACT_MATCH"
+        },
+        {
+          "section": "bs",
+          "concept": "us-gaap_LongTermDebtNoncurrent",
+          "unit": "usd",
+          "value": 58744000000,
+          "comparison": "EXACT_MATCH"
+        },
+        {
+          "section": "ic",
+          "concept": "us-gaap_RevenueFromContractWithCustomerExcludingAssessedTax",
+          "unit": "usd",
+          "value": 200966000000.0,
+          "comparison": "EXACT_MATCH"
+        }
+      ],
+      "unresolved": [
+        "Historical average market-cap denominator",
+        "Reviewed consolidated debt/investment mappings",
+        "Non-permissible revenue calculation",
+        "Business activity, purification and instrument evidence",
+        "Current reviewed approvals"
+      ],
+      "latest_primary_disclosures": [
+        {
+          "concept": "CashAndCashEquivalentsAtCarryingValue",
+          "value": "11222000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-09-30"
+        },
+        {
+          "concept": "LongTermDebtNoncurrent",
+          "value": "80922000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-09-30"
+        },
+        {
+          "concept": "MarketableSecuritiesCurrent",
+          "value": "71227000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-09-30"
+        },
+        {
+          "concept": "NonoperatingIncomeExpense",
+          "value": "13000000",
+          "unit": "USD",
+          "start": "2026-07-01",
+          "end": "2026-09-30"
+        },
+        {
+          "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "value": "64601000000",
+          "unit": "USD",
+          "start": "2026-07-01",
+          "end": "2026-09-30"
+        },
+        {
+          "concept": "DebtInstrumentCarryingAmount",
+          "value": "84000000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-09-30"
+        },
+        {
+          "concept": "LongTermDebtCurrent",
+          "value": "2747000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-09-30"
+        }
+      ],
+      "aggregation_or_screening_performed": false
+    },
+    {
+      "symbol": "AVGO",
+      "status": "NOT_APPROVED",
+      "source_sha256": "dc339d268e8ae0178380c24feb6fd9c58f316d513310705c867d5cbdd3975872",
+      "cik": "0001730168",
+      "reviewed_filing": "0001730168-25-000121",
+      "sec_status": "OBSERVED",
+      "submissions_sha256": "41ec85346d2b5ffbd8358ab2d3ef9400598660be94281edacf784da984097866",
+      "companyfacts_sha256": "3bdb6644c12addf1e63c4dc861008d7804fbf3d3f5aa6eb9b97f72c0e89a7adf",
+      "latest_sec_filing": {
+        "form": "10-Q",
+        "filingDate": "2026-09-10",
+        "reportDate": "2026-08-02",
+        "accessionNumber": "0001730168-26-000080",
+        "primaryDocument": "avgo-20260802.htm"
+      },
+      "newer_financial_filing_available": true,
+      "facts": [
+        {
+          "section": "bs",
+          "concept": "us-gaap_CashAndCashEquivalentsAtCarryingValue",
+          "unit": "usd",
+          "value": 16178000000,
+          "comparison": "EXACT_MATCH"
+        },
+        {
+          "section": "bs",
+          "concept": "us-gaap_LongTermDebtAndCapitalLeaseObligationsCurrent",
+          "unit": "usd",
+          "value": 3152000000.0,
+          "comparison": "EXACT_MATCH"
+        },
+        {
+          "section": "bs",
+          "concept": "us-gaap_LongTermDebtAndCapitalLeaseObligations",
+          "unit": "usd",
+          "value": 61984000000.0,
+          "comparison": "EXACT_MATCH"
+        },
+        {
+          "section": "ic",
+          "concept": "us-gaap_RevenueFromContractWithCustomerExcludingAssessedTax",
+          "unit": "usd",
+          "value": 63887000000.0,
+          "comparison": "EXACT_MATCH"
+        }
+      ],
+      "unresolved": [
+        "Historical average market-cap denominator",
+        "Reviewed consolidated debt/investment mappings",
+        "Non-permissible revenue calculation",
+        "Business activity, purification and instrument evidence",
+        "Current reviewed approvals"
+      ],
+      "latest_primary_disclosures": [
+        {
+          "concept": "CashAndCashEquivalentsAtCarryingValue",
+          "value": "23975000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-08-02"
+        },
+        {
+          "concept": "DebtInstrumentCarryingAmount",
+          "value": "61079000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-08-02"
+        },
+        {
+          "concept": "LongTermDebt",
+          "value": "59419000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-08-02"
+        },
+        {
+          "concept": "LongTermDebtCurrent",
+          "value": "2252000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-08-02"
+        },
+        {
+          "concept": "LongTermDebtNoncurrent",
+          "value": "57167000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-08-02"
+        },
+        {
+          "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "value": "29591000000",
+          "unit": "USD",
+          "start": "2026-05-04",
+          "end": "2026-08-02"
+        },
+        {
+          "concept": "LongTermDebtAndCapitalLeaseObligations",
+          "value": "57167000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-08-02"
+        }
+      ],
+      "aggregation_or_screening_performed": false
+    },
+    {
+      "symbol": "LLY",
+      "status": "NOT_APPROVED",
+      "source_sha256": "0c3b527d67e29a30cb69cbf825961aa02903dbbe790266ed76297ec55fcbded9",
+      "cik": "0000059478",
+      "reviewed_filing": "0000059478-26-000013",
+      "sec_status": "OBSERVED",
+      "submissions_sha256": "b5bbe2c718c8a66bca1d6af55dfe8439eac85755593115d8992c25019e8a8f0f",
+      "companyfacts_sha256": "72ec001637e16887021c76251eaf05056bdaaf9a4e68ef62316b9be99861dbdc",
+      "latest_sec_filing": {
+        "form": "10-Q",
+        "filingDate": "2026-10-29",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0000059478-26-000108",
+        "primaryDocument": "lly-20260930.htm"
+      },
+      "newer_financial_filing_available": true,
+      "facts": [
+        {
+          "section": "bs",
+          "concept": "us-gaap_CashAndCashEquivalentsAtCarryingValue",
+          "unit": "usd",
+          "value": 7268000000,
+          "comparison": "EXACT_MATCH"
+        },
+        {
+          "section": "bs",
+          "concept": "us-gaap_DebtCurrent",
+          "unit": "usd",
+          "value": 1635000000.0,
+          "comparison": "EXACT_MATCH"
+        },
+        {
+          "section": "bs",
+          "concept": "us-gaap_LongTermDebtNoncurrent",
+          "unit": "usd",
+          "value": 40868000000.0,
+          "comparison": "EXACT_MATCH"
+        },
+        {
+          "section": "ic",
+          "concept": "us-gaap_Revenues",
+          "unit": "usd",
+          "value": 65179000000.0,
+          "comparison": "EXACT_MATCH"
+        }
+      ],
+      "unresolved": [
+        "Historical average market-cap denominator",
+        "Reviewed consolidated debt/investment mappings",
+        "Non-permissible revenue calculation",
+        "Business activity, purification and instrument evidence",
+        "Current reviewed approvals"
+      ],
+      "latest_primary_disclosures": [
+        {
+          "concept": "CashAndCashEquivalentsAtCarryingValue",
+          "value": "4885000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-09-30"
+        },
+        {
+          "concept": "LongTermDebtNoncurrent",
+          "value": "46986000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-09-30"
+        },
+        {
+          "concept": "LongTermInvestments",
+          "value": "4013000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-09-30"
+        },
+        {
+          "concept": "NonoperatingIncomeExpense",
+          "value": "-202000000",
+          "unit": "USD",
+          "start": "2026-07-01",
+          "end": "2026-09-30"
+        },
+        {
+          "concept": "Revenues",
+          "value": "24397000000",
+          "unit": "USD",
+          "start": "2026-07-01",
+          "end": "2026-09-30"
+        }
+      ],
+      "aggregation_or_screening_performed": false
+    },
+    {
+      "symbol": "MU",
+      "status": "NOT_APPROVED",
+      "source_sha256": "e8db41c6fb811c37962aad09df0bd834d4b0e17eee77eb35cc45f1ae4571744b",
+      "cik": "0000723125",
+      "reviewed_filing": "0000723125-26-000023",
+      "sec_status": "OBSERVED",
+      "submissions_sha256": "b50ed951ec0bd75b90b6fc2305573200c3d52da9c568f05593b8b0cdeaf87f5c",
+      "companyfacts_sha256": "162439f31208eaf4cd1a33939d80fd40479a559735b9488d32ac43d5516ff7bf",
+      "latest_sec_filing": {
+        "form": "10-K",
+        "filingDate": "2026-10-09",
+        "reportDate": "2026-09-03",
+        "accessionNumber": "0000723125-26-000023",
+        "primaryDocument": "mu-20260903.htm"
+      },
+      "newer_financial_filing_available": false,
+      "facts": [
+        {
+          "section": "ic",
+          "concept": "us-gaap_RevenueFromContractWithCustomerExcludingAssessedTax",
+          "unit": "usd",
+          "value": 133188000000.0,
+          "comparison": "EXACT_MATCH"
+        },
+        {
+          "section": "ic",
+          "concept": "us-gaap_InvestmentIncomeNet",
+          "unit": "usd",
+          "value": 1084000000,
+          "comparison": "EXACT_MATCH"
+        }
+      ],
+      "unresolved": [
+        "Historical average market-cap denominator",
+        "Reviewed consolidated debt/investment mappings",
+        "Non-permissible revenue calculation",
+        "Business activity, purification and instrument evidence",
+        "Current reviewed approvals"
+      ],
+      "latest_primary_disclosures": [
+        {
+          "concept": "CashAndCashEquivalentsAtCarryingValue",
+          "value": "38364000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-09-03"
+        },
+        {
+          "concept": "InvestmentIncomeNet",
+          "value": "1084000000",
+          "unit": "USD",
+          "start": "2025-08-29",
+          "end": "2026-09-03"
+        },
+        {
+          "concept": "LongTermDebt",
+          "value": "2792000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-09-03"
+        },
+        {
+          "concept": "LongTermDebtAndCapitalLeaseObligations",
+          "value": "4688000000",
+          "unit": "USD",
+          "start": null,
+          "end": "2026-09-03"
+        },
+        {
+          "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "value": "133188000000",
+          "unit": "USD",
+          "start": "2025-08-29",
+          "end": "2026-09-03"
+        }
+      ],
+      "aggregation_or_screening_performed": false
+    }
+  ],
+  "approved_symbols": [],
+  "averaging_window_proposal": {
+    "status": "PROPOSED_NOT_APPROVED",
+    "calendar_days": 365,
+    "starts": "2025-10-31",
+    "ends": "2026-10-30",
+    "definition": "Equal-weight mean of actual closing market capitalizations for verified regular sessions in the interval. Historical share counts and corporate actions required; no fixed-current-share or current-cap proxy.",
+    "historical_values_collected": false,
+    "scope": "Research proposal, not an assertion that AAOIFI mandates this window. No existing immutable account/protocol/review changed."
+  },
+  "scope": "Selected historical values cross-checked and latest reported SEC disclosures inventoried. Recent submission forms include amendments. No consolidated mapping, financial ratio, current halal rating or approval inferred; primary disclosures can overlap and must not be added blindly.",
+  "production_database_mutations": 0,
+  "orders_submitted": 0,
+  "messages_sent": 0,
+  "summary": {
+    "sec_companies_observed": 10,
+    "historical_fact_comparisons": {
+      "EXACT_MATCH": 40,
+      "NOT_COVERED_BY_EXACT_SEC_FACT": 4
+    },
+    "newer_financial_filings": 9,
+    "latest_selected_primary_disclosures": 81,
+    "approval_count": 0
+  },
+  "verification": {
+    "focused_tests_passed": 6,
+    "lint_and_format": "PASSED",
+    "live_access": "Fixed SEC GET endpoints only; no broker, email or Telegram requests"
+  }
+}
