@@ -1,4 +1,4 @@
-"""Workspace-wide synthetic simulator: authenticated reads, operator-only writes."""
+"""Workspace-wide internal simulator: authenticated reads, role-gated writes."""
 
 from fastapi import Depends, HTTPException, Query
 from sqlalchemy import select
@@ -6,30 +6,60 @@ from sqlalchemy.exc import SQLAlchemyError
 
 from services.controls.store import lock_controls
 from services.market_data.event_store import ImportConflict
+from services.paper import forward
 from services.paper.engine import mutate, open_account, snapshot
-from services.paper.models import PaperAccount, PaperJournal
+from services.paper.models import PaperAccount, PaperJournal, PaperRun
+from services.paper.runner import finalize
 from services.paper.schemas import (
     CancelRequest,
     Command,
+    DecisionOrder,
+    ExitRequest,
     FillRequest,
+    ForwardProtocol,
     HaltRequest,
     OpenAccount,
     OrderRequest,
     QuoteRequest,
+    ReviewRun,
 )
 
 
 def mount_paper(app, sessions, settings, current_user, dashboard):
     current_dependency = Depends(current_user)
 
+    def operator_identity(user=current_dependency):
+        if user.role != "operator":
+            raise HTTPException(403, "Operator role required for paper operations")
+        return user.id
+
+    cleanup_dependency = Depends(operator_identity)
+
     def operator(user=current_dependency):
         if user.role != "operator":
             raise HTTPException(403, "Operator role required for paper operations")
         if not settings.paper_trading_enabled:
-            raise HTTPException(503, "Internal synthetic paper simulator is disabled")
+            raise HTTPException(503, "Internal paper simulator is disabled")
         return user.id
 
     operator_dependency = Depends(operator)
+
+    def forward_operator(user=current_dependency):
+        if user.role != "operator":
+            raise HTTPException(403, "Operator role required")
+        if not settings.paper_trading_enabled or not settings.paper_forward_enabled:
+            raise HTTPException(503, "Paper forward mode is disabled")
+        return user.id
+
+    def reviewer(user=current_dependency):
+        if user.role != "reviewer":
+            raise HTTPException(403, "Reviewer role required")
+        if not settings.paper_forward_enabled:
+            raise HTTPException(503, "Paper forward mode is disabled")
+        return user.id
+
+    forward_dependency = Depends(forward_operator)
+    reviewer_dependency = Depends(reviewer)
 
     def write(operation):
         try:
@@ -52,7 +82,8 @@ def mount_paper(app, sessions, settings, current_user, dashboard):
             ).all()
             return {
                 "enabled": settings.paper_trading_enabled,
-                "mode": "synthetic",
+                "mode": "internal_paper",
+                "forward_enabled": settings.paper_forward_enabled,
                 "authorized": False,
                 "forward_acceptance": "NOT_ESTABLISHED",
                 "items": [
@@ -76,7 +107,8 @@ def mount_paper(app, sessions, settings, current_user, dashboard):
         limit: int = Query(default=50, ge=1, le=100),
     ):
         with sessions() as session:
-            if session.get(PaperAccount, account_id) is None:
+            account = session.get(PaperAccount, account_id)
+            if account is None:
                 raise HTTPException(404, "Unknown paper account")
             rows = session.scalars(
                 select(PaperJournal)
@@ -85,7 +117,7 @@ def mount_paper(app, sessions, settings, current_user, dashboard):
                 .limit(limit)
             ).all()
             return {
-                "mode": "synthetic",
+                "mode": account.config.get("mode", "synthetic"),
                 "authorized": False,
                 "items": [
                     {
@@ -101,6 +133,8 @@ def mount_paper(app, sessions, settings, current_user, dashboard):
 
     @app.post("/api/v1/paper/accounts")
     def create(body: OpenAccount, actor=operator_dependency):
+        if body.mode == "forward" and not settings.paper_forward_enabled:
+            raise HTTPException(503, "Paper forward mode is disabled")
         return write(lambda session: open_account(session, body, actor))
 
     @app.post("/api/v1/paper/accounts/{account_id}/orders")
@@ -116,13 +150,78 @@ def mount_paper(app, sessions, settings, current_user, dashboard):
         return write(lambda session: mutate(session, account_id, "fill", body, actor))
 
     @app.post("/api/v1/paper/accounts/{account_id}/cancel")
-    def cancel(account_id: str, body: CancelRequest, actor=operator_dependency):
+    def cancel(account_id: str, body: CancelRequest, actor=cleanup_dependency):
         return write(lambda session: mutate(session, account_id, "cancel", body, actor))
 
     @app.post("/api/v1/paper/accounts/{account_id}/tick")
-    def tick(account_id: str, body: Command, actor=operator_dependency):
+    def tick(account_id: str, body: Command, actor=cleanup_dependency):
         return write(lambda session: mutate(session, account_id, "tick", body, actor))
 
     @app.post("/api/v1/paper/accounts/{account_id}/halt")
-    def halt(account_id: str, body: HaltRequest, actor=operator_dependency):
-        return write(lambda session: mutate(session, account_id, "halt", body, actor))
+    def halt(account_id: str, body: HaltRequest, actor=cleanup_dependency):
+        def operation(session):
+            lock_controls(session)
+            account = session.get(PaperAccount, account_id)
+            if not body.engaged and (
+                not settings.paper_trading_enabled
+                or (
+                    account
+                    and account.config.get("mode") == "forward"
+                    and not settings.paper_forward_enabled
+                )
+            ):
+                raise HTTPException(503, "Cannot resume disabled paper operations")
+            return mutate(session, account_id, "halt", body, actor, already_locked=True)
+
+        return write(operation)
+
+    @app.post("/api/v1/paper/accounts/{account_id}/decision-orders")
+    def bridge(account_id: str, body: DecisionOrder, actor=forward_dependency):
+        return write(lambda session: forward.decision_order(session, account_id, body, actor))
+
+    @app.post("/api/v1/paper/runs")
+    def propose(body: ForwardProtocol, actor=forward_dependency):
+        return write(lambda session: forward.propose(session, body, actor))
+
+    @app.post("/api/v1/paper/runs/{run_id}/review")
+    def review(run_id: str, body: ReviewRun, actor=reviewer_dependency):
+        return write(lambda session: forward.review(session, run_id, body, actor))
+
+    @app.get("/api/v1/paper/runs", dependencies=[Depends(dashboard)])
+    def runs(limit: int = Query(default=50, ge=1, le=100)):
+        with sessions() as session:
+            rows = session.scalars(
+                select(PaperRun).order_by(PaperRun.created_at.desc()).limit(limit)
+            ).all()
+            return {
+                "items": [
+                    {
+                        "run_id": r.id,
+                        "account_id": r.account_id,
+                        "account_config": session.get(PaperAccount, r.account_id).config
+                        if session.get(PaperAccount, r.account_id)
+                        else None,
+                        "protocol": r.protocol,
+                        "state": r.state,
+                        "protocol_sha256": forward.protocol_hash(r),
+                    }
+                    for r in rows
+                ]
+            }
+
+    @app.get("/api/v1/paper/runs/{run_id}", dependencies=[Depends(dashboard)])
+    def run_status(run_id: str):
+        with sessions.begin() as session:
+            lock_controls(session)
+            run = session.get(PaperRun, run_id)
+            if not run:
+                raise HTTPException(404, "Unknown forward run")
+            return forward.report(session, run)
+
+    @app.post("/api/v1/paper/runs/{run_id}/finalize")
+    def finish(run_id: str, actor=forward_dependency):
+        return write(lambda session: finalize(session, run_id, actor))
+
+    @app.post("/api/v1/paper/accounts/{account_id}/liquidate")
+    def liquidate(account_id: str, body: ExitRequest, actor=cleanup_dependency):
+        return write(lambda session: mutate(session, account_id, "liquidate", body, actor))

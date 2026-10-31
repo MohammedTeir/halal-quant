@@ -57,7 +57,7 @@
     try {
       const result = await api(`/api/v1/paper/accounts/${encodeURIComponent(id)}`,credential);
       if (current !== generation || request !== paperGeneration) return;
-      paperSnapshot = result; renderPaper();
+      paperSnapshot = result; renderPaper(); window.dispatchEvent(new CustomEvent("hq-paper-account",{detail:result}));
     } catch (error) {
       if (current !== generation || request !== paperGeneration) return;
       if (error.message === "AUTH") {lock();message("auth_error");return;}
@@ -74,13 +74,15 @@
       select.replaceChildren();
       result.items.forEach(account=>{const option=node("option",account.account_id);option.value=account.account_id;select.append(option);});
       if(result.items.some(a=>a.account_id===selected)) select.value=selected;
-      renderPaper(); await loadPaperAccount();
+      renderPaper(); window.dispatchEvent(new CustomEvent("hq-paper-list",{detail:result})); await loadPaperAccount();
     } catch (error) {
       if (current !== generation || request !== paperGeneration) return;
       if (error.message === "AUTH") {lock();message("auth_error");return;}
       paperList = null; paperSnapshot = null; $("paper-account").replaceChildren(); renderPaper();
     }
   }
+  window.addEventListener("hq-paper-update",event=>{const data=event.detail;if(!token || data?.account_id!==$("paper-account").value)return;paperGeneration++;paperSnapshot=data;renderPaper();window.dispatchEvent(new CustomEvent("hq-paper-account",{detail:data}));});
+  window.addEventListener("hq-paper-refresh",()=>{if(token)loadPaper();});
   $("paper-account").addEventListener("change",loadPaperAccount);
   async function refresh() {if(busy || !token)return; busy=true; $("refresh").disabled=true; const current=generation, credential=token; message("loading"); try {const values=await Promise.all(["/api/v1/dashboard/overview","/api/v1/signals","/api/v1/decisions","/api/v1/portfolio","/api/v1/dashboard/research","/api/v1/notifications/preview","/api/v1/audit"].map(path=>api(path,credential))); if(current!==generation)return; snapshot=values; render(...values); $("login").hidden=true; $("workspace").hidden=false; $("account-login").hidden=true; $("legacy-access").hidden=true; $("connection").textContent=t("connected"); message(); loadPaper();}catch(e){if(current!==generation)return; if(e.message==="AUTH"){lock(); message("auth_error");}else{lock(); message("refresh_error");}}finally{busy=false; $("refresh").disabled=false;}}
   $("connect-form").addEventListener("submit",event=>{event.preventDefault(); if(busy)return; token=$("access-key").value.trim(); $("access-key").value=""; generation++; refresh();}); $("refresh").addEventListener("click",refresh); $("lock").addEventListener("click",()=>{lock();message("locked");});

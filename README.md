@@ -28,10 +28,10 @@ An additional external original-human-label sentiment benchmark passes 30/30;
 
 [Milestone 6 research](docs/milestone-6-research.md) now includes shared-cash portfolio replay, training-only walk-forward selection, historical evidence gates and seeded trade-order Monte Carlo. Representative real-history and out-of-sample performance acceptance remain pending.
 Milestone 7 is complete for the documented deployment, with Android worker uptime
-limits retained. [Milestone 8](docs/milestone-8-paper-trading.md) has started with an
-internal synthetic paper simulator, persistent order/ledger reconciliation and a
-bilingual read-only dashboard panel. Stable forward testing and external paper
-broker integration remain pending. Optional live integration (Milestone 9) is disabled.
+limits retained. [Milestone 8](docs/milestone-8-paper-trading.md) now implements an
+internal simulator, read-only Alpaca forward worker, reviewed decision bridge,
+protective exits and bilingual dashboard controls. Actual elapsed forward
+acceptance remains pending; see the [operator runbook](docs/milestone-8-forward-operations.md). Optional live integration (Milestone 9) is disabled.
 
 The earlier research checkpoint had **484 passing tests**, including research, data integrity,
 advisory-output security and deterministic decision checks. All three

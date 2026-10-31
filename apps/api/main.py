@@ -70,7 +70,14 @@ from services.news_intelligence.queries import news_as_of
 from services.notifications.delivery import enqueue
 from services.notifications.models import AccessSession, Outbox, User
 from services.notifications.routes import mount_notifications
-from services.paper.models import PaperAccount, PaperJournal, PaperOrder, PaperQuote
+from services.paper.models import (
+    PaperAccount,
+    PaperCycle,
+    PaperJournal,
+    PaperOrder,
+    PaperQuote,
+    PaperRun,
+)
 from services.paper.routes import mount_paper
 
 
@@ -222,9 +229,11 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                     PaperAccount,
                     PaperOrder,
                     PaperQuote,
+                    PaperRun,
                 ):
                     connection.execute(select(table.id).limit(1))
                 connection.execute(select(PaperJournal.sequence).limit(1))
+                connection.execute(select(PaperCycle.sequence).limit(1))
                 connection.execute(select(ControlRevision.sequence).limit(1))
                 if (
                     connection.execute(
@@ -233,7 +242,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                     != "controls-v1"
                 ):
                     raise HTTPException(503, "Controls lock migration required")
-                if version != "0008_paper_simulator":
+                if version != "0009_paper_forward":
                     raise HTTPException(503, "Database migration required")
         except SQLAlchemyError:
             raise HTTPException(503, "Database unavailable or migrations missing") from None

@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-31",
+  "status": "SOFTWARE_VERIFIED_FORWARD_ACCEPTANCE_PENDING",
+  "selected_broker": "internal_simulator",
+  "selected_market_data": "read_only_alpaca_iex",
+  "migration": "0009_paper_forward",
+  "verification": {
+    "local_pytest_passed": 643,
+    "local_postgresql_only_skipped": 2,
+    "static_deployment_tests_passed": 2,
+    "ruff_lint_and_format": "PASSED",
+    "termux_installer_shell_syntax": "PASSED",
+    "browser": "English/Arabic/mobile, operator account/quote/order/fill, zero JavaScript errors",
+    "synthetic_smoke": "20 accelerated days and round trips, final reconciliation MATCH, flat and settled",
+    "provider_http": "MockTransport only; fixed hosts and GET-only requests verified",
+    "upgrade": "Legacy quote payloads, consumption and command hashes preserved",
+    "recovery": "Isolated lease/restart/stale/missing-data/review-expiry/corporate-event/rollback tests"
+  },
+  "implemented": [
+    "Server-enforced operator/reviewer separation and expiring exact-hash protocol reviews",
+    "Forward decision bridge deduplicated per source signal with current evidence and risk revalidation",
+    "GET-only provider clock/calendar/quote adapter and virtual calendar settlement",
+    "Fenced autonomous worker, standing owned exits, liquidation intent and persistent halt",
+    "Journal/projection reconciliation and independent financial-delta checks",
+    "Chained forward cycles, complete-session accounting, restart proof and frozen final report",
+    "Bilingual operator/reviewer dashboard controls and separate Termux paper-worker installer"
+  ],
+  "blueprint_acceptance": "Stable forward testing and no critical operational violations",
+  "proposed_campaign_protocol": {
+    "minimum_complete_market_sessions": 20,
+    "minimum_actual_elapsed_days": 20,
+    "default_completed_exits": 10,
+    "minimum_configurable_completed_exits": 3,
+    "restart_with_pending_order_or_owned_position": true,
+    "critical_violations_allowed": 0,
+    "final_flat_settled_reconciled_and_current_reviews_required": true,
+    "numeric_thresholds_require_campaign_review": true
+  },
+  "pending_operator_actions": [
+    "Deploy source and migration; update phone notification worker compatibility",
+    "Configure private database/read-only Alpaca credentials and fresh upstream source/signal/decision producers",
+    "Select and review stock/ETF universe, account policy, source evidence and methodology",
+    "Obtain distinct operator/reviewer protocol approval and enable private flags",
+    "Run actual elapsed campaign on selected host, verify recovery, export/finalize genuine evidence"
+  ],
+  "actual_forward_campaign_started_by_development_tests": false,
+  "actual_forward_acceptance": "NOT_ESTABLISHED",
+  "real_provider_calls_during_tests": 0,
+  "external_broker_orders": 0,
+  "real_emails_sent": 0,
+  "real_telegram_messages_sent": 0,
+  "production_database_mutations_by_development_tests": 0,
+  "cloud_configuration_published": false,
+  "earlier_source_qualified_review_custody_performance_acceptance_changed": false,
+  "live_trading_enabled": false,
+  "scope": "Injected timelines, including positive report-finalization unit fixtures, prove software behavior only. Internal reconciliation is not external broker reconciliation, real custody or performance evidence. Actual production configuration and elapsed campaign remain operator work."
+}

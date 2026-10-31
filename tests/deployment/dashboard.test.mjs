@@ -15,7 +15,7 @@ import { fileURLToPath } from "node:url";
 
 const root = fileURLToPath(new URL("../../", import.meta.url));
 
-test("Vercel build publishes only the public shell and its four assets", async () => {
+test("Vercel build publishes only the public shell and its five assets", async () => {
   execFileSync(process.execPath, ["scripts/build_dashboard.mjs"], {
     cwd: root,
   });
@@ -33,6 +33,7 @@ test("Vercel build publishes only the public shell and its four assets", async (
     "app.js",
     "i18n.js",
     "index.html",
+    "paper.js",
     "style.css",
   ]);
   const original = await readFile(
@@ -43,7 +44,7 @@ test("Vercel build publishes only the public shell and its four assets", async (
     await readFile(path.join(root, "dist/index.html"), "utf8"),
     original,
   );
-  for (const asset of ["accounts.js", "app.js", "i18n.js", "style.css"]) {
+  for (const asset of ["accounts.js", "app.js", "i18n.js", "paper.js", "style.css"]) {
     assert.equal(
       await readFile(path.join(root, "dist/dashboard/assets", asset), "utf8"),
       await readFile(path.join(root, "apps/dashboard/static", asset), "utf8"),

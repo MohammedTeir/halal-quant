@@ -26,6 +26,7 @@ from services.paper.schemas import OpenAccount
 D = Decimal
 OPEN = {"ACCEPTED", "PARTIALLY_FILLED"}
 ZERO_HASH = "0" * 64
+WORKER_AUTHORITY = object()
 
 
 def key(account_id, command_id):
@@ -119,14 +120,138 @@ def reconcile(session, account):
                 "status": "MISMATCH",
                 "errors": ["INVALID_PAPER_RECORD"],
                 "authorized": False,
-                "mode": "synthetic",
+                "mode": account.config.get("mode", "synthetic"),
             }
+
+
+def financial_errors(state, prior_orders, quote_map, event, config):
+    """Independently check economic conservation, rather than trusting posted deltas."""
+    p, errors = event.payload, []
+    delta, kind = p["delta"], p["kind"]
+    zero = lambda name: D(delta.get(name, "0")) == 0
+    for order_id, changed in p.get("orders", {}).items():
+        if order_id in prior_orders and changed["request"] != prior_orders[order_id]["request"]:
+            errors.append("ORDER_REQUEST_CHANGED")
+    if kind == "OPEN":
+        if D(state["cash"]) != 0 or D(delta["cash"]) != config.initial_cash:
+            errors.append("OPENING_CASH_MISMATCH")
+    elif kind == "QUOTE":
+        q = p["quote"]
+        old = state["positions"].get(q["symbol"])
+        expected = {q["symbol"]: old | {"mark": q["bid"]}} if old else {}
+        if (
+            delta.get("positions", {}) != expected
+            or not all(zero(n) for n in ("cash", "fees", "realized"))
+            or delta.get("unsettled")
+        ):
+            errors.append("QUOTE_CHANGED_BALANCES")
+    elif kind == "TICK":
+        due = {
+            k: v
+            for k, v in state["unsettled"].items()
+            if aware(datetime.fromisoformat(v["available_at"])) <= aware(event.created_at)
+        }
+        if (
+            D(delta.get("cash", "0")) != sum((D(v["amount"]) for v in due.values()), D(0))
+            or delta.get("unsettled", {}) != {k: None for k in due}
+            or delta.get("positions")
+            or not zero("fees")
+            or not zero("realized")
+        ):
+            errors.append("SETTLEMENT_MISMATCH")
+    elif kind == "FILL":
+        fill = p["fill"]
+        before = prior_orders[fill["order_id"]]
+        request, old_order = before["request"], before["state"]
+        after = p["orders"][fill["order_id"]]["state"]
+        qty, price, fee = fill["quantity"], D(fill["price"]), D(fill["fee"])
+        q = quote_map[fill["quote_id"]]
+        buy = fill["side"] == "BUY"
+        old = state["positions"].get(fill["symbol"], {"quantity": 0, "cost": "0"})
+        if (
+            type(qty) is not int
+            or qty <= 0
+            or fill["side"] != request["side"]
+            or fill["symbol"] != request["symbol"]
+            or fill["symbol"] != q["symbol"]
+        ):
+            return ["FILL_SCOPE_OR_QUANTITY_MISMATCH"]
+        expected_price = D(q["ask" if buy else "bid"]) * (
+            1 + (1 if buy else -1) * config.policy.slippage_bps / D(10000)
+        )
+        expected_fee = config.policy.fee_per_share * qty + (
+            config.policy.fee_per_order if old_order["filled"] == 0 else D(0)
+        )
+        if (
+            (buy and price <= D(request["stop_price"]))
+            or price != expected_price
+            or fee != expected_fee
+            or D(delta.get("fees", "0")) != fee
+        ):
+            errors.append("FILL_PRICE_OR_FEE_MISMATCH")
+        total = old_order["filled"] + qty
+        if (
+            total > request["quantity"]
+            or after["filled"] != total
+            or after["status"] != ("FILLED" if total == request["quantity"] else "PARTIALLY_FILLED")
+        ):
+            errors.append("FILL_ORDER_QUANTITY_MISMATCH")
+        if D(after["fees"]) != D(old_order["fees"]) + fee:
+            errors.append("ORDER_FEE_MISMATCH")
+        gross = price * qty
+        net = gross - fee
+        expected_cash = -(gross + fee) if buy else min(D(0), net)
+        if D(delta.get("cash", "0")) != expected_cash:
+            errors.append("FILL_CASH_MISMATCH")
+        expected_qty = old["quantity"] + (qty if buy else -qty)
+        allocated = D(0) if buy else D(old["cost"]) * qty / old["quantity"]
+        expected_cost = D(old["cost"]) + gross + fee if buy else D(old["cost"]) - allocated
+        position = delta.get("positions", {}).get(fill["symbol"])
+        if (
+            expected_qty < 0
+            or set(delta.get("positions", {})) != {fill["symbol"]}
+            or (expected_qty == 0 and position is not None)
+            or (
+                expected_qty > 0
+                and (
+                    not position
+                    or position["quantity"] != expected_qty
+                    or D(position["cost"]) != expected_cost
+                )
+            )
+        ):
+            errors.append("FILL_POSITION_MISMATCH")
+        realized = D(0) if buy else net - allocated
+        if D(delta.get("realized", "0")) != realized or D(fill["realized"]) != realized:
+            errors.append("FILL_REALIZED_PNL_MISMATCH")
+        expected_unsettled = {}
+        if not buy and net > 0:
+            due = (
+                q["settlement_at"]
+                if config.mode == "forward"
+                else (
+                    aware(event.created_at) + timedelta(seconds=config.settlement_delay_seconds)
+                ).isoformat()
+            )
+            expected_unsettled = {event.id: {"amount": str(net), "available_at": due}}
+        if delta.get("unsettled", {}) != expected_unsettled:
+            errors.append("FILL_UNSETTLED_MISMATCH")
+    elif (
+        not all(zero(n) for n in ("cash", "fees", "realized"))
+        or delta.get("positions")
+        or delta.get("unsettled")
+    ):
+        errors.append("UNEXPECTED_LEDGER_BALANCE_CHANGE")
+    return errors
 
 
 def _reconcile(session, account):
     """Replay durable journal, verify its chain, order projections and quote consumption."""
     expected, expected_orders, used, chain, errors = blank(), {}, {}, ZERO_HASH, []
     expected_quotes = {}
+    config = OpenAccount.model_validate(account.config)
+    order_rows = orders(session, account.id)
+    quote_rows = quotes(session, account.id)
     journal = entries(session, account.id)
     for event in journal:
         if event.previous_sha256 != chain or event.entry_sha256 != seal(
@@ -140,6 +265,7 @@ def _reconcile(session, account):
         ):
             errors.append("JOURNAL_CHAIN_MISMATCH")
         chain = event.entry_sha256
+        errors.extend(financial_errors(expected, expected_orders, expected_quotes, event, config))
         expected = apply(expected, event.payload["delta"])
         expected_orders.update(event.payload.get("orders", {}))
         if event.payload.get("quote"):
@@ -150,23 +276,27 @@ def _reconcile(session, account):
             k = (fill["quote_id"], field)
             used[k] = used.get(k, 0) + fill["quantity"]
             amount = D(fill["price"]) * fill["quantity"]
-            expected_cash = -(amount + D(fill["fee"])) if field == "ask" else D(0)
+            expected_cash = (
+                -(amount + D(fill["fee"])) if field == "ask" else min(D(0), amount - D(fill["fee"]))
+            )
             if D(event.payload["delta"].get("cash", "0")) != expected_cash:
                 errors.append("FILL_CASH_MISMATCH")
     if not journal:
         errors.append("JOURNAL_MISSING")
     elif journal[0].result.get("config_sha256") != digest(account.config):
         errors.append("CONFIG_PROJECTION_MISMATCH")
-    if expected_quotes != {q.id: q.payload for q in quotes(session, account.id)}:
+    if expected_quotes != {q.id: q.payload for q in quote_rows}:
         errors.append("QUOTE_PROJECTION_MISMATCH")
     if expected != account.state:
         errors.append("ACCOUNT_PROJECTION_MISMATCH")
-    actual_orders = {
-        o.id: {"request": o.request, "state": o.state} for o in orders(session, account.id)
-    }
+    actual_orders = {o.id: {"request": o.request, "state": o.state} for o in order_rows}
     if expected_orders != actual_orders:
         errors.append("ORDER_PROJECTION_MISMATCH")
-    for q in quotes(session, account.id):
+    for q in quote_rows:
+        if q.symbol != q.payload["symbol"] or aware(q.observed_at) != aware(
+            datetime.fromisoformat(q.payload["observed_at"])
+        ):
+            errors.append("QUOTE_PROJECTION_MISMATCH")
         if q.used_ask != used.get((q.id, "ask"), 0) or q.used_bid != used.get((q.id, "bid"), 0):
             errors.append("QUOTE_CONSUMPTION_MISMATCH")
         if (
@@ -174,26 +304,22 @@ def _reconcile(session, account):
             or not 0 <= q.used_bid <= q.payload["bid_size"]
         ):
             errors.append("QUOTE_LIQUIDITY_BREACH")
-    if {q for q, _ in used} - {q.id for q in quotes(session, account.id)}:
+    if {q for q, _ in used} - {q.id for q in quote_rows}:
         errors.append("FILL_QUOTE_MISSING")
     if D(expected["cash"]) < 0 or any(
         p["quantity"] < 0 or D(p["cost"]) < 0 for p in expected["positions"].values()
     ):
         errors.append("NEGATIVE_BALANCE")
     holds = sum(
-        (
-            D(o.state["reserved_cash"])
-            for o in orders(session, account.id)
-            if o.state["status"] in OPEN
-        ),
+        (D(o.state["reserved_cash"]) for o in order_rows if o.state["status"] in OPEN),
         D(0),
     )
     if holds > D(expected["cash"]):
         errors.append("CASH_RESERVATION_BREACH")
-    for symbol in {o.request["symbol"] for o in orders(session, account.id)}:
+    for symbol in {o.request["symbol"] for o in order_rows}:
         shares = sum(
             o.state["reserved_shares"]
-            for o in orders(session, account.id)
+            for o in order_rows
             if o.request["symbol"] == symbol and o.state["status"] in OPEN
         )
         if shares > expected["positions"].get(symbol, {}).get("quantity", 0):
@@ -203,8 +329,9 @@ def _reconcile(session, account):
         "errors": sorted(set(errors)),
         "journal_entries": len(journal),
         "last_sequence": journal[-1].sequence if journal else None,
+        "last_entry_sha256": journal[-1].entry_sha256 if journal else ZERO_HASH,
         "authorized": False,
-        "mode": "synthetic",
+        "mode": account.config.get("mode", "synthetic"),
     }
 
 
@@ -253,7 +380,7 @@ def record(
         payload["fill"] = fill
     if quote:
         payload["quote"] = quote
-    result = {"mode": "synthetic", "authorized": False, **result}
+    result = {"mode": account.config.get("mode", "synthetic"), "authorized": False, **result}
     event = PaperJournal(
         id=event_id,
         account_id=account.id,
@@ -300,11 +427,11 @@ def open_account(session, request, actor, now=None):
 
 
 def current_quote(session, account_id, symbol):
-    rows = [q for q in quotes(session, account_id) if q.payload["symbol"] == symbol]
-    return max(
-        rows,
-        key=lambda q: (aware(datetime.fromisoformat(q.payload["observed_at"])), q.id),
-        default=None,
+    return session.scalar(
+        select(PaperQuote)
+        .where(PaperQuote.account_id == account_id, PaperQuote.symbol == symbol)
+        .order_by(PaperQuote.observed_at.desc(), PaperQuote.id)
+        .limit(1)
     )
 
 
@@ -332,6 +459,12 @@ def evidence(now):
 
 def entry_check(session, account, request, quantity, cap, now, exclude=None):
     config, state = OpenAccount.model_validate(account.config), account.state
+    if config.mode == "forward":
+        from services.paper.forward import entry_guard
+
+        blockers = entry_guard(session, account, request, now)
+        if blockers:
+            return blockers
     existing = state["positions"].get(request["symbol"])
     stops = [
         D(o.request["stop_price"])
@@ -361,7 +494,7 @@ def entry_check(session, account, request, quantity, cap, now, exclude=None):
     positions = [
         Position(
             symbol=symbol,
-            asset_class="stock",
+            asset_class=config.asset_classes.get(symbol, "stock"),
             sector=p["sector"],
             quantity=p["quantity"],
             sellable_quantity=p["quantity"],
@@ -423,7 +556,7 @@ def entry_check(session, account, request, quantity, cap, now, exclude=None):
         as_of=now,
         candidate=ControlCandidate(
             symbol=request["symbol"],
-            asset_class="stock",
+            asset_class=config.asset_classes.get(request["symbol"], "stock"),
             sector=config.universe[request["symbol"]],
             action="BUY",
             quantity=quantity,
@@ -433,7 +566,7 @@ def entry_check(session, account, request, quantity, cap, now, exclude=None):
         account=snapshot,
         quote=MarketQuote(
             symbol=request["symbol"],
-            asset_class="stock",
+            asset_class=config.asset_classes.get(request["symbol"], "stock"),
             evidence=evidence(now),
             bid=ask,
             ask=ask,
@@ -480,6 +613,8 @@ def submit(session, account, body, actor, now, checksum):
     )
     fee = config.policy.fee_per_share * body.quantity + config.policy.fee_per_order
     if not rejected and body.side == "BUY":
+        if body.stop_price >= D(q.payload["ask"]) * (1 + config.policy.slippage_bps / D(10000)):
+            rejected.append("INVALID_LONG_STOP_CURRENT_QUOTE")
         rejected.extend(entry_check(session, account, request, body.quantity, cap, now))
     if body.side == "SELL":
         held = account.state["positions"].get(body.symbol, {}).get("quantity", 0)
@@ -534,7 +669,17 @@ def submit(session, account, body, actor, now, checksum):
 def ingest_quote(session, account, body, actor, now, checksum):
     config = OpenAccount.model_validate(account.config)
     if body.symbol not in config.universe:
-        raise ValueError("Quote symbol outside synthetic universe")
+        raise ValueError("Quote symbol outside simulation universe")
+    if (config.mode == "synthetic") != (body.source == "synthetic"):
+        raise ValueError("Quote source does not match account mode")
+    if config.mode == "forward" and (
+        not body.receipt_sha256
+        or not body.session_open
+        or not body.session_close
+        or not body.settlement_at
+        or not body.session_open <= now < body.session_close
+    ):
+        raise ValueError("Current provider session and settlement binding required")
     if not now - timedelta(seconds=config.policy.quote_max_age_seconds) <= body.observed_at <= now:
         raise ValueError("Quote is stale or in the future")
     old = current_quote(session, account.id, body.symbol)
@@ -548,6 +693,8 @@ def ingest_quote(session, account, body, actor, now, checksum):
             account_id=account.id,
             created_at=now,
             payload=body.model_dump(mode="json"),
+            symbol=body.symbol,
+            observed_at=body.observed_at,
             used_bid=0,
             used_ask=0,
         )
@@ -619,6 +766,13 @@ def fill_order(session, account, body, actor, now, checksum):
         raise ValueError("Fills require a quote observed and received after order submission")
     if current_quote(session, account.id, order.request["symbol"]).id != q.id:
         raise ValueError("Latest quote required")
+    if config.mode == "forward" and (
+        not q.payload.get("session_open")
+        or not aware(datetime.fromisoformat(q.payload["session_open"]))
+        <= now
+        < aware(datetime.fromisoformat(q.payload["session_close"]))
+    ):
+        raise ValueError("Market session closed")
     buy = order.request["side"] == "BUY"
     price = D(q.payload["ask" if buy else "bid"]) * (
         1 + (1 if buy else -1) * config.policy.slippage_bps / D(10000)
@@ -636,6 +790,25 @@ def fill_order(session, account, body, actor, now, checksum):
             "NO_FILL",
             {},
             {"status": "NO_FILL", "reason": "PRICE_OUTSIDE_BOUND"},
+        )
+    if buy and price <= D(order.request["stop_price"]):
+        terminal(order, "CANCELLED")
+        order.state = order.state | {"reasons": ["INVALID_LONG_STOP_CURRENT_QUOTE"]}
+        return record(
+            session,
+            account,
+            body.command_id,
+            checksum,
+            actor,
+            now,
+            "RISK_CANCEL",
+            {},
+            {
+                "status": "CANCELLED",
+                "reasons": ["INVALID_LONG_STOP_CURRENT_QUOTE"],
+                "order_id": order.id,
+            },
+            [order],
         )
     remaining = order.request["quantity"] - order.state["filled"]
     if buy:
@@ -673,6 +846,42 @@ def fill_order(session, account, body, actor, now, checksum):
             {},
             {"status": "NO_FILL", "reason": "QUOTE_LIQUIDITY_EXHAUSTED"},
         )
+    commit_now = session.info.get("paper_clock", lambda: now)()
+    if not fresh(q, commit_now, config.policy.quote_max_age_seconds) or (
+        config.mode == "forward"
+        and not aware(datetime.fromisoformat(q.payload["session_open"]))
+        <= commit_now
+        < aware(datetime.fromisoformat(q.payload["session_close"]))
+    ):
+        return record(
+            session,
+            account,
+            body.command_id,
+            checksum,
+            actor,
+            commit_now,
+            "NO_FILL",
+            {},
+            {"status": "NO_FILL", "reason": "QUOTE_EXPIRED_BEFORE_COMMIT"},
+        )
+    deadline = session.info.get("paper_entry_deadline")
+    event_check = session.info.get("paper_entry_events")
+    if buy and (
+        (deadline is not None and commit_now >= deadline)
+        or (event_check is not None and event_check(commit_now))
+    ):
+        return record(
+            session,
+            account,
+            body.command_id,
+            checksum,
+            actor,
+            commit_now,
+            "NO_FILL",
+            {},
+            {"status": "NO_FILL", "reason": "ENTRY_EVIDENCE_EXPIRED_BEFORE_COMMIT"},
+        )
+    now = commit_now
     fee = config.policy.fee_per_share * quantity + (
         config.policy.fee_per_order if order.state["filled"] == 0 else D(0)
     )
@@ -705,7 +914,27 @@ def fill_order(session, account, body, actor, now, checksum):
             raise ValueError("Insufficient owned synthetic shares")
         proceeds = price * quantity - fee
         if proceeds < 0:
-            raise ValueError("Fees exceed synthetic sale proceeds")
+            reserved = sum(
+                (
+                    D(o.state["reserved_cash"])
+                    for o in orders(session, account.id)
+                    if o.state["status"] in OPEN
+                ),
+                D(0),
+            )
+            if D(state["cash"]) - reserved < -proceeds:
+                return record(
+                    session,
+                    account,
+                    body.command_id,
+                    checksum,
+                    actor,
+                    now,
+                    "NO_FILL",
+                    {},
+                    {"status": "NO_FILL", "reason": "SETTLED_CASH_REQUIRED_FOR_EXIT_FEES"},
+                )
+            delta["cash"] = str(proceeds)
         cost = D(old["cost"]) * quantity / old["quantity"]
         realized = proceeds - cost
         p = old | {
@@ -715,17 +944,16 @@ def fill_order(session, account, body, actor, now, checksum):
         }
         if not p["quantity"]:
             p = None
-        delta.update(
-            unsettled={
+        delta["realized"] = str(realized)
+        if proceeds > 0:
+            delta["unsettled"] = {
                 fill_id: {
                     "amount": str(proceeds),
-                    "available_at": (
-                        now + timedelta(seconds=config.settlement_delay_seconds)
-                    ).isoformat(),
+                    "available_at": q.payload["settlement_at"]
+                    if config.mode == "forward"
+                    else (now + timedelta(seconds=config.settlement_delay_seconds)).isoformat(),
                 }
-            },
-            realized=str(realized),
-        )
+            }
         q.used_bid += quantity
     delta["positions"][symbol] = p
     filled = order.state["filled"] + quantity
@@ -849,8 +1077,37 @@ def halt(session, account, body, actor, now, checksum):
         actor,
         now,
         "HALT",
-        {"meta": {"halted": body.engaged, "halt_reason": body.reason}},
+        {
+            "meta": {
+                "halted": body.engaged,
+                "halt_reason": body.reason,
+                **({"liquidation_requested": False} if not body.engaged else {}),
+            }
+        },
         {"status": "HALTED" if body.engaged else "RESUMED"},
+        changed,
+    )
+
+
+def liquidate(session, account, body, actor, now, checksum):
+    changed = []
+    for order in orders(session, account.id):
+        if order.state["status"] in OPEN and order.request["side"] == "BUY":
+            terminal(order, "CANCELLED")
+            changed.append(order)
+    return record(
+        session,
+        account,
+        body.command_id,
+        checksum,
+        actor,
+        now,
+        "EXIT_REQUEST",
+        {"meta": {"halted": True, "halt_reason": body.reason, "liquidation_requested": True}},
+        {
+            "status": "EXIT_REQUESTED",
+            "scope": "Owned virtual positions only; waits for a fresh regular-session quote",
+        },
         changed,
     )
 
@@ -862,15 +1119,29 @@ OPERATIONS = {
     "cancel": cancel_order,
     "tick": tick,
     "halt": halt,
+    "liquidate": liquidate,
 }
 
 
-def mutate(session, account_id, kind, body, actor, now=None):
-    lock_controls(session)
+def mutate(
+    session, account_id, kind, body, actor, now=None, *, authority=None, already_locked=False
+):
+    if not already_locked:
+        lock_controls(session)
+    injected_now = now is not None
+    session.info["paper_entry_deadline"] = None
+    session.info["paper_entry_events"] = None
+    session.info["paper_clock"] = (lambda: now) if injected_now else utcnow
     now = now or utcnow()  # Sample after lock waits; time injection is for isolated tests only.
     account = session.get(PaperAccount, account_id)
     if account is None:
         raise ValueError("Unknown paper account")
+    if (
+        account.config.get("mode") == "forward"
+        and kind in {"quote", "order", "fill"}
+        and authority is not WORKER_AUTHORITY
+    ):
+        raise ValueError("Forward matching requires the server paper worker or decision bridge")
     checksum = digest({"kind": kind, "request": body.model_dump(mode="json"), "actor": actor})
     if body.command_id == "__open__":
         raise ImportConflict("Reserved paper command ID")
@@ -891,7 +1162,12 @@ def mutate(session, account_id, kind, body, actor, now=None):
         raise ValueError("Paper server clock moved backwards")
     with localcontext() as context:
         context.prec = 80
-        check = reconcile(session, account)
+        verified_cycle = (
+            authority is WORKER_AUTHORITY
+            and already_locked
+            and session.info.get("paper_cycle_verified") == account.id
+        )
+        check = {"status": "MATCH"} if verified_cycle else reconcile(session, account)
         if check["status"] != "MATCH":
             # Never repair or overwrite drift automatically.
             session.add(
@@ -904,8 +1180,10 @@ def mutate(session, account_id, kind, body, actor, now=None):
                 "reason": "RECONCILIATION_MISMATCH",
                 "errors": check["errors"],
                 "authorized": False,
-                "mode": "synthetic",
+                "mode": account.config.get("mode", "synthetic"),
             }
+        if not injected_now:
+            now = utcnow()
         return OPERATIONS[kind](session, account, body, actor, now, checksum)
 
 
@@ -914,16 +1192,37 @@ def snapshot(session, account):
         context.prec = 80
         rows = orders(session, account.id)
         held = sum((D(o.state["reserved_cash"]) for o in rows if o.state["status"] in OPEN), D(0))
+        latest_quotes = [
+            current_quote(session, account.id, symbol) for symbol in account.config["universe"]
+        ]
         return {
             "account_id": account.id,
-            "mode": "synthetic",
+            "mode": account.config.get("mode", "synthetic"),
             "authorized": False,
             "config": account.config,
             "state": account.state,
             "equity": str(equity(account.state)),
             "reserved_cash": str(held),
             "available_cash": str(D(account.state["cash"]) - held),
-            "orders": [{"id": o.id, "request": o.request, "state": o.state} for o in rows],
+            "orders": [
+                {
+                    "id": o.id,
+                    "created_at": aware(o.created_at).isoformat(),
+                    "request": o.request,
+                    "state": o.state,
+                }
+                for o in rows
+            ],
+            "quotes": [
+                {
+                    "quote_id": q.id,
+                    "symbol": q.payload["symbol"],
+                    "observed_at": q.payload["observed_at"],
+                    "source": q.payload["source"],
+                }
+                for q in latest_quotes
+                if q is not None
+            ],
             "reconciliation": reconcile(session, account),
             "forward_acceptance": "NOT_ESTABLISHED",
         }

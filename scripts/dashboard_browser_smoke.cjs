@@ -70,6 +70,45 @@ const { chromium } = require("playwright");
     ).status() !== 401
   )
     throw new Error("Lock failed to revoke");
+  await page.locator("#account-email").fill("operator@example.test");
+  await page.locator("#account-password").fill("Browser-Test-Password-123");
+  await page.locator("#account-form button").click();
+  await page.locator("#workspace").waitFor({state:"visible"});
+  await page.locator('[data-panel="paper"]').click();
+  const controls=page.locator("#paper-controls");
+  const create=controls.locator("form").filter({has:page.getByRole("heading",{name:"Create simulation account",exact:true})});
+  await create.getByLabel("Account ID",{exact:true}).fill("browser-created");
+  await create.getByLabel("Symbol",{exact:true}).fill("SYNTH");
+  await create.getByLabel("Sector",{exact:true}).fill("technology");
+  await create.getByRole("button",{name:"Create simulation account",exact:true}).click();
+  await page.waitForFunction(()=>Array.from(document.querySelector("#paper-account").options).some(o=>o.value==="browser-created"));
+  await page.locator("#paper-account").selectOption("browser-created");
+  await page.waitForFunction(()=>document.querySelector("#paper-status").textContent.includes("Ledger matches"));
+  const quoteForm=controls.locator("form").filter({has:page.getByRole("heading",{name:"Record synthetic quote",exact:true})});
+  async function enterQuote(){
+    await quoteForm.getByLabel("Symbol",{exact:true}).fill("SYNTH");
+    await quoteForm.getByLabel("Bid",{exact:true}).fill("99.50");
+    await quoteForm.getByLabel("Ask",{exact:true}).fill("100.25");
+    await quoteForm.getByRole("button",{name:"Record synthetic quote",exact:true}).click();
+    await page.waitForFunction(()=>document.querySelector("#paper-operation-message").textContent==="Recorded");
+  }
+  await enterQuote();
+  const orderForm=controls.locator("form").filter({has:page.getByRole("heading",{name:"Submit simulation order",exact:true})});
+  await orderForm.getByLabel("Symbol",{exact:true}).fill("SYNTH");
+  await orderForm.getByLabel("Planned stop price (buy)",{exact:true}).fill("95");
+  await orderForm.getByRole("button",{name:"Submit simulation order",exact:true}).click();
+  await page.waitForFunction(()=>document.querySelector("#paper-orders").textContent.includes("ACCEPTED"));
+  await enterQuote();
+  await controls.getByRole("button",{name:/Match against latest quote/}).click();
+  await page.waitForFunction(()=>document.querySelector("#paper-orders").textContent.includes("FILLED"));
+  await page.waitForFunction(()=>document.querySelector("#paper-positions").textContent.includes("SYNTH"));
+  await page.locator("#language").selectOption("ar");
+  await controls.getByRole("heading",{name:"عمليات المحاكاة",exact:true}).waitFor();
+  const paperOverflow=await page.evaluate(()=>document.documentElement.scrollWidth>window.innerWidth);
+  if(paperOverflow)throw new Error("Paper controls mobile overflow");
+  await page.locator("#language").selectOption("en");
+  await page.getByRole("button",{name:"Sign out",exact:true}).click();
+  await page.locator("#account-login").waitFor({state:"visible"});
   if (errors.length) throw new Error(errors.join(";"));
   if (overflow) throw new Error("Mobile overflow");
   console.log(
@@ -82,6 +121,8 @@ const { chromium } = require("playwright");
       logout_revocation: true,
       mobile_no_overflow: true,
       paper_account_english_arabic: true,
+      paper_operator_create_quote_order_fill: true,
+      paper_controls_mobile_arabic: true,
       js_errors: errors.length,
     }),
   );

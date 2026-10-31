@@ -196,9 +196,11 @@ The English-default read-only shell with an Arabic language option is served at 
 
 Notification previews default to English; `?language=ar` selects Arabic (`en` and `ar` are the only accepted values). Each item returns the selected `text` plus both localized `texts` and the selected `language`. Language choice grants no delivery authority.
 
-## Internal synthetic paper API
+## Internal paper API
 
 See [Milestone 8](milestone-8-paper-trading.md) for `/api/v1/paper` contracts,
 operator-session/CSRF permissions, the disabled-by-default server flag, and
-synthetic-only execution/forward-test limits. These routes never submit real
+synthetic and separately gated forward operation limits. These routes never submit real
 or external broker orders.
+
+The [forward runbook](milestone-8-forward-operations.md) documents `/runs`, exact-hash reviewer approval, `/decision-orders`, owned liquidation intent and finalization. Raw forward quotes/orders/fills are worker-only. Emergency operator cleanup remains available with entry flags disabled.

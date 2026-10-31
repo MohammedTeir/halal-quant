@@ -21,7 +21,7 @@ from alembic.config import Config
 from apps.api.db import session_factory, utcnow
 from apps.api.main import create_app
 from packages.config.settings import Settings, get_settings
-from services.accounts.access import issue, locked
+from services.accounts.access import issue, locked, password_hash
 from services.notifications.models import User
 from services.paper.engine import open_account
 from services.paper.schemas import OpenAccount
@@ -45,6 +45,15 @@ def main():
             )
             db.add(user)
             token = issue(db, user, "invite", 600)
+            db.add(
+                User(
+                    id="browser-operator",
+                    email="operator@example.test",
+                    password=password_hash("Browser-Test-Password-123"),
+                    role="operator",
+                    enabled=True,
+                )
+            )
         with sessions.begin() as db:
             open_account(
                 db,
@@ -55,6 +64,8 @@ def main():
         settings = Settings(
             database_url=url,
             session_cookie_secure=False,
+            paper_trading_enabled=True,
+            paper_forward_enabled=True,
             gemini_enabled=False,
             dashboard_api_key="",
             analysis_api_key="",

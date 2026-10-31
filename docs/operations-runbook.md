@@ -126,3 +126,7 @@ Gemini's default timeout is now 60 seconds, bounded to 0.1–120; existing expli
 configuration overrides it. Reverse-proxy/client timeouts must accommodate the
 chosen request budget. Request timeouts remain ambiguous; do not auto-regenerate.
 No deployment/environment settings were edited or published during development.
+
+## Internal forward paper worker
+
+Apply current head `0009_paper_forward` and update phone source before restarting the notification worker. The [forward operations runbook](milestone-8-forward-operations.md) covers private configuration, reviewed protocols, the separate `halal-paper` service, cleanup and elapsed acceptance. Default flags are disabled. No external orders or earlier milestone approvals are granted.

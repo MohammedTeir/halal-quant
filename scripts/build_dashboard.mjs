@@ -9,7 +9,7 @@ const source = path.join(root, "apps", "dashboard", "static");
 await rm(output, { recursive: true, force: true });
 await mkdir(path.join(output, "dashboard", "assets"), { recursive: true });
 await cp(path.join(source, "index.html"), path.join(output, "index.html"));
-for (const asset of ["app.js", "accounts.js", "i18n.js", "style.css"]) {
+for (const asset of ["app.js", "accounts.js", "paper.js", "i18n.js", "style.css"]) {
   await cp(
     path.join(source, asset),
     path.join(output, "dashboard", "assets", asset),

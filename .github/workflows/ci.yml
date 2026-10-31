@@ -32,6 +32,7 @@ jobs:
       - name: Dashboard JavaScript syntax
         run: |
           node --check apps/dashboard/static/app.js
+          node --check apps/dashboard/static/paper.js
           node --check apps/dashboard/static/accounts.js
           node --check apps/dashboard/static/i18n.js
           node --check scripts/dashboard_browser_smoke.cjs

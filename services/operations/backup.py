@@ -140,7 +140,11 @@ def backup_and_verify(url, output_dir):
                 snapshot = connection.scalar(text("SELECT pg_export_snapshot()"))
                 counts = row_counts(connection)
                 source_revision = connection.scalar(text("SELECT version_num FROM alembic_version"))
-                if source_revision not in {"0007_access_delivery", "0008_paper_simulator"}:
+                if source_revision not in {
+                    "0007_access_delivery",
+                    "0008_paper_simulator",
+                    "0009_paper_forward",
+                }:
                     raise BackupFailure("Unsupported source application migration")
                 command(
                     [

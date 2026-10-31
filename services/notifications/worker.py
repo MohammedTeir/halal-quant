@@ -28,7 +28,11 @@ def check_configuration(sessions, telegram, expected_bot=None):
                     )
                 )
             )
-            if revision not in {"0007_access_delivery", "0008_paper_simulator"} or states != {
+            if revision not in {
+                "0007_access_delivery",
+                "0008_paper_simulator",
+                "0009_paper_forward",
+            } or states != {
                 "access",
                 "delivery",
                 "telegram_offset",

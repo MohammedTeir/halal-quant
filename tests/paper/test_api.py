@@ -108,7 +108,17 @@ def test_operator_api_lifecycle_and_account_isolation_without_network(client):
     assert client.get("/api/v1/paper/accounts/unknown").status_code == 404
 
 
-@pytest.mark.parametrize("patch", [{"mode": "live"}, {"mode": "paper"}, {"margin": True}])
+@pytest.mark.parametrize(
+    "patch",
+    [
+        {"mode": "live"},
+        {"mode": "paper"},
+        {"margin": True},
+        {"account_id": "."},
+        {"account_id": ".."},
+        {"account_id": "--help"},
+    ],
+)
 def test_only_strict_synthetic_account_contract_is_accepted(client, patch):
     headers = sign_in(client)
     assert (

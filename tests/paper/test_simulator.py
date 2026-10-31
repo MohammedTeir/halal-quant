@@ -451,3 +451,105 @@ def test_partial_exit_counts_one_loss_only_when_closed(sim, finish):
         run(sim, "tick", Command(command_id="expire-exit"), 13)
     assert state(sim)["state"]["consecutive_losses"] == 1
     assert state(sim)["reconciliation"]["status"] == "MATCH"
+
+
+def test_buy_gap_below_planned_stop_cancels_unfilled_risk(sim):
+    quote(sim)
+    order = buy(sim)["order_id"]
+    q = quote(sim, "gap", 1, bid="90", ask="91")
+    result = fill(sim, order, q, "gap-fill", 1)
+    assert (
+        result["status"] == "CANCELLED" and "INVALID_LONG_STOP_CURRENT_QUOTE" in result["reasons"]
+    )
+    assert not state(sim)["state"]["positions"]
+    assert state(sim)["reconciliation"]["status"] == "MATCH"
+
+
+def test_owned_exit_can_pay_fee_shortfall_from_free_settled_cash(client):
+    from packages.schemas.controls import ControlPolicy
+
+    sessions = sessionmaker(client.app.state.engine, expire_on_commit=False)
+    now = datetime(2026, 10, 31, 12, tzinfo=UTC)
+    with sessions.begin() as db:
+        engine.open_account(
+            db,
+            OpenAccount(
+                account_id="paper-test",
+                universe={"SYNTH": "technology"},
+                policy=ControlPolicy(fee_per_order="10"),
+            ),
+            "operator",
+            now,
+        )
+    sim = sessions, now
+    quote(sim, bid="0.49", ask="0.50")
+    buy_order = run(
+        sim,
+        "order",
+        OrderRequest(
+            command_id="penny-buy", symbol="SYNTH", side="BUY", quantity=1, stop_price="0.1"
+        ),
+    )["order_id"]
+    q = quote(sim, "q2", 1, bid="0.49", ask="0.50")
+    fill(sim, buy_order, q)
+    sell = run(
+        sim,
+        "order",
+        OrderRequest(command_id="penny-sell", symbol="SYNTH", side="SELL", quantity=1),
+        2,
+    )["order_id"]
+    q = quote(sim, "q3", 3, bid="0.01", ask="0.02")
+    assert fill(sim, sell, q, "penny-exit", 3)["status"] == "FILLED"
+    snap = state(sim)
+    assert Decimal(snap["state"]["cash"]) == Decimal("99979.51")
+    assert not snap["state"]["positions"] and not snap["state"]["unsettled"]
+    assert snap["reconciliation"]["status"] == "MATCH"
+
+
+def test_reconciliation_detects_economically_wrong_delta_even_when_projection_and_hash_agree(sim):
+    quote(sim)
+    order = buy(sim, quantity=1)["order_id"]
+    q = quote(sim, "q2", 1)
+    fill(sim, order, q)
+    with sim[0].begin() as db:
+        event = db.scalar(select(PaperJournal).order_by(PaperJournal.sequence.desc()))
+        payload = event.payload
+        payload["delta"]["positions"]["SYNTH"]["quantity"] = 11
+        event.payload = dict(payload)
+        event.entry_sha256 = engine.seal(
+            event.account_id,
+            event.id,
+            event.created_at,
+            event.request_sha256,
+            event.previous_sha256,
+            event.payload,
+            event.result,
+        )
+        account = db.get(PaperAccount, "paper-test")
+        account.state = account.state | {
+            "positions": {"SYNTH": account.state["positions"]["SYNTH"] | {"quantity": 11}}
+        }
+        # Force JSON change tracking: the mutated fixture journal otherwise remains
+        # an in-memory dictionary, not the intended persisted corruption case.
+        from sqlalchemy.orm.attributes import flag_modified
+
+        flag_modified(event, "payload")
+    result = state(sim)["reconciliation"]
+    assert result["status"] == "MISMATCH" and "FILL_POSITION_MISMATCH" in result["errors"]
+
+
+def test_slow_validation_cannot_fill_after_the_quote_expires(sim, monkeypatch):
+    quote(sim)
+    order = buy(sim)["order_id"]
+    q = quote(sim, "q2", 1)
+    original = engine.entry_check
+
+    def slow_check(db, account, request, quantity, cap, now, exclude=None):
+        result = original(db, account, request, quantity, cap, now, exclude)
+        db.info["paper_clock"] = lambda: now + timedelta(seconds=30)
+        return result
+
+    monkeypatch.setattr(engine, "entry_check", slow_check)
+    result = fill(sim, order, q)
+    assert result["status"] == "NO_FILL" and result["reason"] == "QUOTE_EXPIRED_BEFORE_COMMIT"
+    assert not state(sim)["state"]["positions"]

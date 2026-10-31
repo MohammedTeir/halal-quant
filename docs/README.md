@@ -60,3 +60,5 @@ mark a manual gate complete without its evidence.
 - [Finish Milestone 7 live operational acceptance](milestone-7-operational-acceptance.md)
 
 - [Milestone 8 internal paper simulator and remaining forward acceptance](milestone-8-paper-trading.md)
+
+- [Milestone 8 forward configuration, review, Termux worker and genuine acceptance](milestone-8-forward-operations.md)
