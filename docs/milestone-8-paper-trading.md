@@ -92,3 +92,5 @@ open where documented. Paper-scoped reviews do not close those gates. Milestone
 ## Campaign setup follow-up
 
 The [setup workflow](milestone-8-forward-operations.md#automated-preparation-and-source-polling) now prepares immutable drafts, configures private source IDs, acquires observations and submits an operator-authenticated pending campaign. A separate source worker reuses existing adapters. The local follow-up passed **657 tests, two PostgreSQL-only skips**, including 11 setup tests. A real ten-candidate source probe imported 31/32 polls; MU action date semantics remain unresolved. No approval or acceptance was inferred. See the [setup report](../reports/milestone8-campaign-setup-2026-10-31.json).
+
+[Hosted CI](https://github.com/MohammedTeir/halal-quant/actions/runs/41211947049) passed **659 tests** on PostgreSQL for source `7422658`, including encrypted backup/isolated restore and all existing offline acceptance steps.

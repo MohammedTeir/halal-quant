@@ -37,5 +37,9 @@
     "Obtain actual financial/business/instrument evidence and reviewed methodology/policy/assets/protocol",
     "Run source/classification/strategy/decision and paper workers on selected host",
     "Accumulate actual elapsed sessions/recovery and finalize only with no blockers"
-  ]
+  ],
+  "hosted_tests_passed": 659,
+  "source_commit": "7422658ba1a62c0ef9f05bacfeccb3bc825c5f32",
+  "ci_url": "https://github.com/MohammedTeir/halal-quant/actions/runs/41211947049",
+  "ci_conclusion": "success"
 }

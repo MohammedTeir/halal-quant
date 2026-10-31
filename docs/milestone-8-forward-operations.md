@@ -234,7 +234,8 @@ It asks privately for a Finnhub key if none is configured, and for the operator'
 email/password to submit the account and **pending** protocol through ordinary
 server auth/CSRF. Get a key from your own Finnhub account; do not paste it into chat.
 Passwords/keys are hidden and never passed as command arguments. The temporary
-login is logged out afterwards. Other sessions remain intact. Review API flags
+login is logged out afterwards when the logout request succeeds; if connectivity
+fails at logout, inspect/revoke that session through account settings. Other sessions remain intact. Review API flags
 must be enabled on Render; changing the phone `.env` does not change Render.
 
 `--configure-sources` sets only the four named source IDs in the private phone
