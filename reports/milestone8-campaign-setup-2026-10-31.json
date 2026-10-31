@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-31",
+  "status": "SETUP_AUTOMATION_VERIFIED_ACCEPTANCE_PENDING",
+  "local_tests_passed": 657,
+  "local_postgresql_only_skipped": 2,
+  "focused_setup_tests_passed": 11,
+  "lint_format_static_build_and_shell_syntax": "PASSED",
+  "prepared_artifacts": [
+    "ten-stock account with explicit proposed costs",
+    "PENDING equity-screen methodology proposal",
+    "exact-hash forward protocol and source review",
+    "idempotent ordinary-auth operator proposal submission"
+  ],
+  "sources": {
+    "worker": "services.paper.sources",
+    "fixed_adapters_reused": true,
+    "poll_seconds": 300,
+    "local_lock": true,
+    "archive_budget_mib": 512,
+    "ten_candidate_live_probe_imported": 31,
+    "ten_candidate_live_probe_total": 32,
+    "unresolved_source": "MU corporate-action response ex-date outside declared request window",
+    "coverage_status": "NOT_ESTABLISHED"
+  },
+  "methodology_scope": "AI-prepared pending proposal only, not qualified approval or AAOIFI certification. Financial statements, denominator averaging, business activity, purification and possession remain unevidenced.",
+  "deployment": "Operator runs setup privately on existing phone; environment has no production database binding or hosting configuration access.",
+  "actual_forward_campaign_started": false,
+  "screening_or_protocol_approvals_created": 0,
+  "external_orders_submitted": 0,
+  "real_emails_sent": 0,
+  "real_telegram_messages_sent": 0,
+  "cloud_configuration_published": false,
+  "earlier_milestone_acceptance_changed": false,
+  "remaining": [
+    "Deploy and run setup using private phone credentials",
+    "Resolve provider date semantics and prospective coverage",
+    "Obtain actual financial/business/instrument evidence and reviewed methodology/policy/assets/protocol",
+    "Run source/classification/strategy/decision and paper workers on selected host",
+    "Accumulate actual elapsed sessions/recovery and finalize only with no blockers"
+  ]
+}

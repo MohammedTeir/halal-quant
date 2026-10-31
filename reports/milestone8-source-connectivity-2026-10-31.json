@@ -1,0 +1,230 @@
+{
+  "status": "INCOMPLETE",
+  "started_at": "2026-10-31T14:41:09.695884+00:00",
+  "finished_at": "2026-10-31T14:41:49.350960+00:00",
+  "results": [
+    {
+      "source": "bls",
+      "status": "IMPORTED"
+    },
+    {
+      "source": "fomc-2026",
+      "status": "IMPORTED"
+    },
+    {
+      "source": "news-AAPL",
+      "status": "IMPORTED"
+    },
+    {
+      "source": "earnings-AAPL",
+      "status": "IMPORTED"
+    },
+    {
+      "source": "actions-AAPL",
+      "status": "IMPORTED"
+    },
+    {
+      "source": "news-NVDA",
+      "status": "IMPORTED"
+    },
+    {
+      "source": "earnings-NVDA",
+      "status": "IMPORTED"
+    },
+    {
+      "source": "actions-NVDA",
+      "status": "IMPORTED"
+    },
+    {
+      "source": "news-MSFT",
+      "status": "IMPORTED"
+    },
+    {
+      "source": "earnings-MSFT",
+      "status": "IMPORTED"
+    },
+    {
+      "source": "actions-MSFT",
+      "status": "IMPORTED"
+    },
+    {
+      "source": "news-GOOGL",
+      "status": "IMPORTED"
+    },
+    {
+      "source": "earnings-GOOGL",
+      "status": "IMPORTED"
+    },
+    {
+      "source": "actions-GOOGL",
+      "status": "IMPORTED"
+    },
+    {
+      "source": "news-AMZN",
+      "status": "IMPORTED"
+    },
+    {
+      "source": "earnings-AMZN",
+      "status": "IMPORTED"
+    },
+    {
+      "source": "actions-AMZN",
+      "status": "IMPORTED"
+    },
+    {
+      "source": "news-TSLA",
+      "status": "IMPORTED"
+    },
+    {
+      "source": "earnings-TSLA",
+      "status": "IMPORTED"
+    },
+    {
+      "source": "actions-TSLA",
+      "status": "IMPORTED"
+    },
+    {
+      "source": "news-META",
+      "status": "IMPORTED"
+    },
+    {
+      "source": "earnings-META",
+      "status": "IMPORTED"
+    },
+    {
+      "source": "actions-META",
+      "status": "IMPORTED"
+    },
+    {
+      "source": "news-AVGO",
+      "status": "IMPORTED"
+    },
+    {
+      "source": "earnings-AVGO",
+      "status": "IMPORTED"
+    },
+    {
+      "source": "actions-AVGO",
+      "status": "IMPORTED"
+    },
+    {
+      "source": "news-LLY",
+      "status": "IMPORTED"
+    },
+    {
+      "source": "earnings-LLY",
+      "status": "IMPORTED"
+    },
+    {
+      "source": "actions-LLY",
+      "status": "IMPORTED"
+    },
+    {
+      "source": "news-MU",
+      "status": "IMPORTED"
+    },
+    {
+      "source": "earnings-MU",
+      "status": "IMPORTED"
+    },
+    {
+      "source": "actions-MU",
+      "status": "FAILED"
+    }
+  ],
+  "expected_polls": 32,
+  "scope": "Ten-candidate read-only live source probe into a disposable database; not complete coverage, production configuration, screening or forward acceptance",
+  "orders_submitted": 0,
+  "messages_sent": 0,
+  "archive_file_sha256": {
+    "20261031T144109Z-f0bb7a250361/earnings-MU/import-result.json": "0c01699da6875f5fb724b8caf33007c7be17958d8a0ce05d19e48c0c366f89fa",
+    "20261031T144109Z-f0bb7a250361/earnings-MU/observations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "20261031T144109Z-f0bb7a250361/earnings-MU/raw.json": "901f16229955261ffbb06ed3d3dafaf68ef433675f4c625601933ad4601964d9",
+    "20261031T144109Z-f0bb7a250361/news-MU/import-result.json": "5e21fe7c416f72f3c6aff404db7361531fcc49d35884932e121eb30879f1bc4c",
+    "20261031T144109Z-f0bb7a250361/news-MU/observations.json": "b895a0cbd96a7722235db6ddbb485b9ecb2003164436224275b70fbd3034583e",
+    "20261031T144109Z-f0bb7a250361/actions-LLY/import-result.json": "d959020892bb49e50721e5700be5e57647a290ac003ddf2c58b748af66baa498",
+    "20261031T144109Z-f0bb7a250361/actions-LLY/observations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "20261031T144109Z-f0bb7a250361/actions-LLY/raw.json": "50212cb3fe0875ddc45fdce2ee4b4c7c04de750048bcc31ae71ce7333f2963fd",
+    "20261031T144109Z-f0bb7a250361/earnings-LLY/import-result.json": "a25d16e2aecc65a8d45dfa35d99636da07337626d99023164012e7b0474f5c1c",
+    "20261031T144109Z-f0bb7a250361/earnings-LLY/observations.json": "4291ff1ceb10548f40b4e747a7c54d671b5c7ca1f3efb1aae7a53658e03c2057",
+    "20261031T144109Z-f0bb7a250361/earnings-LLY/raw.json": "97fd9e2b31ef0b653b0b93c84b298591442574e7c476b21d6f48b3112e5b9319",
+    "20261031T144109Z-f0bb7a250361/news-LLY/import-result.json": "ece2bcd2deb63357b15cc34865d275cd6084f9f8f715825c821c5f559ffc7692",
+    "20261031T144109Z-f0bb7a250361/news-LLY/observations.json": "c55061187ebe0d2b915cf853b50ab25e84d791e626534a4e1476b1474acbf8bd",
+    "20261031T144109Z-f0bb7a250361/actions-AVGO/import-result.json": "307e9e8473ec5675892bbbc8108040e07c7407e5fca4401031c4f59b31f193a9",
+    "20261031T144109Z-f0bb7a250361/actions-AVGO/observations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "20261031T144109Z-f0bb7a250361/actions-AVGO/raw.json": "50212cb3fe0875ddc45fdce2ee4b4c7c04de750048bcc31ae71ce7333f2963fd",
+    "20261031T144109Z-f0bb7a250361/earnings-AVGO/import-result.json": "dabf099a6126ad78d10f54f7f2d19712558e3c5c84143c4e8d6a53c5b69301bf",
+    "20261031T144109Z-f0bb7a250361/earnings-AVGO/observations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "20261031T144109Z-f0bb7a250361/earnings-AVGO/raw.json": "901f16229955261ffbb06ed3d3dafaf68ef433675f4c625601933ad4601964d9",
+    "20261031T144109Z-f0bb7a250361/news-AVGO/import-result.json": "68135ca28d8f1241f97b5eed73e00637c17387da8f3aadd1ffae5246edf5016e",
+    "20261031T144109Z-f0bb7a250361/news-AVGO/observations.json": "ac4a3504ed4f7d2c900abd7d1c41716faf14be668f05dc532b4cbd8f0aae487a",
+    "20261031T144109Z-f0bb7a250361/actions-META/import-result.json": "9e8169a7f48a08677c04bf9f3311b9aa1c994018a63975b77f9a9b7b0c22ea97",
+    "20261031T144109Z-f0bb7a250361/actions-META/observations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "20261031T144109Z-f0bb7a250361/actions-META/raw.json": "50212cb3fe0875ddc45fdce2ee4b4c7c04de750048bcc31ae71ce7333f2963fd",
+    "20261031T144109Z-f0bb7a250361/earnings-META/import-result.json": "d3acdd86e5873afc0137498772cac65ce9703f0e179fc0a34021759f03380e9a",
+    "20261031T144109Z-f0bb7a250361/earnings-META/observations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "20261031T144109Z-f0bb7a250361/earnings-META/raw.json": "901f16229955261ffbb06ed3d3dafaf68ef433675f4c625601933ad4601964d9",
+    "20261031T144109Z-f0bb7a250361/news-META/import-result.json": "e68f041d6ac5e0722700a09ce4cf1f0f12ecb3db9704eae2209a7c3e0367582f",
+    "20261031T144109Z-f0bb7a250361/news-META/observations.json": "a8949bb62f0592288480def8ec99c8608a36d91d8f7a4164189ea50f4fff2ef0",
+    "20261031T144109Z-f0bb7a250361/actions-TSLA/import-result.json": "11a69784a1014b9a7b433fd2b7d46b809a845ac28cad43a781c4c03c22e72ffc",
+    "20261031T144109Z-f0bb7a250361/actions-TSLA/observations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "20261031T144109Z-f0bb7a250361/actions-TSLA/raw.json": "50212cb3fe0875ddc45fdce2ee4b4c7c04de750048bcc31ae71ce7333f2963fd",
+    "20261031T144109Z-f0bb7a250361/earnings-TSLA/import-result.json": "17f9889e22f83b59051e746df04a2d5f9bfe70ed978b9ba9e29657d9b553cba4",
+    "20261031T144109Z-f0bb7a250361/earnings-TSLA/observations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "20261031T144109Z-f0bb7a250361/earnings-TSLA/raw.json": "901f16229955261ffbb06ed3d3dafaf68ef433675f4c625601933ad4601964d9",
+    "20261031T144109Z-f0bb7a250361/news-TSLA/import-result.json": "615efce81cfec2c55cdf56036dd5137bc53b555643afd2b5086f6769b503fb36",
+    "20261031T144109Z-f0bb7a250361/news-TSLA/observations.json": "01eabd0c5cb0c89d10219e6551a7e60fe2d8b8b9d2f4df005e0cdf6d46cc0d25",
+    "20261031T144109Z-f0bb7a250361/actions-AMZN/import-result.json": "38447ea002773c4585e9a20c3bcc3deefcb6a59e06edbb68517819aecb4b9654",
+    "20261031T144109Z-f0bb7a250361/actions-AMZN/observations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "20261031T144109Z-f0bb7a250361/actions-AMZN/raw.json": "50212cb3fe0875ddc45fdce2ee4b4c7c04de750048bcc31ae71ce7333f2963fd",
+    "20261031T144109Z-f0bb7a250361/earnings-AMZN/import-result.json": "1fc105dab388a8b698e2783e5dfccb0cf1f83cfc8fd2e342aeda15b049eb6030",
+    "20261031T144109Z-f0bb7a250361/earnings-AMZN/observations.json": "45d2c30a44600e3747b04040c0722b87d55eb7fc0ecba949b467bd7b3c265edf",
+    "20261031T144109Z-f0bb7a250361/earnings-AMZN/raw.json": "39ffef6d2e73523fbbf95006e1b2bccbd99bc4c11b9392dbbec317648bcb3b3c",
+    "20261031T144109Z-f0bb7a250361/news-AMZN/import-result.json": "9d0b6263bd40e29801ffa36728de9ee3711d90f6319221f233bcab7b8ba56453",
+    "20261031T144109Z-f0bb7a250361/news-AMZN/observations.json": "cb562a4bfa947534ac41ec6204ea839334322d9c91b3c37d00abdc6f47d8aa93",
+    "20261031T144109Z-f0bb7a250361/actions-GOOGL/import-result.json": "6aa7f8e193a4cfcb81f03a38128c93e550552b8d153fe0b05c60b5e3d78f17bb",
+    "20261031T144109Z-f0bb7a250361/actions-GOOGL/observations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "20261031T144109Z-f0bb7a250361/actions-GOOGL/raw.json": "50212cb3fe0875ddc45fdce2ee4b4c7c04de750048bcc31ae71ce7333f2963fd",
+    "20261031T144109Z-f0bb7a250361/earnings-GOOGL/import-result.json": "d7ebb38999f2635603d856abc86e571cc84e843e09482e1542b89a00d5283612",
+    "20261031T144109Z-f0bb7a250361/earnings-GOOGL/observations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "20261031T144109Z-f0bb7a250361/earnings-GOOGL/raw.json": "901f16229955261ffbb06ed3d3dafaf68ef433675f4c625601933ad4601964d9",
+    "20261031T144109Z-f0bb7a250361/news-GOOGL/import-result.json": "e7dcd847ce8013c3bf8c84ef928aca2962854ad82e33c0352b6b2f683da86a5c",
+    "20261031T144109Z-f0bb7a250361/news-GOOGL/observations.json": "b03aec2c20504aee3db36bd32c1976e614e731b57ed12380981c66824d61924f",
+    "20261031T144109Z-f0bb7a250361/actions-MSFT/import-result.json": "492c20f5badba0a45da0dd0119f7e0e928828cbff9f6c52fdfcd46c9dc1750f8",
+    "20261031T144109Z-f0bb7a250361/actions-MSFT/observations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "20261031T144109Z-f0bb7a250361/actions-MSFT/raw.json": "50212cb3fe0875ddc45fdce2ee4b4c7c04de750048bcc31ae71ce7333f2963fd",
+    "20261031T144109Z-f0bb7a250361/earnings-MSFT/import-result.json": "f3010e92c7069fd779035d7f288271c0e8bf1d87f1bfba7905d1b257ec4de522",
+    "20261031T144109Z-f0bb7a250361/earnings-MSFT/observations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "20261031T144109Z-f0bb7a250361/earnings-MSFT/raw.json": "901f16229955261ffbb06ed3d3dafaf68ef433675f4c625601933ad4601964d9",
+    "20261031T144109Z-f0bb7a250361/news-MSFT/import-result.json": "abbb0024516702b02571f724a9d2be33bdeb6efe14bd36b05f359beda04cf304",
+    "20261031T144109Z-f0bb7a250361/news-MSFT/observations.json": "e9a66733c23123b4d459f52e3484703b76744ef5400784fdda8357c13431e672",
+    "20261031T144109Z-f0bb7a250361/actions-NVDA/import-result.json": "5222fb886ad34bb48067bced8bd3100333666fe045d70538a9d1bf88d8e657e6",
+    "20261031T144109Z-f0bb7a250361/actions-NVDA/observations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "20261031T144109Z-f0bb7a250361/actions-NVDA/raw.json": "50212cb3fe0875ddc45fdce2ee4b4c7c04de750048bcc31ae71ce7333f2963fd",
+    "20261031T144109Z-f0bb7a250361/earnings-NVDA/import-result.json": "a0cca49379fb43d8f55ebe77f3de9290b47131fdbb4a01822d73cdeffc913e51",
+    "20261031T144109Z-f0bb7a250361/earnings-NVDA/observations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "20261031T144109Z-f0bb7a250361/earnings-NVDA/raw.json": "901f16229955261ffbb06ed3d3dafaf68ef433675f4c625601933ad4601964d9",
+    "20261031T144109Z-f0bb7a250361/news-NVDA/import-result.json": "b73070ff4f8240232792654200316a70039361da2d1c9cb8e7388cb4f11a473d",
+    "20261031T144109Z-f0bb7a250361/news-NVDA/observations.json": "edce079a397ce5e2a29754913125ebd81963d342bf38fc60dd922d9c7cac92f9",
+    "20261031T144109Z-f0bb7a250361/actions-AAPL/import-result.json": "d8095238644aec7262426a699bb2d0f674d39bfa88d46a86b34c35752d4f762a",
+    "20261031T144109Z-f0bb7a250361/actions-AAPL/observations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "20261031T144109Z-f0bb7a250361/actions-AAPL/raw.json": "50212cb3fe0875ddc45fdce2ee4b4c7c04de750048bcc31ae71ce7333f2963fd",
+    "20261031T144109Z-f0bb7a250361/earnings-AAPL/import-result.json": "01e2fe86602ef5031a198b455f280611f8895e889c083fd22128def563828c7d",
+    "20261031T144109Z-f0bb7a250361/earnings-AAPL/observations.json": "295a4d5c6e93da3c327459e46e1e674db4296478b7f4d4a45751dd3e06a67141",
+    "20261031T144109Z-f0bb7a250361/earnings-AAPL/raw.json": "2300b5be0f661bd06f803bcdff25392a0f83ce9c04dbca0941a56db5bbafa858",
+    "20261031T144109Z-f0bb7a250361/news-AAPL/import-result.json": "c2fb3724f9a6822a70d8211bb0758e68252f78aa7443c06a9168537227510c84",
+    "20261031T144109Z-f0bb7a250361/news-AAPL/observations.json": "e572243f51746ee808df58cbe0dcdbaec2c42428dc01f0249e87422275f24a47",
+    "20261031T144109Z-f0bb7a250361/fomc-2026/import-result.json": "36936587616c4efb021ca8cb7a582db2d779acf4dfb1d804ab6c6a604a95899d",
+    "20261031T144109Z-f0bb7a250361/fomc-2026/observations.json": "f05c268d03175ec8aeab4d732c079f9c4cb975e99ed6c5c49fdc2407c9a20eaa",
+    "20261031T144109Z-f0bb7a250361/fomc-2026/source.html": "f3f8e21c175d32960bfc2f36576475591c9cb7c4b8f352733442c79a94f04801",
+    "20261031T144109Z-f0bb7a250361/bls/import-result.json": "b39a84f732f04e261a9b1b4a93fe57a4171fe8dbf9abf3f8ff3cd8b027c5be83",
+    "20261031T144109Z-f0bb7a250361/bls/observations.json": "df702efc44b5901812d96bb0088efa2f82410e2c66241779af3a14e439b8607b",
+    "20261031T144109Z-f0bb7a250361/bls/source.ics": "92a350111ace106deaab5584e4084366bd367b594a0d0bad116008d82d63e501"
+  },
+  "diagnosed_failure": {
+    "source": "actions-MU",
+    "code": "ALPACA_INVALID_ACTIONS",
+    "observation": "The request window starts 2026-10-29; the response contains an ex_date of 2026-10-14 and process_date of 2026-10-29. The adapter rejects observations outside its declared ex-date window. No coverage or approval override was applied.",
+    "impact": "Corporate-action acquisition is incomplete; provider date semantics and prospective coverage require review."
+  }
+}

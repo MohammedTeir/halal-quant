@@ -213,3 +213,80 @@ URLs and user identities and can be shared for diagnosis. Configuration present
 is not source coverage or forward acceptance. A campaign still needs actual
 elapsed sessions and reviews; a missing production binding here cannot be fixed
 by connecting the worker to a disposable development database.
+
+## Automated preparation and source polling
+
+The setup command assembles the ten-candidate account, proposed costs (1 USD/order,
+5 bps slippage), pending methodology, exact-hash protocol and review document. The
+methodology proposes 30% debt/interest-assets and 5% impure-income limits with strict
+boundaries. These are explicitly **unapproved proposed parameters**, not a claim
+that this implementation certifies AAOIFI compliance. Denominator averaging,
+business activity, financial statements, purification and possession need actual
+evidence. The command does not set screening facts to true or approve anything.
+
+In main Termux, run:
+
+```sh
+proot-distro login debian -- bash -lc 'cd /root/halal-quant && git pull --ff-only && .venv/bin/python -m services.paper.prepare --configure-sources --poll --submit'
+```
+
+It asks privately for a Finnhub key if none is configured, and for the operator's
+email/password to submit the account and **pending** protocol through ordinary
+server auth/CSRF. Get a key from your own Finnhub account; do not paste it into chat.
+Passwords/keys are hidden and never passed as command arguments. The temporary
+login is logged out afterwards. Other sessions remain intact. Review API flags
+must be enabled on Render; changing the phone `.env` does not change Render.
+
+`--configure-sources` sets only the four named source IDs in the private phone
+`.env` (finnhub, bls, federal_reserve, finnhub_earnings), preserving other settings
+and refusing conflicting selections. Mirror these non-secret source IDs in the API
+environment and redeploy so research snapshots select the same feeds. It does not
+publish cloud configuration or copy managed cloud credentials to the phone.
+
+Generated files live in ignored `data/paper-setup`; polls in `data/paper-sources`.
+Retries reuse hash-checked drafts. Changed or incomplete drafts require preserving
+the originals and choosing a fresh `--output` directory; never edit submitted
+immutable configuration to force a different result. Source observations are
+imported into the configured database and archived per poll; this is authorized
+acquisition, not a notification or trade. No methodology/asset approval is submitted.
+Review the pending methodology file through the existing reviewer workflow with
+real evidence before any entry can pass. The paper worker remains stopped.
+
+The source worker reuses the existing adapters for all ten companies, plus BLS
+and FOMC. It polls every five minutes, handles year boundaries, archives failures,
+continues unrelated sources after failures and takes a local exclusive lock to
+avoid overlapping polls. A batch is incomplete if any source fails. There is no
+silent fallback or automatic completeness attestation. Each child is bounded to
+120 seconds and receives termination on shutdown. Polls can exceed their planned
+cadence; existing freshness gates still apply. New polls stop once archives reach a
+512 MiB budget (an in-flight poll can exceed it); preserve/move them off-device rather than deleting evidence.
+Do not run source workers on multiple hosts against the same campaign: the lock
+is local, not a distributed quota or ingestion lease.
+
+For ongoing sources, install a separate service from main Termux:
+
+```sh
+export SVDIR="$PREFIX/var/service"
+. "$PREFIX/etc/profile.d/start-services.sh"
+proot-distro login debian -- cat /root/halal-quant/infra/termux/install-source-worker.sh > "$TMPDIR/halal-install-source-worker.sh"
+bash "$TMPDIR/halal-install-source-worker.sh"
+for attempt in $(seq 1 20); do
+  [ -p "$SVDIR/halal-sources/supervise/ok" ] && break
+  sleep 1
+done
+sv-enable halal-sources
+sv -w 30 up "$SVDIR/halal-sources"
+sv status "$SVDIR/halal-sources"
+```
+
+This service does not classify news, generate strategy signals/decisions, approve
+screens or start paper matching. Those existing upstream workflows remain required.
+A paper campaign without fresh classified decisions will make no entries.
+
+The October 31 live probe imported 31/32 polls in a disposable database. MU's
+corporate-action response contained an ex-date before the requested interval,
+with a process date inside it; strict normalization rejected it. The incomplete
+outcome is preserved in the [connectivity report](../reports/milestone8-source-connectivity-2026-10-31.json).
+No adjustment to the query window, false empty poll or coverage approval was used
+to hide this mismatch. Prospective corporate-action completeness remains unproven.
+No real emails/Telegram messages or external orders were sent.
