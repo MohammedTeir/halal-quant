@@ -49,6 +49,10 @@ tests, and English/Arabic paper-dashboard browser acceptance. Final simulator
 source also passed **585 hosted PostgreSQL tests**; see the linked report for CI
 provenance and remaining forward-test requirements.
 
+The [forward software checkpoint](reports/milestone8-forward-software-2026-10-31.json)
+passed **645 hosted PostgreSQL tests** for `299c505`, with local English/Arabic/mobile
+operator browser acceptance. Actual elapsed forward acceptance remains pending.
+
 The [first-four completion checklist](docs/first-four-acceptance.md) records the remaining
 real-provider, coverage and independent model-quality gates. Setup commands are in
 [data providers](docs/data-providers.md) and [model evaluation](docs/model-evaluation.md).

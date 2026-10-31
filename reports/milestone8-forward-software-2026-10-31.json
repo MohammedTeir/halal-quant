@@ -14,7 +14,11 @@
     "synthetic_smoke": "20 accelerated days and round trips, final reconciliation MATCH, flat and settled",
     "provider_http": "MockTransport only; fixed hosts and GET-only requests verified",
     "upgrade": "Legacy quote payloads, consumption and command hashes preserved",
-    "recovery": "Isolated lease/restart/stale/missing-data/review-expiry/corporate-event/rollback tests"
+    "recovery": "Isolated lease/restart/stale/missing-data/review-expiry/corporate-event/rollback tests",
+    "hosted_postgresql_tests_passed": 645,
+    "hosted_ci_url": "https://github.com/MohammedTeir/halal-quant/actions/runs/41193584945",
+    "hosted_ci_conclusion": "success",
+    "encrypted_backup_and_isolated_restore": "PASSED on disposable CI database; not a fresh production operator backup"
   },
   "implemented": [
     "Server-enforced operator/reviewer separation and expiring exact-hash protocol reviews",
@@ -53,5 +57,13 @@
   "cloud_configuration_published": false,
   "earlier_source_qualified_review_custody_performance_acceptance_changed": false,
   "live_trading_enabled": false,
-  "scope": "Injected timelines, including positive report-finalization unit fixtures, prove software behavior only. Internal reconciliation is not external broker reconciliation, real custody or performance evidence. Actual production configuration and elapsed campaign remain operator work."
+  "scope": "Injected timelines, including positive report-finalization unit fixtures, prove software behavior only. Internal reconciliation is not external broker reconciliation, real custody or performance evidence. Actual production configuration and elapsed campaign remain operator work.",
+  "source_commit": "299c5057aa1c65671a6344b53589c64aa598bc58",
+  "public_get_checks": {
+    "render_health_ready": 200,
+    "vercel_proxy_health_ready": 200,
+    "vercel_paper_js_matches_committed_bytes": true,
+    "authenticated_operator_forward_configuration": "NOT_VERIFIED",
+    "exact_backend_git_sha": "NOT_VERIFIED"
+  }
 }

@@ -49,7 +49,7 @@ no critical operational violations”; passing accelerated fixtures cannot prove
 
 ## Verification and acceptance boundary
 
-Local verification passed **643 tests, two PostgreSQL-only skips**, static-build
+[Source CI](https://github.com/MohammedTeir/halal-quant/actions/runs/41193584945) passed **645 tests** on PostgreSQL, including encrypted backup/isolated restore, for `299c505`. Local verification passed **643 tests, two PostgreSQL-only skips**, static-build
 checks, lint/format, shell syntax and English/Arabic/mobile Chromium interaction
 with zero JavaScript errors. Provider tests use mocked HTTP. Migration tests
 preserve old quote JSON, command hashes and consumed quantities. Failure tests
