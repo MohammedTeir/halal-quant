@@ -1205,6 +1205,10 @@
   "verification": {
     "focused_tests_passed": 6,
     "lint_and_format": "PASSED",
-    "live_access": "Fixed SEC GET endpoints only; no broker, email or Telegram requests"
+    "live_access": "Fixed SEC GET endpoints only; no broker, email or Telegram requests",
+    "hosted_postgresql_tests_passed": 673,
+    "ci_url": "https://github.com/MohammedTeir/halal-quant/actions/runs/41227037508",
+    "ci_conclusion": "success",
+    "source_commit": "e8b35f723c49fcbbbf55e2b5cfdf15fb869b5153"
   }
 }
