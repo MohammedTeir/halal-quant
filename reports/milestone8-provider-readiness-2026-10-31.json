@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-31",
+  "scope": "Read-only development-environment connectivity, not phone configuration or a forward campaign",
+  "database_binding_present": false,
+  "real_broker_orders": 0,
+  "messages_sent": 0,
+  "campaign_started": false,
+  "status": "READ_ONLY_CONNECTIVITY_PASSED",
+  "market_open": false,
+  "provider_timestamp": "2026-10-31T09:43:02.569309342-04:00",
+  "calendar_sessions": 10,
+  "receipt_sha256": "1c64d4db3fb7b5e5d2438c473954f05fb595efab958a69901ed30457eae7ab4e",
+  "next_session": {
+    "date": "2026-11-02",
+    "opens": "2026-11-02T09:30:00-05:00",
+    "closes": "2026-11-02T16:00:00-05:00"
+  }
+}

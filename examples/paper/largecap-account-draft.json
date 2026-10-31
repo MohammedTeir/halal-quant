@@ -1,0 +1,61 @@
+{
+  "account_id": "largecap-forward-20261031",
+  "mode": "forward",
+  "initial_cash": "100000",
+  "universe": {
+    "AAPL": "technology",
+    "NVDA": "technology",
+    "MSFT": "technology",
+    "GOOGL": "communication_services",
+    "AMZN": "consumer_discretionary",
+    "TSLA": "consumer_discretionary",
+    "META": "communication_services",
+    "AVGO": "technology",
+    "LLY": "healthcare",
+    "MU": "technology"
+  },
+  "provider_symbols": {
+    "AAPL": "AAPL",
+    "NVDA": "NVDA",
+    "MSFT": "MSFT",
+    "GOOGL": "GOOGL",
+    "AMZN": "AMZN",
+    "TSLA": "TSLA",
+    "META": "META",
+    "AVGO": "AVGO",
+    "LLY": "LLY",
+    "MU": "MU"
+  },
+  "asset_classes": {
+    "AAPL": "stock",
+    "NVDA": "stock",
+    "MSFT": "stock",
+    "GOOGL": "stock",
+    "AMZN": "stock",
+    "TSLA": "stock",
+    "META": "stock",
+    "AVGO": "stock",
+    "LLY": "stock",
+    "MU": "stock"
+  },
+  "policy": {
+    "version": "controls-research-v1",
+    "methodology": null,
+    "risk_per_trade": "0.005",
+    "max_open_risk": "0.03",
+    "max_position": "0.10",
+    "max_sector": "0.25",
+    "max_daily_loss": "0.02",
+    "max_drawdown": "0.10",
+    "consecutive_loss_limit": 3,
+    "cooldown_minutes": 60,
+    "broker_max_age_seconds": 30,
+    "quote_max_age_seconds": 15,
+    "loss_day_timezone": "America/New_York",
+    "kill_switch": false,
+    "fee_per_share": "0",
+    "fee_per_order": "0",
+    "slippage_bps": "0"
+  },
+  "settlement_delay_seconds": 172800
+}

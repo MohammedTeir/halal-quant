@@ -1,0 +1,223 @@
+{
+  "observed_at": "2026-10-31T13:43:52.589168+00:00",
+  "source": "Finnhub company profile2",
+  "ranking_scope": "Largest reported market caps within this explicit 18-company US non-financial candidate pool; not an exhaustive top-ten market ranking",
+  "candidate_pool": [
+    "NVDA",
+    "AAPL",
+    "MSFT",
+    "GOOGL",
+    "AMZN",
+    "AVGO",
+    "META",
+    "TSLA",
+    "LLY",
+    "WMT",
+    "ORCL",
+    "NFLX",
+    "COST",
+    "MU",
+    "AMD",
+    "XOM",
+    "PLTR",
+    "JNJ"
+  ],
+  "profiles": [
+    {
+      "ticker": "NVDA",
+      "status": "OBSERVED",
+      "name": "NVIDIA Corporation",
+      "country": "US",
+      "currency": "USD",
+      "industry": "Semiconductors",
+      "market_cap_millions": "4931824.084531089",
+      "profile_sha256": "b7adfdfe49e1f4e30eaa0d08ee21860626a4fb7b5617565dfab81b7ba4f478f7"
+    },
+    {
+      "ticker": "AAPL",
+      "status": "OBSERVED",
+      "name": "Apple Inc.",
+      "country": "US",
+      "currency": "USD",
+      "industry": "Technology",
+      "market_cap_millions": "5029592.198492898",
+      "profile_sha256": "b2389c622be6e86aaaada7017eea7868dc97d20a4f3a8461259cedde49b6ef46"
+    },
+    {
+      "ticker": "MSFT",
+      "status": "OBSERVED",
+      "name": "Microsoft Corporation",
+      "country": "US",
+      "currency": "USD",
+      "industry": "Technology",
+      "market_cap_millions": "3875805.192962479",
+      "profile_sha256": "b51533fcd2b4bf37d2d30703e120c766cbc11bde8061aa9a47fd5c81a583d639"
+    },
+    {
+      "ticker": "GOOGL",
+      "status": "OBSERVED",
+      "name": "Alphabet Inc.",
+      "country": "US",
+      "currency": "USD",
+      "industry": "Media",
+      "market_cap_millions": "3422443.1999999997",
+      "profile_sha256": "2c43ee614214065b4d72704585bfaf7c86a4dfc256956fa9b4497ea88a77f25c"
+    },
+    {
+      "ticker": "AMZN",
+      "status": "OBSERVED",
+      "name": "Amazon.com Inc",
+      "country": "US",
+      "currency": "USD",
+      "industry": "Retail",
+      "market_cap_millions": "2592490.60741211",
+      "profile_sha256": "54bde9f6820456af7b6a15ffa3230c6654ce57532030fa35251d23adc67ee7bd"
+    },
+    {
+      "ticker": "AVGO",
+      "status": "OBSERVED",
+      "name": "Broadcom Inc",
+      "country": "US",
+      "currency": "USD",
+      "industry": "Semiconductors",
+      "market_cap_millions": "1556585.2321872045",
+      "profile_sha256": "885b5365bc389a56a719f0ea193bf029c87406e43b671eec18da8622dfcaa3ac"
+    },
+    {
+      "ticker": "META",
+      "status": "OBSERVED",
+      "name": "Meta Platforms, Inc.",
+      "country": "US",
+      "currency": "USD",
+      "industry": "Media",
+      "market_cap_millions": "1572062.7349448146",
+      "profile_sha256": "8b3138994d41d27176402a4dbb8b60ad8364eaba009a81db5ce543edd7d2fcde"
+    },
+    {
+      "ticker": "TSLA",
+      "status": "OBSERVED",
+      "name": "Tesla Inc",
+      "country": "US",
+      "currency": "USD",
+      "industry": "Automobiles",
+      "market_cap_millions": "1580352.150791871",
+      "profile_sha256": "8b004590b3f25d46cf504dc31958ce6be7344f9c68d429ccd3b3bc88637bf7c8"
+    },
+    {
+      "ticker": "LLY",
+      "status": "OBSERVED",
+      "name": "Eli Lilly and Company",
+      "country": "US",
+      "currency": "USD",
+      "industry": "Pharmaceuticals",
+      "market_cap_millions": "1334411.233254403",
+      "profile_sha256": "c648828f2126d1a6bb2cfae225a7340e2e4f02357c7d9c521ecdaa9f2e325506"
+    },
+    {
+      "ticker": "WMT",
+      "status": "OBSERVED",
+      "name": "Walmart Inc.",
+      "country": "US",
+      "currency": "USD",
+      "industry": "Retail",
+      "market_cap_millions": "951176.84",
+      "profile_sha256": "546f2f00fecacbd89c408d3bb2475c2f6feefc0ca7f41a7bca1666c3608ca45e"
+    },
+    {
+      "ticker": "ORCL",
+      "status": "OBSERVED",
+      "name": "Oracle Corporation",
+      "country": "US",
+      "currency": "USD",
+      "industry": "Technology",
+      "market_cap_millions": "395111.5871826047",
+      "profile_sha256": "6029f1d9bb4828079ff44661d897ef01059e1acf9c23e69e29364a496be4ef58"
+    },
+    {
+      "ticker": "NFLX",
+      "status": "OBSERVED",
+      "name": "Netflix, Inc.",
+      "country": "US",
+      "currency": "USD",
+      "industry": "Media",
+      "market_cap_millions": "254920.72561564154",
+      "profile_sha256": "782b96b8852a07f2dea6ad0eee84bc6150d580b3b9d3dba80e09db2ca92a494c"
+    },
+    {
+      "ticker": "COST",
+      "status": "OBSERVED",
+      "name": "Costco Wholesale Corp",
+      "country": "US",
+      "currency": "USD",
+      "industry": "Retail",
+      "market_cap_millions": "448570.96940780553",
+      "profile_sha256": "20b196eeea7f47dd8561641e0208c21a4aae8bf47f0d891f088dc439a58dfa46"
+    },
+    {
+      "ticker": "MU",
+      "status": "OBSERVED",
+      "name": "Micron Technology, Inc.",
+      "country": "US",
+      "currency": "USD",
+      "industry": "Semiconductors",
+      "market_cap_millions": "1001015.3986191739",
+      "profile_sha256": "4be1e0dcb2e02019212fcb4ad965c8d69fb36625d3b789e41efc0ed29e202ea8"
+    },
+    {
+      "ticker": "AMD",
+      "status": "OBSERVED",
+      "name": "Advanced Micro Devices, Inc.",
+      "country": "US",
+      "currency": "USD",
+      "industry": "Semiconductors",
+      "market_cap_millions": "824073.3428124192",
+      "profile_sha256": "624e318bcf677ae2e536338e4570508545493d3c67c2e9240a11990e63988ebc"
+    },
+    {
+      "ticker": "XOM",
+      "status": "OBSERVED",
+      "name": "Exxonmobil Holdings Corp",
+      "country": "US",
+      "currency": "USD",
+      "industry": "Energy",
+      "market_cap_millions": "753343.39",
+      "profile_sha256": "e4bbab59877ac785e39b70f784ac36264fbdaed7c86fa7e52dc67f26509de100"
+    },
+    {
+      "ticker": "PLTR",
+      "status": "OBSERVED",
+      "name": "Palantir Technologies Inc.",
+      "country": "US",
+      "currency": "USD",
+      "industry": "Technology",
+      "market_cap_millions": "442427.0568679865",
+      "profile_sha256": "e60f59bffa87f090e44a6a29b388a75d206ecab5cfeb16839f6ed5012a639ace"
+    },
+    {
+      "ticker": "JNJ",
+      "status": "OBSERVED",
+      "name": "Johnson & Johnson",
+      "country": "US",
+      "currency": "USD",
+      "industry": "Pharmaceuticals",
+      "market_cap_millions": "657677.2038799665",
+      "profile_sha256": "80305284c5943e27e76beb9edde1465c51b8b2610519f386bd813e02a268ef56"
+    }
+  ],
+  "selected_candidates": [
+    "AAPL",
+    "NVDA",
+    "MSFT",
+    "GOOGL",
+    "AMZN",
+    "TSLA",
+    "META",
+    "AVGO",
+    "LLY",
+    "MU"
+  ],
+  "compliance_status": "UNREVIEWED",
+  "campaign_started": false,
+  "external_orders": 0,
+  "messages_sent": 0
+}

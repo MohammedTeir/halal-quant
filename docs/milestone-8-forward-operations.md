@@ -180,3 +180,36 @@ A 200 response can contain a domain rejection or unmet acceptance; inspect the
 returned status/blockers. Do not retry with new IDs to bypass deduplication.
 Milestone 8 remains in progress until genuine forward acceptance is recorded;
 Milestone 9 remains disabled.
+
+## Prepared ten-company candidate account
+
+The user delegated choosing ten companies. The prepared
+[account draft](../examples/paper/largecap-account-draft.json) contains AAPL, NVDA,
+MSFT, GOOGL, AMZN, TSLA, META, AVGO, LLY and MU. These are the ten largest reported
+market capitalizations within an explicit 18-company US non-financial shortlist,
+using read-only Finnhub profiles observed October 31. This is not an exhaustive
+all-market ranking. Profile observation time is not proof of the underlying
+financial data's as-of date. See the [selection evidence](../reports/milestone8-candidate-universe-2026-10-31.json).
+
+The file is a draft API body, not a created account or approved universe. Its
+methodology is deliberately unset. Select and review the methodology/policy and
+instrument screening before creating the immutable account; do not simply submit
+it and attempt to bypass blockers. A large market cap does not prove compliant
+business activity, financial ratios, purification or settlement/possession.
+
+A read-only development-environment Alpaca clock/calendar probe passed; the next
+reported regular session is November 2, 2026. It does not verify the phone's
+credentials, production database access, quote freshness or feed coverage.
+
+To discover the actual phone deployment's next blockers, run in main Termux:
+
+```sh
+proot-distro login debian -- bash -lc 'cd /root/halal-quant && git pull --ff-only && .venv/bin/python -m services.paper.preflight'
+```
+
+This inventory does not change flags, apply migrations, create accounts, acquire
+leases, contact providers or send messages. Its output omits credential values,
+URLs and user identities and can be shared for diagnosis. Configuration present
+is not source coverage or forward acceptance. A campaign still needs actual
+elapsed sessions and reviews; a missing production binding here cannot be fixed
+by connecting the worker to a disposable development database.
