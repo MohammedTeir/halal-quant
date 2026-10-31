@@ -493,6 +493,19 @@
     "old_request_serialization_compatibility": "PASSED",
     "additional_ratio_missing_input_backend_rejection": "PASSED",
     "new_proposal_isolation_and_idempotence": "PASSED",
-    "lint_and_format": "PASSED"
+    "lint_and_format": "PASSED",
+    "hosted_postgresql_tests_passed": 686,
+    "ci_url": "https://github.com/MohammedTeir/halal-quant/actions/runs/41230904049",
+    "ci_conclusion": "success",
+    "source_commit": "09cda26b94aea94567c9c676e79c8a4760006ef6"
+  },
+  "user_selected_evidence_basis": "Full independent financial and business screening before any virtual entries",
+  "public_screening_consensus_may_substitute_for_full_review": false,
+  "local_draft_preparation_check": {
+    "status": "DRAFT_PREPARED",
+    "account_id": "largecap-assets-forward-20261031",
+    "submitted": false,
+    "approved": false,
+    "production_database_mutations": 0
   }
 }

@@ -307,3 +307,5 @@ The [screening evidence checkpoint](milestone-8-screening-evidence.md) records t
 ## Public assets-based methodology alternative
 
 The [public methodology alternative](milestone-8-public-methodology-alternative.md) provides an official-source-backed total-assets draft, avoiding the proposed historical-capitalization dependency. Use explicit `--methodology-proposal` and a fresh `--account-id`/`--output`; preparation never rewrites the submitted campaign or approves any stock. The extra receivables/cash input is required when its method threshold is selected.
+
+The user selected full independent financial and business screening before any virtual entry. Public matching screening labels alone are insufficient. The separate assets-based draft remains pending; no automatic approval or research-only screening bypass was enabled.

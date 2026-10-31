@@ -62,3 +62,9 @@ Only an explicit `--submit` adds ordinary operator-authenticated account/protoco
 Public research can close the denominator-source gap without paid historical capitalization. It has not yet established complete non-compliant business revenue, purification applicability, financial mappings, instrument evidence or qualified per-company approval. The adverse/questionable public screens for MSFT, GOOGL, AMZN and META remain unresolved. Changing a formula does not turn them into approved candidates.
 
 Local verification passed **684 tests with two PostgreSQL-only checks skipped**, including 67 focused controls/paper/API checks. Tests prove missing-input rejection, independent income/liquidity boundaries, legacy serialization, and isolated alternative preparation. Lint/format pass. No production approval, credential/cloud-configuration publication, external order, email or Telegram send occurred. Earlier milestone acceptance and the actual elapsed forward-test requirement remain open as documented.
+
+## User evidence-basis decision
+
+The user explicitly selected **full independent screening before any virtual entries** on October 31, 2026. Matching public screening labels are supporting information only and cannot replace complete financial and business review. No research-only eligibility bypass is authorized by that choice. Both the deployed original campaign and the separate local assets-based draft remain unapproved. The alternative preparation CLI was exercised locally without `--submit`; no production account or review was created.
+
+[Hosted CI](https://github.com/MohammedTeir/halal-quant/actions/runs/41230904049) passed **686 tests** on PostgreSQL for source `09cda26`, including encrypted backup/isolated restore and the existing offline acceptance steps. This verifies implementation regressions, not company compliance or forward acceptance.
