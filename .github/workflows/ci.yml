@@ -40,6 +40,8 @@ jobs:
       - name: Encrypted backup and restore verification tools
         run: sudo apt-get update && sudo apt-get install -y age postgresql-client-16
       - run: uv run pytest -q
+      - name: Internal paper simulator acceptance (accelerated synthetic, no broker calls)
+        run: uv run python -m scripts.paper_smoke --output reports/generated/paper-ci.json
       - name: Synthetic research CLI acceptance
         run: uv run python -m scripts.research_smoke --output reports/generated/ci
       - name: Portfolio replay and training-only optimization acceptance (synthetic)

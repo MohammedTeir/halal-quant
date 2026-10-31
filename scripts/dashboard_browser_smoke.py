@@ -18,11 +18,13 @@ import uvicorn
 from alembic import command
 from alembic.config import Config
 
-from apps.api.db import session_factory
+from apps.api.db import session_factory, utcnow
 from apps.api.main import create_app
 from packages.config.settings import Settings, get_settings
 from services.accounts.access import issue, locked
 from services.notifications.models import User
+from services.paper.engine import open_account
+from services.paper.schemas import OpenAccount
 
 
 def main():
@@ -43,6 +45,13 @@ def main():
             )
             db.add(user)
             token = issue(db, user, "invite", 600)
+        with sessions.begin() as db:
+            open_account(
+                db,
+                OpenAccount(account_id="browser-paper", universe={"SYNTH": "technology"}),
+                "browser-fixture",
+                utcnow(),
+            )
         settings = Settings(
             database_url=url,
             session_cookie_secure=False,

@@ -139,6 +139,9 @@ def backup_and_verify(url, output_dir):
                     binaries[program] = binary
                 snapshot = connection.scalar(text("SELECT pg_export_snapshot()"))
                 counts = row_counts(connection)
+                source_revision = connection.scalar(text("SELECT version_num FROM alembic_version"))
+                if source_revision not in {"0007_access_delivery", "0008_paper_simulator"}:
+                    raise BackupFailure("Unsupported source application migration")
                 command(
                     [
                         binaries["pg_dump"],
@@ -194,7 +197,7 @@ def backup_and_verify(url, output_dir):
                 if row_counts(restored) != counts:
                     raise BackupFailure("Restored row counts differ from the exported snapshot")
                 version = restored.scalar(text("SELECT version_num FROM alembic_version"))
-                if version != "0007_access_delivery":
+                if version != source_revision:
                     raise BackupFailure("Restored application migration differs")
             verified = True
     finally:
@@ -220,6 +223,7 @@ def backup_and_verify(url, output_dir):
         "private_key_file": str(key),
         "encrypted_backup_sha256": checksum,
         "source_tables": len(counts),
+        "migration_revision": source_revision,
         "postgresql_major": server_major,
         "snapshot_row_counts_match": verified,
         "temporary_restore_database_removed": created,

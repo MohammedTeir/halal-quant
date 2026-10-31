@@ -25,7 +25,14 @@ const { chromium } = require("playwright");
   await page.locator("#workspace").waitFor({ state: "visible" });
   if ((await page.locator("html").getAttribute("lang")) !== "en")
     throw new Error("English default");
+  await page.locator('[data-panel="paper"]').click();
+  await page.waitForFunction(() => document.querySelector("#paper-status").textContent.includes("Ledger matches"));
+  if ((await page.locator("#paper-account").inputValue()) !== "browser-paper")
+    throw new Error("Paper account missing");
+  if (!(await page.locator("#paper-summary").textContent()).includes("100000"))
+    throw new Error("Paper cash missing");
   await page.locator("#language").selectOption("ar");
+  await page.waitForFunction(() => document.querySelector("#paper-status").textContent.includes("السجل متطابق"));
   await page.waitForFunction(() => document.documentElement.dir === "rtl");
   await page
     .getByRole("button", { name: "إنشاء رمز ربط Telegram", exact: true })
@@ -74,6 +81,7 @@ const { chromium } = require("playwright");
       session_reload: true,
       logout_revocation: true,
       mobile_no_overflow: true,
+      paper_account_english_arabic: true,
       js_errors: errors.length,
     }),
   );

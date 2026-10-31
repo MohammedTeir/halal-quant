@@ -64,8 +64,9 @@ def mount_dashboard(app, sessions, authenticate):
                     ]
                 },
                 "milestones": {
-                    "current": 7,
+                    "current": 8,
                     "dashboard": "BILINGUAL_ACCOUNTS_AND_DELIVERY",
+                    "paper_trading": "SYNTHETIC_SIMULATOR_IN_DEVELOPMENT",
                     "research_performance_accepted": False,
                     "qualified_operational_signoff": False,
                 },

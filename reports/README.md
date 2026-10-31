@@ -105,3 +105,5 @@ incomplete. See [scope and remaining work](../docs/milestone-5-controls.md).
 
 - [Historical operational readiness](milestone7-operational-readiness-2026-10-30.json): preparation checkpoint, superseded by the operator evidence below.
 - [Operator acceptance, 2026-10-31](milestone7-operator-acceptance-2026-10-31.json): live account checks, private/group delivery, encrypted isolated restore, confirmed off-device archive/separate key storage, dashboard screenshots/export, received Arabic text and bounded supervised worker restart; Milestone 7 acceptance complete with documented hosting limits.
+
+- [Milestone 8 simulator checkpoint](milestone8-paper-simulator-2026-10-31.json): internal synthetic lifecycle/accounting/risk/reconciliation tests and bilingual dashboard; stable forward acceptance remains open.

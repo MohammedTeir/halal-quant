@@ -2,7 +2,7 @@
 
 Research-first, compliance-gated quantitative trading platform. The backend foundation
 and three executable Python strategies follow [the supplied blueprint](docs/blueprint-v2.md).
-Python is the primary research workflow; Pine Script is optional. **It does not authorize or execute trades.**
+Python is the primary research workflow; Pine Script is optional. **It does not authorize or execute real trades.**
 Live mode is rejected at configuration validation. No strategy has demonstrated the
 research performance gates or received a Shariah approval.
 
@@ -24,13 +24,16 @@ is now complete with conditional research-only acceptance. The [gold session aud
 records all 300 gaps without certifying unknown provider/holiday closures.
 An additional external original-human-label sentiment benchmark passes 30/30;
 [its research scope and limits](docs/external-label-evaluation.md) remain explicit.
-Milestone 6 remains an early single-instrument research prototype.
 [Milestone 5 now has a stored controls workflow](docs/milestone-5-operations.md): versioned review/policy/loss state, read-only broker capture, serialized research reservations and server decision revalidation. Qualified review and real cash/custody contract proofs remain required; execution is disabled.
 
 [Milestone 6 research](docs/milestone-6-research.md) now includes shared-cash portfolio replay, training-only walk-forward selection, historical evidence gates and seeded trade-order Monte Carlo. Representative real-history and out-of-sample performance acceptance remain pending.
-Milestones 7–8 have not started; optional live integration (Milestone 9) is disabled.
+Milestone 7 is complete for the documented deployment, with Android worker uptime
+limits retained. [Milestone 8](docs/milestone-8-paper-trading.md) has started with an
+internal synthetic paper simulator, persistent order/ledger reconciliation and a
+bilingual read-only dashboard panel. Stable forward testing and external paper
+broker integration remain pending. Optional live integration (Milestone 9) is disabled.
 
-The full suite has **484 passing tests**, including research, data integrity,
+The earlier research checkpoint had **484 passing tests**, including research, data integrity,
 advisory-output security and deterministic decision checks. All three
 default strategies and cost-matched buy-and-hold baselines execute on synthetic
 fixtures, finish flat, and reproduce reports byte-for-byte. These are software
@@ -39,6 +42,10 @@ GitHub Actions passed for commit `8afc05d`; verification of this follow-up follo
 its push. See [source/label review](docs/source-and-label-review.md),
 [gold acceptance](reports/gold-source-acceptance-2026-10-29.json) and
 [the fresh v4 pilot](reports/real-primary-v4-fresh-pilot-2026-10-29.json).
+
+The [Milestone 8 simulator checkpoint](reports/milestone8-paper-simulator-2026-10-31.json)
+records **583 local tests passed, two PostgreSQL-only checks skipped**, 44 simulator
+tests, and English/Arabic paper-dashboard browser acceptance.
 
 The [first-four completion checklist](docs/first-four-acceptance.md) records the remaining
 real-provider, coverage and independent model-quality gates. Setup commands are in

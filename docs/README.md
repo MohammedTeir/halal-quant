@@ -58,3 +58,5 @@ mark a manual gate complete without its evidence.
 - [Telegram worker on an existing computer or Termux](telegram-worker-computer-termux.md)
 
 - [Finish Milestone 7 live operational acceptance](milestone-7-operational-acceptance.md)
+
+- [Milestone 8 internal paper simulator and remaining forward acceptance](milestone-8-paper-trading.md)

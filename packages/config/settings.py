@@ -34,6 +34,7 @@ class Settings(BaseSettings):
     calendar_provider: str | None = Field(default=None, max_length=64, pattern=r"^[A-Za-z0-9_.-]+$")
     earnings_provider: str | None = Field(default=None, max_length=64, pattern=r"^[A-Za-z0-9_.-]+$")
     fomc_provider: str | None = Field(default=None, max_length=64, pattern=r"^[A-Za-z0-9_.-]+$")
+    paper_trading_enabled: bool = False
     live_trading_enabled: bool = False
 
     @field_validator("database_url", mode="before")

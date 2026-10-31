@@ -1,0 +1,112 @@
+{
+  "date": "2026-10-31",
+  "milestone": 8,
+  "status": "IN_PROGRESS_INTERNAL_SYNTHETIC_SIMULATOR",
+  "implemented": [
+    "Disabled-by-default internal synthetic cash accounts and immutable simulation policy/universe",
+    "Durable market/limit order lifecycle, partial fills, cancellation and expiry",
+    "Decimal cost basis, fees, slippage, cash/share reservations and delayed synthetic settlement",
+    "Server-owned risk sizing, loss/drawdown/cooldown and kill-switch rechecks",
+    "Idempotent command journal, chained hashes, projection/quote-consumption reconciliation and fail-closed drift handling",
+    "Operator-session/CSRF writes; authenticated workspace reads; no admin or service-key write bypass",
+    "English-default/Arabic read-only paper dashboard panel",
+    "Migration 0008; compatible notification preflight and snapshot-exact backup revision comparison"
+  ],
+  "isolated_verification": {
+    "focused_paper_tests_passed": 44,
+    "full_suite": {
+      "passed": 583,
+      "skipped": 2,
+      "skip_scope": "PostgreSQL-only admin bootstrap and real encrypted dump/restore; hosted CI required",
+      "warning": "Existing Starlette/httpx TestClient deprecation"
+    },
+    "browser": {
+      "english": true,
+      "arabic_rtl": true,
+      "paper_account_english_arabic": true,
+      "mobile_no_overflow": true,
+      "account_flows": true,
+      "js_errors": 0
+    },
+    "node_deployment_tests_passed": 2,
+    "lint": "PASSED",
+    "format": "PASSED",
+    "migration_upgrade_downgrade_metadata_check": "PASSED in isolated API fixtures"
+  },
+  "synthetic_smoke": {
+    "status": "PASSED",
+    "mode": "accelerated_synthetic_acceptance",
+    "simulated_days": 20,
+    "simulated_round_trips": 20,
+    "daily_reconciliations": [
+      "MATCH",
+      "MATCH",
+      "MATCH",
+      "MATCH",
+      "MATCH",
+      "MATCH",
+      "MATCH",
+      "MATCH",
+      "MATCH",
+      "MATCH",
+      "MATCH",
+      "MATCH",
+      "MATCH",
+      "MATCH",
+      "MATCH",
+      "MATCH",
+      "MATCH",
+      "MATCH",
+      "MATCH",
+      "MATCH"
+    ],
+    "final_state": {
+      "cash": "100029.950000",
+      "unsettled": {},
+      "positions": {},
+      "fees": "50.00",
+      "realized": "29.950000",
+      "halted": false,
+      "halt_reason": "",
+      "day": "2026-01-28",
+      "day_start_equity": "100029.950000",
+      "peak_equity": "100031.702500",
+      "consecutive_losses": 0,
+      "last_loss_at": null
+    },
+    "final_reconciliation": {
+      "status": "MATCH",
+      "errors": [],
+      "journal_entries": 202,
+      "last_sequence": 202,
+      "authorized": false,
+      "mode": "synthetic"
+    },
+    "real_broker_calls": 0,
+    "real_telegram_messages": 0,
+    "forward_acceptance": "NOT_ESTABLISHED",
+    "note": "Injected synthetic time and prices; not elapsed forward testing, representative market history, compliance approval or profitability evidence."
+  },
+  "hosted_ci": {
+    "status": "PENDING_PUSH"
+  },
+  "deployment": {
+    "paper_writes_default_enabled": false,
+    "server_configuration_changed": false,
+    "real_broker_orders_submitted": 0,
+    "real_telegram_messages_sent": 0,
+    "new_schema_operator_deployment_acceptance": "NOT_PERFORMED"
+  },
+  "limits": [
+    "Synthetic elapsed time/prices are not actual stable forward testing or performance evidence.",
+    "No provider/decision-to-paper automation or automatic protective stop execution.",
+    "Only internal reconciliation; no external paper-broker state reconciliation.",
+    "Settlement uses elapsed simulation delay, not an exchange business-day calendar.",
+    "Workspace-wide reads; bounded test accounts intended because each mutation replays history.",
+    "Earlier source/qualified-compliance/custody/performance gates remain open."
+  ],
+  "full_milestone8_acceptance": false,
+  "live_execution_enabled": false,
+  "earlier_milestone_gates_changed": false,
+  "runbook": "docs/milestone-8-paper-trading.md"
+}
