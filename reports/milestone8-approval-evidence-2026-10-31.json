@@ -1,0 +1,597 @@
+{
+  "observed_at": "2026-10-31T18:09:43.021580+00:00",
+  "status": "APPROVAL_NOT_SUPPORTED_BY_COMPLETE_EVIDENCE",
+  "items": [
+    {
+      "symbol": "AAPL",
+      "calculations": {
+        "debt": {
+          "contexts_consistent": true,
+          "current": "11007000000",
+          "noncurrent": "71340000000",
+          "component_sum": "82347000000",
+          "reported_long_term_total": "82300000000",
+          "reported_carrying_amount": null,
+          "total_minus_components": "-47000000",
+          "carrying_minus_components": null,
+          "component_reconciliation": "DIFFERENCE",
+          "consolidated_screening_debt": null,
+          "scope": "Totals/components are not added together. Short-term borrowing, lease scope, carrying/face adjustments and complete instrument coverage still require mapping."
+        },
+        "disclosed_interest_income_ratio": null,
+        "non_permissible_revenue": null,
+        "approved": false
+      },
+      "public_ratings": [
+        {
+          "provider": "Zoya",
+          "url": "https://zoya.finance/stocks/aapl",
+          "status": "PUBLIC_LABEL_OBSERVED",
+          "quantitative_report_observed": false,
+          "http_status": 200,
+          "response_sha256": "1b0b870826e43682ac37394653150822e95ad927d7d5acae3aac36aa4f0f8daa",
+          "reported_label": "COMPLIANT",
+          "public_description": "Yes. As of October 31, 2026, Apple (AAPL) is Shariah-compliant under AAOIFI standards. It passes both the business and financial screens. See the full report on Zoya.",
+          "page_dates": [
+            "2026-10-31",
+            "2026-10-31"
+          ],
+          "public_heading": "AAPL stock is Shariah-compliant"
+        },
+        {
+          "provider": "Musaffa",
+          "url": "https://musaffa.com/stock/AAPL/",
+          "status": "PUBLIC_LABEL_OBSERVED",
+          "quantitative_report_observed": false,
+          "http_status": 200,
+          "response_sha256": "f7923eb66bc24cb59e0c5e756bb5e2df955e3593005d873d540e7e5f77747bf3",
+          "reported_label": "COMPLIANT",
+          "full_report_access": false,
+          "screening_as_of": "UNKNOWN"
+        }
+      ],
+      "approval": "NOT_APPROVED",
+      "review_result": "FAVOURABLE_PUBLIC_LABELS_INSUFFICIENT_FOR_QUANTITATIVE_APPROVAL"
+    },
+    {
+      "symbol": "NVDA",
+      "calculations": {
+        "debt": {
+          "contexts_consistent": true,
+          "current": "1000000000",
+          "noncurrent": "32366000000",
+          "component_sum": "33366000000",
+          "reported_long_term_total": "33366000000",
+          "reported_carrying_amount": null,
+          "total_minus_components": "0",
+          "carrying_minus_components": null,
+          "component_reconciliation": "EXACT",
+          "consolidated_screening_debt": null,
+          "scope": "Totals/components are not added together. Short-term borrowing, lease scope, carrying/face adjustments and complete instrument coverage still require mapping."
+        },
+        "disclosed_interest_income_ratio": {
+          "interest_income": "496000000",
+          "revenue": "96221000000",
+          "ratio": "0.00515479988775838954074474387088057700501969424553891562133006",
+          "start": "2026-04-27",
+          "end": "2026-07-26",
+          "scope": "Disclosed gross interest-income component only; not a complete non-permissible revenue numerator or a passing screen."
+        },
+        "non_permissible_revenue": null,
+        "approved": false
+      },
+      "public_ratings": [
+        {
+          "provider": "Zoya",
+          "url": "https://zoya.finance/stocks/nvda",
+          "status": "PUBLIC_LABEL_OBSERVED",
+          "quantitative_report_observed": false,
+          "http_status": 200,
+          "response_sha256": "56474ef4a975fad5dd0a1084695526dc34e4a29d46fcf19921147d02303028f9",
+          "reported_label": "COMPLIANT",
+          "public_description": "Yes. As of October 31, 2026, NVIDIA (NVDA) is Shariah-compliant under AAOIFI standards. It passes both the business and financial screens. See the full report on Zoya.",
+          "page_dates": [
+            "2026-10-31",
+            "2026-10-31"
+          ],
+          "public_heading": "NVDA stock is Shariah-compliant"
+        },
+        {
+          "provider": "Musaffa",
+          "url": "https://musaffa.com/stock/NVDA/",
+          "status": "PUBLIC_LABEL_OBSERVED",
+          "quantitative_report_observed": false,
+          "http_status": 200,
+          "response_sha256": "6c83a0c9e71dcba08c8ab462fc16e53efb171ee079d722644abbc65f2970fd2e",
+          "reported_label": "COMPLIANT",
+          "full_report_access": false,
+          "screening_as_of": "UNKNOWN"
+        }
+      ],
+      "approval": "NOT_APPROVED",
+      "review_result": "FAVOURABLE_PUBLIC_LABELS_INSUFFICIENT_FOR_QUANTITATIVE_APPROVAL"
+    },
+    {
+      "symbol": "MSFT",
+      "calculations": {
+        "debt": {
+          "contexts_consistent": true,
+          "current": "4391000000",
+          "noncurrent": "31090000000",
+          "component_sum": "35481000000",
+          "reported_long_term_total": "35481000000",
+          "reported_carrying_amount": "41269000000",
+          "total_minus_components": "0",
+          "carrying_minus_components": "5788000000",
+          "component_reconciliation": "EXACT",
+          "consolidated_screening_debt": null,
+          "scope": "Totals/components are not added together. Short-term borrowing, lease scope, carrying/face adjustments and complete instrument coverage still require mapping."
+        },
+        "disclosed_interest_income_ratio": null,
+        "non_permissible_revenue": null,
+        "approved": false
+      },
+      "public_ratings": [
+        {
+          "provider": "Zoya",
+          "url": "https://zoya.finance/stocks/msft",
+          "status": "PUBLIC_LABEL_OBSERVED",
+          "quantitative_report_observed": false,
+          "http_status": 200,
+          "response_sha256": "7ae4eba890811aa8e256502690ad15eb03aba8a72a92fe4589a3694e83917836",
+          "reported_label": "QUESTIONABLE",
+          "public_description": "As of October 31, 2026, Microsoft (MSFT) is rated questionable under AAOIFI standards. See why Zoya cannot yet confirm it is Shariah-compliant.",
+          "page_dates": [
+            "2026-10-31",
+            "2026-10-31"
+          ],
+          "public_heading": "MSFT stock is questionable"
+        },
+        {
+          "provider": "Musaffa",
+          "url": "https://musaffa.com/stock/MSFT/",
+          "status": "PUBLIC_LABEL_OBSERVED",
+          "quantitative_report_observed": false,
+          "http_status": 200,
+          "response_sha256": "dcffdb50a0157c6ccda24cb2184459131a2e060f9a971b19e8ec043d14ea67ac",
+          "reported_label": "NON_COMPLIANT",
+          "full_report_access": false,
+          "screening_as_of": "UNKNOWN"
+        }
+      ],
+      "approval": "NOT_APPROVED",
+      "review_result": "ADVERSE_OR_QUESTIONABLE_PUBLIC_SCREEN"
+    },
+    {
+      "symbol": "GOOGL",
+      "calculations": {
+        "debt": {
+          "contexts_consistent": true,
+          "current": "1016000000",
+          "noncurrent": "125102000000",
+          "component_sum": "126118000000",
+          "reported_long_term_total": null,
+          "reported_carrying_amount": "127485000000",
+          "total_minus_components": null,
+          "carrying_minus_components": "1367000000",
+          "component_reconciliation": "INSUFFICIENT_DISCLOSURES",
+          "consolidated_screening_debt": null,
+          "scope": "Totals/components are not added together. Short-term borrowing, lease scope, carrying/face adjustments and complete instrument coverage still require mapping."
+        },
+        "disclosed_interest_income_ratio": null,
+        "non_permissible_revenue": null,
+        "approved": false
+      },
+      "public_ratings": [
+        {
+          "provider": "Zoya",
+          "url": "https://zoya.finance/stocks/googl",
+          "status": "PUBLIC_LABEL_OBSERVED",
+          "quantitative_report_observed": false,
+          "http_status": 200,
+          "response_sha256": "60e3cc2516f18b4df429f769d0d2f39ee985246d1214690782abf2891e6d19a3",
+          "reported_label": "QUESTIONABLE",
+          "public_description": "As of October 31, 2026, Alphabet (GOOGL) is rated questionable under AAOIFI standards. See why Zoya cannot yet confirm it is Shariah-compliant.",
+          "page_dates": [
+            "2026-10-31",
+            "2026-10-31"
+          ],
+          "public_heading": "GOOGL stock is questionable"
+        },
+        {
+          "provider": "Musaffa",
+          "url": "https://musaffa.com/stock/GOOGL/",
+          "status": "PUBLIC_LABEL_OBSERVED",
+          "quantitative_report_observed": false,
+          "http_status": 200,
+          "response_sha256": "5ce604f56d72f6d8b85b625f1a24ee1e3d0aa6a7bcd05bea92faa88c1fbc388f",
+          "reported_label": "QUESTIONABLE",
+          "full_report_access": false,
+          "screening_as_of": "UNKNOWN"
+        }
+      ],
+      "approval": "NOT_APPROVED",
+      "review_result": "ADVERSE_OR_QUESTIONABLE_PUBLIC_SCREEN"
+    },
+    {
+      "symbol": "AMZN",
+      "calculations": {
+        "debt": {
+          "contexts_consistent": true,
+          "current": "6827000000",
+          "noncurrent": "173125000000",
+          "component_sum": "179952000000",
+          "reported_long_term_total": "180887000000",
+          "reported_carrying_amount": "173125000000",
+          "total_minus_components": "935000000",
+          "carrying_minus_components": "-6827000000",
+          "component_reconciliation": "DIFFERENCE",
+          "consolidated_screening_debt": null,
+          "scope": "Totals/components are not added together. Short-term borrowing, lease scope, carrying/face adjustments and complete instrument coverage still require mapping."
+        },
+        "disclosed_interest_income_ratio": {
+          "interest_income": "1187000000",
+          "revenue": "201944000000",
+          "ratio": "0.00587786713148199500851721269262765915303252386800301073564949",
+          "start": "2026-07-01",
+          "end": "2026-09-30",
+          "scope": "Disclosed gross interest-income component only; not a complete non-permissible revenue numerator or a passing screen."
+        },
+        "non_permissible_revenue": null,
+        "approved": false
+      },
+      "public_ratings": [
+        {
+          "provider": "Zoya",
+          "url": "https://zoya.finance/stocks/amzn",
+          "status": "PUBLIC_LABEL_OBSERVED",
+          "quantitative_report_observed": false,
+          "http_status": 200,
+          "response_sha256": "d3b30f1b57fa342779ca0b90e81d49067cf136d04e0477f10f3a6c72c8fe42b2",
+          "reported_label": "QUESTIONABLE",
+          "public_heading": "AMZN stock is questionable",
+          "page_dates": [
+            "2026-10-31",
+            "2026-10-31"
+          ]
+        },
+        {
+          "provider": "Musaffa",
+          "url": "https://musaffa.com/stock/AMZN/",
+          "status": "PUBLIC_LABEL_OBSERVED",
+          "quantitative_report_observed": false,
+          "http_status": 200,
+          "response_sha256": "8cfceea9171b0fa6f6b2c2cf36185ec15ac7739ee542ecca147cc13a2559ea64",
+          "reported_label": "QUESTIONABLE",
+          "full_report_access": false,
+          "screening_as_of": "UNKNOWN"
+        }
+      ],
+      "approval": "NOT_APPROVED",
+      "review_result": "ADVERSE_OR_QUESTIONABLE_PUBLIC_SCREEN"
+    },
+    {
+      "symbol": "TSLA",
+      "calculations": {
+        "debt": {
+          "contexts_consistent": true,
+          "current": null,
+          "noncurrent": null,
+          "component_sum": null,
+          "reported_long_term_total": "7956000000",
+          "reported_carrying_amount": "9284000000",
+          "total_minus_components": null,
+          "carrying_minus_components": null,
+          "component_reconciliation": "INSUFFICIENT_DISCLOSURES",
+          "consolidated_screening_debt": null,
+          "scope": "Totals/components are not added together. Short-term borrowing, lease scope, carrying/face adjustments and complete instrument coverage still require mapping."
+        },
+        "disclosed_interest_income_ratio": {
+          "interest_income": "445000000",
+          "revenue": "28046000000",
+          "ratio": "0.0158667902731227269485844683733865791913285316979248377665264",
+          "start": "2026-07-01",
+          "end": "2026-09-30",
+          "scope": "Disclosed gross interest-income component only; not a complete non-permissible revenue numerator or a passing screen."
+        },
+        "non_permissible_revenue": null,
+        "approved": false
+      },
+      "public_ratings": [
+        {
+          "provider": "Zoya",
+          "url": "https://zoya.finance/stocks/tsla",
+          "status": "PUBLIC_LABEL_OBSERVED",
+          "quantitative_report_observed": false,
+          "http_status": 200,
+          "response_sha256": "02640af5cbc6a6465e9580f7aff821535aa6b2b7f1ada5c459346552addda454",
+          "reported_label": "COMPLIANT",
+          "public_description": "Yes. As of October 31, 2026, Tesla (TSLA) is Shariah-compliant under AAOIFI standards. It passes both the business and financial screens. See the full report on Zoya.",
+          "page_dates": [
+            "2026-10-31",
+            "2026-10-31"
+          ],
+          "public_heading": "TSLA stock is Shariah-compliant"
+        },
+        {
+          "provider": "Musaffa",
+          "url": "https://musaffa.com/stock/TSLA/",
+          "status": "PUBLIC_LABEL_OBSERVED",
+          "quantitative_report_observed": false,
+          "http_status": 200,
+          "response_sha256": "9d0c8d5231ef32bb47fb4ba68ac7f7f3b9b5161a777b2e7243f4e43b1cbdd680",
+          "reported_label": "COMPLIANT",
+          "full_report_access": false,
+          "screening_as_of": "UNKNOWN"
+        }
+      ],
+      "approval": "NOT_APPROVED",
+      "review_result": "FAVOURABLE_PUBLIC_LABELS_INSUFFICIENT_FOR_QUANTITATIVE_APPROVAL"
+    },
+    {
+      "symbol": "META",
+      "calculations": {
+        "debt": {
+          "contexts_consistent": true,
+          "current": "2747000000",
+          "noncurrent": "80922000000",
+          "component_sum": "83669000000",
+          "reported_long_term_total": null,
+          "reported_carrying_amount": "84000000000",
+          "total_minus_components": null,
+          "carrying_minus_components": "331000000",
+          "component_reconciliation": "INSUFFICIENT_DISCLOSURES",
+          "consolidated_screening_debt": null,
+          "scope": "Totals/components are not added together. Short-term borrowing, lease scope, carrying/face adjustments and complete instrument coverage still require mapping."
+        },
+        "disclosed_interest_income_ratio": null,
+        "non_permissible_revenue": null,
+        "approved": false
+      },
+      "public_ratings": [
+        {
+          "provider": "Zoya",
+          "url": "https://zoya.finance/stocks/meta",
+          "status": "PUBLIC_LABEL_OBSERVED",
+          "quantitative_report_observed": false,
+          "http_status": 200,
+          "response_sha256": "2d3a2d74b4566af2e07d467ccdde8927d7d57736c988c766ad93addad4e069cc",
+          "reported_label": "QUESTIONABLE",
+          "public_heading": "META stock is questionable",
+          "page_dates": [
+            "2026-10-31",
+            "2026-10-31"
+          ]
+        },
+        {
+          "provider": "Musaffa",
+          "url": "https://musaffa.com/stock/META/",
+          "status": "PUBLIC_LABEL_OBSERVED",
+          "quantitative_report_observed": false,
+          "http_status": 200,
+          "response_sha256": "55e69713f3b2d60a884f9282783d4b68d699927bfe0810e8236038908eaba47d",
+          "reported_label": "QUESTIONABLE",
+          "full_report_access": false,
+          "screening_as_of": "UNKNOWN"
+        }
+      ],
+      "approval": "NOT_APPROVED",
+      "review_result": "ADVERSE_OR_QUESTIONABLE_PUBLIC_SCREEN"
+    },
+    {
+      "symbol": "AVGO",
+      "calculations": {
+        "debt": {
+          "contexts_consistent": true,
+          "current": "2252000000",
+          "noncurrent": "57167000000",
+          "component_sum": "59419000000",
+          "reported_long_term_total": "59419000000",
+          "reported_carrying_amount": "61079000000",
+          "total_minus_components": "0",
+          "carrying_minus_components": "1660000000",
+          "component_reconciliation": "EXACT",
+          "consolidated_screening_debt": null,
+          "scope": "Totals/components are not added together. Short-term borrowing, lease scope, carrying/face adjustments and complete instrument coverage still require mapping."
+        },
+        "disclosed_interest_income_ratio": null,
+        "non_permissible_revenue": null,
+        "approved": false
+      },
+      "public_ratings": [
+        {
+          "provider": "Zoya",
+          "url": "https://zoya.finance/stocks/avgo",
+          "status": "PUBLIC_LABEL_OBSERVED",
+          "quantitative_report_observed": false,
+          "http_status": 200,
+          "response_sha256": "bf592cf6dd41820d2e8f2050573ed42408855ccfc84ecb55018062b83046e83e",
+          "reported_label": "COMPLIANT",
+          "public_description": "Yes. As of October 31, 2026, Broadcom (AVGO) is Shariah-compliant under AAOIFI standards. It passes both the business and financial screens. See the full report on Zoya.",
+          "page_dates": [
+            "2026-10-31",
+            "2026-10-31"
+          ],
+          "public_heading": "AVGO stock is Shariah-compliant"
+        },
+        {
+          "provider": "Musaffa",
+          "url": "https://musaffa.com/stock/AVGO/",
+          "status": "PUBLIC_LABEL_OBSERVED",
+          "quantitative_report_observed": false,
+          "http_status": 200,
+          "response_sha256": "a5dfd72c46b7c980819d98c715907da3fc0a4e2cb3925c4a55b49d5b997ae289",
+          "reported_label": "COMPLIANT",
+          "full_report_access": false,
+          "screening_as_of": "UNKNOWN"
+        }
+      ],
+      "approval": "NOT_APPROVED",
+      "review_result": "FAVOURABLE_PUBLIC_LABELS_INSUFFICIENT_FOR_QUANTITATIVE_APPROVAL"
+    },
+    {
+      "symbol": "LLY",
+      "calculations": {
+        "debt": {
+          "contexts_consistent": true,
+          "current": null,
+          "noncurrent": "46986000000",
+          "component_sum": null,
+          "reported_long_term_total": null,
+          "reported_carrying_amount": null,
+          "total_minus_components": null,
+          "carrying_minus_components": null,
+          "component_reconciliation": "INSUFFICIENT_DISCLOSURES",
+          "consolidated_screening_debt": null,
+          "scope": "Totals/components are not added together. Short-term borrowing, lease scope, carrying/face adjustments and complete instrument coverage still require mapping."
+        },
+        "disclosed_interest_income_ratio": null,
+        "non_permissible_revenue": null,
+        "approved": false
+      },
+      "public_ratings": [
+        {
+          "provider": "Zoya",
+          "url": "https://zoya.finance/stocks/lly",
+          "status": "PUBLIC_LABEL_OBSERVED",
+          "quantitative_report_observed": false,
+          "http_status": 200,
+          "response_sha256": "110a5c5fdc1f295a4b110cc5cd3d015123bdeb4eaf1295ac2fec9e8a69008f59",
+          "reported_label": "COMPLIANT",
+          "public_description": "Yes. As of October 31, 2026, Eli Lilly (LLY) is Shariah-compliant under AAOIFI standards. It passes both the business and financial screens. See the full report on Zoya.",
+          "page_dates": [
+            "2026-10-31",
+            "2026-10-31"
+          ],
+          "public_heading": "LLY stock is Shariah-compliant"
+        },
+        {
+          "provider": "Musaffa",
+          "url": "https://musaffa.com/stock/LLY/",
+          "status": "PUBLIC_LABEL_OBSERVED",
+          "quantitative_report_observed": false,
+          "http_status": 200,
+          "response_sha256": "adb2730848c7ff0b60d93a2d0642049095a0b7b70f895cefd9faf65be00094a9",
+          "reported_label": "COMPLIANT",
+          "full_report_access": false,
+          "screening_as_of": "UNKNOWN"
+        }
+      ],
+      "approval": "NOT_APPROVED",
+      "review_result": "FAVOURABLE_PUBLIC_LABELS_INSUFFICIENT_FOR_QUANTITATIVE_APPROVAL"
+    },
+    {
+      "symbol": "MU",
+      "calculations": {
+        "debt": {
+          "contexts_consistent": true,
+          "current": null,
+          "noncurrent": null,
+          "component_sum": null,
+          "reported_long_term_total": "2792000000",
+          "reported_carrying_amount": null,
+          "total_minus_components": null,
+          "carrying_minus_components": null,
+          "component_reconciliation": "INSUFFICIENT_DISCLOSURES",
+          "consolidated_screening_debt": null,
+          "scope": "Totals/components are not added together. Short-term borrowing, lease scope, carrying/face adjustments and complete instrument coverage still require mapping."
+        },
+        "disclosed_interest_income_ratio": null,
+        "non_permissible_revenue": null,
+        "approved": false
+      },
+      "public_ratings": [
+        {
+          "provider": "Zoya",
+          "url": "https://zoya.finance/stocks/mu",
+          "status": "PUBLIC_LABEL_OBSERVED",
+          "quantitative_report_observed": false,
+          "http_status": 200,
+          "response_sha256": "b77764fdcf0c4a32f52ba7afa54919877825370ed8e8ee61f52c4fdabd5fd4a6",
+          "reported_label": "COMPLIANT",
+          "public_heading": "MU stock is Shariah-compliant",
+          "page_dates": [
+            "2026-10-31",
+            "2026-10-31"
+          ]
+        },
+        {
+          "provider": "Musaffa",
+          "url": "https://musaffa.com/stock/MU/",
+          "status": "PUBLIC_LABEL_OBSERVED",
+          "quantitative_report_observed": false,
+          "http_status": 200,
+          "response_sha256": "becc16a4e59a73210732611687c4921edc7085ae56de84776ae2c918da8887ec",
+          "reported_label": "COMPLIANT",
+          "full_report_access": false,
+          "screening_as_of": "UNKNOWN"
+        }
+      ],
+      "approval": "NOT_APPROVED",
+      "review_result": "FAVOURABLE_PUBLIC_LABELS_INSUFFICIENT_FOR_QUANTITATIVE_APPROVAL"
+    }
+  ],
+  "market_cap_source_check": {
+    "symbol": "AAPL",
+    "url": "https://companiesmarketcap.com/apple/marketcap/",
+    "response_sha256": "7ac959e94aedc2e2a89c528c063e2647ae073048ad06a2f3dcdaa9e0160b6069",
+    "observations_in_proposed_window": 57,
+    "median_gap_calendar_days": 7.0,
+    "maximum_gap_calendar_days": 7,
+    "date_label_and_units_verified": false,
+    "daily_regular_session_coverage": "NOT_ESTABLISHED",
+    "interpolation_or_current_cap_substitution_performed": false
+  },
+  "approved_symbols": [],
+  "production_database_mutations": 0,
+  "orders_submitted": 0,
+  "emails_sent": 0,
+  "telegram_messages_sent": 0,
+  "scope": "Partial accounting calculations and third-party public labels only. Public labels do not supply the underlying quantitative reports or the proposed daily market-cap series. No qualified approval or reviewer identity was fabricated.",
+  "summary": {
+    "adverse_or_questionable_symbols": [
+      "MSFT",
+      "GOOGL",
+      "AMZN",
+      "META"
+    ],
+    "favourable_public_labels_only": [
+      "AAPL",
+      "NVDA",
+      "TSLA",
+      "AVGO",
+      "LLY",
+      "MU"
+    ],
+    "debt_component_results": {
+      "DIFFERENCE": 2,
+      "EXACT": 3,
+      "INSUFFICIENT_DISCLOSURES": 5
+    },
+    "gross_interest_component_ratios_available": [
+      "NVDA",
+      "AMZN",
+      "TSLA"
+    ],
+    "qualified_approvals": 0
+  },
+  "verification": {
+    "calculation_tests_passed": 6,
+    "unknowns_replaced_with_zero": false,
+    "reviewer_impersonation_or_permission_bypass": false,
+    "licensing_or_login_controls_bypassed": false,
+    "combined_screening_tests_passed": 12
+  },
+  "historical_cap_endpoint": {
+    "provider": "Finnhub",
+    "endpoint": "https://finnhub.io/api/v1/stock/historical-market-cap",
+    "symbol": "AAPL",
+    "from": "2025-10-31",
+    "to": "2026-10-30",
+    "http_status": 403,
+    "series_retrieved": false,
+    "scope": "Configured development credential was rejected for this endpoint. This does not prove the phone credential has the same entitlement; no paid plan was purchased or access control bypassed."
+  },
+  "approval_requested_by_user": true,
+  "approval_decision": "WITHHELD_INSUFFICIENT_AND_ADVERSE_EVIDENCE"
+}

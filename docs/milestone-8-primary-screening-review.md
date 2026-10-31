@@ -40,3 +40,7 @@ The [JSON review](../reports/milestone8-screening-review-2026-10-31.json) record
 Six focused tests pass for exact accession/period/unit matching, missing disclosures, conflicting values, future filings, separate debt components and income durations, and a complete mocked SEC acquisition that grants no approval. Lint/format pass. Live SEC probes used GET requests only. No production database changes, real orders, emails or Telegram messages occurred.
 
 [Hosted CI](https://github.com/MohammedTeir/halal-quant/actions/runs/41227037508) passed **673 tests** on PostgreSQL for source `e8b35f7`, including the encrypted backup/isolated restore and existing offline acceptance steps. These checks establish software regression status, not stock approval or forward acceptance.
+
+## Approval request follow-up
+
+The [approval evidence review](milestone-8-approval-review.md) implements partial financial reconciliations and daily-cap averaging checks, records four adverse/questionable public screening results, and documents the historical-data/report access limitations. Approval remains withheld; no missing facts or permissions were bypassed.
