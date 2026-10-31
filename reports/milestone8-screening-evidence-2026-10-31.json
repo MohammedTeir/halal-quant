@@ -1,0 +1,917 @@
+{
+  "observed_at": "2026-10-31T17:45:18.884487+00:00",
+  "status": "FINANCIAL_DISCLOSURES_COLLECTED_SCREENING_PENDING",
+  "source": "Finnhub stock/financials-reported, annual",
+  "archive_policy": "Raw responses retained privately under ignored data/, not published; response hashes and selected public disclosed facts recorded here",
+  "items": [
+    {
+      "symbol": "AAPL",
+      "screening_status": "NOT_APPROVED",
+      "http_status": 200,
+      "financial_report": "AVAILABLE_VIA_FINNHUB",
+      "filing_date": "2025-10-31 00:00:00",
+      "period_end": "2025-09-27 00:00:00",
+      "accession": "0000320193-25-000079",
+      "response_sha256": "cd549561fde7919edea7b50965c8a59228fca89f0ee548d372a46e1c923a9c80",
+      "disclosed_items": [
+        {
+          "section": "bs",
+          "concept": "us-gaap_CashAndCashEquivalentsAtCarryingValue",
+          "unit": "usd",
+          "value": 35934000000.0
+        },
+        {
+          "section": "bs",
+          "concept": "us-gaap_MarketableSecuritiesCurrent",
+          "unit": "usd",
+          "value": 18763000000.0
+        },
+        {
+          "section": "bs",
+          "concept": "us-gaap_MarketableSecuritiesNoncurrent",
+          "unit": "usd",
+          "value": 77723000000.0
+        },
+        {
+          "section": "bs",
+          "concept": "us-gaap_LongTermDebtCurrent",
+          "unit": "usd",
+          "value": 12350000000.0
+        },
+        {
+          "section": "bs",
+          "concept": "us-gaap_LongTermDebtNoncurrent",
+          "unit": "usd",
+          "value": 78328000000.0
+        },
+        {
+          "section": "ic",
+          "concept": "us-gaap_RevenueFromContractWithCustomerExcludingAssessedTax",
+          "unit": "usd",
+          "value": 416161000000.0
+        },
+        {
+          "section": "ic",
+          "concept": "us-gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+          "unit": "usd",
+          "value": 132729000000
+        },
+        {
+          "section": "cf",
+          "concept": "us-gaap_PaymentsToAcquireAvailableForSaleSecuritiesDebt",
+          "unit": "usd",
+          "value": 24407000000
+        },
+        {
+          "section": "cf",
+          "concept": "us-gaap_ProceedsFromSaleOfAvailableForSaleSecuritiesDebt",
+          "unit": "usd",
+          "value": 12890000000
+        },
+        {
+          "section": "cf",
+          "concept": "us-gaap_ProceedsFromIssuanceOfLongTermDebt",
+          "unit": "usd",
+          "value": 4481000000
+        },
+        {
+          "section": "cf",
+          "concept": "us-gaap_RepaymentsOfLongTermDebt",
+          "unit": "usd",
+          "value": 10932000000
+        }
+      ],
+      "primary_filing_independently_verified": false,
+      "remaining_evidence": [
+        "Documented average-market-cap averaging window and historical denominator",
+        "Reviewed consolidated debt and interest-bearing assets with source reconciliation",
+        "Reviewed non-permissible revenue numerator; absence of a line item is not zero",
+        "Business activity, purification and disposition review",
+        "Instrument settlement/possession evidence and current methodology/policy/asset approvals"
+      ],
+      "provider_reference": "https://finnhub.io/docs/api/financials-reported"
+    },
+    {
+      "symbol": "NVDA",
+      "screening_status": "NOT_APPROVED",
+      "http_status": 200,
+      "financial_report": "AVAILABLE_VIA_FINNHUB",
+      "filing_date": "2026-02-25 00:00:00",
+      "period_end": "2026-01-25 00:00:00",
+      "accession": "0001045810-26-000021",
+      "response_sha256": "9e6f7ba827cfa57ffa5476621cf45c78f8dbb7dc4e886299bd316e5b68057b5f",
+      "disclosed_items": [
+        {
+          "section": "bs",
+          "concept": "us-gaap_CashAndCashEquivalentsAtCarryingValue",
+          "unit": "usd",
+          "value": 10605000000
+        },
+        {
+          "section": "bs",
+          "concept": "nvda_MarketableSecuritiesAndEquitySecuritiesFVNI",
+          "unit": "usd",
+          "value": 51951000000
+        },
+        {
+          "section": "bs",
+          "concept": "us-gaap_DebtCurrent",
+          "unit": "usd",
+          "value": 999000000
+        },
+        {
+          "section": "bs",
+          "concept": "us-gaap_LongTermDebtNoncurrent",
+          "unit": "usd",
+          "value": 7469000000.0
+        },
+        {
+          "section": "ic",
+          "concept": "us-gaap_Revenues",
+          "unit": "usd",
+          "value": 215938000000.0
+        },
+        {
+          "section": "ic",
+          "concept": "us-gaap_CostOfRevenue",
+          "unit": "usd",
+          "value": 62475000000
+        },
+        {
+          "section": "ic",
+          "concept": "us-gaap_InvestmentIncomeInterest",
+          "unit": "usd",
+          "value": 2300000000
+        },
+        {
+          "section": "ic",
+          "concept": "us-gaap_InterestExpenseNonoperating",
+          "unit": "usd",
+          "value": 259000000
+        },
+        {
+          "section": "ic",
+          "concept": "us-gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+          "unit": "usd",
+          "value": 141450000000.0
+        },
+        {
+          "section": "cf",
+          "concept": "us-gaap_ProceedsFromSaleOfAvailableForSaleSecuritiesDebt",
+          "unit": "usd",
+          "value": 15157000000
+        },
+        {
+          "section": "cf",
+          "concept": "us-gaap_PaymentsToAcquireAvailableForSaleSecuritiesDebt",
+          "unit": "usd",
+          "value": 40616000000
+        },
+        {
+          "section": "cf",
+          "concept": "us-gaap_RepaymentsOfDebt",
+          "unit": "usd",
+          "value": 0
+        }
+      ],
+      "primary_filing_independently_verified": false,
+      "remaining_evidence": [
+        "Documented average-market-cap averaging window and historical denominator",
+        "Reviewed consolidated debt and interest-bearing assets with source reconciliation",
+        "Reviewed non-permissible revenue numerator; absence of a line item is not zero",
+        "Business activity, purification and disposition review",
+        "Instrument settlement/possession evidence and current methodology/policy/asset approvals"
+      ],
+      "provider_reference": "https://finnhub.io/docs/api/financials-reported"
+    },
+    {
+      "symbol": "MSFT",
+      "screening_status": "NOT_APPROVED",
+      "http_status": 200,
+      "financial_report": "AVAILABLE_VIA_FINNHUB",
+      "filing_date": "2026-07-29 00:00:00",
+      "period_end": "2026-06-30 00:00:00",
+      "accession": "0001193125-26-323660",
+      "response_sha256": "4e8d0b433107398686a7e3d1fc8fe7665d26de6a8fcb1aa3691996e73e5c984b",
+      "disclosed_items": [
+        {
+          "section": "ic",
+          "concept": "us-gaap_RevenueFromContractWithCustomerExcludingAssessedTax",
+          "unit": "u_usd",
+          "value": 331839000000.0
+        },
+        {
+          "section": "ic",
+          "concept": "us-gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+          "unit": "u_usd",
+          "value": 165934000000.0
+        },
+        {
+          "section": "cf",
+          "concept": "us-gaap_ProceedsFromRepaymentsOfShortTermDebtMaturingInThreeMonthsOrLess",
+          "unit": "u_usd",
+          "value": 0
+        },
+        {
+          "section": "cf",
+          "concept": "us-gaap_ProceedsFromDebtMaturingInMoreThanThreeMonths",
+          "unit": "u_usd",
+          "value": 0
+        },
+        {
+          "section": "cf",
+          "concept": "us-gaap_RepaymentsOfDebtMaturingInMoreThanThreeMonths",
+          "unit": "u_usd",
+          "value": 3000000000
+        }
+      ],
+      "primary_filing_independently_verified": false,
+      "remaining_evidence": [
+        "Documented average-market-cap averaging window and historical denominator",
+        "Reviewed consolidated debt and interest-bearing assets with source reconciliation",
+        "Reviewed non-permissible revenue numerator; absence of a line item is not zero",
+        "Business activity, purification and disposition review",
+        "Instrument settlement/possession evidence and current methodology/policy/asset approvals"
+      ],
+      "provider_reference": "https://finnhub.io/docs/api/financials-reported"
+    },
+    {
+      "symbol": "GOOGL",
+      "screening_status": "NOT_APPROVED",
+      "http_status": 200,
+      "financial_report": "AVAILABLE_VIA_FINNHUB",
+      "filing_date": "2026-02-05 00:00:00",
+      "period_end": "2025-12-31 00:00:00",
+      "accession": "0001652044-26-000018",
+      "response_sha256": "ba7edc4d0b6b6a21f79b9cbe84f3c6f686be3536fb4116fc2cbae4b148d910f2",
+      "disclosed_items": [
+        {
+          "section": "bs",
+          "concept": "us-gaap_CashAndCashEquivalentsAtCarryingValue",
+          "unit": "usd",
+          "value": 30708000000
+        },
+        {
+          "section": "bs",
+          "concept": "us-gaap_MarketableSecuritiesCurrent",
+          "unit": "usd",
+          "value": 96135000000
+        },
+        {
+          "section": "bs",
+          "concept": "goog_AccruedRevenueShare",
+          "unit": "usd",
+          "value": 10864000000
+        },
+        {
+          "section": "bs",
+          "concept": "us-gaap_LongTermDebtNoncurrent",
+          "unit": "usd",
+          "value": 46547000000.0
+        },
+        {
+          "section": "ic",
+          "concept": "us-gaap_Revenues",
+          "unit": "usd",
+          "value": 402836000000.0
+        },
+        {
+          "section": "ic",
+          "concept": "us-gaap_CostOfRevenue",
+          "unit": "usd",
+          "value": 162535000000
+        },
+        {
+          "section": "ic",
+          "concept": "us-gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+          "unit": "usd",
+          "value": 158826000000.0
+        },
+        {
+          "section": "cf",
+          "concept": "us-gaap_DebtAndEquitySecuritiesGainLoss",
+          "unit": "usd",
+          "value": 24620000000
+        },
+        {
+          "section": "cf",
+          "concept": "goog_IncreaseDecreaseInAccruedRevenueShare",
+          "unit": "usd",
+          "value": 899000000
+        },
+        {
+          "section": "cf",
+          "concept": "us-gaap_PaymentsToAcquireMarketableSecurities",
+          "unit": "usd",
+          "value": 103773000000
+        },
+        {
+          "section": "cf",
+          "concept": "us-gaap_ProceedsFromSaleAndMaturityOfMarketableSecurities",
+          "unit": "usd",
+          "value": 83240000000
+        },
+        {
+          "section": "cf",
+          "concept": "us-gaap_ProceedsFromDebtNetOfIssuanceCosts",
+          "unit": "usd",
+          "value": 64564000000
+        },
+        {
+          "section": "cf",
+          "concept": "us-gaap_RepaymentsOfDebtAndCapitalLeaseObligations",
+          "unit": "usd",
+          "value": 32427000000
+        }
+      ],
+      "primary_filing_independently_verified": false,
+      "remaining_evidence": [
+        "Documented average-market-cap averaging window and historical denominator",
+        "Reviewed consolidated debt and interest-bearing assets with source reconciliation",
+        "Reviewed non-permissible revenue numerator; absence of a line item is not zero",
+        "Business activity, purification and disposition review",
+        "Instrument settlement/possession evidence and current methodology/policy/asset approvals"
+      ],
+      "provider_reference": "https://finnhub.io/docs/api/financials-reported"
+    },
+    {
+      "symbol": "AMZN",
+      "screening_status": "NOT_APPROVED",
+      "http_status": 200,
+      "financial_report": "AVAILABLE_VIA_FINNHUB",
+      "filing_date": "2026-02-06 00:00:00",
+      "period_end": "2025-12-31 00:00:00",
+      "accession": "0001018724-26-000004",
+      "response_sha256": "e06631d512439b78ba1a84553adb680d58aa8f671c08a86a0dbeace3129cc06d",
+      "disclosed_items": [
+        {
+          "section": "bs",
+          "concept": "us-gaap_CashAndCashEquivalentsAtCarryingValue",
+          "unit": "usd",
+          "value": 86810000000.0
+        },
+        {
+          "section": "bs",
+          "concept": "us-gaap_MarketableSecuritiesCurrent",
+          "unit": "usd",
+          "value": 36219000000
+        },
+        {
+          "section": "bs",
+          "concept": "us-gaap_LongTermDebtNoncurrent",
+          "unit": "usd",
+          "value": 65648000000
+        },
+        {
+          "section": "ic",
+          "concept": "us-gaap_RevenueFromContractWithCustomerExcludingAssessedTax",
+          "unit": "usd",
+          "value": 716924000000.0
+        },
+        {
+          "section": "ic",
+          "concept": "us-gaap_InvestmentIncomeInterest",
+          "unit": "usd",
+          "value": 4381000000
+        },
+        {
+          "section": "ic",
+          "concept": "us-gaap_InterestExpenseNonoperating",
+          "unit": "usd",
+          "value": 2274000000
+        },
+        {
+          "section": "ic",
+          "concept": "us-gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments",
+          "unit": "usd",
+          "value": 97311000000.0
+        },
+        {
+          "section": "cf",
+          "concept": "amzn_PaymentsToAcquireBusinessesNetOfCashAcquiredAndPaymentsToAcquireNonmarketableSecuritiesAndOther",
+          "unit": "usd",
+          "value": 3841000000
+        },
+        {
+          "section": "cf",
+          "concept": "us-gaap_ProceedsFromSaleAndMaturityOfMarketableSecurities",
+          "unit": "usd",
+          "value": 44386000000
+        },
+        {
+          "section": "cf",
+          "concept": "us-gaap_PaymentsToAcquireMarketableSecurities",
+          "unit": "usd",
+          "value": 54770000000
+        },
+        {
+          "section": "cf",
+          "concept": "us-gaap_ProceedsFromShortTermDebt",
+          "unit": "usd",
+          "value": 9320000000
+        },
+        {
+          "section": "cf",
+          "concept": "us-gaap_RepaymentsOfShortTermDebt",
+          "unit": "usd",
+          "value": 8426000000
+        },
+        {
+          "section": "cf",
+          "concept": "us-gaap_ProceedsFromIssuanceOfLongTermDebt",
+          "unit": "usd",
+          "value": 15673000000
+        },
+        {
+          "section": "cf",
+          "concept": "us-gaap_RepaymentsOfLongTermDebt",
+          "unit": "usd",
+          "value": 5021000000
+        }
+      ],
+      "primary_filing_independently_verified": false,
+      "remaining_evidence": [
+        "Documented average-market-cap averaging window and historical denominator",
+        "Reviewed consolidated debt and interest-bearing assets with source reconciliation",
+        "Reviewed non-permissible revenue numerator; absence of a line item is not zero",
+        "Business activity, purification and disposition review",
+        "Instrument settlement/possession evidence and current methodology/policy/asset approvals"
+      ],
+      "provider_reference": "https://finnhub.io/docs/api/financials-reported"
+    },
+    {
+      "symbol": "TSLA",
+      "screening_status": "NOT_APPROVED",
+      "http_status": 200,
+      "financial_report": "AVAILABLE_VIA_FINNHUB",
+      "filing_date": "2026-01-29 00:00:00",
+      "period_end": "2025-12-31 00:00:00",
+      "accession": "0001628280-26-003952",
+      "response_sha256": "7d8d5775b7f199010aac6e54abe7f2948cf759e1d1ab146526809ea4c39a4cc6",
+      "disclosed_items": [
+        {
+          "section": "bs",
+          "concept": "us-gaap_CashAndCashEquivalentsAtCarryingValue",
+          "unit": "usd",
+          "value": 16513000000.0
+        },
+        {
+          "section": "bs",
+          "concept": "tsla_LongTermDebtAndFinanceLeasesCurrent",
+          "unit": "usd",
+          "value": 1640000000.0
+        },
+        {
+          "section": "bs",
+          "concept": "tsla_LongTermDebtAndFinanceLeasesNoncurrent",
+          "unit": "usd",
+          "value": 6736000000.0
+        },
+        {
+          "section": "bs",
+          "concept": "us-gaap_RedeemableNoncontrollingInterestEquityCarryingAmount",
+          "unit": "usd",
+          "value": 58000000
+        },
+        {
+          "section": "bs",
+          "concept": "us-gaap_MinorityInterest",
+          "unit": "usd",
+          "value": 670000000
+        },
+        {
+          "section": "ic",
+          "concept": "us-gaap_RevenueFromContractWithCustomerExcludingAssessedTax",
+          "unit": "usd",
+          "value": 94827000000.0
+        },
+        {
+          "section": "ic",
+          "concept": "us-gaap_CostOfRevenue",
+          "unit": "usd",
+          "value": 77733000000.0
+        },
+        {
+          "section": "ic",
+          "concept": "us-gaap_InvestmentIncomeInterest",
+          "unit": "usd",
+          "value": 1680000000
+        },
+        {
+          "section": "ic",
+          "concept": "us-gaap_InterestExpenseNonoperating",
+          "unit": "usd",
+          "value": 338000000
+        },
+        {
+          "section": "ic",
+          "concept": "us-gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+          "unit": "usd",
+          "value": 5278000000.0
+        },
+        {
+          "section": "ic",
+          "concept": "us-gaap_NetIncomeLossAttributableToNoncontrollingInterest",
+          "unit": "usd",
+          "value": 61000000
+        },
+        {
+          "section": "ic",
+          "concept": "us-gaap_ComprehensiveIncomeNetOfTaxIncludingPortionAttributableToNoncontrollingInterest",
+          "unit": "usd",
+          "value": 4886000000
+        },
+        {
+          "section": "ic",
+          "concept": "us-gaap_ComprehensiveIncomeNetOfTaxAttributableToNoncontrollingInterest",
+          "unit": "usd",
+          "value": 61000000
+        },
+        {
+          "section": "cf",
+          "concept": "tsla_NoncashInterestIncomeExpenseAndOtherOperatingActivities",
+          "unit": "usd",
+          "value": -272000000
+        },
+        {
+          "section": "cf",
+          "concept": "us-gaap_ProceedsFromIssuanceOfDebt",
+          "unit": "usd",
+          "value": 5586000000
+        },
+        {
+          "section": "cf",
+          "concept": "us-gaap_RepaymentsOfConvertibleDebt",
+          "unit": "usd",
+          "value": 5546000000
+        },
+        {
+          "section": "cf",
+          "concept": "us-gaap_PaymentsOfDebtIssuanceCosts",
+          "unit": "usd",
+          "value": 6000000
+        },
+        {
+          "section": "cf",
+          "concept": "tsla_PaymentsForBuyOutsOfNoncontrollingInterestsInSubsidiaries",
+          "unit": "usd",
+          "value": 0
+        },
+        {
+          "section": "cf",
+          "concept": "us-gaap_InterestPaidNet",
+          "unit": "usd",
+          "value": 292000000
+        }
+      ],
+      "primary_filing_independently_verified": false,
+      "remaining_evidence": [
+        "Documented average-market-cap averaging window and historical denominator",
+        "Reviewed consolidated debt and interest-bearing assets with source reconciliation",
+        "Reviewed non-permissible revenue numerator; absence of a line item is not zero",
+        "Business activity, purification and disposition review",
+        "Instrument settlement/possession evidence and current methodology/policy/asset approvals"
+      ],
+      "provider_reference": "https://finnhub.io/docs/api/financials-reported"
+    },
+    {
+      "symbol": "META",
+      "screening_status": "NOT_APPROVED",
+      "http_status": 200,
+      "financial_report": "AVAILABLE_VIA_FINNHUB",
+      "filing_date": "2026-01-29 00:00:00",
+      "period_end": "2025-12-31 00:00:00",
+      "accession": "0001628280-26-003942",
+      "response_sha256": "9ad402a95983ad0a6a7816904003116454683e930bac989b6d2efe8434eedb72",
+      "disclosed_items": [
+        {
+          "section": "bs",
+          "concept": "us-gaap_CashAndCashEquivalentsAtCarryingValue",
+          "unit": "usd",
+          "value": 35873000000.0
+        },
+        {
+          "section": "bs",
+          "concept": "us-gaap_MarketableSecuritiesCurrent",
+          "unit": "usd",
+          "value": 45719000000.0
+        },
+        {
+          "section": "bs",
+          "concept": "us-gaap_LongTermDebtNoncurrent",
+          "unit": "usd",
+          "value": 58744000000
+        },
+        {
+          "section": "ic",
+          "concept": "us-gaap_RevenueFromContractWithCustomerExcludingAssessedTax",
+          "unit": "usd",
+          "value": 200966000000.0
+        },
+        {
+          "section": "ic",
+          "concept": "us-gaap_CostOfRevenue",
+          "unit": "usd",
+          "value": 36175000000
+        },
+        {
+          "section": "ic",
+          "concept": "us-gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+          "unit": "usd",
+          "value": 85932000000.0
+        },
+        {
+          "section": "cf",
+          "concept": "us-gaap_PaymentsToAcquireMarketableSecurities",
+          "unit": "usd",
+          "value": 36929000000
+        },
+        {
+          "section": "cf",
+          "concept": "us-gaap_ProceedsFromSaleAndMaturityOfMarketableSecurities",
+          "unit": "usd",
+          "value": 26874000000
+        },
+        {
+          "section": "cf",
+          "concept": "us-gaap_ProceedsFromIssuanceOfLongTermDebt",
+          "unit": "usd",
+          "value": 29906000000
+        },
+        {
+          "section": "cf",
+          "concept": "us-gaap_InterestPaidNet",
+          "unit": "usd",
+          "value": 696000000
+        }
+      ],
+      "primary_filing_independently_verified": false,
+      "remaining_evidence": [
+        "Documented average-market-cap averaging window and historical denominator",
+        "Reviewed consolidated debt and interest-bearing assets with source reconciliation",
+        "Reviewed non-permissible revenue numerator; absence of a line item is not zero",
+        "Business activity, purification and disposition review",
+        "Instrument settlement/possession evidence and current methodology/policy/asset approvals"
+      ],
+      "provider_reference": "https://finnhub.io/docs/api/financials-reported"
+    },
+    {
+      "symbol": "AVGO",
+      "screening_status": "NOT_APPROVED",
+      "http_status": 200,
+      "financial_report": "AVAILABLE_VIA_FINNHUB",
+      "filing_date": "2025-12-18 00:00:00",
+      "period_end": "2025-11-02 00:00:00",
+      "accession": "0001730168-25-000121",
+      "response_sha256": "dc339d268e8ae0178380c24feb6fd9c58f316d513310705c867d5cbdd3975872",
+      "disclosed_items": [
+        {
+          "section": "bs",
+          "concept": "us-gaap_CashAndCashEquivalentsAtCarryingValue",
+          "unit": "usd",
+          "value": 16178000000
+        },
+        {
+          "section": "bs",
+          "concept": "us-gaap_LongTermDebtAndCapitalLeaseObligationsCurrent",
+          "unit": "usd",
+          "value": 3152000000.0
+        },
+        {
+          "section": "bs",
+          "concept": "us-gaap_LongTermDebtAndCapitalLeaseObligations",
+          "unit": "usd",
+          "value": 61984000000.0
+        },
+        {
+          "section": "bs",
+          "concept": "us-gaap_StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest",
+          "unit": "usd",
+          "value": 81292000000.0
+        },
+        {
+          "section": "ic",
+          "concept": "us-gaap_RevenueFromContractWithCustomerExcludingAssessedTax",
+          "unit": "usd",
+          "value": 63887000000.0
+        },
+        {
+          "section": "ic",
+          "concept": "us-gaap_CostOfRevenue",
+          "unit": "usd",
+          "value": 20593000000
+        },
+        {
+          "section": "ic",
+          "concept": "us-gaap_InterestExpenseNonoperating",
+          "unit": "usd",
+          "value": 3210000000
+        },
+        {
+          "section": "ic",
+          "concept": "us-gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+          "unit": "usd",
+          "value": 22729000000.0
+        },
+        {
+          "section": "ic",
+          "concept": "us-gaap_IncomeLossFromContinuingOperationsIncludingPortionAttributableToNoncontrollingInterest",
+          "unit": "usd",
+          "value": 23126000000.0
+        },
+        {
+          "section": "ic",
+          "concept": "us-gaap_ComprehensiveIncomeNetOfTaxIncludingPortionAttributableToNoncontrollingInterest",
+          "unit": "usd",
+          "value": 23137000000
+        },
+        {
+          "section": "cf",
+          "concept": "us-gaap_GainsLossesOnExtinguishmentOfDebt",
+          "unit": "usd",
+          "value": -138000000
+        },
+        {
+          "section": "cf",
+          "concept": "us-gaap_ProceedsFromIssuanceOfLongTermDebt",
+          "unit": "usd",
+          "value": 15666000000
+        },
+        {
+          "section": "cf",
+          "concept": "us-gaap_RepaymentsOfDebt",
+          "unit": "usd",
+          "value": 18478000000
+        },
+        {
+          "section": "cf",
+          "concept": "us-gaap_InterestPaidNet",
+          "unit": "usd",
+          "value": 2672000000
+        }
+      ],
+      "primary_filing_independently_verified": false,
+      "remaining_evidence": [
+        "Documented average-market-cap averaging window and historical denominator",
+        "Reviewed consolidated debt and interest-bearing assets with source reconciliation",
+        "Reviewed non-permissible revenue numerator; absence of a line item is not zero",
+        "Business activity, purification and disposition review",
+        "Instrument settlement/possession evidence and current methodology/policy/asset approvals"
+      ],
+      "provider_reference": "https://finnhub.io/docs/api/financials-reported"
+    },
+    {
+      "symbol": "LLY",
+      "screening_status": "NOT_APPROVED",
+      "http_status": 200,
+      "financial_report": "AVAILABLE_VIA_FINNHUB",
+      "filing_date": "2026-02-12 00:00:00",
+      "period_end": "2025-12-31 00:00:00",
+      "accession": "0000059478-26-000013",
+      "response_sha256": "0c3b527d67e29a30cb69cbf825961aa02903dbbe790266ed76297ec55fcbded9",
+      "disclosed_items": [
+        {
+          "section": "bs",
+          "concept": "us-gaap_CashAndCashEquivalentsAtCarryingValue",
+          "unit": "usd",
+          "value": 7268000000
+        },
+        {
+          "section": "bs",
+          "concept": "us-gaap_DebtCurrent",
+          "unit": "usd",
+          "value": 1635000000.0
+        },
+        {
+          "section": "bs",
+          "concept": "us-gaap_LongTermDebtNoncurrent",
+          "unit": "usd",
+          "value": 40868000000.0
+        },
+        {
+          "section": "ic",
+          "concept": "us-gaap_Revenues",
+          "unit": "usd",
+          "value": 65179000000.0
+        },
+        {
+          "section": "ic",
+          "concept": "us-gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+          "unit": "usd",
+          "value": 25731000000
+        },
+        {
+          "section": "cf",
+          "concept": "us-gaap_ProceedsFromRepaymentsOfShortTermDebt",
+          "unit": "usd",
+          "value": -4338000000
+        },
+        {
+          "section": "cf",
+          "concept": "us-gaap_ProceedsFromIssuanceOfLongTermDebt",
+          "unit": "usd",
+          "value": 13167000000
+        },
+        {
+          "section": "cf",
+          "concept": "us-gaap_RepaymentsOfLongTermDebt",
+          "unit": "usd",
+          "value": 778000000
+        }
+      ],
+      "primary_filing_independently_verified": false,
+      "remaining_evidence": [
+        "Documented average-market-cap averaging window and historical denominator",
+        "Reviewed consolidated debt and interest-bearing assets with source reconciliation",
+        "Reviewed non-permissible revenue numerator; absence of a line item is not zero",
+        "Business activity, purification and disposition review",
+        "Instrument settlement/possession evidence and current methodology/policy/asset approvals"
+      ],
+      "provider_reference": "https://finnhub.io/docs/api/financials-reported"
+    },
+    {
+      "symbol": "MU",
+      "screening_status": "NOT_APPROVED",
+      "http_status": 200,
+      "financial_report": "AVAILABLE_VIA_FINNHUB",
+      "filing_date": "2026-10-09 00:00:00",
+      "period_end": "2026-09-03 00:00:00",
+      "accession": "0000723125-26-000023",
+      "response_sha256": "e8db41c6fb811c37962aad09df0bd834d4b0e17eee77eb35cc45f1ae4571744b",
+      "disclosed_items": [
+        {
+          "section": "ic",
+          "concept": "us-gaap_RevenueFromContractWithCustomerExcludingAssessedTax",
+          "unit": "usd",
+          "value": 133188000000.0
+        },
+        {
+          "section": "ic",
+          "concept": "us-gaap_InterestExpenseNonoperating",
+          "unit": "usd",
+          "value": 106000000
+        },
+        {
+          "section": "ic",
+          "concept": "us-gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments",
+          "unit": "usd",
+          "value": 99671000000.0
+        },
+        {
+          "section": "cf",
+          "concept": "us-gaap_PaymentsToAcquireAvailableForSaleSecuritiesDebt",
+          "unit": "usd",
+          "value": 34871000000
+        },
+        {
+          "section": "cf",
+          "concept": "us-gaap_ProceedsFromIssuanceOfLongTermDebt",
+          "unit": "usd",
+          "value": 0
+        },
+        {
+          "section": "cf",
+          "concept": "us-gaap_RepaymentsOfLongTermDebtAndCapitalSecurities",
+          "unit": "usd",
+          "value": 10043000000
+        },
+        {
+          "section": "cf",
+          "concept": "us-gaap_InterestPaidNet",
+          "unit": "usd",
+          "value": 197000000
+        }
+      ],
+      "primary_filing_independently_verified": false,
+      "remaining_evidence": [
+        "Documented average-market-cap averaging window and historical denominator",
+        "Reviewed consolidated debt and interest-bearing assets with source reconciliation",
+        "Reviewed non-permissible revenue numerator; absence of a line item is not zero",
+        "Business activity, purification and disposition review",
+        "Instrument settlement/possession evidence and current methodology/policy/asset approvals"
+      ],
+      "provider_reference": "https://finnhub.io/docs/api/financials-reported"
+    }
+  ],
+  "approved_symbols": [],
+  "ratings_provider_consulted": false,
+  "averaging_window_selected_or_validated": false,
+  "religious_compliance_certified": false,
+  "real_broker_orders": 0,
+  "real_emails": 0,
+  "real_telegram_messages": 0,
+  "production_database_mutations": 0,
+  "user_reported_campaign": {
+    "account_id": "largecap-forward-20261031",
+    "run_id": "largecap-forward-20261031-run-v1",
+    "status": "PENDING_REVIEW",
+    "protocol_sha256": "a41489138c4e310b2526d4166d9447352274387d4a42dc6286c659f04a519bc7",
+    "scope": "User-provided successful CLI response; no independent production database access"
+  },
+  "primary_source_probe": {
+    "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/0000320193-25-000079-index.htm",
+    "http_status": 200,
+    "response_sha256": "6d76ceacb872a43243a35436157c695d7a2625342c99dee0fe3ebb20eb7ab639",
+    "scope": "Filing index availability only; financial extraction and screening not independently verified"
+  }
+}
