@@ -271,3 +271,30 @@ def test_submit_only_retry_does_not_repeat_polls_or_reconfigure_sources(
     output = capsys.readouterr().out
     assert "PROPOSED_PENDING_REVIEW" in output
     assert "PRIVATE-PASSWORD" not in output
+
+
+def test_alternative_method_requires_fresh_account_and_preserves_legacy_drafts(tmp_path):
+    proposal = prepare.ROOT / "examples/controls/ftse-assets-methodology-proposal.json"
+    original = tmp_path / "original"
+    first = prepare.prepare(original)
+    with pytest.raises(ValueError, match="fresh account"):
+        prepare.prepare(tmp_path / "bad", methodology_proposal=proposal)
+    with pytest.raises(ValueError, match="fresh account"):
+        prepare.prepare(
+            tmp_path / "bad", methodology_proposal=proposal, account_id="largecap-forward-20261031"
+        )
+    alternative = tmp_path / "alternative"
+    kwargs = {"methodology_proposal": proposal, "account_id": "largecap-assets-review-v2"}
+    manifest = prepare.prepare(alternative, **kwargs)
+    assert prepare.prepare(alternative, **kwargs) == manifest
+    account = OpenAccount.model_validate_json((alternative / "account.json").read_text())
+    method = MethodologyApproval.model_validate_json(
+        (alternative / "methodology-proposal.json").read_text()
+    )
+    assert account.policy.methodology == method.methodology_id
+    assert method.denominator == "total_assets" and method.status == "PENDING"
+    assert method.maximum_receivables_cash_ratio is not None
+    assert "365" not in (alternative / "review.md").read_text()
+    assert prepare.prepare(original) == first
+    with pytest.raises(ValueError, match="differs"):
+        prepare.prepare(original, **kwargs)

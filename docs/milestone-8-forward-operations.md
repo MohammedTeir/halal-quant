@@ -303,3 +303,7 @@ proot-distro login debian -- bash -lc 'cd /root/halal-quant && git pull --ff-onl
 This skips source polling and source configuration. Use the Risk operator account's actual email/password; input is hidden for passwords. Errors now identify the login/account/protocol stage and HTTP status, with static guidance for credentials, role, Render flags, immutable ID conflicts and rate limits. Response bodies and credentials are never printed. HTTP/network failures are not automatically retried. Preserve any partially created account/protocol; exact retries are idempotent. Source polling can be resumed separately once submission works.
 
 The [screening evidence checkpoint](milestone-8-screening-evidence.md) records ten accessible company financial reports and the precise remaining approval gaps. The generated review document is a draft, not fresh evidence supplied by the operator.
+
+## Public assets-based methodology alternative
+
+The [public methodology alternative](milestone-8-public-methodology-alternative.md) provides an official-source-backed total-assets draft, avoiding the proposed historical-capitalization dependency. Use explicit `--methodology-proposal` and a fresh `--account-id`/`--output`; preparation never rewrites the submitted campaign or approves any stock. The extra receivables/cash input is required when its method threshold is selected.

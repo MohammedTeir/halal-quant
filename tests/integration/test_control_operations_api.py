@@ -809,3 +809,41 @@ def test_linked_decision_refreshes_prelock_clock_after_kill_change(client):
         result = store_evaluation(session, request, stale_prelock, Settings(_env_file=None))
     assert not result["snapshot"]["controls"]["research_controls_pass"]
     assert "KILL_SWITCH_ACTIVE" in result["snapshot"]["controls"]["blockers"]
+
+
+def test_backend_rejects_approved_asset_missing_the_new_liquidity_input(client):
+    from sqlalchemy import func, select
+    from sqlalchemy.orm import sessionmaker
+
+    from apps.api.db import ControlRevision
+    from tests.controls.test_assets_methodology import assets_method
+
+    method = assets_method().model_dump(mode="json")
+    assert (
+        client.post(
+            "/api/v1/controls/reviews/methodologies", json=method, headers=REVIEW
+        ).status_code
+        == 200
+    )
+    body = asset()
+    assert (
+        client.post("/api/v1/controls/reviews/assets", json=body, headers=REVIEW).status_code == 422
+    )
+    body["financials"]["receivables_cash"] = "500"
+    assert (
+        client.post("/api/v1/controls/reviews/assets", json=body, headers=REVIEW).status_code == 422
+    )
+    with sessionmaker(client.app.state.engine)() as db:
+        assert (
+            db.scalar(
+                select(func.count())
+                .select_from(ControlRevision)
+                .where(ControlRevision.kind == "asset")
+            )
+            == 0
+        )
+    body["financials"]["receivables_cash"] = "100"
+    body["financials"]["impure_revenue"] = "5"
+    assert (
+        client.post("/api/v1/controls/reviews/assets", json=body, headers=REVIEW).status_code == 200
+    )

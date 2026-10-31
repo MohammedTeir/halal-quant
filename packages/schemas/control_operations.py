@@ -41,6 +41,12 @@ class MethodologyApproval(ReviewerEvidence):
     maximum_debt_ratio: Threshold
     maximum_interest_assets_ratio: Threshold
     maximum_impure_income_ratio: Threshold
+    maximum_receivables_cash_ratio: Threshold | None = Field(
+        default=None, exclude_if=lambda value: value is None
+    )
+    impure_income_boundary: Literal["strictly_below", "at_or_below"] | None = Field(
+        default=None, exclude_if=lambda value: value is None
+    )
     ratio_boundary: Literal["strictly_below", "at_or_below"]
     divestment_guidance: str = Field(min_length=10, max_length=4000)
 
@@ -52,6 +58,9 @@ class FinancialScreen(Contract):
     interest_assets: Nonnegative
     total_revenue: Positive
     impure_revenue: Nonnegative
+    receivables_cash: Nonnegative | None = Field(
+        default=None, exclude_if=lambda value: value is None
+    )
 
     @model_validator(mode="after")
     def revenue(self):

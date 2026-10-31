@@ -1,0 +1,498 @@
+{
+  "observed_at": "2026-10-31T18:38:37.256272+00:00",
+  "status": "PUBLIC_TOTAL_ASSETS_ALTERNATIVE_IMPLEMENTED_PENDING_REVIEW",
+  "sources": [
+    {
+      "url": "https://www.lseg.com/content/dam/ftse-russell/en_us/documents/ground-rules/ftse-yasaar-global-equity-shariah-index-series-ground-rules.pdf",
+      "sha256": "cb8273205a1276489fa2f984424c33d50cba3f5b56f5886c5b57a19d641cc021",
+      "scope": "Official v4.6 February 2026; sections 4.3.1, 4.3.2, 4.4 and quarterly review/monitoring"
+    },
+    {
+      "url": "https://www.lseg.com/content/dam/ftse-russell/en_us/documents/other/ftse-yasaar-shariah-global-equity-index-series-fatwa.pdf",
+      "sha256": "5d9db8f4d96da0022dee5595f40889eed1a0c53c037823cfe18fe892f6314c57",
+      "scope": "Published 2025 endorsement of FTSE/Yasaar methodology; not certification of this project or its instruments"
+    },
+    {
+      "url": "https://help.zoya.finance/en/articles/4189798-how-does-zoya-screen-stocks-for-shariah-compliance",
+      "sha256": "2483a5a35c3e40eec8ca62776483832893309c8f05e5fd21da321b215a1a71c1",
+      "scope": "Public explanation of standards, total-assets alternatives, independent interpretation and full report limits"
+    },
+    {
+      "url": "https://blog.zoya.finance/introducing-more-ways-to-screen-for-shariah-compliance-in-zoya/",
+      "sha256": "c4fdde8f3c39fdbb7003a08194c5dd02f1d2acbb7aa568ae57da7cf708428448",
+      "scope": "Public explanation of different denominators and averaging periods"
+    }
+  ],
+  "denominator_gap": "Total assets are available from same-filing SEC primary facts for all ten candidates. This alternative does not require historical market-cap access.",
+  "proposal_file": "examples/controls/ftse-assets-methodology-proposal.json",
+  "implementation_scope": "Static financial-core support only; no official FTSE replication, membership certification, quarterly buffer or qualified issuer approval inferred.",
+  "source_rules": {
+    "denominator": "total_assets",
+    "debt_limit": "0.33333",
+    "cash_plus_interest_items_limit": "0.33333",
+    "receivables_plus_cash_limit": "0.50",
+    "income_limit": "0.05",
+    "first_three_boundaries": "strictly_below",
+    "income_boundary": "at_or_below"
+  },
+  "original_campaign_changed": false,
+  "old_drafts_rewritten": false,
+  "automatic_approvals": 0,
+  "items": [
+    {
+      "symbol": "AAPL",
+      "latest_filing": {
+        "form": "10-Q",
+        "filingDate": "2026-07-31",
+        "reportDate": "2026-06-27",
+        "accessionNumber": "0000320193-26-000020",
+        "primaryDocument": "aapl-20260627.htm"
+      },
+      "sec_companyfacts_sha256": "73a86c6aedc31f77cac2ea4df5f80f0b3bd7e6eb58bb4e01444fbedf3afb9c43",
+      "reported_assets_usd": "383266000000",
+      "reported_cash_usd": "39544000000",
+      "reported_current_receivables_usd": "31398000000",
+      "bounds": {
+        "denominator": "total_assets",
+        "reported_assets": "383266000000",
+        "checks": {
+          "debt": {
+            "known_component_ratio": "0.214856000793182802544446937636002149942859528369330960742670",
+            "limit": "0.33333",
+            "state": "UNKNOWN_FULL_TOTAL_NOT_ESTABLISHED"
+          },
+          "cash_interest_items": {
+            "known_component_ratio": "0.103176384025715821387756805978093543387621129972395151148289",
+            "limit": "0.33333",
+            "state": "UNKNOWN_FULL_TOTAL_NOT_ESTABLISHED"
+          },
+          "receivables_cash": {
+            "known_component_ratio": "0.185098599927987350821622580661994541649924595450679162774679",
+            "limit": "0.50",
+            "state": "UNKNOWN_FULL_TOTAL_NOT_ESTABLISHED"
+          },
+          "interest_noncompliant_income": {
+            "known_component_ratio": null,
+            "limit": "0.05",
+            "state": "UNKNOWN_FULL_TOTAL_NOT_ESTABLISHED"
+          }
+        },
+        "eligible_for_approval": false,
+        "scope": "Lower bounds only. A component below a threshold is not evidence that the complete total passes. No official index membership or quarterly-buffer determination."
+      },
+      "financial_screen_inputs_complete": false,
+      "asset_approved": false
+    },
+    {
+      "symbol": "NVDA",
+      "latest_filing": {
+        "form": "10-Q",
+        "filingDate": "2026-08-26",
+        "reportDate": "2026-07-26",
+        "accessionNumber": "0001045810-26-000075",
+        "primaryDocument": "nvda-20260726.htm"
+      },
+      "sec_companyfacts_sha256": "19ef503a5770f5660964b3c3aea6937579d9b359da344afe6a9adf59c63d26ff",
+      "reported_assets_usd": "320272000000",
+      "reported_cash_usd": "22443000000",
+      "reported_current_receivables_usd": "63059000000",
+      "bounds": {
+        "denominator": "total_assets",
+        "reported_assets": "320272000000",
+        "checks": {
+          "debt": {
+            "known_component_ratio": "0.104180196832692211620122895538792026777239346555427886296648",
+            "limit": "0.33333",
+            "state": "UNKNOWN_FULL_TOTAL_NOT_ESTABLISHED"
+          },
+          "cash_interest_items": {
+            "known_component_ratio": "0.0700748114103012439426487485637208372883049408003197282310036",
+            "limit": "0.33333",
+            "state": "UNKNOWN_FULL_TOTAL_NOT_ESTABLISHED"
+          },
+          "receivables_cash": {
+            "known_component_ratio": "0.266966828196033371634111005645201578658140580506569415996403",
+            "limit": "0.50",
+            "state": "UNKNOWN_FULL_TOTAL_NOT_ESTABLISHED"
+          },
+          "interest_noncompliant_income": {
+            "known_component_ratio": "0.00515479988775838954074474387088057700501969424553891562133006",
+            "limit": "0.05",
+            "state": "UNKNOWN_FULL_TOTAL_NOT_ESTABLISHED"
+          }
+        },
+        "eligible_for_approval": false,
+        "scope": "Lower bounds only. A component below a threshold is not evidence that the complete total passes. No official index membership or quarterly-buffer determination."
+      },
+      "financial_screen_inputs_complete": false,
+      "asset_approved": false
+    },
+    {
+      "symbol": "MSFT",
+      "latest_filing": {
+        "form": "10-Q",
+        "filingDate": "2026-10-28",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001193125-26-436133",
+        "primaryDocument": "msft-20260930.htm"
+      },
+      "sec_companyfacts_sha256": "464cc12cc4796c90a6a0c709eb4920788aa7d4d5eee8b44f2d11d7d44804ae37",
+      "reported_assets_usd": "779403000000",
+      "reported_cash_usd": "20281000000",
+      "reported_current_receivables_usd": "62084000000",
+      "bounds": {
+        "denominator": "total_assets",
+        "reported_assets": "779403000000",
+        "checks": {
+          "debt": {
+            "known_component_ratio": "0.0455233043752718426795893780239490995030812044603369502041947",
+            "limit": "0.33333",
+            "state": "UNKNOWN_FULL_TOTAL_NOT_ESTABLISHED"
+          },
+          "cash_interest_items": {
+            "known_component_ratio": "0.0260211982761164634983442455315157883662238918762180797353872",
+            "limit": "0.33333",
+            "state": "UNKNOWN_FULL_TOTAL_NOT_ESTABLISHED"
+          },
+          "receivables_cash": {
+            "known_component_ratio": "0.105677037424798210938372061693373004722845562565194129352851",
+            "limit": "0.50",
+            "state": "UNKNOWN_FULL_TOTAL_NOT_ESTABLISHED"
+          },
+          "interest_noncompliant_income": {
+            "known_component_ratio": null,
+            "limit": "0.05",
+            "state": "UNKNOWN_FULL_TOTAL_NOT_ESTABLISHED"
+          }
+        },
+        "eligible_for_approval": false,
+        "scope": "Lower bounds only. A component below a threshold is not evidence that the complete total passes. No official index membership or quarterly-buffer determination."
+      },
+      "financial_screen_inputs_complete": false,
+      "asset_approved": false
+    },
+    {
+      "symbol": "GOOGL",
+      "latest_filing": {
+        "form": "10-Q",
+        "filingDate": "2026-10-29",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001652044-26-000084",
+        "primaryDocument": "goog-20260930.htm"
+      },
+      "sec_companyfacts_sha256": "ec4a3095d634583925b5ea450db8a5ed974dc48f6f1b4f594022310bc78d4032",
+      "reported_assets_usd": "1003312000000",
+      "reported_cash_usd": "56334000000",
+      "reported_current_receivables_usd": "72784000000",
+      "bounds": {
+        "denominator": "total_assets",
+        "reported_assets": "1003312000000",
+        "checks": {
+          "debt": {
+            "known_component_ratio": "0.125701676048925957229655381376879774187889709282855183631811",
+            "limit": "0.33333",
+            "state": "UNKNOWN_FULL_TOTAL_NOT_ESTABLISHED"
+          },
+          "cash_interest_items": {
+            "known_component_ratio": "0.0561480376991404468400657023936721578133222766198351061285024",
+            "limit": "0.33333",
+            "state": "UNKNOWN_FULL_TOTAL_NOT_ESTABLISHED"
+          },
+          "receivables_cash": {
+            "known_component_ratio": "0.128691772848326343151482290653356084647646993158658522971917",
+            "limit": "0.50",
+            "state": "UNKNOWN_FULL_TOTAL_NOT_ESTABLISHED"
+          },
+          "interest_noncompliant_income": {
+            "known_component_ratio": null,
+            "limit": "0.05",
+            "state": "UNKNOWN_FULL_TOTAL_NOT_ESTABLISHED"
+          }
+        },
+        "eligible_for_approval": false,
+        "scope": "Lower bounds only. A component below a threshold is not evidence that the complete total passes. No official index membership or quarterly-buffer determination."
+      },
+      "financial_screen_inputs_complete": false,
+      "asset_approved": false
+    },
+    {
+      "symbol": "AMZN",
+      "latest_filing": {
+        "form": "10-Q",
+        "filingDate": "2026-10-30",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001018724-26-000040",
+        "primaryDocument": "amzn-20260930.htm"
+      },
+      "sec_companyfacts_sha256": "acddb7c0a6973a1fd08372de3b292298a34eae7f42a7eedc4bdebd3ac659c8fd",
+      "reported_assets_usd": "1243390000000",
+      "reported_cash_usd": "55783000000",
+      "reported_current_receivables_usd": "98242000000",
+      "bounds": {
+        "denominator": "total_assets",
+        "reported_assets": "1243390000000",
+        "checks": {
+          "debt": {
+            "known_component_ratio": "0.144726915931445483717900256556671679843009836012835876112885",
+            "limit": "0.33333",
+            "state": "UNKNOWN_FULL_TOTAL_NOT_ESTABLISHED"
+          },
+          "cash_interest_items": {
+            "known_component_ratio": "0.0448636389226228295225150596353517400011259540449899066262396",
+            "limit": "0.33333",
+            "state": "UNKNOWN_FULL_TOTAL_NOT_ESTABLISHED"
+          },
+          "receivables_cash": {
+            "known_component_ratio": "0.123875051271121691504676730551154505022559293544262057761443",
+            "limit": "0.50",
+            "state": "UNKNOWN_FULL_TOTAL_NOT_ESTABLISHED"
+          },
+          "interest_noncompliant_income": {
+            "known_component_ratio": "0.00587786713148199500851721269262765915303252386800301073564949",
+            "limit": "0.05",
+            "state": "UNKNOWN_FULL_TOTAL_NOT_ESTABLISHED"
+          }
+        },
+        "eligible_for_approval": false,
+        "scope": "Lower bounds only. A component below a threshold is not evidence that the complete total passes. No official index membership or quarterly-buffer determination."
+      },
+      "financial_screen_inputs_complete": false,
+      "asset_approved": false
+    },
+    {
+      "symbol": "TSLA",
+      "latest_filing": {
+        "form": "10-Q",
+        "filingDate": "2026-10-22",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001628280-26-066775",
+        "primaryDocument": "tsla-20260930.htm"
+      },
+      "sec_companyfacts_sha256": "c951e0ae2402dd8cf8f39319928adccc4196b997941fe40b0d4d6b8060802db1",
+      "reported_assets_usd": "157517000000",
+      "reported_cash_usd": "17853000000",
+      "reported_current_receivables_usd": "4636000000",
+      "bounds": {
+        "denominator": "total_assets",
+        "reported_assets": "157517000000",
+        "checks": {
+          "debt": {
+            "known_component_ratio": null,
+            "limit": "0.33333",
+            "state": "UNKNOWN_FULL_TOTAL_NOT_ESTABLISHED"
+          },
+          "cash_interest_items": {
+            "known_component_ratio": "0.113340147412660220801564275601998514446059790371832881530248",
+            "limit": "0.33333",
+            "state": "UNKNOWN_FULL_TOTAL_NOT_ESTABLISHED"
+          },
+          "receivables_cash": {
+            "known_component_ratio": "0.142771891287924477992851565227880165315489756661185776773301",
+            "limit": "0.50",
+            "state": "UNKNOWN_FULL_TOTAL_NOT_ESTABLISHED"
+          },
+          "interest_noncompliant_income": {
+            "known_component_ratio": "0.0158667902731227269485844683733865791913285316979248377665264",
+            "limit": "0.05",
+            "state": "UNKNOWN_FULL_TOTAL_NOT_ESTABLISHED"
+          }
+        },
+        "eligible_for_approval": false,
+        "scope": "Lower bounds only. A component below a threshold is not evidence that the complete total passes. No official index membership or quarterly-buffer determination."
+      },
+      "financial_screen_inputs_complete": false,
+      "asset_approved": false
+    },
+    {
+      "symbol": "META",
+      "latest_filing": {
+        "form": "10-Q",
+        "filingDate": "2026-10-22",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001628280-26-066773",
+        "primaryDocument": "meta-20260930.htm"
+      },
+      "sec_companyfacts_sha256": "b0d0d92870b68488cec086cffd83514f2cc6c80d3e8c4f91e192b17ce3e7c946",
+      "reported_assets_usd": "478836000000",
+      "reported_cash_usd": "11222000000",
+      "reported_current_receivables_usd": "22716000000",
+      "bounds": {
+        "denominator": "total_assets",
+        "reported_assets": "478836000000",
+        "checks": {
+          "debt": {
+            "known_component_ratio": "0.174734146973076376880602126824215388984955182985406276888120",
+            "limit": "0.33333",
+            "state": "UNKNOWN_FULL_TOTAL_NOT_ESTABLISHED"
+          },
+          "cash_interest_items": {
+            "known_component_ratio": "0.0234359989641547419158125120082867620646734999039337059034826",
+            "limit": "0.33333",
+            "state": "UNKNOWN_FULL_TOTAL_NOT_ESTABLISHED"
+          },
+          "receivables_cash": {
+            "known_component_ratio": "0.0708760410662523285634329916714699813714925360666282401490281",
+            "limit": "0.50",
+            "state": "UNKNOWN_FULL_TOTAL_NOT_ESTABLISHED"
+          },
+          "interest_noncompliant_income": {
+            "known_component_ratio": null,
+            "limit": "0.05",
+            "state": "UNKNOWN_FULL_TOTAL_NOT_ESTABLISHED"
+          }
+        },
+        "eligible_for_approval": false,
+        "scope": "Lower bounds only. A component below a threshold is not evidence that the complete total passes. No official index membership or quarterly-buffer determination."
+      },
+      "financial_screen_inputs_complete": false,
+      "asset_approved": false
+    },
+    {
+      "symbol": "AVGO",
+      "latest_filing": {
+        "form": "10-Q",
+        "filingDate": "2026-09-10",
+        "reportDate": "2026-08-02",
+        "accessionNumber": "0001730168-26-000080",
+        "primaryDocument": "avgo-20260802.htm"
+      },
+      "sec_companyfacts_sha256": "3bdb6644c12addf1e63c4dc861008d7804fbf3d3f5aa6eb9b97f72c0e89a7adf",
+      "reported_assets_usd": "188148000000",
+      "reported_cash_usd": "23975000000",
+      "reported_current_receivables_usd": "13707000000",
+      "bounds": {
+        "denominator": "total_assets",
+        "reported_assets": "188148000000",
+        "checks": {
+          "debt": {
+            "known_component_ratio": "0.315809894338499479133448136573335884516444501137402470395646",
+            "limit": "0.33333",
+            "state": "UNKNOWN_FULL_TOTAL_NOT_ESTABLISHED"
+          },
+          "cash_interest_items": {
+            "known_component_ratio": "0.127426281438016880328252226970257456895635350893977081871718",
+            "limit": "0.33333",
+            "state": "UNKNOWN_FULL_TOTAL_NOT_ESTABLISHED"
+          },
+          "receivables_cash": {
+            "known_component_ratio": "0.200278504156302485277547462635797351021536237430108212683632",
+            "limit": "0.50",
+            "state": "UNKNOWN_FULL_TOTAL_NOT_ESTABLISHED"
+          },
+          "interest_noncompliant_income": {
+            "known_component_ratio": null,
+            "limit": "0.05",
+            "state": "UNKNOWN_FULL_TOTAL_NOT_ESTABLISHED"
+          }
+        },
+        "eligible_for_approval": false,
+        "scope": "Lower bounds only. A component below a threshold is not evidence that the complete total passes. No official index membership or quarterly-buffer determination."
+      },
+      "financial_screen_inputs_complete": false,
+      "asset_approved": false
+    },
+    {
+      "symbol": "LLY",
+      "latest_filing": {
+        "form": "10-Q",
+        "filingDate": "2026-10-29",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0000059478-26-000108",
+        "primaryDocument": "lly-20260930.htm"
+      },
+      "sec_companyfacts_sha256": "72ec001637e16887021c76251eaf05056bdaaf9a4e68ef62316b9be99861dbdc",
+      "reported_assets_usd": "148072000000",
+      "reported_cash_usd": "4885000000",
+      "reported_current_receivables_usd": "22089000000",
+      "bounds": {
+        "denominator": "total_assets",
+        "reported_assets": "148072000000",
+        "checks": {
+          "debt": {
+            "known_component_ratio": null,
+            "limit": "0.33333",
+            "state": "UNKNOWN_FULL_TOTAL_NOT_ESTABLISHED"
+          },
+          "cash_interest_items": {
+            "known_component_ratio": "0.0329907072235128856232103301096763736560592144362202171916365",
+            "limit": "0.33333",
+            "state": "UNKNOWN_FULL_TOTAL_NOT_ESTABLISHED"
+          },
+          "receivables_cash": {
+            "known_component_ratio": "0.182168134421092441514938678480739099897347236479550488951321",
+            "limit": "0.50",
+            "state": "UNKNOWN_FULL_TOTAL_NOT_ESTABLISHED"
+          },
+          "interest_noncompliant_income": {
+            "known_component_ratio": null,
+            "limit": "0.05",
+            "state": "UNKNOWN_FULL_TOTAL_NOT_ESTABLISHED"
+          }
+        },
+        "eligible_for_approval": false,
+        "scope": "Lower bounds only. A component below a threshold is not evidence that the complete total passes. No official index membership or quarterly-buffer determination."
+      },
+      "financial_screen_inputs_complete": false,
+      "asset_approved": false
+    },
+    {
+      "symbol": "MU",
+      "latest_filing": {
+        "form": "10-K",
+        "filingDate": "2026-10-09",
+        "reportDate": "2026-09-03",
+        "accessionNumber": "0000723125-26-000023",
+        "primaryDocument": "mu-20260903.htm"
+      },
+      "sec_companyfacts_sha256": "162439f31208eaf4cd1a33939d80fd40479a559735b9488d32ac43d5516ff7bf",
+      "reported_assets_usd": "195888000000",
+      "reported_cash_usd": "38364000000",
+      "reported_current_receivables_usd": "31793000000",
+      "bounds": {
+        "denominator": "total_assets",
+        "reported_assets": "195888000000",
+        "checks": {
+          "debt": {
+            "known_component_ratio": null,
+            "limit": "0.33333",
+            "state": "UNKNOWN_FULL_TOTAL_NOT_ESTABLISHED"
+          },
+          "cash_interest_items": {
+            "known_component_ratio": "0.195846606223964714530752266601323205096790002450379808870375",
+            "limit": "0.33333",
+            "state": "UNKNOWN_FULL_TOTAL_NOT_ESTABLISHED"
+          },
+          "receivables_cash": {
+            "known_component_ratio": "0.358148533856081025892346647063628195703667401780609327779139",
+            "limit": "0.50",
+            "state": "UNKNOWN_FULL_TOTAL_NOT_ESTABLISHED"
+          },
+          "interest_noncompliant_income": {
+            "known_component_ratio": null,
+            "limit": "0.05",
+            "state": "UNKNOWN_FULL_TOTAL_NOT_ESTABLISHED"
+          }
+        },
+        "eligible_for_approval": false,
+        "scope": "Lower bounds only. A component below a threshold is not evidence that the complete total passes. No official index membership or quarterly-buffer determination."
+      },
+      "financial_screen_inputs_complete": false,
+      "asset_approved": false
+    }
+  ],
+  "orders_submitted": 0,
+  "emails_sent": 0,
+  "telegram_messages_sent": 0,
+  "production_database_mutations": 0,
+  "paid_subscription_required_for_this_denominator": false,
+  "remaining": "Full financial mappings and business/non-permissible income review, source/instrument evidence and role-attested approvals remain required. Bounds can identify some failures, never prove a full passing screen.",
+  "verification": {
+    "local_pytest_passed": 684,
+    "local_postgresql_only_skipped": 2,
+    "focused_controls_paper_and_api_tests_passed": 67,
+    "old_request_serialization_compatibility": "PASSED",
+    "additional_ratio_missing_input_backend_rejection": "PASSED",
+    "new_proposal_isolation_and_idempotence": "PASSED",
+    "lint_and_format": "PASSED"
+  }
+}

@@ -53,3 +53,7 @@ The [dated evidence report](../reports/milestone8-approval-evidence-2026-10-31.j
 The 365-day averaging definition was an unapproved research proposal, not an already accepted milestone requirement or an independently verified AAOIFI rule. A qualified provider's documented methodology and full screening report may supply the reviewed denominator/financial inputs through the normal methodology review. Any different definition must be explicit; the current proposal is not silently changed and public labels alone still do not fill quantitative fields.
 
 [Hosted CI](https://github.com/MohammedTeir/halal-quant/actions/runs/41228609105) passed **679 tests** on PostgreSQL for source `42520dc`, including encrypted backup/restore and the existing offline acceptance steps. This validates software regressions; it does not grant campaign approval.
+
+## Public-source correction
+
+The [official public total-assets alternative](milestone-8-public-methodology-alternative.md) removes the need for historical market-cap data for a separate pending methodology. The 365-day window is not a universal prerequisite. Backend support now includes the extra receivables/cash test and the separate inclusive income boundary; this is static financial-core support, not stock approval or official index certification.

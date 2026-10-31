@@ -82,3 +82,19 @@ def test_average_cap_requires_complete_daily_calendar_without_interpolation():
     points[0]["market_cap_usd"] = "NaN"
     with pytest.raises(ValueError, match="invalid"):
         average_market_cap(points, days, days[0], days[-1])
+
+
+def test_assets_lower_bounds_can_identify_a_breach_but_never_issue_approval():
+    from scripts.paper_screening_calculations import assets_core_lower_bounds
+
+    result = assets_core_lower_bounds(assets=100, cash=40)
+    assert result["checks"]["cash_interest_items"]["state"] == "KNOWN_COMPONENT_BREACH"
+    assert result["checks"]["debt"]["known_component_ratio"] is None
+    assert not result["eligible_for_approval"]
+    result = assets_core_lower_bounds(
+        assets=100, cash=1, receivables=2, debt_components=3, interest_income=1, revenue=100
+    )
+    assert all(
+        c["state"] == "UNKNOWN_FULL_TOTAL_NOT_ESTABLISHED" for c in result["checks"].values()
+    )
+    assert not result["eligible_for_approval"]

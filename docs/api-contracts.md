@@ -204,3 +204,5 @@ synthetic and separately gated forward operation limits. These routes never subm
 or external broker orders.
 
 The [forward runbook](milestone-8-forward-operations.md) documents `/runs`, exact-hash reviewer approval, `/decision-orders`, owned liquidation intent and finalization. Raw forward quotes/orders/fills are worker-only. Emergency operator cleanup remains available with entry flags disabled.
+
+Methodology reviews optionally accept `maximum_receivables_cash_ratio` and `impure_income_boundary`; financial screens optionally carry `receivables_cash`. Selecting the additional threshold makes that input mandatory for eligibility, and its absence blocks an approved asset review. Unused fields are omitted from serialization to preserve legacy request hashes. See the [public assets-based draft](milestone-8-public-methodology-alternative.md).

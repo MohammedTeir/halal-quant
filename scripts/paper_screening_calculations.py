@@ -151,3 +151,76 @@ def average_market_cap(observations, expected_sessions, start, end):
     with localcontext() as context:
         context.prec = 60
         return sum(by_date.values(), Decimal(0)) / Decimal(len(by_date))
+
+
+def assets_core_lower_bounds(
+    *, assets, cash=None, receivables=None, debt_components=None, interest_income=None, revenue=None
+):
+    """Known-component bounds for the published static financial core, never a pass.
+
+    Complete mappings, business review and quarterly monitoring are separate.
+    Caller must supply same-issuer, same-period, same-currency verified inputs.
+    """
+    inputs = {
+        "assets": assets,
+        "cash": cash,
+        "receivables": receivables,
+        "debt": debt_components,
+        "interest": interest_income,
+        "revenue": revenue,
+    }
+    values = {}
+    for key, raw in inputs.items():
+        if raw is None:
+            values[key] = None
+            continue
+        number = Decimal(str(raw))
+        if not number.is_finite() or number < 0:
+            raise ValueError("Invalid financial component")
+        values[key] = number
+    if values["assets"] is None or values["assets"] <= 0:
+        raise ValueError("Positive reported total assets required")
+    with localcontext() as context:
+        context.prec = 60
+        receivable_parts = [values[k] for k in ("cash", "receivables") if values[k] is not None]
+        ratios = {
+            "debt": values["debt"] / values["assets"] if values["debt"] is not None else None,
+            "cash_interest_items": values["cash"] / values["assets"]
+            if values["cash"] is not None
+            else None,
+            "receivables_cash": sum(receivable_parts, Decimal(0)) / values["assets"]
+            if receivable_parts
+            else None,
+            "interest_noncompliant_income": values["interest"] / values["revenue"]
+            if values["interest"] is not None
+            and values["revenue"] is not None
+            and values["revenue"] > 0
+            else None,
+        }
+        limits = {
+            "debt": Decimal("0.33333"),
+            "cash_interest_items": Decimal("0.33333"),
+            "receivables_cash": Decimal("0.50"),
+            "interest_noncompliant_income": Decimal("0.05"),
+        }
+        checks = {}
+        for key, ratio in ratios.items():
+            breach = ratio is not None and (
+                ratio > limits[key]
+                if key == "interest_noncompliant_income"
+                else ratio >= limits[key]
+            )
+            checks[key] = {
+                "known_component_ratio": str(ratio) if ratio is not None else None,
+                "limit": str(limits[key]),
+                "state": "KNOWN_COMPONENT_BREACH"
+                if breach
+                else "UNKNOWN_FULL_TOTAL_NOT_ESTABLISHED",
+            }
+    return {
+        "denominator": "total_assets",
+        "reported_assets": str(values["assets"]),
+        "checks": checks,
+        "eligible_for_approval": False,
+        "scope": "Lower bounds only. A component below a threshold is not evidence that the complete total passes. No official index membership or quarterly-buffer determination.",
+    }

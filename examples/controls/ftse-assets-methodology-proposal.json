@@ -1,0 +1,27 @@
+{
+  "note": "Pending technical implementation of static financial core in FTSE Yasaar v4.6 section 4.3.2, February 2026. interest_assets MUST include cash plus interest-bearing items; receivables_cash includes accounts receivable plus cash. Business screening under 4.3.1, quarterly monitoring/buffers, index eligibility, source mappings and qualified review are NOT established by this proposal. This is not FTSE certification or constituent approval.",
+  "references": [
+    "https://www.lseg.com/content/dam/ftse-russell/en_us/documents/ground-rules/ftse-yasaar-global-equity-shariah-index-series-ground-rules.pdf",
+    "https://www.lseg.com/en/ftse-russell/indices/global-shariah"
+  ],
+  "record_id": "paper-ftse-assets-core-20261031-draft",
+  "methodology_id": "paper-ftse-assets-core-v1",
+  "status": "PENDING",
+  "evidence": {
+    "evidence_id": "ftse-yasaar-v4.6-source",
+    "provider": "ftse_yasaar_publication",
+    "document_sha256": "cb8273205a1276489fa2f984424c33d50cba3f5b56f5886c5b57a19d641cc021",
+    "observed_at": "2026-10-31T18:34:18.989509Z",
+    "recorded_at": "2026-10-31T18:34:18.989509Z",
+    "effective_at": "2026-10-31T18:34:18.989509Z",
+    "expires_at": "2026-12-30T18:34:18.989509Z"
+  },
+  "denominator": "total_assets",
+  "maximum_debt_ratio": "0.33333",
+  "maximum_interest_assets_ratio": "0.33333",
+  "maximum_impure_income_ratio": "0.05",
+  "maximum_receivables_cash_ratio": "0.50",
+  "impure_income_boundary": "at_or_below",
+  "ratio_boundary": "strictly_below",
+  "divestment_guidance": "Pending qualified review. Published rule 4.4 states dividend purification at 5%; application, scope, quarterly monitoring and disposition must be reviewed. No automatic liquidation or certification."
+}

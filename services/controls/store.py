@@ -129,22 +129,36 @@ def ratios(financials, method):
             "interest_assets": method.maximum_interest_assets_ratio,
             "impure_income": method.maximum_impure_income_ratio,
         }
+        missing = []
+        if method.maximum_receivables_cash_ratio is not None:
+            limits["receivables_cash"] = method.maximum_receivables_cash_ratio
+            if financials.receivables_cash is None:
+                missing.append("receivables_cash")
+            else:
+                values["receivables_cash"] = (
+                    financials.receivables_cash / financials.denominator_value
+                )
         matches = financials.denominator == method.denominator
-        checks = {
-            key: (
-                value < limits[key]
-                if method.ratio_boundary == "strictly_below"
-                else value <= limits[key]
+        checks = {}
+        for key, limit in limits.items():
+            boundary = (
+                method.impure_income_boundary
+                if key == "impure_income" and method.impure_income_boundary
+                else method.ratio_boundary
             )
-            for key, value in values.items()
-        }
-        return {
+            checks[key] = key in values and (
+                values[key] < limit if boundary == "strictly_below" else values[key] <= limit
+            )
+        result = {
             "eligible_for_reviewer_consideration": matches and all(checks.values()),
             "denominator_matches": matches,
             "ratios": {k: str(v) for k, v in values.items()},
             "checks": checks,
             "automatic_shariah_approval": False,
         }
+        if missing:
+            result["missing_required_inputs"] = missing
+        return result
 
 
 def review(session, kind, request, actor, now):

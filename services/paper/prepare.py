@@ -36,8 +36,15 @@ def write_json(path, value):
     path.write_text(json.dumps(value, indent=2) + "\n")
 
 
-def prepare(folder, now=None):
+def prepare(folder, now=None, *, methodology_proposal=None, account_id=None):
     now = now or utcnow()
+    selected_method = (
+        MethodologyApproval.model_validate_json(methodology_proposal.read_text())
+        if methodology_proposal
+        else None
+    )
+    if selected_method is not None and (selected_method.status != "PENDING" or not account_id):
+        raise ValueError("A pending methodology and explicit fresh account ID are required")
     if folder.exists():
         manifest = json.loads((folder / "manifest.json").read_text())
         if set(manifest) != {
@@ -50,14 +57,31 @@ def prepare(folder, now=None):
         for name, checksum in manifest.items():
             if hashlib.sha256((folder / name).read_bytes()).hexdigest() != checksum:
                 raise ValueError("Prepared files changed; preserve them and use a fresh directory")
+        existing_account = OpenAccount.model_validate_json((folder / "account.json").read_text())
+        if account_id and existing_account.account_id != account_id:
+            raise ValueError("Prepared account ID differs; use a fresh output directory")
+        if (
+            selected_method
+            and MethodologyApproval.model_validate_json(
+                (folder / "methodology-proposal.json").read_text()
+            )
+            != selected_method
+        ):
+            raise ValueError(
+                "Prepared methodology differs; preserve it and use a fresh output directory"
+            )
         return manifest
     account = OpenAccount.model_validate_json(
         (ROOT / "examples/paper/largecap-account-draft.json").read_text()
     )
+    if selected_method and account_id == account.account_id:
+        raise ValueError("Use a fresh account ID for the alternative methodology")
+    if account_id:
+        account = OpenAccount.model_validate(account.model_dump() | {"account_id": account_id})
     policy = account.policy.model_copy(
         update={
             "version": account.account_id + "-policy-v1",
-            "methodology": METHODOLOGY,
+            "methodology": selected_method.methodology_id if selected_method else METHODOLOGY,
             "fee_per_order": Decimal(1),
             "slippage_bps": Decimal(5),
         }
@@ -99,6 +123,26 @@ https://finnhub.io/docs/api
 https://www.bls.gov/schedule/news_release/
 https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm
 """
+    if selected_method:
+        review = (
+            """# DRAFT: alternative paper methodology
+
+This pending technical proposal adopts an explicitly different financial denominator.
+It does not approve any stock, certify an index replication or change an existing
+account/protocol. Public source documents do not certify this implementation.
+Quarterly buffers, business classifications, financial mappings, purification,
+instrument evidence and qualified review remain required.
+Source limits: IEX is partial; BLS is not a comprehensive economic calendar;
+corporate-action coverage is unverified; fresh classified decisions remain required.
+Campaign: internal simulator only, 20 complete observed sessions and 20 elapsed days,
+10 completed exits, controlled restart recovery, flat settled reconciled final state.
+No external orders or notifications are sent by preparation.
+
+Pending methodology and exact source evidence:
+"""
+            + json.dumps(selected_method.model_dump(mode="json"), indent=2)
+            + "\n"
+        )
     checksum = hashlib.sha256(review.encode()).hexdigest()
     evidence = {
         "evidence_id": "paper-proposal-" + checksum[:20],
@@ -123,13 +167,17 @@ https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm
         note="AI-prepared pending technical proposal; source figures, averaging window, business activity and qualified screening are not verified.",
         references=["https://aaoifi.com/", REFERENCE],
     )
+    if selected_method:
+        methodology = selected_method
     protocol = ForwardProtocol(
         run_id=account.account_id + "-run-v1",
         account_id=account.account_id,
         feed_providers=FEEDS,
         data_review={p: checksum for p in {"alpaca_iex", *FEEDS.values()}},
         source_limitations="DRAFT technical review only. IEX is partial; BLS is not comprehensive; source completeness, news classification and instrument screening remain unverified. See the bound review document.",
-        references=[REFERENCE, "https://aaoifi.com/"],
+        references=[REFERENCE, *[str(url) for url in selected_method.references]]
+        if selected_method
+        else [REFERENCE, "https://aaoifi.com/"],
     )
     folder.mkdir(parents=True, mode=0o700, exist_ok=False)
     (folder / "review.md").write_text(review)
@@ -260,6 +308,8 @@ def submit(folder, origin, email, password, *, transport=None):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, default=Path("data/paper-setup"))
+    parser.add_argument("--methodology-proposal", type=Path)
+    parser.add_argument("--account-id")
     parser.add_argument("--configure-sources", action="store_true")
     parser.add_argument("--poll", action="store_true")
     parser.add_argument("--submit", action="store_true")
@@ -267,7 +317,12 @@ def main():
     args = parser.parse_args()
     os.umask(0o077)
     try:
-        manifest = prepare(args.output.resolve())
+        options = {}
+        if args.methodology_proposal:
+            options["methodology_proposal"] = args.methodology_proposal
+        if args.account_id:
+            options["account_id"] = args.account_id
+        manifest = prepare(args.output.resolve(), **options)
         if args.configure_sources:
             configure(ROOT / ".env")
         summary = {
