@@ -1,10 +1,20 @@
-# Milestone 7: finish the deployed acceptance checks
+# Milestone 7: deployed acceptance procedures and results
 
-The UI, backend permissions, sessions, expiring links and persistent Telegram
-outbox are implemented and tested. Vercel/Render reachability, owner login,
-Termux preflight, private destination verification and one received setup message
-are already evidenced. This guide covers the remaining operator-owned checks.
-It does not treat the existence of scripts or mock tests as live acceptance.
+The [2026-10-31 operator report](../reports/milestone7-operator-acceptance-2026-10-31.json)
+records actual passing deployed account checks, four private SENT cases, received
+group delivery, encrypted PostgreSQL 18 isolated restore with 22 matching tables,
+confirmed off-device archive/separate key storage, and a supervised restart with
+60 seconds of observed activity. Dashboard screenshots show delivery history;
+complete summary export and explicit Arabic visual receipt were not provided.
+These user-provided results supersede the earlier pending list. Commands below
+remain reproducible procedures, not requests to repeat completed live sends.
+Android uptime, scheduled backups and provider PITR remain outside the evidence.
+
+For updates on the existing supervised phone, use the
+[complete update-and-run command](telegram-worker-computer-termux.md#update-and-run-an-existing-supervised-termux-installation).
+It handles proot signal forwarding, explicit service paths and startup heartbeat
+waiting. The original bare `sv restart` procedure below may not forward TERM
+through proot on this phone; use the update script for the observed setup.
 
 All commands below run on your own Termux/Debian host using its existing private
 `.env`. The agent has no copy of your Neon credentials, bot token or owner
@@ -209,8 +219,8 @@ Final evidence must distinguish:
 - A bounded supervised Termux run from future always-on reliability.
 - An encrypted restore-tested archive from its off-device storage/retention.
 
-Until actual operator outputs and the confirmed group target are available,
-these remaining deployment checks stay pending. No earlier milestone approval,
+Operator outputs and the confirmed group have now been recorded in the dated
+report. Missing visual/export evidence remains explicitly identified. No earlier milestone approval,
 compliance/source/performance gate, or real-order authority is granted here.
 
 
@@ -220,5 +230,5 @@ compliance/source/performance gate, or real-order authority is granted here.
 passed **541 tests**, including an actual encrypted dump/decrypt/isolated restore
 on synthetic data. Static-build tests and the Chromium account/language/mobile
 smoke also pass. This certifies the prepared procedure on the tested environment;
-it does not claim that the operator has run it against Neon, installed runit on
-their phone, copied backups off-device, or completed the additional live sends.
+that historical CI run alone does not prove live operation. Subsequent operator
+Neon, runit, backup storage and live-send results are recorded separately above.

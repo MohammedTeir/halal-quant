@@ -192,18 +192,20 @@ fixture credentials and system Chromium; it requires Node with Playwright availa
 (`require("playwright")`) and `chromium` on PATH. It never starts a Telegram worker.
 See the [dated acceptance report](../reports/milestone7-accounts-telegram-acceptance-2026-10-30.json) for exact results.
 
-**Current deployment evidence:** Vercel/Render/Neon connectivity, owner login,
-Termux preflight, private linking and one explicitly approved received setup
-message are recorded in the [live delivery report](../reports/milestone7-telegram-delivery-2026-10-30.json).
-Those setup steps are complete for this deployment, rather than still pending.
+**Current deployment evidence (2026-10-31):** the operator supplied passing
+deployed account/session/role checks with fixture cleanup, four private category/
+language SENT results, and linked group delivery with receipt confirmation.
+Dashboard screenshots show verified destinations and SENT history. Encrypted
+PostgreSQL 18 backup/isolated restore passed for 22 tables; off-device archive and
+separate key storage were subsequently confirmed. Supervised restart and a
+60-second delivery-mode heartbeat observation passed with five samples.
+See the [current operator report](../reports/milestone7-operator-acceptance-2026-10-31.json)
+and [operational runbook](milestone-7-operational-acceptance.md).
 
-**Remaining operator verification:** deployed account/session checks, dashboard
-history, encrypted backup with isolated restore and off-device retention,
-supervised bounded worker/restart observation, the four approved labelled private
-category/language checks and the separately confirmed group. Follow the
-[operational acceptance runbook](milestone-7-operational-acceptance.md).
-Tests/scripts alone do not close these live checks; Android hosting limits remain
-explicit even after a successful bounded observation.
+**Evidence limits:** these are operator-provided outputs and confirmations.
+Complete dashboard summary export and explicit Arabic visual receipt were not
+supplied. Android can terminate Termux; bounded activity does not certify future
+uptime. Scheduled backups and Neon PITR retention are not evidenced.
 
 Earlier milestone evidence and open gates remain in [milestones](milestones.md),
 [completion requirements](completion-requirements.md), and their linked reports.
@@ -217,7 +219,7 @@ API clients use `POST /admin/invitations` and
 `POST /admin/users/{id}/recovery`. The returned raw token is shown once, then
 redemption uses `POST /auth/recover`. No bot token is exposed by any endpoint.
 
-For the selected Vercel/Render hosting with external Neon or Supabase PostgreSQL, see the [deployment walkthrough in Arabic](deploy-vercel-render.ar.md). The account linking, service URLs and first private delivery are now evidenced; remaining operator checks are listed in the operational acceptance runbook.
+For the selected Vercel/Render hosting with external Neon or Supabase PostgreSQL, see the [deployment walkthrough in Arabic](deploy-vercel-render.ar.md). The account linking, service URLs and first private delivery are now evidenced; current operator results and their limits are recorded in the operational acceptance runbook.
 
 For the selected temporary computer/Termux worker and @halalquant_bot, follow the
 [worker setup guide](telegram-worker-computer-termux.md). Use `--check` for read-only
@@ -231,12 +233,12 @@ It creates no trading signals or control events and does not restart uncertain
 deliveries. Actual delivery remains subject to the user's explicit approval.
 
 
-## Operator-confirmed live delivery follow-up
+## Operator-confirmed live delivery follow-up (historical checkpoint)
 
 One explicitly approved private-chat setup message has now been confirmed:
 Telegram returned `SENT`, `message_id=4`, `attempts=1`, and the recipient reported
 seeing it. See [the delivery evidence](../reports/milestone7-telegram-delivery-2026-10-30.json).
 This is separate from automated mock tests. Termux is a temporary host; continuous
 reliability, deployed account/session checks, and dashboard history confirmation
-remain open. Normal ongoing delivery must be started deliberately after the setup
+remained open at that checkpoint; see the current evidence above for subsequent results. Normal ongoing delivery must be started deliberately after the setup
 check and may deliver other queued events to enabled destinations.

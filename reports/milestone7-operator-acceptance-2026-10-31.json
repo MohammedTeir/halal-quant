@@ -1,0 +1,118 @@
+{
+  "date": "2026-10-31",
+  "status": "OPERATOR_LIVE_RESULTS_RECORDED_WITH_LIMITS",
+  "evidence_source": "Operator-provided CLI JSON, dashboard screenshots and explicit chat confirmations; no independent access to operator credentials, database, device or backup storage.",
+  "accounts": {
+    "status": "PASSED",
+    "origin": "https://halal-quant.vercel.app",
+    "all_reported_checks_true": true,
+    "temporary_accounts_removed": true,
+    "real_emails_sent": 0,
+    "real_telegram_messages_sent": 0,
+    "coverage": [
+      "HTTPS cookie flags",
+      "no public registration",
+      "CSRF",
+      "invitation expiry and single use",
+      "recovery expiry, single use and session revocation",
+      "password-change revocation",
+      "explicit session revocation",
+      "disabled user and session revocation",
+      "six backend roles",
+      "logout"
+    ]
+  },
+  "private_notifications": {
+    "status": "PASSED",
+    "cases": [
+      {
+        "case": "signal-en",
+        "status": "SENT",
+        "message_id": "5",
+        "attempts": 1,
+        "error": null
+      },
+      {
+        "case": "decision-en",
+        "status": "SENT",
+        "message_id": "6",
+        "attempts": 1,
+        "error": null
+      },
+      {
+        "case": "risk-stop-en",
+        "status": "SENT",
+        "message_id": "7",
+        "attempts": 1,
+        "error": null
+      },
+      {
+        "case": "signal-ar",
+        "status": "SENT",
+        "message_id": "8",
+        "attempts": 1,
+        "error": null
+      }
+    ],
+    "source_trading_or_risk_records_created": 0,
+    "scope": "Transport/category/language test messages; not actual market events. Per-message recipient/Arabic visual confirmation not separately supplied."
+  },
+  "group": {
+    "verified_destination_visible_in_dashboard": true,
+    "enabled": true,
+    "status": "SENT",
+    "message_id": "3",
+    "attempts": 1,
+    "error": null,
+    "recipient_confirmed_receipt": true,
+    "scope": "One approved setup message to the explicitly linked group; channel linking is unsupported."
+  },
+  "dashboard": {
+    "operator_screenshots_show": [
+      "Enabled private and group destinations",
+      "Recent delivery-mode worker activity",
+      "SENT entries for signal-ar, risk-stop-en and decision-en"
+    ],
+    "sanitized_history_export_provided": false,
+    "scope": "Screenshot evidence, not a complete exported four-case history summary."
+  },
+  "backup": {
+    "status": "PASSED",
+    "postgresql_major": 18,
+    "source_tables": 22,
+    "snapshot_row_counts_match": true,
+    "temporary_restore_database_removed": true,
+    "source_database_restored_over": false,
+    "encrypted_backup_sha256": "c7c261b533c0af3b9b8edd6bf88c141a05ebc90c0ce8fbf401b25edd6828a56a",
+    "off_device_copy_operator_confirmed": true,
+    "separate_private_key_storage_operator_confirmed": true,
+    "scope": "Original runner reported off_device_copy_confirmed=false; subsequent explicit operator confirmations close the storage step. No independent remote storage inspection, scheduled backup or provider PITR verification."
+  },
+  "worker": {
+    "status": "PASSED",
+    "observed_seconds": 60,
+    "samples": 5,
+    "state": "RECENT",
+    "mode": "delivery",
+    "age_seconds": 18,
+    "successful_starts": 6,
+    "restart_observed": true,
+    "supervisor": "Termux runit",
+    "scope": "Successful bounded activity and controlled restart; not a forced-crash recovery test or future uptime certification."
+  },
+  "outstanding_evidence": [
+    "Complete sanitized dashboard history export and explicit recipient/Arabic visual confirmation were not supplied; do not describe those as independently verified."
+  ],
+  "deployment_limits": [
+    "Android can terminate the entire Termux app; runit cannot restart an OS-terminated app.",
+    "No 24/7 uptime guarantee, unattended reboot acceptance or scheduled off-device backup evidence.",
+    "Neon PITR retention was not checked."
+  ],
+  "verification_provenance": {
+    "prior_software_ci": "https://github.com/MohammedTeir/halal-quant/actions/runs/41131560271",
+    "prior_software_tests_passed": 541,
+    "scope": "Historical synthetic CI evidence, not a rerun for this documentation update."
+  },
+  "earlier_milestone_gates_changed": false,
+  "orders_or_trading_authorized": false
+}

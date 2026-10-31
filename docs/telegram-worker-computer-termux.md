@@ -244,5 +244,5 @@ message, PostgreSQL 18 encrypted backup with matching row counts across 22 table
 and removal of the isolated restore database, and a 60-second delivery heartbeat
 observation (five samples, restart observed). These are operator-reported results,
 not direct access by the development environment. The newer reusable update
-script is syntax-checked but still needs an operator run. Off-device backup and
-separate private key storage remain unconfirmed; Android can still stop Termux.
+script is syntax-checked but still needs an operator run. The operator subsequently confirmed off-device archive and separate private key
+storage. See the [current report](../reports/milestone7-operator-acceptance-2026-10-31.json); Android can still stop Termux.

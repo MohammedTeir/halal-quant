@@ -12,7 +12,7 @@ Implementation acceptance and independent release sign-off are tracked separatel
 | 4 | AI intelligence and decisions | Implementation acceptance passes; independent quality sign-off incomplete | Strict schemas/evidence/targets, durable Gemini jobs, event policies and deterministic gates; v5 passes 16/16 exposed real-primary/adversarial regression and 8/8 fresh blind pilot. Separate AI technical review now completed with conditional research-only acceptance; publisher identity, gold session binding and representative policy/calibration conditions remain open before deployment. |
 | 5 | Compliance and risk | Software implemented and tested for bounded research; full operational sign-off pending | Versioned role attestations, stock-ratio rules, read-only broker/quote capture, loss/peak reconciliation, serialized research holds/kill switch and linked decision revalidation pass. [Current workflow](milestone-5-operations.md). Named qualified review and real cash/settlement/lending/custody proofs remain unprovided; real orders are deferred. |
 | 6 | Research and backtesting | Portfolio/replay/optimization software implemented; performance acceptance pending | [Current research workflow](milestone-6-research.md): shared-cash portfolio, PIT compliance/news/macro replay, training-only walk-forward selection, separate portfolio holdout periods with cost stress, technical/buy-and-hold baselines, liquidity proxy, seeded Monte Carlo and explicit gates. Actual 2025 gold diagnostic is blocked by default warm-up history and unavailable volume. Verified representative history and successful untouched out-of-sample performance remain required; broker reconciliation belongs to milestone 8. |
-| 7 | Dashboard and Telegram | Software acceptance passes; one real private-chat delivery confirmed; operational checks pending | [Accounts and Telegram guide](milestone-7-accounts-telegram.md): invitation-only accounts, backend roles, server sessions/revocation, one-time recovery, verified private/group linking, preferences, transactional outbox and conservative worker retries. English-default/Arabic dashboard exposes account and delivery controls. Vercel/Render/Neon, Termux preflight, private linking and one approved setup message are operator-confirmed. Continuous hosting and remaining deployed account checks remain. |
+| 7 | Dashboard and Telegram | Software and reported live operational checks pass; evidence limits retained | [2026-10-31 operator evidence](../reports/milestone7-operator-acceptance-2026-10-31.json): deployed accounts/roles/revocation, four private SENT cases, received group delivery, encrypted PostgreSQL 18 isolated restore, off-device backup/separate key confirmation, and supervised restart with 60 seconds of activity. Dashboard screenshots show delivery history; complete history export and explicit Arabic visual receipt remain unprovided. Android uptime is limited; earlier milestone gates remain unchanged. |
 | 8 | Paper trading | Not started | Broker simulation, ledger, order lifecycle, reconciliation and stable forward test. |
 | 9 | Optional live broker integration | Disabled; not started | Compatible structure/broker, independent compliance review and explicit live-readiness approval. |
 
@@ -132,7 +132,7 @@ and qualified actors are deliberately not enabled by default. No environment dra
 or publication was changed.
 
 
-## Milestone 7 accounts and delivery software acceptance
+## Milestone 7 accounts and delivery software acceptance (historical checkpoint)
 
 The initial accounts/delivery SQLite checkpoint passed **519 tests**; lint/format,
 JavaScript syntax, Chromium English/Arabic/mobile account flows, and offline
@@ -143,10 +143,11 @@ exhausts its retry budget; verify that commit's hosted workflow after push.
 [Acceptance evidence](../reports/milestone7-accounts-telegram-acceptance-2026-10-30.json)
 separates tests from required server/BotFather configuration and real delivery.
 Earlier counts above are historical checkpoints; earlier external acceptance
-gates remain unchanged. Milestone 7 deployment acceptance remains pending.
+gates remained unchanged. Deployment acceptance was pending at that checkpoint;
+see the 2026-10-31 results below.
 
 
-## Milestone 7 live private-chat delivery
+## Milestone 7 live private-chat delivery (historical checkpoint)
 
 The operator ran the explicitly approved, targeted setup check on Termux. Telegram
 returned **SENT**, message ID **4**, in **one attempt**, and the recipient confirmed
@@ -159,15 +160,35 @@ signal, decision, broker fact or risk-stop event was created for it.
 This closes the missing proof of one actual private-chat delivery. It does not
 certify all notification types/groups live, dashboard history, deployed role and
 session-revocation checks, or continuous Android hosting. Full operational
-acceptance remains pending. Earlier milestone gates remain unchanged.
+acceptance was pending at that checkpoint. Earlier milestone gates remain unchanged.
 
 
-## Remaining deployed acceptance protocol
+## Remaining deployed acceptance protocol (2026-10-30 checkpoint)
 
 The [operational runbook](milestone-7-operational-acceptance.md) replaces the old
 setup-only pending list. It provides disposable-account live checks, encrypted
 snapshot backup plus isolated restore, supervisor/heartbeat/restart observation,
 approved finite private category/language messages, separately confirmed group
-linking/delivery, and a dashboard history export. These remain pending until
-operator outputs are provided; preparation and CI do not count as live execution.
+linking/delivery, and a dashboard history export. At this checkpoint those checks
+awaited operator outputs; preparation and CI do not count as live execution.
 A successful bounded Termux observation retains Android reliability limits.
+
+
+## Milestone 7 operator results: 2026-10-31
+
+[Current evidence](../reports/milestone7-operator-acceptance-2026-10-31.json)
+supersedes the historical pending lists above. The operator supplied passing live
+account checks with fixture cleanup, four private SENT category/language cases,
+and one group SENT result with explicit receipt confirmation. Dashboard
+screenshots show verified destinations, recent worker activity and delivery history.
+PostgreSQL 18 encrypted backup/isolated restore matched all 22 tables, removed the
+temporary restore database, and never restored over the source. The operator then
+confirmed the archive was copied off-device and its key saved separately. A
+supervised restart and 60-second observation passed with five heartbeat samples.
+
+Evidence is user-provided, not direct inspection of private systems. The complete
+dashboard summary export and explicit per-message/Arabic visual receipt were not
+supplied. No uninterrupted future uptime, unattended reboot, scheduled backup, or
+provider PITR claim follows from these checks. Android can terminate Termux. Earlier
+milestone source, qualified review, custody and performance gates remain unchanged;
+this update does not authorize orders.
