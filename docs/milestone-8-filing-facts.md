@@ -63,3 +63,8 @@ The selector requires exact instantaneous or duration dates, issuer, unit and ex
 The focused screening regression checks pass **30 tests**, including **17 filing-extractor cases** covering periods, USD/EUR/share units, issuers, explicit/typed dimensions, instant/duration distinctions, missing contexts/units, empty/nil/nonfinite values, identical/conflicting/missing duplicate facts and conflicting context/unit definitions.
 
 Follow-up full regression result: **701 passed, 2 PostgreSQL-only checks skipped**, with the existing Starlette/httpx deprecation warning. Repository lint, formatting, report-consistency and diff checks pass. No deployed approvals, campaign state, virtual entries or real messaging were changed by this follow-up.
+
+
+## Subsequent substantive company review
+
+The [independent company review](milestone-8-independent-company-review.md) supersedes the inventory-only outcome table for current research findings. It applies one explicit FTSE Yasaar v4.6 static methodology, reconciles debt/lease/investment families, finds static financial breaches for AAPL, LLY and MU, and records precise unresolved income/business facts for the remaining candidates. Meta gross interest and Micron's statement-labelled gross interest were found by reading the documents; Microsoft's interest/dividend line was distinguished from an interest-only amount. No complete company pass or approval is inferred. GitHub Actions for `baed1f1` was verified successful with 703 PostgreSQL tests.

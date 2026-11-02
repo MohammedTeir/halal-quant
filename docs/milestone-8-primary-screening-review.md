@@ -48,3 +48,6 @@ The [approval evidence review](milestone-8-approval-review.md) implements partia
 ## November 2 continuation
 
 The [independent filing-facts review](milestone-8-filing-facts.md) retrieves the current financial documents for all ten candidates and preserves inline custom facts, dimensional contexts and business-search leads. It records the reimplementation of the missing uncommitted extractor while preserving the old offline checkout. All ten remain unapproved; complete financial and business screening still precedes any virtual entries.
+
+
+The [substantive independent review](milestone-8-independent-company-review.md) now applies the documented total-assets methodology to the filing notes and annual businesses. Its sourced reconciliations and per-company unresolved-fact records supersede generic inventory blockers; static findings are separate from official index status and project approvals.
