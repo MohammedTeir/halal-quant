@@ -44,3 +44,7 @@ Six focused tests pass for exact accession/period/unit matching, missing disclos
 ## Approval request follow-up
 
 The [approval evidence review](milestone-8-approval-review.md) implements partial financial reconciliations and daily-cap averaging checks, records four adverse/questionable public screening results, and documents the historical-data/report access limitations. Approval remains withheld; no missing facts or permissions were bypassed.
+
+## November 2 continuation
+
+The [independent filing-facts review](milestone-8-filing-facts.md) retrieves the current financial documents for all ten candidates and preserves inline custom facts, dimensional contexts and business-search leads. It records the reimplementation of the missing uncommitted extractor while preserving the old offline checkout. All ten remain unapproved; complete financial and business screening still precedes any virtual entries.
