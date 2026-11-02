@@ -520,13 +520,14 @@
       "business_assessment": "Hardware is outside the named prohibited principal sectors. Annual Services description explicitly includes Apple Music, Apple TV, payment/card arrangements and advertising; current Services revenue is 91728, a mixed category, not all prohibited.",
       "business_outcome": "INSUFFICIENT_EVIDENCE_FOR_COMPLETE_NUMERATOR",
       "instrument_identity": {
-        "finding": "Public cover identifies the issuer common-stock line, not a CFD/derivative claim. Account security identifier/contract and actual beneficial possession are not established.",
+        "finding": "Public cover identifies the issuer common-stock line, not a CFD/derivative claim. Real account security identifier/contract and actual beneficial possession are not established; these are live-readiness facts, not simulator-entry prerequisites.",
         "cover_evidence": {
           "source_id": "AAPL-current",
           "locator": "Securities registered pursuant",
           "quote": "executive offices) (Zip Code) ( 408 ) 996-1010 (Registrant\u2019s telephone number, including area code) Securities registered pursuant to Section 12(b) of the Act: Title of each class Trading symbol(s) Name of each exchange on which registered Common Stock, $0.00001 par value per share AAPL The Nasdaq Stock Market LLC 1.625% Notes due 2026 \u2014 The Nasdaq Stock Market LLC 2.000% Notes due 2027 \u2014 The Nasdaq Stock Market LLC 1.375% Notes due 2029 \u2014 The Nasdaq Stock Market LLC 3.050% Notes due 2029 \u2014 The Nasdaq Stock Market LLC 0.500% Notes due 2031 \u2014 The Nasdaq Stock Market LLC 3.600% Notes due 2042 \u2014 The Nasdaq Stock Market LLC Indicate by check mark whether the Registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the Registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes \u2612 No \u2610 Indicate by check mark whether the Registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the Registrant was required to submit such files). Yes \u2612 No \u2610 Indicate by check mark whether the Registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act. Large accelerated filer \u2612 Accelerated filer \u2610 Non-accelerated filer \u2610 Smaller reporting company \u2610 Emerging growth company \u2610 If an emerging growth company, indicate by check mark if the Registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. \u2610 I",
           "normalization": "Whitespace-normalized visible HTML text; ix:header, script and style excluded."
-        }
+        },
+        "scope": "Public instrument identity supports the simulator mapping; private custody/receipt unknowns apply to live readiness only."
       },
       "evidence_excerpts": [
         {
@@ -707,13 +708,14 @@
       "business_assessment": "Principal activity is semiconductor/AI hardware. GeForce gaming hardware is not itself casino/gambling operation under the named sectors. Note 6 discloses equity-method investments in infrastructure financiers, with income not significant but unquantified.",
       "business_outcome": "INSUFFICIENT_EVIDENCE_FOR_COMPLETE_NUMERATOR",
       "instrument_identity": {
-        "finding": "Public cover identifies the issuer common-stock line, not a CFD/derivative claim. Account security identifier/contract and actual beneficial possession are not established.",
+        "finding": "Public cover identifies the issuer common-stock line, not a CFD/derivative claim. Real account security identifier/contract and actual beneficial possession are not established; these are live-readiness facts, not simulator-entry prerequisites.",
         "cover_evidence": {
           "source_id": "NVDA-current",
           "locator": "Securities registered pursuant",
           "quote": "g area code) N/A (Former name, former address and former fiscal year, if changed since last report) Securities registered pursuant to Section 12(b) of the Act: Title of each class Trading Symbol(s) Name of each exchange on which registered Common Stock, $0.001 par value per share NVDA The Nasdaq Global Select Market Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes \u2612 No \u2610 Indicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes \u2612 No \u2610 Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act. Large accelerated filer \u2612 Accelerated filer \u2610 Non-accelerated filer \u2610 Smaller reporting company \u2610 Emerging growth company \u2610 If an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. \u2610 Indicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes \u2610 No \u2612 The number of shares of common stock, $0.001 par value, outstanding as of August 21, 2026, was 24.1 billion. NVIDIA Corporation Form 10-Q For the Quarter Ended July 26, 2026 Table of Cont",
           "normalization": "Whitespace-normalized visible HTML text; ix:header, script and style excluded."
-        }
+        },
+        "scope": "Public instrument identity supports the simulator mapping; private custody/receipt unknowns apply to live readiness only."
       },
       "evidence_excerpts": [
         {
@@ -913,13 +915,14 @@
       "business_assessment": "Principal software/cloud activity is outside the named prohibited sectors. XBOX includes hardware, subscriptions, first/third-party games and in-game content; Search includes advertising. Games as a whole are not automatically casinos. Direct music/cinema/gambling or prohibited advertising attribution needs an explicit classification.",
       "business_outcome": "INSUFFICIENT_EVIDENCE_FOR_COMPLETE_NUMERATOR",
       "instrument_identity": {
-        "finding": "Public cover identifies the issuer common-stock line, not a CFD/derivative claim. Account security identifier/contract and actual beneficial possession are not established.",
+        "finding": "Public cover identifies the issuer common-stock line, not a CFD/derivative claim. Real account security identifier/contract and actual beneficial possession are not established; these are live-readiness facts, not simulator-entry prerequisites.",
         "cover_evidence": {
           "source_id": "MSFT-current",
           "locator": "Securities registered pursuant",
           "quote": "ID) ONE MICROSOFT WAY , REDMOND , Washington 98052-6399 ( 425 ) 882-8080 www.microsoft.com/investor Securities registered pursuant to Section 12(b) of the Act: Title of each class Trading Symbol Name of exchange on which registered Common stock, $0.00000625 par value per share MSFT Nasdaq 3.125% Notes due 2028 MSFT Nasdaq 2.625% Notes due 2033 MSFT Nasdaq Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes \u2612 No \u2610 Indicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes \u2612 No \u2610 Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act. Large Accelerated Filer \u2612 Accelerated Filer \u2610 Non-accelerated Filer \u2610 Smaller Reporting Company \u2610 Emerging Growth Company \u2610 If an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. \u2610 Indicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes \u2610 No \u2612 Indicate the number of shares outstanding of each of the issuer\u2019s classes of common stock, as of the latest practicable date. Class Outstanding as ",
           "normalization": "Whitespace-normalized visible HTML text; ix:header, script and style excluded."
-        }
+        },
+        "scope": "Public instrument identity supports the simulator mapping; private custody/receipt unknowns apply to live readiness only."
       },
       "evidence_excerpts": [
         {
@@ -1128,7 +1131,8 @@
           "locator": "Securities registered pursuant",
           "quote": " offices, including zip code) ( 650 ) 253-0000 (Registrant's telephone number, including area code) Securities registered pursuant to Section 12(b) of the Act: Title of each class Trading Symbol(s) Name of each exchange on which registered Class A Common Stock, $0.001 par value GOOGL Nasdaq Stock Market LLC (Nasdaq Global Select Market) Class C Capital Stock, $0.001 par value GOOG Nasdaq Stock Market LLC (Nasdaq Global Select Market) Depositary Shares, each representing a 1/20th interest in a share of 6.25% of Series A Mandatory Convertible Preferred Stock, par value $0.001 GOOGM Nasdaq Stock Market LLC (Nasdaq Global Select Market) Depositary Shares, each representing a 1/20th interest in a share of 6.25% of Series B Mandatory Convertible Preferred Stock, par value $0.001 GOOGN Nasdaq Stock Market LLC (Nasdaq Global Select Market) 2.375% Senior Notes due 2028 \u2014 Nasdaq Stock Market LLC 2.500% Senior Notes due 2029 \u2014 Nasdaq Stock Market LLC 4.125% Senior Notes due 2029 \u2014 Nasdaq Stock Market LLC 3.200% Senior Notes due 2030 \u2014 Nasdaq Stock Market LLC 2.875% Senior Notes due 2031 \u2014 Nasdaq Stock Market LLC 3.450% Senior Notes due 2032 \u2014 Nasdaq Stock Market LLC 4.625% Senior Notes due 2032 \u2014 Nasdaq Stock Market LLC 3.000% Senior Notes due 2033 \u2014 Nasdaq Stock Market LLC 3.125% Senior Notes due 2034 \u2014 Nasdaq Stock Market LLC 3.625% Senior Notes due 2034 \u2014 Nasdaq Stock Market LLC 3.375% Senior Notes due 2037 \u2014 Nasdaq Stock Market LLC 3.500% Senior Notes due 2038 \u2014 Nasdaq Stock Market LLC 4.100% Senior Notes due 2039 \u2014 Nasdaq Stock Market LLC 5.500% Senior Notes due 2041 \u2014 Nasdaq Stock Market LLC 4.000% Senior Notes due 2044 \u2014 Nasdaq Stock Market LLC 3.875% Senior Notes due 2045 \u2014 Nasdaq Stock Market LLC 4.500% Senior Notes due 2045 \u2014 Nasdaq Stock Market LLC 4.000% Senior Notes due 2054 \u2014 Nasdaq Stock Market LLC 5.875% Senior Notes due 2058 \u2014 Nasdaq Stock Market LLC 4.800% Senior Notes due 2063 \u2014 Nasdaq Stock Market LLC 4.375% Senior Notes due 2064 \u2014 Nasdaq Stock Market LLC 6.125% Senior Notes due 2126 \u2014 ",
           "normalization": "Whitespace-normalized visible HTML text; ix:header, script and style excluded."
-        }
+        },
+        "scope": "Public instrument identity supports the simulator mapping; private custody/receipt unknowns apply to live readiness only."
       },
       "evidence_excerpts": [
         {
@@ -1355,13 +1359,14 @@
       "business_assessment": "Retail/physical stores sell mixed consumer categories; annual/current notes explicitly identify digital video/music subscriptions and third-party commissions. Attempts to retrieve official Whole Foods alcohol/meat catalogue pages returned HTTP 403, so those pages do not confirm product availability in this checkpoint. AWS is not automatically prohibited. Current physical stores 17289, subscriptions 41163 and seller services 134850 are not wholly prohibited.",
       "business_outcome": "INSUFFICIENT_EVIDENCE_FOR_COMPLETE_NUMERATOR",
       "instrument_identity": {
-        "finding": "Public cover identifies the issuer common-stock line, not a CFD/derivative claim. Account security identifier/contract and actual beneficial possession are not established.",
+        "finding": "Public cover identifies the issuer common-stock line, not a CFD/derivative claim. Real account security identifier/contract and actual beneficial possession are not established; these are live-readiness facts, not simulator-entry prerequisites.",
         "cover_evidence": {
           "source_id": "AMZN-current",
           "locator": "Securities registered pursuant",
           "quote": "00 (Address and telephone number, including area code, of registrant\u2019s principal executive offices) Securities registered pursuant to Section 12(b) of the Act: Title of Each Class Trading Symbol(s) Name of Each Exchange on Which Registered Common Stock, par value $.01 per share AMZN The Nasdaq Stock Market LLC Floating Rate Notes due 2028 \u2014 The Nasdaq Stock Market LLC 2.800% Notes due 2028 \u2014 The Nasdaq Stock Market LLC 3.100% Notes due 2030 \u2014 The Nasdaq Stock Market LLC 3.350% Notes due 2032 \u2014 The Nasdaq Stock Market LLC 3.700% Notes due 2035 \u2014 The Nasdaq Stock Market LLC 4.050% Notes due 2039 \u2014 The Nasdaq Stock Market LLC 4.450% Notes due 2045 \u2014 The Nasdaq Stock Market LLC 4.850% Notes due 2064 \u2014 The Nasdaq Stock Market LLC 5.200% Notes due 2029 \u2014 The Nasdaq Stock Market LLC 5.550% Notes due 2032 \u2014 The Nasdaq Stock Market LLC 6.250% Notes due 2038 \u2014 The Nasdaq Stock Market LLC 6.650% Notes due 2045 \u2014 The Nasdaq Stock Market LLC ____________________________________ Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes \u2612 No \u2610 Indicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes \u2612 No \u2610 Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act. Large accelerated filer \u2612 Accelerated filer \u2610 Non-acc",
           "normalization": "Whitespace-normalized visible HTML text; ix:header, script and style excluded."
-        }
+        },
+        "scope": "Public instrument identity supports the simulator mapping; private custody/receipt unknowns apply to live readiness only."
       },
       "evidence_excerpts": [
         {
@@ -1566,13 +1571,14 @@
       "business_assessment": "Automotive/energy manufacture is outside the named sectors. The annual business description confirms an actual insurance product and lending/financing programs. This is direct conventional-finance/insurance exposure, not an incidental employee-insurance keyword.",
       "business_outcome": "INSUFFICIENT_EVIDENCE_FOR_COMPLETE_NUMERATOR",
       "instrument_identity": {
-        "finding": "Public cover identifies the issuer common-stock line, not a CFD/derivative claim. Account security identifier/contract and actual beneficial possession are not established.",
+        "finding": "Public cover identifies the issuer common-stock line, not a CFD/derivative claim. Real account security identifier/contract and actual beneficial possession are not established; these are live-readiness facts, not simulator-entry prerequisites.",
         "cover_evidence": {
           "source_id": "TSLA-current",
           "locator": "Securities registered pursuant",
           "quote": "executive offices) (Zip Code) ( 512 ) 516-8177 (Registrant\u2019s telephone number, including area code) Securities registered pursuant to Section 12(b) of the Act: Title of each class Trading Symbol(s) Name of each exchange on which registered Common stock TSLA The Nasdaq Global Select Market Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 (\u201cExchange Act\u201d) during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes x No o Indicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes x No o Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act: Large accelerated filer x Accelerated filer o Non-accelerated filer o Smaller reporting company o Emerging growth company o If an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. o Indicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes o No x As of October 15, 2026, there were 3,952,757,946 shares of the registrant\u2019s common stock outstanding. TESLA, INC. FORM 10-Q FOR THE QUARTER ENDED SEPTEMBER 30, 2026 INDEX Page PART I. FINANCIAL INFOR",
           "normalization": "Whitespace-normalized visible HTML text; ix:header, script and style excluded."
-        }
+        },
+        "scope": "Public instrument identity supports the simulator mapping; private custody/receipt unknowns apply to live readiness only."
       },
       "evidence_excerpts": [
         {
@@ -1777,13 +1783,14 @@
       "business_assessment": "Annual description identifies an advertising-led Family of Apps and Reality Labs hardware/software/content. Advertising is not all prohibited; the current 177449 advertising aggregate lacks underlying sector/content attribution.",
       "business_outcome": "INSUFFICIENT_EVIDENCE_FOR_COMPLETE_NUMERATOR",
       "instrument_identity": {
-        "finding": "Public cover identifies the issuer common-stock line, not a CFD/derivative claim. Account security identifier/contract and actual beneficial possession are not established.",
+        "finding": "Public cover identifies the issuer common-stock line, not a CFD/derivative claim. Real account security identifier/contract and actual beneficial possession are not established; these are live-readiness facts, not simulator-entry prerequisites.",
         "cover_evidence": {
           "source_id": "META-current",
           "locator": "Securities registered pursuant",
           "quote": "0 (Registrant's telephone number, including area code) ____________________________________________ Securities registered pursuant to Section 12(b) of the Act: Title of each class Trading symbol(s) Name of each exchange on which registered Class A Common Stock, $0.000006 par value META The Nasdaq Stock Market LLC Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 (Exchange Act) during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes \u2612 No \u2610 Indicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes \u2612 No \u2610 Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \"large accelerated filer,\" \"accelerated filer,\" \"smaller reporting company,\" and \"emerging growth company\" in Rule 12b-2 of the Exchange Act. Large accelerated filer \u2612 Accelerated filer \u2610 Non-accelerated filer \u2610 Smaller reporting company \u2610 Emerging growth company \u2610 If an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. \u2610 Indicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes \u2610 No \u2612 Indicate the number of shares outstanding of each of the issuer's classes of Common Stock, as of the latest practicable date. Class Number of Shares Outstanding Class A Common",
           "normalization": "Whitespace-normalized visible HTML text; ix:header, script and style excluded."
-        }
+        },
+        "scope": "Public instrument identity supports the simulator mapping; private custody/receipt unknowns apply to live readiness only."
       },
       "evidence_excerpts": [
         {
@@ -1949,13 +1956,14 @@
       "business_assessment": "Semiconductors and infrastructure software are the principal businesses. The annual report lists defense/aerospace applications. Supplying general-purpose components is not, without product evidence, the same as weapons/arms manufacture under the selected rules.",
       "business_outcome": "INSUFFICIENT_EVIDENCE_FOR_COMPLETE_NUMERATOR",
       "instrument_identity": {
-        "finding": "Public cover identifies the issuer common-stock line, not a CFD/derivative claim. Account security identifier/contract and actual beneficial possession are not established.",
+        "finding": "Public cover identifies the issuer common-stock line, not a CFD/derivative claim. Real account security identifier/contract and actual beneficial possession are not established; these are live-readiness facts, not simulator-entry prerequisites.",
         "cover_evidence": {
           "source_id": "AVGO-current",
           "locator": "Securities registered pursuant",
           "quote": "ng zip code, of principal executive offices and registrant\u2019s telephone number, including area code) Securities registered pursuant to Section 12(b) of the Act: Title of Each Class Trading Symbol(s) Name of Each Exchange on Which Registered Common Stock, $0.001 par value AVGO The NASDAQ Global Select Market Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes \u00fe No o Indicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes \u00fe No o Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act. Large accelerated filer \u00fe Accelerated filer \u2610 Non-accelerated filer \u2610 Smaller reporting company \u2610 Emerging growth company \u2610 If an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. o Indicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes \u2610 No \u00fe As of August 28, 2026, there were 4,773,629,865 shares of our common stock outstanding. BROADCOM INC. Quarterly Report on Form 10-Q For the Quarterly Period Ended August 2, 2026 TABLE OF CONTENTS P",
           "normalization": "Whitespace-normalized visible HTML text; ix:header, script and style excluded."
-        }
+        },
+        "scope": "Public instrument identity supports the simulator mapping; private custody/receipt unknowns apply to live readiness only."
       },
       "evidence_excerpts": [
         {
@@ -2143,13 +2151,14 @@
       "business_assessment": "Annual business description/product table is pharmaceuticals/therapeutics, outside the named non-halal-food sector; medicinal insulin is not automatically pork-food production. Product collaboration/license receipts and investment income still need classification. No medicine-certification requirement is invented by this review.",
       "business_outcome": "INSUFFICIENT_EVIDENCE_FOR_COMPLETE_NUMERATOR",
       "instrument_identity": {
-        "finding": "Public cover identifies the issuer common-stock line, not a CFD/derivative claim. Account security identifier/contract and actual beneficial possession are not established.",
+        "finding": "Public cover identifies the issuer common-stock line, not a CFD/derivative claim. Real account security identifier/contract and actual beneficial possession are not established; these are live-readiness facts, not simulator-entry prerequisites.",
         "cover_evidence": {
           "source_id": "LLY-current",
           "locator": "Securities registered pursuant",
           "quote": "of principal executive offices) Registrant's telephone number, including area code ( 317 ) 276-2000 Securities registered pursuant to Section 12(b) of the Exchange Act: Title of Each Class Trading Symbols Name of Each Exchange On Which Registered Common Stock (no par value) LLY New York Stock Exchange 2.125% Notes due 2030 LLY30 New York Stock Exchange 0.625% Notes due 2031 LLY31 New York Stock Exchange 0.500% Notes due 2033 LLY33 New York Stock Exchange 6.77% Notes due 2036 LLY36 New York Stock Exchange 1.625% Notes due 2043 LLY43 New York Stock Exchange 1.700% Notes due 2049 LLY49A New York Stock Exchange 1.125% Notes due 2051 LLY51 New York Stock Exchange 1.375% Notes due 2061 LLY61 New York Stock Exchange Indicate by check mark whether the Registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the Registrant was required to file such reports) and (2) has been subject to such filing requirements for the past 90 days. Yes \u2612 No \u2610 Indicate by check mark whether the Registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the Registrant was required to submit such files). Yes \u2612 No \u2610 Indicate by check mark whether the Registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \"large accelerated filer,\" \"accelerated filer,\" \"smaller reporting company,\" and \"emerging growth company\" in Rule 12b-2 of the Exchange Act. Large accelerated filer \u2612 Accelerated filer \u2610 Non-accelerated filer \u2610 Smaller reporting company \u2610 Emerging growth company \u2610 If an emerging growth company, indicate by check mark if the Registrant has elected not to use the extended transition period for complying with any new or revised ",
           "normalization": "Whitespace-normalized visible HTML text; ix:header, script and style excluded."
-        }
+        },
+        "scope": "Public instrument identity supports the simulator mapping; private custody/receipt unknowns apply to live readiness only."
       },
       "evidence_excerpts": [
         {
@@ -2342,13 +2351,14 @@
       "business_assessment": "Principal activity is memory/storage semiconductors. Annual end markets include aerospace/defense and gaming hardware; neither proves casino operation or arms manufacture. Investment returns and product-specific prohibited-manufacturing scope still need review.",
       "business_outcome": "INSUFFICIENT_EVIDENCE_FOR_COMPLETE_NUMERATOR",
       "instrument_identity": {
-        "finding": "Public cover identifies the issuer common-stock line, not a CFD/derivative claim. Account security identifier/contract and actual beneficial possession are not established.",
+        "finding": "Public cover identifies the issuer common-stock line, not a CFD/derivative claim. Real account security identifier/contract and actual beneficial possession are not established; these are live-readiness facts, not simulator-entry prerequisites.",
         "cover_evidence": {
           "source_id": "MU-current",
           "locator": "Securities registered pursuant",
           "quote": " principal executive offices, including zip code Registrant\u2019s telephone number, including area code Securities registered pursuant to Section 12(b) of the Act: Title of each class Trading Symbol Name of each exchange on which registered Common Stock, par value $0.10 per share MU Nasdaq Global Select Market Securities registered pursuant to Section 12(g) of the Act: None Indicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes \u2612 No \u2610 Indicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes \u2610 No \u2612 Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes \u2612 No \u2610 Indicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes \u2612 No \u2610 Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act. Large Accelerated Filer Accelerated Filer Non-Accelerated Filer Smaller Reporting Company Emerging Growth Company \u2612 \u2610 \u2610 \u2610 \u2610 If an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exch",
           "normalization": "Whitespace-normalized visible HTML text; ix:header, script and style excluded."
-        }
+        },
+        "scope": "Public instrument identity supports the simulator mapping; private custody/receipt unknowns apply to live readiness only."
       },
       "evidence_excerpts": [
         {
@@ -2449,8 +2459,9 @@
         "docs/milestone-8-paper-trading.md",
         "docs/milestone-8-forward-operations.md"
       ],
-      "supported_finding": "SEC 2023-29 establishes the US T+1 rule change; the repository implements only a cash simulator with simulated settlement. A public settlement rule and quote feed do not demonstrate account-level possession. No application database or broker account was accessed.",
-      "further_public_research": "Public security descriptions and broker agreements can establish general instrument mechanics, but account binding and actual possession require operator-supplied account/contract/custody evidence or an authorized read-only account record. Further generic public search cannot establish those private facts."
+      "supported_finding": "SEC covers identify common-stock lines and SEC 2023-29 establishes T+1 adoption. The internal simulator checks virtual cash, holdings and simulated settlement through its ledger/replay invariants. Real account binding and custody/beneficial ownership are live-readiness evidence; they do not gate virtual entries. No production ledger or broker account was accessed.",
+      "further_public_research": "Public security descriptions and broker agreements can establish general instrument mechanics, but account binding and actual possession require operator-supplied account/contract/custody evidence or an authorized read-only account record. Further generic public search cannot establish those private facts.",
+      "applicability": "LIVE_READINESS_ONLY"
     },
     {
       "item_id": "purification-application",
@@ -2468,8 +2479,9 @@
         "LLY-current",
         "MU-current"
       ],
-      "supported_finding": "Published dividend rule is resolved: recommended amount = actual eligible dividend received * 0.05. No investor receipt amount is known, so no cash amount or missing zero is reported. Purification does not repair any of the three known static financial breaches.",
-      "further_public_research": "Issuer dividend declarations can establish declared per-share distributions. They cannot establish this account's holdings or receipts. The actual amount requires account evidence; broader disposition decisions require a qualified methodology review, not another issuer earnings search."
+      "supported_finding": "Published dividend rule is resolved: recommended amount = actual eligible dividend received * 0.05. No investor receipt amount is known, so no cash amount or missing zero is reported. Purification does not repair any of the three known static financial breaches. Actual live dividend receipts are not a requirement for simulator entries; any virtual entitlement/cash event must be supported by the simulator ledger and its configured event handling, not invented.",
+      "further_public_research": "Issuer dividend declarations can establish declared per-share distributions. They cannot establish this account's holdings or receipts. The actual amount requires account evidence; broader disposition decisions require a qualified methodology review, not another issuer earnings search.",
+      "applicability": "Qualified methodology application remains relevant; actual custody/holdings/dividend receipts apply to live readiness only."
     },
     {
       "item_id": "methodology-governance",
@@ -2481,17 +2493,43 @@
       "further_public_research": "Public methodology/index publications may clarify official monitoring definitions. Actual project reviewer approval is an organizational action supported by evidence; it cannot be manufactured or established through public search."
     }
   ],
-  "ci_verification": {
-    "commit": "baed1f13fbc13150d335189c5d2333569deb9773",
-    "run_id": 41468504028,
-    "url": "https://github.com/MohammedTeir/halal-quant/actions/runs/41468504028",
-    "status": "completed",
-    "conclusion": "success",
-    "postgres_pytest_passed": 703,
-    "other_checks": "Lint, formatting, dashboard checks, encrypted backup/restore tooling, paper/research/portfolio synthetic acceptance and Gemini/evaluation mock steps all succeeded."
-  },
   "approved_symbols": [],
   "virtual_entries_authorized": false,
   "production_database_mutations": 0,
-  "messages_sent": 0
+  "messages_sent": 0,
+  "review_pass_status": "COMPLETE_WITH_RECORDED_FAILURES_AND_INSUFFICIENT_EVIDENCE",
+  "milestone_8_status": "INCOMPLETE",
+  "simulator_ownership_scope": {
+    "requirements": [
+      "Virtual cash availability",
+      "Virtual owned holdings and owned-share sales",
+      "Simulated settlement availability",
+      "Ledger replay and reconciliation",
+      "Protocol-bound instrument/share-class identity and existing policy/review gates"
+    ],
+    "real_custody_required_for_virtual_entries": false,
+    "actual_dividend_receipts_required_for_virtual_entries": false,
+    "full_independent_financial_and_business_screening_required_before_virtual_entries": true,
+    "actual_elapsed_campaign_established": false
+  },
+  "ci_verifications": [
+    {
+      "commit": "baed1f13fbc13150d335189c5d2333569deb9773",
+      "run_id": 41468504028,
+      "url": "https://github.com/MohammedTeir/halal-quant/actions/runs/41468504028",
+      "status": "completed",
+      "conclusion": "success",
+      "postgres_pytest_passed": 703,
+      "other_checks": "Lint, formatting, dashboard checks, encrypted backup/restore tooling, paper/research/portfolio synthetic acceptance and Gemini/evaluation mock steps all succeeded."
+    },
+    {
+      "commit": "3787c751cbbaec782e806d0af5b1f44f31e38f22",
+      "run_id": 41473608160,
+      "url": "https://github.com/MohammedTeir/halal-quant/actions/runs/41473608160",
+      "status": "completed",
+      "conclusion": "success",
+      "postgres_pytest_passed": 703,
+      "other_checks": "All workflow steps succeeded; metadata and pytest log checked separately for this exact commit."
+    }
+  ]
 }

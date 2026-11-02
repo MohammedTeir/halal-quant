@@ -68,3 +68,6 @@ Follow-up full regression result: **701 passed, 2 PostgreSQL-only checks skipped
 ## Subsequent substantive company review
 
 The [independent company review](milestone-8-independent-company-review.md) supersedes the inventory-only outcome table for current research findings. It applies one explicit FTSE Yasaar v4.6 static methodology, reconciles debt/lease/investment families, finds static financial breaches for AAPL, LLY and MU, and records precise unresolved income/business facts for the remaining candidates. Meta gross interest and Micron's statement-labelled gross interest were found by reading the documents; Microsoft's interest/dividend line was distinguished from an interest-only amount. No complete company pass or approval is inferred. GitHub Actions for `baed1f1` was verified successful with 703 PostgreSQL tests.
+
+
+Ownership scope clarification: the internal simulator verifies virtual cash, holdings and simulated settlement through its ledger. Real custody and actual dividend receipts belong to live-readiness review, not virtual-entry prerequisites. Full independent financial and business screening remains required before virtual entries. See the updated substantive review for commit-specific CI verification and the separated scopes.
