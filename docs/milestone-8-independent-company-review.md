@@ -185,3 +185,7 @@ A separate archive replay verified all **47 receipt hashes**, the official metho
 The JSON now explicitly separates simulator ledger requirements from live custody/dividend-receipt evidence. Screening outcomes are unchanged: AAPL, MU and LLY fail the selected static financial core; the other seven have insufficient evidence; approved none. Resolving those seven candidates' documented financial/business gaps is the remaining substantive screening work.
 
 The documentation-only scope correction was checked against the two targeted virtual cash/ownership/settlement tests: **2 passed** (27 unrelated tests deselected), with the existing deprecation warning. JSON consistency and diff checks also passed; no runtime gate was changed.
+
+## Further resolution attempt
+
+The [resolution follow-up](milestone-8-screening-resolution.md) closes five individual financial-threshold questions through source-backed enclosing bounds and actually follows the Tesla insurer/regulator route. It identifies three insurers, records unavailable statutory pages and the not-yet-reached September-quarter filing deadline, and prepares exact seven-company disclosure requests without sending messages. None of these findings supplies a complete non-compliant-income numerator or approves an entry. Milestone 8 remains incomplete.

@@ -1,3 +1,5 @@
+import pytest
+
 from scripts.paper_screening_calculations import reconcile
 
 
@@ -98,3 +100,62 @@ def test_assets_lower_bounds_can_identify_a_breach_but_never_issue_approval():
         c["state"] == "UNKNOWN_FULL_TOTAL_NOT_ESTABLISHED" for c in result["checks"].values()
     )
     assert not result["eligible_for_approval"]
+
+
+@pytest.mark.parametrize(
+    "lower,upper,inclusive,outcome",
+    [
+        (None, "33.332", False, "PASS_CONDITION_BY_UPPER_BOUND"),
+        (None, "33.333", False, "INSUFFICIENT_EVIDENCE"),
+        ("33.333", None, False, "FAIL_CONDITION_BY_LOWER_BOUND"),
+        (None, "33.333", True, "PASS_CONDITION_BY_UPPER_BOUND"),
+        ("33.333", None, True, "INSUFFICIENT_EVIDENCE"),
+        ("33.334", None, True, "FAIL_CONDITION_BY_LOWER_BOUND"),
+        (None, None, False, "INSUFFICIENT_EVIDENCE"),
+    ],
+)
+def test_sourced_bounds_respect_unknowns_and_independent_boundaries(
+    lower, upper, inclusive, outcome
+):
+    from scripts.paper_screening_calculations import ratio_bounds
+
+    result = ratio_bounds(
+        denominator="100", maximum="0.33333", lower=lower, upper=upper, inclusive=inclusive
+    )
+    assert result["outcome"] == outcome
+    assert result["approved"] is False
+    if lower is None:
+        assert result["lower_ratio"] is None
+    if upper is None:
+        assert result["upper_ratio"] is None
+
+
+@pytest.mark.parametrize(
+    "changes",
+    [
+        {"denominator": "0"},
+        {"maximum": None},
+        {"upper": "NaN"},
+        {"lower": "-1"},
+        {"lower": "12", "upper": "11"},
+        {"upper": "not-a-number"},
+    ],
+)
+def test_invalid_or_inconsistent_bounds_cannot_support_a_condition(changes):
+    from scripts.paper_screening_calculations import ratio_bounds
+
+    with pytest.raises(ValueError):
+        ratio_bounds(**({"denominator": "100", "maximum": "0.33333"} | changes))
+
+
+def test_enclosing_liabilities_can_close_debt_condition_without_missing_zeroes():
+    from scripts.paper_screening_calculations import ratio_bounds
+
+    result = ratio_bounds(denominator="320272", maximum="0.33333", lower="33366", upper="91288")
+    assert result["outcome"] == "PASS_CONDITION_BY_UPPER_BOUND"
+    assert result["approved"] is False
+    # The old component subtotal alone cannot prove the whole condition passes.
+    assert (
+        ratio_bounds(denominator="320272", maximum="0.33333", lower="33366")["outcome"]
+        == "INSUFFICIENT_EVIDENCE"
+    )

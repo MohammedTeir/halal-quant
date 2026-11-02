@@ -224,3 +224,54 @@ def assets_core_lower_bounds(
         "eligible_for_approval": False,
         "scope": "Lower bounds only. A component below a threshold is not evidence that the complete total passes. No official index membership or quarterly-buffer determination.",
     }
+
+
+def ratio_bounds(*, denominator, maximum, lower=None, upper=None, inclusive=False):
+    """Evaluate source-backed bounds for ONE condition, never approve an issuer.
+
+    Caller must establish same-period/unit scope, disjoint exclusions and a complete
+    enclosing universe for an upper bound. Missing bounds remain unknown. This
+    arithmetic helper does not validate those accounting/source premises.
+    """
+    parsed = {}
+    for name, raw in {
+        "denominator": denominator,
+        "maximum": maximum,
+        "lower": lower,
+        "upper": upper,
+    }.items():
+        if raw is None:
+            if name in {"denominator", "maximum"}:
+                raise ValueError("Positive denominator and maximum required")
+            parsed[name] = None
+            continue
+        try:
+            number = Decimal(str(raw))
+        except InvalidOperation:
+            raise ValueError("Invalid financial bound") from None
+        if (
+            not number.is_finite()
+            or number < 0
+            or (name in {"denominator", "maximum"} and number == 0)
+        ):
+            raise ValueError("Invalid financial bound")
+        parsed[name] = number
+    low, high = parsed["lower"], parsed["upper"]
+    if low is not None and high is not None and low > high:
+        raise ValueError("Inconsistent bounds")
+    with localcontext() as context:
+        context.prec = 60
+        limit = parsed["maximum"] * parsed["denominator"]
+        failed = low is not None and (low > limit if inclusive else low >= limit)
+        passed = high is not None and (high <= limit if inclusive else high < limit)
+        return {
+            "outcome": "FAIL_CONDITION_BY_LOWER_BOUND"
+            if failed
+            else "PASS_CONDITION_BY_UPPER_BOUND"
+            if passed
+            else "INSUFFICIENT_EVIDENCE",
+            "lower_ratio": str(low / parsed["denominator"]) if low is not None else None,
+            "upper_ratio": str(high / parsed["denominator"]) if high is not None else None,
+            "approved": False,
+            "scope": "Single-condition bound arithmetic only; caller must substantiate source and accounting premises. No complete company screen or approval.",
+        }

@@ -1,0 +1,1049 @@
+{
+  "observed_at": "2026-11-02T16:30:03.080252+00:00",
+  "baseline_report": "reports/milestone8-independent-company-review-2026-11-02.json",
+  "methodology": "Same FTSE Yasaar v4.6 static research rules and accounting conventions; no methodology or threshold change.",
+  "condition_proofs": [
+    {
+      "symbol": "NVDA",
+      "condition": "debt_assets",
+      "inputs": [
+        {
+          "concept": "us-gaap:Assets",
+          "value_million_usd": "320272",
+          "source_id": "NVDA-current",
+          "period_end": "2026-07-26",
+          "selection": {
+            "status": "EXACT_CONTEXT_VALUE",
+            "value": "3.20272E+11",
+            "occurrences": 1,
+            "reason": "SINGLE_VALUE"
+          }
+        },
+        {
+          "concept": "us-gaap:Liabilities",
+          "value_million_usd": "91288",
+          "source_id": "NVDA-current",
+          "period_end": "2026-07-26",
+          "selection": {
+            "status": "EXACT_CONTEXT_VALUE",
+            "value": "9.1288E+10",
+            "occurrences": 1,
+            "reason": "SINGLE_VALUE"
+          }
+        }
+      ],
+      "lower_million_usd": "33366",
+      "upper_million_usd": "91288",
+      "upper_bound_identity": "All recognized carrying debt, including any unquantified recognized finance leases, is enclosed by total reported liabilities. Unrecognized/undrawn commitments remain outside the existing mapping; no missing lease balance is set to zero.",
+      "accounting_premises": [
+        "Reported carrying debt is a nonnegative subset of recognized liabilities.",
+        "Same issuer, date, currency and carrying-value basis."
+      ],
+      "bound_evaluation": {
+        "outcome": "PASS_CONDITION_BY_UPPER_BOUND",
+        "lower_ratio": "0.104180196832692211620122895538792026777239346555427886296648",
+        "upper_ratio": "0.285032722186141779487435679672278563221261927361742518858970",
+        "approved": false,
+        "scope": "Single-condition bound arithmetic only; caller must substantiate source and accounting premises. No complete company screen or approval."
+      }
+    },
+    {
+      "symbol": "GOOGL",
+      "condition": "debt_assets",
+      "inputs": [
+        {
+          "concept": "us-gaap:Assets",
+          "value_million_usd": "1003312",
+          "source_id": "GOOGL-current",
+          "period_end": "2026-09-30",
+          "selection": {
+            "status": "EXACT_CONTEXT_VALUE",
+            "value": "1.003312E+12",
+            "occurrences": 1,
+            "reason": "SINGLE_VALUE"
+          }
+        },
+        {
+          "concept": "us-gaap:Liabilities",
+          "value_million_usd": "325763",
+          "source_id": "GOOGL-current",
+          "period_end": "2026-09-30",
+          "selection": {
+            "status": "EXACT_CONTEXT_VALUE",
+            "value": "3.25763E+11",
+            "occurrences": 1,
+            "reason": "SINGLE_VALUE"
+          }
+        }
+      ],
+      "lower_million_usd": "129823",
+      "upper_million_usd": "325763",
+      "upper_bound_identity": "All recognized carrying debt, including any unquantified recognized finance leases, is enclosed by total reported liabilities. Unrecognized/undrawn commitments remain outside the existing mapping; no missing lease balance is set to zero.",
+      "accounting_premises": [
+        "Reported carrying debt is a nonnegative subset of recognized liabilities.",
+        "Same issuer, date, currency and carrying-value basis."
+      ],
+      "bound_evaluation": {
+        "outcome": "PASS_CONDITION_BY_UPPER_BOUND",
+        "lower_ratio": "0.129394445596185433843111614333328017605689954869472307716842",
+        "upper_ratio": "0.324687634554355973017366482210917441433970689077774411150270",
+        "approved": false,
+        "scope": "Single-condition bound arithmetic only; caller must substantiate source and accounting premises. No complete company screen or approval."
+      }
+    },
+    {
+      "symbol": "AVGO",
+      "condition": "cash_interest_items_assets",
+      "inputs": [
+        {
+          "concept": "us-gaap:Assets",
+          "value_million_usd": "188148",
+          "source_id": "AVGO-current",
+          "period_end": "2026-08-02",
+          "selection": {
+            "status": "EXACT_CONTEXT_VALUE",
+            "value": "1.88148E+11",
+            "occurrences": 1,
+            "reason": "SINGLE_VALUE"
+          }
+        },
+        {
+          "concept": "us-gaap:Goodwill",
+          "value_million_usd": "97801",
+          "source_id": "AVGO-current",
+          "period_end": "2026-08-02",
+          "selection": {
+            "status": "EXACT_CONTEXT_VALUE",
+            "value": "9.7801E+10",
+            "occurrences": 1,
+            "reason": "SINGLE_VALUE"
+          }
+        },
+        {
+          "concept": "us-gaap:IntangibleAssetsNetExcludingGoodwill",
+          "value_million_usd": "26325",
+          "source_id": "AVGO-current",
+          "period_end": "2026-08-02",
+          "selection": {
+            "status": "EXACT_CONTEXT_VALUE",
+            "value": "2.6325E+10",
+            "occurrences": 1,
+            "reason": "SINGLE_VALUE"
+          }
+        },
+        {
+          "concept": "us-gaap:PropertyPlantAndEquipmentNet",
+          "value_million_usd": "3144",
+          "source_id": "AVGO-current",
+          "period_end": "2026-08-02",
+          "selection": {
+            "status": "EXACT_CONTEXT_VALUE",
+            "value": "3.144E+9",
+            "occurrences": 1,
+            "reason": "SINGLE_VALUE"
+          }
+        },
+        {
+          "concept": "us-gaap:InventoryNet",
+          "value_million_usd": "4523",
+          "source_id": "AVGO-current",
+          "period_end": "2026-08-02",
+          "selection": {
+            "status": "EXACT_CONTEXT_VALUE",
+            "value": "4.523E+9",
+            "occurrences": 2,
+            "reason": "IDENTICAL_DUPLICATES"
+          }
+        }
+      ],
+      "lower_million_usd": "23975",
+      "upper_million_usd": "56355",
+      "upper_bound_identity": "Total assets minus the listed disjoint non-interest-bearing asset classes. EVERY remaining asset is conservatively counted as potentially cash/interest-bearing, including all unclassified balances. No absent investment/loan line is set to zero.",
+      "accounting_premises": [
+        "Balance-sheet exclusions are disjoint; net PPE and separately presented operating ROU assets do not overlap.",
+        "Goodwill, acquired intangibles, physical inventories/PPE, operating ROU assets and explicitly identified equity are not cash or interest-bearing instruments under the existing documented research mapping.",
+        "All cash, restricted cash, financing receivables and unclassified other assets remain inside the enclosing remainder."
+      ],
+      "bound_evaluation": {
+        "outcome": "PASS_CONDITION_BY_UPPER_BOUND",
+        "lower_ratio": "0.127426281438016880328252226970257456895635350893977081871718",
+        "upper_ratio": "0.299524842145544996492123222144269404936539320109700873780216",
+        "approved": false,
+        "scope": "Single-condition bound arithmetic only; caller must substantiate source and accounting premises. No complete company screen or approval."
+      }
+    },
+    {
+      "symbol": "MSFT",
+      "condition": "cash_interest_items_assets",
+      "inputs": [
+        {
+          "concept": "us-gaap:Assets",
+          "value_million_usd": "779403",
+          "source_id": "MSFT-current",
+          "period_end": "2026-09-30",
+          "selection": {
+            "status": "EXACT_CONTEXT_VALUE",
+            "value": "7.79403E+11",
+            "occurrences": 1,
+            "reason": "SINGLE_VALUE"
+          }
+        },
+        {
+          "concept": "us-gaap:Goodwill",
+          "value_million_usd": "119646",
+          "source_id": "MSFT-current",
+          "period_end": "2026-09-30",
+          "selection": {
+            "status": "EXACT_CONTEXT_VALUE",
+            "value": "1.19646E+11",
+            "occurrences": 2,
+            "reason": "IDENTICAL_DUPLICATES"
+          }
+        },
+        {
+          "concept": "us-gaap:FiniteLivedIntangibleAssetsNet",
+          "value_million_usd": "17751",
+          "source_id": "MSFT-current",
+          "period_end": "2026-09-30",
+          "selection": {
+            "status": "EXACT_CONTEXT_VALUE",
+            "value": "1.7751E+10",
+            "occurrences": 3,
+            "reason": "IDENTICAL_DUPLICATES"
+          }
+        },
+        {
+          "concept": "us-gaap:PropertyPlantAndEquipmentNet",
+          "value_million_usd": "346844",
+          "source_id": "MSFT-current",
+          "period_end": "2026-09-30",
+          "selection": {
+            "status": "EXACT_CONTEXT_VALUE",
+            "value": "3.46844E+11",
+            "occurrences": 2,
+            "reason": "IDENTICAL_DUPLICATES"
+          }
+        },
+        {
+          "concept": "us-gaap:InventoryNet",
+          "value_million_usd": "1835",
+          "source_id": "MSFT-current",
+          "period_end": "2026-09-30",
+          "selection": {
+            "status": "EXACT_CONTEXT_VALUE",
+            "value": "1.835E+9",
+            "occurrences": 1,
+            "reason": "SINGLE_VALUE"
+          }
+        },
+        {
+          "concept": "us-gaap:OperatingLeaseRightOfUseAsset",
+          "value_million_usd": "30178",
+          "source_id": "MSFT-current",
+          "period_end": "2026-09-30",
+          "selection": {
+            "status": "EXACT_CONTEXT_VALUE",
+            "value": "3.0178E+10",
+            "occurrences": 2,
+            "reason": "IDENTICAL_DUPLICATES"
+          }
+        },
+        {
+          "concept": "Manual Note 4 total equity investments recorded basis",
+          "value_million_usd": "27580",
+          "source_id": "MSFT-current",
+          "period_end": "2026-09-30",
+          "locator": "Note 4 Investment Components, September 30, 2026, Recorded Basis column",
+          "quote": "Total equity investments $ 29,178 $ 1,598 $ 0 $ 27,580",
+          "scope": "Recorded basis, not adjusted cost basis 29178; not the comparative June table."
+        }
+      ],
+      "lower_million_usd": "74522",
+      "upper_million_usd": "235569",
+      "upper_bound_identity": "Total assets minus the listed disjoint non-interest-bearing asset classes. EVERY remaining asset is conservatively counted as potentially cash/interest-bearing, including all unclassified balances. No absent investment/loan line is set to zero.",
+      "accounting_premises": [
+        "Balance-sheet exclusions are disjoint; net PPE and separately presented operating ROU assets do not overlap.",
+        "Goodwill, acquired intangibles, physical inventories/PPE, operating ROU assets and explicitly identified equity are not cash or interest-bearing instruments under the existing documented research mapping.",
+        "All cash, restricted cash, financing receivables and unclassified other assets remain inside the enclosing remainder."
+      ],
+      "bound_evaluation": {
+        "outcome": "PASS_CONDITION_BY_UPPER_BOUND",
+        "lower_ratio": "0.0956142072842932346937335370790207376671632005522175305971365",
+        "upper_ratio": "0.302242870504732468312285172112501491526206596587388039307008",
+        "approved": false,
+        "scope": "Single-condition bound arithmetic only; caller must substantiate source and accounting premises. No complete company screen or approval."
+      }
+    },
+    {
+      "symbol": "META",
+      "condition": "cash_interest_items_assets",
+      "inputs": [
+        {
+          "concept": "us-gaap:Assets",
+          "value_million_usd": "478836",
+          "source_id": "META-current",
+          "period_end": "2026-09-30",
+          "selection": {
+            "status": "EXACT_CONTEXT_VALUE",
+            "value": "4.78836E+11",
+            "occurrences": 1,
+            "reason": "SINGLE_VALUE"
+          }
+        },
+        {
+          "concept": "us-gaap:Goodwill",
+          "value_million_usd": "23421",
+          "source_id": "META-current",
+          "period_end": "2026-09-30",
+          "selection": {
+            "status": "EXACT_CONTEXT_VALUE",
+            "value": "2.3421E+10",
+            "occurrences": 2,
+            "reason": "IDENTICAL_DUPLICATES"
+          }
+        },
+        {
+          "concept": "us-gaap:PropertyPlantAndEquipmentAndFinanceLeaseRightOfUseAssetAfterAccumulatedDepreciationAndAmortization",
+          "value_million_usd": "253222",
+          "source_id": "META-current",
+          "period_end": "2026-09-30",
+          "selection": {
+            "status": "EXACT_CONTEXT_VALUE",
+            "value": "2.53222E+11",
+            "occurrences": 2,
+            "reason": "IDENTICAL_DUPLICATES"
+          }
+        },
+        {
+          "concept": "us-gaap:OperatingLeaseRightOfUseAsset",
+          "value_million_usd": "26576",
+          "source_id": "META-current",
+          "period_end": "2026-09-30",
+          "selection": {
+            "status": "EXACT_CONTEXT_VALUE",
+            "value": "2.6576E+10",
+            "occurrences": 1,
+            "reason": "SINGLE_VALUE"
+          }
+        },
+        {
+          "concept": "meta:NonmarketableEquitySecuritiesCarryingValue",
+          "value_million_usd": "32624",
+          "source_id": "META-current",
+          "period_end": "2026-09-30",
+          "selection": {
+            "status": "EXACT_CONTEXT_VALUE",
+            "value": "3.2624E+10",
+            "occurrences": 2,
+            "reason": "IDENTICAL_DUPLICATES"
+          }
+        },
+        {
+          "concept": "us-gaap:EquitySecuritiesFvNi",
+          "value_million_usd": "3125",
+          "source_id": "META-current",
+          "period_end": "2026-09-30",
+          "selection": {
+            "status": "EXACT_CONTEXT_VALUE",
+            "value": "3.125E+9",
+            "occurrences": 1,
+            "reason": "SINGLE_VALUE"
+          }
+        }
+      ],
+      "lower_million_usd": "92456",
+      "upper_million_usd": "139868",
+      "upper_bound_identity": "Total assets minus the listed disjoint non-interest-bearing asset classes. EVERY remaining asset is conservatively counted as potentially cash/interest-bearing, including all unclassified balances. No absent investment/loan line is set to zero.",
+      "accounting_premises": [
+        "Balance-sheet exclusions are disjoint; net PPE and separately presented operating ROU assets do not overlap.",
+        "Goodwill, acquired intangibles, physical inventories/PPE, operating ROU assets and explicitly identified equity are not cash or interest-bearing instruments under the existing documented research mapping.",
+        "All cash, restricted cash, financing receivables and unclassified other assets remain inside the enclosing remainder."
+      ],
+      "bound_evaluation": {
+        "outcome": "PASS_CONDITION_BY_UPPER_BOUND",
+        "lower_ratio": "0.193084897543208948366455320819654328413068357433442765372695",
+        "upper_ratio": "0.292100009188949870101663199926488401039186694400588092791687",
+        "approved": false,
+        "scope": "Single-condition bound arithmetic only; caller must substantiate source and accounting premises. No complete company screen or approval."
+      }
+    }
+  ],
+  "proof_scope": "These are supported upper bounds for single static conditions, not exact FinancialScreen inputs, complete company passes, qualified approvals or index status. No upper bound was written into an approval request or substituted for a reported balance.",
+  "additional_sources": [
+    {
+      "id": "search-tesla-insurers",
+      "url": "https://www.google.com/search?q=Tesla+insurance+company+NAIC+statutory+financial+statement+site%3Ainsurance.ca.gov",
+      "status": 200,
+      "sha256": "ccd60b9510881e9e9d3359e958ee95088ed661ee297cb89dbf86ba066b3ef836",
+      "archive": "data/screening-resolution-20261102/search-tesla-insurers.html",
+      "evidence_scope": "Search/access observation only; not a quantitative company disclosure."
+    },
+    {
+      "id": "search-tesla-statutory",
+      "url": "https://www.google.com/search?q=Tesla+General+Insurance+company+statutory+2026+quarterly+statement",
+      "status": 200,
+      "sha256": "961c299126fe1f0c0219dd4cf6cdaf9d0691dd2d4966bd4df42129ce60ed0c9d",
+      "archive": "data/screening-resolution-20261102/search-tesla-statutory.html",
+      "evidence_scope": "Search/access observation only; not a quantitative company disclosure."
+    },
+    {
+      "id": "search-nvda-financiers",
+      "url": "https://www.google.com/search?q=NVIDIA+infrastructure+financiers+equity+method+investments+2026+names",
+      "status": 200,
+      "sha256": "9ab7a70423a0ed204f460d4066275109646a0e12b690d0d0e64faf71c61265bd",
+      "archive": "data/screening-resolution-20261102/search-nvda-financiers.html",
+      "evidence_scope": "Search/access observation only; not a quantitative company disclosure."
+    },
+    {
+      "id": "search-avgo-interest",
+      "url": "https://www.google.com/search?q=Broadcom+2026+interest+income+gross+other+income+649",
+      "status": 200,
+      "sha256": "43e944f6aa6639ab8eee367a1357e31dc63e842e1c51bcea5e87ab0933d5c5ae",
+      "archive": "data/screening-resolution-20261102/search-avgo-interest.html",
+      "evidence_scope": "Search/access observation only; not a quantitative company disclosure."
+    },
+    {
+      "id": "bing-tesla",
+      "url": "https://www.bing.com/search?q=Tesla+insurance+company+NAIC+statutory+financial+statement",
+      "status": 200,
+      "sha256": "7b49d5951c7ebb53d1964ba52307c32536949863ada8b6de5219c88d71b0202f",
+      "archive": "data/screening-resolution-20261102/bing-tesla.html",
+      "evidence_scope": "Search/access observation only; not a quantitative company disclosure."
+    },
+    {
+      "id": "ddg-tesla",
+      "url": "https://html.duckduckgo.com/html/?q=Tesla+insurance+company+NAIC+statutory+financial+statement",
+      "status": 202,
+      "sha256": "62cd367eb54610e9345dc19cd6a70747987a601ff71e40e7d6ab48d0fc67a591",
+      "archive": "data/screening-resolution-20261102/ddg-tesla.html",
+      "evidence_scope": "Search/access observation only; not a quantitative company disclosure."
+    },
+    {
+      "id": "tesla-pc",
+      "url": "https://www.bing.com/search?q=%22Tesla+Property+%26+Casualty%22+NAIC",
+      "status": 200,
+      "sha256": "05917457abd6f5bb884043f5658faa9a77416748c140edd438f01a3abf064bfb",
+      "archive": "data/screening-resolution-20261102/tesla-pc.html",
+      "evidence_scope": "Search/access observation only; not a quantitative company disclosure."
+    },
+    {
+      "id": "tesla-general",
+      "url": "https://www.bing.com/search?q=%22Tesla+General+Insurance%22+financial+statement",
+      "status": 200,
+      "sha256": "6d93bfef33d7d35ce86574bd7f4c2a576b88f98626c007e51354354f70f2501d",
+      "archive": "data/screening-resolution-20261102/tesla-general.html",
+      "evidence_scope": "Search/access observation only; not a quantitative company disclosure."
+    },
+    {
+      "id": "nvda-finance",
+      "url": "https://www.bing.com/search?q=%22NVIDIA%22+%22infrastructure+financiers%22",
+      "status": 200,
+      "sha256": "a3e82867f9f5942ac926e4bd9e410b3d80334e61ab3c5612d770157ed2c7e0e9",
+      "archive": "data/screening-resolution-20261102/nvda-finance.html",
+      "evidence_scope": "Search/access observation only; not a quantitative company disclosure."
+    },
+    {
+      "id": "avgo-gross",
+      "url": "https://www.bing.com/search?q=%22Broadcom%22+%22interest+income%22+%222026%22",
+      "status": 200,
+      "sha256": "0bda5a318c6368e9fb81eb72362f31b796ef8ca7144a3c3ceb5675a9b6ead530",
+      "archive": "data/screening-resolution-20261102/avgo-gross.html",
+      "evidence_scope": "Search/access observation only; not a quantitative company disclosure."
+    },
+    {
+      "id": "tesla-insurance",
+      "url": "https://www.tesla.com/support/insurance",
+      "status": 200,
+      "sha256": "a866ba83c1f910ae06d684a941079a48db44419d6e7390645f5f5e9026f912ad",
+      "archive": "data/screening-resolution-20261102/tesla-insurance.html",
+      "evidence_scope": "Public issuer/regulator evidence or recorded access failure; see status and findings."
+    },
+    {
+      "id": "tesla-legal",
+      "url": "https://www.tesla.com/legal/insurance-support",
+      "status": 404,
+      "sha256": "ec2d1b2a8b577f0c177de9a2eb46b5599f6dddd31abadc467dce3a412a1f1723",
+      "archive": "data/screening-resolution-20261102/tesla-legal.html",
+      "evidence_scope": "Public issuer/regulator evidence or recorded access failure; see status and findings."
+    },
+    {
+      "id": "ca-insurer-search",
+      "url": "https://interactive.web.insurance.ca.gov/companyprofile/companyprofile",
+      "status": 200,
+      "sha256": "a8af8e4294d28658cc67d8d0b7d635b4917f0fb91cfdce895ed1b5d8ffa5b65d",
+      "archive": "data/screening-resolution-20261102/ca-insurer-search.html",
+      "evidence_scope": "Public issuer/regulator evidence or recorded access failure; see status and findings."
+    },
+    {
+      "id": "naic-statements",
+      "url": "https://content.naic.org/industry/insurance-company-filing-requirements",
+      "status": 404,
+      "sha256": "27e8dc1da0670675ba5e12031af74e1ac752fc1d7034946064d79e30bbb218b9",
+      "archive": "data/screening-resolution-20261102/naic-statements.html",
+      "evidence_scope": "Public issuer/regulator evidence or recorded access failure; see status and findings."
+    },
+    {
+      "id": "tesla-insurance-what",
+      "url": "https://www.tesla.com/support/insurance/what-is-tesla-insurance",
+      "status": 200,
+      "sha256": "5cdb76e36b11bdda77f6ff3399df78f13a327a16daecd3456fe2aac169915cd6",
+      "archive": "data/screening-resolution-20261102/tesla-insurance-what.html",
+      "evidence_scope": "Public issuer/regulator evidence or recorded access failure; see status and findings."
+    },
+    {
+      "id": "tesla-insurance-ca",
+      "url": "https://www.tesla.com/support/insurance/california",
+      "status": 200,
+      "sha256": "90ded60e659cfe95d0fdd20c4d98c98f8ec0951caa68f06922f0623d82bab043",
+      "archive": "data/screening-resolution-20261102/tesla-insurance-ca.html",
+      "evidence_scope": "Public issuer/regulator evidence or recorded access failure; see status and findings."
+    },
+    {
+      "id": "naic-filing",
+      "url": "https://content.naic.org/industry_financial_filing.htm",
+      "status": 200,
+      "sha256": "65899e60c1caf7769d5018a9e97093fd4de10b4165b9a35a58d4b7a09a2fbe4b",
+      "archive": "data/screening-resolution-20261102/naic-filing.html",
+      "evidence_scope": "Public issuer/regulator evidence or recorded access failure; see status and findings."
+    },
+    {
+      "id": "tesla-insurance-terms",
+      "url": "https://digitalassets.tesla.com/tesla-contents/image/upload/tesla-insurance-terms-of-service.pdf",
+      "status": 200,
+      "sha256": "c25e6caa6033349bd8529841b42426266b06153ffe6daf53e8f2559e5ef99df2",
+      "archive": "data/screening-resolution-20261102/tesla-insurance-terms.pdf",
+      "evidence_scope": "Public issuer/regulator evidence or recorded access failure; see status and findings."
+    },
+    {
+      "id": "tesla-insurance-privacy",
+      "url": "https://digitalassets.tesla.com/image/upload/prod/fulfillment/insurance/docs/Tesla_Insurance_Privacy_Policy.pdf",
+      "status": 200,
+      "sha256": "3b1ecf8ba55dbc8a32db46c3ae17f7ee7878c21ecc8a38106118fb3c1ace074c",
+      "archive": "data/screening-resolution-20261102/tesla-insurance-privacy.pdf",
+      "evidence_scope": "Public issuer/regulator evidence or recorded access failure; see status and findings."
+    },
+    {
+      "id": "naic-deadlines",
+      "url": "https://content.naic.org/sites/default/files/inline-files/2025%20Annual%202026%20Quarterly%20Finanical%20Statement%20Filing%20Deadlines%2012.19.2025.pdf",
+      "status": 200,
+      "sha256": "5a2eb72c6d2320f7532f6c643e9e503de06aff417a41f1d207dbc2f7b1f9d49a",
+      "archive": "data/screening-resolution-20261102/naic-deadlines.pdf",
+      "evidence_scope": "Public issuer/regulator evidence or recorded access failure; see status and findings."
+    },
+    {
+      "id": "ca-tesla-results",
+      "url": "https://interactive.web.insurance.ca.gov/companyprofile/companyprofile?event=companyProfile&doFunction=getCompanyProfileResults",
+      "method": "POST_READ_ONLY_SEARCH",
+      "status": 200,
+      "sha256": "61fccb571dc3ed246277467d01d98de0b71e1dd179676aad1620137806aebbf7",
+      "archive": "data/screening-resolution-20261102/ca-tesla-results.html",
+      "evidence_scope": "Public issuer/regulator evidence or recorded access failure; see status and findings."
+    },
+    {
+      "id": "ca-tesla-general",
+      "url": "https://interactive.web.insurance.ca.gov/companyprofile/companyprofile?event=companyProfile&doFunction=getCompanyProfile&eid=3688",
+      "status": 200,
+      "sha256": "4bd8e50063fa33603dc73be69fb2e1509f13775075037dd9767f5a3dcc5a25d0",
+      "archive": "data/screening-resolution-20261102/ca-tesla-general.html",
+      "evidence_scope": "Public issuer/regulator evidence or recorded access failure; see status and findings."
+    },
+    {
+      "id": "ca-tesla-insurance",
+      "url": "https://interactive.web.insurance.ca.gov/companyprofile/companyprofile?event=companyProfile&doFunction=getCompanyProfile&eid=3284",
+      "status": 200,
+      "sha256": "b66130f11cfa40dd4d3ff3e88e378822f6a078ba0b1fcdf3b319e68520fe5edc",
+      "archive": "data/screening-resolution-20261102/ca-tesla-insurance.html",
+      "evidence_scope": "Public issuer/regulator evidence or recorded access failure; see status and findings."
+    },
+    {
+      "id": "ca-tesla-pc",
+      "url": "https://interactive.web.insurance.ca.gov/companyprofile/companyprofile?event=companyProfile&doFunction=getCompanyProfile&eid=3353",
+      "status": 200,
+      "sha256": "f57bd9676fb742646f96b535b4daf606089c8ef5ef1bac95d6bc461d3048236a",
+      "archive": "data/screening-resolution-20261102/ca-tesla-pc.html",
+      "evidence_scope": "Public issuer/regulator evidence or recorded access failure; see status and findings."
+    },
+    {
+      "id": "ca-quarterly-home",
+      "url": "https://interactive.web.insurance.ca.gov/companyprofile/companyprofile?event=financialStatementEvent&doFunction=quarterlyStatementsHome",
+      "status": 200,
+      "sha256": "a8af8e4294d28658cc67d8d0b7d635b4917f0fb91cfdce895ed1b5d8ffa5b65d",
+      "archive": "data/screening-resolution-20261102/ca-quarterly-home.html",
+      "evidence_scope": "Public issuer/regulator evidence or recorded access failure; see status and findings."
+    },
+    {
+      "id": "ca-annual-home",
+      "url": "https://interactive.web.insurance.ca.gov/companyprofile/companyprofile?event=financialStatementEvent&doFunction=annualStatementsHome",
+      "status": 200,
+      "sha256": "8b730c8df8064567377d9df92ef43cbbaa8d424463d107238e87a3edd7b22669",
+      "archive": "data/screening-resolution-20261102/ca-annual-home.html",
+      "evidence_scope": "Public issuer/regulator evidence or recorded access failure; see status and findings."
+    },
+    {
+      "id": "ca-quarterly-session",
+      "url": "https://interactive.web.insurance.ca.gov/companyprofile/companyprofile?event=financialStatementEvent&doFunction=quarterlyStatementsHome",
+      "status": 200,
+      "sha256": "b64ef66373f2211e8988f13e86dfe5f0828bbe3ef159cbc06fdabc969266eb56",
+      "archive": "data/screening-resolution-20261102/ca-quarterly-session.html",
+      "evidence_scope": "Public issuer/regulator evidence or recorded access failure; see status and findings."
+    },
+    {
+      "id": "ca-annual-session",
+      "url": "https://interactive.web.insurance.ca.gov/companyprofile/companyprofile?event=financialStatementEvent&doFunction=annualStatementsHome",
+      "status": 200,
+      "sha256": "a82c702ed6aff761ab5f9a028e5193f0873f3452e886920e990a3d3278ddbe46",
+      "archive": "data/screening-resolution-20261102/ca-annual-session.html",
+      "evidence_scope": "Public issuer/regulator evidence or recorded access failure; see status and findings."
+    },
+    {
+      "id": "ca-tesla-insurance-quarterly-2026",
+      "url": "https://interactive.web.insurance.ca.gov/companyprofile/companyprofile?event=financialStatementEvent&doFunction=quarterlyStatementsDownload&sYear=2026",
+      "status": 200,
+      "sha256": "c4ae9b5fd4a80dda56371b86a964ef9b74e9f94a61125a79b705ec2f1597b7ea",
+      "content_type": "text/html;charset=windows-1252",
+      "context": "Company profile 3284 selected in ordinary public session; public financial disclaimer acknowledged. No account or private record access.",
+      "archive": "data/screening-resolution-20261102/ca-tesla-insurance-quarterly-2026.bin",
+      "evidence_scope": "Public issuer/regulator evidence or recorded access failure; see status and findings."
+    },
+    {
+      "id": "ca-tesla-general-quarterly-2026",
+      "url": "https://interactive.web.insurance.ca.gov/companyprofile/companyprofile?event=financialStatementEvent&doFunction=quarterlyStatementsDownload&sYear=2026",
+      "status": 200,
+      "sha256": "78df2e9a3b7315d7cc6b96f413e38a35c95b2fa81e4a5b5c6d2900c7e36386c4",
+      "content_type": "text/html;charset=windows-1252",
+      "context": "Company profile 3688 selected in ordinary public session; public financial disclaimer acknowledged. No account or private record access.",
+      "archive": "data/screening-resolution-20261102/ca-tesla-general-quarterly-2026.bin",
+      "evidence_scope": "Public issuer/regulator evidence or recorded access failure; see status and findings."
+    },
+    {
+      "id": "ca-tesla-pc-quarterly-2026",
+      "url": "https://interactive.web.insurance.ca.gov/companyprofile/companyprofile?event=financialStatementEvent&doFunction=quarterlyStatementsDownload&sYear=2026",
+      "status": 200,
+      "sha256": "7493017de12af689121dea7f629b95fd98d8e242108b8d7ed96e7d364a461bdf",
+      "content_type": "text/html;charset=windows-1252",
+      "context": "Company profile 3353 selected in ordinary public session; public financial disclaimer acknowledged. No account or private record access.",
+      "archive": "data/screening-resolution-20261102/ca-tesla-pc-quarterly-2026.bin",
+      "evidence_scope": "Public issuer/regulator evidence or recorded access failure; see status and findings."
+    },
+    {
+      "id": "NVDA-ir",
+      "url": "https://investor.nvidia.com/financial-info/financial-reports/default.aspx",
+      "status": 200,
+      "sha256": "d5ba206f489c390f04da66cdd369524e26e640dc98fab9510221ad3d4ea71256",
+      "archive": "data/screening-resolution-20261102/NVDA-ir.html",
+      "evidence_scope": "Public issuer/regulator evidence or recorded access failure; see status and findings."
+    },
+    {
+      "id": "MSFT-ir",
+      "url": "https://www.microsoft.com/en-us/Investor/earnings/FY-2027-Q1/financial-statements",
+      "status": 404,
+      "sha256": "c1247a47ef3404c50afa016987eaac055828e31f801fde92b9624a6396c76a25",
+      "archive": "data/screening-resolution-20261102/MSFT-ir.html",
+      "evidence_scope": "Public issuer/regulator evidence or recorded access failure; see status and findings."
+    },
+    {
+      "id": "GOOGL-ir",
+      "url": "https://abc.xyz/investor/",
+      "status": 200,
+      "sha256": "0c9dc0ea3ee3d0025621e60b9d84cc18c00db632c0f47b29191092db741e656f",
+      "archive": "data/screening-resolution-20261102/GOOGL-ir.html",
+      "evidence_scope": "Public issuer/regulator evidence or recorded access failure; see status and findings."
+    },
+    {
+      "id": "AMZN-ir",
+      "url": "https://ir.aboutamazon.com/quarterly-results/default.aspx",
+      "status": 200,
+      "sha256": "d5e9befd2961ecb5e5a127c084f612c9af24ab1cfe4ee9f1615ea10be5c5a9b1",
+      "archive": "data/screening-resolution-20261102/AMZN-ir.html",
+      "evidence_scope": "Public issuer/regulator evidence or recorded access failure; see status and findings."
+    },
+    {
+      "id": "TSLA-ir",
+      "url": "https://ir.tesla.com/",
+      "status": 200,
+      "sha256": "916c85fd0ef681000320ae7d25f4da6330b24a274f0afb39029ddf82a4d7d035",
+      "archive": "data/screening-resolution-20261102/TSLA-ir.html",
+      "evidence_scope": "Public issuer/regulator evidence or recorded access failure; see status and findings."
+    },
+    {
+      "id": "META-ir",
+      "url": "https://investor.atmeta.com/financials/default.aspx",
+      "status": 200,
+      "sha256": "2201991da88294fa823bd75180fc50ec9bfe6de518c1354a51080bdff5c93d9b",
+      "archive": "data/screening-resolution-20261102/META-ir.html",
+      "evidence_scope": "Public issuer/regulator evidence or recorded access failure; see status and findings."
+    },
+    {
+      "id": "AVGO-ir",
+      "url": "https://investors.broadcom.com/financial-information/quarterly-results",
+      "status": 200,
+      "sha256": "f9d00a5d1d69dfc3898030053354ac2b8a4a4439cefa1485cf4e55eee8dbbf17",
+      "archive": "data/screening-resolution-20261102/AVGO-ir.html",
+      "evidence_scope": "Public issuer/regulator evidence or recorded access failure; see status and findings."
+    },
+    {
+      "id": "ca-tesla-insurance-annual-2025",
+      "url": "https://interactive.web.insurance.ca.gov/companyprofile/companyprofile?event=financialStatementEvent&doFunction=annualStatementsDownload&sYear=2025",
+      "status": 200,
+      "sha256": "f066ca7cc35daf51e7e3c6d2f875228bf767090d7823ecb84bf2a8be448a7bf5",
+      "context": "Company profile 3284 selected in public session. Financial disclaimer acknowledged. Archive recovered after later request in sequence timed out.",
+      "archive": "data/screening-resolution-20261102/ca-tesla-insurance-annual-2025.bin",
+      "evidence_scope": "Public issuer/regulator evidence or recorded access failure; see status and findings."
+    },
+    {
+      "id": "ca-tesla-general-annual-2025",
+      "url": "https://interactive.web.insurance.ca.gov/companyprofile/companyprofile?event=financialStatementEvent&doFunction=annualStatementsDownload&sYear=2025",
+      "status": 200,
+      "sha256": "07f878ca979b6834878168c88c0dd1ac7648556fcfff961b9836fbb8e1d98d52",
+      "context": "Company profile 3688 selected in public session. Financial disclaimer acknowledged. Archive recovered after later request in sequence timed out.",
+      "archive": "data/screening-resolution-20261102/ca-tesla-general-annual-2025.bin",
+      "evidence_scope": "Public issuer/regulator evidence or recorded access failure; see status and findings."
+    },
+    {
+      "id": "ca-tesla-pc-annual-2025",
+      "url": "https://interactive.web.insurance.ca.gov/companyprofile/companyprofile?event=financialStatementEvent&doFunction=financialDisclaimerHasRead",
+      "status": "READ_TIMEOUT",
+      "context": "Public disclaimer acknowledgement timed out before annual download. No annual statement retrieved.",
+      "evidence_scope": "Public issuer/regulator evidence or recorded access failure; see status and findings."
+    },
+    {
+      "id": "TSLA-update",
+      "url": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q3-2026-Update.pdf",
+      "status": 200,
+      "sha256": "1e9ed2f3288c7f22343900a28e76c678063d60b237a15d3e5957619051288f19",
+      "archive": "data/screening-resolution-20261102/TSLA-update.pdf",
+      "evidence_scope": "Public issuer/regulator evidence or recorded access failure; see status and findings."
+    }
+  ],
+  "baseline_primary_sources_for_proofs": [
+    {
+      "source_id": "NVDA-current",
+      "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm",
+      "http_status": 200,
+      "sha256": "bd3f27471f8ec978357f9a6f10121c41f788bb946b0fa1fe100e5d37e64e871a",
+      "archive": "data/filing-review-20261102/NVDA-filing.htm"
+    },
+    {
+      "source_id": "GOOGL-current",
+      "url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000084/goog-20260930.htm",
+      "http_status": 200,
+      "sha256": "a0bfcc3af2b58672cd98586a3036ff19a1cf0842dd58db57962fef17a9c739f3",
+      "archive": "data/filing-review-20261102/GOOGL-filing.htm"
+    },
+    {
+      "source_id": "MSFT-current",
+      "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526436133/msft-20260930.htm",
+      "http_status": 200,
+      "sha256": "43b6854cc1856c4f9af0f3a305b0ece274b4615e68e506f1a03f8e122282a359",
+      "archive": "data/filing-review-20261102/MSFT-filing.htm"
+    },
+    {
+      "source_id": "META-current",
+      "url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026066773/meta-20260930.htm",
+      "http_status": 200,
+      "sha256": "4ca982ff1218f1f71dadb5fd23b2a917721f1b962b6c6d89febfe0d24e318024",
+      "archive": "data/filing-review-20261102/META-filing.htm"
+    },
+    {
+      "source_id": "AVGO-current",
+      "url": "https://www.sec.gov/Archives/edgar/data/1730168/000173016826000080/avgo-20260802.htm",
+      "http_status": 200,
+      "sha256": "caaaf100552edc7bc1354b5f095734bbd4fac5cbb0beacdf7f533116b4804b96",
+      "archive": "data/filing-review-20261102/AVGO-filing.htm"
+    }
+  ],
+  "tesla_regulator_findings": {
+    "insurers": [
+      {
+        "name": "TESLA GENERAL INSURANCE, INC.",
+        "NAIC": "24848",
+        "CDI_eid": "3688",
+        "domicile": "Arizona"
+      },
+      {
+        "name": "TESLA INSURANCE COMPANY",
+        "NAIC": "24813",
+        "CDI_eid": "3284",
+        "domicile": "California"
+      },
+      {
+        "name": "TESLA PROPERTY & CASUALTY, INC.",
+        "NAIC": "24821",
+        "CDI_eid": "3353",
+        "domicile": "California"
+      }
+    ],
+    "NAIC_group": "5018",
+    "source_ids": [
+      "ca-tesla-results",
+      "ca-tesla-general",
+      "ca-tesla-insurance",
+      "ca-tesla-pc"
+    ],
+    "September_2026_statement_deadline": "2026-11-15",
+    "deadline_source_id": "naic-deadlines",
+    "as_of": "2026-11-02",
+    "quarterly_2026_observed": "All three CDI pages returned HTTP 200 HTML stating there are no financial statements to display; no statutory numerical statement was retrieved.",
+    "annual_2025_observed": "Same no-statements message for Tesla Insurance Company and Tesla General Insurance; Property & Casualty acknowledgement route timed out.",
+    "insurance_agency_source": "tesla-insurance-terms",
+    "agency_fact": "Terms define Tesla Insurance as Tesla Insurance Services, Inc. and state it is a licensed/appointed insurance agent. Agency commissions and insurer premiums require different consolidation/GAAP treatment.",
+    "update_deck_source": "TSLA-update",
+    "update_deck_finding": "Q3 update reports combined Services/other revenue and says gross-profit growth was driven by charging, insurance and parts; it does not supply standalone insurance income.",
+    "no_absence_inference": "No inference of zero insurance revenue, no claim of exhaustive public access, and no assertion the September statement is overdue as of November 2."
+  },
+  "seven_company_fact_requests": [
+    {
+      "symbol": "NVDA",
+      "period_start": "2026-01-26",
+      "period_end": "2026-07-26",
+      "currency": "USD",
+      "unit": "millions",
+      "status": "ADDITIONAL_PRIMARY_DISCLOSURE_NEEDED_NOT_SENT",
+      "new_conditions_established_by_supported_upper_bound": [
+        "debt_assets"
+      ],
+      "complete_non_compliant_income_million_usd": null,
+      "existing_identified_subtotal_million_usd": "1037",
+      "remaining_5_percent_capacity_million_usd": "7854.85",
+      "exact_income_business_request": "Exact same-period recognized profit/distributions from the infrastructure-financier investments, their conventional-finance status, and non-compliant investee-income attribution; quantified finance-lease liability rather than immaterial-cost language.",
+      "source_sections_already_searched": [
+        "Consolidated income statement and segment/revenue notes",
+        "Financial instrument / other income / investment notes",
+        "Annual business description and product descriptions",
+        "Current earnings release and any retrieved CFO or financial exhibit"
+      ],
+      "public_research_limit": "Public investee statutory reports/financing terms and NVIDIA supplemental disclosures may clarify financier activity. They may not reveal the issuer-recognized same-period income; the notes only say not significant. Customer industry lists alone cannot measure prohibited revenue. Recognized finance-lease detail is no longer needed to establish the debt THRESHOLD: total liabilities already provide a passing upper bound. Exact reported debt remains distinct from that bound.",
+      "required_response_evidence": [
+        "Same-period issuer-consolidated recognized amounts and activity/instrument definitions",
+        "Source URL or filing accession and exact table/section",
+        "Gross returns separately from borrowing expenses and unrelated losses",
+        "Reconciliation of business income, investment income and gross-interest overlaps; no double counting",
+        "Any statutory-to-GAAP, subsidiary-to-group, earned-premium/commission, reinsurance and intercompany bridges when relevant"
+      ],
+      "approved": false,
+      "virtual_entries_authorized": false
+    },
+    {
+      "symbol": "MSFT",
+      "period_start": "2026-07-01",
+      "period_end": "2026-09-30",
+      "currency": "USD",
+      "unit": "millions",
+      "status": "ADDITIONAL_PRIMARY_DISCLOSURE_NEEDED_NOT_SENT",
+      "new_conditions_established_by_supported_upper_bound": [
+        "cash_interest_items_assets"
+      ],
+      "complete_non_compliant_income_million_usd": null,
+      "existing_identified_subtotal_million_usd": "12",
+      "remaining_5_percent_capacity_million_usd": "4601.95",
+      "exact_income_business_request": "Interest-only portion of 744, income from prohibited content/advertising or conventional financing programs, and investee/derivative return classification without netting unrelated losses.",
+      "source_sections_already_searched": [
+        "Consolidated income statement and segment/revenue notes",
+        "Financial instrument / other income / investment notes",
+        "Annual business description and product descriptions",
+        "Current earnings release and any retrieved CFO or financial exhibit"
+      ],
+      "public_research_limit": "Public revenue notes, XBOX/advertising product terms and further subsidiary/issuer disclosures can narrow scope. The searched financial statements do not allocate revenue to prohibited content or split interest/dividends. Product policies are not an income reconciliation. The cash/interest-assets threshold now passes even if all residual assets are counted. An exact interest-bearing fraction of financing receivables is not needed for that condition; income on the financing program remains part of the unresolved complete numerator.",
+      "required_response_evidence": [
+        "Same-period issuer-consolidated recognized amounts and activity/instrument definitions",
+        "Source URL or filing accession and exact table/section",
+        "Gross returns separately from borrowing expenses and unrelated losses",
+        "Reconciliation of business income, investment income and gross-interest overlaps; no double counting",
+        "Any statutory-to-GAAP, subsidiary-to-group, earned-premium/commission, reinsurance and intercompany bridges when relevant"
+      ],
+      "approved": false,
+      "virtual_entries_authorized": false
+    },
+    {
+      "symbol": "GOOGL",
+      "period_start": "2026-01-01",
+      "period_end": "2026-09-30",
+      "currency": "USD",
+      "unit": "millions",
+      "status": "ADDITIONAL_PRIMARY_DISCLOSURE_NEEDED_NOT_SENT",
+      "new_conditions_established_by_supported_upper_bound": [
+        "debt_assets"
+      ],
+      "complete_non_compliant_income_million_usd": null,
+      "existing_identified_subtotal_million_usd": "4751",
+      "remaining_5_percent_capacity_million_usd": "13112.45",
+      "exact_income_business_request": "Recognized income attributable to music/cinema, relevant prohibited ads and platform commissions within the mixed aggregates, plus any non-compliant investee/financial returns beyond the identified 4751.",
+      "source_sections_already_searched": [
+        "Consolidated income statement and segment/revenue notes",
+        "Financial instrument / other income / investment notes",
+        "Annual business description and product descriptions",
+        "Current earnings release and any retrieved CFO or financial exhibit"
+      ],
+      "public_research_limit": "Public product/subscription and advertising disclosures can identify offerings and rules. The searched annual/current reports and earnings exhibit do not split YouTube Music/TV from other subscriptions/devices or ads by underlying activity. Exact revenue attribution likely needs additional issuer disclosure.",
+      "required_response_evidence": [
+        "Same-period issuer-consolidated recognized amounts and activity/instrument definitions",
+        "Source URL or filing accession and exact table/section",
+        "Gross returns separately from borrowing expenses and unrelated losses",
+        "Reconciliation of business income, investment income and gross-interest overlaps; no double counting",
+        "Any statutory-to-GAAP, subsidiary-to-group, earned-premium/commission, reinsurance and intercompany bridges when relevant"
+      ],
+      "approved": false,
+      "virtual_entries_authorized": false
+    },
+    {
+      "symbol": "AMZN",
+      "period_start": "2026-01-01",
+      "period_end": "2026-09-30",
+      "currency": "USD",
+      "unit": "millions",
+      "status": "ADDITIONAL_PRIMARY_DISCLOSURE_NEEDED_NOT_SENT",
+      "new_conditions_established_by_supported_upper_bound": [],
+      "complete_non_compliant_income_million_usd": null,
+      "existing_identified_subtotal_million_usd": "8091",
+      "remaining_5_percent_capacity_million_usd": "21112.45",
+      "exact_income_business_request": "Consolidated recognized product sales, commissions/fulfillment fees and subscription revenue attributable to alcohol, pork/non-halal food, tobacco and cinema/music, with Prime bundle allocation; remaining gross conventional-debt returns and overlap with 8091.",
+      "source_sections_already_searched": [
+        "Consolidated income statement and segment/revenue notes",
+        "Financial instrument / other income / investment notes",
+        "Annual business description and product descriptions",
+        "Current earnings release and any retrieved CFO or financial exhibit"
+      ],
+      "public_research_limit": "Media offerings are established by issuer disclosures. The attempted official Whole Foods alcohol/meat catalogue probes were unavailable (HTTP 403); catalogue access could clarify actual prohibited-goods offerings, but would still not establish issuer income. The searched annual/current reports and two earnings exhibits do not disclose category-level prohibited sales or bundle allocations. Subsidiary/statutory reports can narrow parts; public research is not currently sufficient for the consolidated total.",
+      "required_response_evidence": [
+        "Same-period issuer-consolidated recognized amounts and activity/instrument definitions",
+        "Source URL or filing accession and exact table/section",
+        "Gross returns separately from borrowing expenses and unrelated losses",
+        "Reconciliation of business income, investment income and gross-interest overlaps; no double counting",
+        "Any statutory-to-GAAP, subsidiary-to-group, earned-premium/commission, reinsurance and intercompany bridges when relevant"
+      ],
+      "approved": false,
+      "virtual_entries_authorized": false
+    },
+    {
+      "symbol": "TSLA",
+      "period_start": "2026-01-01",
+      "period_end": "2026-09-30",
+      "currency": "USD",
+      "unit": "millions",
+      "status": "ADDITIONAL_PRIMARY_DISCLOSURE_NEEDED_NOT_SENT",
+      "new_conditions_established_by_supported_upper_bound": [],
+      "complete_non_compliant_income_million_usd": null,
+      "existing_identified_subtotal_million_usd": "1301",
+      "remaining_5_percent_capacity_million_usd": "2632.45",
+      "exact_income_business_request": "Same-period insurance revenue included in Services and other 12931, loan interest and lease-finance return, and exact overlap with the 1301 interest line. Current financing receivables are 238 short-term plus 438 noncurrent.",
+      "source_sections_already_searched": [
+        "Consolidated income statement and segment/revenue notes",
+        "Financial instrument / other income / investment notes",
+        "Annual business description and product descriptions",
+        "Current earnings release and any retrieved CFO or financial exhibit"
+      ],
+      "public_research_limit": "Official Tesla support/terms identify a licensed insurance agency; CDI profiles identify three Tesla-group insurers. Public 2026 statement pages for all three show no statements to display, and the 2025 pages for two also show none. Third 2025 route timed out before retrieval. The NAIC 2026 schedule sets September-quarter filing for November 15, after this November 2 review; it does not prove no earlier filing anywhere. The Q3 issuer update still aggregates services, charging, insurance and parts. Exact consolidated September-period earned revenue/commissions and their GAAP/reinsurance/intercompany bridge cannot be derived from these sources. Regulator or issuer records may later help; no record request or external message has been sent.",
+      "required_response_evidence": [
+        "Same-period issuer-consolidated recognized amounts and activity/instrument definitions",
+        "Source URL or filing accession and exact table/section",
+        "Gross returns separately from borrowing expenses and unrelated losses",
+        "Reconciliation of business income, investment income and gross-interest overlaps; no double counting",
+        "Any statutory-to-GAAP, subsidiary-to-group, earned-premium/commission, reinsurance and intercompany bridges when relevant"
+      ],
+      "approved": false,
+      "virtual_entries_authorized": false
+    },
+    {
+      "symbol": "META",
+      "period_start": "2026-01-01",
+      "period_end": "2026-09-30",
+      "currency": "USD",
+      "unit": "millions",
+      "status": "ADDITIONAL_PRIMARY_DISCLOSURE_NEEDED_NOT_SENT",
+      "new_conditions_established_by_supported_upper_bound": [
+        "cash_interest_items_assets"
+      ],
+      "complete_non_compliant_income_million_usd": null,
+      "existing_identified_subtotal_million_usd": "2538",
+      "remaining_5_percent_capacity_million_usd": "6547.60",
+      "exact_income_business_request": "Recognized revenue from prohibited-sector ads, directly sold prohibited entertainment/content, classified investee returns, and current/noncurrent finance-lease liabilities. Do not use ROU asset 11704 as the liability.",
+      "source_sections_already_searched": [
+        "Consolidated income statement and segment/revenue notes",
+        "Financial instrument / other income / investment notes",
+        "Annual business description and product descriptions",
+        "Current earnings release and any retrieved CFO or financial exhibit"
+      ],
+      "public_research_limit": "Ad policies and public content catalogues can clarify permitted/restricted activity but cannot quantify revenue. Searched reports/releases omit that attribution and the quarterly lease-liability split. Later filings or issuer supplemental lease tables may resolve financial balances; exact business revenue remains unestablished. The cash/interest-assets threshold now has a supported upper-bound proof. Separate recognized finance-lease liabilities still need mapping for the debt condition; the ROU asset is not substituted for them.",
+      "required_response_evidence": [
+        "Same-period issuer-consolidated recognized amounts and activity/instrument definitions",
+        "Source URL or filing accession and exact table/section",
+        "Gross returns separately from borrowing expenses and unrelated losses",
+        "Reconciliation of business income, investment income and gross-interest overlaps; no double counting",
+        "Any statutory-to-GAAP, subsidiary-to-group, earned-premium/commission, reinsurance and intercompany bridges when relevant"
+      ],
+      "approved": false,
+      "virtual_entries_authorized": false
+    },
+    {
+      "symbol": "AVGO",
+      "period_start": "2025-11-03",
+      "period_end": "2026-08-02",
+      "currency": "USD",
+      "unit": "millions",
+      "status": "ADDITIONAL_PRIMARY_DISCLOSURE_NEEDED_NOT_SENT",
+      "new_conditions_established_by_supported_upper_bound": [
+        "cash_interest_items_assets"
+      ],
+      "complete_non_compliant_income_million_usd": null,
+      "existing_identified_subtotal_million_usd": null,
+      "remaining_5_percent_capacity_million_usd": null,
+      "exact_income_business_request": "Gross interest embedded in 649 other net income, interest-bearing other assets, separately recognized financing liabilities, and any revenue from products that actually constitute weapons/arms/defense manufacturing rather than generic components.",
+      "source_sections_already_searched": [
+        "Consolidated income statement and segment/revenue notes",
+        "Financial instrument / other income / investment notes",
+        "Annual business description and product descriptions",
+        "Current earnings release and any retrieved CFO or financial exhibit"
+      ],
+      "public_research_limit": "Public product specifications/export descriptions and later financial disclosures may clarify product scope and interest. The searched annual/current reports and earnings release do not supply gross interest or revenue by prohibited product. Do not infer a prohibited amount from a defense keyword or use the tax reversal as interest. The cash/interest-assets threshold now passes even if every residual other asset is interest-bearing. The gross-interest and remaining debt/income classification gaps persist.",
+      "required_response_evidence": [
+        "Same-period issuer-consolidated recognized amounts and activity/instrument definitions",
+        "Source URL or filing accession and exact table/section",
+        "Gross returns separately from borrowing expenses and unrelated losses",
+        "Reconciliation of business income, investment income and gross-interest overlaps; no double counting",
+        "Any statutory-to-GAAP, subsidiary-to-group, earned-premium/commission, reinsurance and intercompany bridges when relevant"
+      ],
+      "approved": false,
+      "virtual_entries_authorized": false
+    }
+  ],
+  "ci_verification": {
+    "commit": "065a27ff205f51f9c2da803277d1a785bad3b875",
+    "run_id": 41479069912,
+    "url": "https://github.com/MohammedTeir/halal-quant/actions/runs/41479069912",
+    "status": "completed",
+    "conclusion": "success",
+    "postgres_pytest_passed": 703
+  },
+  "screening_outcomes": {
+    "AAPL": "FAIL_STATIC_FINANCIAL_CORE",
+    "NVDA": "INSUFFICIENT_EVIDENCE",
+    "MSFT": "INSUFFICIENT_EVIDENCE",
+    "GOOGL": "INSUFFICIENT_EVIDENCE",
+    "AMZN": "INSUFFICIENT_EVIDENCE",
+    "TSLA": "INSUFFICIENT_EVIDENCE",
+    "META": "INSUFFICIENT_EVIDENCE",
+    "AVGO": "INSUFFICIENT_EVIDENCE",
+    "LLY": "FAIL_STATIC_FINANCIAL_CORE",
+    "MU": "FAIL_STATIC_FINANCIAL_CORE"
+  },
+  "approved_symbols": [],
+  "virtual_entries_authorized": false,
+  "real_custody_required_for_virtual_entries": false,
+  "actual_dividend_receipts_required_for_virtual_entries": false,
+  "full_independent_financial_and_business_screening_required_before_virtual_entries": true,
+  "milestone_8_complete": false,
+  "actual_elapsed_forward_run_established": false,
+  "external_messages_sent": 0,
+  "production_database_mutations": 0,
+  "completion_boundary": "No eligible candidates or supported complete non-compliant-income figures have been established for the seven. Completion requires additional primary disclosures/qualified evidence and then a genuinely elapsed forward campaign; neither can be fabricated or time-compressed by software tests.",
+  "local_validation": {
+    "focused_tests_passed": 44,
+    "new_bound_cases": 14,
+    "full_tests_passed": 715,
+    "postgres_only_skips": 2,
+    "warnings": "Existing Starlette/httpx deprecation warning",
+    "source_receipt_integrity": "All archived new receipts and five baseline filing hashes verified",
+    "bound_recalculation": "All five supported upper bounds and ratios independently recalculated with Decimal at precision 60",
+    "software_scope": "Arithmetic of supplied sourced bounds only; no source-completeness assertion, financial screening request mutation or stock approval."
+  }
+}
