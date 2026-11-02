@@ -1,0 +1,26 @@
+# What remains to complete Milestone 8
+
+**There is still no eligible candidate, reviewed running campaign, or accepted elapsed forward run.** The remaining work is not another extractor checklist. The [completion report](../reports/milestone8-completion-readiness-2026-11-02.json) records the verified state and the additional accounting proofs below. Approvals remain withheld; virtual entries remain blocked.
+
+## Additional financial conditions resolved
+
+Under the unchanged FTSE Yasaar v4.6 static research convention, recognized carrying debt is a subset of recognized liabilities. Subtract only separately presented, disjoint non-borrowing liability classes, and count every remaining liability as potentially debt. This includes unknown finance leases and other opaque liabilities rather than assuming them to be zero.
+
+| Company | September 30, 2026 liability enclosure, USD millions | Assets | Maximum debt/assets | Individual condition |
+| --- | --- | ---: | ---: | --- |
+| META | 206,450 total liabilities − 28,651 noncurrent operating leases − 20,521 long-term income taxes = **157,278** | 478,836 | **32.8459%** | Below strict 33.333% |
+| MSFT | 308,894 total liabilities − 66,866 short-term unearned revenue = **242,028** | 779,403 | **31.0530%** | Below strict 33.333% |
+
+The sources are the current [Meta 10-Q](https://www.sec.gov/Archives/edgar/data/1326801/000162828026066773/meta-20260930.htm) and [Microsoft 10-Q](https://www.sec.gov/Archives/edgar/data/789019/000119312526436133/msft-20260930.htm), consolidated balance sheets. The report retains their hashes and exact issuer, undimensioned instant, USD-unit selections. The enclosing classes are not exact debt inputs and were not submitted to a screening or approval API.
+
+This **removes the need for Meta's exact finance-lease liability to decide this one threshold**. It remains an unknown accounting mapping, but cannot overturn the threshold result within the stated recognized-liability scope. Microsoft also has a conservative proof independent of its mapped debt/lease subtotal. These add to the [five earlier proofs](milestone-8-screening-resolution.md). They do not establish complete income, business eligibility, unrecognized commitment coverage, official index status or approval.
+
+## Three remaining dependencies
+
+1. **Evidence supporting an eligible campaign universe.** AAPL, MU and LLY fail the selected static financial screen. NVDA, MSFT, GOOGL, AMZN, TSLA, META and AVGO lack sufficient evidence for a complete pass. The [wider review](milestone-8-wide-source-review.md) records the precise periods, sources actually searched and public-research limits. The [seven-company requests](../reports/milestone8-screening-resolution-2026-11-02.json) are prepared and have not been sent. Their Meta lease request is narrowed by the new proof above. Remaining income/business allocations require additional primary disclosure or an independently auditable qualified evidence package; the retrieved material cannot supply them. Missing amounts remain unknown. At least one candidate must support the complete financial/business, purification and instrument review for a campaign to proceed; all ten do not have to pass. Failed or unresolved candidates cannot enter its approved universe.
+2. **Actual deployment and genuine reviews.** Read-only `python -m services.paper.preflight` in this development checkout returns `DATABASE_URL_NOT_CONFIGURED`. This says nothing about the phone or production configuration. A real campaign needs its deployed database/schema, private source configuration, fresh upstream evidence and decisions, immutable methodology/account/protocol, distinct real operator/reviewer and current source/coverage reviews. The [operations runbook](milestone-8-forward-operations.md) provides the existing setup, preflight and worker commands. A disposable database or invented reviewer cannot establish production readiness. No deployment, approval or worker start was performed here.
+3. **Time and observed operation.** After eligibility and campaign gates pass, the reviewed protocol requires at least **20 complete regular-market sessions and 20 actual elapsed days**, the reviewed completed-exit count (default ten, minimum three), restart recovery with pending orders or holdings, current reviews, no critical violations, and a reconciled flat settled finish. Existing synthetic tests do not count. These elapsed observations cannot be created during this turn, and a campaign cannot start while screening remains blocked.
+
+The internal simulator verifies virtual cash, holdings and settlement through its ledger. Real custody and actual dividend receipts remain part of live readiness. Dividend purification does not cure failed or unresolved company screening. No real messages, credentials, approvals or virtual entries were published or created.
+
+Validation: **41 filing-fact, screening-calculation and preflight tests passed**, with the existing Starlette/httpx deprecation warning. Source hashes, exact-context selections and bound arithmetic were verified. Runtime code and gates were unchanged. [Actions for the preceding exact commit `e7be947`](https://github.com/MohammedTeir/halal-quant/actions/runs/41504115409) passed **717 tests**; the new commit's CI must be checked separately.

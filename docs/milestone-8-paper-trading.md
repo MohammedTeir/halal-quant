@@ -72,6 +72,8 @@ timeline explicitly; it is not an operator acceptance report. See the
 
 ## What remains to complete Milestone 8
 
+The latest [completion-readiness check](milestone-8-completion-readiness.md) separates the unresolved company evidence, real campaign configuration/reviews and genuine elapsed-run requirements. No candidate is currently approved, so virtual entries remain blocked.
+
 Follow the [forward operations runbook](milestone-8-forward-operations.md): deploy
 migration `0009_paper_forward`, configure the user's data and upstream producers,
 choose instruments, obtain distinct paper-scoped reviews, and run the worker.

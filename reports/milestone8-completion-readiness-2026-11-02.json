@@ -1,0 +1,289 @@
+{
+  "as_of": "2026-11-02",
+  "baseline_commit": "e7be9470cf5593b248dac951d3950dbcab6f62bc",
+  "scope": "Completion readiness and additional single-condition accounting proofs; no company/campaign approval.",
+  "methodology": "Unchanged FTSE Yasaar v4.6 static research conventions in milestone8-independent-company-review-2026-11-02.json.",
+  "additional_condition_proofs": [
+    {
+      "symbol": "META",
+      "condition": "recognized_carrying_debt_to_total_assets",
+      "balance_date": "2026-09-30",
+      "unit": "USD millions",
+      "enclosing_total_liabilities": 206450,
+      "disjoint_non_debt_exclusions": [
+        {
+          "label": "Separately presented noncurrent operating lease liabilities",
+          "amount": 28651
+        },
+        {
+          "label": "Separately presented long-term income taxes",
+          "amount": 20521
+        }
+      ],
+      "upper_bound": 157278,
+      "assets": 478836,
+      "calculation": {
+        "outcome": "PASS_CONDITION_BY_UPPER_BOUND",
+        "lower_ratio": null,
+        "upper_ratio": "0.328459013106783951081372327895145728391349021376838834172869",
+        "approved": false,
+        "scope": "Single-condition bound arithmetic only; caller must substantiate source and accounting premises. No complete company screen or approval."
+      },
+      "source": {
+        "source_id": "META-current",
+        "url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026066773/meta-20260930.htm",
+        "http_status": 200,
+        "sha256": "4ca982ff1218f1f71dadb5fd23b2a917721f1b962b6c6d89febfe0d24e318024",
+        "archive": "data/filing-review-20261102/META-filing.htm"
+      },
+      "premise": "Under the unchanged carrying-borrowing convention, recognized debt is contained in recognized liabilities after excluding these separately presented non-borrowing classes. All remaining liabilities, including unknown finance leases and opaque other liabilities, are counted as potentially debt. No unknown liability is set to zero.",
+      "exact_debt_numerator_established": false,
+      "company_approved": false,
+      "exact_context_fact_selections": [
+        {
+          "amount_million_usd": 206450,
+          "selected_facts": [
+            [
+              "us-gaap:Liabilities",
+              {
+                "status": "EXACT_CONTEXT_VALUE",
+                "value": "2.06450E+11",
+                "occurrences": 1,
+                "reason": "SINGLE_VALUE"
+              }
+            ]
+          ]
+        },
+        {
+          "amount_million_usd": 28651,
+          "selected_facts": [
+            [
+              "us-gaap:OperatingLeaseLiabilityNoncurrent",
+              {
+                "status": "EXACT_CONTEXT_VALUE",
+                "value": "2.8651E+10",
+                "occurrences": 1,
+                "reason": "SINGLE_VALUE"
+              }
+            ]
+          ]
+        },
+        {
+          "amount_million_usd": 20521,
+          "selected_facts": [
+            [
+              "us-gaap:AccruedIncomeTaxesNoncurrent",
+              {
+                "status": "EXACT_CONTEXT_VALUE",
+                "value": "2.0521E+10",
+                "occurrences": 1,
+                "reason": "SINGLE_VALUE"
+              }
+            ]
+          ]
+        },
+        {
+          "amount_million_usd": 478836,
+          "selected_facts": [
+            [
+              "us-gaap:LiabilitiesAndStockholdersEquity",
+              {
+                "status": "EXACT_CONTEXT_VALUE",
+                "value": "4.78836E+11",
+                "occurrences": 1,
+                "reason": "SINGLE_VALUE"
+              }
+            ],
+            [
+              "us-gaap:Assets",
+              {
+                "status": "EXACT_CONTEXT_VALUE",
+                "value": "4.78836E+11",
+                "occurrences": 1,
+                "reason": "SINGLE_VALUE"
+              }
+            ]
+          ]
+        }
+      ],
+      "selection_scope": {
+        "period": "instant 2026-09-30",
+        "unit": "iso4217:USD",
+        "dimensions": {},
+        "issuer_cik": "0001326801"
+      }
+    },
+    {
+      "symbol": "MSFT",
+      "condition": "recognized_carrying_debt_to_total_assets",
+      "balance_date": "2026-09-30",
+      "unit": "USD millions",
+      "enclosing_total_liabilities": 308894,
+      "disjoint_non_debt_exclusions": [
+        {
+          "label": "Separately presented short-term unearned revenue",
+          "amount": 66866
+        }
+      ],
+      "upper_bound": 242028,
+      "assets": 779403,
+      "calculation": {
+        "outcome": "PASS_CONDITION_BY_UPPER_BOUND",
+        "lower_ratio": null,
+        "upper_ratio": "0.310529982563577507399894534663069041304690898033494867225299",
+        "approved": false,
+        "scope": "Single-condition bound arithmetic only; caller must substantiate source and accounting premises. No complete company screen or approval."
+      },
+      "source": {
+        "source_id": "MSFT-current",
+        "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526436133/msft-20260930.htm",
+        "http_status": 200,
+        "sha256": "43b6854cc1856c4f9af0f3a305b0ece274b4615e68e506f1a03f8e122282a359",
+        "archive": "data/filing-review-20261102/MSFT-filing.htm"
+      },
+      "premise": "Under the unchanged carrying-borrowing convention, recognized debt is contained in recognized liabilities after excluding these separately presented non-borrowing classes. All remaining liabilities, including unknown finance leases and opaque other liabilities, are counted as potentially debt. No unknown liability is set to zero.",
+      "exact_debt_numerator_established": false,
+      "company_approved": false,
+      "exact_context_fact_selections": [
+        {
+          "amount_million_usd": 308894,
+          "selected_facts": [
+            [
+              "us-gaap:Liabilities",
+              {
+                "status": "EXACT_CONTEXT_VALUE",
+                "value": "3.08894E+11",
+                "occurrences": 1,
+                "reason": "SINGLE_VALUE"
+              }
+            ]
+          ]
+        },
+        {
+          "amount_million_usd": 66866,
+          "selected_facts": [
+            [
+              "us-gaap:ContractWithCustomerLiabilityCurrent",
+              {
+                "status": "EXACT_CONTEXT_VALUE",
+                "value": "6.6866E+10",
+                "occurrences": 1,
+                "reason": "SINGLE_VALUE"
+              }
+            ]
+          ]
+        },
+        {
+          "amount_million_usd": 779403,
+          "selected_facts": [
+            [
+              "us-gaap:LiabilitiesAndStockholdersEquity",
+              {
+                "status": "EXACT_CONTEXT_VALUE",
+                "value": "7.79403E+11",
+                "occurrences": 1,
+                "reason": "SINGLE_VALUE"
+              }
+            ],
+            [
+              "us-gaap:Assets",
+              {
+                "status": "EXACT_CONTEXT_VALUE",
+                "value": "7.79403E+11",
+                "occurrences": 1,
+                "reason": "SINGLE_VALUE"
+              }
+            ]
+          ]
+        }
+      ],
+      "selection_scope": {
+        "period": "instant 2026-09-30",
+        "unit": "iso4217:USD",
+        "dimensions": {},
+        "issuer_cik": "0000789019"
+      }
+    }
+  ],
+  "preflight": {
+    "command": "python -m services.paper.preflight",
+    "environment_scope": "Current development checkout; no conclusion about the phone or production deployment.",
+    "result": {
+      "status": "BLOCKED",
+      "blockers": [
+        "DATABASE_URL_NOT_CONFIGURED"
+      ]
+    },
+    "provider_calls": 0,
+    "database_mutations": 0,
+    "messages_sent": 0
+  },
+  "remaining_requirements": [
+    {
+      "id": "ELIGIBLE_REVIEWED_UNIVERSE",
+      "state": "BLOCKED",
+      "evidence_needed": "Complete independent financial, business, purification and instrument screening supporting at least one eligible candidate in the proposed campaign; failed candidates cannot be included. All ten do not have to pass.",
+      "current_findings": {
+        "fail": [
+          "AAPL",
+          "MU",
+          "LLY"
+        ],
+        "insufficient_evidence": [
+          "NVDA",
+          "MSFT",
+          "GOOGL",
+          "AMZN",
+          "TSLA",
+          "META",
+          "AVGO"
+        ],
+        "approved": []
+      },
+      "exact_company_fact_requests": "reports/milestone8-screening-resolution-2026-11-02.json:seven_company_fact_requests",
+      "latest_public_source_findings": "reports/milestone8-wide-source-review-2026-11-02.json:companies",
+      "narrowing": "META exact lease liability is no longer needed to prove its debt threshold, because the new upper bound encloses it; exact liability mapping remains unavailable. MSFT debt threshold also has a conservative proof. Company income/business gaps remain unresolved.",
+      "can_finish_from_current_retrieved_data": false
+    },
+    {
+      "id": "REAL_PRIVATE_CAMPAIGN_CONFIGURATION_AND_REVIEWS",
+      "state": "NOT_ESTABLISHED",
+      "evidence_needed": "Actual deployed schema/source configuration, fresh independent company evidence, reviewed immutable methodology/account/protocol, distinct real operator and reviewer, current source/coverage reviews, upstream decisions, and worker preflight.",
+      "current_development_blocker": "DATABASE_URL_NOT_CONFIGURED",
+      "can_be_replaced_with_disposable_database": false,
+      "approvals_fabricated": false
+    },
+    {
+      "id": "ACTUAL_ELAPSED_FORWARD_ACCEPTANCE",
+      "state": "NOT_ESTABLISHED",
+      "evidence_needed": "At least 20 complete observed regular-market sessions and 20 actual elapsed days; reviewed completed-exit count (default 10, minimum 3), restart with pending orders/holdings, current reviews, no critical violations, reconciled flat settled final balances.",
+      "can_finish_in_this_turn": false,
+      "clock_or_trade_fabrication_allowed": false
+    }
+  ],
+  "virtual_entries_authorized": false,
+  "milestone_8_complete": false,
+  "live_trading_authorized": false,
+  "ownership_scope": {
+    "paper": "Virtual cash, holdings and settlement are verified by the internal ledger.",
+    "live": "Real custody and actual dividend receipts are live-readiness requirements, not prerequisites for internal simulated ownership."
+  },
+  "prior_exact_head_ci": {
+    "commit": "e7be9470cf5593b248dac951d3950dbcab6f62bc",
+    "run_id": 41504115409,
+    "conclusion": "success",
+    "tests_passed": 717,
+    "url": "https://github.com/MohammedTeir/halal-quant/actions/runs/41504115409"
+  },
+  "validation": {
+    "source_hashes_verified": true,
+    "bounds_evaluated_by_existing_helper": true,
+    "focused_regression_result": {
+      "passed": 41,
+      "command": "pytest -q tests/paper/test_filing_facts.py tests/paper/test_screening_calculations.py tests/paper/test_preflight.py",
+      "warnings": [
+        "Existing Starlette/httpx deprecation warning."
+      ]
+    }
+  }
+}

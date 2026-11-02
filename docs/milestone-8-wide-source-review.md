@@ -1,12 +1,14 @@
 # Wider independent source review — November 2, 2026
 
+The subsequent [completion-readiness check](milestone-8-completion-readiness.md) adds Meta and Microsoft debt-threshold proofs, narrows the Meta lease blocker and verifies the current development preflight limitation. It does not approve either company.
+
 The additional research does **not** establish a complete pass for any candidate. AAPL, MU and LLY retain their static financial failures; NVDA, MSFT, GOOGL, AMZN, TSLA, META and AVGO retain insufficient-evidence outcomes. **Approved: none. Virtual entries remain blocked. Milestone 8 remains incomplete.** This is a completed additional research pass, not completion of the milestone or evidence of elapsed forward sessions.
 
 The methodology remains **FTSE Yasaar v4.6, February 2026**, with the static accounting conventions and periods in the [independent company review](milestone-8-independent-company-review.md). The [five supported threshold bounds](milestone-8-screening-resolution.md) remain valid individual-condition findings. They do not establish complete company eligibility. All amounts below are USD millions unless stated otherwise. Missing complete non-compliant income and ratios remain `null` in the [machine-readable follow-up](../reports/milestone8-wide-source-review-2026-11-02.json).
 
 ## What the wider search added
 
-The follow-up records **75 source/search/access receipts**, including failures and discovery responses, rather than claiming 74 substantive independent financial disclosures. It extends the earlier SEC/annual/earnings work with SEC full-text searches, rendered current investor selectors, issuer transcripts and slides, a subsidiary exhibit, regulator navigation, standardized financial data and adverse secondary reporting. Raw archives remain ignored local research data; published receipts include retrieval URLs and hashes. A primary issuer supplement is still an issuer assertion, not independent third-party assurance.
+The follow-up records **75 source/search/access receipts**, including failures and discovery responses, rather than claiming 75 substantive independent financial disclosures. It extends the earlier SEC/annual/earnings work with SEC full-text searches, rendered current investor selectors, issuer transcripts and slides, a subsidiary exhibit, regulator navigation, standardized financial data and adverse secondary reporting. Raw archives remain ignored local research data; published receipts include retrieval URLs and hashes. A primary issuer supplement is still an issuer assertion, not independent third-party assurance.
 
 The earlier static-selector limitation for Alphabet, Meta and Amazon was overcome by normal browser rendering. Current document links were followed. TLS validation remained enabled through the managed-CA request transport. Search challenges and restricted articles were not bypassed. A successful landing page, an exact-phrase search with no hits, and an inaccessible report are not quantitative evidence.
 
