@@ -1045,5 +1045,194 @@
     "source_receipt_integrity": "All archived new receipts and five baseline filing hashes verified",
     "bound_recalculation": "All five supported upper bounds and ratios independently recalculated with Decimal at precision 60",
     "software_scope": "Arithmetic of supplied sourced bounds only; no source-completeness assertion, financial screening request mutation or stock approval."
-  }
+  },
+  "supplemental_source_review": {
+    "sources": [
+      {
+        "id": "NVDA-results",
+        "url": "https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-second-quarter-fiscal-2027",
+        "status": 200,
+        "sha256": "a8247969d0f004fe4e95ccf1fc59cb10d14d68ccf1d37b8b755b8a22aad5b422",
+        "archive": "data/screening-supplements-20261102/NVDA-results.html"
+      },
+      {
+        "id": "MSFT-investor",
+        "url": "https://www.microsoft.com/en-us/investor/default",
+        "status": 200,
+        "sha256": "337a8328ef82f320699bfc0b5ad906f7b9a4934d96bdd370fca7d40137840c5a",
+        "archive": "data/screening-supplements-20261102/MSFT-investor.html"
+      },
+      {
+        "id": "GOOGL-earnings",
+        "url": "https://abc.xyz/investor/earnings/",
+        "status": 200,
+        "sha256": "76cbdf489f0983550d9567e6f114ffc47ef9c2d716b7ed65ba5e696ba05fe4dd",
+        "archive": "data/screening-supplements-20261102/GOOGL-earnings.html"
+      },
+      {
+        "id": "META-quarterly",
+        "url": "https://investor.atmeta.com/financials/",
+        "status": 200,
+        "sha256": "a0931b3459b2e499090b68004464bb58ffa3beccab08e769161cc5cebed57b18",
+        "archive": "data/screening-supplements-20261102/META-quarterly.html"
+      },
+      {
+        "id": "AVGO-financial-reports",
+        "url": "https://investors.broadcom.com/financial-information/financial-reports",
+        "status": 200,
+        "sha256": "f3a5b3b99973b1cca69342704e3007cde2dc5b3229855bc82da4d2dffc6ad7a6",
+        "archive": "data/screening-supplements-20261102/AVGO-financial-reports.html"
+      },
+      {
+        "id": "AMZN-quarterly",
+        "url": "https://ir.aboutamazon.com/quarterly-results/default.aspx",
+        "status": 200,
+        "sha256": "d5e9befd2961ecb5e5a127c084f612c9af24ab1cfe4ee9f1615ea10be5c5a9b1",
+        "archive": "data/screening-supplements-20261102/AMZN-quarterly.html"
+      },
+      {
+        "id": "TSLA-webcast",
+        "url": "https://ir.tesla.com/webcast-2026-10-21",
+        "status": 200,
+        "sha256": "1842781f84fb90b540a5a4e6ea8b554952e17e58cfdf29c7bcfeca499b6d5216",
+        "archive": "data/screening-supplements-20261102/TSLA-webcast.html"
+      },
+      {
+        "id": "MSFT-press-release",
+        "url": "https://www.microsoft.com/en-us/Investor/earnings/FY-2027-Q1/press-release-webcast",
+        "status": 200,
+        "sha256": "c0f83e754028157e50dd7c7fa26e4d60acfc8a47276167e1b73ec42be00686f1",
+        "archive": "data/screening-supplements-20261102/MSFT-press-release.html"
+      },
+      {
+        "id": "MSFT-metrics",
+        "url": "https://www.microsoft.com/en-us/Investor/earnings/FY-2027-Q1/metrics",
+        "status": 200,
+        "sha256": "86ebd9577312dbd3c32296c38b0fc3c9c732e929fa816a71458642a88340566e",
+        "archive": "data/screening-supplements-20261102/MSFT-metrics.html"
+      },
+      {
+        "id": "MSFT-financial-xlsx",
+        "url": "https://view.officeapps.live.com/op/view.aspx?src=https://microsoft.com/en-us/investor/earnings/FY-2027-Q1/Document/DownloadDocument/15/FinancialStatementFY27Q1.xlsx",
+        "linked_from": "MSFT-press-release",
+        "status": 200,
+        "sha256": "ea0cb0807ff7d1bc6174607c9cf1190a36e4ccd25023988c390769795e6d172c",
+        "archive": "data/screening-supplements-20261102/MSFT-financial-xlsx.bin"
+      },
+      {
+        "id": "MSFT-transcript",
+        "url": "https://view.officeapps.live.com/op/view.aspx?src=https://microsoft.com/en-us/investor/earnings/FY-2027-Q1/Document/DownloadDocument/36/TranscriptQandAFY27Q1.docx",
+        "linked_from": "MSFT-press-release",
+        "status": 200,
+        "sha256": "f5cfcd68b406fdeecba40a5535abb216ca8c2ecd92bec699063f83f6cb4bf8df",
+        "archive": "data/screening-supplements-20261102/MSFT-transcript.bin"
+      },
+      {
+        "id": "MSFT-financial-xlsx-document",
+        "url": "https://www.microsoft.com/en-us/investor/earnings/FY-2027-Q1/Document/DownloadDocument/15/FinancialStatementFY27Q1.xlsx",
+        "status": 200,
+        "sha256": "259b89da474d721c59d6d5dc122ae9d7af51594aef2d55f937fef0b5ce60e5dd",
+        "archive": "data/screening-supplements-20261102/MSFT-financial-xlsx-document.bin"
+      },
+      {
+        "id": "MSFT-transcript-document",
+        "url": "https://www.microsoft.com/en-us/investor/earnings/FY-2027-Q1/Document/DownloadDocument/36/TranscriptQandAFY27Q1.docx",
+        "status": 200,
+        "sha256": "f7d9327dcba092cedc8a59dbc038565da34daeff2faa4ad4e7204b73890144ac",
+        "archive": "data/screening-supplements-20261102/MSFT-transcript-document.bin"
+      }
+    ],
+    "company_findings": {
+      "NVDA": {
+        "sources": [
+          "NVDA-results"
+        ],
+        "finding": "Issuer-linked current results release retrieved. It does not provide a separate recognized income amount for infrastructure-financier equity-method investments; earlier SEC/CFO note gaps are not filled by the aggregate results.",
+        "complete_non_compliant_income_million_usd": null
+      },
+      "MSFT": {
+        "sources": [
+          "MSFT-investor",
+          "MSFT-press-release",
+          "MSFT-metrics",
+          "MSFT-financial-xlsx-document",
+          "MSFT-transcript-document"
+        ],
+        "finding": "Following the actual issuer download links resolved the previously attempted 404 financial-statements route. The Office viewer is only a shell; the issuer XLSX and DOCX were downloaded from their embedded public document URLs and read as data, without executing workbook macros or formulas. Workbook sheet7 reports XBOX 5379 and Search/Advertising 6554 for the current quarter. Neither it nor the metrics/transcript provides a prohibited-activity revenue partition or a current interest-only split. Transcript paragraph discussing roughly negative 300 other income/expense is future guidance and is not a current-period income observation.",
+        "unit": "USD millions",
+        "period_start": "2026-07-01",
+        "period_end": "2026-09-30",
+        "XBOX_revenue": "5379",
+        "Search_Advertising_revenue": "6554",
+        "combined_interest_dividends_scenario": "744",
+        "known_positive_debt_returns": "12",
+        "remaining_capacity_if_all_744_charged": "3857.95",
+        "scenario_scope": "Conservative mixed-line arithmetic, not the actual complete non-compliant numerator and not an approval. Either mixed activity bucket exceeds this residual capacity; no within-bucket prohibited amount is established.",
+        "complete_non_compliant_income_million_usd": null
+      },
+      "GOOGL": {
+        "sources": [
+          "GOOGL-earnings"
+        ],
+        "finding": "Issuer-linked earnings selector retrieved, but its static response contains no new period-specific revenue partition. No current prohibited-income amount was obtained from this page; original SEC evidence remains the numerical basis.",
+        "complete_non_compliant_income_million_usd": null
+      },
+      "AMZN": {
+        "sources": [
+          "AMZN-quarterly"
+        ],
+        "finding": "Quarterly landing page was revisited. It is not an additional independent company statement and exposes no new required current-period income partition in the retrieved response. Existing filings/releases still aggregate retail, subscriptions and seller activities.",
+        "complete_non_compliant_income_million_usd": null
+      },
+      "TSLA": {
+        "sources": [
+          "TSLA-webcast"
+        ],
+        "finding": "Issuer-linked Q3 webcast landing page retrieved. Its static response exposes no written insurance-revenue reconciliation or linked written transcript. The webcast audio was not transcribed; this is not a claim that the spoken call contains no relevant information. The previous update deck, statutory access findings and NAIC timing limitations stand.",
+        "complete_non_compliant_income_million_usd": null
+      },
+      "META": {
+        "sources": [
+          "META-quarterly"
+        ],
+        "finding": "Quarterly earnings tab retrieved; no new income-allocation table is present in its static response. PDF strings in site scripts include historical filing replacements, not evidence that a current supplement or new lease/income number was obtained.",
+        "complete_non_compliant_income_million_usd": null
+      },
+      "AVGO": {
+        "sources": [
+          "AVGO-financial-reports"
+        ],
+        "finding": "Financial reports page identifies current 10-Q accession 0001730168-26-000080 already reviewed. The landing page does not provide an additional gross-interest split; a copy/download of the same filing is not independent new economic evidence.",
+        "complete_non_compliant_income_million_usd": null
+      }
+    },
+    "source_limit": "Static issuer landing pages without a period-specific table do not prove absence of a disclosure in all public sources. No access obstacle was treated as a zero value.",
+    "financial_and_business_gaps_resolved_for_full_company_approval": 0,
+    "requests_sent": 0,
+    "validation": {
+      "archived_receipts_verified": 13,
+      "focused_screening_tests_passed": 44,
+      "runtime_changes": false,
+      "approval_or_entry_gate_changes": false
+    }
+  },
+  "ci_verifications": [
+    {
+      "commit": "065a27ff205f51f9c2da803277d1a785bad3b875",
+      "run_id": 41479069912,
+      "url": "https://github.com/MohammedTeir/halal-quant/actions/runs/41479069912",
+      "status": "completed",
+      "conclusion": "success",
+      "postgres_pytest_passed": 703
+    },
+    {
+      "commit": "4038480fc6ddd815dc394b870eb02bb3cb84d100",
+      "run_id": 41482522701,
+      "url": "https://github.com/MohammedTeir/halal-quant/actions/runs/41482522701",
+      "status": "completed",
+      "conclusion": "success",
+      "postgres_pytest_passed": 717,
+      "verification": "Exact head SHA and all job/step conclusions checked; pytest count read from workflow log."
+    }
+  ]
 }
