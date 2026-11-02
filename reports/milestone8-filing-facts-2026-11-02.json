@@ -498,6 +498,30 @@
             "277 26,673 Services 30,739 27,423 91,728 80,408 Total net sales $ 109,417 $ 94,036 $ 364,357 $ 313,695 Portion of total net sales that was included in deferred revenue as of the beginning of the period $ 4,086 $ 4,015 $ 7,260 $ 6,958 The Company\u2019s proportion of net sales by disaggregated revenue source was generally consistent for each reportable segment in Note 10, \u201cSegment Information\u201d for the three- a"
           ]
         }
+      },
+      "screening_outcome": "INSUFFICIENT_EVIDENCE",
+      "financial_review_outcome": "INSUFFICIENT_EVIDENCE",
+      "business_review_outcome": "INSUFFICIENT_EVIDENCE",
+      "outcome_basis": "Selected disclosures and search excerpts do not establish complete consolidated financial inputs or a complete classified non-compliant-business revenue numerator. No full independent pass or fail determination is supported.",
+      "exact_context_balance_lookups": {
+        "Assets": {
+          "status": "EXACT_CONTEXT_VALUE",
+          "value": "3.83266E+11",
+          "occurrences": 1,
+          "reason": "SINGLE_VALUE"
+        },
+        "CashAndCashEquivalentsAtCarryingValue": {
+          "status": "EXACT_CONTEXT_VALUE",
+          "value": "3.9544E+10",
+          "occurrences": 2,
+          "reason": "IDENTICAL_DUPLICATES"
+        },
+        "AccountsReceivableNetCurrent": {
+          "status": "EXACT_CONTEXT_VALUE",
+          "value": "3.1398E+10",
+          "occurrences": 1,
+          "reason": "SINGLE_VALUE"
+        }
       }
     },
     {
@@ -913,6 +937,30 @@
             "25-07-27 0001045810 us-gaap:AdditionalPaidInCapitalMember 2025-01-27 2025-07-27 0001045810 us-gaap:CostOfRevenue 2026-04-27 2026-07-26 0001045810 us-gaap:CostOfRevenue 2025-04-28 2025-07-27 0001045810 us-gaap:CostOfRevenue 2026-01-26 2026-07-26 0001045810 us-gaap:CostOfRevenue 2025-01-27 2025-07-27 0001045810 us-gaap:ResearchAndDevelopmentExpense 2026-04-27 2026-07-26 0001045810 us-gaap:ResearchAndDevelo",
             "er 2025-01-27 2025-07-27 0001045810 us-gaap:CostOfRevenue 2026-04-27 2026-07-26 0001045810 us-gaap:CostOfRevenue 2025-04-28 2025-07-27 0001045810 us-gaap:CostOfRevenue 2026-01-26 2026-07-26 0001045810 us-gaap:CostOfRevenue 2025-01-27 2025-07-27 0001045810 us-gaap:ResearchAndDevelopmentExpense 2026-04-27 2026-07-26 0001045810 us-gaap:ResearchAndDevelopmentExpense 2025-04-28 2025-07-27 0001045810 us-gaap:R"
           ]
+        }
+      },
+      "screening_outcome": "INSUFFICIENT_EVIDENCE",
+      "financial_review_outcome": "INSUFFICIENT_EVIDENCE",
+      "business_review_outcome": "INSUFFICIENT_EVIDENCE",
+      "outcome_basis": "Selected disclosures and search excerpts do not establish complete consolidated financial inputs or a complete classified non-compliant-business revenue numerator. No full independent pass or fail determination is supported.",
+      "exact_context_balance_lookups": {
+        "Assets": {
+          "status": "EXACT_CONTEXT_VALUE",
+          "value": "3.20272E+11",
+          "occurrences": 1,
+          "reason": "SINGLE_VALUE"
+        },
+        "CashAndCashEquivalentsAtCarryingValue": {
+          "status": "EXACT_CONTEXT_VALUE",
+          "value": "2.2443E+10",
+          "occurrences": 1,
+          "reason": "SINGLE_VALUE"
+        },
+        "AccountsReceivableNetCurrent": {
+          "status": "EXACT_CONTEXT_VALUE",
+          "value": "6.3059E+10",
+          "occurrences": 1,
+          "reason": "SINGLE_VALUE"
         }
       }
     },
@@ -1464,6 +1512,30 @@
             "IntangibleAssetsMember 2026-06-30 0000789019 us-gaap:EquityContractMember us-gaap:NondesignatedMember us-gaap:ShortMember 2026-09-30 0000789019 us-gaap:InternalRevenueServiceIRSMember 2023-09-26 2023-09-26 0000789019 us-gaap:RetainedEarningsMember 2026-07-01 2026-09-30 0000789019 us-gaap:AccumulatedOtherComprehensiveIncomeMember 2025-06-30 0000789019 msft:IssuanceOfLongTermDebtTwelveMember 2026-06-30 000"
           ]
         }
+      },
+      "screening_outcome": "INSUFFICIENT_EVIDENCE",
+      "financial_review_outcome": "INSUFFICIENT_EVIDENCE",
+      "business_review_outcome": "INSUFFICIENT_EVIDENCE",
+      "outcome_basis": "Selected disclosures and search excerpts do not establish complete consolidated financial inputs or a complete classified non-compliant-business revenue numerator. No full independent pass or fail determination is supported.",
+      "exact_context_balance_lookups": {
+        "Assets": {
+          "status": "EXACT_CONTEXT_VALUE",
+          "value": "7.79403E+11",
+          "occurrences": 1,
+          "reason": "SINGLE_VALUE"
+        },
+        "CashAndCashEquivalentsAtCarryingValue": {
+          "status": "EXACT_CONTEXT_VALUE",
+          "value": "2.0281E+10",
+          "occurrences": 2,
+          "reason": "IDENTICAL_DUPLICATES"
+        },
+        "AccountsReceivableNetCurrent": {
+          "status": "EXACT_CONTEXT_VALUE",
+          "value": "6.2084E+10",
+          "occurrences": 1,
+          "reason": "SINGLE_VALUE"
+        }
       }
     },
     {
@@ -1916,6 +1988,30 @@
             "E 2026 Q3 0001652044 --12-31 P1Y0M00D http://fasb.org/us-gaap/2026#Revenues http://fasb.org/us-gaap/2026#NonoperatingIncomeExpense http://fasb.org/us-gaap/2026#Revenues http://fasb.org/us-gaap/2026#NonoperatingIncomeExpense http://fasb.org/us-gaap/2026#Revenues http://fasb.org/us-gaap/2026#NonoperatingIncomeExpense http://fasb.org/us-gaap/2026#Revenues http://fasb.org/us-gaap/2026#NonoperatingIncomeExpen",
             "s-gaap/2026#NonoperatingIncomeExpense http://fasb.org/us-gaap/2026#Revenues http://fasb.org/us-gaap/2026#NonoperatingIncomeExpense http://fasb.org/us-gaap/2026#Revenues http://fasb.org/us-gaap/2026#NonoperatingIncomeExpense http://fasb.org/us-gaap/2026#Revenues http://fasb.org/us-gaap/2026#NonoperatingIncomeExpense http://fasb.org/us-gaap/2026#OtherAssetsCurrent http://fasb.org/us-gaap/2026#OtherAssetsCu"
           ]
+        }
+      },
+      "screening_outcome": "INSUFFICIENT_EVIDENCE",
+      "financial_review_outcome": "INSUFFICIENT_EVIDENCE",
+      "business_review_outcome": "INSUFFICIENT_EVIDENCE",
+      "outcome_basis": "Selected disclosures and search excerpts do not establish complete consolidated financial inputs or a complete classified non-compliant-business revenue numerator. No full independent pass or fail determination is supported.",
+      "exact_context_balance_lookups": {
+        "Assets": {
+          "status": "EXACT_CONTEXT_VALUE",
+          "value": "1.003312E+12",
+          "occurrences": 1,
+          "reason": "SINGLE_VALUE"
+        },
+        "CashAndCashEquivalentsAtCarryingValue": {
+          "status": "EXACT_CONTEXT_VALUE",
+          "value": "5.6334E+10",
+          "occurrences": 1,
+          "reason": "SINGLE_VALUE"
+        },
+        "AccountsReceivableNetCurrent": {
+          "status": "EXACT_CONTEXT_VALUE",
+          "value": "7.2784E+10",
+          "occurrences": 1,
+          "reason": "SINGLE_VALUE"
         }
       }
     },
@@ -3121,6 +3217,30 @@
             " The preparation of financial statements in conformity with GAAP requires estimates and assumptions that affect the reported amounts of assets and liabilities, revenues and expenses, and related disclosures of contingent liabilities in the consolidated financial statements and accompanying notes. Estimates are used for, but not limited to, collectability of receivables, commitments and contingencies, imp"
           ]
         }
+      },
+      "screening_outcome": "INSUFFICIENT_EVIDENCE",
+      "financial_review_outcome": "INSUFFICIENT_EVIDENCE",
+      "business_review_outcome": "INSUFFICIENT_EVIDENCE",
+      "outcome_basis": "Selected disclosures and search excerpts do not establish complete consolidated financial inputs or a complete classified non-compliant-business revenue numerator. No full independent pass or fail determination is supported.",
+      "exact_context_balance_lookups": {
+        "Assets": {
+          "status": "EXACT_CONTEXT_VALUE",
+          "value": "1.243390E+12",
+          "occurrences": 2,
+          "reason": "IDENTICAL_DUPLICATES"
+        },
+        "CashAndCashEquivalentsAtCarryingValue": {
+          "status": "EXACT_CONTEXT_VALUE",
+          "value": "5.5783E+10",
+          "occurrences": 2,
+          "reason": "IDENTICAL_DUPLICATES"
+        },
+        "AccountsReceivableNetCurrent": {
+          "status": "EXACT_CONTEXT_VALUE",
+          "value": "9.8242E+10",
+          "occurrences": 1,
+          "reason": "SINGLE_VALUE"
+        }
       }
     },
     {
@@ -3629,6 +3749,30 @@
             "5-09-30 0001318605 tsla:AutomotiveRevenuesMember 2026-07-01 2026-09-30 0001318605 tsla:AutomotiveRevenuesMember 2025-07-01 2025-09-30 0001318605 tsla:AutomotiveRevenuesMember 2026-01-01 2026-09-30 0001318605 tsla:AutomotiveRevenuesMember 2025-01-01 2025-09-30 0001318605 tsla:EnergyGenerationAndStorageMember 2026-07-01 2026-09-30 0001318605 tsla:EnergyGenerationAndStorageMember 2025-07-01 2025-09-30 00013"
           ]
         }
+      },
+      "screening_outcome": "INSUFFICIENT_EVIDENCE",
+      "financial_review_outcome": "INSUFFICIENT_EVIDENCE",
+      "business_review_outcome": "INSUFFICIENT_EVIDENCE",
+      "outcome_basis": "Selected disclosures and search excerpts do not establish complete consolidated financial inputs or a complete classified non-compliant-business revenue numerator. No full independent pass or fail determination is supported.",
+      "exact_context_balance_lookups": {
+        "Assets": {
+          "status": "EXACT_CONTEXT_VALUE",
+          "value": "1.57517E+11",
+          "occurrences": 1,
+          "reason": "SINGLE_VALUE"
+        },
+        "CashAndCashEquivalentsAtCarryingValue": {
+          "status": "EXACT_CONTEXT_VALUE",
+          "value": "1.7853E+10",
+          "occurrences": 3,
+          "reason": "IDENTICAL_DUPLICATES"
+        },
+        "AccountsReceivableNetCurrent": {
+          "status": "EXACT_CONTEXT_VALUE",
+          "value": "4.636E+9",
+          "occurrences": 1,
+          "reason": "SINGLE_VALUE"
+        }
       }
     },
     {
@@ -4101,6 +4245,30 @@
             "-30 0001326801 us-gaap:RestrictedStockUnitsRSUMember us-gaap:CostOfRevenue 2026-07-01 2026-09-30 0001326801 us-gaap:RestrictedStockUnitsRSUMember us-gaap:CostOfRevenue 2025-07-01 2025-09-30 0001326801 us-gaap:RestrictedStockUnitsRSUMember us-gaap:CostOfRevenue 2026-01-01 2026-09-30 0001326801 us-gaap:RestrictedStockUnitsRSUMember us-gaap:CostOfRevenue 2025-01-01 2025-09-30 0001326801 us-gaap:RestrictedSt",
             "-30 0001326801 us-gaap:RestrictedStockUnitsRSUMember us-gaap:CostOfRevenue 2025-07-01 2025-09-30 0001326801 us-gaap:RestrictedStockUnitsRSUMember us-gaap:CostOfRevenue 2026-01-01 2026-09-30 0001326801 us-gaap:RestrictedStockUnitsRSUMember us-gaap:CostOfRevenue 2025-01-01 2025-09-30 0001326801 us-gaap:RestrictedStockUnitsRSUMember us-gaap:ResearchAndDevelopmentExpense 2026-07-01 2026-09-30 0001326801 us-g"
           ]
+        }
+      },
+      "screening_outcome": "INSUFFICIENT_EVIDENCE",
+      "financial_review_outcome": "INSUFFICIENT_EVIDENCE",
+      "business_review_outcome": "INSUFFICIENT_EVIDENCE",
+      "outcome_basis": "Selected disclosures and search excerpts do not establish complete consolidated financial inputs or a complete classified non-compliant-business revenue numerator. No full independent pass or fail determination is supported.",
+      "exact_context_balance_lookups": {
+        "Assets": {
+          "status": "EXACT_CONTEXT_VALUE",
+          "value": "4.78836E+11",
+          "occurrences": 1,
+          "reason": "SINGLE_VALUE"
+        },
+        "CashAndCashEquivalentsAtCarryingValue": {
+          "status": "EXACT_CONTEXT_VALUE",
+          "value": "1.1222E+10",
+          "occurrences": 2,
+          "reason": "IDENTICAL_DUPLICATES"
+        },
+        "AccountsReceivableNetCurrent": {
+          "status": "EXACT_CONTEXT_VALUE",
+          "value": "2.2716E+10",
+          "occurrences": 1,
+          "reason": "SINGLE_VALUE"
         }
       }
     },
@@ -4617,6 +4785,30 @@
             "evenue: Products $ 24,279 $ 11,173 $ 55,301 $ 31,625 Subscriptions and services 5,312 4,779 15,788 14,247 Total net revenue 29,591 15,952 71,089 45,872 Cost of revenue: Cost of products sold 6,983 3,098 15,689 8,515 Cost of subscriptions and services 641 606 1,915 1,758 Amortization of acquisition-related intangible assets 1,499 1,519 4,422 4,486 Restructuring charges 12 26 35 68 Total cost of revenue 9,"
           ]
         }
+      },
+      "screening_outcome": "INSUFFICIENT_EVIDENCE",
+      "financial_review_outcome": "INSUFFICIENT_EVIDENCE",
+      "business_review_outcome": "INSUFFICIENT_EVIDENCE",
+      "outcome_basis": "Selected disclosures and search excerpts do not establish complete consolidated financial inputs or a complete classified non-compliant-business revenue numerator. No full independent pass or fail determination is supported.",
+      "exact_context_balance_lookups": {
+        "Assets": {
+          "status": "EXACT_CONTEXT_VALUE",
+          "value": "1.88148E+11",
+          "occurrences": 1,
+          "reason": "SINGLE_VALUE"
+        },
+        "CashAndCashEquivalentsAtCarryingValue": {
+          "status": "EXACT_CONTEXT_VALUE",
+          "value": "2.3975E+10",
+          "occurrences": 1,
+          "reason": "SINGLE_VALUE"
+        },
+        "AccountsReceivableNetCurrent": {
+          "status": "EXACT_CONTEXT_VALUE",
+          "value": "1.3707E+10",
+          "occurrences": 1,
+          "reason": "SINGLE_VALUE"
+        }
       }
     },
     {
@@ -4913,6 +5105,30 @@
             "0059478 us-gaap:ProductMember 2025-01-01 2025-09-30 0000059478 lly:CollaborationandOtherRevenueMember 2026-07-01 2026-09-30 0000059478 lly:CollaborationandOtherRevenueMember 2025-07-01 2025-09-30 0000059478 lly:CollaborationandOtherRevenueMember 2026-01-01 2026-09-30 0000059478 lly:CollaborationandOtherRevenueMember 2025-01-01 2025-09-30 0000059478 us-gaap:SalesReturnsAndAllowancesMember country:US 2026-",
             "borationandOtherRevenueMember 2026-07-01 2026-09-30 0000059478 lly:CollaborationandOtherRevenueMember 2025-07-01 2025-09-30 0000059478 lly:CollaborationandOtherRevenueMember 2026-01-01 2026-09-30 0000059478 lly:CollaborationandOtherRevenueMember 2025-01-01 2025-09-30 0000059478 us-gaap:SalesReturnsAndAllowancesMember country:US 2026-07-01 2026-09-30 0000059478 us-gaap:SalesReturnsAndAllowancesMember coun"
           ]
+        }
+      },
+      "screening_outcome": "INSUFFICIENT_EVIDENCE",
+      "financial_review_outcome": "INSUFFICIENT_EVIDENCE",
+      "business_review_outcome": "INSUFFICIENT_EVIDENCE",
+      "outcome_basis": "Selected disclosures and search excerpts do not establish complete consolidated financial inputs or a complete classified non-compliant-business revenue numerator. No full independent pass or fail determination is supported.",
+      "exact_context_balance_lookups": {
+        "Assets": {
+          "status": "EXACT_CONTEXT_VALUE",
+          "value": "1.48072E+11",
+          "occurrences": 1,
+          "reason": "SINGLE_VALUE"
+        },
+        "CashAndCashEquivalentsAtCarryingValue": {
+          "status": "EXACT_CONTEXT_VALUE",
+          "value": "4.885E+9",
+          "occurrences": 1,
+          "reason": "SINGLE_VALUE"
+        },
+        "AccountsReceivableNetCurrent": {
+          "status": "EXACT_CONTEXT_VALUE",
+          "value": "2.2089E+10",
+          "occurrences": 1,
+          "reason": "SINGLE_VALUE"
         }
       }
     },
@@ -5474,7 +5690,32 @@
             "ber us-gaap:RevenueFromContractWithCustomerMember 2024-08-30 2025-08-28 0000723125 us-gaap:CustomerConcentrationRiskMember mu:UndisclosedCustomerMember us-gaap:RevenueFromContractWithCustomerMember 2023-09-01 2024-08-29 0000723125 country:US 2025-08-29 2026-09-03 0000723125 country:US 2024-08-30 2025-08-28 0000723125 country:US 2023-09-01 2024-08-29 0000723125 country:TW 2025-08-29 2026-09-03 0000723125 "
           ]
         }
+      },
+      "screening_outcome": "INSUFFICIENT_EVIDENCE",
+      "financial_review_outcome": "INSUFFICIENT_EVIDENCE",
+      "business_review_outcome": "INSUFFICIENT_EVIDENCE",
+      "outcome_basis": "Selected disclosures and search excerpts do not establish complete consolidated financial inputs or a complete classified non-compliant-business revenue numerator. No full independent pass or fail determination is supported.",
+      "exact_context_balance_lookups": {
+        "Assets": {
+          "status": "EXACT_CONTEXT_VALUE",
+          "value": "1.95888E+11",
+          "occurrences": 1,
+          "reason": "SINGLE_VALUE"
+        },
+        "CashAndCashEquivalentsAtCarryingValue": {
+          "status": "EXACT_CONTEXT_VALUE",
+          "value": "3.8364E+10",
+          "occurrences": 2,
+          "reason": "IDENTICAL_DUPLICATES"
+        },
+        "AccountsReceivableNetCurrent": {
+          "status": "EXACT_CONTEXT_VALUE",
+          "value": "3.1793E+10",
+          "occurrences": 1,
+          "reason": "SINGLE_VALUE"
+        }
       }
     }
-  ]
+  ],
+  "outcomes_evaluated_at": "2026-11-02T15:02:52.751560+00:00"
 }

@@ -37,3 +37,29 @@ uv run pytest -q tests/paper/test_filing_facts.py
 Use a new archive directory; existing archives are refused. The ten focused cases cover scaled/signed custom facts with dimensional periods, nil/nonfinite/unsupported values, missing units, overlapping occurrences, all-ten mocked GET-only acquisition, unavailable sources and archive preservation. The extractor makes no application database connections, broker requests, email sends or Telegram calls. No credentials were published. No production review or campaign state was changed.
 
 Local regression verification completed with **694 passed, 2 PostgreSQL-only checks skipped**, and one existing Starlette/httpx deprecation warning. All ten focused extractor tests pass; repository lint, formatting and diff whitespace checks pass. These software checks do not grant screening approval or Milestone 8 acceptance.
+
+
+## Explicit screening outcomes and context/duplicate checks
+
+The follow-up evaluates existing archived filings without changing their receipt hashes or the original observation timestamp. `outcomes_evaluated_at` records the later inventory evaluation. Exact-context lookups for assets, cash and current receivables succeeded for all ten companies using the filing's period-end, issuer CIK, USD unit and undimensioned scope. Identical repeated disclosures count as one value, not an additive total. This verifies selection from the inventory, not independent completeness or accounting classification.
+
+| Candidate | Financial review | Business review | Overall screening outcome |
+| --- | --- | --- | --- |
+| AAPL | Insufficient evidence | Insufficient evidence | Insufficient evidence |
+| NVDA | Insufficient evidence | Insufficient evidence | Insufficient evidence |
+| MSFT | Insufficient evidence | Insufficient evidence | Insufficient evidence |
+| GOOGL | Insufficient evidence | Insufficient evidence | Insufficient evidence |
+| AMZN | Insufficient evidence | Insufficient evidence | Insufficient evidence |
+| TSLA | Insufficient evidence | Insufficient evidence | Insufficient evidence |
+| META | Insufficient evidence | Insufficient evidence | Insufficient evidence |
+| AVGO | Insufficient evidence | Insufficient evidence | Insufficient evidence |
+| LLY | Insufficient evidence | Insufficient evidence | Insufficient evidence |
+| MU | Insufficient evidence | Insufficient evidence | Insufficient evidence |
+
+The per-company findings above explain the outstanding work. No complete independent pass or fail determination is established by this inventory. Prior adverse/questionable third-party labels remain unresolved supporting evidence; they are not silently converted into an independent determination. All approvals remain withheld and all virtual entries remain blocked until full financial and business screening and the existing review gates support approval. This research script does not submit reviews or alter the deployed campaign.
+
+The selector requires exact instantaneous or duration dates, issuer, unit and explicit dimensions. It excludes typed dimensions it cannot interpret, rejects reversed request periods, and never substitutes a quarter for year-to-date, one currency for another, shares for money, or a segment for the consolidated issuer. Missing/unsupported values remain unknown, including when an otherwise matching duplicate has a missing value. Conflicting duplicate values return insufficient evidence; conflicting context/unit ID definitions reject the document instead of silently overwriting its definitions. Numeric zero remains distinct from missing data. This remains a bounded inventory helper, not a complete XBRL validator.
+
+The focused screening regression checks pass **30 tests**, including **17 filing-extractor cases** covering periods, USD/EUR/share units, issuers, explicit/typed dimensions, instant/duration distinctions, missing contexts/units, empty/nil/nonfinite values, identical/conflicting/missing duplicate facts and conflicting context/unit definitions.
+
+Follow-up full regression result: **701 passed, 2 PostgreSQL-only checks skipped**, with the existing Starlette/httpx deprecation warning. Repository lint, formatting, report-consistency and diff checks pass. No deployed approvals, campaign state, virtual entries or real messaging were changed by this follow-up.

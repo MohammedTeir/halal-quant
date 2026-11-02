@@ -72,15 +72,26 @@ class FilingParser(HTMLParser):
                         {"tag": tag, "attributes": attrs, "text": text}
                     )
         if tag == "xbrli:context":
-            self.contexts[attrs.get("id")] = {"text": text, "fields": attrs.get("fields", [])}
+            context = {"text": text, "fields": attrs.get("fields", [])}
+            key = attrs.get("id")
+            if key in self.contexts and self.contexts[key] != context:
+                raise ValueError("Conflicting context definitions")
+            self.contexts[key] = context
         elif tag == "xbrli:unit":
-            self.units[attrs.get("id")] = text
+            key = attrs.get("id")
+            if key in self.units and self.units[key] != text:
+                raise ValueError("Conflicting unit definitions")
+            self.units[key] = text
         elif tag == "ix:nonfraction":
             amount = None
             state = "UNSUPPORTED_OR_INVALID_NUMERIC"
             # Only known dot-decimal formats are accepted. Nil/unknown formats stay unknown.
             fmt = attrs.get("format", "").split(":")[-1].lower()
-            if attrs.get("xsi:nil") != "true" and fmt in ("", "num-dot-decimal", "numdotdecimal"):
+            if attrs.get("xsi:nil") not in ("true", "1") and fmt in (
+                "",
+                "num-dot-decimal",
+                "numdotdecimal",
+            ):
                 try:
                     number = Decimal(text.replace(",", "").replace(" ", ""))
                     scale = int(attrs.get("scale", "0"))
@@ -148,6 +159,72 @@ def extract(raw):
     }
 
 
+def select_fact(facts, concept, *, issuer, unit, end, start=None, dimensions=None):
+    """Exact-context lookup only; duplicates never add or override unknown/conflicting values.
+
+    This selects an inventory value, not a complete screening input or approval.
+    Typed dimensions are unsupported and excluded. Default scope is undimensioned.
+    """
+    for day in (start, end):
+        if day is not None and date.fromisoformat(day).isoformat() != day:
+            raise ValueError("Canonical dates required")
+    if start is not None and start > end:
+        raise ValueError("Reversed period")
+    expected_dimensions = dimensions or {}
+    matches = []
+    for fact in facts:
+        if fact.get("concept") != concept or fact.get("unit") != unit:
+            continue
+        fields = (fact.get("context") or {}).get("fields", [])
+        by_tag = {}
+        for field in fields:
+            by_tag.setdefault(field["tag"], []).append(field)
+        if [f["text"] for f in by_tag.get("xbrli:identifier", [])] != [issuer]:
+            continue
+        if "xbrldi:typedmember" in by_tag:
+            continue
+        members = by_tag.get("xbrldi:explicitmember", [])
+        actual_dimensions = {f["attributes"].get("dimension"): f["text"] for f in members}
+        if len(actual_dimensions) != len(members) or actual_dimensions != expected_dimensions:
+            continue
+        expected_period = (
+            {"xbrli:instant": [end]}
+            if start is None
+            else {"xbrli:startdate": [start], "xbrli:enddate": [end]}
+        )
+        actual_period = {
+            tag: [f["text"] for f in by_tag[tag]]
+            for tag in ("xbrli:instant", "xbrli:startdate", "xbrli:enddate")
+            if tag in by_tag
+        }
+        if actual_period == expected_period:
+            matches.append(fact)
+    result = {
+        "status": "INSUFFICIENT_EVIDENCE",
+        "value": None,
+        "occurrences": len(matches),
+        "reason": "NO_EXACT_CONTEXT_MATCH",
+    }
+    if not matches:
+        return result
+    values = set()
+    for fact in matches:
+        try:
+            value = Decimal(str(fact.get("value")))
+        except InvalidOperation:
+            value = Decimal("NaN")
+        if fact.get("state") != "PARSED_NOT_RECONCILED" or not value.is_finite():
+            return result | {"reason": "MISSING_OR_UNSUPPORTED_DUPLICATE_VALUE"}
+        values.add(value)
+    if len(values) != 1:
+        return result | {"reason": "CONFLICTING_DUPLICATE_VALUES"}
+    return result | {
+        "status": "EXACT_CONTEXT_VALUE",
+        "value": str(values.pop()),
+        "reason": "IDENTICAL_DUPLICATES" if len(matches) > 1 else "SINGLE_VALUE",
+    }
+
+
 def acquire(archive, *, cutoff, transport=None):
     archive.mkdir(mode=0o700, parents=True, exist_ok=False)
     items = []
@@ -158,7 +235,13 @@ def acquire(archive, *, cutoff, transport=None):
         headers={"User-Agent": "halal-quant research https://github.com/MohammedTeir/halal-quant"},
     ) as client:
         for symbol, cik in CANDIDATES.items():
-            row = {"symbol": symbol, "cik": cik, "status": "NOT_APPROVED", "receipts": []}
+            row = {
+                "symbol": symbol,
+                "cik": cik,
+                "status": "NOT_APPROVED",
+                "screening_outcome": "INSUFFICIENT_EVIDENCE",
+                "receipts": [],
+            }
 
             def get(url, name, row=row):
                 response = client.get(url)
