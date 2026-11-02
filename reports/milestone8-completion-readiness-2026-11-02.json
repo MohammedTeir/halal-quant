@@ -285,5 +285,17 @@
         "Existing Starlette/httpx deprecation warning."
       ]
     }
+  },
+  "subsequent_database_verification": {
+    "report": "reports/milestone8-database-readiness-2026-11-02.json",
+    "database_access": "VERIFIED_READ_ONLY_AFTER_USER_SUPPLIED_CONNECTION",
+    "migration": "0009_paper_forward",
+    "enabled_operator_and_reviewer_exist": true,
+    "control_review_count": 0,
+    "pending_campaign_count": 1,
+    "worker_cycle_count": 0,
+    "existing_campaign_methodology": "paper-equity-screen-proposal-v1",
+    "public_api_basic_health": "HTTP_200_READY_AND_LIVE",
+    "scope": "Supersedes the access-discovery limitation for the supplied database, not the earlier truthful observation that DATABASE_URL was unset in the development environment. No private host configuration, approvals or company eligibility inferred."
   }
 }

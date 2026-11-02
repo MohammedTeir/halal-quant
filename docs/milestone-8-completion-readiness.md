@@ -1,5 +1,7 @@
 # What remains to complete Milestone 8
 
+**Database follow-up:** the user subsequently supplied a connection. The [actual database inventory](milestone-8-database-readiness.md) verifies schema 0009, existing operator/reviewer accounts and a pending campaign. It supersedes the access limitation in item 2 below for this supplied database. There are no recorded control reviews, signals, decisions, cycles or orders; the existing immutable account also uses the older methodology proposal. Host configuration and company eligibility remain unestablished.
+
 **There is still no eligible candidate, reviewed running campaign, or accepted elapsed forward run.** The remaining work is not another extractor checklist. The [completion report](../reports/milestone8-completion-readiness-2026-11-02.json) records the verified state and the additional accounting proofs below. Approvals remain withheld; virtual entries remain blocked.
 
 ## Additional financial conditions resolved

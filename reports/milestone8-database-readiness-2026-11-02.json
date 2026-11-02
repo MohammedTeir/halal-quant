@@ -1,0 +1,206 @@
+{
+  "status": "READ_ONLY_INVENTORY_COMPLETE",
+  "transport": "Neon HTTPS SQL through inherited proxy with TLS verification",
+  "database_mutations": 0,
+  "messages_sent": 0,
+  "queries": {
+    "safety": [
+      {
+        "read_only": "on",
+        "observed_at": "2026-11-02 19:11:01.525332+00"
+      }
+    ],
+    "migration": [
+      {
+        "version_num": "0009_paper_forward"
+      }
+    ],
+    "enabled_roles": [
+      {
+        "role": "admin",
+        "count": 1
+      },
+      {
+        "role": "operator",
+        "count": 1
+      },
+      {
+        "role": "reviewer",
+        "count": 1
+      }
+    ],
+    "paper_counts": [
+      {
+        "accounts": 1,
+        "runs": 1,
+        "cycles": 0,
+        "orders": 0,
+        "journal_entries": 1,
+        "quotes": 0
+      }
+    ],
+    "account_modes": [
+      {
+        "mode": "forward",
+        "count": 1
+      }
+    ],
+    "runs": [
+      {
+        "created_at": "2026-10-31 17:40:38.079972+00",
+        "status": "PENDING_REVIEW",
+        "started_at": null,
+        "last_seen": null,
+        "minimum_sessions": "20",
+        "minimum_round_trips": "10"
+      }
+    ],
+    "cycle_observation": [
+      {
+        "first_started_at": null,
+        "last_completed_at": null,
+        "count": 0
+      }
+    ],
+    "control_counts": [],
+    "latest_reviews": [],
+    "upstream_counts": [
+      {
+        "signals": 0,
+        "decisions": 0,
+        "classifications": 0,
+        "source_imports": 137,
+        "coverage_rows": 145
+      }
+    ],
+    "source_imports": [
+      {
+        "kind": "calendar",
+        "synthetic": false,
+        "count": 38,
+        "latest_received_at": "2026-10-31 17:35:42.203036+00"
+      },
+      {
+        "kind": "corporate_actions",
+        "synthetic": false,
+        "count": 32,
+        "latest_received_at": "2026-10-31 17:31:32.74637+00"
+      },
+      {
+        "kind": "news",
+        "synthetic": false,
+        "count": 67,
+        "latest_received_at": "2026-10-31 17:36:01.861564+00"
+      }
+    ],
+    "signal_decision_times": [
+      {
+        "latest_signal_at": null,
+        "latest_decision_at": null
+      }
+    ]
+  },
+  "immutable_configuration_check": {
+    "accounts": [
+      {
+        "config_sha256": "1d738dfb7fb9b5232d2cb3d36c42f72956babb34b599530a6385d4a644aa1419",
+        "mode": "forward",
+        "symbols": [
+          "AAPL",
+          "AMZN",
+          "AVGO",
+          "GOOGL",
+          "LLY",
+          "META",
+          "MSFT",
+          "MU",
+          "NVDA",
+          "TSLA"
+        ],
+        "methodology_id": "paper-equity-screen-proposal-v1",
+        "settlement_days": 1
+      }
+    ],
+    "runs": [
+      {
+        "protocol_sha256": "a41489138c4e310b2526d4166d9447352274387d4a42dc6286c659f04a519bc7",
+        "account_config_sha256": "1d738dfb7fb9b5232d2cb3d36c42f72956babb34b599530a6385d4a644aa1419",
+        "account_config_matches_observed": true,
+        "status": "PENDING_REVIEW",
+        "provider": "alpaca_iex",
+        "feed_purposes": [
+          "calendar",
+          "corporate_actions",
+          "earnings",
+          "fomc",
+          "news"
+        ],
+        "data_review_hash_count": 5,
+        "reviewed_at": null,
+        "review_expires_at": null,
+        "has_reviewed_by": false,
+        "has_worker_owner": false,
+        "critical_violations_count": 0
+      }
+    ],
+    "scope": "Hashes and safe configuration projections only; no credentials, actor identities, URLs or private protocol notes."
+  },
+  "interpretation": {
+    "database_access": "VERIFIED_FOR_THIS_READ_ONLY_INVENTORY",
+    "schema": "ALREADY_CURRENT",
+    "enabled_roles": "PROVISIONED_NOT_QUALIFIED_APPROVAL",
+    "existing_campaign": "PENDING_UNREVIEWED_NOT_STARTED",
+    "existing_methodology": "paper-equity-screen-proposal-v1",
+    "methodology_scope_mismatch": true,
+    "new_methodology_or_universe_requires_fresh_account_protocol": true,
+    "host_environment_configuration": "PRIVATE_FLAGS_PRODUCERS_AND_WORKER_NOT_OBSERVED",
+    "current_company_approvals_supported": [],
+    "virtual_entries_authorized": false,
+    "actual_elapsed_forward_evidence_established": false,
+    "milestone_8_complete": false,
+    "remaining_blockers": [
+      "COMPLETE_COMPANY_EVIDENCE_REQUIRED",
+      "METHODOLOGY_ASSET_POLICY_REVIEWS_NOT_RECORDED",
+      "PROTOCOL_REVIEW_NOT_RECORDED",
+      "FRESH_SOURCE_COVERAGE_NOT_ESTABLISHED",
+      "REAL_UPSTREAM_SIGNALS_CLASSIFICATIONS_DECISIONS_ABSENT",
+      "HOST_CONFIGURATION_AND_CONTINUOUS_WORKER_NOT_OBSERVED",
+      "ACTUAL_ELAPSED_FORWARD_RUN_NOT_STARTED"
+    ],
+    "public_api_basic_health": "READY_AND_LIVE"
+  },
+  "privacy": {
+    "credentials_saved": false,
+    "raw_connection_or_hostname_published": false,
+    "actor_or_user_identities_published": false,
+    "raw_protocol_published": false,
+    "connection_source": "User supplied privately for this task; hidden input; memory-only use."
+  },
+  "prior_exact_head_ci": {
+    "commit": "93ea6606cbe9cbd51bfb4cd3e1357af1ffd3bf06",
+    "run_id": 41506302704,
+    "conclusion": "success",
+    "tests_passed": 717
+  },
+  "public_host_health": [
+    {
+      "url": "https://halal-quant.onrender.com/health/ready",
+      "http_status": 200,
+      "response": {
+        "status": "ready"
+      }
+    },
+    {
+      "url": "https://halal-quant.onrender.com/health/live",
+      "http_status": 200,
+      "response": {
+        "status": "ok"
+      }
+    }
+  ],
+  "validation": {
+    "read_only_inventory_assertions_passed": true,
+    "preflight_regression_tests_passed": 3,
+    "warning": "Existing Starlette/httpx deprecation warning."
+  }
+}
