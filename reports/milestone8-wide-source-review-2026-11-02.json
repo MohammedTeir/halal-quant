@@ -1,0 +1,775 @@
+{
+  "as_of": "2026-11-02",
+  "purpose": "Wider public-source research beyond the completed extractor checklist; independent screening follow-up, not certification.",
+  "methodology": {
+    "name": "FTSE Yasaar Global Equity Shariah Index Series v4.6, February 2026",
+    "application": "Unchanged static research conventions in milestone8-independent-company-review-2026-11-02.json; no method switching, missing-zero substitution or net-loss offset.",
+    "income_limit": "0.05",
+    "debt_and_interest_asset_limits_strict": "0.33333",
+    "receivables_cash_limit_strict": "0.50"
+  },
+  "outcomes": {
+    "fail": [
+      "AAPL",
+      "MU",
+      "LLY"
+    ],
+    "insufficient_evidence": [
+      "NVDA",
+      "MSFT",
+      "GOOGL",
+      "AMZN",
+      "TSLA",
+      "META",
+      "AVGO"
+    ],
+    "approved": [],
+    "virtual_entries_blocked": true,
+    "milestone8_complete": false
+  },
+  "companies": [
+    {
+      "symbol": "NVDA",
+      "period_start": "2026-01-26",
+      "period_end": "2026-07-26",
+      "unit": "USD millions",
+      "status": "INSUFFICIENT_EVIDENCE",
+      "approved": false,
+      "complete_noncompliant_income": null,
+      "complete_noncompliant_income_ratio": null,
+      "new_source_ids": [
+        "EFTS-NVDA-financier",
+        "EFTS-NVDA-global"
+      ],
+      "supported_findings": "SEC exact-phrase search returned the already-reviewed current 10-Q and CFO exhibit. The broader NVIDIA/financiers search has 472 hits, only the first 100 retrieved; it is not an exhaustive review. No separately quantified current recognized financier income was obtained.",
+      "exact_missing_facts": [
+        "Recognized income from infrastructure-financier equity-method investments, classified by conventional financing/business activity, with overlap against other income.",
+        "Gross positive financial/investee returns outside verified interest 1,037; the phrase not significant is not a number."
+      ],
+      "further_public_research": "Further issuer/investee disclosures may help identify activities and amounts; investee totals alone cannot establish NVIDIA recognized income. Current retrieved public records do not provide the consolidated allocation. A primary issuer reconciliation or qualified source-backed package remains necessary."
+    },
+    {
+      "symbol": "MSFT",
+      "period_start": "2026-07-01",
+      "period_end": "2026-09-30",
+      "unit": "USD millions",
+      "status": "INSUFFICIENT_EVIDENCE",
+      "approved": false,
+      "complete_noncompliant_income": null,
+      "complete_noncompliant_income_ratio": null,
+      "new_source_ids": [
+        "MSFT-additional-exhibit"
+      ],
+      "supported_findings": "The newly discovered October 28 EX99.1 is an annual financial restatement for June 30, 2026, not September-quarter income. Its 3,301 interest/dividend amount and 3,700 financing receivables cannot fill the current quarter. SEC interest-income search also returned employee-plan 11-Ks, which are different reporting entities. Prior current-quarter workbook confirms XBOX 5,379 and Search/Advertising 6,554, without prohibited subsets.",
+      "exact_missing_facts": [
+        "Current-quarter interest/dividend split of 744 and financing-program income, with gross recognized debt returns and overlap against identified debt gains 12.",
+        "Recognized prohibited music/cinema/content, relevant advertising and conventional-financial investee income within mixed categories."
+      ],
+      "further_public_research": "Additional public program/content descriptions can clarify classification; neither annual restatement nor employee-plan income resolves current consolidated amounts. Current issuer quarter disclosures or a qualified auditable allocation are needed."
+    },
+    {
+      "symbol": "GOOGL",
+      "period_start": "2026-01-01",
+      "period_end": "2026-09-30",
+      "unit": "USD millions",
+      "status": "INSUFFICIENT_EVIDENCE",
+      "approved": false,
+      "complete_noncompliant_income": null,
+      "complete_noncompliant_income_ratio": null,
+      "new_source_ids": [
+        "GOOGL-verified-rendered",
+        "GOOGL-Q3-slides",
+        "GOOGL-Q3-transcript",
+        "GOOGL-prior-transcript-9",
+        "GOOGL-prior-transcript-14"
+      ],
+      "supported_findings": "Rendered issuer selector exposed current slides and all three 2026 transcripts. Q3 cites over 150 million YouTube Music/Premium subscribers including trials, music-led subscription growth, and finance as the second-largest contributor to Search ad growth after retail. Q1/Q2 likewise identify Music/Premium growth. These establish exposure and material questions, not attributable revenue or a minimum ratio. Counts, trials, growth rankings and mixed subscriptions are not revenue allocations.",
+      "exact_missing_facts": [
+        "YTD recognized prohibited music/cinema revenue, relevant ad revenue and platform commissions inside mixed Services categories, with bundle/trial allocation.",
+        "Classified positive financial/investee returns beyond verified interest plus debt gains 4,751, without netting unrelated losses."
+      ],
+      "further_public_research": "Public product and advertising-policy research can establish activity existence, but the retrieved issuer transcripts do not expose YTD prohibited-sector revenue. An issuer allocation or independently auditable qualified evidence package could resolve the numerator; pricing times subscriber counts cannot."
+    },
+    {
+      "symbol": "AMZN",
+      "period_start": "2026-01-01",
+      "period_end": "2026-09-30",
+      "unit": "USD millions",
+      "status": "INSUFFICIENT_EVIDENCE",
+      "approved": false,
+      "complete_noncompliant_income": null,
+      "complete_noncompliant_income_ratio": null,
+      "new_source_ids": [
+        "AMZN-verified-rendered",
+        "AMZN-slides-3",
+        "AMZN-slides-8",
+        "AMZN-slides-13",
+        "AMZN-subscription-business"
+      ],
+      "supported_findings": "Rendered selector exposed Q1-Q3 slides, SEC/issuer PDF copies and webcast audio. All three slide sets were read; they report consolidated/segment performance and cash flow, not prohibited-goods commissions or Prime content allocation. Q2 notes 53.4 billion pre-tax other income primarily Anthropic; that is not all conventional-debt income. No issuer-written transcript was exposed; webcast audio was not transcribed.",
+      "exact_missing_facts": [
+        "Recognized YTD prohibited-goods sales, seller commissions/fees and music/cinema income, with Prime/bundle allocation and no double counting.",
+        "Gross positive conventional-debt returns, conversion timing and classified investee income beyond known 8,091."
+      ],
+      "further_public_research": "Audio and additional public product disclosures remain possible research leads, not evidence that the amounts are disclosed. A transcript mention or merchant catalogue would still require same-period consolidated revenue allocation. The retrieved public financial supplements do not resolve it."
+    },
+    {
+      "symbol": "TSLA",
+      "period_start": "2026-01-01",
+      "period_end": "2026-09-30",
+      "unit": "USD millions",
+      "status": "INSUFFICIENT_EVIDENCE",
+      "approved": false,
+      "complete_noncompliant_income": null,
+      "complete_noncompliant_income_ratio": null,
+      "new_source_ids": [
+        "TSLA-subsidiaries",
+        "AZ-domestic-reporting",
+        "TX-company-profiles"
+      ],
+      "supported_findings": "The SEC significant-subsidiaries exhibit expands the legal-entity universe beyond the three CDI insurers to 11 insurance/casualty-named entities as of December 31, 2025. Arizona domestic reporting instructions and the actual Texas profile/NAIC lookup route were followed; neither supplied a Tesla current consolidated revenue bridge. A legal name is not proof of licensed current operations, positive revenue, third-party underwriting or a group total.",
+      "exact_missing_facts": [
+        "YTD consolidated earned underwriting revenue, agency commissions, loan charges and earned lease-finance income, mapped across operating entities and reconciled to interest 1,301.",
+        "Statutory-to-consolidated-GAAP reconciliation covering earned versus written premiums, captives, reinsurance, broker/agent fees, intercompany elimination and ownership/consolidation."
+      ],
+      "further_public_research": "Further regulator data may resolve subsidiary amounts after filing/publication; September-quarter NAIC deadline November 15 is after this November 2 review. Earlier availability is possible, not guaranteed. Even complete statutory premiums would not resolve Tesla consolidated GAAP income without the bridge. No public-record request or issuer message was sent."
+    },
+    {
+      "symbol": "META",
+      "period_start": "2026-01-01",
+      "period_end": "2026-09-30",
+      "unit": "USD millions",
+      "status": "INSUFFICIENT_EVIDENCE",
+      "approved": false,
+      "complete_noncompliant_income": null,
+      "complete_noncompliant_income_ratio": null,
+      "new_source_ids": [
+        "META-verified-rendered",
+        "META-current-13",
+        "META-current-14",
+        "META-current-15",
+        "META-current-18",
+        "META-current-19",
+        "META-current-20",
+        "META-current-23",
+        "META-current-24",
+        "META-current-25",
+        "META-casino-report",
+        "META-Reuters",
+        "META-news-search"
+      ],
+      "supported_findings": "Rendered selector exposed all Q1-Q3 slides, earnings and follow-up transcripts. Lease principal payments and capex forecasts are flows, not closing finance-lease liabilities. Accessible December 16, 2025 secondary reporting attributes about 19% of 2024 China-advertiser revenue (over 18 billion) to a mixed scam/illegal-gambling/pornography/other-banned-content category. This is not 19% of global revenue, pure gambling, or current 2026 audited GAAP attribution. The separately attempted Reuters November 6 article returned 401 and was not read. Official anti-scam material supplies no revenue reconciliation.",
+      "exact_missing_facts": [
+        "Current and noncurrent finance-lease carrying liabilities, excluding operating leases and without substituting ROU assets or principal payments.",
+        "YTD recognized prohibited advertising/content and classified financial/investee returns beyond gross interest 2,538, reconciled by category/geography and overlaps."
+      ],
+      "further_public_research": "Further primary advertiser-sector disclosure or an issuer response may quantify current exposure; the accessible historical mixed-category secondary allegation cannot determine the current ratio. Annual lease notes may clarify older balances but cannot silently supply September closing amounts. Current source-backed allocation remains necessary."
+    },
+    {
+      "symbol": "AVGO",
+      "period_start": "2025-11-03",
+      "period_end": "2026-08-02",
+      "unit": "USD millions",
+      "status": "INSUFFICIENT_EVIDENCE",
+      "approved": false,
+      "complete_noncompliant_income": null,
+      "complete_noncompliant_income_ratio": null,
+      "new_source_ids": [
+        "EFTS-AVGO-interest",
+        "AVGO-income-quarterly",
+        "AVGO-income-annual",
+        "AVGO-TradingEconomics",
+        "AVGO-company",
+        "AVGO-annual-primary"
+      ],
+      "supported_findings": "Re-reading the primary FY2025 Other Income, Net table found separately disclosed interest 347: 347+210-17-85=455. This historical finding does not quantify FY2026 YTD. Secondary quarterly income row has missing current quarters and 347 in FY2025 Q4; its annual/TTM display repeats 347. Neither supports assigning the full annual amount to one quarter or current YTD. Secondary operating income 16,070 versus SEC 15,955 differs by 115, equal to restructuring 12+103; this classification bridge is not additional income. The current SEC other-income net 649 includes a 315 tax reversal, so 649-315 is not verified interest.",
+      "exact_missing_facts": [
+        "FY2026 YTD gross interest and classified positive financial/investee returns within net 649, with losses, tax reversal and factoring/other income separated.",
+        "Any separate financing liability not in mapped carrying debt; product-level evidence and attributable revenue for actual arms/defense manufacturing, rather than assuming all chips sold to defense customers are arms."
+      ],
+      "further_public_research": "Public quarterly exhibits and standardized providers were searched; no current gross-interest breakdown obtained. Further issuer disclosure could resolve it. Product documentation can narrow manufacturing classification, but customer-sector labels alone cannot establish prohibited manufacturing or same-period revenue."
+    }
+  ],
+  "source_receipts": [
+    {
+      "source_id": "GOOGL-Q3-slides",
+      "url": "https://s206.q4cdn.com/479360582/files/doc_financials/2026/q3/2026q3-alphabet-earnings-slides.pdf",
+      "http_status": 200,
+      "sha256": "a6abe3de8a72a78c2347c60005f852ad297a492169ed6f169dc290f539f0cf59",
+      "archive": "data/screening-wide-20261102/GOOGL-Q3-slides.pdf"
+    },
+    {
+      "source_id": "GOOGL-Q3-event",
+      "url": "https://abc.xyz/investor/events/event-details/2026/2026-Q3-Earnings-Call-2026-Ujou16CTw9/default.aspx",
+      "http_status": 200,
+      "sha256": "eea6dd49a3adae5c14f78d9397e92eaec61af3a9c20ddecf9e935badd0765ff4",
+      "archive": "data/screening-wide-20261102/GOOGL-Q3-event.html"
+    },
+    {
+      "source_id": "GOOGL-rendered",
+      "url": "https://abc.xyz/investor/earnings/",
+      "error": "page.goto: net::ERR_CERT_AUTHORITY_INVALID at https://abc.xyz/investor/earnings/"
+    },
+    {
+      "source_id": "META-rendered",
+      "url": "https://investor.atmeta.com/financials?section=quarterlyearnings",
+      "error": "page.goto: net::ERR_CERT_AUTHORITY_INVALID at https://investor.atmeta.com/financials?section=quarterlyearnings"
+    },
+    {
+      "source_id": "AMZN-rendered",
+      "url": "https://ir.aboutamazon.com/quarterly-results/default.aspx",
+      "error": "page.goto: net::ERR_CERT_AUTHORITY_INVALID at https://ir.aboutamazon.com/quarterly-results/default.aspx"
+    },
+    {
+      "source_id": "GOOGL-verified-rendered",
+      "url": "https://abc.xyz/investor/earnings/",
+      "http_status": 200,
+      "dom_sha256": "086d6f82e5303a94f99880876bbd7b0e5939623326a7cb43ba6b11f9e2863f28",
+      "archive": "data/screening-wide-20261102/GOOGL-verified-rendered.html"
+    },
+    {
+      "url": "https://abc.xyz/feed/FinancialReport.svc/GetFinancialReportList",
+      "http_status": 200,
+      "sha256": "560ff1f5fa2b75b5a2679df85b9b5e38462f7ffb1e69e6a2fd19919031472ab1",
+      "archive": "data/screening-wide-20261102/GOOGL-verified-rendered-feed-0.json",
+      "source_id": "GOOGL-verified-rendered-feed-6"
+    },
+    {
+      "source_id": "META-verified-rendered",
+      "url": "https://investor.atmeta.com/financials?section=quarterlyearnings",
+      "http_status": 200,
+      "dom_sha256": "6540ec389dedfa5ae86c55953c4664e928af9645f570b2930a825db1e2328077",
+      "archive": "data/screening-wide-20261102/META-verified-rendered.html"
+    },
+    {
+      "url": "https://investor.atmeta.com/feed/FinancialReport.svc/GetFinancialReportYearList",
+      "http_status": 200,
+      "sha256": "6e93995e54c77f5f533f5161f49c816c843efd26dbc25565dd41c8371d47bd21",
+      "archive": "data/screening-wide-20261102/META-verified-rendered-feed-0.json",
+      "source_id": "META-verified-rendered-feed-8"
+    },
+    {
+      "url": "https://investor.atmeta.com/feed/FinancialReport.svc/GetFinancialReportYearList",
+      "http_status": 200,
+      "sha256": "fd0946d1d8774bb5d7fbbdc5c0e3ad5ff51590a3582958acca710b7fbe7dbe88",
+      "archive": "data/screening-wide-20261102/META-verified-rendered-feed-1.json",
+      "source_id": "META-verified-rendered-feed-9"
+    },
+    {
+      "url": "https://investor.atmeta.com/feed/FinancialReport.svc/GetFinancialReportList",
+      "http_status": 200,
+      "sha256": "b3f23c41bbf0e4873df127ff7da99ca27c304f631d4f9a1b07f8e6351da583fd",
+      "archive": "data/screening-wide-20261102/META-verified-rendered-feed-2.json",
+      "source_id": "META-verified-rendered-feed-10"
+    },
+    {
+      "url": "https://investor.atmeta.com/feed/FinancialReport.svc/GetFinancialReportList",
+      "http_status": 200,
+      "sha256": "92c4a4d799ce82757a74d34bdffb03031b14cd8daa8e2fb509fd9dedc9649484",
+      "archive": "data/screening-wide-20261102/META-verified-rendered-feed-3.json",
+      "source_id": "META-verified-rendered-feed-11"
+    },
+    {
+      "source_id": "AMZN-verified-rendered",
+      "url": "https://ir.aboutamazon.com/quarterly-results/default.aspx",
+      "http_status": 200,
+      "dom_sha256": "e609d6461e2d76554601de84278a54e72d6939065db60663f366be8e7afea433",
+      "archive": "data/screening-wide-20261102/AMZN-verified-rendered.html"
+    },
+    {
+      "url": "https://ir.aboutamazon.com/feed/FinancialReport.svc/GetFinancialReportYearList",
+      "http_status": 200,
+      "sha256": "6e93995e54c77f5f533f5161f49c816c843efd26dbc25565dd41c8371d47bd21",
+      "archive": "data/screening-wide-20261102/AMZN-verified-rendered-feed-0.json",
+      "source_id": "AMZN-verified-rendered-feed-13"
+    },
+    {
+      "url": "https://ir.aboutamazon.com/feed/FinancialReport.svc/GetFinancialReportList",
+      "http_status": 200,
+      "sha256": "9f5953b5fa21059e50e9032a86b1edc5449eb3bdc3101469bd330abf238ea041",
+      "archive": "data/screening-wide-20261102/AMZN-verified-rendered-feed-1.json",
+      "source_id": "AMZN-verified-rendered-feed-14"
+    },
+    {
+      "source_id": "GOOGL-Q3-transcript",
+      "url": "https://s206.q4cdn.com/479360582/files/doc_events/2026/Oct/28/2026_Q3_Earnings_Transcript.pdf",
+      "http_status": 200,
+      "sha256": "7e92f1db003536fb7cdc80546c3d5cc2c7f9528368efd4b7421cb550ac75db64",
+      "archive": "data/screening-wide-20261102/GOOGL-Q3-transcript.pdf"
+    },
+    {
+      "source_id": "META-current-13",
+      "url": "https://s21.q4cdn.com/399680738/files/content_files/Earnings-Presentation-Q3-2026.pdf",
+      "http_status": 200,
+      "sha256": "37cb7db71efeb7e8fc65d30751fb5dff991523f22a88390bc099ea80acb6a65b",
+      "archive": "data/screening-wide-20261102/META-current-13.pdf"
+    },
+    {
+      "source_id": "META-current-14",
+      "url": "https://s21.q4cdn.com/399680738/files/content_files/META-Q3-2026-Earnings-Call-Transcript.pdf",
+      "http_status": 200,
+      "sha256": "980c5e766b36f06c4d3d22b543cc35714da05c0abe400b60d36199f0c90759da",
+      "archive": "data/screening-wide-20261102/META-current-14.pdf"
+    },
+    {
+      "source_id": "META-current-15",
+      "url": "https://s21.q4cdn.com/399680738/files/content_files/META-Q3-2026-Follow-Up-Call-Transcript.pdf",
+      "http_status": 200,
+      "sha256": "ecf298aca8a95954a266d80ca3e779146ebac2a27d0997f567ee8583f8b22fa2",
+      "archive": "data/screening-wide-20261102/META-current-15.pdf"
+    },
+    {
+      "source_id": "META-current-18",
+      "url": "https://s21.q4cdn.com/399680738/files/doc_financials/2026/q2/Earnings-Presentation-Q2-2026.pdf",
+      "http_status": 200,
+      "sha256": "3aada2c02f9eb360c2dd868ea4ab23393b1370af67bd3a6f1d8a8c19f647091a",
+      "archive": "data/screening-wide-20261102/META-current-18.pdf"
+    },
+    {
+      "source_id": "META-current-19",
+      "url": "https://s21.q4cdn.com/399680738/files/doc_financials/2026/q2/META-Q2-2026-Earnings-Call-Transcript.pdf",
+      "http_status": 200,
+      "sha256": "e2afcb9b452656bea2706e1dedc190d31b3aafe5528af7f3c19de6ab347a34ec",
+      "archive": "data/screening-wide-20261102/META-current-19.pdf"
+    },
+    {
+      "source_id": "META-current-20",
+      "url": "https://s21.q4cdn.com/399680738/files/doc_financials/2026/q2/META-Q2-2026-Follow-Up-Call-Transcript.pdf",
+      "http_status": 200,
+      "sha256": "fc1c0702417cede2bd8aa936b82347e78ae603e169f19137dc7378e5fa845c22",
+      "archive": "data/screening-wide-20261102/META-current-20.pdf"
+    },
+    {
+      "source_id": "META-current-23",
+      "url": "https://s21.q4cdn.com/399680738/files/doc_financials/2026/q1/Earnings-Presentation-Q1-2026.pdf",
+      "http_status": 200,
+      "sha256": "9efd8c3c5e60afab4aedf2a34ebffca3be41699408b8e8862a20d8684ffa406e",
+      "archive": "data/screening-wide-20261102/META-current-23.pdf"
+    },
+    {
+      "source_id": "META-current-24",
+      "url": "https://s21.q4cdn.com/399680738/files/doc_financials/2026/q1/META-Q1-2026-Earnings-Call-Transcript.pdf",
+      "http_status": 200,
+      "sha256": "75a66cc6c660e37c009851d6820fd75bc5576d6d298b974b49bba26fc4bd6bac",
+      "archive": "data/screening-wide-20261102/META-current-24.pdf"
+    },
+    {
+      "source_id": "META-current-25",
+      "url": "https://s21.q4cdn.com/399680738/files/doc_financials/2026/q1/META-Q1-2026-Follow-Up-Call-Transcript.pdf",
+      "http_status": 200,
+      "sha256": "7ee0db1f0dc413d829dd013fcb9817f6f49a1f3253bb650047e6b396d9fa0918",
+      "archive": "data/screening-wide-20261102/META-current-25.pdf"
+    },
+    {
+      "source_id": "EFTS-NVDA-global",
+      "url": "https://efts.sec.gov/LATEST/search-index?q=%22NVIDIA%22+%22financiers%22&dateRange=custom&startdt=2026-01-01&enddt=2026-11-02&from=0&size=100",
+      "http_status": 200,
+      "sha256": "31ae2345d2426d662ceb14ad497c6ba614569099b57aaa5e271e6c562820c67a",
+      "archive": "data/screening-wide-20261102/NVDA-global.json",
+      "role": "SEC full-text discovery, not absence/completeness proof."
+    },
+    {
+      "source_id": "EFTS-NVDA-equity-income",
+      "url": "https://efts.sec.gov/LATEST/search-index?q=%22equity+method%22&ciks=0001045810&dateRange=custom&startdt=2026-01-01&enddt=2026-11-02&from=0&size=100",
+      "http_status": 200,
+      "sha256": "5aa94f68ab902203bd94509d0ad1735d3100e38db5d276f43a4f199ed628c97c",
+      "archive": "data/screening-wide-20261102/NVDA-equity-income.json",
+      "role": "SEC full-text discovery, not absence/completeness proof."
+    },
+    {
+      "source_id": "EFTS-AVGO-interest-label",
+      "url": "https://efts.sec.gov/LATEST/search-index?q=%22interest+income%22&ciks=0001730168&forms=10-Q%2C10-K%2C8-K%2C424B2%2C424B3%2C424B5&dateRange=custom&startdt=2026-01-01&enddt=2026-11-02&from=0&size=100",
+      "http_status": 200,
+      "sha256": "6005483cea72cc1367f8b0ec749804b8ef5a406c5419ac84795cc0c4f7c1e209",
+      "archive": "data/screening-wide-20261102/AVGO-interest-label.json",
+      "role": "SEC full-text discovery, not absence/completeness proof."
+    },
+    {
+      "source_id": "EFTS-META-lease-general",
+      "url": "https://efts.sec.gov/LATEST/search-index?q=%22finance+leases%22&ciks=0001326801&dateRange=custom&startdt=2026-01-01&enddt=2026-11-02&from=0&size=100",
+      "http_status": 200,
+      "sha256": "fb603eb086e25738f0336593f4263397ec2bf307f7fa6a926e9200dc2e625cef",
+      "archive": "data/screening-wide-20261102/META-lease-general.json",
+      "role": "SEC full-text discovery, not absence/completeness proof."
+    },
+    {
+      "source_id": "EFTS-TSLA-insurance-broad",
+      "url": "https://efts.sec.gov/LATEST/search-index?q=%22insurance%22&ciks=0001318605&forms=10-Q%2C10-K%2C8-K&dateRange=custom&startdt=2026-01-01&enddt=2026-11-02&from=0&size=100",
+      "http_status": 200,
+      "sha256": "180e58fbd5f45866d86a0cdf734a9aea8c6b394613c26dc61414893ddc01ba92",
+      "archive": "data/screening-wide-20261102/TSLA-insurance-broad.json",
+      "role": "SEC full-text discovery, not absence/completeness proof."
+    },
+    {
+      "source_id": "EFTS-MSFT-financing",
+      "url": "https://efts.sec.gov/LATEST/search-index?q=%22financing+receivables%22&ciks=0000789019&dateRange=custom&startdt=2026-01-01&enddt=2026-11-02&from=0&size=100",
+      "http_status": 200,
+      "sha256": "0435ff226c763b229921a63cfa8c8b4bdb2ee45981feb96eb40721d6d6c4cede",
+      "archive": "data/screening-wide-20261102/MSFT-financing.json",
+      "role": "SEC full-text discovery, not absence/completeness proof."
+    },
+    {
+      "source_id": "AVGO-income-quarterly",
+      "url": "https://stockanalysis.com/stocks/avgo/financials/income-statement/?p=quarterly",
+      "http_status": 200,
+      "sha256": "1214894724b704e52cfee608b3d74b488276ca0a23ff872a4909da06cbe6fa80",
+      "archive": "data/screening-wide-20261102/AVGO-income-quarterly.html",
+      "role": "Secondary standardized financial data, requires primary definition and period reconciliation."
+    },
+    {
+      "source_id": "AVGO-income-annual",
+      "url": "https://stockanalysis.com/stocks/avgo/financials/income-statement/",
+      "http_status": 200,
+      "sha256": "9e97c0771def8de25083f6f009732a810d38dd69d1c72fe5db066cf8f8d86620",
+      "archive": "data/screening-wide-20261102/AVGO-income-annual.html",
+      "role": "Secondary standardized financial data, requires primary definition and period reconciliation."
+    },
+    {
+      "source_id": "GOOGL-prior-transcript-9",
+      "url": "https://s206.q4cdn.com/479360582/files/doc_events/2026/Apr/29/Alphabet-2026_Q1_Earnings_Transcript.pdf",
+      "http_status": 200,
+      "sha256": "a484838849e73a4d13dd34a4f4d0e3b030b4543839ad8808f34b64af706242e2",
+      "archive": "data/screening-wide-20261102/GOOGL-prior-transcript-9.pdf"
+    },
+    {
+      "source_id": "GOOGL-prior-transcript-14",
+      "url": "https://s206.q4cdn.com/479360582/files/doc_events/2026/Jul/22/2026_Q2_Earnings_Transcript.pdf",
+      "http_status": 200,
+      "sha256": "de938411f77818b147ff51d8ca2f70081f9a44401d396f1779ab5b5adfbd9123",
+      "archive": "data/screening-wide-20261102/GOOGL-prior-transcript-14.pdf"
+    },
+    {
+      "source_id": "AMZN-slides-3",
+      "url": "https://s2.q4cdn.com/299287126/files/doc_earnings/2026/q3/presentation/Webslides_Q326.pdf",
+      "http_status": 200,
+      "sha256": "fb8c11107742743e7cb116b34be97dba0510945665adb5fc5da47260073ce123",
+      "archive": "data/screening-wide-20261102/AMZN-slides-3.pdf"
+    },
+    {
+      "source_id": "AMZN-slides-8",
+      "url": "https://s2.q4cdn.com/299287126/files/doc_earnings/2026/q2/presentation/Webslides_Q226.pdf",
+      "http_status": 200,
+      "sha256": "60a2b40afd1d966685fb35c9c7913c059a495ac7dc4590b82423138788d8f23c",
+      "archive": "data/screening-wide-20261102/AMZN-slides-8.pdf"
+    },
+    {
+      "source_id": "AMZN-slides-13",
+      "url": "https://s2.q4cdn.com/299287126/files/doc_earnings/2026/q1/presentation/Webslides_Q126.pdf",
+      "http_status": 200,
+      "sha256": "defb6de7df0a7c7c98dc894d194c7283c9a9991617135b9d0aa1643922fb4bdb",
+      "archive": "data/screening-wide-20261102/AMZN-slides-13.pdf"
+    },
+    {
+      "source_id": "MSFT-additional-exhibit",
+      "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526436149/msft-ex99_1.htm",
+      "http_status": 200,
+      "sha256": "bb68a5dfa4bc75543035a535786620b2c13511e02fc6ecf14db402c57e1fcb0f",
+      "archive": "data/screening-wide-20261102/MSFT-additional-exhibit.html"
+    },
+    {
+      "source_id": "TSLA-subsidiaries",
+      "url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026003952/tsla-2025x12x31xex211.htm",
+      "http_status": 200,
+      "sha256": "44d6d3369603a3c7ef878b1ed686f8730fa6623b5090d30da729739c9837938f",
+      "archive": "data/screening-wide-20261102/TSLA-subsidiaries.html"
+    },
+    {
+      "source_id": "META-Reuters",
+      "url": "https://www.reuters.com/investigations/meta-is-earning-fortune-deluge-fraudulent-ads-documents-show-2025-11-06/",
+      "http_status": 401,
+      "sha256": "42db39cb9ff8583ace7eb82844a1d39f4fb0a3b20012232a64dc5e3894072467",
+      "archive": "data/screening-wide-20261102/META-Reuters.html"
+    },
+    {
+      "source_id": "META-casino-report",
+      "url": "https://www.casino.org/news/reuters-meta-made-billions-dollars-from-illegal-gambling-ads/",
+      "http_status": 200,
+      "sha256": "ca8df086b8af03961ed8d349cbf3d33bf3631bfd3393aad2fe464fa1aabb5bf3",
+      "archive": "data/screening-wide-20261102/META-casino-report.html"
+    },
+    {
+      "source_id": "NVDA-CNBC",
+      "url": "https://www.cnbc.com/2026/09/04/nvidia-ai-investments-99-billion.html",
+      "http_status": 403,
+      "sha256": "dbb79f3dcdeeedd3b5e01f9289a7eb72ed4bd9d0c393bbf73ab5a2049b6ab580",
+      "archive": "data/screening-wide-20261102/NVDA-CNBC.html"
+    },
+    {
+      "source_id": "Yasaar-home",
+      "url": "https://www.yasaar.org/",
+      "http_status": 200,
+      "sha256": "9f98a43f2a405944d2e9dcda46a056bb8f9a2a242e958551b9e6871d266f90b8",
+      "archive": "data/screening-wide-20261102/Yasaar-home.html"
+    },
+    {
+      "source_id": "AMZN-subscription-business",
+      "url": "https://www.aboutamazon.com/news/entertainment",
+      "http_status": 200,
+      "sha256": "0086889c6d7940c851e2e828e18239028af9586e62ee9f40411bd38fe06cfcf4",
+      "archive": "data/screening-wide-20261102/AMZN-subscription-business.html"
+    },
+    {
+      "source_id": "AVGO-company",
+      "url": "https://www.broadcom.com/company",
+      "http_status": 200,
+      "sha256": "05f9ad9923e2d4496b6bf5e2ccc760ec934d94c70181a32e22544f8dee94c430",
+      "archive": "data/screening-wide-20261102/AVGO-company.html"
+    },
+    {
+      "source_id": "EFTS-NVDA-financier",
+      "url": "https://efts.sec.gov/LATEST/search-index?q=%22infrastructure+financiers%22&ciks=0001045810&dateRange=custom&startdt=2026-01-01&enddt=2026-11-02&from=0&size=25",
+      "http_status": 200,
+      "sha256": "a2e160277a6d6917ec5cf1796ac5ff5fe30f70af4fa6792ac37d2c25832189a5",
+      "archive": "data/screening-wide-20261102/NVDA-financier.json"
+    },
+    {
+      "source_id": "EFTS-AVGO-interest",
+      "url": "https://efts.sec.gov/LATEST/search-index?q=%22interest+income%22&ciks=0001730168&dateRange=custom&startdt=2026-01-01&enddt=2026-11-02&from=0&size=25",
+      "http_status": 200,
+      "sha256": "093e4a6a96cbef392f1254f2168808a9b85133236a1cecbddd7729e1034229eb",
+      "archive": "data/screening-wide-20261102/AVGO-interest.json"
+    },
+    {
+      "source_id": "EFTS-MSFT-interest",
+      "url": "https://efts.sec.gov/LATEST/search-index?q=%22interest+income%22&ciks=0000789019&dateRange=custom&startdt=2026-01-01&enddt=2026-11-02&from=0&size=25",
+      "http_status": 200,
+      "sha256": "fde628973050f61e46db5c112c749bc503c59d9a5c1819195335b23708503c39",
+      "archive": "data/screening-wide-20261102/MSFT-interest.json"
+    },
+    {
+      "source_id": "EFTS-GOOGL-music",
+      "url": "https://efts.sec.gov/LATEST/search-index?q=%22YouTube+Music%22&ciks=0001652044&dateRange=custom&startdt=2026-01-01&enddt=2026-11-02&from=0&size=25",
+      "http_status": 200,
+      "sha256": "13dba32c884998b69e3fc86e4e106b1147da65de67b09e46f897f176fa88a405",
+      "archive": "data/screening-wide-20261102/GOOGL-music.json"
+    },
+    {
+      "source_id": "EFTS-AMZN-music",
+      "url": "https://efts.sec.gov/LATEST/search-index?q=%22digital+music%22&ciks=0001018724&dateRange=custom&startdt=2026-01-01&enddt=2026-11-02&from=0&size=25",
+      "http_status": 200,
+      "sha256": "4e06ba1be57a2919eee8397bbe4ce877c507c82f0907a8b5d98f0e280a2535cf",
+      "archive": "data/screening-wide-20261102/AMZN-music.json"
+    },
+    {
+      "source_id": "EFTS-TSLA-insurance",
+      "url": "https://efts.sec.gov/LATEST/search-index?q=%22insurance+revenue%22&ciks=0001318605&dateRange=custom&startdt=2026-01-01&enddt=2026-11-02&from=0&size=25",
+      "http_status": 200,
+      "sha256": "3f53642902b3ea76a8e6dedafa7ea5512663c6aec18949f754c91cd4d5249126",
+      "archive": "data/screening-wide-20261102/TSLA-insurance.json"
+    },
+    {
+      "source_id": "EFTS-META-financelease",
+      "url": "https://efts.sec.gov/LATEST/search-index?q=%22finance+lease+liabilities%22&ciks=0001326801&dateRange=custom&startdt=2026-01-01&enddt=2026-11-02&from=0&size=25",
+      "http_status": 200,
+      "sha256": "7d8df4d52170b812b8f24129850e6f9e41af05a3233bb5242053e2716d7cfb92",
+      "archive": "data/screening-wide-20261102/META-financelease.json"
+    },
+    {
+      "source_id": "brave-tsla",
+      "url": "https://search.brave.com/search?q=%22Tesla%22+%22insurance%22+%222026%22+%22revenue%22",
+      "http_status": 200,
+      "sha256": "5d8cb69597d0e99ebacd399e1491214fde1b8e5d99862b87fc01db13901b0b3b",
+      "archive": "data/screening-wide-20261102/brave-tsla.html",
+      "role": "Search discovery only, not primary numerical evidence."
+    },
+    {
+      "source_id": "yahoo-tsla",
+      "url": "https://search.yahoo.com/search?p=%22Tesla+insurance%22+%222026%22+premiums",
+      "http_status": 500,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "archive": "data/screening-wide-20261102/yahoo-tsla.html",
+      "role": "Search discovery only, not primary numerical evidence."
+    },
+    {
+      "source_id": "mojeek-tsla",
+      "url": "https://www.mojeek.com/search?q=%22Tesla+insurance%22+%22statutory%22",
+      "http_status": 200,
+      "sha256": "3b6c9e4d0ddf85e000cd659ed1d9dc02d30bdb6f8fe00d0e9bb95c5c33c83b55",
+      "archive": "data/screening-wide-20261102/mojeek-tsla.html",
+      "role": "Search discovery only, not primary numerical evidence."
+    },
+    {
+      "source_id": "brave-nvda",
+      "url": "https://search.brave.com/search?q=%22NVIDIA%22+%22infrastructure+financiers%22",
+      "http_status": 200,
+      "sha256": "f4e6efac3122b8f6677d5f49790f24eed11d74eec7da90a49f3485e694fd5f5c",
+      "archive": "data/screening-wide-20261102/brave-nvda.html",
+      "role": "Search discovery only, not primary numerical evidence."
+    },
+    {
+      "source_id": "brave-avgo",
+      "url": "https://search.brave.com/search?q=%22Broadcom%22+%22interest+income%22+%222026%22",
+      "http_status": 200,
+      "sha256": "c8cf851bdc291524e2c8b54b734618eab546ce426b7d02b01440f386cd90fcee",
+      "archive": "data/screening-wide-20261102/brave-avgo.html",
+      "role": "Search discovery only, not primary numerical evidence."
+    },
+    {
+      "source_id": "yahoo-googl",
+      "url": "https://search.yahoo.com/search?p=%22YouTube+Music%22+%22revenue%22+%222026%22",
+      "http_status": 500,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "archive": "data/screening-wide-20261102/yahoo-googl.html",
+      "role": "Search discovery only, not primary numerical evidence."
+    },
+    {
+      "source_id": "brave-msft",
+      "url": "https://search.brave.com/search?q=%22Microsoft%22+%22interest+and+dividends+income%22+%222026%22",
+      "http_status": 200,
+      "sha256": "d701ade8558b24854c34071a208de4b412133fc3e0f1c6a1df3063537b6d0933",
+      "archive": "data/screening-wide-20261102/brave-msft.html",
+      "role": "Search discovery only, not primary numerical evidence."
+    },
+    {
+      "source_id": "brave-meta",
+      "url": "https://search.brave.com/search?q=%22Meta%22+%22gambling%22+%22advertising+revenue%22",
+      "http_status": 200,
+      "sha256": "af498c0ff90e992a60b6a60d5f2e13aabe536c9cffc9472becebb2e32d3590a3",
+      "archive": "data/screening-wide-20261102/brave-meta.html",
+      "role": "Search discovery only, not primary numerical evidence."
+    },
+    {
+      "source_id": "brave-amzn",
+      "url": "https://search.brave.com/search?q=%22Amazon%22+%22music%22+%22revenue%22+%222026%22",
+      "http_status": 429,
+      "sha256": "02ce0f248e1553ee51072f3a6e2169492918aabaa1b0455e03e7d0034d198246",
+      "archive": "data/screening-wide-20261102/brave-amzn.html",
+      "role": "Search discovery only, not primary numerical evidence."
+    },
+    {
+      "source_id": "yasaar-method",
+      "url": "https://search.brave.com/search?q=site%3Ayasaar.org+%22entertainment%22+%22screening%22",
+      "http_status": 429,
+      "sha256": "1970f2346997a818c54e623ca133a71cea4436589fb062018deb41b031fb1428",
+      "archive": "data/screening-wide-20261102/yasaar-method.html",
+      "role": "Search discovery only, not primary numerical evidence."
+    },
+    {
+      "source_id": "AZ-domestic-reporting",
+      "url": "https://difi.az.gov/insurers/financial-reporting-domestic-entities",
+      "http_status": 200,
+      "sha256": "3701e76f55af3244b7c7172de3e4b1f032f415fc883353f73e5d2eace4eaae9f",
+      "archive": "data/screening-wide-20261102/AZ-domestic-reporting.html"
+    },
+    {
+      "source_id": "TX-company-profiles",
+      "url": "https://www.tdi.texas.gov/consumer/company-profiles-and-agents-for-service-of-process.html",
+      "http_status": 200,
+      "sha256": "f7ef12436ef9a54b5af31dd4ad44628f0f790c8031d6ce2b3605ee868cb70916",
+      "archive": "data/screening-wide-20261102/TX-company-profiles.html"
+    },
+    {
+      "source_id": "META-policy-lead",
+      "url": "https://next.io/news/meta-gambling-ads-facebook/",
+      "http_status": 202,
+      "sha256": "94e3f6e9350337b73a7b7ec40af03ece44f22d0484aa788135e898b4de86a60e",
+      "archive": "data/screening-wide-20261102/META-policy-lead.html"
+    },
+    {
+      "source_id": "AVGO-TradingEconomics",
+      "url": "https://tradingeconomics.com/search.aspx?q=avgo+interest-income",
+      "http_status": 202,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "archive": "data/screening-wide-20261102/AVGO-TradingEconomics.html"
+    },
+    {
+      "source_id": "AVGO-StockAnalysis",
+      "url": "https://stockanalysis.com/stocks/avgo/financials/?p=quarterly",
+      "http_status": 200,
+      "sha256": "114b108e70802b3523b80b80e0d68153174a8cf7de1bcbf6656aa2970c590114",
+      "archive": "data/screening-wide-20261102/AVGO-StockAnalysis.html"
+    },
+    {
+      "source_id": "META-news-search",
+      "url": "https://about.fb.com/?s=scam",
+      "http_status": 200,
+      "sha256": "5a1af85e208bf2dabb2e59af051d96d24608f1cfbb8afb3307a1ad78c4343e25",
+      "archive": "data/screening-wide-20261102/META-news-search.html"
+    },
+    {
+      "source_id": "TSLA-Arizona",
+      "url": "https://difi.az.gov/financial-examinations-reports",
+      "http_status": 404,
+      "sha256": "05a5232df6e795d9b1d3223f8784e50d6ffe8402838fdb5740d33c4d6fa04bee",
+      "archive": "data/screening-wide-20261102/TSLA-Arizona.html"
+    },
+    {
+      "source_id": "TheZeal",
+      "url": "https://thzeal.com/",
+      "http_status": 200,
+      "sha256": "e1e2ee1484d1667376699e506ab343736d95bb5c08411f3a799f28f20948f021",
+      "archive": "data/screening-wide-20261102/TheZeal.html"
+    },
+    {
+      "source_id": "Arizona-financial",
+      "url": "https://difi.az.gov/financial-examinations",
+      "http_status": 404,
+      "sha256": "ac8ab8851e626c382601b58f2e35dd04f5ec9494e6cac2938e0a6ec3e5e550c4",
+      "archive": "data/screening-wide-20261102/Arizona-financial.html"
+    },
+    {
+      "source_id": "Texas-financial",
+      "url": "https://www.tdi.texas.gov/company/finances.html",
+      "http_status": 404,
+      "sha256": "613a3988e3137ae77ecfe4e729530906becfdb70c95ecfbe62585dfdba93bbe6",
+      "archive": "data/screening-wide-20261102/Texas-financial.html"
+    },
+    {
+      "source_id": "Meta-ad-policy",
+      "url": "https://transparency.meta.com/policies/ad-standards/restricted-goods-services/online-gambling-games/",
+      "http_status": 404,
+      "sha256": "cefe26747e2306db401e7ae1c636a266cc20c52b41e8eede3a5e9be5bd35354b",
+      "archive": "data/screening-wide-20261102/Meta-ad-policy.html"
+    },
+    {
+      "source_id": "AVGO-annual-primary",
+      "url": "https://www.sec.gov/Archives/edgar/data/1730168/000173016825000121/avgo-20251102.htm",
+      "sha256": "789c977a9e365d8f6eb3d6b3e12cce52047fc0660128732643e6558d3422bfdb",
+      "archive": "data/independent-review-20261102/AVGO-annual.htm",
+      "role": "Previously retrieved primary historical annual disclosure; re-read in this pass."
+    }
+  ],
+  "source_limitations": [
+    "SEC lexical zero hits are not proof of absent business or income; global search results were not exhaustively read.",
+    "Secondary reports are discovery/corroboration only until period, accounting definition and primary attribution are reconciled.",
+    "Browser selectors were rendered through TLS-verified managed-CA API transport; certificate validation was not disabled. Earlier direct Chromium TLS failures are separately recorded.",
+    "Search challenges, 401/403/429 responses, empty 202 responses and incorrect 404 routes were not bypassed or treated as evidence of zero income.",
+    "No outgoing issuer/regulator requests, provider purchases, account creation, approvals or virtual entries.",
+    "Raw archives are ignored local research data; receipts retain URLs and hashes for retrieval, not a claim every archive is committed."
+  ],
+  "ownership_scope": {
+    "paper": "Internal simulator ledger verifies virtual cash, holdings and settlement.",
+    "live": "Actual custody and actual dividend receipts belong to live readiness."
+  },
+  "purification": {
+    "eligible_dividend_rate": "0.05",
+    "application": "Only after eligibility is established; cannot repair a failed or unknown company screen. No amount due is asserted without an eligible holding and dividend ledger event."
+  },
+  "instrument_evidence": "Existing issuer/common-share identity evidence is retained. No new instrument approval or external custody requirement is inferred from this source pass.",
+  "prior_ci": {
+    "commit": "11d5ee2d117c799edc7c718e34751d507be1833b",
+    "run_id": 41497709295,
+    "conclusion": "success",
+    "tests_passed": 717,
+    "url": "https://github.com/MohammedTeir/halal-quant/actions/runs/41497709295"
+  },
+  "validation": {
+    "source_hashes": "Verified against local archives before publication.",
+    "new_commit_ci": "Must be checked by exact pushed head separately; prior CI does not certify this commit.",
+    "focused_tests": {
+      "passed": 38,
+      "command": "pytest -q tests/paper/test_filing_facts.py tests/paper/test_screening_calculations.py",
+      "warnings": [
+        "Existing Starlette/httpx deprecation warning."
+      ]
+    }
+  },
+  "requested_historical_ci_check": {
+    "commit": "3787c751cbbaec782e806d0af5b1f44f31e38f22",
+    "run_id": 41473608160,
+    "conclusion": "success",
+    "tests_passed": 703,
+    "url": "https://github.com/MohammedTeir/halal-quant/actions/runs/41473608160",
+    "scope": "Separately verified exact head; not borrowed from baed1f1."
+  }
+}

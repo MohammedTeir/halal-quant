@@ -1,5 +1,7 @@
 # Screening resolution follow-up — November 2, 2026
 
+The subsequent [wider source review](milestone-8-wide-source-review.md) follows rendered investor selectors through to current transcripts/slides, expands the Tesla entity search, and records historical-period and secondary-source corrections. Its findings supersede the static-selector access limitations below; company outcomes remain unchanged.
+
 **Milestone 8 cannot yet be marked complete.** This follow-up closes five individual financial-threshold questions with conservative, source-backed bounds and follows the open Tesla insurance-regulator route. It does not establish complete non-compliant income for any of the seven unresolved candidates or approve an entry. The remaining exact fact requests are prepared below; none has been sent.
 
 The full independent financial/business review remains required before virtual entries. AAPL, MU and LLY retain their recorded static financial failures. NVDA, MSFT, GOOGL, AMZN, TSLA, META and AVGO retain insufficient-evidence outcomes. There are no approved candidates. A genuinely elapsed forward campaign is also still required for Milestone 8; fixtures, source polls and documentation do not supply elapsed sessions.
