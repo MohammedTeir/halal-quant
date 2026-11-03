@@ -335,6 +335,46 @@ Validation: 45 provider-feed/preparation tests passed, including four rejection
 status/no-redirect/no-retry cases; lint and format checks passed. Entries remain
 blocked by the independent screening and campaign review requirements.
 
+### Importing a browser-downloaded BLS file
+
+The phone subsequently reported HTTP 403 from the scripted request while its normal
+browser downloaded `bls.ics` from the official URL. This does not establish which
+component rejected the script or prove that changing a request header would fix it.
+`acquire_bls --input-file` supports importing the downloaded file as an explicitly
+operator-supplied observation, without another network request.
+
+Grant Termux file access if needed, then bind Downloads for this command:
+
+```sh
+termux-setup-storage
+proot-distro login --bind "$HOME/storage/downloads:/mnt" debian -- bash -lc 'cd /root/halal-quant && git pull --ff-only && .venv/bin/python -m services.macro_intelligence.acquire_bls --input-file /mnt/bls.ics --archive "data/paper-sources/bls-file-$(date -u +%Y%m%dT%H%M%SZ)"'
+```
+
+Allow the Android file-access prompt. Use the actual filename if Android saved
+`bls (1).ics` instead. The input is read with the existing 2 MiB bound and strict
+calendar parser; HTML error pages, malformed timestamps and unsupported recurrence
+are rejected before database access. Existing archives are preserved.
+
+The archived receipt records the exact file hash, import observation time and
+`operator_supplied_file` acquisition. The official URL is an **operator assertion**,
+not an origin verified from file bytes; download time remains unknown. The file
+bytes and normalized observations are retained. These events are imported under
+`bls_manual_file`, keeping the automatic `bls` records separate. The import is
+atomic and adds **no feed-coverage rows**. Its success does not repair the automated
+403, refresh the automatic BLS source, rewrite the earlier incomplete batch or
+establish continuous forward coverage. The ordinary direct-fetch path remains
+unchanged apart from the added receipt metadata.
+
+Keep the paper worker stopped. Source access/coverage, company screening and real
+campaign reviews remain separate requirements. No approval, order, notification,
+source configuration change, browser impersonation or automatic fallback is part
+of this command.
+
+Validation: 50 file-import, provider-feed and paper-preparation tests passed;
+lint/format checks passed. New tests cover a real isolated database import with
+separate provenance and no coverage, bounded invalid-file rejection before database
+access, archive preservation, and unchanged direct-fetch provider/coverage behavior.
+
 ## Public assets-based methodology alternative
 
 The [public methodology alternative](milestone-8-public-methodology-alternative.md) provides an official-source-backed total-assets draft, avoiding the proposed historical-capitalization dependency. Use explicit `--methodology-proposal` and a fresh `--account-id`/`--output`; preparation never rewrites the submitted campaign or approves any stock. The extra receivables/cash input is required when its method threshold is selected.
