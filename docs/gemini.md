@@ -47,6 +47,52 @@ without creating a job or contacting Google until configured and enabled.
 
 ## Request an assessment
 
+### One-article check from Termux
+
+The phone can use its private `.env` and database directly for one advisory news
+classification, without configuring an API analysis credential. First preview:
+
+```sh
+proot-distro login debian -- bash -lc 'cd /root/halal-quant && git pull --ff-only && .venv/bin/python -m services.news_intelligence.classify_one --symbol NVDA --classification-id termux-nvda-first-news-v1'
+```
+
+Add `--generate` to start one job using the phone's configured Google account:
+
+```sh
+proot-distro login debian -- bash -lc 'cd /root/halal-quant && git pull --ff-only && .venv/bin/python -m services.news_intelligence.classify_one --symbol NVDA --classification-id termux-nvda-first-news-v1 --generate'
+```
+
+This may consume quota or incur charges; model-metadata HTTP 200 does not prove
+free-tier eligibility or remaining quota. The existing adapter's bounded HTTP
+retry policy applies within the new job. There is no scheduler, loop or automatic
+new classification ID. The command selects a current Finnhub revision explicitly
+scoped to the stock, with publication and receipt in the preceding 24 hours and
+`synthetic=false`. These labels and provider facts are not independently certified
+truth. Missing qualifying news produces a blocker before any generation.
+
+The existing generation service validates target scope, source revisions, strict
+output schema and exact quoted evidence. Invalid output creates no assessment.
+Rerunning the **same ID** inspects an existing succeeded, failed or running job
+without another model call. Do not change IDs merely to clear a failure or an
+ambiguous interruption; inspect the recorded status/provider usage first. A
+changed target under an existing ID is rejected. A completed job missing its
+assessment is reported as inconsistent rather than accepted.
+
+Output contains a short advisory summary and fixed error/status codes, not keys,
+raw provider errors, prompts or article URLs. A news recommendation of `ALLOW`
+is not a company-screening approval or trading permission. This command creates
+no signals, decisions, approvals, orders or notifications and starts no worker.
+Keep paper entries blocked while independent financial/business screening,
+review and source-coverage requirements remain unmet. One successful generation
+does not validate model quality or complete Milestone 8.
+
+Validation: 60 CLI/adapter/integration checks passed with mocked model responses,
+including source filtering, real grounding validation, successful/failed/running
+job inspection, and secret-safe configuration errors. No live generation or
+production write was used to test this change. Lint and formatting passed.
+
+### API request
+
 Import source news first, then read its current immutable `source_id` from
 `GET /api/v1/news` using your dashboard credential. Submit:
 
