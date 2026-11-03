@@ -97,6 +97,25 @@ def test_bls_timezone_and_cancellation():
     assert raw == ICS and events == [event]
 
 
+@pytest.mark.parametrize("status", [302, 403, 429, 503])
+def test_bls_rejection_reports_only_status_without_redirect_or_retry(status):
+    calls = []
+
+    def handler(request):
+        calls.append(request)
+        return httpx.Response(
+            status,
+            headers={"Location": "https://attacker.invalid/private", "X-Detail": "private"},
+            content=b"private response body",
+        )
+
+    with pytest.raises(BlsError) as error:
+        fetch_calendar(transport=httpx.MockTransport(handler))
+    assert str(error.value) == f"BLS_REQUEST_REJECTED_HTTP_{status}"
+    assert len(calls) == 1
+    assert str(calls[0].url) == "https://www.bls.gov/schedule/news_release/bls.ics"
+
+
 @pytest.mark.parametrize(
     "raw",
     [

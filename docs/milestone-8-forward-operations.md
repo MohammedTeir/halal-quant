@@ -304,6 +304,37 @@ This skips source polling and source configuration. Use the Risk operator accoun
 
 The [screening evidence checkpoint](milestone-8-screening-evidence.md) records ten accessible company financial reports and the precise remaining approval gaps. The generated review document is a draft, not fresh evidence supplied by the operator.
 
+## BLS-only failure on Termux
+
+The November 3 phone poll imported 31/32 source jobs and reported BLS as failed.
+The old direct retry returned `BLS_REQUEST_REJECTED`, meaning a non-200 HTTP
+response, not a calendar-parser failure. It did not preserve the HTTP status.
+The adapter now reports `BLS_REQUEST_REJECTED_HTTP_<status>` without response
+bodies, headers or credentials. It still rejects redirects, makes one request,
+and retains TLS verification and strict calendar validation.
+
+After updating the phone checkout, retry just BLS with a new archive:
+
+```sh
+proot-distro login debian -- bash -lc 'cd /root/halal-quant && git pull --ff-only && .venv/bin/python -m services.macro_intelligence.acquire_bls --archive "data/paper-sources/bls-retry-$(date -u +%Y%m%dT%H%M%SZ)"'
+```
+
+Keep previous archives and the incomplete batch result. An independently successful
+retry does not rewrite that earlier result or establish complete prospective
+coverage. A 403 is an HTTP access rejection, 429 is rate limiting, 3xx is a rejected
+redirect, and 5xx is a server/gateway error; identifying which network component
+returned it needs further evidence. Do not bypass challenges, disable TLS, mark
+BLS complete, or substitute an empty calendar. No automatic retry or alternate
+provider was added.
+
+The same fixed official endpoint was fetched and parsed in the managed development
+environment on November 3: HTTP 200, 313 events. The [diagnostic receipt](../reports/milestone8-bls-diagnostic-2026-11-03.json)
+records the public-source hash and scope. This is not a test of the phone's network
+path, a production database import, source entitlement or company approval.
+Validation: 45 provider-feed/preparation tests passed, including four rejection
+status/no-redirect/no-retry cases; lint and format checks passed. Entries remain
+blocked by the independent screening and campaign review requirements.
+
 ## Public assets-based methodology alternative
 
 The [public methodology alternative](milestone-8-public-methodology-alternative.md) provides an official-source-backed total-assets draft, avoiding the proposed historical-capitalization dependency. Use explicit `--methodology-proposal` and a fresh `--account-id`/`--output`; preparation never rewrites the submitted campaign or approves any stock. The extra receivables/cash input is required when its method threshold is selected.

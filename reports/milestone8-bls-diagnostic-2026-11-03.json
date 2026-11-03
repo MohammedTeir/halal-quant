@@ -1,0 +1,35 @@
+{
+  "observed_at": "2026-11-03T08:31:32.480756+00:00",
+  "scope": "Development environment only; not the Termux network path or database import.",
+  "url": "https://www.bls.gov/schedule/news_release/bls.ics",
+  "database_mutations": 0,
+  "orders_submitted": 0,
+  "messages_sent": 0,
+  "status": "FETCHED_AND_PARSED",
+  "http_status": 200,
+  "source_sha256": "92a350111ace106deaab5584e4084366bd367b594a0d0bad116008d82d63e501",
+  "archive": "data/bls-diagnostic-20261103/source.ics",
+  "event_count": 313,
+  "first_scheduled_at": "2025-01-03T15:00:00+00:00",
+  "last_scheduled_at": "2026-12-30T15:00:00+00:00",
+  "phone_observation": {
+    "source": "User-supplied Termux output",
+    "batch_started_at": "2026-11-03T08:20:11.099489+00:00",
+    "batch_finished_at": "2026-11-03T08:26:22.241332+00:00",
+    "expected_polls": 32,
+    "imported": 31,
+    "failed": [
+      "bls"
+    ],
+    "direct_retry_error": "BLS_REQUEST_REJECTED",
+    "phone_http_status": null,
+    "cause": "Non-200 response; exact phone HTTP status not yet available. No global outage or particular rejecting component inferred."
+  },
+  "change": "Diagnostic improvement only: fixed prefix plus numeric HTTP status. No alternate host, redirect, retry, TLS change or approval bypass.",
+  "validation": {
+    "focused_tests_passed": 45,
+    "lint": "passed",
+    "format": "passed"
+  },
+  "virtual_entries_authorized": false
+}

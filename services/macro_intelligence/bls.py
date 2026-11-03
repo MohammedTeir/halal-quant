@@ -137,7 +137,9 @@ def fetch_calendar(*, received_at: datetime | None = None, transport=None):
             client.stream("GET", URL) as response,
         ):
             if response.status_code != 200:
-                raise BlsError("BLS_REQUEST_REJECTED")
+                # A fixed prefix and numeric status help diagnose provider/network
+                # rejection without exposing response bodies, headers or credentials.
+                raise BlsError(f"BLS_REQUEST_REJECTED_HTTP_{response.status_code}")
             raw = bytearray()
             for chunk in response.iter_bytes():
                 raw.extend(chunk)
