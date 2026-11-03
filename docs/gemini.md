@@ -4,8 +4,10 @@ The project now has a Gemini Developer API REST adapter, an authenticated genera
 endpoint and durable generation records. The adapter was checked against Google's
 [maintained SDK types](https://github.com/googleapis/python-genai/blob/main/google/genai/types.py)
 and [REST converters](https://github.com/googleapis/python-genai/blob/main/google/genai/models.py).
-All current provider tests use mocks. No real key was used and no live Gemini
-compatibility, account quota, billing eligibility or model-quality claim is made.
+All automated provider tests use mocks. A separate [one-article Termux live check](../reports/milestone8-live-news-check-2026-11-03.json)
+on November 3 successfully stored an advisory assessment using
+`gemini-3.5-flash-lite`. This is one observed account/model workflow, not a claim of
+general compatibility, free-tier quota, billing eligibility or model quality.
 
 ## Configure your backend
 
@@ -90,6 +92,33 @@ Validation: 60 CLI/adapter/integration checks passed with mocked model responses
 including source filtering, real grounding validation, successful/failed/running
 job inspection, and secret-safe configuration errors. No live generation or
 production write was used to test this change. Lint and formatting passed.
+
+### Observed first live phone result
+
+The job `termux-nvda-first-news-v1` completed at **11:48 on November 3, 2026
+(Asia/Jerusalem)**. A subsequent read-only database inspection confirmed its
+stored success, provider/model metadata and grounded citations without another
+model call. Reported usage was 1,015 prompt tokens plus 478 candidate tokens,
+1,493 total; this does not establish a currency cost or remaining quota.
+
+The supplied article headline was “Nvidia tells data center partners to limit
+China sales- FT.” Finnhub labeled the source Yahoo; its short summary attributed
+the news to Investing.com citing a Financial Times report based on unnamed
+sources. Both model quotations are exact substrings of the stored headline or
+summary. A primary Nvidia statement and the full underlying report were not
+independently verified by this inspection.
+
+The model returned negative sentiment, medium severity, uncertain market impact,
+`REVIEW`, and `requires_human_review=true`. Its 0.9 confidence is a model-reported
+value, not a calibrated truth probability, predicted return or independent
+accuracy measurement. The assessment supports retaining review, not automatically
+clearing it. It supplies no missing financial/business revenue allocation and
+does not change NVDA's insufficient-evidence screening outcome.
+
+At observation there were zero paper orders, zero cycles and zero control review
+records. Human review remains uncleared, virtual entries blocked and Milestone 8
+incomplete. The existing fixed ID can be inspected again without starting another
+generation; do not choose a new ID merely to seek a more favorable assessment.
 
 ### API request
 

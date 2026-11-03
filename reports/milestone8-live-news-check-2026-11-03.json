@@ -1,0 +1,89 @@
+{
+  "as_of": "2026-11-03",
+  "display_timezone": "Asia/Jerusalem",
+  "status": "ONE_LIVE_ADVISORY_CLASSIFICATION_OBSERVED_REVIEW_REQUIRED",
+  "classification_id": "termux-nvda-first-news-v1",
+  "symbol": "NVDA",
+  "job_status": "SUCCEEDED",
+  "created_at": "2026-11-03T11:48:06.735263+02:00",
+  "completed_at": "2026-11-03T11:48:16.847982+02:00",
+  "observed_at": "2026-11-03T11:52:07.469334+02:00",
+  "provenance": {
+    "configured_model": "gemini-3.5-flash-lite",
+    "reported_model_version": "gemini-3.5-flash-lite",
+    "prompt_version": "news-classification-v5",
+    "usage": {
+      "promptTokenCount": 1015,
+      "candidatesTokenCount": 478,
+      "totalTokenCount": 1493
+    },
+    "scope": "Application-stored provenance, not independent provider billing/accuracy attestation."
+  },
+  "source": {
+    "source_id": "8404d0e9b1bee982625631b066cc2bd25f70d73209528a4f62f4023e740a72da",
+    "headline": "Nvidia tells data center partners to limit China sales- FT",
+    "provider": "finnhub",
+    "source_name_as_supplied": "Yahoo",
+    "attribution_in_summary": "Investing.com summary citing a Financial Times report attributed to five people with knowledge of the matter.",
+    "published_at": "2026-11-03T09:26:01+02:00",
+    "received_at": "2026-11-03T10:21:13.528963+02:00",
+    "synthetic_label": false,
+    "source_snapshot_sha256": "8a2480ee66eef697d99a280d2b46a33ee79c96039b451e08555e8144f49a1405",
+    "original_url_query_omitted": true,
+    "primary_issuer_statement_independently_verified": false
+  },
+  "assessment": {
+    "event_type": "company",
+    "sentiment": "negative",
+    "sentiment_score": -0.6,
+    "relevance": 1.0,
+    "severity": "medium",
+    "confidence": 0.9,
+    "market_impact": "uncertain",
+    "recommended_policy": "REVIEW",
+    "requires_human_review": true
+  },
+  "evidence_check": {
+    "quotes_checked": 2,
+    "exact_substring_matches": 2,
+    "source_id_matches": 2,
+    "scope": "Exact citation/target checks only; not semantic truth, probability calibration, full article verification or qualified company screening."
+  },
+  "interpretation": {
+    "finding": "A negative assessment requiring review is supported as a cautious advisory interpretation of the supplied China-exposure snippet. The underlying report and financial impact remain unverified.",
+    "confidence_is_model_reported_not_calibrated_accuracy": true,
+    "stock_price_prediction_established": false,
+    "human_review_cleared": false,
+    "financial_business_screening_completed": false,
+    "independent_company_review_outcome": "INSUFFICIENT_EVIDENCE",
+    "approvals_created": 0,
+    "virtual_entries_authorized": false,
+    "milestone_8_complete": false
+  },
+  "database_observation": {
+    "transaction_read_only": true,
+    "counts_at_observation": {
+      "orders": 0,
+      "cycles": 0,
+      "control_reviews": 0
+    },
+    "mutations_by_this_inspection": 0,
+    "new_model_calls_by_this_inspection": 0,
+    "orders_submitted_by_this_inspection": 0,
+    "messages_sent_by_this_inspection": 0
+  },
+  "remaining_blockers": [
+    "COMPLETE_FINANCIAL_AND_BUSINESS_EVIDENCE",
+    "GENUINE_METHODOLOGY_ASSET_POLICY_AND_CAMPAIGN_REVIEWS",
+    "AUTOMATED_CALENDAR_COVERAGE",
+    "REAL_UPSTREAM_SIGNALS_AND_DECISIONS_NOT_ESTABLISHED",
+    "ACTUAL_ELAPSED_FORWARD_ACCEPTANCE"
+  ],
+  "validation": {
+    "exact_quote_and_source_checks": "passed",
+    "token_count_arithmetic": "1015 + 478 = 1493; not a currency cost or remaining-quota estimate",
+    "credential_and_private_identity_publication": false,
+    "prior_source_commit": "846fed6afc493181adb75c70be40d35db72cc3ef",
+    "prior_exact_head_ci_tests_passed": 738
+  }
+}
